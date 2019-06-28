@@ -1,0 +1,20 @@
+{
+  "name": "@offcourse/types",
+  "private": true,
+  "version": "1.4.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "scripts": {
+    "build": "rimraf ./lib/ && tsc"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.22",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.5.2"
+  }
+}
