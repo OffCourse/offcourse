@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.4.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": "",
   "scripts": {
     "build": "rimraf ./lib/ && tsc"

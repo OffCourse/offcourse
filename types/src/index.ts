@@ -7,3 +7,11 @@ export { default as Input } from "./Input";
 export { default as ListItem } from "./ListItem";
 export { default as Section } from "./Section";
 export { default as Tag } from "./Tag";
+export {
+  Variant,
+  Size,
+  ErrorState,
+  Direction,
+  Affordance,
+  Alignment
+} from "./enums";
