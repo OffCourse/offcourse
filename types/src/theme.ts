@@ -20,6 +20,7 @@ type Colors = {
 type GrayScale = string[];
 
 type Theme = {
+  name: string;
   colors: Colors;
   grayScale: GrayScale;
   avatars: { [error: string]: Avatar };

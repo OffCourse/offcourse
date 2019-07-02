@@ -1,13 +1,10 @@
-import logoSvg from "./offcourse-logo.svg";
-import avatarSVG from "./offcourse-avatar.svg";
-import contentError from "./offcourse-content-error.svg";
-import noSearchResults from "./offcourse-no-search-results.svg";
 import notFound from "./offcourse-not-found.svg";
 import genericError from "./offcourse-generic-error.svg";
-import { Size, Variant, ErrorState } from "@offcourse/types";
+import { Theme, Size, Variant, ErrorState } from "@offcourse/types";
 
 const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = Size;
 const { DEFAULT, DISABLED, INFO, POSITIVE, WARNING, NEGATIVE } = Variant;
+
 const {
   NONE,
   RESOURCE_NOT_LOADING,
@@ -26,6 +23,7 @@ const logo = {
   dimensions: { height: 1, width: 4.66666 },
   background: "black"
 };
+
 const avatars = {
   [NONE]: {
     svg: avatarSVG,
@@ -84,13 +82,13 @@ const grayScale = [
   baseColors.black
 ];
 
-const colors = {
-  [DEFAULT]: baseColors.black,
-  [DISABLED]: grayScale[2],
-  [INFO]: baseColors.blue,
-  [WARNING]: baseColors.yellow,
-  [POSITIVE]: baseColors.green,
-  [NEGATIVE]: baseColors.red
+const colors: any = {
+  [Variant.DEFAULT]: baseColors.black,
+  [Variant.DISABLED]: grayScale[2],
+  [Variant.INFO]: baseColors.blue,
+  [Variant.WARNING]: baseColors.yellow,
+  [Variant.POSITIVE]: baseColors.green,
+  [Variant.NEGATIVE]: baseColors.red
 };
 
 const fonts = {
@@ -116,7 +114,7 @@ const lineHeights = [
 ];
 
 const space = [
-  0,
+  "0",
   "0.0625rem",
   "0.125rem",
   "0.25rem",
@@ -127,13 +125,13 @@ const space = [
   "2rem"
 ];
 
-const borders = [0, "0.0625rem solid", "0.125rem solid"];
+const borders = ["0", "0.0625rem solid", "0.125rem solid"];
 
 const buttonSizes = {
-  [SMALL]: "5.33333rem",
-  [NORMAL]: "8rem",
-  [LARGE]: "16rem",
-  [EXTRA_LARGE]: "100%"
+  [Size.SMALL]: "5.33333rem",
+  [Size.NORMAL]: "8rem",
+  [Size.LARGE]: "16rem",
+  [Size.EXTRA_LARGE]: "100%"
 };
 
 const units = {
@@ -283,7 +281,7 @@ const widths = {
   card: ["100%", "18rem", "18rem"]
 };
 
-const theme = {
+const theme: Theme = {
   name: "offcourse",
   avatars,
   buttonSizes,

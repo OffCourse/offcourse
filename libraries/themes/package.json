@@ -6,16 +6,21 @@
   "main": "lib/index.js",
   "author": "",
   "scripts": {
-    "build": "rimraf ./lib/ && tsc"
+    "build": "rimraf ./lib/ && rollup -c --silent",
+    "start": "rollup -c -w"
   },
   "license": "MIT",
   "dependencies": {
-    "react": "^16.8.2",
-    "@offcourse/types": "^1.4.0"
+    "@offcourse/types": "^1.4.0",
+    "react": "^16.8.2"
   },
   "devDependencies": {
+    "@svgr/rollup": "^4.3.1",
     "@types/react": "^16.8.22",
     "rimraf": "^2.6.3",
+    "rollup": "^1.16.4",
+    "rollup-plugin-typescript": "^1.0.1",
+    "tslib": "^1.10.0",
     "typescript": "^3.5.2"
   }
 }
