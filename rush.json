@@ -31,12 +31,10 @@
     {
       "packageName": "@offcourse/types",
       "projectFolder": "types",
-      "shouldPublish": true
     },
     {
       "packageName": "@offcourse/themes",
       "projectFolder": "themes",
-      "shouldPublish": true
     }
   ]
 }
