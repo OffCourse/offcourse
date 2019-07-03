@@ -1,5 +1,3 @@
-import notFound from "./offcourse-not-found.svg";
-import genericError from "./offcourse-generic-error.svg";
 import { Theme, Size, Variant, ErrorState } from "@offcourse/types";
 
 const { SMALL, NORMAL, LARGE, EXTRA_LARGE } = Size;
@@ -82,7 +80,7 @@ const grayScale = [
   baseColors.black
 ];
 
-const colors: any = {
+const colors = {
   [Variant.DEFAULT]: baseColors.black,
   [Variant.DISABLED]: grayScale[2],
   [Variant.INFO]: baseColors.blue,

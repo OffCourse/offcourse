@@ -195,7 +195,7 @@
      * your PR branch, and in this situation "rush change" will also automatically invoke "git fetch"
      * to retrieve the latest activity for the remote master branch.
      */
-    // "url": "https://github.com/Microsoft/rush-example"
+    "url": "https://github.com/offcourse/offcourse"
   },
 
   /**
@@ -334,7 +334,7 @@
     },
     {
       "packageName": "@offcourse/themes",
-      "projectFolder": "libraries/themes"
+      "projectFolder": "themes"
     }
     //
     // {

@@ -1,3 +1,4 @@
+import { Variant } from "./enums";
 type SVG = {
   svg: string;
   dimensions: {
@@ -21,7 +22,7 @@ type GrayScale = string[];
 
 type Theme = {
   name: string;
-  colors: Colors;
+  colors: Variant;
   grayScale: GrayScale;
   avatars: { [error: string]: Avatar };
   logo: Logo;
