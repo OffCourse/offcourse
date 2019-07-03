@@ -30,7 +30,8 @@
   "projects": [
     {
       "packageName": "@offcourse/types",
-      "projectFolder": "types"
+      "projectFolder": "types",
+      "shouldPublish": true
     },
     {
       "packageName": "@offcourse/themes",
