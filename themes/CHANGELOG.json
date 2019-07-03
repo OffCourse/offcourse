@@ -1,0 +1,17 @@
+{
+  "name": "@offcourse/themes",
+  "entries": [
+    {
+      "version": "1.4.7",
+      "tag": "@offcourse/themes_v1.4.7",
+      "date": "Wed, 03 Jul 2019 21:02:42 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@offcourse/types\" from `^1.4.0` to `^1.4.8`"
+          }
+        ]
+      }
+    }
+  ]
+}

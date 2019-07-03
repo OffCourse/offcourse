@@ -10,7 +10,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@offcourse/types": "^1.4.0",
+    "@offcourse/types": "^1.4.8",
     "react": "^16.8.2"
   },
   "devDependencies": {
