@@ -195,7 +195,7 @@
      * your PR branch, and in this situation "rush change" will also automatically invoke "git fetch"
      * to retrieve the latest activity for the remote master branch.
      */
-    "url": "https://github.com/offcourse/offcourse"
+    "url": "git@github.com:OffCourse/offcourse.git"
   },
 
   /**
