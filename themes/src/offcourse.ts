@@ -4,6 +4,7 @@ import contentError from "./offcourse-content-error.svg";
 import noSearchResults from "./offcourse-no-search-results.svg";
 import genericError from "./offcourse-generic-error.svg";
 import notFound from "./offcourse-not-found.svg";
+import styled from "styled-components";
 
 import { Theme, Size, Variant, ErrorState } from "@offcourse/types";
 
@@ -24,44 +25,44 @@ const {
  * @description default styles for the Offcourse project
  */
 const logo = {
-  svg: logoSvg,
+  svg: styled(logoSvg)``,
   dimensions: { height: 1, width: 4.66666 },
   background: "black"
 };
 
 const avatars = {
   [NONE]: {
-    svg: avatarSVG,
+    svg: styled(avatarSVG)``,
     dimensions: { height: 1, width: 1 },
     background: "transparent"
   },
   [DEFAULT]: {
-    svg: avatarSVG,
+    svg: styled(avatarSVG)``,
     dimensions: { height: 1, width: 1 },
     background: "transparent"
   },
   [RESOURCE_NOT_LOADING]: {
-    svg: contentError,
+    svg: styled(contentError)``,
     dimensions: { height: 1, width: 1.9 },
     background: "transparent"
   },
   [NO_SEARCH_RESULTS]: {
-    svg: noSearchResults,
+    svg: styled(noSearchResults)``,
     dimensions: { height: 27 / 15, width: 1 },
     background: "transparent"
   },
   [COURSE_NOT_FOUND]: {
-    svg: notFound,
+    svg: styled(notFound)``,
     dimensions: { height: 1.44, width: 1.1 },
     background: "transparent"
   },
   [CHECKPOINT_NOT_FOUND]: {
-    svg: notFound,
+    svg: styled(notFound)``,
     dimensions: { height: 1.44, width: 1.1 },
     background: "transparent"
   },
   [TOTAL_PANIC]: {
-    svg: genericError,
+    svg: styled(genericError)``,
     dimensions: { height: 1, width: 1.5 },
     background: "transparent"
   }

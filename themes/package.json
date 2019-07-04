@@ -1,6 +1,6 @@
 {
   "name": "@offcourse/themes",
-  "version": "1.4.9",
+  "version": "1.4.10",
   "description": "something",
   "main": "lib/index.js",
   "author": "",
@@ -11,7 +11,9 @@
   "license": "MIT",
   "dependencies": {
     "@offcourse/types": "^1.4.0",
-    "react": "^16.8.2"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@svgr/rollup": "^4.3.1",
