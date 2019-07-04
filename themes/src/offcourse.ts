@@ -2,6 +2,7 @@ import logoSvg from "./offcourse-logo.svg";
 import avatarSVG from "./offcourse-avatar.svg";
 import contentError from "./offcourse-content-error.svg";
 import noSearchResults from "./offcourse-no-search-results.svg";
+import genericError from "./offcourse-generic-error.svg";
 import notFound from "./offcourse-not-found.svg";
 
 import { Theme, Size, Variant, ErrorState } from "@offcourse/types";

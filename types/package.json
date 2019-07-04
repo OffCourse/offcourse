@@ -1,6 +1,6 @@
 {
   "name": "@offcourse/types",
-  "version": "1.4.7",
+  "version": "1.4.9",
   "description": "something",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
