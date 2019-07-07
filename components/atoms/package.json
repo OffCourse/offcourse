@@ -1,0 +1,23 @@
+{
+  "name": "@offcourse/atoms",
+  "version": "1.4.10",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'HI'",
+    "storybook": "start-storybook"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/core": "~7.5.0",
+    "webpack": "~4.35.2",
+    "babel-loader": "~8.0.6",
+    "@emotion/core": "~10.0.14",
+    "@storybook/react": "~5.1.9",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}

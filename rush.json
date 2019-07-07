@@ -1,7 +1,8 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
   "rushVersion": "5.9.1",
-  "pnpmVersion": "3.5.3",
+  // "pnpmVersion": "3.5.3",
+  "npmVersion": "4.5.0",
   "pnpmOptions": {
     "strictPeerDependencies": true
     // "resolutionStrategy": "fast"
@@ -36,6 +37,11 @@
     {
       "packageName": "@offcourse/themes",
       "projectFolder": "themes",
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@offcourse/atoms",
+      "projectFolder": "components/atoms",
       "shouldPublish": true
     }
   ]
