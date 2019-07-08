@@ -3,6 +3,7 @@
   "version": "1.4.10",
   "description": "something",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "author": "",
   "scripts": {
     "build": "rimraf ./lib/ && rollup -c --silent",
@@ -19,8 +20,8 @@
     "@svgr/rollup": "^4.3.1",
     "@types/react": "^16.8.22",
     "rimraf": "^2.6.3",
-    "rollup": "^1.16.4",
-    "rollup-plugin-typescript": "^1.0.1",
+    "rollup": "^1.16.6",
+    "rollup-plugin-typescript2": "^0.21.2",
     "tslib": "^1.10.0",
     "typescript": "^3.5.2"
   }

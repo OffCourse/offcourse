@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "module": "commonjs",
-    "target": "ES2017",
+    "module": "es6",
+    "target": "es5",
     "declaration": true,
+    "declarationDir": "./lib",
     "outDir": "./lib"
   },
   "include": ["src/**/*"]

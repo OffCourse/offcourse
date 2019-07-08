@@ -1443,7 +1443,7 @@
     },
     "asn1": {
       "version": "0.2.4",
-      "from": "asn1@>=0.2.3 <0.3.0",
+      "from": "asn1@~0.2.3",
       "resolved": "https://registry.npmjs.org/asn1/-/asn1-0.2.4.tgz"
     },
     "asn1.js": {
@@ -6334,13 +6334,40 @@
     },
     "rollup": {
       "version": "1.16.6",
-      "from": "rollup@^1.16.4",
+      "from": "rollup@^1.16.6",
       "resolved": "https://registry.npmjs.org/rollup/-/rollup-1.16.6.tgz"
     },
-    "rollup-plugin-typescript": {
-      "version": "1.0.1",
-      "from": "rollup-plugin-typescript@^1.0.1",
-      "resolved": "https://registry.npmjs.org/rollup-plugin-typescript/-/rollup-plugin-typescript-1.0.1.tgz"
+    "rollup-plugin-typescript2": {
+      "version": "0.21.2",
+      "from": "rollup-plugin-typescript2@^0.21.2",
+      "resolved": "https://registry.npmjs.org/rollup-plugin-typescript2/-/rollup-plugin-typescript2-0.21.2.tgz",
+      "dependencies": {
+        "fs-extra": {
+          "version": "7.0.1",
+          "from": "fs-extra@7.0.1",
+          "resolved": "https://registry.npmjs.org/fs-extra/-/fs-extra-7.0.1.tgz"
+        },
+        "jsonfile": {
+          "version": "4.0.0",
+          "from": "jsonfile@>=4.0.0 <5.0.0",
+          "resolved": "https://registry.npmjs.org/jsonfile/-/jsonfile-4.0.0.tgz"
+        },
+        "resolve": {
+          "version": "1.10.1",
+          "from": "resolve@1.10.1",
+          "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.10.1.tgz"
+        },
+        "rollup-pluginutils": {
+          "version": "2.6.0",
+          "from": "rollup-pluginutils@2.6.0",
+          "resolved": "https://registry.npmjs.org/rollup-pluginutils/-/rollup-pluginutils-2.6.0.tgz"
+        },
+        "tslib": {
+          "version": "1.9.3",
+          "from": "tslib@1.9.3",
+          "resolved": "https://registry.npmjs.org/tslib/-/tslib-1.9.3.tgz"
+        }
+      }
     },
     "rollup-pluginutils": {
       "version": "2.8.1",
