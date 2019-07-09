@@ -2,16 +2,16 @@
  * @name Offcourse Theme
  * @description default styles for the Offcourse project
  */
+import { ErrorState, Size, Variant } from "@offcourse/types";
+import ThemeType from "./ThemeType";
 
+const avatarSVG = require("./offcourse-avatar.svg");
+const genericError = require("./offcourse-generic-error.svg");
+const logoSvg = require("./offcourse-logo.svg");
+const noSearchResults = require("./offcourse-no-search-results.svg");
+const notFound = require("./offcourse-not-found.svg");
+const contentError = require("./offcourse-content-error.svg");
 
-import avatarSVG from "./offcourse-avatar.svg";
-import contentError from "./offcourse-content-error.svg";
-import genericError from "./offcourse-generic-error.svg";
-import logoSvg from "./offcourse-logo.svg";
-import noSearchResults from "./offcourse-no-search-results.svg";
-import notFound from "./offcourse-not-found.svg";
-
-import { ErrorState, Size, Theme, Variant } from "@offcourse/types";
 
 const logo = {
     svg: logoSvg,
@@ -272,7 +272,7 @@ const widths = {
 };
 
 
-const theme: Theme = {
+const theme: ThemeType = {
     name: "offcourse",
     avatars,
     buttonSizes,

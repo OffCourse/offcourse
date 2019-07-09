@@ -1,11 +1,12 @@
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "module": "es6",
-    "target": "es5",
-    "declaration": true,
-    "declarationDir": "./lib",
-    "outDir": "./lib"
-  },
-  "include": ["src/**/*"]
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "es2015",
+        "lib": ["es2017", "es7", "es6", "dom"],
+        "declaration": true,
+        "outDir": "lib",
+        "strict": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node"
+    }
 }

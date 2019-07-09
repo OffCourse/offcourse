@@ -1,28 +1,28 @@
 {
-  "name": "@offcourse/themes",
-  "version": "1.4.10",
-  "description": "something",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "author": "",
-  "scripts": {
-    "build": "rimraf ./lib/ && rollup -c --silent",
-    "start": "rollup -c -w"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@offcourse/types": "^1.4.10",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "styled-components": "^4.3.2"
-  },
-  "devDependencies": {
-    "@svgr/rollup": "^4.3.1",
-    "@types/react": "^16.8.22",
-    "rimraf": "^2.6.3",
-    "rollup": "^1.16.6",
-    "rollup-plugin-typescript2": "^0.21.2",
-    "tslib": "^1.10.0",
-    "typescript": "^3.5.2"
-  }
+    "name": "@offcourse/themes",
+    "version": "1.4.11",
+    "description": "something",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "author": "",
+    "scripts": {
+        "build": "webpack"
+    },
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "@offcourse/types": "^1.4.11",
+        "@types/react": "^16.8.23",
+        "ts-loader": "~6.0.4",
+        "clean-webpack-plugin": "~3.0.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "styled-components": "^4.3.2",
+        "svg-inline-loader": "^0.8.0",
+        "tslib": "^1.10.0",
+        "typescript": "^3.5.3",
+        "webpack": "~4.35.3",
+        "webpack-cli": "^3.3.5"
+        
+    }
 }
