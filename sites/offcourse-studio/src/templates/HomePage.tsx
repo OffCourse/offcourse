@@ -1,30 +1,39 @@
+import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import {
-  graphql,
-  useStaticQuery
-} from 'gatsby';
 
 const useGetAllSections = () => {
-  const data = useStaticQuery(graphql `
+  const data = useStaticQuery(graphql`
     query allHomePageSections {
       allPageSection {
         edges {
-          node {
+          section: node {
             id
-            sectionRole
+            role
             text
           }
         }
       }
-    }`);
+    }
+  `);
   return data.allPageSection.edges;
 };
 
+interface IPageSection {
+  id: string;
+  text: string;
+  role: string;
+}
+
+const PageSection = ({ id, text }: IPageSection) => <p key={id}>{text}</p>;
+
 const HomePageTemplate = () => {
   const sections = useGetAllSections();
+  console.log(sections);
   return (
     <div>
-      {sections.map(({node}) => (<p key={node.id}>{node.text}</p>))}
+      {sections.map(({ section }: { section: IPageSection }) => (
+        <PageSection {...section} />
+      ))}
     </div>
   );
 };
