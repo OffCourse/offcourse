@@ -13,7 +13,7 @@
     "@babel/core": "~7.5.4",
     "@emotion/core": "~10.0.14",
     "@offcourse/themes": "^1.4.11",
-    "@offcourse/types": "^1.4.11",
+    "@offcourse/enums": "^1.4.11",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-backgrounds": "^5.1.9",
     "@storybook/addon-knobs": "^5.1.9",

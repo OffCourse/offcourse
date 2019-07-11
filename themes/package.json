@@ -11,7 +11,8 @@
     "license": "MIT",
     "dependencies": {},
     "devDependencies": {
-        "@offcourse/types": "^1.4.11",
+        "@offcourse/enums": "^1.4.11",
+        "@offcourse/interfaces": "^1.4.11",
         "@types/react": "^16.8.23",
         "ts-loader": "~6.0.4",
         "clean-webpack-plugin": "~3.0.0",
@@ -23,6 +24,5 @@
         "typescript": "^3.5.3",
         "webpack": "~4.35.3",
         "webpack-cli": "^3.3.5"
-        
     }
 }
