@@ -10,6 +10,7 @@ module.exports = {
       options: {
         typeName: 'pageSection'
       }
-    }
+    },
+    `gatsby-plugin-typescript`
   ]
 }
