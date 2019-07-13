@@ -1,16 +1,18 @@
 module.exports = {
-  plugins: [{
-      resolve: 'gatsby-source-filesystem',
+  plugins: [
+    {
+      resolve: "gatsby-source-filesystem",
       options: {
-        path: 'data'
+        path: "data"
       }
     },
     {
-      resolve: 'gatsby-transformer-yaml',
+      resolve: "gatsby-transformer-yaml",
       options: {
-        typeName: 'pageSection'
+        typeName: "pageSection"
       }
     },
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-typescript`
   ]
-}
+};

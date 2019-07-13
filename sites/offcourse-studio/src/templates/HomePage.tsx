@@ -1,5 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import themes from "@offcourse/themes";
+
+const GlobalStyle = createGlobalStyle(themes.offcourse);
 
 const useGetAllSections = () => {
   const data = useStaticQuery(graphql`
@@ -26,15 +30,24 @@ interface IPageSection {
 
 const PageSection = ({ id, text }: IPageSection) => <p key={id}>{text}</p>;
 
+const Layout = styled.div`
+  margin: 3rem auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const HomePageTemplate = () => {
   const sections = useGetAllSections();
-  console.log(sections);
   return (
-    <div>
+    <Layout>
+      <GlobalStyle />
       {sections.map(({ section }: { section: IPageSection }) => (
-        <PageSection {...section} />
+        <PageSection key={section.role} {...section} />
       ))}
-    </div>
+    </Layout>
   );
 };
 

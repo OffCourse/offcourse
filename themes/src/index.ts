@@ -1,1 +1,5 @@
-export { default as offcourse } from "./offcourse";
+import offcourse from "./offcourse";
+
+export default {
+    offcourse
+};

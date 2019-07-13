@@ -5,18 +5,22 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "gatsby": "^2.13.14",
-    "gatsby-source-filesystem": "^2.1.4",
-    "gatsby-transformer-yaml": "^2.2.1",
-    "gatsby-plugin-typescript": "^2.1.1",
-    "typescript": "^3.5.3",
-    "ts-node": "^8.3.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "build": "gatsby build"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@offcourse/themes": "^1.4.11",
+    "babel-plugin-styled-components": "~1.10.6",
+    "gatsby": "^2.13.14",
+    "gatsby-plugin-styled-components": "~3.1.2",
+    "gatsby-plugin-typescript": "^2.1.1",
+    "gatsby-source-filesystem": "^2.1.4",
+    "gatsby-transformer-yaml": "^2.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.3.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
 }
