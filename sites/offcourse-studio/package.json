@@ -11,6 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "@offcourse/themes": "^1.4.11",
+    "@offcourse/enums": "^1.4.11",
+    "@types/styled-components": "4.1.8",
     "babel-plugin-styled-components": "~1.10.6",
     "gatsby": "^2.13.14",
     "gatsby-plugin-styled-components": "~3.1.2",
