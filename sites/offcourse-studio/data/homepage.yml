@@ -1,6 +1,10 @@
 - role: why-us
   text: Tinkering Solutions for Unexpected Futures
+  publishable: true
 - role: what-do-we-do
   text: Something Something
+  publishable: true
 - role: what-we-don't-do
   text: Something Else Something
+- role: what-we-also-don't-do
+  text: Something Else we also Something

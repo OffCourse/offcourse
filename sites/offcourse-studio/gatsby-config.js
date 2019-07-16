@@ -12,7 +12,6 @@ module.exports = {
         typeName: "pageSection"
       }
     },
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-typescript`
   ]
 };

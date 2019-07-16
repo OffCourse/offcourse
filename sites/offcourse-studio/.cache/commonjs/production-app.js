@@ -103,7 +103,7 @@ window.___webpackCompilationHash = window.webpackCompilationHash;
   // - it's a 404 page
   // - it's the offline plugin shell (/offline-plugin-app-shell-fallback/)
 
-  if (pagePath && __BASE_PATH__ + pagePath !== browserLoc.pathname && !(loader.pathFinder.findMatchPath((0, _stripPrefix.default)(browserLoc.pathname, __BASE_PATH__)) || pagePath === `/404.html` || pagePath.match(/^\/404\/?$/) || pagePath.match(/^\/offline-plugin-app-shell-fallback\/?$/))) {
+  if (pagePath && __BASE_PATH__ + pagePath !== browserLoc.pathname && !(loader.findMatchPath((0, _stripPrefix.default)(browserLoc.pathname, __BASE_PATH__)) || pagePath === `/404.html` || pagePath.match(/^\/404\/?$/) || pagePath.match(/^\/offline-plugin-app-shell-fallback\/?$/))) {
     (0, _router.navigate)(__BASE_PATH__ + pagePath + browserLoc.search + browserLoc.hash, {
       replace: true
     });

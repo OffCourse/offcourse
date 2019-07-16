@@ -1,14 +1,12 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
-import themes from "@offcourse/themes";
 import PageSection from "../components/PageSection";
-
-const GlobalStyle = createGlobalStyle(themes.offcourse);
+import PageTemplate from "./Page";
 
 interface IPageSection {
   text: string;
   role: string;
+  publishable: boolean;
 }
 
 const useGetAllSections = () => {
@@ -19,6 +17,7 @@ const useGetAllSections = () => {
           section: node {
             role
             text
+            publishable
           }
         }
       }
@@ -30,20 +29,14 @@ const useGetAllSections = () => {
 const HomePageTemplate = ({ className }: { className: string }) => {
   const sections = useGetAllSections();
   return (
-    <ThemeProvider theme={themes.offcourse}>
-      <div className={className}>
-        <GlobalStyle />
-        {sections.map(({ section }: { section: IPageSection }) => (
+    <PageTemplate>
+      {sections.map(({ section }: { section: IPageSection }) =>
+        section.publishable ? (
           <PageSection key={section.role} {...section} />
-        ))}
-      </div>
-    </ThemeProvider>
+        ) : null
+      )}
+    </PageTemplate>
   );
 };
 
-export default styled(HomePageTemplate)`
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-`;
+export default HomePageTemplate;
