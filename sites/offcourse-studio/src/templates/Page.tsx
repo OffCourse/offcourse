@@ -1,11 +1,12 @@
 import React from "react";
 import { Layout, Header, Main, Container, Footer } from "theme-ui";
 import ThemeProvider from "../components/ThemeProvider";
-import theme from "../theme";
+import createTheme from "../theme";
+import fonts from "../theme/offcourse-fonts";
 
 const PageTemplate = ({ children }: { children: any }) => {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={createTheme({ fonts })}>
       <Layout>
         <Header />
         <Main>
