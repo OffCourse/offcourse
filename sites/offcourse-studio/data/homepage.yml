@@ -1,10 +1,4 @@
-- role: why-us
-  text: Tinkering Solutions for Unexpected Futures
+- role: hero
+  slogan: Tinkering solutions for unexpected futures
+  explanation: We build digital products with you
   publishable: true
-- role: what-do-we-do
-  text: Something Something
-  publishable: true
-- role: what-we-don't-do
-  text: Something Else Something
-- role: what-we-also-don't-do
-  text: Something Else we also Something
