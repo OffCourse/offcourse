@@ -83,7 +83,7 @@ window.___webpackCompilationHash = window.webpackCompilationHash;
         location: location,
         id: "gatsby-focus-wrapper"
       }, _react.default.createElement(RouteHandler, (0, _extends2.default)({
-        path: encodeURI(pageResources.page.path === `/404.html` ? location.pathname : pageResources.page.matchPath || pageResources.page.path)
+        path: encodeURI(pageResources.page.path === `/404.html` ? (0, _stripPrefix.default)(location.pathname, __BASE_PATH__) : pageResources.page.matchPath || pageResources.page.path)
       }, this.props, {
         location: location,
         pageResources: pageResources

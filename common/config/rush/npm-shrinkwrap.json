@@ -3154,6 +3154,11 @@
       "from": "console-control-strings@>=1.1.0 <1.2.0",
       "resolved": "https://registry.npmjs.org/console-control-strings/-/console-control-strings-1.1.0.tgz"
     },
+    "consolidated-events": {
+      "version": "2.0.2",
+      "from": "consolidated-events@>=1.1.0 <2.0.0||>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/consolidated-events/-/consolidated-events-2.0.2.tgz"
+    },
     "constants-browserify": {
       "version": "1.0.0",
       "from": "constants-browserify@>=1.0.0 <2.0.0",
@@ -4266,9 +4271,9 @@
       "resolved": "https://registry.npmjs.org/eslint-plugin-graphql/-/eslint-plugin-graphql-3.0.3.tgz"
     },
     "eslint-plugin-import": {
-      "version": "2.18.0",
+      "version": "2.18.1",
       "from": "eslint-plugin-import@^2.9.0",
-      "resolved": "https://registry.npmjs.org/eslint-plugin-import/-/eslint-plugin-import-2.18.0.tgz",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-import/-/eslint-plugin-import-2.18.1.tgz",
       "dependencies": {
         "debug": {
           "version": "2.6.9",
@@ -4884,9 +4889,9 @@
       "resolved": "https://registry.npmjs.org/fuse.js/-/fuse.js-3.4.5.tgz"
     },
     "gatsby": {
-      "version": "2.13.27",
+      "version": "2.13.28",
       "from": "gatsby@^2.13.27",
-      "resolved": "https://registry.npmjs.org/gatsby/-/gatsby-2.13.27.tgz",
+      "resolved": "https://registry.npmjs.org/gatsby/-/gatsby-2.13.28.tgz",
       "dependencies": {
         "@webassemblyjs/ast": {
           "version": "1.7.11",
@@ -7057,14 +7062,14 @@
       "resolved": "https://registry.npmjs.org/lockfile/-/lockfile-1.0.4.tgz"
     },
     "lodash": {
-      "version": "4.17.14",
+      "version": "4.17.15",
       "from": "lodash@^4.17.13",
-      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.14.tgz"
+      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.15.tgz"
     },
     "lodash-es": {
-      "version": "4.17.14",
+      "version": "4.17.15",
       "from": "lodash-es@^4.17.11",
-      "resolved": "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.14.tgz"
+      "resolved": "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.15.tgz"
     },
     "lodash.debounce": {
       "version": "4.0.8",
@@ -9071,6 +9076,11 @@
       "version": "2.9.0",
       "from": "react-transition-group@^2.2.1",
       "resolved": "https://registry.npmjs.org/react-transition-group/-/react-transition-group-2.9.0.tgz"
+    },
+    "react-waypoint": {
+      "version": "9.0.2",
+      "from": "react-waypoint@^9.0.2",
+      "resolved": "https://registry.npmjs.org/react-waypoint/-/react-waypoint-9.0.2.tgz"
     },
     "reactcss": {
       "version": "1.2.3",

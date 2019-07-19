@@ -22,6 +22,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-spring": "^8.0.27",
+    "react-waypoint": "^9.0.2",
     "ts-node": "^8.3.0",
     "theme-ui": "^0.1.2",
     "typescript": "^3.5.3"

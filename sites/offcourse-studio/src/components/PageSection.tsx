@@ -10,7 +10,12 @@ interface IPageSection {
   role: string;
 }
 
-const PageSection = ({ slogan, explanation, className }: IPageSection) => {
+const PageSection = ({
+  style,
+  slogan,
+  explanation,
+  className
+}: IPageSection) => {
   console.log(slogan);
   return (
     <div className={className}>
