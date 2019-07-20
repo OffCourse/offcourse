@@ -50,15 +50,28 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
     styles: {
         root: {
             fontFamily: "body",
-            fontSize: 5
+            fontSize: 1
+        },
+        Main: {
+            display: "flex",
+            justifyContent: "column"
         },
         Container: {
             padding: 0,
             maxWidth: "100%"
         },
         h1: {
-            fontSize: 5, margin: 0,
+            fontSize: [3, 4, 5],
+            margin: 0,
+            wordSpacing: "-0.2em",
+            marginBottom: 6,
+            lineHeight: [3, 4, 5],
             fontFamily: "monospace",
+        },
+        h2: {
+            fontSize: 2,
+            margin: 0,
+            fontFamily: "heading",
         }
     },
     globals: `

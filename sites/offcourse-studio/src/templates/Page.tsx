@@ -4,9 +4,15 @@ import ThemeProvider from "../components/ThemeProvider";
 import createTheme from "../theme";
 import fonts from "../theme/offcourse-fonts";
 
-const PageTemplate = ({ children }: { children: any }) => {
+const PageTemplate = ({
+  className,
+  children
+}: {
+  className: string;
+  children: any;
+}) => {
   return (
-    <ThemeProvider theme={createTheme({ fonts })}>
+    <ThemeProvider className={className} theme={createTheme({ fonts })}>
       <Layout>
         <Header />
         <Main>
