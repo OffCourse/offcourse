@@ -61,14 +61,17 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
             maxWidth: "100%"
         },
         h1: {
-            fontSize: [3, 4, 5],
+            fontSize: 5,
             margin: 0,
             wordSpacing: "-0.2em",
-            marginBottom: 6,
-            lineHeight: [3, 4, 5],
             fontFamily: "monospace",
         },
         h2: {
+            fontSize: 2,
+            margin: 0,
+            fontFamily: "heading",
+        },
+        h3: {
             fontSize: 2,
             margin: 0,
             fontFamily: "heading",

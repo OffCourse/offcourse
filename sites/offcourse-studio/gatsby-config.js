@@ -7,11 +7,20 @@ module.exports = {
       }
     },
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/
+        }
+      }
+    },
+    {
       resolve: "gatsby-transformer-yaml",
       options: {
         typeName: "pageSection"
       }
     },
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-typescript`
   ]
 };

@@ -25,16 +25,18 @@ const useGetAllSections = () => {
       }
     }
   `);
-  return data.allPageSection.edges;
+  return data.allPageSection.edges.map(({ section }) => section);
 };
 
 const HomePageTemplate = ({ className }: { className: string }) => {
   const sections = useGetAllSections();
   return (
     <PageTemplate className={className}>
-      {sections.map(({ section }: { section: IPageSection }, index: number) => (
-        <PageSection key={index} {...section} sectionIndex={index} />
-      ))}
+      {sections
+        .filter(({ publishable }) => publishable)
+        .map((section: IPageSection, index: number) => (
+          <PageSection key={index} {...section} sectionIndex={index} />
+        ))}
     </PageTemplate>
   );
 };
