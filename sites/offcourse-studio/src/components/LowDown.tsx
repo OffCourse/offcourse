@@ -8,8 +8,8 @@ const LowDown = ({ slogan, className }) => {
   const isOneToken = words.length === 1;
   return (
     <section className={className}>
-      {words.map(word => (
-        <div className="word-wrapper">
+      {words.map((word, index) => (
+        <div key={index} className="word-wrapper">
           <Styled.h1
             className={isOneToken && "isOneToken"}
             size={Size.EXTRA_LARGE}

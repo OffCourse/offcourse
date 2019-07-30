@@ -41,8 +41,7 @@ const getSectionColors = (colorScale, index) => {
 export default styled(PageSection)`
   display: grid;
 
-  background-color: ${({ theme, sectionIndex }) =>
-    getSectionColors(theme.grayScale, sectionIndex).background};
+  background-color: transparent;
   color: ${({ theme, sectionIndex }) =>
     getSectionColors(theme.grayScale, sectionIndex).foreground};
   padding: 3rem 2rem;
@@ -57,7 +56,6 @@ export default styled(PageSection)`
   }
 
   &:only-child {
-    background-color: ${({ theme }) => theme.grayScale[3]};
     color: ${({ theme }) => theme.grayScale[1]};
     max-height: 100vh;
     height: 100vh;
