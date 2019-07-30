@@ -5,7 +5,7 @@
 - role: hero
   slogan: Tinkering solutions for unexpected futures
   explanation: We build digital products with you
-  publishable: false
+  publishable: true
 - role: hero
   slogan: Tinkering solutions for unexpected futures
   explanation: We build digital products with you

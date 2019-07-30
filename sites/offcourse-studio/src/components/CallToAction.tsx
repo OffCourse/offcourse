@@ -6,7 +6,7 @@ const CallToAction = ({ explanation, className }) => {
   return (
     <section className={className}>
       <form>
-        <Styled.h3>Ring, Ring, Ring</Styled.h3>
+        <Styled.h3>Ring, Ring</Styled.h3>
         <Styled.p>{explanation}</Styled.p>
         <input placeholder="enter your email address" />
       </form>
