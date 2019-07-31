@@ -270,12 +270,7 @@ class BaseLoader {
   }
 
   shouldPrefetch(pagePath) {
-    // If a plugin has disabled core prefetching, stop now.
-    if (this.prefetchDisabled) {
-      return false;
-    } // Skip prefetching if we know user is on slow or constrained connection
-
-
+    // Skip prefetching if we know user is on slow or constrained connection
     if (!doesConnectionSupportPrefetch()) {
       return false;
     } // Check if the page exists.
@@ -300,6 +295,11 @@ class BaseLoader {
         pathname: pagePath
       });
       this.prefetchTriggered.add(pagePath);
+    } // If a plugin has disabled core prefetching, stop now.
+
+
+    if (this.prefetchDisabled) {
+      return false;
     }
 
     const realPath = (0, _findPath.cleanPath)(pagePath); // Todo make doPrefetch logic cacheable

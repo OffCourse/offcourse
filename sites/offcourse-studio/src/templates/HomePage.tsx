@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import PageSection from "../components/PageSection";
 import CellularAutomata from "../components/CellularAutomata";
 import PageTemplate from "./Page";
+import ResizeObserver from "resize-observer-polyfill";
 import styled from "@emotion/styled";
 
 interface IPageSection {
