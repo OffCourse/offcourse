@@ -48,16 +48,14 @@ const HomePageTemplate = ({ className }: { className: string }) => {
   const [{ width, height }, bind] = useMeasure();
   console.log(width, height);
   return (
-    <Fragment>
+    <PageTemplate {...bind} className={className}>
       <CellularAutomata width={width} height={height} />
-      <PageTemplate {...bind} className={className}>
-        {sections
-          .filter(({ publishable }) => publishable)
-          .map((section: IPageSection, index: number) => (
-            <PageSection key={index} {...section} sectionIndex={index} />
-          ))}
-      </PageTemplate>
-    </Fragment>
+      {sections
+        .filter(({ publishable }) => publishable)
+        .map((section: IPageSection, index: number) => (
+          <PageSection key={index} {...section} sectionIndex={index} />
+        ))}
+    </PageTemplate>
   );
 };
 

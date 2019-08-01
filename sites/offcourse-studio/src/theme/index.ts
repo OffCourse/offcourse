@@ -13,6 +13,7 @@ const defaultColors = {
 };
 
 const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
+    colors: baseColors,
     fonts: {
         body: `${fonts.body.fontFamily}, Nitti Grotesk, Helvetica, sans-serif`,
         heading: `${fonts.heading.fontFamily}, Fira Sans Bold, Nitti Grotesk Bold, Helvetica Bold, sans-serif`,

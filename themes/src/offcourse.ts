@@ -77,6 +77,8 @@ const grayScale = [
 const colors = {
     [Variant.DEFAULT]: baseColors.black,
     [Variant.DISABLED]: grayScale[2],
+    primary: baseColors.green,
+    secondary: baseColors.yellow,
     [Variant.INFO]: baseColors.blue,
     [Variant.WARNING]: baseColors.yellow,
     [Variant.POSITIVE]: baseColors.green,
