@@ -19,6 +19,7 @@ export default styled(CallToAction)`
   flex-direction: column;
   padding: 1rem 2rem;
   background-color: ${({ theme }) => theme.grayScale[0]};
+  opacity: 0.9;
   color: ${({ theme }) => theme.grayScale[3]};
   grid-row: 2/3;
 

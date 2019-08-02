@@ -35,6 +35,7 @@ export default styled(LowDown)`
     font-size: 2rem;
     margin-bottom: 0.5rem;
     display: inline-block;
+    color: ${({ theme }) => theme.grayScale[0]};
     background-color: ${({ theme }) => theme.grayScale[4]};
 
     &.isOneToken {
