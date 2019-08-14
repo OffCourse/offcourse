@@ -1,33 +1,53 @@
 import React from "react";
 import { Size } from "@offcourse/enums";
 import styled from "@emotion/styled";
-import { Styled } from "theme-ui";
+import { Styled, useThemeUI } from "theme-ui";
+import { useMeasure } from "../hooks";
+import CellularAutomata from "./CellularAutomata";
 
 const LowDown = ({ slogan, className }) => {
   const words = slogan.split(" ");
   const isOneToken = words.length === 1;
+  const [{ width, height }, bind] = useMeasure();
+  const context = useThemeUI();
+  const { blue: background, yellow: foreground } = context.theme.colors;
   return (
-    <section className={className}>
-      {words.map((word, index) => (
-        <div key={index} className="word-wrapper">
-          <Styled.h1
-            className={isOneToken && "isOneToken"}
-            size={Size.EXTRA_LARGE}
-          >
-            {word}
-          </Styled.h1>
-        </div>
-      ))}
+    <section {...bind} className={className}>
+      <CellularAutomata
+        foreground={foreground}
+        background={background}
+        width={width}
+        height={height}
+      />
+      <div className="inner">
+        {words.map((word, index) => (
+          <div key={index} className="word-wrapper">
+            <Styled.h1
+              className={isOneToken && "isOneToken"}
+              size={Size.EXTRA_LARGE}
+            >
+              {word}
+            </Styled.h1>
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
 
 export default styled(LowDown)`
+  grid-row: 1/2;
+  .word-wrapper {
+  }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  grid-row: 1/2;
-  .word-wrapper {
+
+  .inner {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   h1 {

@@ -3,14 +3,7 @@ import styled from "@emotion/styled";
 
 import LowDown from "./LowDown";
 import CallToAction from "./CallToAction";
-
-interface IPageSection {
-  className?: string;
-  sectionIndex: number;
-  slogan: string;
-  explanation: string;
-  role: string;
-}
+import { IPageSection } from "../interfaces";
 
 const PageSection = ({
   style,
@@ -40,17 +33,15 @@ const getSectionColors = (colorScale, index) => {
 
 export default styled(PageSection)`
   display: grid;
+  /* background-color: ${({ theme }) => theme.colors.yellow}; */
 
-  background-color: transparent;
   color: ${({ theme, sectionIndex }) =>
     getSectionColors(theme.grayScale, sectionIndex).foreground};
-  padding: 3rem 2rem;
   min-height: 70vh;
   max-height: 90vh;
 
   .inner {
     display: grid;
-    grid-gap: 2rem;
     grid-template-columns: 1fr;
     grid-template-rows: 2fr 1fr;
   }
@@ -62,21 +53,15 @@ export default styled(PageSection)`
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
-    padding: 3rem;
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
-    padding: 4rem;
-    align-items: center;
+    align-items: stretch;
     .inner {
       display: grid;
       grid-template-columns: 3fr 2fr;
       grid-template-rows: 1fr;
-      grid-gap: 2rem;
     }
 
-    .inner {
-      max-width: 100rem;
-    }
   }
 `;

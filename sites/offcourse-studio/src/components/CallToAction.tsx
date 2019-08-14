@@ -18,13 +18,12 @@ export default styled(CallToAction)`
   display: flex;
   flex-direction: column;
   padding: 1rem 2rem;
-  background-color: ${({ theme }) => theme.grayScale[0]};
-  opacity: 0.9;
-  color: ${({ theme }) => theme.grayScale[3]};
+  background-color: ${({ theme }) => theme.grayScale[4]};
+  color: ${({ theme }) => theme.grayScale[0]};
   grid-row: 2/3;
 
   h3 {
-    color: ${({ theme }) => theme.grayScale[4]};
+    color: ${({ theme }) => theme.grayScale[0]};
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
