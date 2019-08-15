@@ -28,7 +28,7 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
     baseColors.darkGray,
     baseColors.black
   ],
-  breakpoints: ["30rem", "48rem", "64rem"],
+  breakpoints: ["30rem", "48rem", "64rem", "100rem"],
   lineHeights: [
     "1rem",
     "1.25rem",

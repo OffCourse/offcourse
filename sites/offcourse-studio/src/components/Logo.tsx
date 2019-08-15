@@ -14,10 +14,6 @@ const Logo: FunctionComponent<IStylable> = ({ className }) => {
 
 export default styled(Logo)`
   display: flex;
-  padding: 0 1.5rem;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: center;
-  transform-origin: center right;
-  transform: scale(0.6);
 `;
