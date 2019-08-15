@@ -1,22 +1,33 @@
 import React from "react";
+import CellularAutomata from "./CellularAutomata";
 import styled from "@emotion/styled";
-
+import { useThemeUI } from "theme-ui";
+import { useMeasure } from "../hooks";
 import LowDown from "./LowDown";
 import CallToAction from "./CallToAction";
-import { IPageSection } from "../interfaces";
+import Logo from "./Logo";
+import { IPageSection, IStylable } from "../interfaces";
 
 const PageSection = ({
-  style,
   slogan,
   explanation,
+  callToAction,
   className
-}: IPageSection) => {
+}: IPageSection & IStylable) => {
+  const context = useThemeUI();
+  const { blue: background, yellow: foreground } = context.theme.colors;
+  const [{ width, height }, bind] = useMeasure();
   return (
-    <div className={className}>
-      <div className="inner">
-        <LowDown slogan={slogan} />
-        <CallToAction explanation={explanation} />
-      </div>
+    <div {...bind} className={className}>
+      <CellularAutomata
+        foreground={foreground}
+        background={background}
+        width={width}
+        height={height}
+      />
+      <LowDown slogan={slogan} />
+      <CallToAction callToAction={callToAction} explanation={explanation} />
+      <Logo />
     </div>
   );
 };
@@ -33,21 +44,29 @@ const getSectionColors = (colorScale, index) => {
 
 export default styled(PageSection)`
   display: grid;
-  /* background-color: ${({ theme }) => theme.colors.yellow}; */
-
+  grid-template-rows: 6fr 2fr 1fr;
+  background-color: ${({ theme }) => theme.colors.yellow};
   color: ${({ theme, sectionIndex }) =>
     getSectionColors(theme.grayScale, sectionIndex).foreground};
   min-height: 70vh;
   max-height: 90vh;
 
-  .inner {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr;
+  ${LowDown} {
+    grid-row: 1 / 2;
+    z-index: 1;
+  }
+
+  ${CallToAction} {
+    grid-row: 2 / 3;
+    z-index: 1;
+  }
+
+  .logo {
+    grid-row: 3 / 3;
+    z-index: 1;
   }
 
   &:only-child {
-    color: ${({ theme }) => theme.grayScale[1]};
     max-height: 100vh;
     height: 100vh;
   }
@@ -56,12 +75,5 @@ export default styled(PageSection)`
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
-    align-items: stretch;
-    .inner {
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      grid-template-rows: 1fr;
-    }
-
   }
 `;

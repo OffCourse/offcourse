@@ -12,6 +12,7 @@ export interface IMeasurable {
 export interface IPageSection {
   slogan: string;
   explanation: string;
+  callToAction: string;
   role: string;
   publishable: boolean;
   sectionIndex: number;

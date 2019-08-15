@@ -38,5 +38,4 @@ const CellularAutomata: FunctionComponent<CellularAutomataProps> = ({
 
 export default styled(CellularAutomata)`
   position: absolute;
-  z-index: -1;
 `;

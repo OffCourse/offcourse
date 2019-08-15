@@ -1,15 +1,23 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Styled, cx } from "theme-ui";
 import styled from "@emotion/styled";
+import { IPageSection, IStylable } from "../interfaces";
+import DisplayText from "./DisplayText";
 
-const CallToAction = ({ explanation, className }) => {
+type CallToActionProps = Pick<IPageSection, "explanation" | "callToAction">;
+
+const CallToAction: FunctionComponent<CallToActionProps & IStylable> = ({
+  explanation,
+  callToAction,
+  className
+}) => {
   return (
     <section className={className}>
-      <form>
-        <Styled.h3>Ring, Ring</Styled.h3>
+      <div>
+        <Styled.h1>{callToAction}</Styled.h1>
         <Styled.p>{explanation}</Styled.p>
         <input placeholder="enter your email address" />
-      </form>
+      </div>
     </section>
   );
 };
@@ -17,17 +25,12 @@ const CallToAction = ({ explanation, className }) => {
 export default styled(CallToAction)`
   display: flex;
   flex-direction: column;
-  padding: 1rem 2rem;
-  background-color: ${({ theme }) => theme.grayScale[4]};
-  color: ${({ theme }) => theme.grayScale[0]};
-  grid-row: 2/3;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background-color: ${({ theme }) => theme.grayScale[0]};
+  color: ${({ theme }) => theme.grayScale[4]};
 
-  h3 {
-    color: ${({ theme }) => theme.grayScale[0]};
-  }
-
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
-    grid-row: 1/2;
-    grid-column: 2/3;
+  h1 {
+    font-size: 2rem;
   }
 `;

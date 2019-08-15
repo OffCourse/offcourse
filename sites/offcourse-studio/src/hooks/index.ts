@@ -9,10 +9,11 @@ const useGetAllSections = () => {
         allPageSection {
           edges {
             section: node {
-            role
-            slogan
-            explanation
-            publishable
+                role
+                slogan
+                callToAction
+                explanation
+                publishable
             }
         }
     }

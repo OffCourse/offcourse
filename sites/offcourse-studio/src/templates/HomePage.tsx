@@ -1,11 +1,10 @@
-import React, { Fragment, useRef, useEffect, useState } from "react";
+import React, { FunctionComponent } from "react";
 import PageSection from "../components/PageSection";
-import CellularAutomata from "../components/CellularAutomata";
 import PageTemplate from "./Page";
 import { useMeasure, useGetAllSections } from "../hooks";
-import { IPageSection, IPublishable } from "../interfaces";
+import { IPageSection, IPublishable, IStylable } from "../interfaces";
 
-const HomePageTemplate = ({ className }: { className: string }) => {
+const HomePageTemplate: FunctionComponent<IStylable> = ({ className }) => {
   const sections = useGetAllSections();
   const [{ width, height }, bind] = useMeasure();
   return (
