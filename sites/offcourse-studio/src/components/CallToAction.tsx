@@ -25,7 +25,6 @@ const CallToAction: FunctionComponent<CallToActionProps & IStylable> = ({
 export default styled(CallToAction)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: 2rem 1rem;
   background-color: ${({ theme }) => theme.grayScale[0]};
   color: ${({ theme }) => theme.grayScale[4]};
