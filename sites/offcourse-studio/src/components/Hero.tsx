@@ -1,12 +1,13 @@
 import React from "react";
-import CellularAutomata from "./CellularAutomata";
 import styled from "@emotion/styled";
 import { useThemeUI } from "theme-ui";
 import { useMeasure } from "../hooks";
+
+import { IPageSection, IStylable } from "../interfaces";
 import LowDown from "./LowDown";
 import CallToAction from "./CallToAction";
 import Logo from "./Logo";
-import { IPageSection, IStylable } from "../interfaces";
+import CellularAutomata from "./CellularAutomata";
 
 const Hero = ({
   slogan,
@@ -34,7 +35,7 @@ const Hero = ({
 
 export default styled(Hero)`
   display: grid;
-  grid-template-rows: 9fr 3fr 2fr;
+  grid-template-rows: 9fr 3fr 3fr;
   background-color: ${({ theme }) => theme.colors.yellow};
 
   ${LowDown} {
@@ -46,16 +47,17 @@ export default styled(Hero)`
   ${CallToAction} {
     grid-row: 2 / 3;
     z-index: 1;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
   }
 
   ${Logo} {
     grid-row: 3 / 3;
     z-index: 1;
-    margin: 1rem;
+    margin: 2rem 1rem;
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
+    grid-template-rows: 8fr 2fr 2fr;
     ${LowDown} {
       padding: 2rem;
     }
@@ -71,7 +73,7 @@ export default styled(Hero)`
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[3]}) {
     grid-template-rows: 1fr;
-    grid-template-columns: 3fr 2fr 30rem;
+    grid-template-columns: 5fr 3fr 2fr;
 
     ${LowDown} {
       grid-row: 1/2;
