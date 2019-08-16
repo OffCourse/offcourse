@@ -14,11 +14,11 @@ const DisplayText: FunctionComponent<DisplayTextProps & IStylable> = ({
   className,
   isOneToken = false
 }) => (
-  <div className={className}>
+  <span className={className}>
     <Styled.h1 className={isOneToken && "isOneToken"} size={Size.EXTRA_LARGE}>
       {children}
     </Styled.h1>
-  </div>
+  </span>
 );
 
 export default styled(DisplayText)`
@@ -28,6 +28,7 @@ export default styled(DisplayText)`
     word-spacing: "-0.2em";
     font-family: ${({ theme }) => theme.fonts.monospace};
     margin-bottom: 0.5rem;
+    margin-right: 1rem;
     display: inline-block;
     color: ${({ theme }) => theme.grayScale[0]};
     background-color: ${({ theme }) => theme.grayScale[4]};
@@ -40,6 +41,7 @@ export default styled(DisplayText)`
   &:last-of-type {
     h1 {
       margin-bottom: 0;
+      margin-right: 0;
     }
   }
 

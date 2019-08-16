@@ -15,11 +15,13 @@ const LowDown: FunctionComponent<LowDownProps & IStylable> = ({
   const isOneToken = words.length === 1;
   return (
     <section className={className}>
-      {words.map((word, index) => (
-        <DisplayText key={index} isOneToken={isOneToken}>
-          {word}
-        </DisplayText>
-      ))}
+      <div>
+        {words.map((word, index) => (
+          <DisplayText key={index} isOneToken={isOneToken}>
+            {word}
+          </DisplayText>
+        ))}
+      </div>
     </section>
   );
 };

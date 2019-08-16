@@ -21,6 +21,7 @@ export default styled(Logo)`
   h1 {
     font-size: 2rem;
     margin-bottom: 0.375rem;
+    margin-right: 0rem;
     }
   }
 `;

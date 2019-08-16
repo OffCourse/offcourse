@@ -36,24 +36,28 @@ const Hero = ({
 export default styled(Hero)`
   display: grid;
   grid-template-rows: 9fr 3fr 3fr;
+  grid-template-columns: 2fr 1fr;
   background-color: ${({ theme }) => theme.colors.yellow};
 
   ${LowDown} {
     grid-row: 1 / 2;
+    grid-column: 1 / 2;
     z-index: 1;
     padding: 2rem 1rem;
   }
 
   ${CallToAction} {
     grid-row: 2 / 3;
+    grid-column: 1 / 3;
     z-index: 1;
     padding: 1.5rem 2rem;
   }
 
   ${Logo} {
     grid-row: 3 / 3;
+    grid-column: 1 / 3;
     z-index: 1;
-    margin: 2rem 1rem;
+    margin: 1rem;
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
@@ -63,7 +67,7 @@ export default styled(Hero)`
     }
 
     ${Logo} {
-      margin: 2rem 2rem;
+      margin: 1.5rem 2rem;
       h1 {
         font-size: 2.5rem;
         margin-bottom: 0.5rem;
