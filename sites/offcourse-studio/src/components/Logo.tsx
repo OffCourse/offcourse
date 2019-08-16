@@ -16,4 +16,11 @@ export default styled(Logo)`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: flex-end;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 0.375rem;
+    }
+  }
 `;

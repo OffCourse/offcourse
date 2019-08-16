@@ -25,6 +25,8 @@ export default styled(DisplayText)`
   h1 {
     padding: 0rem 0.5rem;
     font-size: 2.5rem;
+    word-spacing: "-0.2em";
+    font-family: ${({ theme }) => theme.fonts.monospace};
     margin-bottom: 0.5rem;
     display: inline-block;
     color: ${({ theme }) => theme.grayScale[0]};

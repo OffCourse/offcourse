@@ -17,7 +17,7 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
   colors: baseColors,
   fonts: {
     body: `${fonts.body.fontFamily}, Nitti Grotesk, Helvetica, sans-serif`,
-    heading: `${fonts.heading.fontFamily}, Fira Sans Bold, Nitti Grotesk Bold, Helvetica Bold, sans-serif`,
+    heading: `${fonts.heading.fontFamily}, Nitti Grotesk Bold, Helvetica Bold, sans-serif`,
     monospace: `${fonts.monospace.fontFamily}, Nitti Bold, Helvetica Bold, sans-serif`
   },
   fontSizes: ["0.75rem", "1rem", "1.375rem", "1.75rem", "2.5rem", "4rem"],
@@ -65,8 +65,7 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
     h1: {
       fontSize: 5,
       margin: 0,
-      wordSpacing: "-0.2em",
-      fontFamily: "monospace",
+      fontFamily: "heading",
     },
     h2: {
       fontSize: 2,

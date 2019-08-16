@@ -27,4 +27,5 @@ const LowDown: FunctionComponent<LowDownProps & IStylable> = ({
 export default styled(LowDown)`
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;

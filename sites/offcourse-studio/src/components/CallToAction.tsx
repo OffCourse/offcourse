@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from "react";
-import { Styled, cx } from "theme-ui";
+import { Styled } from "theme-ui";
 import styled from "@emotion/styled";
 import { IPageSection, IStylable } from "../interfaces";
-import DisplayText from "./DisplayText";
 
 type CallToActionProps = Pick<IPageSection, "explanation" | "callToAction">;
 
@@ -25,11 +24,26 @@ const CallToAction: FunctionComponent<CallToActionProps & IStylable> = ({
 export default styled(CallToAction)`
   display: flex;
   flex-direction: column;
-  padding: 2rem 1rem;
+  justify-content: center;
+  align-items: center;
   background-color: ${({ theme }) => theme.grayScale[0]};
   color: ${({ theme }) => theme.grayScale[4]};
 
   h1 {
-    font-size: 2rem;
+    font-size: ${({ theme }) => theme.fontSizes[4]};
+  }
+
+  p {
+    margin-top: ${({ theme }) => theme.space[4]};
+    font-size: ${({ theme }) => theme.fontSizes[2]};
+  }
+
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
+    h1 {
+      font-size: ${({ theme }) => theme.fontSizes[5]};
+    }
+    p {
+      font-size: ${({ theme }) => theme.fontSizes[3]};
+    }
   }
 `;
