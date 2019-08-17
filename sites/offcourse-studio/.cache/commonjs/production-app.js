@@ -38,7 +38,7 @@ const loader = new _loader.ProdLoader(_asyncRequires.default, _matchPaths.defaul
 loader.setApiRunner(_apiRunnerBrowser.apiRunner);
 window.asyncRequires = _asyncRequires.default;
 window.___emitter = _emitter.default;
-window.___loader = loader;
+window.___loader = _loader.publicLoader;
 window.___webpackCompilationHash = window.webpackCompilationHash;
 (0, _navigation.init)();
 (0, _apiRunnerBrowser.apiRunnerAsync)(`onClientEntry`).then(() => {
@@ -65,7 +65,7 @@ window.___webpackCompilationHash = window.webpackCompilationHash;
 
   class LocationHandler extends _react.default.Component {
     render() {
-      let {
+      const {
         location
       } = this.props;
       return _react.default.createElement(_ensureResources.default, {

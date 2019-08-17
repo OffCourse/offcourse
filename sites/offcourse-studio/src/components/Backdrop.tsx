@@ -1,5 +1,6 @@
-import React, { Suspense, lazy, FunctionComponent } from "react";
-import { IPageSection, IStylable, IMeasurable } from "../interfaces";
+import React, { FunctionComponent } from "react";
+import { IStylable, IMeasurable } from "../interfaces";
+import CellularAutomata from "./CellularAutomata";
 
 const Backdrop: FunctionComponent<IStylable & IMeasurable> = ({
   backdropPath,
@@ -9,17 +10,14 @@ const Backdrop: FunctionComponent<IStylable & IMeasurable> = ({
   height
 }) => {
   if (!backdropPath) return null;
-  const _Backdrop = lazy(() => import(`${backdropPath}`));
 
   return (
-    <Suspense fallback={<div />}>
-      <_Backdrop
-        foreground={foreground}
-        background={background}
-        width={width}
-        height={height}
-      />
-    </Suspense>
+    <CellularAutomata
+      foreground={foreground}
+      background={background}
+      width={width}
+      height={height}
+    />
   );
 };
 
