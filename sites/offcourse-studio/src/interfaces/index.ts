@@ -10,9 +10,8 @@ export interface IMeasurable {
 }
 
 export interface IPageSection {
-  slogan: string;
-  explanation: string;
-  callToAction: string;
+  title: string;
+  backdropPath?: string;
   role: string;
   publishable: boolean;
   sectionIndex: number;
@@ -20,4 +19,7 @@ export interface IPageSection {
 
 export interface IStylable {
   className?: string;
+  backdropPath?: string;
+  foreground?: string;
+  background?: string;
 }

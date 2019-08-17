@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useEffect } from "react";
+import React, { FunctionComponent, useRef, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useThemeUI } from "theme-ui";
 import { IStylable, IMeasurable } from "../../interfaces";
@@ -16,6 +16,7 @@ const CellularAutomata: FunctionComponent<CellularAutomataProps> = ({
 }) => {
   const ref: any = useRef();
   const canvas = ref.current;
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     if (canvas) {
@@ -29,8 +30,10 @@ const CellularAutomata: FunctionComponent<CellularAutomataProps> = ({
       setInterval(() => {
         drawRects(options);
       }, 2000);
+    } else {
+      setCounter(counter + 1);
     }
-  }, [width, height]);
+  }, [canvas, width, height]);
   return (
     <canvas ref={ref} className={className} width={width} height={height} />
   );

@@ -21,8 +21,7 @@ const useGetAllSections = () => {
         edges {
           section: node {
             role
-            slogan
-            explanation
+            title
             publishable
           }
         }

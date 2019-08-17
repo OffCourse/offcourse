@@ -58,6 +58,21 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
       display: "flex",
       justifyContent: "column"
     },
+    Header: {
+      position: "fixed",
+      background: "transparant",
+      width: "100%",
+      height: "5rem",
+      zIndex: 100
+    },
+    Footer: {
+      display: "grid",
+      backgroundColor: baseColors.lightGray,
+      padding: "2rem 1rem",
+      width: "100%",
+      height: "10rem",
+      zIndex: 100
+    },
     Container: {
       padding: 0,
       maxWidth: "100%"

@@ -28,7 +28,7 @@ export default styled(DisplayText)`
     word-spacing: "-0.2em";
     font-family: ${({ theme }) => theme.fonts.monospace};
     margin-bottom: 0.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     display: inline-block;
     color: ${({ theme }) => theme.grayScale[0]};
     background-color: ${({ theme }) => theme.grayScale[4]};
@@ -38,6 +38,7 @@ export default styled(DisplayText)`
       text-align: center;
     }
   }
+
   &:last-of-type {
     h1 {
       margin-bottom: 0;
@@ -49,6 +50,7 @@ export default styled(DisplayText)`
     h1 {
       font-size: 3rem;
       margin-bottom: 0.75rem;
+      margin-right: 0.75rem;
       padding: 0rem 0.75rem;
 
       &.isOneToken {
@@ -60,6 +62,7 @@ export default styled(DisplayText)`
     h1 {
       font-size: 4rem;
       margin-bottom: 1rem;
+      margin-right: 1rem;
       padding: 0rem 1rem;
 
       &.isOneToken {

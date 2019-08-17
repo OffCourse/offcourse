@@ -10,9 +10,8 @@ const useGetAllSections = () => {
           edges {
             section: node {
                 role
-                slogan
-                callToAction
-                explanation
+                backdropPath
+                title
                 publishable
             }
         }
