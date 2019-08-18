@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import { useThemeUI } from "theme-ui";
 import { useMeasure } from "../../hooks";
 import styled from "@emotion/styled";
@@ -18,15 +18,13 @@ const Base: FunctionComponent<BaseProps & IStylable> = ({
   const [{ width, height }, bind] = useMeasure();
   return (
     <div {...bind} id={role} className={className}>
-      <Suspense fallback={<div />}>
-        <Backdrop
-          backdropPath={backdropPath}
-          foreground={foreground}
-          background={background}
-          width={width}
-          height={height}
-        />
-      </Suspense>
+      <Backdrop
+        backdropPath={backdropPath}
+        foreground={foreground}
+        background={background}
+        width={width}
+        height={height}
+      />
       {children}
     </div>
   );

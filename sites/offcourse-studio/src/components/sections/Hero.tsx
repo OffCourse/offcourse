@@ -1,8 +1,5 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { useThemeUI } from "theme-ui";
-import { useMeasure } from "../../hooks";
-
 import Base from "./BaseSection";
 import { IPageSection, IStylable } from "../../interfaces";
 import LowDown from "../LowDown";

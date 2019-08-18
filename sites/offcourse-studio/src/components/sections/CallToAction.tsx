@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { IPageSection, IStylable } from "../../interfaces";
 import LowDown from "../LowDown";
