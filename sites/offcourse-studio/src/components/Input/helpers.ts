@@ -17,4 +17,11 @@ const compact: <T>(arg: T[]) => T[] = filter(
   )
 );
 
-export { compose, map, filter, compact, lowerCase, formatTitle };
+const formatValue: (value: string, isNormalized: boolean) => string = (value, isNormalized) => {
+  if (!value) {
+    return value;
+  }
+  return isNormalized ? formatTitle(value) : value;
+};
+
+export { compose, map, filter, compact, lowerCase, formatTitle, formatValue };

@@ -14,7 +14,8 @@ const Base: FunctionComponent<BaseProps & IStylable> = ({
   children
 }) => {
   const context = useThemeUI();
-  const { blue: background, yellow: foreground } = context.theme.colors;
+  const { yellow: foreground } = context.theme.colors;
+  const background = context.theme.grayScale[1];
   const [{ width, height }, bind] = useMeasure();
   return (
     <div {...bind} id={role} className={className}>

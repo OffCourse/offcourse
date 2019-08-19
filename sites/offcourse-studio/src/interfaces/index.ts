@@ -17,8 +17,10 @@ export interface IPageSection {
   sectionIndex: number;
 }
 
+type Size = "SMALL" | "NORMAL" | "LARGE";
 export interface IStylable {
   className?: string;
+  size: Size;
   backdropPath?: string;
   foreground?: string;
   background?: string;

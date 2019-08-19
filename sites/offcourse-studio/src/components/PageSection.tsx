@@ -21,8 +21,8 @@ const PageSection: FunctionComponent<PageSectionProps & IStylable> = ({
 };
 
 export default styled(PageSection)`
-  min-height: 90vh;
-  max-height: 90vh;
+  min-height: 80vh;
+  max-height: 100vh;
 
   &:only-child {
     max-height: 100vh;

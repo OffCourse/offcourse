@@ -1,18 +1,60 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, ChangeEvent } from "react";
 import styled from "@emotion/styled";
 import { IStylable } from "../interfaces";
+import { formatTitle, lowerCase, formatValue } from "./helpers";
 
 type InputProps = {
   placeholder: string;
+  name: string;
+  type: string;
+  value: string;
+  autoComplete: boolean;
+  autoFocus: boolean;
+  isDisabled: boolean;
+  isNormalized: boolean;
 };
 
 const Input: FunctionComponent<InputProps & IStylable> = ({
   className,
-  placeholder = "enter something"
+  placeholder = "Enter Something",
+  name,
+  value,
+  onChange,
+  onBlur,
+  inputType = "text",
+  autoComplete = false,
+  autoFocus = false,
+  isDisabled = false,
+  isNormalized = true
 }) => {
+  const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = e => {
+    if (!onChange) {
+      return;
+    }
+    if (!isNormalized) {
+      return onChange(e);
+    }
+
+    const value = lowerCase(e.target.value);
+    e.target.value = value;
+    return onChange(e);
+  };
+
+  const baseProps = {
+    name: name,
+    type: inputType,
+    autoComplete,
+    autoFocus,
+    disabled: isDisabled,
+    value: formatValue(value, isNormalized),
+    placeholder: formatTitle(placeholder),
+    onChange: handleChange,
+    onBlur: onBlur
+  };
+
   return (
     <div className={className}>
-      <input placeholder={placeholder} />
+      <input {...baseProps} />
     </div>
   );
 };

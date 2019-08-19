@@ -12,9 +12,9 @@
   "dependencies": {},
   "devDependencies": {
     "@offcourse/enums": "^1.4.11",
-    "@types/react": "^16.8.23",
-    "rimraf": "^2.6.3",
+    "@types/react": "^16.9.2",
+    "rimraf": "^3.0.0",
     "typescript": "^3.5.3",
-    "react": "^16.8.6"
+    "react": "^16.9.0"
   }
 }

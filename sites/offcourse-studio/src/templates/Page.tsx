@@ -27,7 +27,7 @@ const PageTemplate = forwardRef(
             </Container>
           </Main>
           <Footer>
-            <Logo />
+            <Logo size="SMALL" />
           </Footer>
         </Layout>
       </ThemeProvider>

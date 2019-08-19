@@ -9,6 +9,7 @@ type LowDownProps = {
 
 const LowDown: FunctionComponent<LowDownProps & IStylable> = ({
   slogan,
+  size,
   className
 }) => {
   const words = slogan.split(" ");
@@ -17,7 +18,7 @@ const LowDown: FunctionComponent<LowDownProps & IStylable> = ({
     <section className={className}>
       <div>
         {words.map((word, index) => (
-          <DisplayText key={index} isOneToken={isOneToken}>
+          <DisplayText size={size} key={index} isOneToken={isOneToken}>
             {word}
           </DisplayText>
         ))}

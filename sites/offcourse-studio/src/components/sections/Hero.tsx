@@ -14,8 +14,8 @@ const Hero: FunctionComponent<HeroProps & IStylable> = ({
 }) => {
   return (
     <Base className={className} backdropPath={backdropPath}>
-      <LowDown slogan={title} />
-      <Logo />
+      <LowDown size="LARGE" slogan={title} />
+      <Logo size="SMALL" />
     </Base>
   );
 };
