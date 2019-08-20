@@ -20,7 +20,7 @@ export interface IPageSection {
 type Size = "SMALL" | "NORMAL" | "LARGE";
 export interface IStylable {
   className?: string;
-  size: Size;
+  size?: Size;
   backdropPath?: string;
   foreground?: string;
   background?: string;

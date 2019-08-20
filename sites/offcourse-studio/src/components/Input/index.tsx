@@ -43,8 +43,8 @@ const Input: FunctionComponent<InputProps & IStylable> = ({
   const baseProps = {
     name: name,
     type: inputType,
-    autoComplete,
-    autoFocus,
+    autoComplete: `${autoComplete}`,
+    autoFocus: autoFocus,
     disabled: isDisabled,
     value: formatValue(value, isNormalized),
     placeholder: formatTitle(placeholder),

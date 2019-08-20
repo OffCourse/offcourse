@@ -5,15 +5,16 @@ import { IPageSection, IStylable } from "../../interfaces";
 import LowDown from "../LowDown";
 import Logo from "../Logo";
 
-type HeroProps = Pick<IPageSection, "title">;
+type HeroProps = Pick<IPageSection, "title" | "role">;
 
 const Hero: FunctionComponent<HeroProps & IStylable> = ({
   title,
+  role,
   backdropPath = "./CellularAutomata",
   className
 }) => {
   return (
-    <Base className={className} backdropPath={backdropPath}>
+    <Base className={className} role={role} backdropPath={backdropPath}>
       <LowDown size="LARGE" slogan={title} />
       <Logo size="SMALL" />
     </Base>

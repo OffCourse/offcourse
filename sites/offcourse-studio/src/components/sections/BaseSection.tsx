@@ -14,7 +14,7 @@ const Base: FunctionComponent<BaseProps & IStylable> = ({
   children
 }) => {
   const context = useThemeUI();
-  const { yellow: foreground } = context.theme.colors;
+  const { blue, yellow: foreground } = context.theme.colors;
   const background = context.theme.grayScale[1];
   const [{ width, height }, bind] = useMeasure();
   return (
@@ -22,7 +22,7 @@ const Base: FunctionComponent<BaseProps & IStylable> = ({
       <Backdrop
         backdropPath={backdropPath}
         foreground={foreground}
-        background={background}
+        background={blue}
         width={width}
         height={height}
       />
