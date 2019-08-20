@@ -13,7 +13,7 @@ const CallToAction: FunctionComponent<IPageSection & IStylable> = ({
 }) => {
   return (
     <Base role={role} className={className} backdropPath={backdropPath}>
-      <LowDown size="SMALL" slogan={title} />
+      <LowDown>{title}</LowDown>
       <ContactForm />
     </Base>
   );
@@ -26,7 +26,7 @@ export default styled(CallToAction)`
 
   ${LowDown} {
     grid-column: 1 / 3;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 1rem 1rem;
   }
   ${ContactForm} {
     grid-column: 1 / 3;

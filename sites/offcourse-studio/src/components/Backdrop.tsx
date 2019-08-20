@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from "react";
+import styled from "@emotion/styled";
 import { IStylable, IMeasurable } from "../interfaces";
 import CellularAutomata from "./CellularAutomata";
 
 const Backdrop: FunctionComponent<IStylable & IMeasurable> = ({
   backdropPath,
+  className,
   foreground,
   background,
   width,
@@ -13,6 +15,7 @@ const Backdrop: FunctionComponent<IStylable & IMeasurable> = ({
 
   return (
     <CellularAutomata
+      className={className}
       foreground={foreground}
       background={background}
       width={width}
@@ -21,4 +24,6 @@ const Backdrop: FunctionComponent<IStylable & IMeasurable> = ({
   );
 };
 
-export default Backdrop;
+export default styled(Backdrop)`
+  z-index: -100;
+`;

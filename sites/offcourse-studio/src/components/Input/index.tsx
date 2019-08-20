@@ -51,7 +51,6 @@ const Input: FunctionComponent<InputProps & IStylable> = ({
     onChange: handleChange,
     onBlur: onBlur
   };
-
   return (
     <div className={className}>
       <input {...baseProps} />

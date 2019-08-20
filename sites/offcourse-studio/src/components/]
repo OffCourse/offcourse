@@ -7,15 +7,15 @@ type LowDownProps = {};
 
 const LowDown: FunctionComponent<LowDownProps & IStylable> = ({
   children,
+  size,
   className
 }) => {
-  return (
-    <div className={className}>
-      <DisplayText>{children}</DisplayText>
-    </div>
-  );
+  return <DisplayText className={className}>{children}</DisplayText>;
 };
 
 export default styled(LowDown)`
   display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
 `;

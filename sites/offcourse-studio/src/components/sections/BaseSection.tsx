@@ -31,7 +31,4 @@ const Base: FunctionComponent<BaseProps & IStylable> = ({
   );
 };
 
-export default styled(Base)`
-  display: grid;
-  background-color: ${({ theme }) => theme.grayScale[0]};
-`;
+export default styled(Base)``;
