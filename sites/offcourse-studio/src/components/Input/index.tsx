@@ -27,6 +27,7 @@ const Input: FunctionComponent<InputProps & IStylable> = ({
   isDisabled = false,
   isNormalized = true
 }) => {
+  console.log(autoFocus);
   const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = e => {
     if (!onChange) {
       return;
@@ -83,7 +84,7 @@ export default styled(Input)`
     color: ${({ theme }) => theme.grayScale[4]};
 
     ::placeholder {
-      color: ${({ theme }) => theme.grayScale[3]};
+      color: ${({ theme }) => theme.grayScale[2]};
     }
 
     :selection {

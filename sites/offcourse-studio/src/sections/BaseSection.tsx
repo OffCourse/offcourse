@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import { useThemeUI } from "theme-ui";
-import { useMeasure } from "../../hooks";
+import { useMeasure } from "../hooks";
 import styled from "@emotion/styled";
-import { IPageSection, IStylable } from "../../interfaces";
-import Backdrop from "../Backdrop";
+import { IPageSection, IStylable } from "../interfaces";
+import Backdrop from "../components/Backdrop";
 
 type BaseProps = Pick<IPageSection, "backdropPath" | "role">;
 
@@ -15,14 +15,14 @@ const Base: FunctionComponent<BaseProps & IStylable> = ({
 }) => {
   const context = useThemeUI();
   const { blue, yellow: foreground } = context.theme.colors;
-  const background = context.theme.grayScale[1];
+  const lightGray = context.theme.grayScale[1];
   const [{ width, height }, bind] = useMeasure();
   return (
     <div {...bind} id={role} className={className}>
       <Backdrop
         backdropPath={backdropPath}
         foreground={foreground}
-        background={blue}
+        background={lightGray}
         width={width}
         height={height}
       />

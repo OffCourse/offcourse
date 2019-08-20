@@ -67,10 +67,10 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
     },
     Footer: {
       display: "grid",
-      backgroundColor: baseColors.mediumGray,
+      backgroundColor: baseColors.darkGray,
       padding: "2rem 1rem 1rem 1rem",
       width: "100%",
-      zIndex: 100
+      zIndex: 100,
     },
     Container: {
       padding: 0,

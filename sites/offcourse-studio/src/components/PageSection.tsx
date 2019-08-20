@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { Hero, CallToAction } from "./sections";
+import { Hero, Contact } from "../sections";
 import { IPageSection, IStylable } from "../interfaces";
 
 type PageSectionProps = {
@@ -9,7 +9,7 @@ type PageSectionProps = {
 
 const components = {
   hero: Hero,
-  "call-to-action": CallToAction
+  contact: Contact
 };
 
 const PageSection: FunctionComponent<PageSectionProps & IStylable> = ({

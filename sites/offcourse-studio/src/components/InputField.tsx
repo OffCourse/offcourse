@@ -1,12 +1,22 @@
 import React, { FunctionComponent, ChangeEvent, FormEvent } from "react";
 import styled from "@emotion/styled";
+import { IStylable } from "../interfaces";
 import Input from "./Input";
 import { formatTitle } from "./Input/helpers";
 
-const InputField = ({ title, className, ...rest }) => (
+type InputFieldProps = {
+  title: string;
+};
+
+const InputField: FunctionComponent<IStylable & InputFieldProps> = ({
+  className,
+  children,
+  title,
+  ...rest
+}) => (
   <div className={className}>
     <label>{formatTitle(title)}</label>
-    <Input {...rest} />
+    {children ? children : <Input {...rest} />}
   </div>
 );
 

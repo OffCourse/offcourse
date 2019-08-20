@@ -2,6 +2,9 @@
   title: Tinkering solutions for unexpected futures
   backdropPath: "./CellularAutomata"
   publishable: true
-- role: call-to-action
+- role: contact
   title: We develop inventive concepts and products with you
   publishable: true
+- role: call-to-action
+  title: We develop inventive concepts and products with you
+  publishable: false

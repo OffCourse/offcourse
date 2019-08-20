@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import Base from "./BaseSection";
-import { IPageSection, IStylable } from "../../interfaces";
-import LowDown from "../LowDown";
-import Logo from "../Logo";
+import { IPageSection, IStylable } from "../interfaces";
+import LowDown from "../components/LowDown";
+import Logo from "../components/Logo";
 
 type HeroProps = Pick<IPageSection, "title" | "role">;
 
@@ -39,13 +39,16 @@ export default styled(Hero)`
     }
   }
 
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints[3]}) {
+  @media only screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
     grid-template-columns: 1fr 2fr;
+    grid-template-rows: 3fr 1fr;
     ${LowDown} {
       grid-column: 1/2;
     }
 
     ${Logo} {
+      grid-column: 1/3;
+      grid-row: 2/3;
     }
   }
 
