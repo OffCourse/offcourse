@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { IPageSection, IStylable } from "../../interfaces";
-import LowDown from "../LowDown";
+import DisplayText from "../DisplayText";
 import ContactForm from "../ContactForm";
 import Base from "./BaseSection";
 
@@ -13,7 +13,7 @@ const CallToAction: FunctionComponent<IPageSection & IStylable> = ({
 }) => {
   return (
     <Base role={role} className={className} backdropPath={backdropPath}>
-      <LowDown>{title}</LowDown>
+      <DisplayText>{title}</DisplayText>
       <ContactForm />
     </Base>
   );
@@ -24,7 +24,7 @@ export default styled(CallToAction)`
   grid-template-rows: 2fr 5fr;
   background-color: ${({ theme }) => theme.grayScale[0]};
 
-  ${LowDown} {
+  ${DisplayText} {
     grid-column: 1 / 3;
     padding: 2rem 1rem 1rem 1rem;
   }
@@ -37,7 +37,8 @@ export default styled(CallToAction)`
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
     grid-template-columns: 2fr 3fr;
     grid-template-rows: 1fr;
-    ${LowDown} {
+    grid-gap: 3rem;
+    ${DisplayText} {
       grid-column: 1 / 2;
       grid-row: 1 / 2;
     }
@@ -50,7 +51,7 @@ export default styled(CallToAction)`
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[3]}) {
     grid-template-columns: 2fr 1fr 3fr;
     grid-template-rows: 1fr;
-    ${LowDown} {
+    ${DisplayText} {
       grid-column: 1 / 2;
       grid-row: 1 / 2;
     }

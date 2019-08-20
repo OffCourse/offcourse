@@ -22,8 +22,6 @@ const Hero: FunctionComponent<HeroProps & IStylable> = ({
 };
 
 export default styled(Hero)`
-  display: grid;
-  align-items: space-between;
   ${LowDown} {
     padding: 1rem;
     align-items: center;
@@ -52,7 +50,7 @@ export default styled(Hero)`
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[3]}) {
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 3fr 4fr;
     ${LowDown} {
       grid-column: 1/2;
     }

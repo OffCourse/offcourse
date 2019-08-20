@@ -24,15 +24,16 @@ const DisplayText: FunctionComponent<DisplayTextProps & IStylable> = ({
 };
 
 export default styled(DisplayText)`
+  user-select: none;
   h1 {
-    padding: 0rem 0.5rem;
-    margin: 0 0.5rem 0.5rem 0;
+    padding: 0rem 0.4rem;
+    margin: 0 0.4rem 0.4rem 0;
     word-spacing: "-0.2em";
     display: inline-block;
     color: ${({ theme }) => theme.grayScale[0]};
     background-color: ${({ theme }) => theme.grayScale[4]};
     font-family: ${({ theme }) => theme.fonts.monospace};
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   &:last-type {
@@ -44,13 +45,15 @@ export default styled(DisplayText)`
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
     h1 {
       font-size: 2.5rem;
+      padding: 0rem 0.5rem;
       margin: 0 0.5rem 0.5rem 0;
     }
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
     h1 {
-      font-size: 4rem;
+      font-size: 3rem;
+      padding: 0rem 0.6rem;
       margin: 0 0.6rem 0.6rem 0;
     }
   }

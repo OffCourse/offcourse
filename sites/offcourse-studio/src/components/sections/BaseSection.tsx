@@ -31,4 +31,7 @@ const Base: FunctionComponent<BaseProps & IStylable> = ({
   );
 };
 
-export default styled(Base)``;
+export default styled(Base)`
+  display: grid;
+  align-items: space-between;
+`;

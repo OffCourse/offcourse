@@ -15,21 +15,5 @@ export default styled(Logo)`
 
   h1 {
     margin-right: 0;
-    font-size: 2rem;
-    margin: 0 0 0.4rem 0;
-  }
-
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
-    h1 {
-      font-size: 2.5rem;
-      margin: 0 0 0.5rem 0;
-    }
-  }
-
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
-    h1 {
-      font-size: 3rem;
-      margin: 0 0 0.6rem 0;
-    }
   }
 `;
