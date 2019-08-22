@@ -3,13 +3,7 @@ import styled from "@emotion/styled";
 import { IInput, IStylable } from "../interfaces";
 import Input from "./Input";
 import { formatTitle } from "./Input/helpers";
-import RadioButton from "./RadioButton";
-
-const RadioButtonGroup = ({ options, ...rest }) => {
-  console.log(options);
-  console.log(rest);
-  return <div>WIP</div>;
-};
+import RadioButtonGroup from "./RadioButtonGroup";
 
 const inputFields = {
   text: Input,

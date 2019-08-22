@@ -6,6 +6,9 @@ import DisplayText from "../components/DisplayText";
 import Form from "../components/Form";
 import Base from "./BaseSection";
 
+const url =
+  "https://hooks.slack.com/services/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";
+
 const Contact: FunctionComponent<IPageSection & IStylable> = ({
   title,
   role,
@@ -21,7 +24,16 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
   return (
     <Base role={role} className={className} backdropPath={backdropPath}>
       <DisplayText>{title}</DisplayText>
-      <Formik initialValues={initialValues} onSubmit={x => console.log(x)}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={async values => {
+          const res = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify({ text: JSON.stringify(values, null, 2) })
+          });
+          console.log(res);
+        }}
+      >
         {({ values, handleSubmit, handleChange }) => {
           return (
             <Form
