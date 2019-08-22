@@ -2,8 +2,16 @@ import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { IStylable } from "../interfaces";
 
-const Button: FunctionComponent<IStylable> = ({ className, children }) => {
-  return <button className={className}>{children}</button>;
+const Button: FunctionComponent<IStylable> = ({
+  type,
+  className,
+  children
+}) => {
+  return (
+    <button type={type} className={className}>
+      {children}
+    </button>
+  );
 };
 
 export default styled(Button)`

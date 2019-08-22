@@ -4,6 +4,30 @@
   publishable: true
 - role: contact
   title: We develop inventive concepts and products with you
+  callToAction: Work With Us
+  form: 
+    - name: company-name
+      label: what is your company or project name
+    - name: contact-name
+      label: what is your name?
+    - name: email
+      label: what is your email address?
+    - name: phone-number
+      label: what is your phone number?
+    - name: budget
+      type: radio
+      label: what is your budget?
+      options:
+        - value: small
+          label: Less than €25,000
+        - value: medium
+          label: €25,000 - €75,000
+        - value: large
+          label: €75,000 or more
+        - value: unknown
+          label: To be determined
+    - name: source-of-interest
+      label: how did you hear about Offcourse?
   publishable: true
 - role: call-to-action
   title: We develop inventive concepts and products with you

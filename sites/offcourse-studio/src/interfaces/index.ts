@@ -25,3 +25,17 @@ export interface IStylable {
   foreground?: string;
   background?: string;
 }
+
+export interface IInput {
+  placeholder?: string;
+  name: string;
+  type?: string;
+  value?: string;
+  label?: string;
+  options: any[];
+  autoComplete?: boolean;
+  autoFocus?: boolean;
+  isDisabled?: boolean;
+  checked?: boolean;
+  isNormalized?: boolean;
+};

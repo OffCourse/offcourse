@@ -1,24 +1,36 @@
 import React, { FunctionComponent, ChangeEvent, FormEvent } from "react";
 import styled from "@emotion/styled";
-import { IStylable } from "../interfaces";
+import { IInput, IStylable } from "../interfaces";
 import Input from "./Input";
 import { formatTitle } from "./Input/helpers";
+import RadioButton from "./RadioButton";
 
-type InputFieldProps = {
-  title: string;
+const RadioButtonGroup = ({ options, ...rest }) => {
+  console.log(options);
+  console.log(rest);
+  return <div>WIP</div>;
 };
 
-const InputField: FunctionComponent<IStylable & InputFieldProps> = ({
+const inputFields = {
+  text: Input,
+  radio: RadioButtonGroup
+};
+
+const InputField: FunctionComponent<IInput & IStylable> = ({
   className,
-  children,
-  title,
-  ...rest
-}) => (
-  <div className={className}>
-    <label>{formatTitle(title)}</label>
-    {children ? children : <Input {...rest} />}
-  </div>
-);
+  label,
+  type = "text",
+  options,
+  field
+}) => {
+  const Component = inputFields[type || "text"];
+  return (
+    <div className={className}>
+      <label>{formatTitle(label)}</label>
+      <Component options={options} {...field} />
+    </div>
+  );
+};
 
 export default styled(InputField)`
   display: flex;

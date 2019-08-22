@@ -12,6 +12,16 @@ const useGetAllSections = () => {
                 role
                 backdropPath
                 title
+                callToAction
+                form {
+                  name
+                  type
+                  label
+                  options {
+                    value
+                    label
+                  }
+                }
                 publishable
             }
         }
