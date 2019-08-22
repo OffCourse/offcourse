@@ -52,10 +52,9 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
 
 export default styled(Contact)`
   grid-template-rows: auto 1fr;
-  background-color: ${({ theme }) => theme.grayScale[1]};
+  background-color: ${({ theme }) => theme.colors.blue};
 
   ${DisplayText} {
-    background-color: ${({ theme }) => theme.grayScale[1]};
     padding: 1rem;
   }
   ${Form} {
@@ -64,19 +63,17 @@ export default styled(Contact)`
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
-    grid-template-columns: 1fr 40rem;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
 
     ${DisplayText} {
       grid-column: 1 / 2;
       align-self: center;
-      max-width: 40rem;
       grid-row: 1 / 2;
     }
     ${Form} {
       grid-column: 2 / 3;
       grid-row: 1 / 2;
-      justify-self: end;
       padding: 2rem 3rem;
     }
   }

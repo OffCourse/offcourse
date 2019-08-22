@@ -27,5 +27,7 @@ export default styled(Link)`
     outline: none;
   }
   :hover {
+    color: ${({ theme }) => theme.colors.blue};
+    border-color: ${({ theme }) => theme.colors.blue};
   }
 `;

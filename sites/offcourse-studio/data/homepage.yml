@@ -11,8 +11,10 @@
     - name: contact-name
       label: what is your name?
     - name: email
+      type: email
       label: what is your email address?
     - name: phone-number
+      type: tel
       label: what is your phone number?
     - name: budget
       type: radio

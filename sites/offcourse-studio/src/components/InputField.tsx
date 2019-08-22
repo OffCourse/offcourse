@@ -7,6 +7,8 @@ import RadioButtonGroup from "./RadioButtonGroup";
 
 const inputFields = {
   text: Input,
+  email: Input,
+  tel: Input,
   radio: RadioButtonGroup
 };
 

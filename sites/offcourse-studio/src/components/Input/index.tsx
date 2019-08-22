@@ -14,6 +14,7 @@ const Input: FunctionComponent<IInput & IStylable> = ({
   autoComplete = false,
   autoFocus = false,
   isDisabled = false,
+  required = false,
   isNormalized = true
 }) => {
   const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = e => {
@@ -38,6 +39,7 @@ const Input: FunctionComponent<IInput & IStylable> = ({
     value: formatValue(value, isNormalized),
     placeholder: formatTitle(placeholder),
     onChange: handleChange,
+    required,
     onBlur: onBlur
   };
   return (
