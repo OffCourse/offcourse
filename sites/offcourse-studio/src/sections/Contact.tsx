@@ -69,7 +69,7 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
 
 export default styled(Contact)`
   grid-template-rows: auto 1fr;
-  background-color: ${({ theme }) => theme.colors.blue};
+  background-color: ${({ theme }) => theme.colors.primary};
   ${DisplayText} {
     padding: 2rem 1rem;
   }

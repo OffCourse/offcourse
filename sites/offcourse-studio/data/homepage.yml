@@ -3,7 +3,7 @@
   backdropPath: "./CellularAutomata"
   publishable: true
 - role: contact
-  title: We develop inventive concepts and products with you
+  title: We invent imaginative concepts and products with you
   callToAction: Work With Us
   form: 
     - name: company-name

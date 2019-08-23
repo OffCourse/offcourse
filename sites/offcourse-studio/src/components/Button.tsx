@@ -25,8 +25,8 @@ export default styled(Button)`
   border: 0;
   border-bottom: 0.125rem solid black;
   padding: ${({ theme }) => `${theme.space[4]} ${theme.space[6]}`};
-  background-color: ${({ theme }) => theme.colors.blue};
-  color: ${({ theme }) => theme.grayScale[0]};
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.negative};
   border-color: ${({ theme }) => theme.grayScale[4]};
   font-family: ${({ theme }) => theme.fonts.heading};
   font-size: ${({ theme }) => theme.fontSizes[1]};
@@ -43,6 +43,8 @@ export default styled(Button)`
 
   &:hover {
     background-color: ${({ theme }) => theme.grayScale[4]};
+    color: ${({ theme }) => theme.colors.primary};
+    border-color: ${({ theme }) => theme.colors.primary};
   }
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
   }

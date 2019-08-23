@@ -16,14 +16,18 @@ export default styled(Tab)`
   padding: 0.5rem;
   border-radius: 0 0 0.25rem 0.25rem;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  background-color: ${({ theme }) => theme.colors.blue};
+  background-color: ${({ theme }) => theme.colors.primary};
 
   ${Link} {
-    color: ${({ theme }) => theme.grayScale[0]};
-    border-color: ${({ theme }) => theme.grayScale[0]};
+    color: ${({ theme }) => theme.colors.negative};
+    border-color: ${({ theme }) => theme.colors.negative};
   }
   :hover {
     background-color: ${({ theme }) => theme.grayScale[4]};
+    ${Link} {
+      color: ${({ theme }) => theme.colors.primary};
+      border-color: ${({ theme }) => theme.colors.primary};
+    }
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {

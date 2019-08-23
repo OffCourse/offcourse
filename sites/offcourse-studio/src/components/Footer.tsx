@@ -28,7 +28,7 @@ export default styled(Footer)`
   .contact {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
   }
   section {
     line-height: 0.3rem;

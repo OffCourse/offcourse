@@ -14,14 +14,14 @@ const Base: FunctionComponent<BaseProps & IStylable> = ({
   children
 }) => {
   const context = useThemeUI();
-  const { yellow: foreground } = context.theme.colors;
+  const { primary, secondary } = context.theme.colors;
   const background = context.theme.grayScale[0];
   const [{ width, height }, bind] = useMeasure();
   return (
     <div {...bind} id={role} className={className}>
       <Backdrop
         backdropPath={backdropPath}
-        foreground={foreground}
+        foreground={secondary}
         background={background}
         width={width}
         height={height}
