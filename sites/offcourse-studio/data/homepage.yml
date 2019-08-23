@@ -29,6 +29,7 @@
         - value: unknown
           label: To be determined
     - name: source-of-interest
+      type: textarea
       label: how did you hear about Offcourse?
   publishable: true
 - role: call-to-action

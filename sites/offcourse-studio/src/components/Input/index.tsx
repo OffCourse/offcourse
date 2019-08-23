@@ -10,7 +10,7 @@ const Input: FunctionComponent<IInput & IStylable> = ({
   value = "",
   onChange,
   onBlur,
-  inputType = "text",
+  type = "text",
   autoComplete = false,
   autoFocus = false,
   isDisabled = false,
@@ -32,7 +32,7 @@ const Input: FunctionComponent<IInput & IStylable> = ({
 
   const baseProps = {
     name: name,
-    type: inputType,
+    type: type,
     autoComplete: `${autoComplete}`,
     autoFocus: autoFocus,
     disabled: isDisabled,

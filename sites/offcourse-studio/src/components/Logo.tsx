@@ -4,7 +4,7 @@ import DisplayText from "./DisplayText";
 import { IStylable } from "../interfaces";
 
 const Logo: FunctionComponent<IStylable> = ({ className }) => {
-  return <DisplayText className={className}>Offcourse Studio</DisplayText>;
+  return <DisplayText className={className}>Offcourse Studio_</DisplayText>;
 };
 
 export default styled(Logo)`

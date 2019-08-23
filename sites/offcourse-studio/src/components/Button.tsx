@@ -23,11 +23,11 @@ export default styled(Button)`
   user-select: none;
   text-decoration: inherit;
   border: 0;
-  border-bottom: 0.125rem solid;
+  border-bottom: 0.125rem solid black;
   padding: ${({ theme }) => `${theme.space[4]} ${theme.space[6]}`};
   background-color: ${({ theme }) => theme.colors.blue};
   color: ${({ theme }) => theme.grayScale[0]};
-  border-color: ${({ theme }) => theme.grayScale[0]};
+  border-color: ${({ theme }) => theme.grayScale[4]};
   font-family: ${({ theme }) => theme.fonts.heading};
   font-size: ${({ theme }) => theme.fontSizes[1]};
   line-height: ${({ theme }) => theme.lineHeights[2]};
@@ -45,6 +45,5 @@ export default styled(Button)`
     background-color: ${({ theme }) => theme.grayScale[4]};
   }
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
-    width: 8rem;
   }
 `;

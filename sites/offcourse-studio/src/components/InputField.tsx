@@ -9,7 +9,8 @@ const inputFields = {
   text: Input,
   email: Input,
   tel: Input,
-  radio: RadioButtonGroup
+  radio: RadioButtonGroup,
+  textarea: Input
 };
 
 const InputField: FunctionComponent<IInput & IStylable> = ({

@@ -1,10 +1,12 @@
-import React, { FunctionComponent } from "react";
+import React, { Fragment, useState, FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { Formik } from "formik";
 import { IPageSection, IStylable } from "../interfaces";
 import DisplayText from "../components/DisplayText";
+import CallToAction from "../components/CallToAction";
 import Form from "../components/Form";
 import Base from "./BaseSection";
+import { Waypoint } from "react-waypoint";
 
 const url =
   "https://hooks.slack.com/services/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";
@@ -17,12 +19,21 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
   form,
   className
 }) => {
+  const [showCallToAction, setShowCallToAction] = useState(true);
   const initialValues = form.reduce(
     (acc, { name, value }) => ({ ...acc, [name]: value }),
     {}
   );
+  const handlePositionChange = ({
+    currentPosition,
+    previousPosition,
+    ...rest
+  }) => {
+    setShowCallToAction(currentPosition !== "inside" ? true : false);
+  };
   return (
     <Base role={role} className={className} backdropPath={backdropPath}>
+      <CallToAction isVisible={showCallToAction} callToAction={callToAction} />
       <DisplayText>{title}</DisplayText>
       <Formik
         initialValues={initialValues}
@@ -36,13 +47,19 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
       >
         {({ values, handleSubmit, handleChange }) => {
           return (
-            <Form
-              callToAction={callToAction}
-              formFields={form}
-              values={values}
-              onChange={handleChange}
-              onSubmit={handleSubmit}
-            />
+            <Fragment>
+              <Waypoint
+                onEnter={handlePositionChange}
+                onLeave={handlePositionChange}
+              />
+              <Form
+                callToAction={callToAction}
+                formFields={form}
+                values={values}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+              />
+            </Fragment>
           );
         }}
       </Formik>
@@ -53,17 +70,16 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
 export default styled(Contact)`
   grid-template-rows: auto 1fr;
   background-color: ${({ theme }) => theme.colors.blue};
-
   ${DisplayText} {
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
   ${Form} {
     background-color: ${({ theme }) => theme.grayScale[0]};
-    padding: 1rem;
+    padding: 2rem 1rem;
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 10fr 9fr;
     grid-template-rows: 1fr;
 
     ${DisplayText} {
