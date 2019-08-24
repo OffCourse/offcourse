@@ -1,35 +1,37 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { Styled } from "theme-ui";
-import { IInput, IStylable } from "../interfaces";
-import { Form, Field, FieldArray } from "formik";
+import { Input, IStylable } from "../interfaces";
+import { Form as _Form, Field } from "formik";
 import InputField from "./InputField";
 import Button from "./Button";
 
-type ContactFormProps = {
+type FormProps = {
   values: any;
-  callToAction: string;
+  callToAction?: string;
 };
 
-const ContactForm: FunctionComponent<ContactFormProps & IStylable> = ({
+const Form: FunctionComponent<FormProps & IStylable> = ({
   className,
   values,
   formFields,
   onChange,
+  isValid,
   callToAction = "submit"
 }) => {
   return (
-    <Form className={className}>
+    <_Form className={className}>
       <h1>Tell Us More About You</h1>
       {formFields.map((formField, index) => {
-        return <Field component={InputField} key={index} {...formField} />;
+        return <Field as={InputField} key={index} {...formField} />;
       })}
-      <Button type="submit">{callToAction}</Button>
-    </Form>
+      <Button disabled={!isValid} type="submit">
+        {callToAction}
+      </Button>
+    </_Form>
   );
 };
 
-export default styled(ContactForm)`
+export default styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: center;

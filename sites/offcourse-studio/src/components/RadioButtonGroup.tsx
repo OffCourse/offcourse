@@ -6,7 +6,7 @@ import { IInput, IStylable } from "../interfaces";
 const StyledField = styled(Field)``;
 
 const RadioButton: FunctionComponent<IInput & IStylable> = styled(
-  ({ className, checked, label, id, name, value }) => {
+  ({ className, label, id, name, value }) => {
     return (
       <div className={className}>
         <StyledField id={id} type="radio" name={name} value={value} />
@@ -39,12 +39,6 @@ const RadioButton: FunctionComponent<IInput & IStylable> = styled(
   }
 
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
-    grid-template-columns: 2rem 1fr;
-    grid-gap: 1rem;
-    ${StyledField} {
-      height: 2rem;
-      width: 2rem;
-    }
   }
 `;
 

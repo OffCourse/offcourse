@@ -7,6 +7,7 @@ import CallToAction from "../components/CallToAction";
 import Form from "../components/Form";
 import Base from "./BaseSection";
 import { Waypoint } from "react-waypoint";
+import FormContainer from "../containers/FormContainer";
 
 const url =
   "https://hooks.slack.com/services/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";
@@ -20,10 +21,16 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
   className
 }) => {
   const [showCallToAction, setShowCallToAction] = useState(true);
-  const initialValues = form.reduce(
-    (acc, { name, value }) => ({ ...acc, [name]: value }),
-    {}
-  );
+
+  const onSubmit = async (values, { resetForm, ...helpers }) => {
+    const res = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({ text: JSON.stringify(values, null, 2) })
+    });
+    console.log(values);
+    resetForm();
+  };
+
   const handlePositionChange = ({
     currentPosition,
     previousPosition,
@@ -31,38 +38,13 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
   }) => {
     setShowCallToAction(currentPosition !== "inside" ? true : false);
   };
+
   return (
     <Base role={role} className={className} backdropPath={backdropPath}>
       <CallToAction isVisible={showCallToAction} callToAction={callToAction} />
       <DisplayText>{title}</DisplayText>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={async values => {
-          const res = await fetch(url, {
-            method: "POST",
-            body: JSON.stringify({ text: JSON.stringify(values, null, 2) })
-          });
-          console.log(res);
-        }}
-      >
-        {({ values, handleSubmit, handleChange }) => {
-          return (
-            <Fragment>
-              <Waypoint
-                onEnter={handlePositionChange}
-                onLeave={handlePositionChange}
-              />
-              <Form
-                callToAction={callToAction}
-                formFields={form}
-                values={values}
-                onChange={handleChange}
-                onSubmit={handleSubmit}
-              />
-            </Fragment>
-          );
-        }}
-      </Formik>
+      <Waypoint onEnter={handlePositionChange} onLeave={handlePositionChange} />
+      <FormContainer component={Form} form={form} onSubmit={onSubmit} />
     </Base>
   );
 };

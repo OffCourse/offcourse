@@ -22,7 +22,6 @@
       options:
         - value: small
           label: Less than €25,000
-          checked: true
         - value: medium
           label: €25,000 - €75,000
         - value: large

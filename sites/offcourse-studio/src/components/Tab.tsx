@@ -14,7 +14,6 @@ const Tab: FunctionComponent<IStylable> = ({ className, title }) => {
 export default styled(Tab)`
   display: flex;
   padding: 0.5rem;
-  border-radius: 0 0 0.25rem 0.25rem;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   background-color: ${({ theme }) => theme.colors.primary};
 
@@ -25,8 +24,8 @@ export default styled(Tab)`
   :hover {
     background-color: ${({ theme }) => theme.grayScale[4]};
     ${Link} {
-      color: ${({ theme }) => theme.colors.primary};
-      border-color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.white};
+      border-color: ${({ theme }) => theme.colors.white};
     }
   }
 

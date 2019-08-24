@@ -5,10 +5,11 @@ import { IStylable } from "../interfaces";
 const Button: FunctionComponent<IStylable> = ({
   type,
   className,
-  children
+  children,
+  disabled
 }) => {
   return (
-    <button type={type} className={className}>
+    <button disabled={disabled} type={type} className={className}>
       {children}
     </button>
   );
@@ -43,7 +44,7 @@ export default styled(Button)`
 
   &:hover {
     background-color: ${({ theme }) => theme.grayScale[4]};
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
     border-color: ${({ theme }) => theme.colors.primary};
   }
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
