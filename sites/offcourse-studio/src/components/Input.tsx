@@ -67,7 +67,7 @@ export default styled(Input)`
     justify-content: center;
     align-content: center;
     border: 0 solid;
-    font-family: ${({ theme }) => theme.fonts.bold};
+    font-family: ${({ theme }) => theme.fonts.heading};
     font-size: ${({ theme }) => theme.fontSizes[2]};
     line-height: ${({ theme }) => theme.lineHeights[2]};
     box-sizing: border-box;
@@ -78,8 +78,8 @@ export default styled(Input)`
     }
 
     :selection {
-      background-color: ${({ theme }) => theme.colors.blue};
-      color: ${({ theme }) => theme.colors.blue};
+      background-color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => theme.colors.primary};
     }
 
     &:focus {

@@ -39,7 +39,7 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
 
   return (
     <Base role={role} className={className} backdropPath={backdropPath}>
-      <CallToAction isVisible={showCallToAction} callToAction={callToAction} />
+      <CallToAction isVisible={showCallToAction}>{callToAction}</CallToAction>
       <DisplayText>{title}</DisplayText>
       <Waypoint onEnter={handlePositionChange} onLeave={handlePositionChange} />
       <FormContainer

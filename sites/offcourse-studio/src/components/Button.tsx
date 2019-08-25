@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IStylable } from "../interfaces";
+import { IButton, IStylable } from "../interfaces";
 
-const Button: FunctionComponent<IStylable> = ({
+const Button: FunctionComponent<IStylable & IButton> = ({
   type,
   className,
   children,
@@ -49,7 +49,7 @@ export default styled(Button)`
 
   &:hover {
     background-color: ${({ theme }) => theme.grayScale[4]};
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.grayScale[0]};
     border-color: ${({ theme }) => theme.colors.primary};
   }
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {

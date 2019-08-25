@@ -18,12 +18,37 @@ export interface IPageSection {
 }
 
 type Size = "SMALL" | "NORMAL" | "LARGE";
+
+interface IColor {
+  primary: string;
+  negative: string;
+  secondary: string;
+}
+
+interface IFonts {
+  heading: string[];
+  monospace: string[];
+  base: string[];
+}
+
+interface ITheme {
+  grayScale: string[];
+  colors: IColor;
+  breakpoints: string[];
+  fonts: IFonts;
+  fontSizes: string[];
+  lineHeights: string[];
+  space: string[];
+}
+
 export interface IStylable {
   className?: string;
   size?: Size;
   backdropPath?: string;
   foreground?: string;
   background?: string;
+  theme?: ITheme;
+  isVisible: boolean;
 }
 
 export interface IInput {
@@ -39,3 +64,12 @@ export interface IInput {
   checked?: boolean;
   isNormalized?: boolean;
 };
+
+export interface ILink {
+  href: string;
+}
+
+export interface IButton {
+  type: string;
+  disabled: boolean;
+}

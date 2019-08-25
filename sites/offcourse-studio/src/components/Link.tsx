@@ -1,8 +1,12 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IStylable } from "../interfaces";
+import { ILink, IStylable } from "../interfaces";
 
-const Link: FunctionComponent<IStylable> = ({ className, href, children }) => {
+const Link: FunctionComponent<IStylable & ILink> = ({
+  className,
+  href,
+  children
+}) => {
   return (
     <a className={className} href={href}>
       {children}
@@ -27,7 +31,7 @@ export default styled(Link)`
     outline: none;
   }
   :hover {
-    color: ${({ theme }) => theme.colors.blue};
-    border-color: ${({ theme }) => theme.colors.blue};
+    color: ${({ theme }) => theme.colors.primary};
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;

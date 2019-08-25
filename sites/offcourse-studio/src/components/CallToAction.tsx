@@ -6,7 +6,7 @@ import { IStylable } from "../interfaces";
 
 const CallToAction: FunctionComponent<IStylable> = ({
   className,
-  callToAction,
+  children,
   isVisible
 }) => {
   const animation = useSpring({
@@ -18,7 +18,7 @@ const CallToAction: FunctionComponent<IStylable> = ({
   });
   return (
     <animated.div style={animation} className={className}>
-      <Tab title={callToAction} />
+      <Tab title={children} />
     </animated.div>
   );
 };

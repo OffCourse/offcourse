@@ -3,7 +3,11 @@ import styled from "@emotion/styled";
 import { IStylable } from "../interfaces";
 import Link from "./Link";
 
-const Tab: FunctionComponent<IStylable> = ({ className, title }) => {
+interface ITab {
+  title: string;
+}
+
+const Tab: FunctionComponent<IStylable & ITab> = ({ className, title }) => {
   return (
     <div className={className}>
       <Link href="#contact">{title}</Link>
@@ -25,8 +29,8 @@ export default styled(Tab)`
   :hover {
     background-color: ${({ theme }) => theme.grayScale[4]};
     ${Link} {
-      color: ${({ theme }) => theme.colors.white};
-      border-color: ${({ theme }) => theme.colors.white};
+      color: ${({ theme }) => theme.grayScale[0]};
+      border-color: ${({ theme }) => theme.grayScale[0]};
     }
   }
 
