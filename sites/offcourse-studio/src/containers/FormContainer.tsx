@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import { Formik } from "formik";
-import { object, string, mix } from "yup";
+import { object, string, StringSchema } from "yup";
+import Form from "../components/Form";
 
-const initializeValues = schema =>
-  schema.reduce((acc, { name, value }) => ({ ...acc, [name]: "" }), {});
+const initializeValues: (schema: any[]) => { [key: string]: string } = schema =>
+  schema.reduce((acc, { name }) => ({ ...acc, [name]: "" }), {});
 
 const textField = string()
   .required()
@@ -16,7 +17,7 @@ const emailField = string()
   .required()
   .email();
 
-const selectField = {
+const selectField: { [key: string]: StringSchema<string> } = {
   text: textField,
   radio: textField,
   tel: textField,
@@ -24,29 +25,36 @@ const selectField = {
   textarea: textAreaField
 };
 
-const initializeValidations = schema => {
-  const fields = schema.reduce((acc, { name, type, value }) => {
+const initializeValidations: (
+  schema: any[]
+) => { [key: string]: StringSchema<string> } = schema => {
+  return schema.reduce((acc, { name, type }) => {
     return {
       ...acc,
       [name]: selectField[type || "text"]
     };
   }, {});
-  return object().shape(fields);
 };
 
-const FormContainer: FunctionComponent<> = ({
-  component: Component,
-  schema,
-  onSubmit,
+type FormContainerProps = {
+  component?: ReactNode;
+  form: { fields: any; title: string };
+  onSubmit: () => void;
+};
 
+const FormContainer: FunctionComponent<FormContainerProps> = ({
+  component: Component = Form,
+  form,
+  onSubmit,
   ...rest
 }) => {
+  const { fields: schema, title } = form;
   const initialValues = initializeValues(schema);
   const validationSchema = initializeValidations(schema);
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
+      validationSchema={object().shape(validationSchema)}
       onSubmit={onSubmit}
     >
       {formProps => {
@@ -55,6 +63,7 @@ const FormContainer: FunctionComponent<> = ({
           <Component
             {...formProps}
             canSubmit={canSubmit}
+            title={title}
             schema={schema}
             {...rest}
           />

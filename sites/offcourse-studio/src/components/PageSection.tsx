@@ -1,13 +1,14 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import styled from "@emotion/styled";
 import { Hero, Contact } from "../sections";
-import { IPageSection, IStylable } from "../interfaces";
+import { IStylable } from "../interfaces";
+import { IPageSection } from "../interfaces/pageSection";
 
 type PageSectionProps = {
   sectionData: IPageSection;
 };
 
-const components = {
+const components: { [key: string]: ReactNode } = {
   hero: Hero,
   contact: Contact
 };
@@ -21,7 +22,7 @@ const PageSection: FunctionComponent<PageSectionProps & IStylable> = ({
 };
 
 export default styled(PageSection)`
-  min-height: 80vh;
+  min-height: 85vh;
   &:first-of-type {
     max-height: 100vh;
     height: 100vh;

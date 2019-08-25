@@ -3,10 +3,7 @@ import styled from "@emotion/styled";
 import DisplayText from "./DisplayText";
 import { IStylable } from "../interfaces";
 
-const LowDown: FunctionComponent<LowDownProps & IStylable> = ({
-  children,
-  className
-}) => {
+const LowDown: FunctionComponent<IStylable> = ({ children, className }) => {
   return (
     <div className={className}>
       <DisplayText>{children}</DisplayText>
@@ -23,7 +20,7 @@ export default styled(LowDown)`
       margin: 0 0.5rem 0.5rem 0;
     }
 
-    @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
+    @media only screen and (min-width: ${({ theme }) => theme.breakpoints[0]}) {
       h1 {
         font-size: 3rem;
         padding: 0rem 0.6rem;
@@ -31,7 +28,7 @@ export default styled(LowDown)`
       }
     }
 
-    @media only screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
+    @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
       h1 {
         font-size: 4rem;
         padding: 0rem 0.8rem;

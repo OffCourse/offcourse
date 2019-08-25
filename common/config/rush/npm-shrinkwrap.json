@@ -1457,10 +1457,25 @@
       "from": "@types/styled-components@4.1.8",
       "resolved": "https://registry.npmjs.org/@types/styled-components/-/styled-components-4.1.8.tgz"
     },
+    "@types/styled-system": {
+      "version": "5.1.1",
+      "from": "@types/styled-system@*",
+      "resolved": "https://registry.npmjs.org/@types/styled-system/-/styled-system-5.1.1.tgz"
+    },
+    "@types/styled-system__css": {
+      "version": "5.0.4",
+      "from": "@types/styled-system__css@*",
+      "resolved": "https://registry.npmjs.org/@types/styled-system__css/-/styled-system__css-5.0.4.tgz"
+    },
     "@types/tapable": {
       "version": "1.0.4",
       "from": "@types/tapable@*",
       "resolved": "https://registry.npmjs.org/@types/tapable/-/tapable-1.0.4.tgz"
+    },
+    "@types/theme-ui": {
+      "version": "0.2.2",
+      "from": "@types/theme-ui@^0.2.2",
+      "resolved": "https://registry.npmjs.org/@types/theme-ui/-/theme-ui-0.2.2.tgz"
     },
     "@types/tmp": {
       "version": "0.0.32",
@@ -1517,6 +1532,11 @@
       "version": "13.0.0",
       "from": "@types/yargs-parser@*",
       "resolved": "https://registry.npmjs.org/@types/yargs-parser/-/yargs-parser-13.0.0.tgz"
+    },
+    "@types/yup": {
+      "version": "0.26.23",
+      "from": "@types/yup@^0.26.23",
+      "resolved": "https://registry.npmjs.org/@types/yup/-/yup-0.26.23.tgz"
     },
     "@typescript-eslint/eslint-plugin": {
       "version": "1.13.0",
@@ -5817,9 +5837,9 @@
       "resolved": "https://registry.npmjs.org/gatsby-react-router-scroll/-/gatsby-react-router-scroll-2.1.6.tgz"
     },
     "gatsby-source-filesystem": {
-      "version": "2.1.17",
-      "from": "gatsby-source-filesystem@^2.1.13",
-      "resolved": "https://registry.npmjs.org/gatsby-source-filesystem/-/gatsby-source-filesystem-2.1.17.tgz",
+      "version": "2.1.18",
+      "from": "gatsby-source-filesystem@^2.1.18",
+      "resolved": "https://registry.npmjs.org/gatsby-source-filesystem/-/gatsby-source-filesystem-2.1.18.tgz",
       "dependencies": {
         "anymatch": {
           "version": "3.0.3",

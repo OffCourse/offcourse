@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { IStylable } from "../interfaces";
-import { Form as _Form, Field } from "formik";
+import { Form as _Form } from "formik";
 import InputField from "./InputField";
 import Button from "./Button";
 
@@ -23,8 +23,8 @@ const Form: FunctionComponent<FormProps & IStylable> = ({
   return (
     <_Form className={className}>
       <h1>{title}</h1>
-      {schema.map((formField, index) => {
-        return <Field as={InputField} key={index} {...formField} />;
+      {schema.map((fieldProps, index) => {
+        return <InputField key={index} {...fieldProps} />;
       })}
       <Button disabled={!canSubmit} type="submit">
         {callToAction}

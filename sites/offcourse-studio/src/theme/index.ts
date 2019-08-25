@@ -19,7 +19,8 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
   colors: {
     primary,
     negative: primary === baseColors.blue ? baseColors.white : baseColors.black,
-    secondary
+    secondary,
+    error: baseColors.red
   },
   fonts: {
     body: `${fonts.body.fontFamily}, Nitti Grotesk, Helvetica, sans-serif`,

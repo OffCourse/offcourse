@@ -10,11 +10,8 @@ const TextArea: FunctionComponent<IInput & IStylable> = ({
   value = "",
   onChange,
   onBlur,
-  type = "text",
-  autoComplete = false,
   autoFocus = false,
   isDisabled = false,
-  required = false,
   isNormalized = true
 }) => {
   const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = e => {

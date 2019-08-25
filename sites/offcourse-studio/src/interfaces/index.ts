@@ -9,20 +9,13 @@ export interface IMeasurable {
   height?: number;
 }
 
-export interface IPageSection {
-  title: string;
-  backdropPath?: string;
-  role: string;
-  publishable: boolean;
-  sectionIndex: number;
-}
-
 type Size = "SMALL" | "NORMAL" | "LARGE";
 
 interface IColor {
   primary: string;
   negative: string;
   secondary: string;
+  error: string;
 }
 
 interface IFonts {
@@ -34,11 +27,11 @@ interface IFonts {
 interface ITheme {
   grayScale: string[];
   colors: IColor;
+  space: string[];
   breakpoints: string[];
   fonts: IFonts;
   fontSizes: string[];
   lineHeights: string[];
-  space: string[];
 }
 
 export interface IStylable {
@@ -48,7 +41,8 @@ export interface IStylable {
   foreground?: string;
   background?: string;
   theme?: ITheme;
-  isVisible: boolean;
+  isVisible?: boolean;
+  isBasic?: boolean;
 }
 
 export interface IInput {
@@ -56,7 +50,6 @@ export interface IInput {
   name: string;
   type?: string;
   value?: string;
-  label?: string;
   options: any[];
   autoComplete?: boolean;
   autoFocus?: boolean;

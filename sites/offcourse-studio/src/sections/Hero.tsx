@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import Base from "./BaseSection";
-import { IPageSection, IStylable } from "../interfaces";
+import { IStylable } from "../interfaces";
+import { IHeroSection } from "../interfaces/pageSection";
 import LowDown from "../components/LowDown";
 import Logo from "../components/Logo";
 
-type HeroProps = Pick<IPageSection, "title" | "role">;
+type HeroProps = Pick<IHeroSection, "title" | "role">;
 
 const Hero: FunctionComponent<HeroProps & IStylable> = ({
   title,

@@ -24,7 +24,7 @@ export default styled(Footer)`
   display: grid;
   padding: 2rem 1rem 1rem 1rem;
   grid-gap: 1rem;
-  min-height: 20vh;
+  min-height: 15vh;
   .contact {
     display: flex;
     flex-direction: column;
@@ -33,7 +33,22 @@ export default styled(Footer)`
   section {
     line-height: 0.3rem;
   }
+
+  ${Logo} {
+    h1 {
+      font-size: 1.5rem;
+      padding: 0rem 0.3rem;
+      margin: 0 0.3rem 0.3rem 0;
+    }
+  }
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
     grid-template-columns: 1fr 1fr;
+    ${Logo} {
+      h1 {
+        font-size: 2rem;
+        padding: 0rem 0.4rem;
+        margin: 0 0.4rem 0.4rem 0;
+      }
+    }
   }
 `;

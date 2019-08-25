@@ -1,12 +1,14 @@
-import React, { FunctionComponent, ChangeEvent, FormEvent } from "react";
+import React, { ReactNode, FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { IInput, IStylable } from "../interfaces";
+import { Field, ErrorMessage } from "formik";
 import Input from "./Input";
+import Message from "./Message";
 import TextArea from "./TextArea";
 import { formatTitle } from "./helpers";
 import RadioButtonGroup from "./RadioButtonGroup";
 
-const inputFields = {
+const components: { [key: string]: ReactNode } = {
   text: Input,
   email: Input,
   tel: Input,
@@ -14,18 +16,26 @@ const inputFields = {
   textarea: TextArea
 };
 
-const InputField: FunctionComponent<IInput & IStylable> = ({
+type InputField = IInput & {
+  label: string;
+};
+
+const InputField: FunctionComponent<InputField & IStylable> = ({
   className,
   label,
   type = "text",
   options,
-  ...field
+  name
 }) => {
-  const Component = inputFields[type || "text"];
+  const Component = components[type || "text"];
   return (
     <div className={className}>
       <label>{formatTitle(label)}</label>
-      <Component options={options} {...field} />
+      <ErrorMessage
+        render={msg => <Message isBasic={true}>{msg}</Message>}
+        name={name}
+      />
+      <Field as={Component} options={options} name={name} />
     </div>
   );
 };

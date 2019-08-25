@@ -1,6 +1,7 @@
 import React, { useState, FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IPageSection, IStylable } from "../interfaces";
+import { IStylable } from "../interfaces";
+import { IContactSection } from "../interfaces/sections";
 import DisplayText from "../components/DisplayText";
 import CallToAction from "../components/CallToAction";
 import Form from "../components/Form";
@@ -11,7 +12,7 @@ import FormContainer from "../containers/FormContainer";
 const url =
   "https://hooks.slack.com/services/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";
 
-const Contact: FunctionComponent<IPageSection & IStylable> = ({
+const Contact: FunctionComponent<IContactSection & IStylable> = ({
   title,
   role,
   backdropPath = "./CellularAutomata",
@@ -42,12 +43,7 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
       <CallToAction isVisible={showCallToAction}>{callToAction}</CallToAction>
       <DisplayText>{title}</DisplayText>
       <Waypoint onEnter={handlePositionChange} onLeave={handlePositionChange} />
-      <FormContainer
-        component={Form}
-        title={form.title}
-        schema={form.fields}
-        onSubmit={onSubmit}
-      />
+      <FormContainer form={form} onSubmit={onSubmit} />
     </Base>
   );
 };
