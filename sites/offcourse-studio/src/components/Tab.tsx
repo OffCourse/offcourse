@@ -36,11 +36,4 @@ export default styled(Tab)`
       line-height: ${({ theme }) => theme.lineHeights[3]};
     }
   }
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints[3]}) {
-    padding: 1rem;
-    ${Link} {
-      font-size: ${({ theme }) => theme.fontSizes[3]};
-      line-height: ${({ theme }) => theme.lineHeights[4]};
-    }
-  }
 `;

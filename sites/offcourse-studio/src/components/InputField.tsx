@@ -2,7 +2,8 @@ import React, { FunctionComponent, ChangeEvent, FormEvent } from "react";
 import styled from "@emotion/styled";
 import { IInput, IStylable } from "../interfaces";
 import Input from "./Input";
-import { formatTitle } from "./Input/helpers";
+import TextArea from "./TextArea";
+import { formatTitle } from "./helpers";
 import RadioButtonGroup from "./RadioButtonGroup";
 
 const inputFields = {
@@ -10,7 +11,7 @@ const inputFields = {
   email: Input,
   tel: Input,
   radio: RadioButtonGroup,
-  textarea: Input
+  textarea: TextArea
 };
 
 const InputField: FunctionComponent<IInput & IStylable> = ({
@@ -18,7 +19,7 @@ const InputField: FunctionComponent<IInput & IStylable> = ({
   label,
   type = "text",
   options,
-  field
+  ...field
 }) => {
   const Component = inputFields[type || "text"];
   return (

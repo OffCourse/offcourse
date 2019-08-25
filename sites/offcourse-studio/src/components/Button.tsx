@@ -40,6 +40,9 @@ export default styled(Button)`
 
   :disabled {
     cursor: default;
+    background-color: ${({ theme }) => theme.grayScale[2]};
+    color: ${({ theme }) => theme.grayScale[1]};
+    border-color: ${({ theme }) => theme.grayScale[1]};
   }
 
   &:hover {

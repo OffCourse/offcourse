@@ -17,12 +17,13 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
   role,
   backdropPath = "./CellularAutomata",
   callToAction,
-  form,
+  form: schema,
   className
 }) => {
   const [showCallToAction, setShowCallToAction] = useState(true);
 
   const onSubmit = async (values, { resetForm, ...helpers }) => {
+    console.log(values);
     const res = await fetch(url, {
       method: "POST",
       body: JSON.stringify({ text: JSON.stringify(values, null, 2) })
@@ -44,7 +45,7 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
       <CallToAction isVisible={showCallToAction} callToAction={callToAction} />
       <DisplayText>{title}</DisplayText>
       <Waypoint onEnter={handlePositionChange} onLeave={handlePositionChange} />
-      <FormContainer component={Form} form={form} onSubmit={onSubmit} />
+      <FormContainer component={Form} schema={schema} onSubmit={onSubmit} />
     </Base>
   );
 };

@@ -13,18 +13,19 @@ type FormProps = {
 const Form: FunctionComponent<FormProps & IStylable> = ({
   className,
   values,
-  formFields,
+  schema,
   onChange,
-  isValid,
-  callToAction = "submit"
+  callToAction = "submit",
+  canSubmit,
+  ...rest
 }) => {
   return (
     <_Form className={className}>
       <h1>Tell Us More About You</h1>
-      {formFields.map((formField, index) => {
+      {schema.map((formField, index) => {
         return <Field as={InputField} key={index} {...formField} />;
       })}
-      <Button disabled={!isValid} type="submit">
+      <Button disabled={!canSubmit} type="submit">
         {callToAction}
       </Button>
     </_Form>
