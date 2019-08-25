@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useRef, useEffect, useState } from "react";
 import styled from "@emotion/styled";
-import { useThemeUI } from "theme-ui";
 import { IStylable, IMeasurable } from "../../interfaces";
 import { drawRects } from "./helpers";
 

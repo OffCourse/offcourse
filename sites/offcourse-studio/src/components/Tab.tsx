@@ -13,6 +13,7 @@ const Tab: FunctionComponent<IStylable> = ({ className, title }) => {
 
 export default styled(Tab)`
   display: flex;
+  user-select: none;
   padding: 0.5rem;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   background-color: ${({ theme }) => theme.colors.primary};

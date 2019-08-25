@@ -37,5 +37,6 @@ export default styled(InputField)`
   label {
     padding: 0 ${({ theme }) => theme.space[6]};
     padding-bottom: ${({ theme }) => theme.space[4]};
+    user-select: none;
   }
 `;

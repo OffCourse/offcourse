@@ -17,6 +17,7 @@ const Button: FunctionComponent<IStylable> = ({
 
 export default styled(Button)`
   display: flex;
+  user-select: none;
   align-items: center;
   justify-content: center;
   height: 2.813rem;
@@ -38,7 +39,8 @@ export default styled(Button)`
     outline: none;
   }
 
-  :disabled {
+  :disabled,
+  &:hover:disabled {
     cursor: default;
     background-color: ${({ theme }) => theme.grayScale[2]};
     color: ${({ theme }) => theme.grayScale[1]};

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { Input, IStylable } from "../interfaces";
+import { IStylable } from "../interfaces";
 import { Form as _Form, Field } from "formik";
 import InputField from "./InputField";
 import Button from "./Button";
@@ -17,11 +17,12 @@ const Form: FunctionComponent<FormProps & IStylable> = ({
   onChange,
   callToAction = "submit",
   canSubmit,
+  title = "Contact Us",
   ...rest
 }) => {
   return (
     <_Form className={className}>
-      <h1>Tell Us More About You</h1>
+      <h1>{title}</h1>
       {schema.map((formField, index) => {
         return <Field as={InputField} key={index} {...formField} />;
       })}
@@ -37,6 +38,7 @@ export default styled(Form)`
   flex-direction: column;
   justify-content: center;
   h1 {
+    user-select: none;
     font-family: ${({ theme }) => theme.fonts.heading};
     margin: 1rem;
   }

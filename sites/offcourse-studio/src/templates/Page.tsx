@@ -1,11 +1,9 @@
 import React, { forwardRef } from "react";
 import { Layout, Main, Container } from "theme-ui";
 import ThemeProvider from "../components/ThemeProvider";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 import createTheme from "../theme";
 import fonts from "../theme/offcourse-fonts";
-import { IPageSection, IStylable } from "../interfaces";
 
 const PageTemplate = forwardRef(
   (

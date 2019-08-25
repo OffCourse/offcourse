@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 import DisplayText from "./DisplayText";
 import { IStylable } from "../interfaces";
 
-type LowDownProps = {};
-
 const LowDown: FunctionComponent<LowDownProps & IStylable> = ({
   children,
   className

@@ -14,15 +14,18 @@ const useGetAllSections = () => {
                 title
                 callToAction
                 form {
-                  name
-                  type
-                  label
-                  options {
-                    value
+                  title
+                  fields {
+                    name
+                    type
                     label
+                    options {
+                        value
+                        label
+                    }
                   }
-                }
-                publishable
+              }
+              publishable
             }
         }
     }

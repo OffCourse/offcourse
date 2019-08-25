@@ -1,6 +1,5 @@
-import React, { Fragment, useState, FunctionComponent } from "react";
+import React, { useState, FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { Formik } from "formik";
 import { IPageSection, IStylable } from "../interfaces";
 import DisplayText from "../components/DisplayText";
 import CallToAction from "../components/CallToAction";
@@ -17,18 +16,16 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
   role,
   backdropPath = "./CellularAutomata",
   callToAction,
-  form: schema,
+  form,
   className
 }) => {
   const [showCallToAction, setShowCallToAction] = useState(true);
 
   const onSubmit = async (values, { resetForm, ...helpers }) => {
-    console.log(values);
     const res = await fetch(url, {
       method: "POST",
       body: JSON.stringify({ text: JSON.stringify(values, null, 2) })
     });
-    console.log(values);
     resetForm();
   };
 
@@ -45,7 +42,12 @@ const Contact: FunctionComponent<IPageSection & IStylable> = ({
       <CallToAction isVisible={showCallToAction} callToAction={callToAction} />
       <DisplayText>{title}</DisplayText>
       <Waypoint onEnter={handlePositionChange} onLeave={handlePositionChange} />
-      <FormContainer component={Form} schema={schema} onSubmit={onSubmit} />
+      <FormContainer
+        component={Form}
+        title={form.title}
+        schema={form.fields}
+        onSubmit={onSubmit}
+      />
     </Base>
   );
 };

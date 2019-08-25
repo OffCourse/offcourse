@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { useSpring, animated } from "react-spring";
+import { config, useSpring, animated } from "react-spring";
 import styled from "@emotion/styled";
 import Tab from "./Tab";
 import { IStylable } from "../interfaces";
@@ -9,7 +9,13 @@ const CallToAction: FunctionComponent<IStylable> = ({
   callToAction,
   isVisible
 }) => {
-  const animation = useSpring({ top: isVisible ? 0 : -200 });
+  const animation = useSpring({
+    from: {
+      top: -200
+    },
+    top: isVisible ? 0 : -200,
+    config: config.molasses
+  });
   return (
     <animated.div style={animation} className={className}>
       <Tab title={callToAction} />
@@ -18,6 +24,7 @@ const CallToAction: FunctionComponent<IStylable> = ({
 };
 
 export default styled(CallToAction)`
+  user-select: none;
   position: fixed;
   top: 0;
   right: 0;
