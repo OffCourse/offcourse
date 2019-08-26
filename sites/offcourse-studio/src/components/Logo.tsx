@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import DisplayText from "./DisplayText";
-import { IStylable } from "../interfaces";
+import { IThemeable } from "../interfaces";
 
-const Logo: FunctionComponent<IStylable> = ({ className }) => {
+const Logo: FunctionComponent<IThemeable> = ({ className }) => {
   return <DisplayText className={className}>Offcourse Studio_</DisplayText>;
 };
 

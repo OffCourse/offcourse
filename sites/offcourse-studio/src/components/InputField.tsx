@@ -1,6 +1,7 @@
 import React, { ReactNode, FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IInput, IStylable } from "../interfaces";
+import { IThemeable } from "../interfaces";
+import { IInputField } from "../interfaces/form";
 import { Field, ErrorMessage } from "formik";
 import Input from "./Input";
 import Message from "./Message";
@@ -16,11 +17,9 @@ const components: { [key: string]: ReactNode } = {
   textarea: TextArea
 };
 
-type InputField = IInput & {
-  label: string;
-};
+type InputFieldProps = IInputField & IThemeable;
 
-const InputField: FunctionComponent<InputField & IStylable> = ({
+const InputField: FunctionComponent<InputFieldProps> = ({
   className,
   label,
   type = "text",

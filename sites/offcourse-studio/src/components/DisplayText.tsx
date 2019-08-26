@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IStylable } from "../interfaces";
+import { IThemeable } from "../interfaces";
 
 type DisplayTextProps = {
   children: string;
   isOneToken?: boolean;
-};
+} & IThemeable;
 
-const DisplayText: FunctionComponent<DisplayTextProps & IStylable> = ({
+const DisplayText: FunctionComponent<DisplayTextProps> = ({
   children,
   className
 }) => {

@@ -4,7 +4,9 @@ import styled from "@emotion/styled";
 import Tab from "./Tab";
 import { IStylable } from "../interfaces";
 
-const CallToAction: FunctionComponent<IStylable> = ({
+type CallToActionProps = Pick<IStylable, "className" | "isVisible">;
+
+const CallToAction: FunctionComponent<CallToActionProps> = ({
   className,
   children,
   isVisible

@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IStylable } from "../interfaces";
+import { IThemeable, ITab } from "../interfaces";
 import Link from "./Link";
 
-interface ITab {
-  title: string;
-}
+type TabProps = IThemeable & ITab;
 
-const Tab: FunctionComponent<IStylable & ITab> = ({ className, title }) => {
+const Tab: FunctionComponent<TabProps> = ({ className, title }) => {
   return (
     <div className={className}>
       <Link href="#contact">{title}</Link>

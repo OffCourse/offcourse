@@ -1,4 +1,5 @@
-import Hero from "./Hero"
-import Contact from "./Contact"
+import Base from "./BaseSection";
+import Hero from "./Hero";
+import Contact from "./Contact";
 
-export { Hero, Contact }
+export { Base, Hero, Contact };

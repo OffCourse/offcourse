@@ -9,8 +9,6 @@ export interface IMeasurable {
   height?: number;
 }
 
-type Size = "SMALL" | "NORMAL" | "LARGE";
-
 interface IColor {
   primary: string;
   negative: string;
@@ -34,35 +32,32 @@ interface ITheme {
   lineHeights: string[];
 }
 
-export interface IStylable {
+export interface IThemeable {
   className?: string;
-  size?: Size;
-  backdropPath?: string;
-  foreground?: string;
-  background?: string;
   theme?: ITheme;
+}
+
+export interface IStylable {
+  backdropPath?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
   isVisible?: boolean;
   isBasic?: boolean;
 }
-
-export interface IInput {
-  placeholder?: string;
-  name: string;
-  type?: string;
-  value?: string;
-  options: any[];
-  autoComplete?: boolean;
-  autoFocus?: boolean;
-  isDisabled?: boolean;
-  checked?: boolean;
-  isNormalized?: boolean;
-};
 
 export interface ILink {
   href: string;
 }
 
+export interface ITab {
+  title: string;
+}
+
+export interface IMessage {
+  children: string;
+};
+
 export interface IButton {
-  type: string;
-  disabled: boolean;
+  type?: "submit" | "button";
+  disabled?: boolean;
 }

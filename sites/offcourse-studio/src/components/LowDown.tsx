@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import DisplayText from "./DisplayText";
-import { IStylable } from "../interfaces";
+import { IThemeable } from "../interfaces";
 
-const LowDown: FunctionComponent<IStylable> = ({ children, className }) => {
+const LowDown: FunctionComponent<IThemeable> = ({ children, className }) => {
   return (
     <div className={className}>
       <DisplayText>{children}</DisplayText>

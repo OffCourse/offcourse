@@ -3,15 +3,18 @@ import styled from "@emotion/styled";
 import { IStylable, IMeasurable } from "../../interfaces";
 import { drawRects } from "./helpers";
 
-type CellularAutomataProps = IStylable &
-  IMeasurable & { foreground?: string; background?: string };
+type CellularAutomataProps = Pick<
+  IStylable,
+  "className" | "primaryColor" | "secondaryColor"
+> &
+  Pick<IMeasurable, "width" | "height">;
 
 const CellularAutomata: FunctionComponent<CellularAutomataProps> = ({
   className,
   width,
   height,
-  foreground = "white",
-  background = "black"
+  primaryColor = "white",
+  secondaryColor = "black"
 }) => {
   const ref: any = useRef();
   const canvas = ref.current;
@@ -19,11 +22,11 @@ const CellularAutomata: FunctionComponent<CellularAutomataProps> = ({
 
   useEffect(() => {
     if (canvas) {
-      const options = {
+      const options: any = {
         ctx: canvas.getContext("2d"),
         numberOfColumns: 10,
-        foreground,
-        background
+        primaryColor,
+        secondaryColor
       };
       drawRects(options);
       setInterval(() => {

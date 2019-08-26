@@ -2,9 +2,11 @@ import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { Styled, Footer as ThemedFooter } from "theme-ui";
 import Logo from "./Logo";
-import { IStylable } from "../interfaces";
+import { IThemeable } from "../interfaces";
 
-const Footer: FunctionComponent<IStylable> = ({ className }) => {
+type FooterProps = IThemeable;
+
+const Footer: FunctionComponent<FooterProps> = ({ className }) => {
   return (
     <ThemedFooter className={className}>
       <div className="contact">

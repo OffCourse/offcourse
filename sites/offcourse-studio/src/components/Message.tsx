@@ -1,19 +1,11 @@
-import React, { ReactNode, FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import { formatTitle } from "./helpers";
 import styled from "@emotion/styled";
-import { IStylable } from "../interfaces";
+import { IStylable, IMessage, IThemeable } from "../interfaces";
 
-type MessageProps = {
-  children: string;
-  className?: string;
-  isBasic?: boolean;
-  name?: string;
-};
+type MessageProps = IMessage & IThemeable & Pick<IStylable, "isBasic">;
 
-const Message: FunctionComponent<MessageProps & IStylable> = ({
-  children,
-  className
-}) => {
+const Message: FunctionComponent<MessageProps> = ({ children, className }) => {
   return <div className={className}>{formatTitle(children)}</div>;
 };
 

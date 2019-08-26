@@ -1,12 +1,10 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { ILink, IStylable } from "../interfaces";
+import { ILink, IThemeable } from "../interfaces";
 
-const Link: FunctionComponent<IStylable & ILink> = ({
-  className,
-  href,
-  children
-}) => {
+type LinkProps = ILink & IThemeable;
+
+const Link: FunctionComponent<LinkProps> = ({ className, href, children }) => {
   return (
     <a className={className} href={href}>
       {children}

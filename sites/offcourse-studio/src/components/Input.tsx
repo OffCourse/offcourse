@@ -1,9 +1,10 @@
 import React, { FunctionComponent, ChangeEvent } from "react";
 import styled from "@emotion/styled";
-import { IInput, IStylable } from "../interfaces";
+import { IThemeable } from "../interfaces";
+import { IInput } from "../interfaces/form";
 import { formatTitle, lowerCase, formatValue } from "./helpers";
 
-const Input: FunctionComponent<IInput & IStylable> = ({
+const Input: FunctionComponent<IInput & IThemeable> = ({
   className,
   placeholder = "Enter Something",
   name,
@@ -13,7 +14,7 @@ const Input: FunctionComponent<IInput & IStylable> = ({
   type = "text",
   autoComplete = false,
   autoFocus = false,
-  isDisabled = false,
+  disabled = false,
   required = false,
   isNormalized = true
 }) => {
@@ -35,7 +36,7 @@ const Input: FunctionComponent<IInput & IStylable> = ({
     type: type,
     autoComplete: `${autoComplete}`,
     autoFocus: autoFocus,
-    disabled: isDisabled,
+    disabled,
     value: formatValue(value, isNormalized),
     placeholder: formatTitle(placeholder),
     onChange: handleChange,

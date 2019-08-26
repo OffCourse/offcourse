@@ -1,24 +1,19 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IStylable } from "../interfaces";
+import { IThemeable } from "../interfaces";
+import { IForm } from "../interfaces/form";
 import { Form as _Form } from "formik";
 import InputField from "./InputField";
 import Button from "./Button";
 
-type FormProps = {
-  values: any;
-  callToAction?: string;
-};
+type FormProps = IForm & IThemeable;
 
-const Form: FunctionComponent<FormProps & IStylable> = ({
+const Form: FunctionComponent<FormProps> = ({
   className,
-  values,
-  schema,
-  onChange,
+  fields: schema,
   callToAction = "submit",
   canSubmit,
-  title = "Contact Us",
-  ...rest
+  title = "Contact Us"
 }) => {
   return (
     <_Form className={className}>

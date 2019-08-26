@@ -64,7 +64,7 @@ const FormContainer: FunctionComponent<FormContainerProps> = ({
             {...formProps}
             canSubmit={canSubmit}
             title={title}
-            schema={schema}
+            fields={schema}
             {...rest}
           />
         );

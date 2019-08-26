@@ -1,13 +1,20 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IStylable, IMeasurable } from "../interfaces";
+import { IStylable, IThemeable, IMeasurable } from "../interfaces";
 import CellularAutomata from "./CellularAutomata";
 
-const Backdrop: FunctionComponent<IStylable & IMeasurable> = ({
+type BackdropProps = Pick<
+  IStylable,
+  "backdropPath" | "primaryColor" | "secondaryColor"
+> &
+  Pick<IMeasurable, "width" | "height"> &
+  IThemeable;
+
+const Backdrop: FunctionComponent<BackdropProps> = ({
   backdropPath,
   className,
-  foreground,
-  background,
+  primaryColor,
+  secondaryColor,
   width,
   height
 }) => {
@@ -16,8 +23,8 @@ const Backdrop: FunctionComponent<IStylable & IMeasurable> = ({
   return (
     <CellularAutomata
       className={className}
-      foreground={foreground}
-      background={background}
+      primaryColor={primaryColor}
+      secondaryColor={secondaryColor}
       width={width}
       height={height}
     />

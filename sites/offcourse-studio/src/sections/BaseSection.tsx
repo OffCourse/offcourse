@@ -2,13 +2,13 @@ import React, { FunctionComponent } from "react";
 import { useThemeUI } from "theme-ui";
 import { useMeasure } from "../hooks";
 import styled from "@emotion/styled";
-import { IStylable } from "../interfaces";
+import { IThemeable } from "../interfaces";
 import { IBaseSection } from "../interfaces/IBaseSection";
 import Backdrop from "../components/Backdrop";
 
-type BaseProps = Pick<IBaseSection, "backdropPath" | "role">;
+type BaseProps = IBaseSection & IThemeable;
 
-const Base: FunctionComponent<BaseProps & IStylable> = ({
+const Base: FunctionComponent<BaseProps> = ({
   backdropPath = "./CellularAutomata",
   role,
   className,
@@ -16,14 +16,14 @@ const Base: FunctionComponent<BaseProps & IStylable> = ({
 }) => {
   const context: { theme: any } = useThemeUI();
   const { secondary } = context.theme.colors;
-  const background = context.theme.grayScale[0];
+  const white = context.theme.grayScale[0];
   const [{ width, height }, bind] = useMeasure();
   return (
     <div {...bind} id={role} className={className}>
       <Backdrop
         backdropPath={backdropPath}
-        foreground={secondary}
-        background={background}
+        primaryColor={white}
+        secondaryColor={secondary}
         width={width}
         height={height}
       />

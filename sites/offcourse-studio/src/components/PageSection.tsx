@@ -1,28 +1,29 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import styled from "@emotion/styled";
-import { Hero, Contact } from "../sections";
-import { IStylable } from "../interfaces";
+import { Hero, Contact, Base } from "../sections";
+import { IThemeable } from "../interfaces";
 import { IPageSection } from "../interfaces/pageSection";
 
 type PageSectionProps = {
   sectionData: IPageSection;
-};
+} & IThemeable;
 
-const components: { [key: string]: ReactNode } = {
-  hero: Hero,
-  contact: Contact
-};
-
-const PageSection: FunctionComponent<PageSectionProps & IStylable> = ({
+const PageSection: FunctionComponent<PageSectionProps> = ({
   sectionData,
   className
 }) => {
-  const Component = components[sectionData.role];
-  return <Component {...sectionData} className={className} />;
+  switch (sectionData.role) {
+    case "hero":
+      return <Hero {...sectionData} className={className} />;
+    case "contact":
+      return <Contact {...sectionData} className={className} />;
+    default:
+      return <Base {...sectionData} className={className} />;
+  }
 };
 
 export default styled(PageSection)`
-  min-height: 85vh;
+  min-heght: 85vh;
   &:first-of-type {
     max-height: 100vh;
     height: 100vh;

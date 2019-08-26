@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { Field } from "formik";
-import { IInput, IStylable } from "../interfaces";
+import { IStylable } from "../interfaces";
+import { IInput } from "../interfaces/form";
 
 const StyledField = styled(Field)``;
 

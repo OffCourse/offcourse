@@ -1,14 +1,14 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import Base from "./BaseSection";
-import { IStylable } from "../interfaces";
+import { IThemeable } from "../interfaces";
 import { IHeroSection } from "../interfaces/pageSection";
 import LowDown from "../components/LowDown";
 import Logo from "../components/Logo";
 
-type HeroProps = Pick<IHeroSection, "title" | "role">;
+type HeroProps = IHeroSection & IThemeable;
 
-const Hero: FunctionComponent<HeroProps & IStylable> = ({
+const Hero: FunctionComponent<HeroProps> = ({
   title,
   role,
   backdropPath = "./CellularAutomata",

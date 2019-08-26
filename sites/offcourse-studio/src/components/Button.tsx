@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IButton, IStylable } from "../interfaces";
+import { IButton, IThemeable } from "../interfaces";
 
-const Button: FunctionComponent<IStylable & IButton> = ({
+type ButtonProps = IButton & IThemeable;
+
+const Button: FunctionComponent<ButtonProps> = ({
   type,
   className,
   children,
