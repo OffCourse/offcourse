@@ -13,7 +13,7 @@ const HomePageTemplate: FunctionComponent<IStylable> = ({ className }) => {
         {sections
           .filter(({ publishable }: IPublishable) => publishable)
           .map((section: IPageSection, index: number) => (
-            <PageSection key={index} sectionData={section} />
+            <PageSection key={index} {...section} />
           ))}
       </div>
     </PageTemplate>

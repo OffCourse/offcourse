@@ -6,7 +6,7 @@ import { formatTitle, lowerCase, formatValue } from "./helpers";
 
 const Input: FunctionComponent<IInput & IThemeable> = ({
   className,
-  placeholder = "Enter Something",
+  placeholder,
   name,
   value = "",
   onChange,
@@ -38,7 +38,9 @@ const Input: FunctionComponent<IInput & IThemeable> = ({
     autoFocus: autoFocus,
     disabled,
     value: formatValue(value, isNormalized),
-    placeholder: formatTitle(placeholder),
+    placeholder: placeholder
+      ? formatTitle(placeholder)
+      : formatTitle(`enter your ${name}`),
     onChange: handleChange,
     required,
     onBlur: onBlur

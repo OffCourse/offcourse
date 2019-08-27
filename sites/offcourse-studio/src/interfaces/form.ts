@@ -3,11 +3,11 @@ import { ChangeEvent, FocusEvent } from "react";
 type InputType = "text" | "email" | "tel" | "radio" | "textarea";
 
 export interface IInputField {
-  options: any[];
   placeholder?: string;
   name: string;
   type?: InputType;
   label: string;
+  options?: IFormFieldOptions[];
 }
 
 export type IInput = IInputField & {
@@ -18,9 +18,10 @@ export type IInput = IInputField & {
   required?: boolean;
   checked?: boolean;
   isNormalized?: boolean;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  onBlur: (event: FocusEvent<HTMLInputElement>) => void;
-}
+  rows?: number;
+  onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+};
 
 export interface IFormValues {
   [key: string]: string;
@@ -30,14 +31,8 @@ export interface IFormFieldOptions {
   value: string;
   label: string;
 }
-export interface IFormField {
-  name: string;
-  label: string;
-  type?: "text" | "email" | "tel" | "radio" | "textarea";
-  options?: IFormFieldOptions[];
-}
 
-export type IFormSchema = IFormField[];
+export type IFormSchema = IInputField[];
 
 export interface IForm {
   title: string;

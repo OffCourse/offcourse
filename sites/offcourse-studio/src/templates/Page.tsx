@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { Layout, Main, Container } from "theme-ui";
-import ThemeProvider from "../components/ThemeProvider";
+import ThemeProvider from "../providers/ThemeProvider";
 import Footer from "../components/Footer";
 import createTheme from "../theme";
 import fonts from "../theme/offcourse-fonts";

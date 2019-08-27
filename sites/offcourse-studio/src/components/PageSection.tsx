@@ -1,24 +1,21 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { Hero, Contact, Base } from "../sections";
+import { HeroSection, ContactSection, BaseSection } from "../sections";
 import { IThemeable } from "../interfaces";
 import { IPageSection } from "../interfaces/pageSection";
 
-type PageSectionProps = {
-  sectionData: IPageSection;
-} & IThemeable;
+type PageSectionProps = IPageSection & IThemeable;
 
 const PageSection: FunctionComponent<PageSectionProps> = ({
-  sectionData,
-  className
+  ...sectionData
 }) => {
   switch (sectionData.role) {
     case "hero":
-      return <Hero {...sectionData} className={className} />;
+      return <HeroSection {...sectionData} />;
     case "contact":
-      return <Contact {...sectionData} className={className} />;
+      return <ContactSection {...sectionData} />;
     default:
-      return <Base {...sectionData} className={className} />;
+      return <BaseSection {...sectionData} />;
   }
 };
 

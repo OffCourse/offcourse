@@ -2,9 +2,10 @@ import React, { FunctionComponent } from "react";
 import { config, useSpring, animated } from "react-spring";
 import styled from "@emotion/styled";
 import Tab from "./Tab";
-import { IStylable } from "../interfaces";
+import { IStylable, IThemeable } from "../interfaces";
 
-type CallToActionProps = Pick<IStylable, "className" | "isVisible">;
+type CallToActionProps = IThemeable &
+  Pick<IStylable, "isVisible"> & { children: string };
 
 const CallToAction: FunctionComponent<CallToActionProps> = ({
   className,

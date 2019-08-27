@@ -17,7 +17,7 @@ const Hero: FunctionComponent<HeroProps> = ({
   return (
     <Base className={className} role={role} backdropPath={backdropPath}>
       <LowDown>{title}</LowDown>
-      <Logo size="SMALL" />
+      <Logo />
     </Base>
   );
 };

@@ -5,11 +5,14 @@ export interface IBaseSection {
   publishable: boolean;
   sectionIndex: number;
 }
-export type IHeroSection = IBaseSection;
+export type IHeroSection = IBaseSection & {
+  role: "hero";
+}
 
 export type IContactSection = IBaseSection & {
+  role: "contact";
   callToAction: string;
   form: any;
 };
 
-export type IPageSection = IHeroSection | IContactSection;
+export type IPageSection = IContactSection | IHeroSection;

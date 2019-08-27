@@ -35,6 +35,7 @@ interface ITheme {
 export interface IThemeable {
   className?: string;
   theme?: ITheme;
+  id?: string;
 }
 
 export interface IStylable {

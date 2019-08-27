@@ -1,7 +1,10 @@
-import React, { useState, FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { IStylable } from "../interfaces";
-import { IContactSection } from "../interfaces/sections";
+import { useShowTab } from "../hooks";
+import { IContactSection } from "../interfaces/pageSection";
+import { IForm } from "../interfaces/form";
+import { IThemeable } from "../interfaces";
 import DisplayText from "../components/DisplayText";
 import CallToAction from "../components/CallToAction";
 import Form from "../components/Form";
@@ -12,7 +15,11 @@ import FormContainer from "../containers/FormContainer";
 const url =
   "https://hooks.slack.com/services/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";
 
-const Contact: FunctionComponent<IContactSection & IStylable> = ({
+type ContactSectionProps = IContactSection &
+  Pick<IStylable, "backdropPath"> &
+  IThemeable;
+
+const ContactSection: FunctionComponent<ContactSectionProps> = ({
   title,
   role,
   backdropPath = "./CellularAutomata",
@@ -20,35 +27,32 @@ const Contact: FunctionComponent<IContactSection & IStylable> = ({
   form,
   className
 }) => {
-  const [showCallToAction, setShowCallToAction] = useState(true);
+  const [isVisible, handlePositionChange] = useShowTab();
 
-  const onSubmit = async (values, { resetForm, ...helpers }) => {
-    const res = await fetch(url, {
+  const onSubmit: (args: any, helpers: any) => void = async (
+    values,
+    { resetForm }
+  ) => {
+    await fetch(url, {
       method: "POST",
       body: JSON.stringify({ text: JSON.stringify(values, null, 2) })
     });
     resetForm();
   };
 
-  const handlePositionChange = ({
-    currentPosition,
-    previousPosition,
-    ...rest
-  }) => {
-    setShowCallToAction(currentPosition !== "inside" ? true : false);
-  };
-
   return (
     <Base role={role} className={className} backdropPath={backdropPath}>
-      <CallToAction isVisible={showCallToAction}>{callToAction}</CallToAction>
+      <CallToAction isVisible={isVisible}>{callToAction}</CallToAction>
       <DisplayText>{title}</DisplayText>
       <Waypoint onEnter={handlePositionChange} onLeave={handlePositionChange} />
-      <FormContainer form={form} onSubmit={onSubmit} />
+      <FormContainer form={form} onSubmit={onSubmit}>
+        {(props: IForm) => <Form {...props} />}
+      </FormContainer>
     </Base>
   );
 };
 
-export default styled(Contact)`
+export default styled(ContactSection)`
   grid-template-rows: auto 1fr;
   background-color: ${({ theme }) => theme.colors.primary};
   ${DisplayText} {

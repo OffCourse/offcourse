@@ -1,5 +1,5 @@
-import Base from "./BaseSection";
-import Hero from "./Hero";
-import Contact from "./Contact";
+import BaseSection from "./BaseSection";
+import HeroSection from "./HeroSection";
+import ContactSection from "./ContactSection";
 
-export { Base, Hero, Contact };
+export { BaseSection, HeroSection, ContactSection };

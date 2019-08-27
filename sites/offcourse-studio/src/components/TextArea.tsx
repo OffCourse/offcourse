@@ -1,39 +1,27 @@
-import React, { FunctionComponent, ChangeEvent } from "react";
+import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IInput, IStylable } from "../interfaces";
-import { formatTitle, lowerCase, formatValue } from "./helpers";
+import { IThemeable } from "../interfaces";
+import { IInput } from "../interfaces/form";
+import { formatTitle } from "./helpers";
 
-const TextArea: FunctionComponent<IInput & IStylable> = ({
+const TextArea: FunctionComponent<IInput & IThemeable> = ({
   className,
   placeholder = "Enter Something",
   name,
   value = "",
   onChange,
   onBlur,
+  rows = 4,
   autoFocus = false,
-  isDisabled = false,
-  isNormalized = true
+  disabled = false
 }) => {
-  const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = e => {
-    if (!onChange) {
-      return;
-    }
-    if (!isNormalized) {
-      return onChange(e);
-    }
-
-    const value = lowerCase(e.target.value);
-    e.target.value = value;
-    return onChange(e);
-  };
-
   return (
     <div className={className}>
       <textarea
         autoFocus={autoFocus}
-        rows={4}
+        rows={rows}
         name={name}
-        disabled={isDisabled}
+        disabled={disabled}
         value={value}
         placeholder={formatTitle(placeholder)}
         onChange={onChange}

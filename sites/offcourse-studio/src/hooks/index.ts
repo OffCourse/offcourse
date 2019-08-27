@@ -46,4 +46,17 @@ const useMeasure: () => [IMeasurable, { ref: any }] = () => {
   return [bounds, { ref }];
 };
 
-export { useGetAllSections, useMeasure };
+const useShowTab: () => [boolean, (args: any) => void] = () => {
+  const [isVisible, setVisibility] = useState(true);
+
+  const handlePositionChange = ({
+    currentPosition,
+    previousPosition,
+  }) => {
+    setVisibility(currentPosition !== "inside" ? true : false);
+  };
+
+  return [isVisible, handlePositionChange]
+}
+
+export { useShowTab, useGetAllSections, useMeasure };
