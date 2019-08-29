@@ -44,6 +44,11 @@
       "shouldPublish": true
     },
     {
+      "packageName": "@offcourse/homepage-theme",
+      "projectFolder": "gatsby-themes/homepage-theme",
+      "shouldPublish": true
+    },
+    {
       "packageName": "@offcourse/atoms",
       "projectFolder": "components/atoms",
       "shouldPublish": true
