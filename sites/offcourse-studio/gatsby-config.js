@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+    "@offcourse/homepage-theme",
     {
       resolve: "gatsby-source-filesystem",
       options: {

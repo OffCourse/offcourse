@@ -23,9 +23,9 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
     error: baseColors.red
   },
   fonts: {
-    body: `${fonts.body.fontFamily}, Nitti Grotesk, Helvetica, sans-serif`,
-    heading: `${fonts.heading.fontFamily}, Nitti Grotesk Bold, Helvetica Bold, sans-serif`,
-    monospace: `${fonts.monospace.fontFamily}, Nitti Bold, Helvetica Bold, sans-serif`
+    body: `${fonts.body.fontFamily}, Helvetica, sans-serif`,
+    heading: `${fonts.heading.fontFamily}, Helvetica Bold, sans-serif`,
+    monospace: `${fonts.monospace.fontFamily}, Helvetica Bold, sans-serif`
   },
   fontSizes: ["0.75rem", "1rem", "1.375rem", "1.75rem", "2.5rem", "4rem"],
   grayScale: [
