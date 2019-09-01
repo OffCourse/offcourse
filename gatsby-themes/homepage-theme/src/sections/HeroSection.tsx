@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import Base from "./BaseSection";
-import { IThemeable } from "../interfaces";
-import { IHeroSection } from "../interfaces/pageSection";
+import { IThemeable } from "@offcourse/interfaces";
+import { IHeroSection } from "@offcourse/interfaces/src/pageSection";
 import LowDown from "../components/LowDown";
 import Logo from "../components/Logo";
 
@@ -17,6 +17,7 @@ const Hero: FunctionComponent<HeroProps> = ({
   return (
     <Base className={className} role={role} backdropPath={backdropPath}>
       <LowDown>{title}</LowDown>
+      <Logo />
     </Base>
   );
 };

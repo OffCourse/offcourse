@@ -5,7 +5,7 @@ import { IPageSection, IMeasurable } from "../interfaces";
 
 const useGetAllSections = () => {
   const data = useStaticQuery(graphql`
-      query allHomePageSections {
+      query xallHomePageSections {
         allPageSection {
           edges {
             section: node {

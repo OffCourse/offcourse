@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { Layout, Main, Container } from "theme-ui";
 import ThemeProvider from "../providers/ThemeProvider";
-import createTheme from "../theme";
+import theme from "../theme";
 
 const PageTemplate = forwardRef(
   (
@@ -14,7 +14,7 @@ const PageTemplate = forwardRef(
     ref: any
   ) => {
     return (
-      <ThemeProvider theme={createTheme({})}>
+      <ThemeProvider theme={theme}>
         <Layout>
           <Main>
             <Container>

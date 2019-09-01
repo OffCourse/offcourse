@@ -1,4 +1,7 @@
 module.exports = {
+  siteMetadata: {
+    title: "Offcourse Studio_"
+  },
   plugins: [
     "@offcourse/homepage-theme",
     {

@@ -1,16 +1,11 @@
 import { useRef, useEffect, useState } from "react";
 import ResizeObserver from "resize-observer-polyfill";
 import { graphql, useStaticQuery } from "gatsby";
-import { IPageSection, IMeasurable } from "../interfaces";
+import { IMeasurable } from "@offcourse/interfaces";
 
 const useGetAllSections = () => {
   const data = useStaticQuery(graphql`
       query allHomePageSections {
-        site {
-            siteMetadata {
-              title
-            }
-        }
         allPageSection {
           edges {
             section: node {
@@ -35,9 +30,8 @@ const useGetAllSections = () => {
         }
     }
 }`);
-  const title = data.site.siteMetadata.title;
   const sections = data.allPageSection.edges.map(({ section }: { section: IPageSection }) => section);
-  return { title, sections };
+  return { sections };
 };
 
 const useMeasure: () => [IMeasurable, { ref: any }] = () => {

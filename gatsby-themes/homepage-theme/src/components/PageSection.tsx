@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
 import { HeroSection, ContactSection, BaseSection } from "../sections";
-import { IThemeable } from "../interfaces";
-import { IPageSection } from "../interfaces/pageSection";
+import { IThemeable } from "@offcourse/interfaces";
+import { IPageSection } from "@offcourse/interfaces/src/pageSection";
 
 type PageSectionProps = IPageSection & IThemeable;
 

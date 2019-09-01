@@ -1,7 +1,8 @@
-import defaultFonts from "./default-fonts";
+import fonts from "./default-fonts";
 import getFontFaces from "./utils";
+import { ITheme } from "../interfaces";
 
-const defaultColors = {
+const baseColors = {
   black: "#000000",
   white: "#FFFFFF",
   darkGray: "#3d3d3d",
@@ -12,15 +13,17 @@ const defaultColors = {
   green: "#A5CC45",
   blue: "#75C7B3",
 };
-const primary = defaultColors.blue;
-const secondary = defaultColors.yellow;
+const primary = baseColors.blue;
+const secondary = baseColors.yellow;
+const negative = primary === baseColors.blue ? baseColors.white : baseColors.black;
+const error = baseColors.red;
 
-const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
+const theme: ITheme = {
   colors: {
     primary,
-    negative: primary === baseColors.blue ? baseColors.white : baseColors.black,
     secondary,
-    error: baseColors.red
+    negative,
+    error,
   },
   fonts: {
     body: `${fonts.body.fontFamily}, Helvetica, sans-serif`,
@@ -117,6 +120,6 @@ const createTheme = ({ fonts = defaultFonts, baseColors = defaultColors }) => ({
             box-sizing: border-box;
         }
      `
-});
+};
 
-export default createTheme;
+export default theme;

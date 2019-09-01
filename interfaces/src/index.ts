@@ -1,29 +1,64 @@
-import { Variant } from "@offcourse/enums";
+export interface IPublishable {
+  publishable: boolean;
+}
 
-export interface ISVG {
-    svg: string;
-    dimensions: {
-        width: number;
-        height: number;
-    };
-    background: string;
+export interface IMeasurable {
+  width?: number;
+  left?: number;
+  top?: number;
+  height?: number;
+}
+
+interface IColor {
+  primary: string;
+  negative: string;
+  secondary: string;
+  error: string;
+}
+
+interface IFonts {
+  heading: string;
+  monospace: string;
+  body: string;
 }
 
 export interface ITheme {
-    name: string;
-    avatars: { [error: string]: ISVG };
-    buttonSizes: any;
-    breakpoints: string[];
-    fontSizes: string[];
-    lineHeights: string[];
-    logo: ISVG;
-    space: string[];
-    colors: { [signal in Variant]: string };
-    borders: string[];
-    fonts: { [fontName: string]: string };
-    grayScale: string[];
-    globals: string;
-    signalColors: { [signal in Variant]: { color: string } };
-    signalColorCombos: { [signal in Variant]: any };
-    widths: any;
+  grayScale: string[];
+  colors: IColor;
+  space: string[];
+  breakpoints: string[];
+  fonts: IFonts;
+  fontSizes: string[];
+  lineHeights: string[];
+}
+
+export interface IThemeable {
+  className?: string;
+  theme?: ITheme;
+  id?: string;
+}
+
+export interface IStylable {
+  backdropPath?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
+  isVisible?: boolean;
+  isBasic?: boolean;
+}
+
+export interface ILink {
+  href: string;
+}
+
+export interface ITab {
+  title: string;
+}
+
+export interface IMessage {
+  children: string;
+};
+
+export interface IButton {
+  type?: "submit" | "button";
+  disabled?: boolean;
 }

@@ -1,12 +1,18 @@
 import React, { FunctionComponent } from "react";
-import { useSiteMetaData, useMeasure, useGetAllSections } from "../hooks";
+import styled from "@emotion/styled";
+import { useMeasure, useGetAllSections } from "../hooks";
 import PageTemplate from "./Page";
 import PageSection from "../components/PageSection";
+import { IThemeable } from "@offcourse/interfaces";
+import { IPageSection } from "@offcourse/interfaces/src/pageSection";
 
-const HomePageTemplate = ({ className }) => {
-  const { title, sections } = useGetAllSections();
+type HomePageTemplateProps = IThemeable;
+
+const HomePageTemplate: FunctionComponent<HomePageTemplateProps> = ({
+  className
+}) => {
+  const { sections }: { sections: IPageSection[] } = useGetAllSections();
   const [{ width, height }, bind] = useMeasure();
-  console.log(title);
   return (
     <PageTemplate {...bind} className={className}>
       <div>
@@ -20,4 +26,4 @@ const HomePageTemplate = ({ className }) => {
   );
 };
 
-export default HomePageTemplate;
+export default styled(HomePageTemplate)``;

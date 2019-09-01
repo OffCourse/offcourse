@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import { IThemeable } from "../interfaces";
+import { IThemeable } from "@offcourse/interfaces";
 
 const LowDown: FunctionComponent<IThemeable> = ({ children, className }) => {
   return (

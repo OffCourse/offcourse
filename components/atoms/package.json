@@ -11,7 +11,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "~7.5.5",
-    "@emotion/core": "~10.0.16",
+    "@emotion/core": "~10.0.17",
     "@offcourse/themes": "^1.4.11",
     "@offcourse/enums": "^1.4.11",
     "@storybook/addon-actions": "^5.1.11",
@@ -37,7 +37,7 @@
     "react-dom": "^16.9.0",
     "storybook-addon-styled-component-theme": "^1.2.4",
     "styled-components": "^4.3.2",
-    "webpack": "~4.39.2",
+    "webpack": "~4.39.3",
     "webpack-cli": "^3.3.7"
   }
 }
