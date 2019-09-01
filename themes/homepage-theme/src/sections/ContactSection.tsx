@@ -6,7 +6,9 @@ import BaseSection from "./BaseSection";
 
 type ContactSectionProps = IContactSection & IThemeable;
 
-const ContactSection: FunctionComponent<ContactSectionProps> = props => {
+const ContactSection: FunctionComponent<ContactSectionProps> = ({
+  ...props
+}) => {
   return <BaseSection {...props}></BaseSection>;
 };
 

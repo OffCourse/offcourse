@@ -8,14 +8,9 @@ import Logo from "../components/Logo";
 
 type HeroProps = IHeroSection & IThemeable;
 
-const Hero: FunctionComponent<HeroProps> = ({
-  title,
-  role,
-  backdropPath = "./CellularAutomata",
-  className
-}) => {
+const Hero: FunctionComponent<HeroProps> = ({ title, ...props }) => {
   return (
-    <Base className={className} role={role} backdropPath={backdropPath}>
+    <Base {...props}>
       <LowDown>{title}</LowDown>
       <Logo />
     </Base>

@@ -30,6 +30,8 @@ export interface ITheme {
   fonts: IFonts;
   fontSizes: string[];
   lineHeights: string[];
+  styles: any;
+  globals: any;
 }
 
 export interface IThemeable {

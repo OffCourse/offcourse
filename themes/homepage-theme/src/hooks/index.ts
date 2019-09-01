@@ -53,9 +53,8 @@ const useMeasure: () => [IMeasurable, { ref: any }] = () => {
 const useShowTab: () => [boolean, (args: any) => void] = () => {
   const [isVisible, setVisibility] = useState(true);
 
-  const handlePositionChange = ({
+  const handlePositionChange: (args: { currentPosition: string }) => void = ({
     currentPosition,
-    previousPosition,
   }) => {
     setVisibility(currentPosition !== "inside" ? true : false);
   };

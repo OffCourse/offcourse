@@ -1,12 +1,11 @@
 export interface IBaseSection {
-  title: string;
-  backdropPath?: string;
   role: string;
   publishable: boolean;
-  sectionIndex: number;
+  backdropPath?: string;
 }
 export type IHeroSection = IBaseSection & {
   role: "hero";
+  title: string;
 }
 
 export type IContactSection = IBaseSection & {

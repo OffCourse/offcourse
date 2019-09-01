@@ -1,6 +1,6 @@
 import fonts from "./default-fonts";
 import getFontFaces from "./utils";
-import { ITheme } from "../interfaces";
+import { ITheme } from "@offcourse/interfaces";
 
 const baseColors = {
   black: "#000000",
