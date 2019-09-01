@@ -1,0 +1,4 @@
+{
+    "private": true,
+    "workspaces": ["interfaces", "themes/homepage-theme", "sites/offcourse-studio"]
+}

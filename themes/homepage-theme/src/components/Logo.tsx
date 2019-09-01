@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from "react";
 import styled from "@emotion/styled";
-import DisplayText from "./DisplayText";
-import { useGetAllSections } from "@offcourse/homepage-theme/src/hooks";
+import { useGetAllSections } from "../hooks";
+import { Styled } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces";
 
 const Logo: FunctionComponent<IThemeable> = ({ className }) => {
   const { siteName } = useGetAllSections();
-  return <DisplayText className={className}>{siteName}</DisplayText>;
+  return <Styled.h3 className={className}>{siteName}</Styled.h3>;
 };
 
 export default styled(Logo)`
@@ -14,8 +14,5 @@ export default styled(Logo)`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-
-  h1 {
-    margin-right: 0;
-  }
+  margin: 1rem;
 `;

@@ -9,11 +9,9 @@
   },
   "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "~7.5.5",
-    "@emotion/core": "~10.0.17",
-    "@offcourse/themes": "^1.4.11",
-    "@offcourse/enums": "^1.4.11",
+    "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@emotion/core": "^10.0.16",
     "@storybook/addon-actions": "^5.1.11",
     "@storybook/addon-backgrounds": "^5.1.11",
     "@storybook/addon-knobs": "^5.1.11",

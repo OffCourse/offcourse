@@ -4,40 +4,18 @@
   "description": "",
   "main": "index.js",
   "private": true,
-  "scripts": {
-    "build": "gatsby build"
+    "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "clean": "gatsby clean"
   },
-  "author": "",
+  "author": "Yeehaa",
   "license": "MIT",
   "dependencies": {
-    "@types/theme-ui": "^0.2.2",
-    "@types/yup": "^0.26.23",
-    "axios": "^0.19.0",
-    "eslint-plugin-flowtype": "^2.50.3",
-    "@offcourse/interfaces": "*",
-    "@offcourse/homepage-theme": "*",
-    "@mdx-js/react": "~1.4.0",
-    "@emotion/core": "~10.0.17",
-    "@emotion/styled": "~10.0.17",
-    "formik": "^2.0.1-rc.13",
-    "gatsby": "^2.15.1",
-    "gatsby-plugin-typescript": "^2.1.5",
-    "gatsby-source-filesystem": "^2.1.18",
-    "gatsby-plugin-theme-ui": "0.2.38",
-    "gatsby-plugin-emotion": "^4.1.4",
-    "gatsby-transformer-yaml": "^2.2.7",
-    "gatsby-plugin-react-svg": "2.1.2",
-    "ramda": "^0.26.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-spring": "^8.0.27",
-    "react-waypoint": "^9.0.2",
-    "resize-observer-polyfill": "^1.5.1",
-    "simplex-noise": "^2.4.0",
-    "ts-node": "^8.3.0",
-    "theme-ui": "^0.2.38",
-    "typescript": "^3.6.2",
-    "voca": "^1.4.0",
-    "yup": "^0.27.0"
+        "gatsby": "^2.14.0",
+        "@offcourse/homepage-theme": "*",
+        "gatsby-plugin-typescript": "^2.1.5",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0"
   }
 }
