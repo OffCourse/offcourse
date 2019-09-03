@@ -17,6 +17,13 @@ const primary = baseColors.blue;
 const secondary = baseColors.yellow;
 const negative = primary === baseColors.blue ? baseColors.white : baseColors.black;
 const error = baseColors.red;
+const grayScale = [
+  baseColors.white,
+  baseColors.lightGray,
+  baseColors.mediumGray,
+  baseColors.darkGray,
+  baseColors.black
+];
 
 const theme: ITheme = {
   colors: {
@@ -24,20 +31,16 @@ const theme: ITheme = {
     secondary,
     negative,
     error,
+    grayScale
   },
   fonts: {
     body: `${fonts.body.fontFamily}, Helvetica, sans-serif`,
     heading: `${fonts.heading.fontFamily}, Helvetica Bold, sans-serif`,
     monospace: `${fonts.monospace.fontFamily}, Helvetica Bold, sans-serif`
   },
+
+  grayScale,
   fontSizes: ["0.75rem", "1rem", "1.375rem", "1.75rem", "2.5rem", "4rem"],
-  grayScale: [
-    baseColors.white,
-    baseColors.lightGray,
-    baseColors.mediumGray,
-    baseColors.darkGray,
-    baseColors.black
-  ],
   breakpoints: ["30rem", "48rem", "64rem", "100rem"],
   lineHeights: [
     "1rem",
