@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from "react";
 import { Formik } from "formik";
-import { IForm } from "../../interfaces/form";
+import { IForm } from "@offcourse/interfaces/src/form";
 import { initialize } from "./helpers";
 
 type FormContainerProps = {

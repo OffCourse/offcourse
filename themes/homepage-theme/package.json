@@ -14,8 +14,8 @@
         "lint": "tslint --project ."
     },
     "peerDependencies": {
-        "gatsby": "^2.14.0",
-        "gatsby-plugin-typescript": "^2.1.5",
+        "gatsby": "^2.15.3",
+        "gatsby-plugin-typescript": "^2.1.6",
         "react": "^16.9.0",
         "react-dom": "^16.9.0"
     },
@@ -23,28 +23,34 @@
         "@babel/core": "^7.5.5",
         "@types/react": "^16.9.2",
         "@types/react-dom": "^16.9.0",
-        "@typescript-eslint/eslint-plugin": "^2.0.0",
-        "@typescript-eslint/parser": "^2.0.0",
-        "eslint": "^6.2.2",
+        "@typescript-eslint/eslint-plugin": "^2.1.0",
+        "@typescript-eslint/parser": "^2.1.0",
+        "eslint": "^6.3.0",
         "eslint-config-prettier": "^6.1.0",
         "eslint-plugin-prettier": "^3.1.0",
         "eslint-plugin-react": "^7.14.3",
-        "gatsby": "^2.14.0",
+        "gatsby": "^2.15.3",
         "gatsby-plugin-emotion": "^4.1.5",
-        "gatsby-plugin-typescript": "^2.1.5",
+        "gatsby-plugin-typescript": "^2.1.6",
         "prettier": "^1.18.2",
         "react": "^16.9.0",
         "react-dom": "^16.9.0",
-        "typescript": "^3.5.3"
+        "typescript": "^3.6.2"
     },
     "dependencies": {
-        "@emotion/core": "^10.0.16",
-        "@emotion/styled": "^10.0.15",
+        "@emotion/core": "^10.0.17",
+        "@emotion/styled": "^10.0.17",
         "@mdx-js/react": "^1.4.0",
+        "@types/ramda": "^0.26.21",
         "@types/theme-ui": "^0.2.2",
-        "gatsby-source-filesystem": "^2.1.9",
-        "gatsby-transformer-yaml": "^2.2.7",
+        "@types/voca": "^1.4.0",
+        "formik": "^2.0.1-rc.13",
+        "gatsby-source-filesystem": "^2.1.19",
+        "gatsby-transformer-yaml": "^2.2.8",
+        "ramda": "^0.26.1",
         "resize-observer-polyfill": "^1.5.1",
-        "theme-ui": "^0.2.36"
+        "theme-ui": "^0.2.38",
+        "voca": "^1.4.0",
+        "yup": "^0.27.0"
     }
 }

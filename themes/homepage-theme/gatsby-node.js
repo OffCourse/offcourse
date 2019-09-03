@@ -27,13 +27,22 @@ exports.sourceNodes = ({ actions, reporter }) => {
         fields: [FormField]
     }
 
+    type ContactInfo {
+      street: String
+      zipCode: String
+      city: String
+      country: String
+      email: String
+    }
+
     type HomePageSection {
         role: String!
-        title: String!
+        title: String
         backdropPath: String
         publishable: Boolean
         callToAction: String
         form: Form
+        contactInfo: ContactInfo
      }
 
     type HomePage implements Node @dontInfer {

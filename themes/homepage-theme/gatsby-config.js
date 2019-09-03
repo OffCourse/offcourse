@@ -1,11 +1,30 @@
-module.exports = ({ contentPath = "data" }) => ({
+// module.exports = ({ contentPath = "data" }) => ({
+//   plugins: [
+//     `gatsby-plugin-emotion`,
+//     `gatsby-plugin-typescript`,
+//     {
+//       resolve: "gatsby-source-filesystem",
+//       options: {
+//         path: contentPath
+//       }
+//     },
+//     {
+//       resolve: "gatsby-transformer-yaml",
+//       options: {
+//         typeName: "HomePage"
+//       }
+//     }
+//   ]
+// });
+
+module.exports = {
   plugins: [
     `gatsby-plugin-emotion`,
     `gatsby-plugin-typescript`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: contentPath
+        path: "data"
       }
     },
     {
@@ -15,4 +34,4 @@ module.exports = ({ contentPath = "data" }) => ({
       }
     }
   ]
-});
+};

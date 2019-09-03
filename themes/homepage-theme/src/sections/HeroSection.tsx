@@ -18,21 +18,21 @@ const Hero: FunctionComponent<HeroProps> = ({ title, ...props }) => {
 };
 
 export default styled(Hero)`
+  padding: 0 1rem;
+  min-height: 70vh;
   ${LowDown} {
-    padding: 1rem;
     align-items: center;
   }
 
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
-    ${LowDown} {
-    }
-  }
-
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[2]}) {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 4fr 2fr;
     grid-template-rows: 3fr 1fr;
     ${LowDown} {
       grid-column: 1/2;
+    }
+    ${Logo} {
+      grid-column: 2/3;
+      grid-row: 2/3;
     }
   }
 

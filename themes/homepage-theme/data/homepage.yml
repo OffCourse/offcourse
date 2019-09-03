@@ -36,6 +36,11 @@ sections:
           type: textarea
           label: how did you hear about Offcourse Studio?
     publishable: true
-  - role: call-to-action
-    title: We develop inventive concepts and products with you
-    publishable: false
+  - role: footer
+    publishable: true
+    contactInfo:
+      street: Schiemond 20-22
+      zipCode: 3024EE
+      city: Rotterdam
+      country: The Netherlands
+      email: contact@offcourse.io

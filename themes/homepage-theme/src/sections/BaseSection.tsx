@@ -21,7 +21,7 @@ const Base: FunctionComponent<BaseProps> = ({
 export default styled(Base)`
   display: grid;
   align-items: space-between;
-  background-color: ${({ theme }) => theme.grayScale[2]};
+  background-color: ${({ theme }) => theme.grayScale[0]};
   &:nth-of-type(odd) {
     background-color: ${({ theme }) => theme.grayScale[1]};
   }

@@ -16,6 +16,13 @@ const useGetAllSections = () => {
                     publishable
                     role
                     title
+                    contactInfo {
+                       street
+                       zipCode
+                       city
+                       country
+                       email
+                    }
                     form {
                         title
                         fields {

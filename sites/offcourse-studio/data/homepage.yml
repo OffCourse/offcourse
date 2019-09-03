@@ -36,6 +36,5 @@ sections:
           type: textarea
           label: how did you hear about Offcourse Studio?
     publishable: true
-  - role: call-to-action
-    title: We develop inventive concepts and products with you
-    publishable: false
+ t - role: footer
+    publishable: true
