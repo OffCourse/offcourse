@@ -5,11 +5,10 @@ import {
   ContactSection,
   BaseSection,
   FooterSection
-} from "../sections";
-import { IThemeable } from "@offcourse/interfaces";
+} from "../../sections";
 import { IPageSection } from "@offcourse/interfaces/src/pageSection";
 
-type PageSectionProps = IPageSection & IThemeable;
+type PageSectionProps = IPageSection;
 
 const PageSection: FunctionComponent<PageSectionProps> = ({
   ...sectionData
@@ -26,4 +25,4 @@ const PageSection: FunctionComponent<PageSectionProps> = ({
   }
 };
 
-export default styled(PageSection)``;
+export default PageSection;

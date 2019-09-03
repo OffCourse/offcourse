@@ -36,21 +36,21 @@ export default styled(Footer)`
     line-height: 0.3rem;
   }
 
-  ${Logo} {
-    h1 {
-      font-size: 1.5rem;
-      padding: 0rem 0.3rem;
-      margin: 0 0.3rem 0.3rem 0;
-    }
-  }
+  /* ${Logo} { */
+    /* h1 { */
+      /* font-size: 1.5rem; */
+      /* padding: 0rem 0.3rem; */
+      /* margin: 0 0.3rem 0.3rem 0; */
+    /* } */
+  /* } */
   @media only screen and (min-width: ${({ theme }) => theme.breakpoints[1]}) {
     grid-template-columns: 1fr 1fr;
-    ${Logo} {
-      h1 {
-        font-size: 2rem;
-        padding: 0rem 0.4rem;
-        margin: 0 0.4rem 0.4rem 0;
-      }
-    }
+    /* ${Logo} { */
+      /* h1 { */
+        /* font-size: 2rem; */
+        /* padding: 0rem 0.4rem; */
+        /* margin: 0 0.4rem 0.4rem 0; */
+      /* } */
+    /* } */
   }
 `;

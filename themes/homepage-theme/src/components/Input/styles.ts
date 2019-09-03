@@ -1,0 +1,36 @@
+export const wrapperStyles = {
+  display: "flex",
+  flex: 1,
+  alignItems: "center",
+  py: 4,
+  px: 0,
+  m: 0,
+  boxSizing: "border-box",
+  gridTemplateAreas: "input",
+  bg: "grayScale.1"
+};
+
+export const inputStyles = {
+  width: "100%",
+  py: 0,
+  px: 6,
+  bg: "grayScale.1",
+  m: 0,
+  justifyContent: "center",
+  alignContent: "center",
+  border: 0,
+  fontFamily: "heading",
+  fontSize: 2,
+  lineHeight: 2,
+  boxSizing: "border-box",
+  color: "grayScale.4",
+  "::placeholder": {
+    color: "grayScale.2"
+  },
+  ":selection": {
+    bg: "primary"
+  },
+  "&:focus": {
+    outline: "none"
+  }
+};
