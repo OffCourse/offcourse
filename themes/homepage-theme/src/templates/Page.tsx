@@ -1,5 +1,7 @@
 import React, { forwardRef } from "react";
+import { Global } from "@emotion/core";
 import { Layout, Main, Container } from "theme-ui";
+import { theme } from "../theme";
 
 const PageTemplate = forwardRef(
   (
@@ -13,6 +15,7 @@ const PageTemplate = forwardRef(
   ) => {
     return (
       <Layout>
+        <Global styles={theme.globals} />
         <Main>
           <Container>
             <div ref={ref}>{children}</div>

@@ -1,14 +1,22 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
+import { Styled, jsx } from "theme-ui";
 import styles from "./styles";
+import { IThemeable } from "@offcourse/interfaces";
 
 type DisplayTextProps = {
   children: string;
-};
+} & IThemeable;
 
-const DisplayText: FunctionComponent<DisplayTextProps> = ({ children }) => {
-  return <h1 sx={styles}>{children}</h1>;
+const DisplayText: FunctionComponent<DisplayTextProps> = ({
+  children,
+  className
+}) => {
+  return (
+    <Styled.h1 className={className} sx={styles}>
+      {children}
+    </Styled.h1>
+  );
 };
 
 export default DisplayText;

@@ -5,7 +5,10 @@ import { IInput } from "@offcourse/interfaces/src/form";
 import { formatTitle } from "../helpers";
 import { wrapperStyles, textAreaStyles } from "./styles";
 
-const TextArea: FunctionComponent<IInput> = ({
+type TextAreaProps = IInput & IThemeable;
+
+const TextArea: FunctionComponent<TextAreaProps> = ({
+  className,
   placeholder = "Enter Something",
   name,
   value = "",
@@ -18,6 +21,7 @@ const TextArea: FunctionComponent<IInput> = ({
   return (
     <div sx={wrapperStyles}>
       <textarea
+        className={className}
         sx={textAreaStyles}
         autoFocus={autoFocus}
         rows={rows}

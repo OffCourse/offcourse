@@ -1,4 +1,5 @@
 export const messageStyles = {
+  fontFamily: "heading",
   boxSizing: "border-box",
   display: "flex",
   flex: 1,

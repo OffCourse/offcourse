@@ -1,4 +1,4 @@
-export const wrapperStyles = {
+export default {
   py: 0,
   px: 6,
   minHeight: "70vh",
@@ -7,7 +7,8 @@ export const wrapperStyles = {
 };
 
 export const textStyles = {
-  gridColumn: "1/2"
+  gridColumn: "1/2",
+  gridRow: "1/2"
 };
 
 export const logoStyles = {

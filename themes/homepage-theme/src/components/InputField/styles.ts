@@ -6,6 +6,9 @@ export const wrapperStyles = {
 };
 
 export const labelStyles = {
+  fontFamily: "heading",
+  fontSize: 0,
+  linHeight: 0,
   pt: 0,
   px: 6,
   pb: 4,

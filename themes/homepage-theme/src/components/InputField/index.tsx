@@ -2,6 +2,7 @@
 import { ReactNode, FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IInputField } from "@offcourse/interfaces/src/form";
+import { IThemeable } from "@offcourse/interfaces";
 import { Field, ErrorMessage } from "formik";
 import { formatTitle } from "../helpers";
 import Input from "../Input";
@@ -10,7 +11,7 @@ import TextArea from "../TextArea";
 import Message from "../Message";
 import { wrapperStyles, labelStyles } from "./styles";
 
-type InputFieldProps = IInputField;
+type InputFieldProps = IInputField & IThemeable;
 
 const components: { [key: string]: ReactNode } = {
   text: Input,
@@ -21,6 +22,7 @@ const components: { [key: string]: ReactNode } = {
 };
 
 const InputField: FunctionComponent<InputFieldProps> = ({
+  className,
   label,
   type = "text",
   options,
@@ -28,7 +30,7 @@ const InputField: FunctionComponent<InputFieldProps> = ({
 }) => {
   const Component = components[type || "text"];
   return (
-    <div sx={wrapperStyles}>
+    <div className={className} sx={wrapperStyles}>
       <label sx={labelStyles}>{formatTitle(label)}</label>
       <ErrorMessage
         render={msg => <Message isBasic={true}>{msg}</Message>}

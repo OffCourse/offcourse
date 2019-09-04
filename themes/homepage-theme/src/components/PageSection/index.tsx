@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from "react";
-import styled from "@emotion/styled";
 import {
   HeroSection,
   ContactSection,
@@ -7,8 +6,9 @@ import {
   FooterSection
 } from "../../sections";
 import { IPageSection } from "@offcourse/interfaces/src/pageSection";
+import { IThemeable } from "@offcourse/interfaces";
 
-type PageSectionProps = IPageSection;
+type PageSectionProps = IPageSection & IThemeable;
 
 const PageSection: FunctionComponent<PageSectionProps> = ({
   ...sectionData

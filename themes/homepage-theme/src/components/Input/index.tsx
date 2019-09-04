@@ -1,11 +1,15 @@
 /** @jsx jsx */
 import { FunctionComponent, ChangeEvent } from "react";
 import { jsx } from "theme-ui";
+import { IThemeable } from "@offcourse/interfaces";
 import { IInput } from "@offcourse/interfaces/src/form";
 import { formatTitle, lowerCase, formatValue } from "../helpers";
 import { wrapperStyles, inputStyles } from "./styles";
 
-const Input: FunctionComponent<IInput> = ({
+type InputProps = IInput & IThemeable;
+
+const Input: FunctionComponent<InputProps> = ({
+  className,
   placeholder,
   name,
   value = "",
@@ -46,7 +50,7 @@ const Input: FunctionComponent<IInput> = ({
     onBlur: onBlur
   };
   return (
-    <div sx={wrapperStyles}>
+    <div className={className} sx={wrapperStyles}>
       <input sx={inputStyles} {...baseProps} />
     </div>
   );

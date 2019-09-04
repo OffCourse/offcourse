@@ -65,7 +65,7 @@ const theme: ITheme = {
   styles: {
     root: {
       fontFamily: "body",
-      fontSize: 1
+      fontSize: 1,
     },
     Main: {
       display: "flex",
@@ -102,27 +102,21 @@ const theme: ITheme = {
       fontFamily: "heading",
     }
   },
-  globals: `
-        body {
-            top: 0;
-            left: 0;
-            right: 0;
-            margin: 0;
-        }
-
-        ::-webkit-scrollbar {
-            width: 0px;  /* remove scrollbar space */
-            background: transparent;  /* optional: just make scrollbar invisible */
-        }
-
-        ${getFontFaces(fonts)}
-
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            box-sizing: border-box;
-        }
-     `
+  globals: {
+    body: {
+      fontFamily: "body",
+      top: 0, left: 0, right: 0, margin: 0,
+      "::-webkit-scrollbar": {
+        width: "0px",
+        background: "transparent"
+      }
+    },
+    "*": {
+      webkitFontSmoothing: "antialiased",
+      mosOsxFontSmoothing: "grayscale",
+      boxSizing: "border-box"
+    }
+  },
 };
 
-export default theme;
+export { theme };
