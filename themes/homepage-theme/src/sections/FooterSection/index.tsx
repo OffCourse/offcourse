@@ -27,7 +27,7 @@ const FooterSection: FunctionComponent<FooterProps> = ({
           <p>{email}</p>
         </section>
       </div>
-      <Logo sx={logoStyles}>{siteName}</Logo>
+      <Logo>{siteName}</Logo>
     </Footer>
   );
 };

@@ -11,6 +11,7 @@ export default {
     mr: 0,
     "&:last-of-type": {
       mb: 0,
+      mr: 0
     }
   },
 };
