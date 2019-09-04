@@ -13,9 +13,9 @@ const baseColors = {
   green: "#A5CC45",
   blue: "#75C7B3",
 };
-const primary = baseColors.blue;
-const secondary = baseColors.yellow;
-const negative = primary === baseColors.blue ? baseColors.white : baseColors.black;
+const secondary = baseColors.mediumGray;
+const primary = baseColors.lightGray;
+const negative = primary === baseColors.mediumGray ? baseColors.white : baseColors.black;
 const error = baseColors.red;
 const grayScale = [
   baseColors.white,

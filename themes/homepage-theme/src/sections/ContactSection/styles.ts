@@ -7,7 +7,9 @@ export const textStyles = {
   p: "2rem",
   gridColumn: "1/2",
   gridRow: "1/2",
-  alignSelf: ["start", "center"]
+  alignSelf: ["start", "center"],
+  maxWidth: "40rem",
+  bg: "primary"
 };
 
 export const formStyles = {

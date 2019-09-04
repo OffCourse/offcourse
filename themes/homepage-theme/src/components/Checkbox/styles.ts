@@ -21,5 +21,9 @@ export const wrapperStyles = {
 };
 
 export const labelStyles = {
-  p: 0,
+  fontFamily: "heading",
+  fontSize: 0,
+  lineHeight: 0,
+  pt: 0,
+  userSelect: "none",
 };

@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { Styled, jsx } from "theme-ui";
-import styles from "./styles";
+import { jsx } from "theme-ui";
+import { wrapperStyles, spanStyles, textStyles } from "./styles";
 import { IThemeable } from "@offcourse/interfaces";
 
 type DisplayTextProps = {
@@ -13,9 +13,13 @@ const DisplayText: FunctionComponent<DisplayTextProps> = ({
   className
 }) => {
   return (
-    <Styled.h1 className={className} sx={styles}>
-      {children}
-    </Styled.h1>
+    <div sx={wrapperStyles} className={className}>
+      {children.split(" ").map((word, index) => (
+        <span sx={spanStyles} key={index}>
+          <h1 sx={textStyles}>{word}</h1>
+        </span>
+      ))}
+    </div>
   );
 };
 

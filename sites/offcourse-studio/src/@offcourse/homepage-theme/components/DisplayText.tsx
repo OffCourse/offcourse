@@ -13,13 +13,11 @@ const DisplayText: FunctionComponent<DisplayTextProps> = ({
 }) => {
   const words = children.split(" ");
   return (
-    <div className={className}>
+    <h1 className={className}>
       {words.map((word, index) => (
-        <span key={index}>
-          <h1>{word}</h1>
-        </span>
+        <span key={index}>{word}</span>
       ))}
-    </div>
+    </h1>
   );
 };
 
