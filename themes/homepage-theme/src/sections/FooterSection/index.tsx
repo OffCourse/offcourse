@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from "react";
-import styled from "@emotion/styled";
 import { Styled, Footer } from "theme-ui";
-import Logo from "../components/Logo";
+import Logo from "../../components/Logo";
 import { IThemeable } from "@offcourse/interfaces";
-import { useGetAllSections } from "../hooks";
+import { useGetAllSections } from "../../hooks";
 import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
 
 type FooterProps = IFooterSection & IThemeable;
@@ -30,7 +29,9 @@ const FooterSection: FunctionComponent<FooterProps> = ({
   );
 };
 
-export default styled(FooterSection)`
+export default FooterSection;
+
+const x = `
   display: grid;
   padding: 2rem 1rem 1rem 2rem;
   grid-gap: 1rem;
