@@ -83,8 +83,16 @@ const theme: ITheme = {
       backgroundColor: baseColors.lightGray,
     },
     Container: {
+      overflowX: "hidden",
       padding: 0,
       maxWidth: "100%"
+    },
+    p: {
+
+      fontSize: 1,
+      lineHeight: 1,
+      margin: 0,
+      fontFamily: "body",
     },
     h1: {
       fontSize: 5,

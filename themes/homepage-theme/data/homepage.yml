@@ -4,6 +4,27 @@ sections:
     title: Doing something specific but unmemorable
     backdropPath: "./CellularAutomata"
     publishable: true
+  - role: projects 
+    publishable: true
+    projects:
+      - title: something boring
+        description: |
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+          molestie mauris et elementum eleifend. Suspendisse vestibulum enim
+          et consequat porta. Phasellus rhoncus risus eget enim interdum, a
+          faucibus mi fringilla.
+      - title: something more boring
+        description: |
+          Vestibulum placerat purus diam, sed vestibulum ipsum condimentum nec.
+          Ut vel sem et lorem feugiat tincidunt nec quis turpis. Vestibulum
+          vitae tempor ante. Donec tincidunt ligula eu eros condimentum, id
+          molestie felis condimentum.
+      - title: boring boring boring
+        description: |
+          Nullam tincidunt, tortor nec interdum condimentum, purus diam
+          tincidunt enim, sed laoreet enim quam ut lectus. Interdum et
+          malesuada fames ac ante ipsum primis in faucibus. Proin tortor
+          lorem.
   - role: contact
     title: We do something for you
     callToAction: Work with us

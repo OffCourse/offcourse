@@ -28,6 +28,12 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `yeehaa12345`
+      }
+    },
+    {
       resolve: "gatsby-transformer-yaml",
       options: {
         typeName: "HomePage"

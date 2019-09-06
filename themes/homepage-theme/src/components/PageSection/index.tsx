@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import {
   HeroSection,
   ContactSection,
+  ProjectsSection,
   BaseSection,
   FooterSection
 } from "../../sections";
@@ -16,6 +17,8 @@ const PageSection: FunctionComponent<PageSectionProps> = ({
   switch (sectionData.role) {
     case "hero":
       return <HeroSection {...sectionData} />;
+    case "projects":
+      return <ProjectsSection {...sectionData} />;
     case "contact":
       return <ContactSection {...sectionData} />;
     case "footer":

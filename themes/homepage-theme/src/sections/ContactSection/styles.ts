@@ -5,11 +5,15 @@ export const wrapperStyles = {
 
 export const textStyles = {
   p: "2rem",
+  maxWidth: "40rem",
+};
+
+export const sloganSpaceStyles = {
+  display: "grid",
+  bg: "secondary",
   gridColumn: "1/2",
   gridRow: "1/2",
-  alignSelf: ["start", "center"],
-  maxWidth: "40rem",
-  bg: "primary"
+  alignItems: ["start", "center"],
 };
 
 export const formStyles = {

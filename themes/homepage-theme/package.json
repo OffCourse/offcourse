@@ -46,6 +46,7 @@
         "@types/voca": "^1.4.0",
         "formik": "^2.0.1-rc.13",
         "gatsby-source-filesystem": "^2.1.19",
+        "gatsby-source-instagram": "^0.5.1",
         "gatsby-transformer-yaml": "^2.2.8",
         "ramda": "^0.26.1",
         "resize-observer-polyfill": "^1.5.1",

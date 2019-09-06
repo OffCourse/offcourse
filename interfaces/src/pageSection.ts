@@ -30,4 +30,16 @@ export type IFooterSection = IBaseSection & {
   contactInfo: IContactInfo;
 };
 
-export type IPageSection = IContactSection | IHeroSection;
+export interface IProject {
+  title: string;
+  description: string;
+}
+
+export type IProjectsSection = IBaseSection & {
+  role: "projects";
+  title: string;
+  description: string;
+  projects: IProject[];
+};
+
+export type IPageSection = IContactSection | IHeroSection | IFooterSection | IProjectsSection;

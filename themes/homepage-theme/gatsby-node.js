@@ -35,12 +35,18 @@ exports.sourceNodes = ({ actions, reporter }) => {
       email: String
     }
 
+    type ProjectInfo {
+      title: String
+      description: String
+    }
+
     type HomePageSection {
         role: String!
         title: String
         backdropPath: String
         publishable: Boolean
         callToAction: String
+        projects: [ProjectInfo]
         form: Form
         contactInfo: ContactInfo
      }

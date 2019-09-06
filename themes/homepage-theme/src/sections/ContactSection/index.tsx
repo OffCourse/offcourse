@@ -8,7 +8,12 @@ import BaseSection from "../BaseSection";
 import FormContainer from "../../containers/FormContainer";
 import DisplayText from "../../components/DisplayText";
 import Form from "../../components/Form";
-import { wrapperStyles, textStyles, formStyles } from "./styles";
+import {
+  wrapperStyles,
+  textStyles,
+  formStyles,
+  sloganSpaceStyles
+} from "./styles";
 
 type ContactSectionProps = IContactSection & IThemeable;
 
@@ -20,7 +25,9 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
 }) => {
   return (
     <BaseSection {...props} className={className} sx={wrapperStyles}>
-      <DisplayText sx={textStyles}>{title}</DisplayText>
+      <div sx={sloganSpaceStyles}>
+        <DisplayText sx={textStyles}>{title}</DisplayText>
+      </div>
       <FormContainer form={form} onSubmit={() => {}}>
         {(props: IForm) => <Form {...props} sx={formStyles} />}
       </FormContainer>

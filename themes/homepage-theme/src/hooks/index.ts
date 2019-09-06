@@ -16,6 +16,10 @@ const useGetAllSections = () => {
                     publishable
                     role
                     title
+                    projects {
+                      title
+                      description
+                    }
                     contactInfo {
                        street
                        zipCode
