@@ -5,14 +5,27 @@ export const wrapperStyles = {
   }
 };
 
-export const headerStyles = {
-  textAlign: "left"
-};
+export const headerStyles = {};
 
 export const captionStyles = {
-  p: "2rem"
+  display: "grid",
+  p: "2rem",
+  gridGap: "1rem",
+  alignItems: "end"
 };
 
 export const imageStyles = {
-  width: "100%"
+  paddingTop: "100%",
+  position: "relative"
+};
+
+export const innerStyles = {
+  position: "absolute",
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  img: {
+    width: "100%"
+  }
 };

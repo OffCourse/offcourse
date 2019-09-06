@@ -7,6 +7,7 @@ const useGetAllSections = () => {
   const data = useStaticQuery(graphql`
     query AllHomepageData {
         allHomePage {
+
             edges {
                 node {
                 siteName
@@ -73,4 +74,35 @@ const useShowTab: () => [boolean, (args: any) => void] = () => {
   return [isVisible, handlePositionChange];
 };
 
-export { useShowTab, useGetAllSections, useMeasure };
+const useInterval = (callback, delay) => {
+  const savedCallback = useRef();
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+}
+
+const useCycleArray = (initialArray, delay) => {
+  const indexedItems = initialArray.map((item, index) => ({
+    ...item,
+    index
+  }));
+  const [orderedItems, setOrderedItems] = useState(indexedItems);
+  useInterval(() => {
+    const [first, ...others] = orderedItems;
+    setOrderedItems([...others, first]);
+  }, delay);
+
+  return orderedItems;
+}
+
+export { useCycleArray, useShowTab, useInterval, useGetAllSections, useMeasure };

@@ -4,13 +4,12 @@ import { graphql, useStaticQuery } from "gatsby";
 import { jsx } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces";
 import BaseSection from "../BaseSection";
+import { useCycleArray } from "../../hooks";
 import { IProjectsSection } from "@offcourse/interfaces/src/pageSection";
 import Project from "../../components/Project";
-
-import styles from "./styles";
+import { innerStyles, wrapperStyles } from "./styles";
 
 type ProjectsSectionProps = IProjectsSection & IThemeable;
-
 const useInstaQuery = () => {
   const { allInstaNode } = useStaticQuery(graphql`
     query InstaQuery {
@@ -30,12 +29,18 @@ const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
   ...rest
 }) => {
   const images = useInstaQuery();
+  const orderedProjects = useCycleArray(projects, 1000);
   return (
-    <BaseSection {...rest} className={className} sx={styles}>
-      {projects.map((project, index) => (
-        <Project {...project} imageUrl={images[index]} key={index} />
-      ))}
+    <BaseSection {...rest} className={className} sx={wrapperStyles}>
+      <div sx={innerStyles}>
+        {orderedProjects.map(({ index, ...project }) => (
+          <Project {...project} index={index} key={index}>
+            <img src={images[index]} />
+          </Project>
+        ))}
+      </div>
     </BaseSection>
   );
 };
+
 export default ProjectsSection;

@@ -7,22 +7,28 @@ import { IProject } from "@offcourse/interfaces/src/pageSection";
 import { formatTitle } from "../helpers";
 import {
   imageStyles,
+  innerStyles,
   captionStyles,
   wrapperStyles,
   headerStyles
 } from "./styles";
 
-type ProjectProps = IProject & IThemeable & { imageUrl: string };
+type ProjectProps = IProject & IThemeable & { index: number };
 
 const Project: FunctionComponent<ProjectProps> = ({
   className,
-  imageUrl,
+  index,
+  children,
   title,
   description
 }) => {
   return (
     <article sx={wrapperStyles} className={className}>
-      <img sx={imageStyles} src={imageUrl} />
+      <div sx={imageStyles}>
+        <div sx={innerStyles}>
+          {children || <h1>{`Placeholder ${index}`}</h1>}
+        </div>
+      </div>
       <section sx={captionStyles}>
         <Styled.p>{description}</Styled.p>
         <Styled.h2 sx={headerStyles}>{formatTitle(title)}</Styled.h2>
