@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from "react";
-import { useMeasure, useGetAllSections } from "../hooks";
+import { useMeasure } from "../hooks";
+import useHomepageData from "../hooks/useHomepageData";
 import PageTemplate from "./Page";
 import PageSection from "../components/PageSection";
 import { IPageSection } from "@offcourse/interfaces/src/pageSection";
 
 const HomePageTemplate: FunctionComponent<{}> = ({}) => {
-  const { sections }: { sections: IPageSection[] } = useGetAllSections();
+  const { sections }: { sections: IPageSection[] } = useHomepageData();
   const [{ width, height }, bind] = useMeasure();
   return (
     <PageTemplate {...bind}>

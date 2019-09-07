@@ -1,29 +1,15 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import { jsx } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces";
 import BaseSection from "../BaseSection";
-import { useCycleArray } from "../../hooks";
+import useCycleArray from "../../hooks/useCycleArray";
+import useInstaQuery from "../../hooks/useInstaQuery";
 import { IProjectsSection } from "@offcourse/interfaces/src/pageSection";
 import Project from "../../components/Project";
 import { innerStyles, wrapperStyles } from "./styles";
 
 type ProjectsSectionProps = IProjectsSection & IThemeable;
-const useInstaQuery = () => {
-  const { allInstaNode } = useStaticQuery(graphql`
-    query InstaQuery {
-      allInstaNode(limit: 3, skip: 5) {
-        nodes {
-          original
-        }
-      }
-    }
-  `);
-  return allInstaNode.nodes.map(
-    ({ original }: { original: string }) => original
-  );
-};
 
 const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
   className,

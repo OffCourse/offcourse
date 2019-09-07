@@ -6,7 +6,7 @@ import { IThemeable } from "@offcourse/interfaces";
 import DisplayText from "../../components/DisplayText";
 import BaseSection from "../BaseSection";
 import Logo from "../../components/Logo";
-import { useGetAllSections } from "../../hooks";
+import useHomepageData from "../../hooks/useHomepageData";
 import wrapperStyles, { textStyles, logoStyles } from "./styles";
 
 type HeroSectionProps = IHeroSection & IThemeable;
@@ -16,7 +16,7 @@ const HeroSection: FunctionComponent<HeroSectionProps> = ({
   className,
   ...props
 }) => {
-  const { siteName } = useGetAllSections();
+  const { siteName } = useHomepageData();
   return (
     <BaseSection {...props} className={className} sx={wrapperStyles}>
       <DisplayText sx={textStyles}>{title}</DisplayText>
