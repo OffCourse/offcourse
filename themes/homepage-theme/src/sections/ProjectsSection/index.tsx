@@ -20,7 +20,9 @@ const useInstaQuery = () => {
       }
     }
   `);
-  return allInstaNode.nodes.map(({ original }) => original);
+  return allInstaNode.nodes.map(
+    ({ original }: { original: string }) => original
+  );
 };
 
 const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
