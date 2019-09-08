@@ -42,4 +42,15 @@ export type IProjectsSection = IBaseSection & {
   projects: IProject[];
 };
 
-export type IPageSection = IContactSection | IHeroSection | IFooterSection | IProjectsSection;
+export type IProcessSection = IBaseSection & {
+  role: "process";
+  title: string;
+  description: string;
+  steps: IProject[];
+};
+
+export type IPageSection = IContactSection
+  | IHeroSection
+  | IFooterSection
+  | IProjectsSection
+  | IProcessSection;

@@ -24,9 +24,7 @@ const Project: FunctionComponent<ProjectProps> = ({
   return (
     <article sx={wrapperStyles} className={className}>
       <div sx={imageStyles}>
-        <div sx={innerStyles}>
-          {children || <h1>{`Placeholder ${index}`}</h1>}
-        </div>
+        <div sx={innerStyles}>{children || <Styled.h1>{index}</Styled.h1>}</div>
       </div>
       <section sx={captionStyles}>
         <Styled.p>{description}</Styled.p>

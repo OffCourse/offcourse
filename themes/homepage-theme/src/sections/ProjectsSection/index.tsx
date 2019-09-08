@@ -16,15 +16,12 @@ const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
   projects,
   ...rest
 }) => {
-  const images = useInstaQuery();
   const orderedProjects = useCycleArray(projects, 1000);
   return (
     <BaseSection {...rest} className={className} sx={wrapperStyles}>
       <div sx={innerStyles}>
         {orderedProjects.map(({ index, ...project }) => (
-          <Project {...project} index={index} key={index}>
-            <img src={images[index]} />
-          </Project>
+          <Project {...project} index={index} key={index}></Project>
         ))}
       </div>
     </BaseSection>

@@ -24,6 +24,26 @@ sections:
           tincidunt enim, sed laoreet enim quam ut lectus. Interdum et
           malesuada fames ac ante ipsum primis in faucibus. Proin tortor
           lorem.
+  - role: process 
+    publishable: true
+    steps:
+      - title: map
+        description: |
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+          molestie mauris et elementum eleifend. Suspendisse vestibulum enim
+          et consequat porta. Phasellus rhoncus risus eget enim interdum, a
+          faucibus mi fringilla.
+      - title: strategy
+        description: |
+          Vestibulum placerat purus diam, sed vestibulum ipsum condimentum nec.
+          Ut vel sem et lorem feugiat tincidunt nec quis turpis. Vestibulum
+          vitae tempor ante. 
+      - title: interface
+        description: |
+          Nullam tincidunt, tortor nec interdum condimentum, purus diam
+          tincidunt enim, sed laoreet enim quam ut lectus. Interdum et
+          malesuada fames ac ante ipsum primis in faucibus. Proin tortor
+          lorem.
   - role: contact
     title: We do something for you
     callToAction: Work with us

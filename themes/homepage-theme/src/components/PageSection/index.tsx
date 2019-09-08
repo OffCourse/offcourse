@@ -3,6 +3,7 @@ import {
   HeroSection,
   ContactSection,
   ProjectsSection,
+  ProcessSection,
   BaseSection,
   FooterSection
 } from "../../sections";
@@ -19,6 +20,8 @@ const PageSection: FunctionComponent<PageSectionProps> = ({
       return <HeroSection {...sectionData} />;
     case "projects":
       return <ProjectsSection {...sectionData} />;
+    case "process":
+      return <ProcessSection {...sectionData} />;
     case "contact":
       return <ContactSection {...sectionData} />;
     case "footer":

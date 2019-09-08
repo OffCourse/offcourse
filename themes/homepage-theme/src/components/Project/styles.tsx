@@ -27,5 +27,8 @@ export const innerStyles = {
   right: 0,
   img: {
     width: "100%"
-  }
+  },
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center"
 };

@@ -17,6 +17,10 @@ const useHomepageData = () => {
                       title
                       description
                     }
+                    steps {
+                      title
+                      description
+                    }
                     contactInfo {
                        street
                        zipCode

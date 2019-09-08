@@ -48,6 +48,7 @@ exports.sourceNodes = ({ actions, reporter }) => {
         callToAction: String
         projects: [ProjectInfo]
         form: Form
+        steps: [ProjectInfo]
         contactInfo: ContactInfo
      }
 
