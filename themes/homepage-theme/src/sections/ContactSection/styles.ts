@@ -10,7 +10,7 @@ export const textStyles = {
 
 export const sloganSpaceStyles = {
   display: "grid",
-  bg: "secondary",
+  bg: "primary",
   gridColumn: "1/2",
   gridRow: "1/2",
   alignItems: ["start", "center"],

@@ -3,7 +3,14 @@ import { FunctionComponent } from "react";
 import { Styled, jsx } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces";
 import BaseSection from "../BaseSection";
-import { innerStyles, wrapperStyles } from "./styles";
+import {
+  numberStyles,
+  wrapperStyles,
+  stepStyles,
+  titleStyles,
+  innerStyles
+} from "./styles";
+import { formatTitle } from "../../components/helpers";
 
 type ProcessSectionProps = IProcessSection & IThemeable;
 
@@ -14,15 +21,14 @@ const ProcessSection: FunctionComponent<ProcessSectionProps> = ({
 }) => {
   return (
     <BaseSection {...rest} className={className} sx={wrapperStyles}>
-      <div sx={innerStyles}>
-        {steps.map((step, index) => (
-          <div {...step} index={index} key={index}>
-            <Styled.h1 sx={{ borderBottom: "0.25rem solid black" }}>
-              {index}
-            </Styled.h1>
-          </div>
-        ))}
-      </div>
+      {steps.map(({ title, ...step }, index) => (
+        <div {...step} sx={stepStyles} index={index} key={index}>
+          <h1 sx={titleStyles}>
+            <span sx={numberStyles}>{`${index + 1}.`}</span>
+            {formatTitle(title)}
+          </h1>
+        </div>
+      ))}
     </BaseSection>
   );
 };
