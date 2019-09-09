@@ -1,6 +1,7 @@
 export const wrapperStyles = {
   display: "grid",
   p: 6,
+  bg: "secondary",
   pt: "2rem",
   minHeight: "20vh",
   maxHeight: "35vh",

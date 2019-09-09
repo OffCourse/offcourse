@@ -16,6 +16,7 @@ export default {
   paddingLeft: 6,
   paddingRight: 6,
   fontFamily: "heading",
+  fontWeight: "bold",
   fontSize: 1,
   lineHeight: 2,
   width: "100%",

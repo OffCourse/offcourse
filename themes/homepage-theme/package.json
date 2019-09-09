@@ -49,6 +49,7 @@
         "gatsby-source-instagram": "^0.5.1",
         "gatsby-transformer-yaml": "^2.2.8",
         "ramda": "^0.26.1",
+        "react-spring": "^8.0.27",
         "resize-observer-polyfill": "^1.5.1",
         "theme-ui": "^0.2.38",
         "voca": "^1.4.0",

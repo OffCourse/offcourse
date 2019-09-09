@@ -27,18 +27,18 @@ sections:
   - role: process 
     publishable: true
     steps:
-      - title: map
+      - title: start
         description: |
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
           molestie mauris et elementum eleifend. Suspendisse vestibulum enim
           et consequat porta. Phasellus rhoncus risus eget enim interdum, a
           faucibus mi fringilla.
-      - title: strategy
+      - title: continue
         description: |
           Vestibulum placerat purus diam, sed vestibulum ipsum condimentum nec.
           Ut vel sem et lorem feugiat tincidunt nec quis turpis. Vestibulum
           vitae tempor ante. 
-      - title: interface
+      - title: finish
         description: |
           Nullam tincidunt, tortor nec interdum condimentum, purus diam
           tincidunt enim, sed laoreet enim quam ut lectus. Interdum et
@@ -75,6 +75,17 @@ sections:
         - name: source-of-interest
           type: textarea
           label: how did you hear about our generic brand?
+    publishable: true
+  - role: about
+    title: About Us
+    description: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum
+      dolor at neque molestie pellentesque. In finibus vel diam eget hendrerit.
+      Nam vitae nibh non leo commodo elementum. Quisque ac luctus nisi, nec
+      ullamcorper tellus. Donec convallis nunc tempus, mollis turpis at, congue
+      nibh. In condimentum et odio a tincidunt. Mauris consequat viverra ornare.
+      Phasellus a volutpat libero. Morbi sed lectus et leo tincidunt molestie.
+      Fusce sit amet est venenatis, rutrum lacus et, hendrerit mi. 
     publishable: true
   - role: footer
     publishable: true

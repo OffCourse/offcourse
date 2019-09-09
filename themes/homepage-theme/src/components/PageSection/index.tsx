@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from "react";
 import {
+  AboutSection,
+  BaseSection,
+  FooterSection,
   HeroSection,
   ContactSection,
   ProjectsSection,
-  ProcessSection,
-  BaseSection,
-  FooterSection
+  ProcessSection
 } from "../../sections";
 import { IPageSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces";
@@ -16,6 +17,8 @@ const PageSection: FunctionComponent<PageSectionProps> = ({
   ...sectionData
 }) => {
   switch (sectionData.role) {
+    case "about":
+      return <AboutSection {...sectionData} />;
     case "hero":
       return <HeroSection {...sectionData} />;
     case "projects":

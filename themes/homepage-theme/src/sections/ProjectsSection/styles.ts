@@ -4,6 +4,3 @@ export const innerStyles = {
   ml: ["calc(-100vw)", "calc(-70vw)", "calc(-50vw)", 0],
   mr: ["calc(-100vw)", "calc(-70vw)", "calc(-50vw)", 0],
 };
-
-export const wrapperStyles = {
-};

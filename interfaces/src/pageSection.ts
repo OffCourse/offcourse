@@ -35,6 +35,12 @@ export interface IProject {
   description: string;
 }
 
+export interface IStep {
+  title: string;
+  description: string;
+  index: number;
+}
+
 export type IProjectsSection = IBaseSection & {
   role: "projects";
   title: string;
@@ -46,7 +52,7 @@ export type IProcessSection = IBaseSection & {
   role: "process";
   title: string;
   description: string;
-  steps: IProject[];
+  steps: IStep[];
 };
 
 export type IPageSection = IContactSection

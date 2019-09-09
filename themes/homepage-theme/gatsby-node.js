@@ -43,6 +43,7 @@ exports.sourceNodes = ({ actions, reporter }) => {
     type HomePageSection {
         role: String!
         title: String
+        description: String
         backdropPath: String
         publishable: Boolean
         callToAction: String

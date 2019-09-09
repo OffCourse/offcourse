@@ -13,6 +13,7 @@ const useHomepageData = () => {
                     publishable
                     role
                     title
+                    description
                     projects {
                       title
                       description
