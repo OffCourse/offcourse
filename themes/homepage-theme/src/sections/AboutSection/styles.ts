@@ -1,14 +1,16 @@
 export const wrapperStyles = {
   gridTemplateRows: ["auto 1fr", "1fr"],
-  gridTemplateColumns: ["1fr", "3fr 2fr"]
+  gridTemplateColumns: ["1fr", "3fr 2fr"],
+  minHeight: "30rem"
 };
 
 export const textStyles = {
-  display: "grid",
+  display: "flex",
+  flexDirection: "column",
   gridColumn: "1/2",
   gridRow: ["2/3", "1/2"],
   p: "4rem",
-  alignItems: ["start", "center"],
+  justifyContent: ["start", "center"],
   bg: "grayScale.0"
 };
 

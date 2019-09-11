@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
+import { animated } from "react-spring";
 import { IThemeable } from "@offcourse/interfaces";
 import { wrapperStyles, titleStyles, numberStyles } from "./styles";
 import { formatTitle } from "../helpers";
@@ -15,13 +16,13 @@ const Step: FunctionComponent<StepProps> = ({
   description
 }) => {
   return (
-    <div sx={wrapperStyles} className={className}>
+    <animated.div sx={wrapperStyles} className={className}>
       <h1 sx={titleStyles}>
         <span sx={numberStyles}>{index}.</span>
         {formatTitle(title)}
       </h1>
       <p>{description}</p>
-    </div>
+    </animated.div>
   );
 };
 

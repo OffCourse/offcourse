@@ -4,6 +4,17 @@ sections:
     title: Doing something specific but unmemorable
     backdropPath: "./CellularAutomata"
     publishable: true
+  - role: about
+    title: Stuffs we do
+    description: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum
+      dolor at neque molestie pellentesque. In finibus vel diam eget hendrerit.
+      Nam vitae nibh non leo commodo elementum. Quisque ac luctus nisi, nec
+      ullamcorper tellus. Donec convallis nunc tempus, mollis turpis at, congue
+      nibh. In condimentum et odio a tincidunt. Mauris consequat viverra ornare.
+      Phasellus a volutpat libero. Morbi sed lectus et leo tincidunt molestie.
+      Fusce sit amet est venenatis, rutrum lacus et, hendrerit mi. 
+    publishable: true
   - role: projects 
     publishable: true
     projects:

@@ -63,3 +63,6 @@ temp
 # Rush files
 common/temp/**
 package-deps.json
+
+**/*/.cache
+**/*/public

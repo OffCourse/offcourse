@@ -12,6 +12,7 @@ const Base: FunctionComponent<BaseProps> = ({
   backdropPath = "./CellularAutomata",
   role,
   className,
+  style,
   children
 }) => {
   const context: { theme: any } = useThemeUI();
@@ -19,7 +20,7 @@ const Base: FunctionComponent<BaseProps> = ({
   const white = context.theme.grayScale[0];
   const [{ width, height }, bind] = useMeasure();
   return (
-    <div {...bind} id={role} className={className}>
+    <div {...bind} id={role} style={style} className={className}>
       <Backdrop
         backdropPath={backdropPath}
         primaryColor={white}
