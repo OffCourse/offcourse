@@ -1172,6 +1172,11 @@
   resolved "https://registry.yarnpkg.com/@types/voca/-/voca-1.4.0.tgz#59d93132e411f13fbaacb166a2047464c463535a"
   integrity sha512-LdffYbNO8Mg06oPouDq13XwarZbYEvLHMCeV04B/LYl2o6miyg4qBa3YduIZcNhK8/r3Soq0a1tCDeprkBXTIQ==
 
+"@types/yup@^0.26.23":
+  version "0.26.23"
+  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.26.23.tgz#00721a3b675e7609e5bcccb94234e86b754bcd04"
+  integrity sha512-+tipAL6prdInS/avA6QityIFBDvHnqk1Tv9L5JMEws5IZC6agymBGAoDsrPyYp42wGcktyQtYKv9kvGPEKd4Qg==
+
 "@typescript-eslint/eslint-plugin@^1.13.0":
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-1.13.0.tgz#22fed9b16ddfeb402fd7bcde56307820f6ebc49f"

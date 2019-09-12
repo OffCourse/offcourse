@@ -1,10 +1,3 @@
-export const wrapperStyles = {
-  display: "grid",
-  "&:nth-of-type(odd)": {
-    bg: "primary"
-  }
-};
-
 export const headerStyles = {};
 
 export const captionStyles = {

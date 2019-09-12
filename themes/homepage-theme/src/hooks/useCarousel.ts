@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useState, CSSProperties } from "react";
 import { useTransition } from "react-spring";
 import useInterval from "./useInterval";
 
 interface ICarouselProps {
   items: any[];
-  delay: number;
+  delay?: number;
 };
 
 interface ICarouselItem {
-  item: any[];
-  style: any;
+  item: { index: number };
+  style: CSSProperties;
   key: string;
 };
 

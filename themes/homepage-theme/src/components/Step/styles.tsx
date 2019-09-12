@@ -14,16 +14,13 @@ export const titleStyles = {
 };
 
 export const wrapperStyles = {
-  display: "grid",
+  gridColumn: ["1/10", "2/9", "2/8", "3/7"],
   fontFamily: "heading",
-  maxWidth: ["30rem", "48rem", "64rem", "80rem"],
-  minWidth: ["16rem", "21rem", "39rem", "48rem"],
-  pr: [0, "5rem", "5rem", "20rem"],
-  pl: 0,
+  px: ["2rem", 0],
+  py: "2rem",
   width: "100%",
   "&:nth-of-type(even)": {
-    textAlign: "end",
-    pl: [0, "5rem", "5rem", "20rem"],
-    pr: 0
+    gridColumn: ["1/10", "2/9", "3/9", "4/8"],
+    textAlign: "end"
   }
 };

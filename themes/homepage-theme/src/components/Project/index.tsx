@@ -3,13 +3,11 @@ import { FunctionComponent } from "react";
 import { Styled, jsx } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces";
 import { IProject } from "@offcourse/interfaces/src/pageSection";
-import { animated } from "react-spring";
 import { formatTitle } from "../helpers";
 import {
   imageStyles,
   innerStyles,
   captionStyles,
-  wrapperStyles,
   headerStyles
 } from "./styles";
 
@@ -20,11 +18,10 @@ const Project: FunctionComponent<ProjectProps> = ({
   index,
   children,
   title,
-  description,
-  style
+  description
 }) => {
   return (
-    <animated.article style={style} sx={wrapperStyles} className={className}>
+    <article className={className}>
       <div sx={imageStyles}>
         <div sx={innerStyles}>{children || <Styled.h1>{index}</Styled.h1>}</div>
       </div>
@@ -32,7 +29,7 @@ const Project: FunctionComponent<ProjectProps> = ({
         <Styled.p>{description}</Styled.p>
         <Styled.h2 sx={headerStyles}>{formatTitle(title)}</Styled.h2>
       </section>
-    </animated.article>
+    </article>
   );
 };
 export default Project;

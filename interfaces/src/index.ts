@@ -38,6 +38,7 @@ export interface IThemeable {
   className?: string;
   theme?: ITheme;
   id?: string;
+  style?: any;
 }
 
 export interface IStylable {
