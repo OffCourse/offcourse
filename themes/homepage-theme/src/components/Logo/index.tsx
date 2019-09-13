@@ -1,17 +1,19 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
-import DisplayText from "../../components/DisplayText";
 import { IThemeable } from "@offcourse/interfaces";
-import styles from "./styles";
+import { wrapperStyles, textStyles } from "./styles";
 
 type LogoProps = { children: string } & IThemeable;
 
 const Logo: FunctionComponent<LogoProps> = ({ children, className }) => {
+  const words = children.split(" ");
   return (
-    <DisplayText className={className} sx={styles}>
-      {children}
-    </DisplayText>
+    <div sx={wrapperStyles} className={className}>
+      {words.map(word => (
+        <h1 sx={textStyles}>{word}</h1>
+      ))}
+    </div>
   );
 };
 

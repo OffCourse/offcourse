@@ -64,5 +64,5 @@ temp
 common/temp/**
 package-deps.json
 
-**/*/.cache
+**/*/.cache/**/*
 **/*/public

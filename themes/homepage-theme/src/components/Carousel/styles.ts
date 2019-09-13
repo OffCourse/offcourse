@@ -1,8 +1,6 @@
 export const itemStyles = {
   display: "grid",
-  "&:nth-of-type(odd)": {
-    bg: "primary"
-  }
+  bg: "primary"
 };
 
 export const wrapperStyles = {

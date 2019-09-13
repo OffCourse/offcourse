@@ -1,17 +1,15 @@
-export default {
+export const wrapperStyles = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
   alignContent: "flex-end",
   textAlign: "right",
-  h1: {
-    fontSize: ["1.5rem", "2rem"],
-    lineHeight: ["1.8rem", "2.4rem"],
-    mb: ["0.3rem", "0.4rem"],
-    mr: 0,
-    "&:last-of-type": {
-      mb: 0,
-      mr: 0
-    }
-  },
+};
+
+export const textStyles = {
+  fontFamily: "heading",
+  display: "inline-block",
+  m: 0,
+  fontSize: ["2rem", "2.5rem", "3rem"],
+  lineHeight: ["2rem", "2.5rem", "3rem"],
 };

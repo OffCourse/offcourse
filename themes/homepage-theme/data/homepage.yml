@@ -49,12 +49,22 @@ sections:
           Vestibulum placerat purus diam, sed vestibulum ipsum condimentum nec.
           Ut vel sem et lorem feugiat tincidunt nec quis turpis. Vestibulum
           vitae tempor ante. 
-      - title: finish
+      - title: pause
         description: |
           Nullam tincidunt, tortor nec interdum condimentum, purus diam
           tincidunt enim, sed laoreet enim quam ut lectus. Interdum et
           malesuada fames ac ante ipsum primis in faucibus. Proin tortor
           lorem.
+      - title: continue
+        description: |
+          In condimentum et odio a tincidunt. Mauris consequat viverra ornare.
+          Phasellus a volutpat libero. Morbi sed lectus et leo tincidunt molestie.
+          Fusce sit amet est venenatis, rutrum lacus et, hendrerit mi.
+      - title: finish
+        description: |
+          Nam vitae nibh non leo commodo elementum. Quisque ac luctus nisi, nec
+          ullamcorper tellus. Donec convallis nunc tempus, mollis turpis at, congue
+          nibh. In condimentum et odio a tincidunt. Mauris consequat viverra ornare.
   - role: contact
     title: We do something for you
     callToAction: Work with us

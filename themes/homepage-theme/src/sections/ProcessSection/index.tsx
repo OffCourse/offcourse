@@ -5,6 +5,7 @@ import { IThemeable } from "@offcourse/interfaces";
 import BaseSection from "../BaseSection";
 import { wrapperStyles } from "./styles";
 import Step from "../../components/Step";
+import { Waypoint } from "react-waypoint";
 import { IProcessSection, IStep } from "@offcourse/interfaces/src/pageSection";
 
 type ProcessSectionProps = IProcessSection & IThemeable;

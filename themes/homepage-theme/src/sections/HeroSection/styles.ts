@@ -1,26 +1,36 @@
-export default {
-  py: "2rem",
-  minHeight: "70vh",
-  gridTemplateRows: ["1fr", "1fr", "3fr 1fr"],
+export const wrapperStyles = {
+  height: "100vh",
+  gridTemplateRows: "3fr 1fr"
+
 };
 
 export const textStyles = {
+  display: "grid",
   gridColumn: ["1/10", "1/6"],
-  px: 6,
+  px: "2rem",
+  py: "2rem",
+  alignContent: "center",
   gridRow: "1/2",
   maxWidth: "40rem"
 };
 
-export const logoStyles = {
+export const logoContainerStyles = {
+  display: "grid",
   gridColumn: ["1/10", "1/10", "7/10"],
-  gridRow: ["1/2", "1/2", "2/3"],
-  px: 6,
+  gridRow: ["2/3"],
+  px: "2rem",
+  py: "2rem",
+  alignContent: "end",
+}
+
+export const logoStyles = {
+  mr: 0,
   h1: {
     fontSize: ["2rem", "3rem"],
     mb: ["0.4rem", "0.6rem"],
+    mr: 0,
     "&:last-of-type": {
       mb: 0,
-      mr: 0
     }
   },
 };
