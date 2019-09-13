@@ -1,5 +1,9 @@
 export const headerStyles = {};
 
+export const wrapperStyles = {
+  userSelect: "none"
+};
+
 export const captionStyles = {
   display: "grid",
   p: "2rem",

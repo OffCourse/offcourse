@@ -8,7 +8,8 @@ import {
   imageStyles,
   innerStyles,
   captionStyles,
-  headerStyles
+  headerStyles,
+  wrapperStyles
 } from "./styles";
 
 type ProjectProps = IProject & IThemeable & { index: number };
@@ -21,7 +22,7 @@ const Project: FunctionComponent<ProjectProps> = ({
   description
 }) => {
   return (
-    <article className={className}>
+    <article sx={wrapperStyles} className={className}>
       <div sx={imageStyles}>
         <div sx={innerStyles}>{children || <Styled.h1>{index}</Styled.h1>}</div>
       </div>
