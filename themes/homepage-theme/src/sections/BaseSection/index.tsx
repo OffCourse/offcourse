@@ -14,7 +14,7 @@ const BaseSection: FunctionComponent<BaseSectionProps> = ({
   ...rest
 }) => {
   return (
-    <div className={className} sx={styles}>
+    <div id={role} className={className} sx={styles}>
       {children || <pre>{JSON.stringify({ role, ...rest }, null, 2)}</pre>}
     </div>
   );

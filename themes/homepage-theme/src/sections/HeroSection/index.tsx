@@ -1,10 +1,10 @@
 /** @jsx jsx */
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IHeroSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces";
-import { Waypoint } from "react-waypoint";
 import { animated, useSpring, config } from "react-spring";
+import useVisibility from "../../hooks/useVisibility";
 import DisplayText from "../../components/DisplayText";
 import BaseSection from "../BaseSection";
 import Logo from "../../components/Logo";
@@ -24,13 +24,7 @@ const HeroSection: FunctionComponent<HeroSectionProps> = ({
   ...props
 }) => {
   const { siteName } = useHomepageData();
-  const [isVisible, setVisibility] = useState(false);
-  const handlePositionChange: (args: { currentPosition: string }) => void = ({
-    currentPosition
-  }) => {
-    setVisibility(currentPosition === "inside");
-  };
-
+  const [isVisible, Marker] = useVisibility();
   const logoStyle = useSpring({
     transform: `translate3d(${isVisible ? 0 : 100}%, 0, 0)`,
     opacity: isVisible ? 1 : 0
@@ -39,17 +33,12 @@ const HeroSection: FunctionComponent<HeroSectionProps> = ({
   const textStyle = useSpring({
     transform: `translate3d(0, ${isVisible ? 0 : -100}%, 0)`,
     opacity: isVisible ? 1 : 0,
-    config: config.molasses
+    config: config.slow
   });
 
   return (
     <BaseSection {...props} className={className} sx={wrapperStyles}>
-      <Waypoint
-        scrollableAncestor={window}
-        onEnter={handlePositionChange}
-        onLeave={handlePositionChange}
-      />
-      ;
+      <Marker />
       <animated.div sx={textStyles} style={textStyle}>
         <DisplayText>{title}</DisplayText>
       </animated.div>

@@ -10,8 +10,10 @@ const Logo: FunctionComponent<LogoProps> = ({ children, className }) => {
   const words = children.split(" ");
   return (
     <div sx={wrapperStyles} className={className}>
-      {words.map(word => (
-        <h1 sx={textStyles}>{word}</h1>
+      {words.map((word, index) => (
+        <h1 sx={textStyles} key={index}>
+          {word}
+        </h1>
       ))}
     </div>
   );
