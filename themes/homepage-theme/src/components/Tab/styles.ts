@@ -7,7 +7,8 @@ export const wrapperStyles = {
   "&:hover": {
     bg: "grayScale.4",
     a: {
-      color: "grayScale.1"
+      color: "grayScale.1",
+      borderColor: "grayScale.1"
     }
   }
 };
@@ -15,8 +16,8 @@ export const wrapperStyles = {
 export const linkStyles = {
   color: "negative",
   borderColor: "negative",
-  fontSize: 2,
-  lineHeight: 3,
+  fontSize: [1, 2],
+  lineHeight: [2, 3],
   border: "none",
   bg: "transparent",
   textAlign: "inherit",

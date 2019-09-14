@@ -1,5 +1,5 @@
 export const wrapperStyles = {
-  height: ["100vh", "100vh", "100vh", "70vh"],
+  height: ["99.9vh", "99.9vh", "99.9vh", "70vh"],
   gridTemplateRows: "3fr 1fr"
 
 };

@@ -14,6 +14,7 @@ export const textStyles = {
 };
 
 export const displayStyles = {
+  display: ["none", "flex"],
   py: "2rem",
   px: [6, "3rem", "3rem", "4rem"],
   gridColumn: ["1/10", "6/10"],

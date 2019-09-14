@@ -35,7 +35,9 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
         <DisplayText sx={textStyles}>{title}</DisplayText>
       </div>
       <FormContainer form={form} onSubmit={() => {}}>
-        {(props: IForm) => <Form {...props} sx={formStyles} />}
+        {(props: IForm) => (
+          <Form {...props} callToAction={callToAction} sx={formStyles} />
+        )}
       </FormContainer>
     </BaseSection>
   );

@@ -1,10 +1,13 @@
 export const wrapperStyles = {
   display: "grid",
-  p: "2rem",
+  pt: "3rem",
+  pb: "2rem",
+  px: "2rem",
   bg: "secondary",
   minHeight: "20vh",
-  maxHeight: "35vh",
-  gridTemplateColumns: ["1fr", "1fr 1fr"]
+  maxHeight: "50vh",
+  gridTemplateColumns: ["1fr", "1fr 1fr"],
+  gridGap: "3rem"
 };
 
 export const contactStyles = {

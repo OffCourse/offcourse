@@ -31,7 +31,7 @@ const HeroSection: FunctionComponent<HeroSectionProps> = ({
   });
 
   const textStyle = useSpring({
-    transform: `translate3d(0, ${isVisible ? 0 : -100}%, 0)`,
+    transform: `translate3d(${isVisible ? 0 : -100}%, 0, 0)`,
     opacity: isVisible ? 1 : 0,
     config: config.slow
   });
