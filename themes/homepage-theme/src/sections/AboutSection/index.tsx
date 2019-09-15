@@ -26,7 +26,7 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({
     <BaseSection {...props} className={className} sx={wrapperStyles}>
       <div sx={textStyles}>
         <Styled.h1 sx={titleStyles}>{title}</Styled.h1>
-        <Styled.p>{description}</Styled.p>
+        <Styled.p dangerouslySetInnerHTML={{ __html: description }} />
       </div>
       <div sx={displayStyles} />
     </BaseSection>

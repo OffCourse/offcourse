@@ -1,4 +1,37 @@
 const fs = require("fs");
+const remark = require(`remark`);
+const html = require(`remark-html`);
+
+exports.createSchemaCustomization = ({ actions }) => {
+  actions.createFieldExtension({
+    name: "md",
+    args: {
+      sanitize: {
+        type: "Boolean!",
+        defaultValue: true
+      }
+    },
+    extend(options, prevFieldConfig) {
+      return {
+        args: {
+          sanitize: "Boolean"
+        },
+        resolve(source, args, context, info) {
+          const fieldValue = context.defaultFieldResolver(
+            source,
+            args,
+            context,
+            info
+          );
+          const shouldSanitize =
+            args.sanitize != null ? args.sanitize : options.sanitize;
+          const processor = remark().use(html, { sanitize: shouldSanitize });
+          return processor.processSync(fieldValue).contents;
+        }
+      };
+    }
+  });
+};
 
 exports.onPreBootstrap = ({ reporter }, options) => {
   const contentPath = options.contentPath || "data";
@@ -37,26 +70,76 @@ exports.sourceNodes = ({ actions, reporter }) => {
 
     type ProjectInfo {
       title: String
-      description: String
+      description: String @md
     }
 
-    type HomePageSection {
-        role: String!
-        title: String
-        description: String
-        backdropPath: String
-        publishable: Boolean
-        callToAction: String
-        projects: [ProjectInfo]
-        form: Form
-        steps: [ProjectInfo]
-        contactInfo: ContactInfo
+
+    type ContactSection implements Node & PageSection {
+      role: String!
+      order: Int!
+      title: String
+      description: String @md
+      backdropPath: String
+      publishable: Boolean
+      callToAction: String
+      form: Form
      }
 
-    type HomePage implements Node @dontInfer {
+    type HeroSection implements Node & PageSection {
+      role: String!
+      order: Int!
+      title: String
+      description: String @md
+      backdropPath: String
+      publishable: Boolean
+     }
+
+    type AboutSection implements Node & PageSection {
+      role: String!
+      order: Int!
+      title: String
+      description: String @md
+      backdropPath: String
+      publishable: Boolean
+     }
+
+    type FooterSection implements Node & PageSection {
+      role: String!
+      title: String
+      order: Int!
+      description: String @md
+      backdropPath: String
+      publishable: Boolean
+      contactInfo: ContactInfo
+    }
+
+    type ProjectsSection implements Node & PageSection {
+      role: String!
+      title: String
+      order: Int!
+      description: String @md
+      backdropPath: String
+      publishable: Boolean
+      projects: [ProjectInfo]
+     }
+
+    type ProcessSection implements Node & PageSection {
+      role: String!
+      title: String
+      order: Int!
+      description: String @md
+      backdropPath: String
+      publishable: Boolean
+      steps: [ProjectInfo]
+     }
+    interface PageSection @nodeInterface {
       id: ID!
-      siteName: String!
-      sections: [HomePageSection]
+      role: String!
+      order: Int!
+      title: String
+      description: String @md
+      backdropPath: String
+      publishable: Boolean
     }
 `);
 };

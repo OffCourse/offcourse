@@ -13,6 +13,7 @@ const HomePageTemplate: FunctionComponent<{}> = ({}) => {
       <div>
         {sections
           .filter(({ publishable }) => publishable)
+          .sort((a, b) => a.order - b.order)
           .map((section, index) => (
             <PageSection key={index} {...section} />
           ))}

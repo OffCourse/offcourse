@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { FunctionComponent, useState } from "react";
-import { jsx } from "theme-ui";
+import { FunctionComponent } from "react";
+import { Styled, jsx } from "theme-ui";
 import { animated, useSpring } from "react-spring";
 import { IThemeable } from "@offcourse/interfaces";
 import { wrapperStyles, titleStyles, numberStyles } from "./styles";
@@ -29,7 +29,7 @@ const Step: FunctionComponent<StepProps> = ({
         <span sx={numberStyles}>{index}.</span>
         {formatTitle(title)}
       </h1>
-      <p>{description}</p>
+      <Styled.p dangerouslySetInnerHTML={{ __html: description }} />
     </animated.div>
   );
 };

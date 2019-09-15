@@ -1,0 +1,21 @@
+role: ProjectsSection
+order: 30
+publishable: true
+projects:
+  - title: something boring
+    description: |
+      Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Fusce
+      molestie mauris et elementum eleifend. Suspendisse vestibulum enim
+      et consequat porta. Phasellus rhoncus risus eget enim interdum, a
+      faucibus mi fringilla.
+  - title: something more boring
+    description: |
+      Vestibulum placerat purus diam, sed vestibulum ipsum condimentum nec.
+      Ut vel sem et lorem feugiat tincidunt nec quis turpis. Vestibulum
+      vitae tempor ante. 
+  - title: boring boring boring
+    description: |
+      Nullam tincidunt, tortor nec interdum condimentum, purus diam
+      tincidunt enim, sed laoreet enim quam ut lectus. Interdum et
+      malesuada fames ac ante ipsum primis in faucibus. Proin tortor
+      lorem.

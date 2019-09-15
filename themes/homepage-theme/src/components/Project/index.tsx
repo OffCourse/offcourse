@@ -27,7 +27,7 @@ const Project: FunctionComponent<ProjectProps> = ({
         <div sx={innerStyles}>{children || <Styled.h1>{index}</Styled.h1>}</div>
       </div>
       <section sx={captionStyles}>
-        <Styled.p>{description}</Styled.p>
+        <Styled.p dangerouslySetInnerHTML={{ __html: description }} />
         <Styled.h2 sx={headerStyles}>{formatTitle(title)}</Styled.h2>
       </section>
     </article>

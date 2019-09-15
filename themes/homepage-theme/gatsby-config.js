@@ -1,22 +1,3 @@
-// module.exports = ({ contentPath = "data" }) => ({
-//   plugins: [
-//     `gatsby-plugin-emotion`,
-//     `gatsby-plugin-typescript`,
-//     {
-//       resolve: "gatsby-source-filesystem",
-//       options: {
-//         path: contentPath
-//       }
-//     },
-//     {
-//       resolve: "gatsby-transformer-yaml",
-//       options: {
-//         typeName: "HomePage"
-//       }
-//     }
-//   ]
-// });
-
 module.exports = {
   plugins: [
     `gatsby-plugin-theme-ui`,
@@ -28,15 +9,9 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-instagram`,
-      options: {
-        username: `yeehaa12345`
-      }
-    },
-    {
       resolve: "gatsby-transformer-yaml",
       options: {
-        typeName: "HomePage"
+        typeName: ({ node, object, isArray }) => object.role
       }
     }
   ]

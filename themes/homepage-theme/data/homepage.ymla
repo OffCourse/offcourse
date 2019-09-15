@@ -1,26 +1,30 @@
 siteName: Generic Brand
 sections:
   - role: hero
+    id: 10
     title: Doing something specific but unmemorable
     backdropPath: "./CellularAutomata"
     publishable: true
   - role: about
+    id: 20
     title: Stuffs we do
     description: |
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum
       dolor at neque molestie pellentesque. In finibus vel diam eget hendrerit.
-      Nam vitae nibh non leo commodo elementum. Quisque ac luctus nisi, nec
-      ullamcorper tellus. Donec convallis nunc tempus, mollis turpis at, congue
-      nibh. In condimentum et odio a tincidunt. Mauris consequat viverra ornare.
-      Phasellus a volutpat libero. Morbi sed lectus et leo tincidunt molestie.
-      Fusce sit amet est venenatis, rutrum lacus et, hendrerit mi. 
+      Nam vitae nibh non leo commodo elementum.   
+
+      Quisque ac luctus nisi, nec **ullamcorper** tellus. Donec convallis nunc tempus,
+      mollis turpis at, congue nibh. In condimentum et odio a tincidunt. Mauris
+      consequat viverra ornare. Phasellus a volutpat libero. Morbi sed lectus et
+      leo tincidunt molestie. Fusce sit amet est venenatis, rutrum lacus et, hendrerit mi. 
     publishable: true
   - role: projects 
+    id: 30
     publishable: true
     projects:
       - title: something boring
         description: |
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+          Lorem *ipsum* dolor sit amet, consectetur adipiscing elit. Fusce
           molestie mauris et elementum eleifend. Suspendisse vestibulum enim
           et consequat porta. Phasellus rhoncus risus eget enim interdum, a
           faucibus mi fringilla.
@@ -36,6 +40,7 @@ sections:
           malesuada fames ac ante ipsum primis in faucibus. Proin tortor
           lorem.
   - role: process 
+    id: 40
     publishable: true
     steps:
       - title: start
@@ -66,6 +71,7 @@ sections:
           ullamcorper tellus. Donec convallis nunc tempus, mollis turpis at, congue
           nibh. In condimentum et odio a tincidunt. Mauris consequat viverra ornare.
   - role: contact
+    id: 50
     title: We do something for you
     callToAction: Work with us
     form: 
@@ -98,6 +104,7 @@ sections:
           label: how did you hear about our generic brand?
     publishable: true
   - role: about
+    id: 60
     title: About Us
     description: |
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum
@@ -109,6 +116,7 @@ sections:
       Fusce sit amet est venenatis, rutrum lacus et, hendrerit mi. 
     publishable: true
   - role: footer
+    id: 60
     publishable: true
     contactInfo:
       street: Some Street

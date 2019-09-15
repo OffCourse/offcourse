@@ -3,51 +3,38 @@ import { graphql, useStaticQuery } from "gatsby";
 const useHomepageData = () => {
   const data = useStaticQuery(graphql`
     query AllHomepageData {
-        allHomePage {
-            edges {
-                node {
-                siteName
-                sections {
-                    backdropPath
-                    callToAction
-                    publishable
-                    role
-                    title
-                    description
-                    projects {
-                      title
-                      description
-                    }
-                    steps {
-                      title
-                      description
-                    }
-                    contactInfo {
-                       street
-                       zipCode
-                       city
-                       country
-                       email
-                    }
-                    form {
-                        title
-                        fields {
-                            label
-                            name
-                            type
-                            options {
-                                label
-                                value
-                                }
-                            }
-                        }
-                    }
-                }
+        allPageSection {
+          edges {
+            node {
+              id
+              backdropPath
+              order
+              publishable
+              role
+              title
+              description
+              ... on ProjectsSection {
+                ...ProjectsData
+              }
+              ... on ProcessSection {
+                ...StepsData
+              }
+              ... on ContactSection {
+                callToAction
+                ...FormData
+              }
+              ... on FooterSection {
+                ...ContactInfoData
+              }
             }
+          }
         }
-    }
+     }
   `);
-  return data.allHomePage.edges[0].node;
+  const sections = data.allPageSection.edges.map(({ node }) => node);
+  return {
+    siteName: "generic brand", sections
+  }
 };
 
 export default useHomepageData;
