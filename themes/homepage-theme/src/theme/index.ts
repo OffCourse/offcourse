@@ -88,7 +88,6 @@ const theme: ITheme = {
       maxWidth: "100%"
     },
     p: {
-
       fontSize: 1,
       lineHeight: 1,
       margin: 0,

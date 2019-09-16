@@ -25,7 +25,8 @@ export const inputStyles = {
   boxSizing: "border-box",
   color: "grayScale.4",
   "::placeholder": {
-    color: "grayScale.2"
+    color: "grayScale.2",
+    userSelect: "none"
   },
   ":selection": {
     bg: "primary"

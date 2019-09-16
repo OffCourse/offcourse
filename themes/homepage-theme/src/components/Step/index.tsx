@@ -1,11 +1,12 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { Styled, jsx } from "theme-ui";
+import { jsx } from "theme-ui";
 import { animated, useSpring } from "react-spring";
 import { IThemeable } from "@offcourse/interfaces";
 import { wrapperStyles, titleStyles, numberStyles } from "./styles";
 import { formatTitle } from "../helpers";
 import useVisibility from "../../hooks/useVisibility";
+import Text from "../Text";
 import { IStep } from "@offcourse/interfaces/src/pageSection";
 
 type StepProps = IStep & IThemeable;
@@ -29,7 +30,7 @@ const Step: FunctionComponent<StepProps> = ({
         <span sx={numberStyles}>{index}.</span>
         {formatTitle(title)}
       </h1>
-      <Styled.p dangerouslySetInnerHTML={{ __html: description }} />
+      <Text html={description} />
     </animated.div>
   );
 };

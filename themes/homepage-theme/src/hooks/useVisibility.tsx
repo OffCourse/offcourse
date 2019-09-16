@@ -14,7 +14,7 @@ const useVisibility = () => {
 
   const Marker = () => (
     <Waypoint
-      scrollableAncestor={window}
+      scrollableAncestor={typeof window !== "undefined" ? window : null}
       onEnter={handlePositionChange}
       onLeave={handlePositionChange}
     />

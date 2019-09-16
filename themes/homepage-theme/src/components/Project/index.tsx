@@ -4,6 +4,7 @@ import { Styled, jsx } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces";
 import { IProject } from "@offcourse/interfaces/src/pageSection";
 import { formatTitle } from "../helpers";
+import Text from "../Text";
 import {
   imageStyles,
   innerStyles,
@@ -27,7 +28,7 @@ const Project: FunctionComponent<ProjectProps> = ({
         <div sx={innerStyles}>{children || <Styled.h1>{index}</Styled.h1>}</div>
       </div>
       <section sx={captionStyles}>
-        <Styled.p dangerouslySetInnerHTML={{ __html: description }} />
+        <Text html={description} />
         <Styled.h2 sx={headerStyles}>{formatTitle(title)}</Styled.h2>
       </section>
     </article>

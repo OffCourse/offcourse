@@ -4,6 +4,7 @@ export const wrapperStyles = {
   justifyContent: "flex-end",
   alignContent: "flex-end",
   textAlign: "right",
+  userSelect: "none"
 };
 
 export const textStyles = {

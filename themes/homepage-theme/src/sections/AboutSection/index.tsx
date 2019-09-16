@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { Styled, jsx } from "theme-ui";
 import { IBaseSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces";
+import Text from "../../components/Text";
 import BaseSection from "../BaseSection";
 import {
   wrapperStyles,
@@ -26,7 +27,7 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({
     <BaseSection {...props} className={className} sx={wrapperStyles}>
       <div sx={textStyles}>
         <Styled.h1 sx={titleStyles}>{title}</Styled.h1>
-        <Styled.p dangerouslySetInnerHTML={{ __html: description }} />
+        <Text html={description} />
       </div>
       <div sx={displayStyles} />
     </BaseSection>
