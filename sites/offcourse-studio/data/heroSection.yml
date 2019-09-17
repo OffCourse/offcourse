@@ -1,0 +1,5 @@
+role: HeroSection
+order: 10
+title: Tinkering solutions for unexpected futures
+backdropPath: "./CellularAutomata"
+publishable: true
