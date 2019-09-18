@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { Global } from "@emotion/core";
 import { Layout, Main, Container } from "theme-ui";
-import { theme } from "../theme";
+import theme from "../theme";
 
 const PageTemplate = forwardRef(
   (
