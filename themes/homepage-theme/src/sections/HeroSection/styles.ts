@@ -1,6 +1,7 @@
 export const wrapperStyles = {
   height: ["99.9vh", "99.9vh", "99.9vh", "70vh"],
   gridTemplateRows: "3fr 1fr",
+  bg: "primary"
 };
 
 export const textStyles = {

@@ -3,6 +3,18 @@ import getFontFaces from "@offcourse/homepage-theme/src/theme/utils";
 import fonts from "./offcourse-fonts";
 import merge from "lodash.merge";
 
+const baseColors = {
+  black: "#000000",
+  white: "#FFFFFF",
+  darkGray: "#3d3d3d",
+  mediumGray: "#c0c4c1",
+  lightGray: "#f4f6f4",
+  yellow: "#E5CF39",
+  red: "#E34D2F",
+  green: "#A5CC45",
+  blue: "#75C7B3",
+};
+
 const fontFaces = getFontFaces(fonts)
 
 const globals = `
@@ -35,6 +47,10 @@ ${fontFaces}
 `;
 
 const newTheme = merge({}, baseTheme, {
+  colors: {
+    primary: baseColors.yellow,
+    secondary: baseColors.blue
+  },
   fonts: {
     body: `${fonts.body.fontFamily}, Helvetica, sans-serif`,
     heading: `${fonts.heading.fontFamily}, Helvetica Bold, sans-serif`,

@@ -6,11 +6,9 @@ export const wrapperStyles = {
 export const textStyles = {
   display: "flex",
   flexDirection: "column",
-  gridColumn: ["1/10", "1/6"],
+  gridColumn: ["1/10", "1/5"],
   gridRow: ["2/3", "1/2"],
-  p: "4rem",
   justifyContent: ["start", "center"],
-  bg: "grayScale.0"
 };
 
 export const displayStyles = {
@@ -20,8 +18,10 @@ export const displayStyles = {
   gridColumn: ["1/10", "6/10"],
   gridRow: "1/2",
   m: "-2rem",
+  bg: "grayScale.0",
   minHeight: "15rem",
-  bg: "primary",
+  bg: "grayScale.0"
+
 };
 
 export const titleStyles = {

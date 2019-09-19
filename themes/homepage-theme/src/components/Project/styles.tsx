@@ -1,26 +1,30 @@
 export const headerStyles = {
   fontFamily: "monospace",
-  wordSpacing: "-0.2em"
+  wordSpacing: "-0.2em",
+  px: "2rem",
+  pb: "2rem"
 };
 
 export const wrapperStyles = {
   userSelect: "none",
   display: "grid",
-  gridTemplateRows: "auto 1fr 20px",
-  p: "2rem",
-  gridGap: 6,
-  alignItems: "start"
+  gridTemplateRows: "auto 1fr auto",
+  gridGap: "2rem",
+  alignItems: "start",
+  bg: "grayScale.0"
 };
 
 export const imageStyles = {
   paddingTop: "100%",
-  position: "relative"
+  position: "relative",
+  bg: "grayScale.2"
 };
 
 export const captionStyles = {
   display: "flex",
   flexDirection: "column",
-  justifyContent: "flex-end"
+  justifyContent: "flex-end",
+  px: "2rem"
 };
 
 export const innerStyles = {

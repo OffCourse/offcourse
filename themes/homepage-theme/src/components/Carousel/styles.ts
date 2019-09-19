@@ -1,6 +1,5 @@
 export const itemStyles = {
   display: "grid",
-  bg: "primary"
 };
 
 export const wrapperStyles = {
