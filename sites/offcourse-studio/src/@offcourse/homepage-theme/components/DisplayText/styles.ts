@@ -19,7 +19,7 @@ export const spanStyles = {
 };
 
 export const textStyles = {
-  fontFamily: "heading",
+  fontFamily: "monospace",
   display: "inline-block",
   fontSize: ["2rem", "2.5rem", "3rem"],
   lineHeight: ["2.4rem", "3rem", "3.6rem"],

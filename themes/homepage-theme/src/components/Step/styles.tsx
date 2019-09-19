@@ -1,5 +1,6 @@
 export const numberStyles = {
   borderBottom: "0.25rem solid black",
+  fontFamily: "monospace",
   fontSize: ["3.5rem", "5rem"],
   lineHeight: ["4rem", "5.5rem"],
   mb: 3
@@ -7,6 +8,8 @@ export const numberStyles = {
 
 export const titleStyles = {
   display: "grid",
+  fontFamily: "monospace",
+  wordSpacing: "-0.2em",
   fontSize: ["1.5rem", "2rem"],
   lineHeight: ["2rem", "2.5rem"],
   m: 0,

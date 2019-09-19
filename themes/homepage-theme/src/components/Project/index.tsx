@@ -25,12 +25,10 @@ const Project: FunctionComponent<ProjectProps> = ({
   return (
     <article sx={wrapperStyles} className={className}>
       <div sx={imageStyles}>
-        <div sx={innerStyles}>{children || <Styled.h1>{index}</Styled.h1>}</div>
+        <div sx={innerStyles}>{children || <h1>{index}</h1>}</div>
       </div>
-      <section sx={captionStyles}>
-        <Text html={description} />
-        <Styled.h2 sx={headerStyles}>{formatTitle(title)}</Styled.h2>
-      </section>
+      <Text sx={captionStyles} html={description} />
+      <Styled.h2 sx={headerStyles}>{formatTitle(title)}</Styled.h2>
     </article>
   );
 };

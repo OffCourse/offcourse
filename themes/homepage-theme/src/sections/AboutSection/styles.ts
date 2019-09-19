@@ -19,6 +19,7 @@ export const displayStyles = {
   px: [6, "3rem", "3rem", "4rem"],
   gridColumn: ["1/10", "6/10"],
   gridRow: "1/2",
+  m: "-2rem",
   minHeight: "15rem",
   bg: "primary",
 };

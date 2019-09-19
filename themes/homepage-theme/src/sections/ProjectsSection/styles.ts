@@ -1,1 +1,3 @@
-export const wrapperStyles = {};
+export const wrapperStyles = {
+  p: 0
+};

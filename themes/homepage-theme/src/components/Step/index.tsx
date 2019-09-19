@@ -27,7 +27,7 @@ const Step: FunctionComponent<StepProps> = ({
     <animated.div sx={wrapperStyles} style={style} className={className}>
       <Marker />
       <h1 sx={titleStyles}>
-        <span sx={numberStyles}>{index}.</span>
+        <span sx={numberStyles}>{index}</span>
         {formatTitle(title)}
       </h1>
       <Text html={description} />

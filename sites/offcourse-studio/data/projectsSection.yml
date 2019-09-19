@@ -1,0 +1,26 @@
+role: ProjectsSection
+order: 30
+publishable: true
+projects:
+  - title: Bots with an Attitude
+    description: |
+      For [Planet B](https://planet-b.eu/), we are developing a support system
+      for Artistic Researchers who are either working with Machine Learning and
+      AI, or want to learn it. The Bots from the project's title function as
+      personal assistant who can perform up to three tasks. However, their
+      personality is random and outside the scope of control of its creator. 
+  - title: Public Badges
+    description: |
+      For a [coalition](www.publicspaces.net) most of the Netherlands major
+      public and cultural institutions, I developed a solution to reduce
+      their dependency on major commercial internet platforms (such as facebook
+      and google). In order to achieve this, I came up with a badges system
+      that values the ethical values of internet product and services and makes
+      them visible on their website. 
+  - title: Offcourse 
+    description: |
+      This is the non-profit I founded after I left academia. Its focus is to
+      democratize education by blurring the lines between teaching and learning.
+      It's main premise is that everything you want to learn nowadays is already
+      available online. The only thing you need is someone or something that can
+      show you where to look..

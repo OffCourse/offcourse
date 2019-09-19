@@ -1,19 +1,26 @@
-export const headerStyles = {};
-
-export const wrapperStyles = {
-  userSelect: "none"
+export const headerStyles = {
+  fontFamily: "monospace",
+  wordSpacing: "-0.2em"
 };
 
-export const captionStyles = {
+export const wrapperStyles = {
+  userSelect: "none",
   display: "grid",
+  gridTemplateRows: "auto 1fr 20px",
   p: "2rem",
-  gridGap: "1rem",
-  alignItems: "end"
+  gridGap: 6,
+  alignItems: "start"
 };
 
 export const imageStyles = {
   paddingTop: "100%",
   position: "relative"
+};
+
+export const captionStyles = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-end"
 };
 
 export const innerStyles = {
@@ -27,5 +34,8 @@ export const innerStyles = {
   },
   display: "flex",
   justifyContent: "center",
-  alignItems: "center"
+  alignItems: "center",
+  fontFamily: "monospace",
+  fontSize: "2rem",
+  wordSpacing: "-0.2em"
 };
