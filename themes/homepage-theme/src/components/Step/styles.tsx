@@ -19,7 +19,6 @@ export const titleStyles = {
 export const wrapperStyles = {
   gridColumn: ["1/10", "2/9", "2/8", "3/7"],
   fontFamily: "heading",
-  px: ["3rem", 0],
   py: "3rem",
   width: "100%",
   "&:nth-of-type(even)": {
