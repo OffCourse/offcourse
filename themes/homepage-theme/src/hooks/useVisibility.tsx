@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Waypoint } from "react-waypoint";
 import { jsx } from "theme-ui";
 
-const useVisibility = () => {
+const useVisibility = ({ canLeave = false }) => {
   const [isVisible, setVisibility] = useState(false);
 
   const handlePositionChange: (args: { currentPosition: string }) => void = ({
@@ -16,7 +16,7 @@ const useVisibility = () => {
     <Waypoint
       scrollableAncestor={typeof window !== "undefined" ? window : null}
       onEnter={handlePositionChange}
-      onLeave={handlePositionChange}
+      onLeave={args => (canLeave ? handlePositionChange(args) : null)}
     />
   );
 

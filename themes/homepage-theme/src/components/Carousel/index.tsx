@@ -10,15 +10,29 @@ type CarouselProps = {
   items: any[];
   children: (item: { index: number }) => ReactElement;
   delay?: number;
+  visibleItems: number;
 } & IThemeable;
 
 const Carousel: FunctionComponent<CarouselProps> = ({
   className,
   children,
   items,
+  visibleItems,
   delay
 }) => {
-  const transitions = useCarousel({ items, delay });
+  if (items.length <= visibleItems) {
+    return (
+      <div sx={wrapperStyles} className={className}>
+        {items.map((item, index) => (
+          <div sx={itemStyles} key={index}>
+            {children(item as { index: number })}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  const transitions = useCarousel({ items, delay, visibleItems });
   return (
     <div sx={wrapperStyles} className={className}>
       {transitions.map(({ item, style, key }) => (

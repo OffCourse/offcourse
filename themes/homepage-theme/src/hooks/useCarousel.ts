@@ -5,6 +5,7 @@ import useInterval from "./useInterval";
 interface ICarouselProps {
   items: any[];
   delay?: number;
+  visibleItems: number;
 };
 
 interface ICarouselItem {
@@ -15,6 +16,7 @@ interface ICarouselItem {
 
 const useCarousel: (props: ICarouselProps) => ICarouselItem[] = ({
   items,
+  visibleItems,
   delay = 2000,
 }) => {
   const [index, setIndex] = useState(0);
@@ -23,7 +25,7 @@ const useCarousel: (props: ICarouselProps) => ICarouselItem[] = ({
 
   const [direction, setDirection] = useState("UP");
 
-  const orderedProjects = [...items, ...items].map((item, i) => ({
+  const orderedProjects = [...items].map((item, i) => ({
     ...item,
     index: i
   }));
@@ -31,7 +33,7 @@ const useCarousel: (props: ICarouselProps) => ICarouselItem[] = ({
     let next = null;
     if (direction === "UP") {
       next = goUp;
-      const reachedEnd = index >= orderedProjects.length - 4;
+      const reachedEnd = index >= orderedProjects.length - (visibleItems + 1);
       if (reachedEnd) {
         setDirection("DOWN");
       }

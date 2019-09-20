@@ -17,7 +17,7 @@ const Step: FunctionComponent<StepProps> = ({
   title,
   description
 }) => {
-  const [isVisible, Marker] = useVisibility();
+  const [isVisible, Marker] = useVisibility({});
   const distance = index % 2 === 0 ? 100 : -100;
   const style = useSpring({
     transform: `translate3d(${isVisible ? 0 : distance}%, 0, 0)`,

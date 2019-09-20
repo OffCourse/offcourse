@@ -3,6 +3,11 @@ import { graphql, useStaticQuery } from "gatsby";
 const useHomepageData = () => {
   const data = useStaticQuery(graphql`
     query AllHomepageData {
+         site {
+          siteMetadata {
+            siteName
+          }
+        }
         allPageSection {
           edges {
             node {
@@ -31,9 +36,10 @@ const useHomepageData = () => {
         }
      }
   `);
+  const { siteName } = data.site.siteMetadata;
   const sections = data.allPageSection.edges.map(({ node }) => node);
   return {
-    siteName: "generic brand", sections
+    siteName, sections
   }
 };
 

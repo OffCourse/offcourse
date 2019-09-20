@@ -26,7 +26,7 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
   callToAction,
   ...props
 }) => {
-  const [isVisible, Marker] = useVisibility();
+  const [isVisible, Marker] = useVisibility({ canLeave: true });
   return (
     <BaseSection {...props} className={className} sx={wrapperStyles}>
       <Marker />

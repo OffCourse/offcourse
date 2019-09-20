@@ -3,7 +3,7 @@ export const wrapperStyles = {
   userSelect: "none",
   p: [4, 5],
   boxShadow: "0px 3px 15px rgba(0, 0, 0, 0.2)",
-  bg: "primary",
+  bg: "white",
   "&:hover": {
     bg: "grayScale.4",
     a: {

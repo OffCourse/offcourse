@@ -2,6 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IThemeable, IButton } from "@offcourse/interfaces";
+import { formatTitle } from "../helpers";
 import styles from "./styles";
 
 type ButtonProps = IButton & IThemeable;
@@ -14,7 +15,7 @@ const Button: FunctionComponent<ButtonProps> = ({
 }) => {
   return (
     <button sx={styles} disabled={disabled} className={className} type={type}>
-      {children}
+      {formatTitle(children)}
     </button>
   );
 };

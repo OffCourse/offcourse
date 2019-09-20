@@ -24,7 +24,7 @@ const HeroSection: FunctionComponent<HeroSectionProps> = ({
   ...props
 }) => {
   const { siteName } = useHomepageData();
-  const [isVisible, Marker] = useVisibility();
+  const [isVisible, Marker] = useVisibility({});
   const logoStyle = useSpring({
     transform: `translate3d(${isVisible ? 0 : 100}%, 0, 0)`,
     opacity: isVisible ? 1 : 0

@@ -17,7 +17,8 @@ export const wrapperStyles = {
 export const imageStyles = {
   paddingTop: "100%",
   position: "relative",
-  bg: "grayScale.2"
+  bg: "grayScale.2",
+  mb: 6
 };
 
 export const captionStyles = {

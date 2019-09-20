@@ -18,7 +18,7 @@ export default styled(Tab)`
   user-select: none;
   padding: 0.5rem;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.grayScale[0]};
 
   ${Link} {
     color: ${({ theme }) => theme.colors.negative};

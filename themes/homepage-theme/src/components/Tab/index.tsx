@@ -9,7 +9,7 @@ type TabProps = IThemeable & ITab;
 const Tab: FunctionComponent<TabProps> = ({ className, title }) => {
   return (
     <div sx={wrapperStyles} className={className}>
-      <a sx={linkStyles} href="#contact">
+      <a sx={linkStyles} href="#ContactSection">
         {title}
       </a>
     </div>

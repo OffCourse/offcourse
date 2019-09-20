@@ -3,7 +3,7 @@ export const wrapperStyles = {
   pt: "3rem",
   pb: "2rem",
   px: "2rem",
-  bg: "primary",
+  bg: "grayScale.2",
   minHeight: "20vh",
   maxHeight: "50vh",
   gridTemplateColumns: ["1fr", "1fr 1fr"],

@@ -1,5 +1,8 @@
 module.exports = ({ contentPath = "data" }) => {
   return {
+    siteMetadata: {
+      siteName: `Generic Site`
+    },
     plugins: [
       `gatsby-plugin-theme-ui`,
       `gatsby-plugin-typescript`,

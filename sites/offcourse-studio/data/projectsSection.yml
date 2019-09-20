@@ -23,4 +23,13 @@ projects:
       democratize education by blurring the lines between teaching and learning.
       It's main premise is that everything you want to learn nowadays is already
       available online. The only thing you need is someone or something that can
-      show you where to look..
+      show you where to look.
+  - title: Coding the humanities
+    description: |
+      A program at the University of Amsterdam that implements new unlimited
+      practices of digital literacy, while challenging situated knowledges.
+      This helps students and researchers to understand the various
+      technologically mediated objects that they are studying. Developing
+      custom tools, rather than using ready-made ones, can improve the actual
+      practice of humanities research as well as (the quantity and quality) of
+      its output.
