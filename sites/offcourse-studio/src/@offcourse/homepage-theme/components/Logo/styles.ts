@@ -26,7 +26,7 @@ export const textStyles = {
   wordSpacing: "-0.2em",
   m: 0,
   px: spacing,
-  mb: spacing,
+  mb: 0,
   color: "grayScale.0",
   bg: "grayScale.4",
   "&:last-type": {

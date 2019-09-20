@@ -63,5 +63,6 @@ export interface IMessage {
 
 export interface IButton {
   type?: "submit" | "button";
+  children: "string";
   disabled?: boolean;
 }
