@@ -3,9 +3,9 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IHeroSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces";
-import { animated, useSpring, config } from "react-spring";
-import useVisibility from "../../hooks/useVisibility";
+import { useMeasure } from "@offcourse/homepage-theme/src/hooks";
 import DisplayText from "../../components/DisplayText";
+import Backdrop from "../../components/Backdrop";
 import BaseSection from "../BaseSection";
 import Logo from "../../components/Logo";
 import useHomepageData from "../../hooks/useHomepageData";
@@ -24,27 +24,16 @@ const HeroSection: FunctionComponent<HeroSectionProps> = ({
   ...props
 }) => {
   const { siteName } = useHomepageData();
-  const [isVisible, Marker] = useVisibility({});
-  const logoStyle = useSpring({
-    transform: `translate3d(${isVisible ? 0 : 100}%, 0, 0)`,
-    opacity: isVisible ? 1 : 0
-  });
-
-  const textStyle = useSpring({
-    transform: `translate3d(${isVisible ? 0 : -100}%, 0, 0)`,
-    opacity: isVisible ? 1 : 0,
-    config: config.slow
-  });
-
+  const [{ clientWidth: width, clientHeight: height }, bind] = useMeasure();
   return (
-    <BaseSection {...props} className={className} sx={wrapperStyles}>
-      <Marker />
-      <animated.div sx={textStyles} style={textStyle}>
+    <BaseSection {...props} {...bind} className={className} sx={wrapperStyles}>
+      <Backdrop width={width} height={height} />
+      <div sx={textStyles}>
         <DisplayText>{title}</DisplayText>
-      </animated.div>
-      <animated.div sx={logoContainerStyles} style={logoStyle}>
+      </div>
+      <div sx={logoContainerStyles}>
         <Logo sx={logoStyles}>{siteName}</Logo>
-      </animated.div>
+      </div>
     </BaseSection>
   );
 };

@@ -5,6 +5,8 @@ export interface IPublishable {
 export interface IMeasurable {
   width?: number;
   left?: number;
+  clientWidth?: number;
+  clientHeight?: number;
   top?: number;
   height?: number;
 }

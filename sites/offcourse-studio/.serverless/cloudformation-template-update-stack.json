@@ -19,7 +19,7 @@
     "WebAppS3Bucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
-        "BucketName": "offcourse-template-site",
+        "BucketName": "offcourse-studio-homepage",
         "AccessControl": "PublicRead",
         "WebsiteConfiguration": {
           "IndexDocument": "index.html",
@@ -42,7 +42,7 @@
               "Action": [
                 "s3:GetObject"
               ],
-              "Resource": "arn:aws:s3:::offcourse-template-site/*"
+              "Resource": "arn:aws:s3:::offcourse-studio-homepage/*"
             }
           ]
         }
@@ -54,7 +54,7 @@
         "DistributionConfig": {
           "Origins": [
             {
-              "DomainName": "offcourse-template-site.s3.amazonaws.com",
+              "DomainName": "offcourse-studio-homepage.s3.amazonaws.com",
               "Id": "WebApp",
               "CustomOriginConfig": {
                 "HTTPPort": 80,

@@ -9,7 +9,7 @@ type BaseSectionProps = IBaseSection & IThemeable;
 
 const BaseSection: FunctionComponent<BaseSectionProps> = (
   { role, className, children, ...rest },
-  ref
+  ref: any
 ) => {
   return (
     <div ref={ref} id={role} className={className} sx={styles}>

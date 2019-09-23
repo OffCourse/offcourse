@@ -2,6 +2,7 @@ export interface IBaseSection {
   role: string;
   publishable: boolean;
   backdropPath?: string;
+  children: any;
 }
 
 export type IHeroSection = IBaseSection & {

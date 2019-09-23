@@ -4,9 +4,13 @@ import { IMeasurable } from "@offcourse/interfaces";
 
 const useMeasure: () => [IMeasurable, { ref: any }] = () => {
   const ref: any = useRef();
-  const [bounds, set] = useState({ left: 0, top: 0, width: 0, height: 0 });
+  const [bounds, set] = useState({ left: 0, top: 0, width: 0, height: 0, clientWidth: 0, clientHeight: 0 });
   const [ro] = useState(
-    () => new ResizeObserver(([entry]) => set(entry.contentRect))
+    () => new ResizeObserver(([entry]) => {
+      const { width, height, top, left } = entry.contentRect;
+      const { clientWidth, clientHeight } = entry.target;
+      set({ width, left, height, top, clientWidth, clientHeight })
+    })
   );
   useEffect(() => {
     if (ref.current) { ro.observe(ref.current); }

@@ -1,5 +1,4 @@
 role: HeroSection
 order: 10
 title: Doing something specific but unmemorable
-backdropPath: "./CellularAutomata"
 publishable: true

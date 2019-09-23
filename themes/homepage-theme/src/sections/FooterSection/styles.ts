@@ -7,7 +7,8 @@ export const wrapperStyles = {
   minHeight: "20vh",
   maxHeight: "50vh",
   gridTemplateColumns: ["1fr", "1fr 1fr"],
-  gridGap: "3rem"
+  gridGap: "3rem",
+  bg: "transparent"
 };
 
 export const contactStyles = {

@@ -1,8 +1,8 @@
 {
   "service": {
-    "service": "templateSite",
+    "service": "studioHomepage",
     "serviceObject": {
-      "name": "templateSite"
+      "name": "studioHomepage"
     },
     "provider": {
       "stage": "dev",
@@ -33,7 +33,7 @@
           "WebAppS3Bucket": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
-              "BucketName": "offcourse-template-site",
+              "BucketName": "offcourse-studio-homepage",
               "AccessControl": "PublicRead",
               "WebsiteConfiguration": {
                 "IndexDocument": "index.html",
@@ -56,7 +56,7 @@
                     "Action": [
                       "s3:GetObject"
                     ],
-                    "Resource": "arn:aws:s3:::offcourse-template-site/*"
+                    "Resource": "arn:aws:s3:::offcourse-studio-homepage/*"
                   }
                 ]
               }
@@ -68,7 +68,7 @@
               "DistributionConfig": {
                 "Origins": [
                   {
-                    "DomainName": "offcourse-template-site.s3.amazonaws.com",
+                    "DomainName": "offcourse-studio-homepage.s3.amazonaws.com",
                     "Id": "WebApp",
                     "CustomOriginConfig": {
                       "HTTPPort": 80,
@@ -157,7 +157,7 @@
       }
     },
     "custom": {
-      "s3Bucket": "offcourse-template-site"
+      "s3Bucket": "offcourse-studio-homepage"
     },
     "plugins": [
       "serverless-single-page-app-plugin"
@@ -169,7 +169,7 @@
         "WebAppS3Bucket": {
           "Type": "AWS::S3::Bucket",
           "Properties": {
-            "BucketName": "offcourse-template-site",
+            "BucketName": "offcourse-studio-homepage",
             "AccessControl": "PublicRead",
             "WebsiteConfiguration": {
               "IndexDocument": "index.html",
@@ -192,7 +192,7 @@
                   "Action": [
                     "s3:GetObject"
                   ],
-                  "Resource": "arn:aws:s3:::offcourse-template-site/*"
+                  "Resource": "arn:aws:s3:::offcourse-studio-homepage/*"
                 }
               ]
             }
@@ -204,7 +204,7 @@
             "DistributionConfig": {
               "Origins": [
                 {
-                  "DomainName": "offcourse-template-site.s3.amazonaws.com",
+                  "DomainName": "offcourse-studio-homepage.s3.amazonaws.com",
                   "Id": "WebApp",
                   "CustomOriginConfig": {
                     "HTTPPort": 80,
@@ -263,7 +263,7 @@
     "layers": {}
   },
   "package": {
-    "artifactDirectoryName": "serverless/templateSite/dev/1569103380201-2019-09-21T22:03:00.201Z",
+    "artifactDirectoryName": "serverless/studioHomepage/dev/1569103410344-2019-09-21T22:03:30.344Z",
     "artifact": ""
   }
 }
