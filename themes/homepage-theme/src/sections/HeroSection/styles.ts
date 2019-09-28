@@ -14,7 +14,7 @@ export const textStyles = {
 
 export const logoContainerStyles = {
   display: "grid",
-  gridColumn: ["1/10", "1/10", "7/10"],
+  gridColumn: ["1/10", "1/10", "6/10"],
   gridRow: ["2/3"],
   alignContent: "end",
 };

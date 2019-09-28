@@ -1,6 +1,6 @@
 export const wrapperStyles = {
   position: "absolute",
-  bg: "transparent",
+  bg: "primary",
   zIndex: -1,
   top: 0,
   left: 0

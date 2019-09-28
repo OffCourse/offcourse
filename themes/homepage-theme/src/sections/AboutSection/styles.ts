@@ -7,7 +7,7 @@ export const textStyles = {
   display: "flex",
   flexDirection: "column",
   gridColumn: ["1/10", "1/5"],
-  gridRow: ["2/3", "1/2"],
+  gridRow: ["1/3", "1/2"],
   justifyContent: ["start", "center"],
 };
 
@@ -18,10 +18,8 @@ export const displayStyles = {
   gridColumn: ["1/10", "6/10"],
   gridRow: "1/2",
   m: "-2rem",
-  bg: "grayScale.0",
   minHeight: "15rem",
   bg: "grayScale.0"
-
 };
 
 export const titleStyles = {

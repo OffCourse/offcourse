@@ -2,7 +2,6 @@
 import { FunctionComponent, useRef } from "react";
 import { IThemeable } from "@offcourse/interfaces";
 import { jsx } from "theme-ui";
-import { wrapperStyles } from "./styles";
 
 type BackdropProps = IThemeable & { width?: number; height?: number };
 
@@ -13,13 +12,7 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
 }) => {
   const ref: any = useRef();
   return (
-    <canvas
-      sx={wrapperStyles}
-      ref={ref}
-      className={className}
-      width={width}
-      height={height}
-    />
+    <canvas ref={ref} className={className} width={width} height={height} />
   );
 };
 
