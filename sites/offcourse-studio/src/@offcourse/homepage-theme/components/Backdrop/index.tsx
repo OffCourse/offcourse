@@ -4,16 +4,18 @@ import { IThemeable } from "@offcourse/interfaces";
 import { jsx } from "theme-ui";
 import { wrapperStyles } from "./styles";
 import useCanvas from "../../../../hooks/useCanvas";
-import { drawGrid } from "./helpers";
+import useBackdrop from "../../../../hooks/useBackdrop";
 
 type BackdropProps = IThemeable & { width?: number; height?: number };
 
 const Backdrop: FunctionComponent<BackdropProps> = ({
   className,
   width = 100,
-  height = 100
+  height = 100,
+  backdropName = "rectGrid"
 }) => {
-  const ref = useCanvas({ width, height, draw: drawGrid });
+  const draw = useBackdrop(backdropName);
+  const ref = useCanvas({ width, height, draw });
   return (
     <canvas
       sx={wrapperStyles}
