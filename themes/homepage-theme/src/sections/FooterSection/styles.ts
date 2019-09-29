@@ -23,5 +23,4 @@ export const contactStyles = {
   }
 };
 
-export const logoStyles = {
-};
+export const logoStyles = {};

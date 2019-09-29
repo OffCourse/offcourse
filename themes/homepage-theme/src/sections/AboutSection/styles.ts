@@ -15,12 +15,12 @@ export const textStyles = {
 
 export const displayStyles = {
   display: ["none", "flex"],
-  py: "2rem",
   px: ["2rem", "3rem", "3rem", "4rem"],
+  m: "-2rem",
   gridColumn: ["2/9", "6/10"],
   gridRow: "1/2",
   minHeight: "15rem",
-  bg: "grayScale.0"
+  bg: "grayScale.3"
 };
 
 export const titleStyles = {

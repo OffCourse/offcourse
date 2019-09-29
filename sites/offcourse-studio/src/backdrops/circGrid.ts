@@ -13,8 +13,9 @@ const circ = ({ ctx, x, y, z, primaryColor, secondaryColor, width, height }) => 
   ctx.fill();
 };
 
-const circGrid = ({ ctx, primaryColor, secondaryColor }) => {
-  drawGrid({ ctx, primaryColor, secondaryColor, shape: circ })
+const circGrid = ({ ctx, theme, frame }) => {
+  const { primary, grayScale } = theme.colors;
+  drawGrid({ ctx, primaryColor: primary, secondaryColor: grayScale[0], shape: circ, frame })
 };
 
 export default circGrid;

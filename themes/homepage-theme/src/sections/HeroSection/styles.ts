@@ -1,5 +1,5 @@
 export const wrapperStyles = {
-  height: ["99.9vh", "99.9vh", "99.9vh", "70vh"],
+  height: ["100vh", "100vh", "100vh", "100vh", "70vh"],
   gridTemplateRows: "3fr 1fr",
   py: ["1rem", "2rem"],
   bg: "transparent"
@@ -20,14 +20,4 @@ export const logoContainerStyles = {
   alignContent: "end",
 };
 
-export const logoStyles = {
-  mr: 0,
-  h1: {
-    fontSize: ["2rem", "3rem"],
-    mb: ["0.4rem", "0.6rem"],
-    mr: 0,
-    "&:last-of-type": {
-      mb: 0,
-    }
-  },
-};
+export const logoStyles = {};

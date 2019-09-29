@@ -6,7 +6,10 @@ export const wrapperStyles = {
   alignContent: "flex-start"
 };
 
-const spacing = ["0.5rem", "0.5rem", "0.6rem", "0.7rem"];
+const scale = [0.5, 0.6, 0.7, 0.8];
+const spacing = scale.map(size => `${size}rem`);
+const fontSize = scale.map(size => `${size * 5}rem`)
+const lineHeight = scale.map(size => `${size * 6}rem`)
 export const spanStyles = {
   userSelect: "none",
   px: 0,
@@ -21,8 +24,8 @@ export const spanStyles = {
 export const textStyles = {
   fontFamily: "monospace",
   display: "inline-block",
-  fontSize: ["2.5rem", "2.5rem", "3rem", "3.5rem"],
-  lineHeight: ["3rem", "3rem", "3.6rem", "4.2rem"],
+  fontSize,
+  lineHeight,
   wordSpacing: "-0.2em",
   mt: 0,
   ml: 0,

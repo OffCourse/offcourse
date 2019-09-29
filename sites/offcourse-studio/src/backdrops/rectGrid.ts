@@ -10,8 +10,9 @@ const rect = ({ ctx, x, y, z, primaryColor, secondaryColor, width, height }) => 
   ctx.fillRect(x, y, width, height);
 };
 
-const rectGrid = ({ ctx, primaryColor, secondaryColor }) => {
-  drawGrid({ ctx, primaryColor, secondaryColor, shape: rect })
+const rectGrid = ({ ctx, theme, frame }) => {
+  const { primary, grayScale } = theme.colors;
+  drawGrid({ ctx, primaryColor: primary, secondaryColor: grayScale[0], shape: rect, frame })
 };
 
 export default rectGrid;

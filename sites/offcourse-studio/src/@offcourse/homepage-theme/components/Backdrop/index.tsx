@@ -3,10 +3,15 @@ import { FunctionComponent } from "react";
 import { IThemeable } from "@offcourse/interfaces";
 import { jsx } from "theme-ui";
 import { wrapperStyles } from "./styles";
-import useCanvas from "../../../../hooks/useCanvas";
+import useCanvas from "@offcourse/homepage-theme/src/hooks/useCanvas";
 import useBackdrop from "../../../../hooks/useBackdrop";
+import { useThemeUI } from "theme-ui";
 
-type BackdropProps = IThemeable & { width?: number; height?: number };
+type BackdropProps = IThemeable & {
+  width?: number;
+  height?: number;
+  backdropName?: string;
+};
 
 const Backdrop: FunctionComponent<BackdropProps> = ({
   className,
@@ -14,8 +19,9 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
   height = 100,
   backdropName = "circGrid"
 }) => {
+  const { theme }: any = useThemeUI();
   const draw = useBackdrop(backdropName);
-  const ref = useCanvas({ width, height, draw });
+  const ref = useCanvas({ width, height, draw, delay: 100, theme });
   return (
     <canvas
       sx={wrapperStyles}

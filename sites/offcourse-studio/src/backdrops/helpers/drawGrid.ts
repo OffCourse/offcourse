@@ -1,4 +1,4 @@
-const drawGrid = ({ ctx, shape, primaryColor, secondaryColor }) => {
+const drawGrid = ({ ctx, shape, frame, primaryColor, secondaryColor }) => {
   const { width, height } = ctx.canvas;
   ctx.clearRect(0, 0, width, height);
   const numberOfColumns = Math.ceil(width / 16);
@@ -10,7 +10,7 @@ const drawGrid = ({ ctx, shape, primaryColor, secondaryColor }) => {
         ctx,
         x: x * unitSize,
         y: y * unitSize,
-        z: Date.now() / 1000,
+        z: frame / 6,
         primaryColor,
         secondaryColor,
         width: unitSize,

@@ -12,5 +12,5 @@ export const textStyles = {
   display: "inline-block",
   m: 0,
   fontSize: ["2rem", "2.5rem", "3rem"],
-  lineHeight: ["2rem", "2.5rem", "3rem"],
+  lineHeight: ["2.4rem", "3rem", "3.6rem"],
 };
