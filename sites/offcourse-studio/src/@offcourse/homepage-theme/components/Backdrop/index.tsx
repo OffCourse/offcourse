@@ -4,6 +4,7 @@ import { IThemeable } from "@offcourse/interfaces";
 import { jsx } from "theme-ui";
 import { wrapperStyles } from "./styles";
 import useCanvas from "@offcourse/homepage-theme/src/hooks/useCanvas";
+import useGrid from "@offcourse/homepage-theme/src/hooks/useGrid";
 import useBackdrop from "../../../../hooks/useBackdrop";
 import { useThemeUI } from "theme-ui";
 
@@ -21,7 +22,16 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
 }) => {
   const { theme }: any = useThemeUI();
   const draw = useBackdrop(backdropName);
-  const ref = useCanvas({ width, height, draw, delay: 100, theme });
+  const { grid, unitSize } = useGrid({ width, height });
+  const ref = useCanvas({
+    width,
+    height,
+    draw,
+    delay: 100,
+    theme,
+    grid,
+    unitSize
+  });
   return (
     <canvas
       sx={wrapperStyles}

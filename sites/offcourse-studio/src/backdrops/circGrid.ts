@@ -1,10 +1,6 @@
 import drawGrid from "./helpers/drawGrid";
-import SimplexNoise from "simplex-noise";
 
-var simplex = new SimplexNoise();
-
-const circ = ({ ctx, x, y, z, primaryColor, secondaryColor, width, height }) => {
-  const value = simplex.noise3D(x, y, z);
+const circ = ({ ctx, x, y, value, primaryColor, secondaryColor, width, height }) => {
   var radius = width / 2;
   ctx.lineWidth = 0;
   ctx.beginPath();
@@ -13,9 +9,17 @@ const circ = ({ ctx, x, y, z, primaryColor, secondaryColor, width, height }) => 
   ctx.fill();
 };
 
-const circGrid = ({ ctx, theme, frame }) => {
+const circGrid = ({ ctx, theme, frame, unitSize, grid }) => {
   const { primary, grayScale } = theme.colors;
-  drawGrid({ ctx, primaryColor: primary, secondaryColor: grayScale[0], shape: circ, frame })
+  drawGrid({
+    ctx,
+    primaryColor: primary,
+    secondaryColor: grayScale[0],
+    shape: circ,
+    frame,
+    unitSize,
+    grid
+  })
 };
 
 export default circGrid;

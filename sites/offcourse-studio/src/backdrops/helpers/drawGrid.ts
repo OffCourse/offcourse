@@ -1,22 +1,23 @@
-const drawGrid = ({ ctx, shape, frame, primaryColor, secondaryColor }) => {
+import SimplexNoise from "simplex-noise";
+const simplex = new SimplexNoise();
+
+const drawGrid = ({ ctx, shape, frame, grid, unitSize, primaryColor, secondaryColor }) => {
   const { width, height } = ctx.canvas;
   ctx.clearRect(0, 0, width, height);
-  const numberOfColumns = Math.ceil(width / 16);
-  const unitSize = Math.ceil(width / numberOfColumns);
-  const numberOfRows = Math.ceil(height / unitSize);
-  for (let x = 0; x <= numberOfColumns; x++) {
-    for (let y = 0; y <= numberOfRows; y++) {
-      shape({
-        ctx,
-        x: x * unitSize,
-        y: y * unitSize,
-        z: frame / 6,
-        primaryColor,
-        secondaryColor,
-        width: unitSize,
-        height: unitSize
-      });
-    }
+  for (const [u, v] of grid) {
+    const x = u * unitSize;
+    const y = v * unitSize;
+    const value = simplex.noise3D(x, y, frame / 6);
+    shape({
+      ctx,
+      x,
+      y,
+      value,
+      primaryColor,
+      secondaryColor,
+      width: unitSize,
+      height: unitSize
+    });
   }
 };
 
