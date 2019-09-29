@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useThemeUI } from "theme-ui";
 import useInterval from "@offcourse/homepage-theme/src/hooks/useInterval";
 
@@ -41,14 +41,30 @@ const useCanvas: (options: UseCanvasOptions) => any = ({ width, height, draw }) 
   const canvas = ref.current;
   const ctx = useContext({ canvas, width, height })
   const { theme }: any = useThemeUI();
-  useInterval(() => {
-    updateCanvas({
-      ctx,
-      primaryColor: theme.colors.primary,
-      secondaryColor: theme.colors.grayScale[0],
-      draw
-    })
-  }, 2000);
+  const requestRef = useRef();
+  const previousTimeRef = useRef();
+
+  const callback = () => updateCanvas({
+    ctx,
+    primaryColor: theme.colors.primary,
+    secondaryColor: theme.colors.grayScale[0],
+    draw
+  });
+
+  const animate = time => {
+    if (previousTimeRef.current != undefined) {
+      const deltaTime = time - previousTimeRef.current;
+      callback(deltaTime)
+    }
+    previousTimeRef.current = time;
+    requestRef.current = requestAnimationFrame(animate);
+  }
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, [ctx, draw]);
+
   return ref;
 }
 

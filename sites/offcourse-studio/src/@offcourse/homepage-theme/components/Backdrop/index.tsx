@@ -12,7 +12,7 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
   className,
   width = 100,
   height = 100,
-  backdropName = "rectGrid"
+  backdropName = "circGrid"
 }) => {
   const draw = useBackdrop(backdropName);
   const ref = useCanvas({ width, height, draw });

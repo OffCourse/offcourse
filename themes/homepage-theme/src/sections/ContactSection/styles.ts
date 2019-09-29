@@ -1,7 +1,9 @@
 export const wrapperStyles = {
   gridTemplateRows: ["auto 1fr", "1fr"],
   m: "-2rem",
-  gridGap: 0
+  gridGap: 0,
+  py: [0, 0],
+  bg: "grayScale.0",
 };
 
 export const textStyles = {
@@ -12,16 +14,15 @@ export const textStyles = {
 export const sloganSpaceStyles = {
   display: "grid",
   bg: "primary",
-
   gridColumn: ["1/10", "1/5"],
+  px: 6,
   gridRow: "1/2",
   alignItems: ["start", "center"],
 };
 
 export const formStyles = {
-  bg: "grayScale.0",
   py: "2rem",
-  px: [6, "3rem", "3rem", "4rem"],
-  gridColumn: ["1/10", "5/10"],
+  pr: ["1rem", "2rem"],
+  gridColumn: ["2/9", "5/10"],
   gridRow: ["2/3", "1/2"]
 };

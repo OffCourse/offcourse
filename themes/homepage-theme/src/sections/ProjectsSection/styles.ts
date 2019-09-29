@@ -1,3 +1,3 @@
 export const wrapperStyles = {
-  p: 0
+  px: [0, 0]
 };
