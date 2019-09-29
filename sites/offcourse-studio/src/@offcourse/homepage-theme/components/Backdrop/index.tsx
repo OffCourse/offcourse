@@ -5,6 +5,7 @@ import { jsx } from "theme-ui";
 import { wrapperStyles } from "./styles";
 import useCanvas from "@offcourse/homepage-theme/src/hooks/useCanvas";
 import useGrid from "@offcourse/homepage-theme/src/hooks/useGrid";
+import useAnimationFrame from "@offcourse/homepage-theme/src/hooks/useAnimationFrame";
 import useBackdrop from "../../../../hooks/useBackdrop";
 import { useThemeUI } from "theme-ui";
 
@@ -13,6 +14,8 @@ type BackdropProps = IThemeable & {
   height?: number;
   backdropName?: string;
 };
+
+let frame = 0;
 
 const Backdrop: FunctionComponent<BackdropProps> = ({
   className,
@@ -23,15 +26,22 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
   const { theme }: any = useThemeUI();
   const draw = useBackdrop(backdropName);
   const { grid, unitSize } = useGrid({ width, height });
-  const ref = useCanvas({
-    width,
-    height,
-    draw,
-    delay: 100,
-    theme,
-    grid,
-    unitSize
-  });
+  const [ref, ctx] = useCanvas({ width, height });
+
+  const noop = () => null;
+
+  const animate = (time: number) => {
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    draw({
+      frame: frame + 1,
+      ctx,
+      unitSize,
+      grid,
+      theme
+    });
+  };
+
+  useAnimationFrame({ callback: ctx && draw ? animate : noop });
   return (
     <canvas
       sx={wrapperStyles}
