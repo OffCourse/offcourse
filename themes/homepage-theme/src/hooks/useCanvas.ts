@@ -1,16 +1,10 @@
 import { useState, useRef } from "react";
+import { ICanvasProps, CanvasContext } from "@offcourse/interfaces/src/canvas";
 
-type UseCanvasOptions = {
-  width: number;
-  height: number;
-}
-
-const useCanvas: (options: UseCanvasOptions) => any = ({
-  width, height
-}) => {
+const useCanvas: (options: ICanvasProps) => [any, CanvasContext] = ({ width, height }) => {
   const canvasRef: any = useRef();
   const canvas = canvasRef.current;
-  const [ctx, setCtx]: [boolean | any, any] = useState(false)
+  const [ctx, setCtx]: [CanvasContext, any] = useState(false);
 
   if (canvas && !ctx) {
     const context = canvas.getContext("2d");
@@ -20,6 +14,6 @@ const useCanvas: (options: UseCanvasOptions) => any = ({
   }
 
   return [canvasRef, ctx];
-}
+};
 
 export default useCanvas;

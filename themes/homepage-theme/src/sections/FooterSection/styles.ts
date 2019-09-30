@@ -8,7 +8,6 @@ export const wrapperStyles = {
   maxHeight: "50vh",
   gridTemplateColumns: ["1fr", "1fr 1fr"],
   gridGap: "3rem",
-  bg: "grayScale.2"
 };
 
 export const contactStyles = {
@@ -20,6 +19,9 @@ export const contactStyles = {
   fontSize: 1,
   h2: {
     mb: 4
+  },
+  p: {
+    mb: 0
   }
 };
 

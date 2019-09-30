@@ -15,7 +15,7 @@ export const spanStyles = {
   userSelect: "none",
   px: 0,
   m: 0,
-  mr: spacing
+  mr: spacing,
   "&:last-type": {
     mb: 0,
     mr: 0

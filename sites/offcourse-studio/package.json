@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@offcourse/homepage-theme": "*",
+    "d3-array": "^2.3.1",
     "gatsby": "^2.15.16",
     "gatsby-plugin-typescript": "^2.1.8",
     "lodash.merge": "^4.6.2",

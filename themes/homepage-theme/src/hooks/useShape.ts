@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 
-const useBackdrop = (componentName) => {
+const useShape = (shapeName: string) => {
   const [code, setCode] = useState(false);
+
   useEffect(() => {
-    import(`../../shapes/${componentName}`).then(setCode);
+    import(`../../shapes/${shapeName}`).then(setCode);
     return;
   }, []);
   return code.default;
 };
 
-export default useBackdrop;
+export default useShape;
