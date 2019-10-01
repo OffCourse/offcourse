@@ -15,7 +15,6 @@ export const sloganSpaceStyles = {
   display: "grid",
   bg: "primary",
   gridColumn: ["1/10", "1/6", "1/6", "1/5"],
-  px: 6,
   gridRow: "1/2",
   alignItems: ["start", "center"],
 };

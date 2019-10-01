@@ -132,6 +132,17 @@ exports.sourceNodes = ({ actions, reporter }) => {
       publishable: Boolean
       steps: [ProjectInfo]
      }
+
+    type ProfileSection implements Node & PageSection {
+      role: String!
+      title: String
+      order: Int!
+      description: String @md
+      backdropPath: String
+      publishable: Boolean
+      skills: [ProjectInfo]
+     }
+
     interface PageSection @nodeInterface {
       id: ID!
       role: String!

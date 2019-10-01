@@ -53,7 +53,7 @@ const newTheme = merge({}, baseTheme, {
   },
   fonts: {
     body: `${fonts.body.fontFamily}, Helvetica, sans-serif`,
-    heading: `${fonts.heading.fontFamily}, Helvetica Bold, sans-serif`,
+    heading: `${fonts.monospace.fontFamily}, Helvetica Bold, sans-serif`,
     monospace: `${fonts.monospace.fontFamily}, Helvetica Bold, sans-serif`
   },
   globals

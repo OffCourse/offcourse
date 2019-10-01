@@ -6,7 +6,7 @@ const useShape = (shapeName: string) => {
   useEffect(() => {
     import(`../../shapes/${shapeName}`).then(setCode);
     return;
-  }, []);
+  }, [shapeName]);
   return code.default;
 };
 

@@ -21,6 +21,9 @@ const useHomepageData = () => {
               ... on ProjectsSection {
                 ...ProjectsData
               }
+              ... on ProfileSection {
+                ...ProfileData
+              }
               ... on ProcessSection {
                 ...StepsData
               }

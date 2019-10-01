@@ -1,12 +1,25 @@
-role: AboutSection
+role: ProfileSection
 order: 60
-title: About Us
-description: |
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fermentum
-  dolor at neque molestie pellentesque. In finibus vel diam eget hendrerit.
-  Nam vitae nibh non leo commodo elementum. Quisque ac luctus nisi, nec
-  ullamcorper tellus. Donec convallis nunc tempus, mollis turpis at, congue
-  nibh. In condimentum et odio a tincidunt. Mauris consequat viverra ornare.
-  Phasellus a volutpat libero. Morbi sed lectus et leo tincidunt molestie.
-  Fusce sit amet est venenatis, rutrum lacus et, hendrerit mi. 
+title: About Jan Hein Hoogstad
+skills:
+  - title: The multidimensional universe of the digital
+    description: |
+      Jan Hein is fascinated by the unlimited posibilities we’re creating in the
+      digital world. He see’s the digital as an extra dimension we’ve added to
+      what we see as the ‘real world’. A way to add multiple tracks to our
+      reality. Like the posibility to visualise multiple outcomes based on
+      different sets of slightly altered parameters.
+  - title: Creative approach to projects and solutions
+    description: |
+      creative mind  
+      looking for ways to cross over  
+      strategic level  
+      Of the track approach, as simple as possible
+  - title: Diverse domains and international background
+    description: |
+      Track record within Philosophy, cultural analysis, (digital) education,
+      programming, etc. International network of researchers, developers,
+      designers, artists, projectmanagers. Previously based in Berlin, San
+      Francisco, Taipei, Minneapolis, New York, Wenen, Istanbul, Gent,
+      Utrecht, Amsterdam,
 publishable: true

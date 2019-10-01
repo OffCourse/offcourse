@@ -18,6 +18,15 @@ export const ProjectsFragment = graphql`
   }
 `;
 
+export const ProfileFragment = graphql`
+  fragment ProfileData on ProfileSection {
+    skills {
+      title
+      description
+    }
+  }
+`;
+
 export const ContactInfoData = graphql`
   fragment ContactInfoData on FooterSection {
     contactInfo {
