@@ -4,6 +4,7 @@ import { Styled, jsx } from "theme-ui";
 import { IBaseSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces";
 import Text from "../../components/Text";
+import DisplayText from "../../components/DisplayText";
 import BaseSection from "../BaseSection";
 import { wrapperStyles, columnStyles, titleStyles } from "./styles";
 
@@ -23,7 +24,7 @@ const ProfileSection: FunctionComponent<ProfileSectionProps> = ({
 }) => {
   return (
     <BaseSection {...props} className={className} sx={wrapperStyles}>
-      <Styled.h1 sx={titleStyles}>{title}</Styled.h1>
+      <DisplayText sx={titleStyles}>{title}</DisplayText>
       {skills.map(({ title, description }, index) => (
         <div key={index} sx={columnStyles}>
           <h2>{title}</h2>
