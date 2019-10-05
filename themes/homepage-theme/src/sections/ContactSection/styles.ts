@@ -1,27 +1,33 @@
 export const wrapperStyles = {
-  gridTemplateRows: ["auto 1fr", "1fr"],
-  m: "-2rem",
-  gridGap: 0,
-  py: [0, 0],
-  bg: "grayScale.0",
+  gridTemplateRows: ["auto 1fr", "auto 1fr", "1fr"],
+  position: "relative",
+  bg: "transparent",
+  py: [0, 0]
 };
 
 export const textStyles = {
-  p: "2rem",
-  maxWidth: "40rem",
 };
 
 export const sloganSpaceStyles = {
-  display: "grid",
-  bg: "primary",
-  gridColumn: ["1/10", "1/6", "1/6", "1/5"],
-  gridRow: "1/2",
-  alignItems: ["start", "center"],
+  display: "flex",
+  position: "relative",
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  alignItems: "center",
+  gridColumn: ["1/13", "1/13", "1/13", "1/7", "1/5"],
+  py: ["4rem"],
+  gridRow: ["1/2"]
 };
 
 export const formStyles = {
-  py: "2rem",
-  pr: ["1rem", "2rem"],
-  gridColumn: ["2/9", "6/10", "6/10", "5/10"],
-  gridRow: ["2/3", "1/2"]
+  gridColumn: ["1/13", "1/13", "1/13", "7/13", "7/12"],
+  bg: "grayScale.0",
+  gridRow: ["2/3", "2/3", "2/3", "1/2"],
+  ml: ["-1rem", "-2rem", "-2rem", "0"],
+  mr: ["-1rem", "-2rem", "-2rem", 0],
+  mb: ["8rem", "8rem", "8rem", 0],
+  px: ["1rem", "2rem"],
+  py: ["2rem", "2rem", "2rem", "3rem", "4rem"],
 };

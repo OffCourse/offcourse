@@ -1,6 +1,6 @@
 role: ProfileSection
 order: 60
-title: Jan Hein Hoogstad
+title: About Jan Hein Hoogstad
 skills:
   - title: The multidimensional universe of the digital
     description: |
@@ -11,10 +11,11 @@ skills:
       different sets of slightly altered parameters.
   - title: Creative approach to projects and solutions
     description: |
-      creative mind  
-      looking for ways to cross over  
-      strategic level  
-      Of the track approach, as simple as possible
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+      molestie mauris et elementum eleifend. Suspendisse vestibulum enim
+      et consequat porta. Phasellus rhoncus risus eget enim interdum, a
+      faucibus mi fringilla. Vestibulum placerat purus diam, sed vestibulum
+      ipsum condimentum nec. 
   - title: Diverse domains and international background
     description: |
       Track record within Philosophy, cultural analysis, (digital) education,

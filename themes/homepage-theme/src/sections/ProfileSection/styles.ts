@@ -1,24 +1,28 @@
 export const wrapperStyles = {
-  gridTemplateRows: ["auto 1fr", "auto 1fr", "auto 1fr", "1fr"],
-  bg: ["grayScale.0"],
+  gridTemplateRows: ["auto 1fr", "auto 1fr", "auto 1fr", "auto 1fr"],
+  bg: ["grayScale.1"],
   color: "grayScale.4",
-  py: ["3rem", "3rem", "3rem", "4rem"]
+  gridRowGap: ["2rem"],
+  px: ["2rem", "2rem"],
+  py: ["3rem", "3rem", "3rem", "4rem", "4rem"]
 }
 
 export const columnStyles = {
   display: "flex",
   flexDirection: "column",
-  gridColumn: ["1/10", "1/10", "span 3", "span 3", "span 2"],
+  gridColumn: ["span 12", "span 12", "span 12", "span 4"],
+  mb: ["1rem", "1rem", "1rem", 0],
+  "&:last-of-type": {
+  },
   h2: {
-    fontSize: "1.5rem",
+    fontSize: "1.3rem",
     fontFamily: "heading",
-    wordSpacing: "-0.2em",
-    lineHeight: "1.75rem",
+    lineHeight: "1.5rem",
     m: 0,
-    mb: "2rem",
+    mb: "1rem",
   },
   p: {
-    m: 0
+    m: 0,
   }
 };
 const scale = [0.4, 0.4, 0.5, 0.5];
@@ -27,14 +31,13 @@ const fontSize = scale.map(size => `${size * 5}rem`)
 const lineHeight = scale.map(size => `${size * 6}rem`)
 
 export const titleStyles = {
-  h1: {
-    fontSize,
-    lineHeight,
-    px: spacing,
-    mb: spacing,
-  },
   gridRow: ["1/2"],
-  gridColumn: ["1/10", "1/10", "1/10", "1/10", "1/4"],
+  gridColumn: ["1/13"],
+  fontFamily: "monospace",
+  fontSize,
+  lineHeight,
+  m: 0,
+  wordSpacing: "-0.3em"
 };
 
 export const dividerStyles = {

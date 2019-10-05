@@ -6,6 +6,8 @@ import { IForm } from "@offcourse/interfaces/src/form";
 import { IThemeable } from "@offcourse/interfaces";
 import BaseSection from "../BaseSection";
 import useVisibility from "../../hooks/useVisibility";
+import { useMeasure } from "@offcourse/homepage-theme/src/hooks";
+import Backdrop from "../../components/Backdrop";
 import FormContainer from "../../containers/FormContainer";
 import DisplayText from "../../components/DisplayText";
 import CallToAction from "../../components/CallToAction";
@@ -27,8 +29,10 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
   ...props
 }) => {
   const [isVisible, Marker] = useVisibility({ canLeave: true });
+  const [{ clientWidth: width, clientHeight: height }, bind] = useMeasure();
   return (
-    <BaseSection {...props} className={className} sx={wrapperStyles}>
+    <BaseSection {...bind} {...props} className={className} sx={wrapperStyles}>
+      <Backdrop width={width} height={height} />
       <Marker />
       <CallToAction isVisible={!isVisible}>{callToAction}</CallToAction>
       <div sx={sloganSpaceStyles}>

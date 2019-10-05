@@ -6,7 +6,7 @@ import Logo from "../../components/Logo";
 import { IThemeable } from "@offcourse/interfaces";
 import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
 import useHomepageData from "../../hooks/useHomepageData";
-import { wrapperStyles, contactStyles } from "./styles";
+import { wrapperStyles, logoStyles, contactStyles } from "./styles";
 
 type FooterProps = IFooterSection & IThemeable;
 
@@ -27,7 +27,7 @@ const FooterSection: FunctionComponent<FooterProps> = ({
           <p>{email}</p>
         </section>
       </div>
-      <Logo>{siteName}</Logo>
+      <Logo sx={logoStyles}>{siteName}</Logo>
     </Footer>
   );
 };

@@ -7,6 +7,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "deploy": "yarn sls syncToS3 && yarn sls invalidateCloudFrontCache",
     "clean": "gatsby clean",
     "type-check": "tsc --noEmit",
     "lint": "tslint --project ."

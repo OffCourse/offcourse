@@ -19,11 +19,9 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
   const { theme }: any = useThemeUI();
   const { primary, secondary, grayScale } = theme.colors;
   const combos = [
-    { shapeName: "square", colors: [primary, secondary] },
     { shapeName: "circle", colors: [primary, grayScale[4]] },
     { shapeName: "square", colors: [primary, grayScale[0]] },
-    { shapeName: "circle", colors: [grayScale[4], grayScale[0]] },
-    { shapeName: "circle", colors: [secondary, grayScale[4]] }
+    { shapeName: "circle", colors: [grayScale[4], grayScale[0]] }
   ];
   const comboRef = useRef(shuffle(combos)[0]);
 

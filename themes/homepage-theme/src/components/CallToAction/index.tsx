@@ -34,7 +34,7 @@ const CallToAction: FunctionComponent<CallToActionProps> = ({
       top: -200
     },
     top: isVisible ? 0 : -200,
-    config: config.molasses
+    config: config.fast
   });
   return (
     <animated.div sx={styles} style={animation} className={className}>
