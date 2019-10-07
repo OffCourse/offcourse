@@ -9,7 +9,7 @@ const combo = {
 
 const StateContext = createContext({ background: combo });
 
-export const StateProvider: FunctionComponent = ({ children }) => {
+export const AppStateProvider: FunctionComponent = ({ children }) => {
   const { theme }: any = useThemeUI();
   const { primary, grayScale } = theme.colors;
   const combos = [
@@ -25,6 +25,6 @@ export const StateProvider: FunctionComponent = ({ children }) => {
   );
 };
 
-export const useStateContext = () => useContext(StateContext);
+export const useAppState = () => useContext(StateContext);
 
 export default StateContext;

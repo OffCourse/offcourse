@@ -5,7 +5,7 @@ import { IThemeable } from "@offcourse/interfaces";
 import { wrapperStyles } from "./styles";
 import { ICanvasProps } from "@offcourse/interfaces/src/canvas";
 import useAnimatedGrid from "@offcourse/homepage-theme/src/hooks/useAnimatedGrid";
-import { useStateContext } from "../../../../contexts/StateContext";
+import { useAppState } from "../../../../contexts/StateContext";
 
 type BackdropProps = IThemeable & ICanvasProps & { shapeName: string };
 
@@ -14,7 +14,7 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
   width = 100,
   height = 100
 }) => {
-  const { background } = useStateContext();
+  const { background } = useAppState();
   const ref = useAnimatedGrid({
     width,
     height,
