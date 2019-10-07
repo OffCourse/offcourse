@@ -4,7 +4,6 @@ import { jsx } from "theme-ui";
 import { IHeroSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces";
 import { useMeasure } from "@offcourse/homepage-theme/src/hooks";
-import useShape from "@offcourse/homepage-theme/src/hooks/useShape";
 import DisplayText from "../../components/DisplayText";
 import Backdrop from "../../components/Backdrop";
 import BaseSection from "../BaseSection";
