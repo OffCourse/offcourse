@@ -1,54 +1,59 @@
-import { useRef } from "react";
 import SimplexNoise from "simplex-noise";
 import useCanvas from "@offcourse/homepage-theme/src/hooks/useCanvas";
-import useGrid from "@offcourse/homepage-theme/src/hooks/useGrid";
-import useAnimationFrame from "@offcourse/homepage-theme/src/hooks/useAnimationFrame";
 import useShape from "@offcourse/homepage-theme/src/hooks/useShape";
 import { ICanvasProps } from "@offcourse/interfaces/src/canvas";
+import { bin } from "d3-array";
 
 const simplex = new SimplexNoise();
 
-const useAnimatedGrid: (args: ICanvasProps & { shapeName: string }) => any = ({
-  delay = 100,
+const useAnimatedGrid: (args: ICanvasProps & { shapeName: string, elements: any[] }) => any = ({
   width,
   height,
   shapeName,
+  elements,
   colors,
 }) => {
-  const { grid, unitSize } = useGrid({ width, height });
-  const shape = useShape(shapeName);
   const [ref, ctx] = useCanvas({ width, height });
-  const frameRef = useRef(0);
-  const callback = (interval: number) => {
+  const shape = useShape(shapeName);
 
-    if (!ctx || !shape) {
-      return null;
-    }
+  const unitSize = 30;
+  const numberOfColumns = Math.ceil(width / unitSize);
+  const numberOfRows = Math.ceil(height / unitSize);
+  const xbin = bin().domain([0, 1]).thresholds(numberOfColumns).value(({ u, v }) => u);
+  const ybin = bin().domain([0, 1]).thresholds(numberOfRows).value(({ u, v }) => v)
+  if (!ctx || !shape) {
+    return ref;
+  }
 
-    const frame = frameRef.current = frameRef.current + 1;
-    ctx.clearRect(0, 0, width, height);
+  const cols = xbin(elements);
+  const binnedElements = cols.map(col => {
+    const rows = ybin(col);
+    return rows.map(row => {
+      const u = col.x0;
+      const v = row.x0;
+      const width = col.x1 - col.x0;
+      const height = row.x1 - row.x0;
+      const value = simplex.noise3D(row.length, u, v);
+      return { u, v, width, height, value };
+    });
+  })
 
-    for (const [u, v] of grid) {
-      const x = u * unitSize;
-      const y = v * unitSize;
-      const value = simplex.noise3D(x, y, frame / 16);
-      shape({
-        ctx,
-        interval,
-        frame,
-        x,
-        y,
-        value,
-        colors,
-        width: unitSize,
-        height: unitSize
-      });
-    }
-  };
-
-  useAnimationFrame({ callback, delay });
+  const grid = binnedElements.flat();
+  ctx.clearRect(0, 0, width, height);
+  for (const { u, v, width: w, height: h, value } of grid) {
+    const x = u * width;
+    const y = v * height;
+    shape({
+      ctx,
+      x,
+      y,
+      value,
+      colors,
+      width: Math.ceil(w * width),
+      height: Math.ceil(h * height)
+    });
+  }
   return ref;
-
 }
 
 export default useAnimatedGrid;

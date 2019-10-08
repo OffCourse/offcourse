@@ -14,9 +14,10 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
   width = 100,
   height = 100
 }) => {
-  const { background } = useAppState();
+  const { background, elements } = useAppState();
   const ref = useAnimatedGrid({
     width,
+    elements,
     height,
     ...background
   });

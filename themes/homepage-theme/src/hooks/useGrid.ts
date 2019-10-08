@@ -1,21 +1,18 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { range, cross } from "d3-array";
 
-const useGrid: (args: { width: number, height: number }) => {
-  unitSize: number, grid: [number, number][]
+const useGrid: (args: { numberOfRows: number, numberOfColumns: number }) => {
+  grid: [number, number][]
 } = (
-  { width, height }
+  { numberOfRows, numberOfColumns }
 ) => {
-    const [gridData, setGridData] = useState({ grid: [], unitSize: 0 });
+    const [gridData, setGridData] = useState({ grid: [] });
     useEffect(() => {
-      const numberOfColumns = Math.ceil(width / 16);
-      const unitSize = Math.ceil(width / numberOfColumns);
-      const numberOfRows = Math.ceil(height / unitSize);
       const columns = range(numberOfColumns);
       const rows = range(numberOfRows);
       const grid = cross(columns, rows);
-      setGridData({ unitSize, grid });
-    }, [width, height]);
+      setGridData({ grid });
+    }, [numberOfRows, numberOfColumns]);
     return gridData;
   };
 
