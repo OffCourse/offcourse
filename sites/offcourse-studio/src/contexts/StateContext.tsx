@@ -14,7 +14,7 @@ import { shuffle, range } from "d3-array";
 const simplex = new SimplexNoise();
 
 const createElements = frame => {
-  const elems = range(5000).map(elem => {
+  const elems = range(1000).map(elem => {
     const u = (simplex.noise2D(elem, frame / 10000) + 1) / 2;
     const v = (simplex.noise2D(u, elem) + 1) / 2;
     return { u, v };
@@ -29,9 +29,8 @@ export const AppStateProvider: FunctionComponent = ({ children }) => {
   const [elements, setElements] = useState([]);
   const { primary, grayScale } = theme.colors;
   const combos = [
-    { shapeName: "circle", colors: [grayScale[4], grayScale[0]] },
     { shapeName: "circle", colors: [primary, grayScale[0]] },
-    { shapeName: "circle", colors: [grayScale[4]] }
+    { shapeName: "circle", colors: [primary, grayScale[4]] }
   ];
   const [background, setBackground] = useState(shuffle(combos)[0]);
 

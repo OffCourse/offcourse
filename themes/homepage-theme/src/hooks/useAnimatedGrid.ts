@@ -33,7 +33,7 @@ const useAnimatedGrid: (args: ICanvasProps & { shapeName: string, elements: any[
       const v = row.x0;
       const width = col.x1 - col.x0;
       const height = row.x1 - row.x0;
-      const value = simplex.noise3D(row.length, u, v);
+      const value = (simplex.noise3D(row.length, u, v) + 1) / 2;
       return { u, v, width, height, value };
     });
   })
