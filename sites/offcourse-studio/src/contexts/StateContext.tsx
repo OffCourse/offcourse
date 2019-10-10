@@ -13,12 +13,16 @@ import { shuffle, range } from "d3-array";
 
 const simplex = new SimplexNoise();
 
+class MyTarget extends EventTarget {}
+const target = new MyTarget();
+
 const createElements = frame => {
   const elems = range(1000).map(elem => {
     const u = (simplex.noise2D(elem, frame / 10000) + 1) / 2;
     const v = (simplex.noise2D(u, elem) + 1) / 2;
     return { u, v };
   });
+  // target.dispatchEvent(new CustomEvent("move", { detail: elems }));
   return elems;
 };
 
@@ -32,6 +36,7 @@ export const AppStateProvider: FunctionComponent = ({ children }) => {
     { shapeName: "circle", colors: [primary, grayScale[0]] },
     { shapeName: "circle", colors: [primary, grayScale[4]] }
   ];
+  /// target.addEventListener("move", event => console.log(event.detail));
   const [background, setBackground] = useState(shuffle(combos)[0]);
 
   const frameRef = useRef(0);

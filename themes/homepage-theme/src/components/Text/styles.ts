@@ -1,7 +1,7 @@
 export const wrapperStyles = {
   fontFamily: "body",
-  fontSize: 1,
-  lineHeight: 2,
+  fontSize: 2,
+  lineHeight: 3,
   p: {
     m: 0,
     mb: 5,

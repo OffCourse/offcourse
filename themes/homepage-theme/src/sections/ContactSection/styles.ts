@@ -22,7 +22,7 @@ export const sloganSpaceStyles = {
 };
 
 export const formStyles = {
-  gridColumn: ["1/13", "1/13", "1/13", "7/13", "7/12"],
+  gridColumn: ["1/13", "1/13", "1/13", "7/13", "6/12"],
   bg: "grayScale.0",
   gridRow: ["2/3", "2/3", "2/3", "1/2"],
   ml: ["-1rem", "-2rem", "-2rem", "0"],

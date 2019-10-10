@@ -4,32 +4,51 @@ publishable: true
 projects:
   - title: Bots with an Attitude
     description: |
-      For [Planet B](https://planet-b.eu/), we are developing a support system
-      for Artistic Researchers who are either working with Machine Learning and
-      AI, or want to learn it. The Bots from the project's title function as
-      personal assistant who can perform up to three tasks. However, their
-      personality is random and outside the scope of control of its creator. 
+      Bots with an attitude is a project for Planet B from Waag. Planet B is a
+      mission to recolonise planet Earth based on a narrative of DIY expeditions
+      to a fictional planet. The project ‘Bots with an attitude’ is a support
+      system for artistic researchers, who work or wish to work with machine
+      learning and AI. The bots are personal assistants. They help by gathering
+      information or helping publish the artist's work. However, they are unusual
+      bots, because they have a character and mind of their own, leading to
+      unexpected encounters and, hopefully, productive surprises.
   - title: Public Badges
     description: |
-      For a [coalition](www.publicspaces.net) most of the Netherlands major
-      public and cultural institutions, I developed a solution to reduce
-      their dependency on major commercial internet platforms (such as facebook
-      and google). In order to achieve this, I came up with a badges system
-      that values the ethical values of internet product and services and makes
-      them visible on their website. 
+      PublicSpaces is alternative platform for social interaction. Nineteen
+      prominent parties from the Dutch media, culture, education and health
+      sectors – such as media production company VPRO, research collective Waag
+      and cultural center Pakhuis de Zwijger, research the possibility to
+      reclaim the internet as a common good and minimize our dependence upon
+      commercial platforms, such as Facebook and Google. Offcourse Studio
+      developed a badges system that certifies the ethical values of internet
+      products and services.
   - title: Offcourse 
     description: |
-      This is the non-profit I founded after I left academia. Its focus is to
-      democratize education by blurring the lines between teaching and learning.
-      It's main premise is that everything you want to learn nowadays is already
-      available online. The only thing you need is someone or something that can
-      show you where to look.
+      Offcourse is a platform by Offcourse Studio. Offcourse is an open source
+      platform for online learning. The Internet is an endless source of
+      knowledge; blogs, video tutorials or even that one interesting podcast.
+      We developed a platform that allows people to gather the best sources
+      online and structure them into easy-shareable courses. This helps people
+      to get started with crowdlearning; sharing what they have learned and
+      learning that others have shared.
   - title: Coding the humanities
     description: |
-      A program at the University of Amsterdam that implements new unlimited
-      practices of digital literacy, while challenging situated knowledges.
-      This helps students and researchers to understand the various
-      technologically mediated objects that they are studying. Developing
-      custom tools, rather than using ready-made ones, can improve the actual
-      practice of humanities research as well as (the quantity and quality) of
-      its output.
+      Coding the Humanities was one of the first coding bootcamps in the
+      Netherlands. It was designed for the Humanities Department of the
+      University of Amsterdam. During a month-long full time program, students
+      and researchers worked together to understand various technologically
+      mediated objects and develop custom tools for research. Developing these
+      tools themselves, improved the students’ practice of humanities research,
+      because it gave them insight in the choices that were made both in the
+      construction of the object as well as in their own analysis.
+  - title: Augmenting Masterpieces
+    description: |
+      Augmenting Masterpieces was a collaborative research project by the
+      University of Amsterdam and the Rijksmuseum. The project aimed to augment
+      the visitor experience by using beacons. Visitors used an app to discover
+      what other visitors had previously said about the artworks. This added a
+      social layer to their visit to the Rijksmuseum. Offcourse Studio's
+      Jan Hein Hoogstad initiated and coordinated the project. Johanna Barnbeck
+      performed the research and the prototype was developed by the digital
+      innovation agency UncInc. The project was nominated for a Best of the Web'
+      award.

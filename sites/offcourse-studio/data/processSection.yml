@@ -4,29 +4,15 @@ publishable: true
 steps:
   - title: map
     description: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-      molestie mauris et elementum eleifend. Suspendisse vestibulum enim
-      et consequat porta. Phasellus rhoncus risus eget enim interdum, a
-      faucibus mi fringilla.
-
-      Vestibulum placerat purus diam, sed vestibulum ipsum condimentum nec.
-      Ut vel sem et lorem feugiat tincidunt nec quis turpis. Vestibulum
-      vitae tempor ante. 
+      We make an inventory of the data, information and knowledge already
+      available in your organization.
   - title: strategy
     description: |
-      Vestibulum placerat purus diam, sed vestibulum ipsum condimentum nec.
-      Ut vel sem et lorem feugiat tincidunt nec quis turpis. Vestibulum
-      vitae tempor ante. Nullam tincidunt, tortor nec interdum condimentum,
-      purus diam tincidunt enim, sed laoreet enim quam ut lectus.
-
-      Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin tortor
-      lorem.
+      We connect the data points and develop a plan to make your data work
+      for you. Ethics is central to our strategy: how do we deal with data
+      responsibly?
   - title: interface
     description: |
-      Nullam tincidunt, tortor nec interdum condimentum, purus diam
-      tincidunt enim, sed laoreet enim quam ut lectus. Interdum et
-      malesuada fames ac ante ipsum primis in faucibus. Proin tortor
-      lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-      molestie mauris et elementum eleifend. Suspendisse vestibulum enim
-      et consequat porta. Phasellus rhoncus risus eget enim interdum, a
-      faucibus mi fringilla.
+      We develop a data infrastructure using artificial intelligence to evolve
+      your data and use design to communicate the results to your audience.
+

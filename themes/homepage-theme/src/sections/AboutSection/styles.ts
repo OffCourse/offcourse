@@ -7,10 +7,9 @@ export const wrapperStyles = {
 export const textStyles = {
   display: "flex",
   flexDirection: "column",
-  gridColumn: ["2/12", "2/12", "2/12", "1/8"],
+  gridColumn: ["2/12", "2/12", "2/12", "2/7"],
   gridRow: ["1/3", "1/2"],
   py: "1rem",
-  pr: "2rem",
   justifyContent: ["start", "center"],
 };
 

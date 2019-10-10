@@ -4,23 +4,29 @@ title: About Jan Hein Hoogstad
 skills:
   - title: The multidimensional universe of the digital
     description: |
-      Jan Hein is fascinated by the unlimited posibilities we’re creating in the
-      digital world. He see’s the digital as an extra dimension we’ve added to
-      what we see as the ‘real world’. A way to add multiple tracks to our
-      reality. Like the posibility to visualise multiple outcomes based on
-      different sets of slightly altered parameters.
+      Jan Hein Hoogstad is the founder of Offcourse Studio. He’s fascinated by
+      the unlimited possibilities we create in the digital world. He sees the
+      digital as an extra dimension that we add to the ‘real world’, as a way
+      to add multiple tracks to our reality. He embraces its creative potential,
+      and the possibility to visualise multiple outcomes based on different sets
+      of slightly altered parameters.
   - title: Creative approach to projects and solutions
     description: |
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-      molestie mauris et elementum eleifend. Suspendisse vestibulum enim
-      et consequat porta. Phasellus rhoncus risus eget enim interdum, a
-      faucibus mi fringilla. Vestibulum placerat purus diam, sed vestibulum
-      ipsum condimentum nec. 
+      'Think'.gsub(/[.ink]/, tinkerer[2..-1]) => thinkerer. Or for non-coders:
+      Jan Hein is an educator and self-taught software architect with a
+      demonstrated track record of working with various private and public
+      partners – University of Amsterdam, Rijksmuseum, Waag, Public Spaces,
+      Bocoup, UncInc – to create online and offline spaces using digital
+      technologies, ranging from software solutions, such as artifical
+      intelligence, and hardware solutions, such as beacons.
   - title: Diverse domains and international background
     description: |
-      Track record within Philosophy, cultural analysis, (digital) education,
-      programming, etc. International network of researchers, developers,
-      designers, artists, projectmanagers. Previously based in Berlin, San
-      Francisco, Taipei, Minneapolis, New York, Wenen, Istanbul, Gent,
-      Utrecht, Amsterdam,
+      Jan Hein has a PhD in Philosophy from the University of Utrecht, was an
+      assistant professor of Cultural Analysis at the University of Amsterdam
+      and a coach and teacher at DevBootcamp in San Francisco. He’s embedded
+      in an international network of researchers, developers, designers,
+      artists, and project managers. Previously he was based in
+      Berlin, San Francisco, Taipei, Minneapolis, New York, Wenen, Istanbul,
+      Ghent, Utrecht, and Amsterdam. Currently, he works from Rotterdam,
+      The Netherlands.
 publishable: true

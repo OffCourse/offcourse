@@ -35,9 +35,7 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
       <Backdrop width={width} height={height} />
       <Marker />
       <CallToAction isVisible={!isVisible}>{callToAction}</CallToAction>
-      <div sx={sloganSpaceStyles}>
-        <DisplayText sx={textStyles}>{title}</DisplayText>
-      </div>
+      <div sx={sloganSpaceStyles}></div>
       <FormContainer form={form} onSubmit={() => {}}>
         {(props: IForm) => (
           <Form {...props} callToAction={callToAction} sx={formStyles} />
