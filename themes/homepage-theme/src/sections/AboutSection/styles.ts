@@ -9,13 +9,13 @@ export const textStyles = {
   flexDirection: "column",
   gridColumn: ["2/12", "2/12", "2/12", "2/7"],
   gridRow: ["1/3", "1/2"],
-  py: "1rem",
+  py: 4,
   justifyContent: ["start", "center"],
 };
 
 export const displayStyles = {
   display: ["none", "none", "none", "flex"],
-  px: ["2rem", "3rem", "3rem", "4rem"],
+  px: [5, 6, 7, 8],
   m: "-2rem",
   gridColumn: ["2/9", "8/13"],
   gridRow: "1/2",

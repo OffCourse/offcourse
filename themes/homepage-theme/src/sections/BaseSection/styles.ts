@@ -1,8 +1,8 @@
 export default {
   display: "grid",
   gridTemplateColumns: "repeat(12, 1fr)",
-  px: ["1rem", "2rem"],
-  py: ["2rem", "2rem"],
-  gridColumnGap: ["1rem", "2rem", "3rem"],
+  px: [4, 5],
+  py: [5, 5],
+  gridColumnGap: [4, 5, 6],
   bg: "grayScale.1"
 };

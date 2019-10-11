@@ -1,15 +1,15 @@
 export const headerStyles = {
   fontFamily: "monospace",
   wordSpacing: "-0.2em",
-  px: "2rem",
-  pb: "2rem"
+  px: 6,
+  pb: 6
 };
 
 export const wrapperStyles = {
   userSelect: "none",
   display: "grid",
   gridTemplateRows: "auto 1fr auto",
-  gridGap: "2rem",
+  gridGap: 6,
   alignItems: "start",
   bg: "grayScale.0"
 };
@@ -18,14 +18,14 @@ export const imageStyles = {
   paddingTop: "100%",
   position: "relative",
   bg: "grayScale.2",
-  mb: 6
+  mb: 4
 };
 
 export const captionStyles = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
-  px: "2rem"
+  px: 6
 };
 
 export const innerStyles = {

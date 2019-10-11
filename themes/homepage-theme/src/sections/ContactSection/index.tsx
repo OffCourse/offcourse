@@ -9,15 +9,9 @@ import useVisibility from "../../hooks/useVisibility";
 import { useMeasure } from "@offcourse/homepage-theme/src/hooks";
 import Backdrop from "../../components/Backdrop";
 import FormContainer from "../../containers/FormContainer";
-import DisplayText from "../../components/DisplayText";
 import CallToAction from "../../components/CallToAction";
 import Form from "../../components/Form";
-import {
-  wrapperStyles,
-  textStyles,
-  formStyles,
-  sloganSpaceStyles
-} from "./styles";
+import { wrapperStyles, formStyles, sloganSpaceStyles } from "./styles";
 
 type ContactSectionProps = IContactSection & IThemeable;
 

@@ -17,7 +17,7 @@ export const sloganSpaceStyles = {
   right: 0,
   alignItems: "center",
   gridColumn: ["1/13", "1/13", "1/13", "1/7", "1/5"],
-  py: ["4rem"],
+  py: [8],
   gridRow: ["1/2"]
 };
 
@@ -28,6 +28,6 @@ export const formStyles = {
   ml: ["-1rem", "-2rem", "-2rem", "0"],
   mr: ["-1rem", "-2rem", "-2rem", 0],
   mb: ["8rem", "8rem", "8rem", 0],
-  px: ["1rem", "2rem"],
-  py: ["2rem", "2rem", "2rem", "3rem", "4rem"],
+  px: [4, 6],
+  py: [6, 6, 6, 7, 8],
 };

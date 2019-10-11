@@ -19,7 +19,7 @@ const styles = {
   justifyContent: "flex-end",
   alignItems: "flex-start",
   py: 0,
-  px: 6,
+  px: 4,
   width: "100%",
   zIndex: 100
 };

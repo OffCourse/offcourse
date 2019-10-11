@@ -2,15 +2,15 @@ export const wrapperStyles = {
   display: "flex",
   flexDirection: "column",
   p: 0,
-  mb: 6,
+  mb: 4,
 };
 
 export const labelStyles = {
   fontFamily: "heading",
-  fontSize: 0,
-  linHeight: 0,
+  fontSize: 1,
+  lineHeight: 1,
   pt: 0,
-  px: 6,
-  pb: 4,
+  px: 4,
+  pb: 2,
   userSelect: "none",
 };

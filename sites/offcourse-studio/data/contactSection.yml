@@ -1,9 +1,9 @@
 role: ContactSection
 order: 50
-title: Enough about us. What about you?
+title: Tell us more about you
 callToAction: Work with us
 form: 
-  title: Tell us more about you
+  title: Enough about us. What about you?
   fields:
     - name: company-name
       label: what is your company or project name

@@ -1,7 +1,7 @@
 export const wrapperStyles = {
   display: "flex",
   userSelect: "none",
-  p: [4, 5],
+  p: [2, 3],
   boxShadow: "0px 3px 15px rgba(0, 0, 0, 0.2)",
   bg: "white",
   "&:hover": {

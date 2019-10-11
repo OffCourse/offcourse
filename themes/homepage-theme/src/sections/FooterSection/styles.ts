@@ -1,12 +1,12 @@
 export const wrapperStyles = {
   display: "grid",
-  pt: ["3rem", "3rem", "3rem", "4rem", "5rem"],
-  pb: "2rem",
-  px: "2rem",
+  pt: [7, 7, 7, 8, "5rem"],
+  pb: 6,
+  px: 6,
   bg: "grayScale.4",
   maxHeight: "50vh",
   gridTemplateColumns: ["1fr", "1fr 2fr"],
-  gridGap: "3rem",
+  gridGap: 7,
 };
 
 export const contactStyles = {
@@ -18,7 +18,7 @@ export const contactStyles = {
   fontSize: 1,
   color: "grayScale.0",
   h2: {
-    mb: 4
+    mb: 2
   },
   p: {
     mb: 0

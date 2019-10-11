@@ -7,7 +7,10 @@ export const wrapperStyles = {
 export const titleStyles = {
   userSelect: "none",
   fontFamily: "heading",
-  m: 6
+  fontSize: 4,
+  lineHeight: 4,
+  m: 4,
+  mb: 6
 };
 
 export const buttonStyles = {

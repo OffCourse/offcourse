@@ -4,7 +4,7 @@ export const wrapperStyles = {
   lineHeight: 3,
   p: {
     m: 0,
-    mb: 5,
+    mb: 3,
     a: {
       textDecoration: "none"
     }

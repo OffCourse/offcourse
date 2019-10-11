@@ -2,16 +2,16 @@ export const wrapperStyles = {
   gridTemplateRows: ["auto 1fr", "auto 1fr", "auto 1fr", "auto 1fr"],
   bg: ["grayScale.1"],
   color: "grayScale.4",
-  gridRowGap: ["2rem"],
-  px: ["2rem", "2rem"],
-  py: ["3rem", "3rem", "3rem", "4rem", "4rem"]
+  gridRowGap: [6],
+  px: [6, 6],
+  py: [7, 7, 7, 8, 8]
 }
 
 export const columnStyles = {
   display: "flex",
   flexDirection: "column",
   gridColumn: ["span 12", "span 12", "span 12", "span 4"],
-  mb: ["1rem", "1rem", "1rem", 0],
+  mb: [6, 6, 6, 0],
   "&:last-of-type": {
   },
   h2: {

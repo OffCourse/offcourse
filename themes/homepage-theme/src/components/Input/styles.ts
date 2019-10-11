@@ -2,7 +2,7 @@ export const wrapperStyles = {
   display: "flex",
   flex: 1,
   alignItems: "center",
-  py: 4,
+  py: 2,
   px: 0,
   m: 0,
   boxSizing: "border-box",
@@ -13,7 +13,7 @@ export const wrapperStyles = {
 export const inputStyles = {
   width: "100%",
   py: 0,
-  px: 6,
+  px: 4,
   bg: "grayScale.1",
   m: 0,
   justifyContent: "center",

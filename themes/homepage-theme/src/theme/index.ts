@@ -53,14 +53,14 @@ const theme: ITheme = {
   ],
   space: [
     "0",
-    "0.0625rem",
-    "0.125rem",
     "0.25rem",
     "0.5rem",
     "0.75rem",
     "1rem",
     "1.5rem",
-    "2rem"
+    "2rem",
+    "3rem",
+    "4rem",
   ],
   styles: {
     root: {

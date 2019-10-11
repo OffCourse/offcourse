@@ -4,9 +4,9 @@ export const messageStyles = {
   display: "flex",
   flex: 1,
   color: "error",
-  pt: 4,
-  px: 6,
-  pb: 4
+  pt: 2,
+  px: 4,
+  pb: 2
 };
 
 export const basicMessageStyles = {
