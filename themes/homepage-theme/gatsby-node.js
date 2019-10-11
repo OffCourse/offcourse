@@ -2,6 +2,22 @@ const fs = require("fs");
 const remark = require(`remark`);
 const html = require(`remark-html`);
 
+exports.onCreateWebpackConfig = ({
+  actions: { replaceWebpackConfig },
+  getConfig
+}) => {
+  const config = getConfig();
+
+  config.module.rules.push({
+    test: /\.worker\.ts$/,
+    use: { loader: "workerize-loader" }
+  });
+
+  config.output.globalObject = "this";
+
+  replaceWebpackConfig(config);
+};
+
 exports.createSchemaCustomization = ({ actions }) => {
   actions.createFieldExtension({
     name: "md",
