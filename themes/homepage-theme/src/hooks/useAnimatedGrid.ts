@@ -2,7 +2,7 @@ import SimplexNoise from "simplex-noise";
 import useCanvas from "@offcourse/homepage-theme/src/hooks/useCanvas";
 import useShape from "@offcourse/homepage-theme/src/hooks/useShape";
 import { ICanvasProps } from "@offcourse/interfaces/src/canvas";
-import { bin } from "d3-array";
+import { bin, sum } from "d3-array";
 
 const simplex = new SimplexNoise();
 
@@ -27,14 +27,14 @@ const useAnimatedGrid: (args: ICanvasProps & { shapeName: string, elements: any[
 
   const cols = xbin(elements);
   const binnedElements = cols.map(col => {
-    const rows = ybin(col);
-    return rows.map(row => {
+    const cells = ybin(col);
+    return cells.map(cell => {
       const u = col.x0;
-      const v = row.x0;
+      const v = cell.x0;
       const width = col.x1 - col.x0;
-      const height = row.x1 - row.x0;
-      const value = (simplex.noise3D(row.length, u, v) + 1) / 2;
-      return { u, v, width, height, value };
+      const height = cell.x1 - cell.x0;
+      const value = sum(cell, c => c.value) / cell.length;
+      return { u, v, width, height, value: value || 0 };
     });
   })
 
