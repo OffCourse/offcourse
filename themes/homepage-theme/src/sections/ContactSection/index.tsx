@@ -8,6 +8,7 @@ import BaseSection from "../BaseSection";
 import useVisibility from "../../hooks/useVisibility";
 import { useMeasure } from "@offcourse/homepage-theme/src/hooks";
 import Backdrop from "../../components/Backdrop";
+import DisplayText from "../../components/DisplayText";
 import FormContainer from "../../containers/FormContainer";
 import CallToAction from "../../components/CallToAction";
 import Form from "../../components/Form";
@@ -29,7 +30,9 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
       <Backdrop width={width} height={height} />
       <Marker />
       <CallToAction isVisible={!isVisible}>{callToAction}</CallToAction>
-      <div sx={sloganSpaceStyles}></div>
+      <div sx={sloganSpaceStyles}>
+        <DisplayText>{title}</DisplayText>
+      </div>
       <FormContainer form={form} onSubmit={() => {}}>
         {(props: IForm) => (
           <Form {...props} callToAction={callToAction} sx={formStyles} />

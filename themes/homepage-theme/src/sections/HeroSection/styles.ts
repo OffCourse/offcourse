@@ -1,5 +1,5 @@
 export const wrapperStyles = {
-  height: ["100vh", "100vh", "100vh", "90vh", "80vh", "80vh"],
+  height: ["80vh", "80vh", "85vh", "80vh", "80vh", "80vh"],
   gridTemplateRows: "3fr 1fr",
   py: [4, 6],
   bg: "transparent"

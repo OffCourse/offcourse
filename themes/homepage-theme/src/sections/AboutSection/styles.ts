@@ -7,14 +7,14 @@ export const wrapperStyles = {
 export const textStyles = {
   display: "flex",
   flexDirection: "column",
-  gridColumn: ["2/12", "2/12", "2/12", "2/7"],
+  gridColumn: ["2/12", "2/12", "2/12", "3/11"],
   gridRow: ["1/3", "1/2"],
   py: 4,
   justifyContent: ["start", "center"],
 };
 
 export const displayStyles = {
-  display: ["none", "none", "none", "flex"],
+  display: ["none", "none", "none", "none"],
   px: [5, 6, 7, 8],
   m: "-2rem",
   gridColumn: ["2/9", "8/13"],

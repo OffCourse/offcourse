@@ -11,7 +11,7 @@ export const wrapperStyles = {
   gridTemplateRows: "auto 1fr auto",
   gridGap: 6,
   alignItems: "start",
-  bg: "grayScale.0"
+  bg: "grayScale.1"
 };
 
 export const imageStyles = {
