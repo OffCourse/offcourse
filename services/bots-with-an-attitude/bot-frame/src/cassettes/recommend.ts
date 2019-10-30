@@ -1,20 +1,23 @@
+import { ICassette } from "../interfaces";
+
 const user = [{ name: "something", age: 23 }, { name: "else", age: 29 }];
 const hashtag = [
-    { name: "wething", weight: 100 },
-    { name: "asklasse", weight: 1000 }
+  { name: "wething", weight: 100 },
+  { name: "asklasse", weight: 1000 }
 ];
 
 interface IRec {
-    user: any;
-    hashtag: any;
+  user: any;
+  hashtag: any;
 }
 
 const rec: IRec = { user, hashtag };
 
-const run: (options: { objectType: "user" | "hashtag" }) => any = ({ objectType = "user" }) => rec[objectType];
+const run: (options: { objectType: "user" | "hashtag" }) => any = ({
+  objectType = "user"
+}) => rec[objectType];
 const verb = "recommend";
 const objects = Object.keys(rec);
-
-const cassette = { verb, objects, run };
+const cassette: ICassette = { verb, objects, run };
 
 export default cassette;
