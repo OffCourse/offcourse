@@ -66,6 +66,7 @@ exports.sourceNodes = ({ actions, reporter }) => {
 
     type FormField {
         name: String!
+        placeholder: String
         label: String!
         type: String
         options: [FormFieldOption]

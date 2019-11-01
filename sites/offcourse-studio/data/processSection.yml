@@ -1,5 +1,5 @@
 role: ProcessSection
-order: 21
+order: 40
 publishable: true
 steps:
   - title: Map

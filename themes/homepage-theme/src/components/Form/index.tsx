@@ -14,12 +14,10 @@ const Form: FunctionComponent<FormProps> = ({
   fields: schema,
   className,
   callToAction = "submit",
-  canSubmit,
-  title = "Contact Us"
+  canSubmit
 }) => {
   return (
     <FForm className={className} sx={wrapperStyles}>
-      <h1 sx={titleStyles}>{title}</h1>
       {schema.map((fieldProps, index) => {
         return <InputField key={index} {...fieldProps} />;
       })}

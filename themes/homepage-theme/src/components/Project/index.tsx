@@ -17,15 +17,22 @@ type ProjectProps = IProject & IThemeable & { index: number };
 
 const Project: FunctionComponent<ProjectProps> = ({
   className,
-  index,
   children,
   title,
+  imageUrl,
   description
 }) => {
   return (
     <article sx={wrapperStyles} className={className}>
       <div sx={imageStyles}>
-        <div sx={innerStyles}>{children || <h1>{index}</h1>}</div>
+        <div
+          sx={{
+            ...innerStyles,
+            backgroundImage: `url(${imageUrl})`
+          }}
+        >
+          {children}
+        </div>
       </div>
       <Text sx={captionStyles} html={description} />
       <Styled.h2 sx={headerStyles}>{formatTitle(title)}</Styled.h2>

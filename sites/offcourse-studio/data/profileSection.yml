@@ -21,12 +21,11 @@ skills:
       intelligence, and hardware solutions, such as beacons.
   - title: Diverse domains and international background
     description: |
-      Jan Hein has a PhD in Philosophy from the University of Utrecht, was an
-      assistant professor of Cultural Analysis at the University of Amsterdam
-      and a coach and teacher at DevBootcamp in San Francisco. He’s embedded
-      in an international network of researchers, developers, designers,
-      artists, and project managers. Previously he was based in
-      Berlin, San Francisco, Taipei, Minneapolis, New York, Wenen, Istanbul,
-      Ghent, Utrecht, and Amsterdam. Currently, he works from Rotterdam,
-      The Netherlands.
-publishable: false
+      Jan Hein holds a PhD in Philosophy and Media Studies. He was an assistant
+      professor of Cultural Analysis, and a coach and teacher at DevBootcamp in
+      San Francisco. He’s embedded in an international network of researchers,
+      developers, designers, and artists. Previously he was based in Berlin,
+      San Francisco, Taipei, Minneapolis, New York, Wenen, Graz, Istanbul,
+      Ghent, Utrecht, and Amsterdam. Currently, he works from Rotterdam The
+      Netherlands.
+publishable: true

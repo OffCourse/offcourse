@@ -1,4 +1,11 @@
 {
     "private": true,
-    "workspaces": ["interfaces", "themes/homepage-theme", "sites/offcourse-studio", "sites/template-site"]
+    "workspaces": [
+        "interfaces",
+        "themes/homepage-theme",
+        "sites/offcourse-studio",
+        "sites/template-site",
+        "sites/bots-with-an-attitude",
+        "services/bots-with-an-attitude/bot-frame"
+    ]
 }

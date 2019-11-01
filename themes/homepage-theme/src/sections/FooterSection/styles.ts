@@ -18,7 +18,9 @@ export const contactStyles = {
   fontSize: 1,
   color: "grayScale.0",
   h2: {
-    mb: 2
+    fontFamily: "monospace",
+    wordSpacing: "-0.3em",
+    mb: 1
   },
   p: {
     mb: 0

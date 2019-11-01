@@ -14,7 +14,7 @@ export const titleStyles = {
 };
 
 export const buttonStyles = {
-  mt: 6,
+  mt: 4,
   mb: 0,
   alignSelf: "flex-end"
 };

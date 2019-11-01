@@ -1,4 +1,8 @@
-module.exports = ({ dataPath = "data", shapesPath = "shapes" }) => ({
+module.exports = ({
+  dataPath = "data",
+  shapesPath = "shapes",
+  projectImagesPath = "project-images"
+}) => ({
   siteMetadata: {
     siteName: `Generic Site`
   },
@@ -17,6 +21,13 @@ module.exports = ({ dataPath = "data", shapesPath = "shapes" }) => ({
       options: {
         name: "shapes",
         path: shapesPath
+      }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "projectImages",
+        path: projectImagesPath
       }
     },
     {

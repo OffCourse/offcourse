@@ -5,6 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
+    "docs": "typedoc src/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "git@github.com:Amazebot/bbot-boilerplate.git",

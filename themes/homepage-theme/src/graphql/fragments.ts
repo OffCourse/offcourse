@@ -53,6 +53,7 @@ export const FormFieldFragment = graphql`
     fields {
       name
       label
+      placeholder
       type
       ...FormFieldOptionsData
     }

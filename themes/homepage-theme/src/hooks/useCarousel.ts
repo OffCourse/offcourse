@@ -48,8 +48,8 @@ const useCarousel: (props: ICarouselProps) => ICarouselItem[] = ({
   }, delay);
   const transitions = useTransition(orderedProjects, (item) => item.index, {
     update: [
-      { transform: `translate3d(${index * -100}%, 0, 0)`, opacity: 0.6 },
-      { transform: `translate3d(${index * -100}%, 0, 0)`, opacity: 1 }
+      { transform: `translate3d(${index * -100}%, 0, 0)` },
+      { transform: `translate3d(${index * -100}%, 0, 0)` }
     ]
   });
   return transitions.map(({ item, props, key }) =>

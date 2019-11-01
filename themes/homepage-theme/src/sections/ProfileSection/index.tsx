@@ -24,10 +24,9 @@ const ProfileSection: FunctionComponent<ProfileSectionProps> = ({
 }) => {
   return (
     <BaseSection {...props} className={className} sx={wrapperStyles}>
-      <h1 sx={titleStyles}>{title}</h1>
       {skills.map(({ title, description }, index) => (
         <div key={index} sx={columnStyles}>
-          <h2>{title}</h2>
+          <h2 sx={titleStyles}>{title}</h2>
           <Text html={description} />
         </div>
       ))}

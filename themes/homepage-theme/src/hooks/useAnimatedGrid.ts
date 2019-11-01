@@ -16,7 +16,7 @@ const useAnimatedGrid: (args: ICanvasProps & { shapeName: string, elements: any[
   const [ref, ctx] = useCanvas({ width, height });
   const shape = useShape(shapeName);
 
-  const unitSize = 30;
+  const unitSize = 20;
   const numberOfColumns = Math.ceil(width / unitSize);
   const numberOfRows = Math.ceil(height / unitSize);
   const xbin = bin().domain([0, 1]).thresholds(numberOfColumns).value(({ u, v }) => u);

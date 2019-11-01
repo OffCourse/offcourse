@@ -26,6 +26,7 @@ const InputField: FunctionComponent<InputFieldProps> = ({
   label,
   type = "text",
   options,
+  placeholder,
   name
 }) => {
   const Component = components[type || "text"];
@@ -36,7 +37,12 @@ const InputField: FunctionComponent<InputFieldProps> = ({
         render={msg => <Message isBasic={true}>{msg}</Message>}
         name={name}
       />
-      <Field as={Component} options={options} name={name} />
+      <Field
+        as={Component}
+        options={options}
+        placeholder={placeholder}
+        name={name}
+      />
     </div>
   );
 };

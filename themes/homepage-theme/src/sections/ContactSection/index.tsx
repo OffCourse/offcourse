@@ -16,6 +16,17 @@ import { wrapperStyles, formStyles, sloganSpaceStyles } from "./styles";
 
 type ContactSectionProps = IContactSection & IThemeable;
 
+const url =
+  "https://hooks.slack.com/services/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";
+
+const submitForm = async (values, { resetForm }) => {
+  await fetch(url, {
+    method: "POST",
+    body: JSON.stringify({ text: JSON.stringify(values, null, 2) })
+  });
+  resetForm();
+};
+
 const ContactSection: FunctionComponent<ContactSectionProps> = ({
   className,
   title,
@@ -33,7 +44,7 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
       <div sx={sloganSpaceStyles}>
         <DisplayText>{title}</DisplayText>
       </div>
-      <FormContainer form={form} onSubmit={() => {}}>
+      <FormContainer form={form} onSubmit={submitForm}>
         {(props: IForm) => (
           <Form {...props} callToAction={callToAction} sx={formStyles} />
         )}
