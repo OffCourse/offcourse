@@ -6,6 +6,7 @@
         "sites/offcourse-studio",
         "sites/template-site",
         "sites/bots-with-an-attitude",
+        "sites/public-badges",
         "services/bots-with-an-attitude/bot-frame"
     ]
 }

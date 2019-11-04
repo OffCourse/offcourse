@@ -1,0 +1,35 @@
+{
+  "config": {
+    "title": "Bots With An Attitude",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "version": "0.0.1",
+    "repository": null,
+    "native": false,
+    "themeConfig": {},
+    "separator": "-"
+  },
+  "entries": [
+    {
+      "key": "src/index.mdx",
+      "value": {
+        "name": "Hello world",
+        "route": "/",
+        "id": "6576455a124f9aaefd860597f03a8fe4",
+        "filepath": "src/index.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/sites/bots-with-an-attitude/src/index.mdx",
+        "link": "",
+        "slug": "src-index",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "hello-world",
+            "depth": 1,
+            "value": "Hello world"
+          }
+        ]
+      }
+    }
+  ],
+  "props": []
+}
