@@ -1,0 +1,25 @@
+service: bots-with-an-attitude-ws
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  websocketsApiName: bots-with-an-attitude
+  websocketsApiRouteSelectionExpression: $request.body.action # custom routes are selected by the value of the action property in the body
+
+functions:
+  connectionHandler:
+    handler: handler.connectionHandler
+    events:
+      - websocket:
+          route: $connect
+      - websocket:
+          route: $disconnect
+  defaultHandler:
+    handler: handler.defaultHandler
+    events:
+      - websocket: $default 
+  customFooHandler:
+    handler: handler.fooHandler
+    events:
+      - websocket:
+          route: foo

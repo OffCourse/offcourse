@@ -6,14 +6,17 @@
     "version": "0.0.1",
     "repository": null,
     "native": false,
-    "themeConfig": {},
-    "separator": "-"
+    "themeConfig": {
+      "mode": "dark"
+    },
+    "separator": "-",
+    "typescript": true
   },
   "entries": [
     {
       "key": "src/index.mdx",
       "value": {
-        "name": "Hello world",
+        "name": "Protobot",
         "route": "/",
         "id": "6576455a124f9aaefd860597f03a8fe4",
         "filepath": "src/index.mdx",
@@ -23,13 +26,25 @@
         "menu": "",
         "headings": [
           {
-            "slug": "hello-world",
+            "slug": "bots-with-an-attitude",
             "depth": 1,
-            "value": "Hello world"
+            "value": "Bots With An Attitude"
           }
         ]
       }
     }
   ],
-  "props": []
+  "props": [
+    {
+      "key": "src/ChatWidget.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "ChatWidget",
+          "methods": [],
+          "props": {}
+        }
+      ]
+    }
+  ]
 }
