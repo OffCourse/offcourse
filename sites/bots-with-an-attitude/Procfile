@@ -1,1 +1,1 @@
-worker: yarn workspace bots-with-an-attitude start
+web: yarn workspace bots-with-an-attitude start
