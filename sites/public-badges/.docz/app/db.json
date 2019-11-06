@@ -6,17 +6,14 @@
     "version": "0.0.1",
     "repository": null,
     "native": false,
-    "themeConfig": {
-      "mode": "dark"
-    },
-    "separator": "-",
-    "typescript": true
+    "themeConfig": {},
+    "separator": "-"
   },
   "entries": [
     {
       "key": "src/index.mdx",
       "value": {
-        "name": "Hello world",
+        "name": "Zero Badge",
         "route": "/",
         "id": "6576455a124f9aaefd860597f03a8fe4",
         "filepath": "src/index.mdx",
@@ -26,9 +23,19 @@
         "menu": "",
         "headings": [
           {
-            "slug": "hello-world",
+            "slug": "zero-badge",
             "depth": 1,
-            "value": "Hello world"
+            "value": "Zero Badge"
+          },
+          {
+            "slug": "flow",
+            "depth": 2,
+            "value": "Flow"
+          },
+          {
+            "slug": "user-stories",
+            "depth": 2,
+            "value": "User Stories"
           }
         ]
       }
