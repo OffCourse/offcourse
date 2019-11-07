@@ -24,17 +24,6 @@ const initializeCassette = ({ verb, objects, run }) => {
         });
         yield bot.reply(message, JSON.stringify(recommendations, null, 2));
     }));
-    // scope.text(
-    //   async (b: State) => {
-    //     const recommendations = await run({
-    //       objectType: matchedObject
-    //     });
-    //     return b.reply(JSON.stringify(recommendations, null, 2));
-    //   },
-    //   {
-    //     id: `${verb}-cassette`
-    //   }
-    // );
 };
 const adapter = new botbuilder_adapter_web_1.WebAdapter();
 const controller = new botkit_1.Botkit({

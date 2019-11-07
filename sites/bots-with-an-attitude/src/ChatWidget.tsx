@@ -1,37 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Widget, addResponseMessage } from "react-chat-widget";
+import useWebSocket from "react-use-websocket";
 
 import "react-chat-widget/lib/styles.css";
 
-const sendMessage = async (message: string) => {
-  const resp = await fetch("http://localhost:3000/api/messages", {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
+const ChatWidget = (props: any) => {
+  const url = "ws://localhost:3000/api/messages";
+  const [history, updateHistory] = useState([]);
+  const [sendMessage, lastMessage, readyState] = useWebSocket(`${url}`);
+  useEffect(() => {
+    if (lastMessage !== null) {
+      const message = JSON.parse(lastMessage.data);
+      updateHistory([message, ...history]);
+      addResponseMessage(message.text);
+    }
+  }, [lastMessage]);
+
+  const handleNewUserMessage = async (message: string) => {
+    const payload = {
       type: "message",
       text: message,
       user: "123"
-    })
-  });
-  return await resp.json();
-};
-
-type Resp = { text: string };
-
-const ChatWidget = (props: any) => {
-  const [responsesList, updateResponsesList] = useState([]);
-  const handleNewUserMessage = async (message: string) => {
-    const responses = await sendMessage(message);
-    responses.forEach((resp: Resp) => {
-      updateResponsesList(resps => [resp, ...resps]);
-      addResponseMessage(resp.text);
-    });
+    };
+    sendMessage(JSON.stringify(payload));
   };
-
-  console.log(responsesList);
 
   return (
     <Widget
