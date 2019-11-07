@@ -9,7 +9,7 @@
     "node": ">= 10.x"
   },
   "scripts": {
-    "start": "node api/index.js"
+    "start": "nodemon api/index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

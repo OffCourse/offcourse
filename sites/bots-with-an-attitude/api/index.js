@@ -1,5 +1,6 @@
 const { WebAdapter } = require("botbuilder-adapter-web");
 const { Botkit } = require("botkit");
+const fs = require("fs");
 
 const adapter = new WebAdapter();
 const controller = new Botkit({
@@ -8,6 +9,8 @@ const controller = new Botkit({
 });
 
 controller.on("message", async (bot, message) => {
-  console.log(message);
-  await bot.reply(message, "I received an event of type " + message.type);
+  await bot.reply(
+    message,
+    `I received a message: ${message.text} of type ${message.type}`
+  );
 });
