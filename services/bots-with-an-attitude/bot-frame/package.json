@@ -23,10 +23,8 @@
   },
   "dependencies": {
     "@types/ws": "^6.0.3",
-    "body-parser": "^1.19.0",
     "botbuilder-adapter-web": "^1.0.5",
-    "botkit": "^4.6.1",
-    "express": "^4.17.1",
+    "botkit": "^4.6.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.3",
