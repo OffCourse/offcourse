@@ -1,6 +1,6 @@
 {
   "type": "message",
-  "text": "also",
+  "text": "recommend users",
   "user": "123",
   "channel": "123",
   "reference": {
@@ -88,7 +88,7 @@
       }
     },
     "_activity": {
-      "timestamp": "2019-11-07T14:55:27.024Z",
+      "timestamp": "2019-11-07T20:11:59.248Z",
       "channelId": "webhook",
       "conversation": {
         "id": "123"
@@ -101,15 +101,15 @@
       },
       "channelData": {
         "type": "message",
-        "text": "also",
+        "text": "recommend users",
         "user": "123"
       },
-      "text": "also",
+      "text": "recommend users",
       "type": "message"
     }
   },
   "incoming_message": {
-    "timestamp": "2019-11-07T14:55:27.024Z",
+    "timestamp": "2019-11-07T20:11:59.248Z",
     "channelId": "webhook",
     "conversation": {
       "id": "123"
@@ -122,10 +122,14 @@
     },
     "channelData": {
       "type": "message",
-      "text": "also",
+      "text": "recommend users",
       "user": "123"
     },
-    "text": "also",
+    "text": "recommend users",
     "type": "message"
-  }
+  },
+  "matches": [
+    "recommend user",
+    "user"
+  ]
 }

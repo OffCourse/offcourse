@@ -1,32 +1,37 @@
-import bbot, { State, Path, logger as bLogger } from "bbot";
+import { WebAdapter } from "botbuilder-adapter-web";
+import { Botkit } from "botkit";
 import recommendCassette from "./cassettes/recommend";
 import testCassette from "./cassettes/test";
 import { ICassette } from "./interfaces";
 
-const initializeCassette: (
-  cassette: ICassette & { scope: Path; logger: typeof bLogger }
-) => void = ({ verb, objects, run, scope }) => {
-  scope.text(
+const initializeCassette: (cassette: ICassette) => void = ({ verb, objects, run }) => {
+  controller.hears(
     new RegExp(`${verb} (${objects.join("|")})`, "i"),
-    async (b: State) => {
-      const matchedObject = b.conditions.captures[0];
+    "message",
+    async (bot, message) => {
+      const matchedObject = message.matches[1];
       const recommendations = await run({
         objectType: matchedObject
       });
-      return b.reply(JSON.stringify(recommendations, null, 2));
-    },
-    {
-      id: `${verb}-cassette`
-    }
-  );
+      await bot.reply(
+        message,
+        JSON.stringify(recommendations, null, 2)
+      );
+    });
 };
 
-const initiateBot: (cassettes: ICassette[]) => void = cassettes => {
-  const { global, logger } = bbot;
-  cassettes.map(cassette =>
-    initializeCassette({ scope: global, logger, ...cassette })
-  );
-  bbot.start();
-};
+const adapter = new WebAdapter();
 
-initiateBot([recommendCassette, testCassette]);
+const controller = new Botkit({
+  webhook_uri: "/api/messages",
+  adapter
+});
+
+[recommendCassette, testCassette].forEach(initializeCassette);
+
+controller.on("message", async (bot, message) => {
+  await bot.reply(
+    message,
+    `I received a message!`
+  );
+});

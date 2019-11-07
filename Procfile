@@ -1,1 +1,1 @@
-web: yarn workspace bots-with-an-attitude start
+web: yarn workspace @offcourse/bot-frame start

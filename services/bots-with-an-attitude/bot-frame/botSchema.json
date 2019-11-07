@@ -5,7 +5,18 @@
         null
       ]
     },
-    "_triggers": {},
+    "_triggers": {
+      "message": [
+        {
+          "pattern": {},
+          "type": "regexp"
+        },
+        {
+          "pattern": {},
+          "type": "regexp"
+        }
+      ]
+    },
     "_interrupts": {},
     "version": "4.6.1",
     "middleware": {
@@ -304,7 +315,7 @@
           }
         },
         "_activity": {
-          "timestamp": "2019-11-07T14:55:27.024Z",
+          "timestamp": "2019-11-07T20:11:59.248Z",
           "channelId": "webhook",
           "conversation": {
             "id": "123"
@@ -317,10 +328,10 @@
           },
           "channelData": {
             "type": "message",
-            "text": "also",
+            "text": "recommend users",
             "user": "123"
           },
-          "text": "also",
+          "text": "recommend users",
           "type": "message"
         }
       },
@@ -411,7 +422,7 @@
         }
       },
       "_activity": {
-        "timestamp": "2019-11-07T14:55:27.024Z",
+        "timestamp": "2019-11-07T20:11:59.248Z",
         "channelId": "webhook",
         "conversation": {
           "id": "123"
@@ -424,15 +435,15 @@
         },
         "channelData": {
           "type": "message",
-          "text": "also",
+          "text": "recommend users",
           "user": "123"
         },
-        "text": "also",
+        "text": "recommend users",
         "type": "message"
       }
     },
     "activity": {
-      "timestamp": "2019-11-07T14:55:27.024Z",
+      "timestamp": "2019-11-07T20:11:59.248Z",
       "channelId": "webhook",
       "conversation": {
         "id": "123"
@@ -445,10 +456,10 @@
       },
       "channelData": {
         "type": "message",
-        "text": "also",
+        "text": "recommend users",
         "user": "123"
       },
-      "text": "also",
+      "text": "recommend users",
       "type": "message"
     }
   }

@@ -12,15 +12,10 @@
     "start": "nodemon api/index.js"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "botbuilder-adapter-web": "^1.0.5",
-    "botkit": "^4.6.1",
     "docz": "^2.0.0-rc.69",
-    "express": "^4.17.1",
     "gatsby": "^2.17.8",
     "gatsby-plugin-typescript": "^2.1.8",
     "gatsby-theme-docz": "^2.0.0-rc.69",
-    "nodechef-cli": "^2.4.9",
     "react": "^16.11.0",
     "react-chat-widget": "^2.1.5",
     "react-dom": "^16.11.0",
