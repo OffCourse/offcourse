@@ -3259,6 +3259,17 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
+botbuilder-adapter-web@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/botbuilder-adapter-web/-/botbuilder-adapter-web-1.0.5.tgz#882515b54ad210019119c4cb90162780b1b760e9"
+  integrity sha512-9RLXCJv2lhAd9j8+h9TtAApn4VZxfNpO6LoLQe0J1dfnmpdXOZXW2nodVO90DI7mTirJuHjPh1ymgAQ1tLYxGA==
+  dependencies:
+    botbuilder "^4.6.0"
+    botkit "^4.6.0"
+    debug "^4.1.0"
+    url "^0.11.0"
+    ws "^7.1.1"
+
 botbuilder-core@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/botbuilder-core/-/botbuilder-core-4.6.0.tgz#dd7546f37d2f74cb513668eb6d5079f3c86547cf"
@@ -3312,7 +3323,7 @@ botframework-schema@^4.6.0:
   resolved "https://registry.yarnpkg.com/botframework-schema/-/botframework-schema-4.6.0.tgz#cae05362d5660c1ebcfee320916a67615defd0b5"
   integrity sha512-3ndSI2S17Do6RRncYN3Z+N1bkui9HPHIw2lyIGjyX7grukmAcnex/xfpafK++UqmhvF65OdY/Xa4njn7E/tKEQ==
 
-botkit@^4.6.1:
+botkit@^4.6.0, botkit@^4.6.1:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/botkit/-/botkit-4.6.1.tgz#5834be43d5333cc3c219af73f73e373933f2d03f"
   integrity sha512-7tp1ADFPJX6hcHxhxBH3bfZUGBlp7BYgOcfBedGcJsoibzUDZe5yXFxjiDPAw1UhpgeeWvRx0cWZTQuVuTDzHA==
@@ -16788,7 +16799,7 @@ ws@<7.0.0, ws@^6.2.1:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^7.1.2:
+ws@^7.1.1, ws@^7.1.2:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.2.0.tgz#422eda8c02a4b5dba7744ba66eebbd84bcef0ec7"
   integrity sha512-+SqNqFbwTm/0DC18KYzIsMTnEWpLwJsiasW/O17la4iDRRIO9uaHbvKiAS3AHgTiuuWerK/brj4O6MYZkei9xg==
