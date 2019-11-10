@@ -27,4 +27,4 @@ const cassette = {
     run
 };
 exports.default = cassette;
-//# sourceMappingURL=test.js.map
+//# sourceMappingURL=flycheck_test.js.map

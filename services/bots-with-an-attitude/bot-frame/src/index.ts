@@ -3,8 +3,26 @@ import { Botkit } from "botkit";
 import recommendCassette from "./cassettes/recommend";
 import testCassette from "./cassettes/test";
 import { ICassette } from "./interfaces";
+import Gun from "gun";
 
-const initializeCassette: (cassette: ICassette) => void = ({ verb, objects, run }) => {
+const gun = new Gun<{ person: { name: string } }>();
+gun.get("person").get("name").put("Alice");
+
+class Cassette implements ICassette {
+  readonly verb: string;
+  readonly objects: string[];
+  readonly run: any;
+
+  constructor({ verb, objects, run }: ICassette) {
+    this.verb = verb;
+    this.objects = objects;
+    const db = gun;
+    this.run = () => run({ db });
+  }
+}
+
+const insertCassette: (cassette: ICassette) => void = cassette => {
+  const { verb, objects, run } = new Cassette(cassette);
   controller.hears(
     new RegExp(`${verb} (${objects.join("|")})`, "i"),
     "message",
@@ -27,7 +45,7 @@ const controller = new Botkit({
   adapter
 });
 
-[recommendCassette, testCassette].forEach(initializeCassette);
+[recommendCassette, testCassette].forEach(insertCassette);
 
 controller.on("message", async (bot, message) => {
   await bot.reply(
