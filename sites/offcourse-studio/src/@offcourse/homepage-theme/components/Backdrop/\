@@ -1,0 +1,45 @@
+{
+  "@context": "https://w3id.org/openbadges/v2",
+  "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb418",
+  "type": "Assertion",
+  "recipient": {
+    "type": "email",
+    "identity": "sander@waag.org"
+  },
+  "issuedOn": "2019-10-31T23:59:59+00:00",
+  "verification": {
+    "type": "hosted"
+  },
+  "badge": {
+    "type": "BadgeClass",
+    "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb419",
+    "name": "Zero Badge",
+    "description": "This badge is awarded for passing the 3-D printing knowledge and safety test.",
+    "image": "https://example.org/badges/5/image",
+      "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces coalition to show their affiliation on their website. It provides visible evidence to the user that the organization has the intention to implement the Public Spaces values in their online presence."
+    },
+    "issuer": {
+      "id": "https://example.org/issuer",
+      "type": "Profile",
+      "name": "Example Maker Society",
+      "url": "https://example.org",
+      "email": "contact@example.org",
+      "verification": {
+         "allowedOrigins": "example.org"
+      }
+    }
+  },
+  "evidence": [
+    {
+      "id": "https://example.org/beths-robot-photos.html",
+      "name": "Robot Photoshoot",
+      "description": "A gallery of photos of the student's robot",
+      "genre": "Photography"
+    },
+    {
+      "id": "https://example.org/beths-robot-work.html",
+      "name": "Robotics Reflection #1",
+      "description": "Reflective writing about the first week of a robotics learning journey."
+    }
+  ]
+}
