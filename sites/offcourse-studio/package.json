@@ -15,8 +15,7 @@
   "author": "Yeehaa",
   "license": "MIT",
   "devDependencies": {
-    "serverless": "^1.52.0",
-    "serverless-single-page-app-plugin": "file:./serverless-single-page-app-plugin"
+      "serverless": "^1.52.0"
   },
   "dependencies": {
     "@offcourse/homepage-theme": "*",

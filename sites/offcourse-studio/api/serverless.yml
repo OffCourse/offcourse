@@ -1,0 +1,16 @@
+service:
+  name: offcourse-studio-api
+
+frameworkVersion: '>=1.0.0 <2.0.0'
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  create:
+    handler: handler.contact
+    events:
+      - http:
+          path: contact
+          method: post
+          cors: true

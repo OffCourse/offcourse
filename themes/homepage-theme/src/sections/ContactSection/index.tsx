@@ -16,13 +16,19 @@ import { wrapperStyles, formStyles, sloganSpaceStyles } from "./styles";
 
 type ContactSectionProps = IContactSection & IThemeable;
 
+/* const url = */
+/* "https://hooks.slack.com/services/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"; */
+
 const url =
-  "https://hooks.slack.com/services/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";
+  "https://v5s4r3b7s6.execute-api.us-east-1.amazonaws.com/dev/contact";
 
 const submitForm = async (values, { resetForm }) => {
   await fetch(url, {
     method: "POST",
-    body: JSON.stringify({ text: JSON.stringify(values, null, 2) })
+    body: JSON.stringify({
+      formData: JSON.stringify(values, null, 2),
+      origin: window.location.host
+    })
   });
   resetForm();
 };

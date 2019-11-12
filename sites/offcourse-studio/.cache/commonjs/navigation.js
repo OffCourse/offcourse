@@ -123,7 +123,7 @@ const navigate = (to, options = {}) => {
         // Purge plugin-offline cache
         if (`serviceWorker` in navigator && navigator.serviceWorker.controller !== null && navigator.serviceWorker.controller.state === `activated`) {
           navigator.serviceWorker.controller.postMessage({
-            gatsbyApi: `resetWhitelist`
+            gatsbyApi: `clearPathResources`
           });
         }
 

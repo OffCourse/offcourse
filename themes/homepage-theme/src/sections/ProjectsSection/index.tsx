@@ -49,7 +49,6 @@ const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
         visibleItems={width && width > 480 ? 3 : 1}
         items={projects.map((project, index) => {
           const imageName = snakeCase(project.title);
-          console.log(imageName);
           const imageUrl = imageUrls[imageName] || null;
           return {
             ...project,

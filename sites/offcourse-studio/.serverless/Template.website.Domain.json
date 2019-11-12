@@ -1,0 +1,12 @@
+{
+  "region": "us-east-1",
+  "privateZone": false,
+  "domain": "offcourse-studio.com",
+  "subdomains": [
+    {
+      "domain": "www.offcourse-studio.com",
+      "type": "awsS3Website",
+      "s3BucketName": "yow8m5l-vzy83gh"
+    }
+  ]
+}
