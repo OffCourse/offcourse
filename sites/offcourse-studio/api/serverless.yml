@@ -9,6 +9,8 @@ provider:
 functions:
   create:
     handler: handler.contact
+    environment:
+      SlackHookPath: ${env:SLACK_HOOK_PATH}
     events:
       - http:
           path: contact

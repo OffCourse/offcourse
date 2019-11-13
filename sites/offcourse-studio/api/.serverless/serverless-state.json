@@ -155,7 +155,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/offcourse-studio-api/dev/1573600142336-2019-11-12T23:09:02.336Z/offcourse-studio-api.zip"
+                "S3Key": "serverless/offcourse-studio-api/dev/1573656128687-2019-11-13T14:42:08.687Z/offcourse-studio-api.zip"
               },
               "FunctionName": "offcourse-studio-api-dev-create",
               "Handler": "handler.contact",
@@ -167,21 +167,26 @@
                 ]
               },
               "Runtime": "nodejs10.x",
-              "Timeout": 6
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "SlackHookPath": "/services/T0ARRBL8G/BQGQVN39N/Y5da6IUxF6wC2ZBo2IuQvHs9"
+                }
+              }
             },
             "DependsOn": [
               "CreateLogGroup",
               "IamRoleLambdaExecution"
             ]
           },
-          "CreateLambdaVersionAJrWTPxzgeMUXGPz9518Zv78U7xJ1w9ywGxQxI8sQzM": {
+          "CreateLambdaVersionUubXJPVGijt0JNIfNT3Be1xCeWZwcoolj1jdW1WA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateLambdaFunction"
               },
-              "CodeSha256": "OGhRNOWWAdaBXuMfD0FgYAnMlRaT3Y1plw2+msi0P3c="
+              "CodeSha256": "RRFOGA+VMhqpGGwJK5gQ83g3bTsCFKpHq2syv/M3XyY="
             }
           },
           "ApiGatewayRestApi": {
@@ -300,7 +305,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1573600131177": {
+          "ApiGatewayDeployment1573656117479": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -360,7 +365,7 @@
           "CreateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateLambdaVersionAJrWTPxzgeMUXGPz9518Zv78U7xJ1w9ywGxQxI8sQzM"
+              "Ref": "CreateLambdaVersionUubXJPVGijt0JNIfNT3Be1xCeWZwcoolj1jdW1WA"
             }
           },
           "ServiceEndpoint": {
@@ -457,6 +462,9 @@
     "functions": {
       "create": {
         "handler": "handler.contact",
+        "environment": {
+          "SlackHookPath": "/services/T0ARRBL8G/BQGQVN39N/Y5da6IUxF6wC2ZBo2IuQvHs9"
+        },
         "events": [
           {
             "http": {
@@ -498,7 +506,7 @@
     "artifact": "/home/yeehaa/Documents/offcourse/sites/offcourse-studio/api/.serverless/offcourse-studio-api.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/offcourse-studio-api/dev/1573600142336-2019-11-12T23:09:02.336Z",
+    "artifactDirectoryName": "serverless/offcourse-studio-api/dev/1573656128687-2019-11-13T14:42:08.687Z",
     "artifact": "offcourse-studio-api.zip"
   }
 }
