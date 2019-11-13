@@ -19,7 +19,8 @@ const run = ({ db }) => __awaiter(this, void 0, void 0, function* () {
     const promise = new Promise(function (resolve, reject) {
         db.get("person").get("name").once((name) => resolve(name));
     });
-    return promise;
+    const answer = yield promise;
+    return { results: [answer] };
 });
 const cassette = {
     verb,

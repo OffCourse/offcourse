@@ -1,4 +1,4 @@
-import { ICassette } from "../interfaces";
+import { ICassette, Object } from "../interfaces";
 
 const user = [{ name: "something", age: 23 }, { name: "else", age: 29 }];
 const hashtag = [
@@ -17,7 +17,7 @@ const run: (options: { objectType: "user" | "hashtag" }) => any = ({
   objectType = "user"
 }) => rec[objectType];
 const verb = "recommend";
-const objects = Object.keys(rec);
+const objects = Object.keys(rec) as Object[];
 const cassette: ICassette = { verb, objects, run };
 
 export default cassette;

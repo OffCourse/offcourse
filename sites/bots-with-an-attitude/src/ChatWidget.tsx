@@ -8,6 +8,15 @@ const ChatWidget = (props: any) => {
   const url = "ws://localhost:3000/api/messages";
   const [history, updateHistory] = useState([]);
   const [sendMessage, lastMessage, readyState] = useWebSocket(`${url}`);
+
+  console.log(readyState);
+
+  useEffect(() => {
+    if (readyState !== 0) {
+      sendMessage(JSON.stringify({ type: "join", text: "", user: "123" }));
+    }
+  }, [readyState]);
+
   useEffect(() => {
     if (lastMessage !== null) {
       const message = JSON.parse(lastMessage.data);
