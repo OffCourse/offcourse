@@ -1,0 +1,19 @@
+---
+name: Flow
+menu: Zero Badge
+---
+
+```mermaid
+sequenceDiagram
+    participant DEC as Decider Org
+    participant TP as Tech Person Org
+    participant WS as Website Org
+    participant PB as Public Badges API
+    DEC-->>TP: Wants Badge
+    TP-->>PB: References Documentation
+    TP-->>DEC: Requests Information
+    DEC-->>TP: Receives Information
+    TP-->>PB: Applies for Badge
+    PB-->>TP: Receives Badge
+    TP-->>WS: Embeds Badge
+```

@@ -1,0 +1,66 @@
+---
+name: Introduction
+menu: Zero Badge
+---
+
+# Zero Badge
+
+The Zero Badge is a way for organizations that are part of the Public
+Spaces coalition to show their affiliation on their website. It provides
+visible evidence to the user that the organization has the intention to
+implement the Public Spaces values in their online presence.
+
+## Get Involved
+
+1. Your Organization wants the Zero Badge
+
+- for now closed to organizations to public spaces founding partners
+
+2. Apply for Registry
+
+### Request
+
+```yaml
+name: Waag
+contact:
+  name: Sander van der Waal
+  email: sander@waag.org
+admin:
+  name: Alain Otjens
+  email: alain@waag.org
+```
+
+### Response
+
+```yaml
+organizationId: urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb419
+status: Pending
+```
+
+3. Makes sure that your organization meets the criteria
+
+4. Apply for the Badge
+
+### Request
+
+```yaml
+badgeID: urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb418
+organizationId: urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb419
+urlsUnderTest:
+  - "*"
+```
+
+### Response
+
+```yaml
+badgeUrl: https://publicbadges.com/e79a6c18-787e-4868-8e65-e6a4530fb419/zerobadge.js
+status: Pending
+```
+
+5. Embed the badge into your webpage
+
+```html
+<script src="https://publicbadges.com/e79a6c18-787e-4868-8e65-e6a4530fb419/zerobadge.js" async></script>
+```
+
+
