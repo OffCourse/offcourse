@@ -1,4 +1,4 @@
-"@context": https://w3id.org/openbadges/v2
+"@context: https://w3id.org/openbadges/v2
 id: urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb418
 type: Assertion
 recipient:

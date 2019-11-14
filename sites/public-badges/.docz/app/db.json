@@ -92,24 +92,29 @@
             "value": "Get Involved"
           },
           {
-            "slug": "request",
+            "slug": "1-sign-up-for-the-public-spaces-registry",
             "depth": 3,
-            "value": "Request"
+            "value": "1. Sign Up for the Public Spaces Registry"
           },
           {
-            "slug": "response",
-            "depth": 3,
-            "value": "Response"
+            "slug": "example-request",
+            "depth": 4,
+            "value": "Example Request"
           },
           {
-            "slug": "request-1",
+            "slug": "2-make-sure-that-your-organization-meets-the-criteria",
             "depth": 3,
-            "value": "Request"
+            "value": "2. Make sure that your organization meets the criteria"
           },
           {
-            "slug": "response-1",
+            "slug": "3-apply-for-the-zero-badge",
             "depth": 3,
-            "value": "Response"
+            "value": "3. Apply for the Zero Badge"
+          },
+          {
+            "slug": "4-embed-the-zero-badge-into-your-webpage",
+            "depth": 3,
+            "value": "4. Embed the Zero Badge into your webpage"
           }
         ]
       }
