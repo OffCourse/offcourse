@@ -1,34 +1,41 @@
-"@context: https://w3id.org/openbadges/v2
+"@context": https://w3id.org/openbadges/v2
 id: urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb418
 type: Assertion
 recipient:
   type: email
-  identity": sander@waag.org
+  identity: sander@waag.org
 issuedOn: 2019-10-31T23:59:59+00:00
 expires: 2020-10-31T23:59:59+00:00
 verification:
  type: signedBadge
  creator: https://openbadges.com/publicKey.json
 badge:
-  type": BadgeClass
+  type: BadgeClass
   id: urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb419
   name: Zero Badge
   tags:
     - manifesto
     - intention
   description: |
-    This badge is awarded to organization that publicly display their commitment to the values of the public spaces manifesto on their website
+    This badge is awarded to organization that publicly display their commitment
+    to the values of the public spaces manifesto on their website
   criteria:
     narrative: |
-      The Zero Badge is a way for organizations that are part of the Public Spaces coalition to show their affiliation on their website. It provides visible evidence to the user that the organization has the intention to implement the Public Spaces values in their online presence.
+      The Zero Badge is a way for organizations that are part of the Public Spaces
+      coalition to show their affiliation on their website. It provides visible
+      evidence to the user that the organization has the intention to implement
+      the Public Spaces values in their online presence.
   issuer:
-    id": https://publicbadges.com/registry/publicspaces
+    id: https://publicbadges.com/registry/publicspaces
     type: Profile
     name: Public Spaces
     id: https://publicspaces.net
     email: contact@publicspaces.net
     verification:
-         "allowedOrigins": ["waag.org", "publicspaces.net", "publicbadges.com"]
+      allowedOrigins:
+      - waag.org
+      - publicspaces.net
+      - publicbadges.com
   evidence:
     - id: urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb420
       name: Public Badges Registry Listing

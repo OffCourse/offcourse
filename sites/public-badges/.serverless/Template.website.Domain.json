@@ -1,0 +1,12 @@
+{
+  "region": "us-east-1",
+  "privateZone": false,
+  "domain": "publicbadges.com",
+  "subdomains": [
+    {
+      "domain": "www.publicbadges.com",
+      "type": "awsS3Website",
+      "s3BucketName": "1m96bta-q1vm8dl"
+    }
+  ]
+}

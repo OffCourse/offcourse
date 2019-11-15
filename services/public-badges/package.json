@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "deploy": "yarn sls syncToS3 && yarn sls invalidateCloudFrontCache",
+    "clean": "gatsby clean",
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project ."
   },
   "author": "yeehaa",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "serverless": "^1.54.0"
   }
 }

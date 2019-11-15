@@ -1,0 +1,9 @@
+service: publicBadgesSite
+website:
+  component: '@serverless/website'
+  inputs:
+    code:
+      src: public
+      hook: npm run build
+    domain: www.publicbadges.com
+frameworkVersion: ">=1.2.0 <2.0.0"
