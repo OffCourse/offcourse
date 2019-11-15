@@ -1,0 +1,124 @@
+{
+  "config": {
+    "title": "Public Badges",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "version": "0.0.1",
+    "repository": null,
+    "native": false,
+    "themeConfig": {
+      "mode": "dark"
+    },
+    "separator": "-",
+    "typescript": true
+  },
+  "entries": [
+    {
+      "key": "src/feature.mdx",
+      "value": {
+        "name": "Feature",
+        "menu": "Zero Badge",
+        "id": "efc7eeb406f7b706429033b1c264ca50",
+        "filepath": "src/feature.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/feature.mdx",
+        "link": "",
+        "slug": "src-feature",
+        "route": "/src-feature",
+        "headings": []
+      }
+    },
+    {
+      "key": "src/fixture.mdx",
+      "value": {
+        "name": "Fixture",
+        "menu": "Zero Badge",
+        "id": "b8ad3c7bfa1f1f5dd0593c9df4bf11f5",
+        "filepath": "src/fixture.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/fixture.mdx",
+        "link": "",
+        "slug": "src-fixture",
+        "route": "/src-fixture",
+        "headings": []
+      }
+    },
+    {
+      "key": "src/flow.mdx",
+      "value": {
+        "name": "Flow",
+        "menu": "Zero Badge",
+        "id": "092ca23d044316be7ec7238b5df5a7f8",
+        "filepath": "src/flow.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/flow.mdx",
+        "link": "",
+        "slug": "src-flow",
+        "route": "/src-flow",
+        "headings": []
+      }
+    },
+    {
+      "key": "src/index.mdx",
+      "value": {
+        "name": "Public Badges",
+        "route": "/",
+        "id": "6576455a124f9aaefd860597f03a8fe4",
+        "filepath": "src/index.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/index.mdx",
+        "link": "",
+        "slug": "src-index",
+        "menu": "",
+        "headings": []
+      }
+    },
+    {
+      "key": "src/introduction.mdx",
+      "value": {
+        "name": "Introduction",
+        "menu": "Zero Badge",
+        "id": "52db823779288c6d3862db6eaac738e5",
+        "filepath": "src/introduction.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/introduction.mdx",
+        "link": "",
+        "slug": "src-introduction",
+        "route": "/src-introduction",
+        "headings": [
+          {
+            "slug": "zero-badge",
+            "depth": 1,
+            "value": "Zero Badge"
+          },
+          {
+            "slug": "get-involved",
+            "depth": 2,
+            "value": "Get Involved"
+          },
+          {
+            "slug": "1-sign-up-for-the-public-spaces-registry",
+            "depth": 3,
+            "value": "1. Sign Up for the Public Spaces Registry"
+          },
+          {
+            "slug": "example-request",
+            "depth": 4,
+            "value": "Example Request"
+          },
+          {
+            "slug": "2-make-sure-that-your-organization-meets-the-criteria-for-zero-badge",
+            "depth": 3,
+            "value": "2. Make sure that your organization meets the criteria for Zero Badge"
+          },
+          {
+            "slug": "3-apply-for-the-zero-badge",
+            "depth": 3,
+            "value": "3. Apply for the Zero Badge"
+          },
+          {
+            "slug": "4-embed-the-zero-badge-into-your-webpage",
+            "depth": 3,
+            "value": "4. Embed the Zero Badge into your webpage"
+          }
+        ]
+      }
+    }
+  ],
+  "props": []
+}

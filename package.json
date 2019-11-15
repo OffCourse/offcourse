@@ -3,10 +3,10 @@
     "workspaces": [
         "interfaces",
         "themes/homepage-theme",
-        "sites/offcourse-studio",
-        "sites/template-site",
-        "sites/bots-with-an-attitude",
-        "sites/public-badges",
-        "services/bots-with-an-attitude/bot-frame"
+        "projects/offcourse-studio",
+        "projects/template-site",
+        "projects/bots-with-an-attitude/site",
+        "projects/public-badges",
+        "projects/bots-with-an-attitude/services/bot-frame"
     ]
 }
