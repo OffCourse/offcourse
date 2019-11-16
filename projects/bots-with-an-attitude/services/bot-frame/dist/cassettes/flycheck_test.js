@@ -16,10 +16,7 @@ const objects = ["funk"];
 const run = ({ memory }) => __awaiter(this, void 0, void 0, function* () {
     const seconds = 1;
     yield timeout(seconds * 1000);
-    const promise = new Promise(function (resolve, reject) {
-        memory.get("name").once((name) => resolve(name));
-    });
-    const answer = yield promise;
+    const answer = yield memory.get("name").then();
     return { results: [answer] };
 });
 const cassette = {

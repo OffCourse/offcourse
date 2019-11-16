@@ -5,17 +5,13 @@ function timeout(ms: number) {
 }
 
 const verb = "test";
-const objects: Object[] = ["funk"]
-const run = async ({ memory }: any) => {
 
+const objects: Object[] = ["funk"];
+
+const run = async ({ memory }: any) => {
   const seconds = 1;
   await timeout(seconds * 1000);
-
-  const promise = new Promise(function(resolve, reject) {
-    memory.get("name").once((name: string) => resolve(name));
-  });
-
-  const answer = await promise;
+  const answer = await memory.get("name").then();
   return { results: [answer] };
 };
 

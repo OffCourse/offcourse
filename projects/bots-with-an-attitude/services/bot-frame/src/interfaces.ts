@@ -17,3 +17,15 @@ export interface ISentence {
 export interface IBot {
   cassettes: ICassette[];
 }
+
+export const SYSTEM = "system";
+export const COMMANDS = "commands";
+export const MESSAGE = "message";
+export const JOIN = "join";
+
+export type DBSchema = {
+  test: { name: string };
+  [SYSTEM]: {
+    [COMMANDS]: string;
+  };
+};

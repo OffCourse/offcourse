@@ -1,46 +1,43 @@
 import { WebAdapter } from "botbuilder-adapter-web";
 import Gun from "gun";
 import { Botkit } from "botkit";
-import { ICassette } from "./interfaces";
-import testCassette from "./cassettes/test"
+import { ICassette, DBSchema, SYSTEM, COMMANDS, MESSAGE, JOIN } from "./interfaces";
+import testCassette from "./cassettes/test";
 import Cassette from "./Cassette";
-
-const SYSTEM = "system";
-const COMMANDS = "commands";
+import _ from "gun/lib/then";
 
 class BWA {
   readonly controller: any;
   private cassettes: ICassette[];
-  readonly db: any;
   readonly memory: any;
 
-  static readFromMemory(memory: any, key: string) {
-    const promise = new Promise(function(resolve) {
-      memory.get(key).once((data: any) => {
-        resolve(data);
-      })
-    });
-    return promise;
-  }
-
   constructor(cassettes: ICassette[]) {
-    this.db = new Gun<{ test: { name: string }; SYSTEM: { COMMANDS: string } }>();
-    this.memory = this.db.get(SYSTEM);
+    const db = new Gun<DBSchema>();
+    this.memory = db.get(SYSTEM);
     this.controller = new Botkit({
       webhook_uri: "/api/messages",
       adapter: new WebAdapter()
     });
-    this.cassettes = this.insertCassettes(cassettes);
+
+    this.cassettes = cassettes.map(
+      cassette =>
+        new Cassette({
+          memory: db,
+          ...cassette
+        })
+    );
+
     this.updateSystem();
-    this.welcome();
+
+    this.firstContact();
     this.listen();
   }
 
-  welcome() {
-    this.controller.on('join', async (bot: any) => {
+  firstContact() {
+    this.controller.on(JOIN, async (bot: any) => {
       bot.say("Hello stranger!");
       bot.say("Available commands for this bot are:");
-      bot.say(await BWA.readFromMemory(this.memory, COMMANDS));
+      bot.say(await this.memory.get(COMMANDS).then());
     });
   }
 
@@ -49,21 +46,12 @@ class BWA {
     this.memory.put({ commands });
   }
 
-  insertCassettes(cassettes: ICassette[]) {
-    return cassettes.map((cassette) => new Cassette({
-      ...cassette, memory: this.db
-    }));
-  }
-
   listen() {
     this.cassettes.forEach(({ verb, run }) => {
-      this.controller.hears(
-        verb,
-        'message',
-        async (bot: any, message: any) => {
-          const { results } = await run();
-          await bot.reply(message, results.join(" "))
-        })
+      this.controller.hears(verb, MESSAGE, async (bot: any, message: any) => {
+        const { results } = await run();
+        await bot.reply(message, results.join(" "));
+      });
     });
   }
 }

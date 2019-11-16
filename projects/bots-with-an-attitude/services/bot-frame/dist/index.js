@@ -14,48 +14,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const botbuilder_adapter_web_1 = require("botbuilder-adapter-web");
 const gun_1 = __importDefault(require("gun"));
 const botkit_1 = require("botkit");
+const interfaces_1 = require("./interfaces");
 const test_1 = __importDefault(require("./cassettes/test"));
 const Cassette_1 = __importDefault(require("./Cassette"));
-const SYSTEM = "system";
-const COMMANDS = "commands";
 class BWA {
-    static readFromMemory(memory, key) {
-        const promise = new Promise(function (resolve) {
-            memory.get(key).once((data) => {
-                resolve(data);
-            });
-        });
-        return promise;
-    }
     constructor(cassettes) {
-        this.db = new gun_1.default();
-        this.memory = this.db.get(SYSTEM);
+        const db = new gun_1.default();
+        this.memory = db.get(interfaces_1.SYSTEM);
         this.controller = new botkit_1.Botkit({
             webhook_uri: "/api/messages",
             adapter: new botbuilder_adapter_web_1.WebAdapter()
         });
-        this.cassettes = this.insertCassettes(cassettes);
+        this.cassettes = cassettes.map(cassette => new Cassette_1.default(Object.assign({ memory: db }, cassette)));
         this.updateSystem();
-        this.welcome();
+        this.firstContact();
         this.listen();
     }
-    welcome() {
-        this.controller.on('join', (bot) => __awaiter(this, void 0, void 0, function* () {
+    firstContact() {
+        this.controller.on(interfaces_1.JOIN, (bot) => __awaiter(this, void 0, void 0, function* () {
             bot.say("Hello stranger!");
             bot.say("Available commands for this bot are:");
-            bot.say(yield BWA.readFromMemory(this.memory, COMMANDS));
+            bot.say(yield this.memory.get(interfaces_1.COMMANDS).then());
         }));
     }
     updateSystem() {
         const commands = this.cassettes.map(({ verb }) => verb);
         this.memory.put({ commands });
     }
-    insertCassettes(cassettes) {
-        return cassettes.map((cassette) => new Cassette_1.default(Object.assign({}, cassette, { memory: this.db })));
-    }
     listen() {
         this.cassettes.forEach(({ verb, run }) => {
-            this.controller.hears(verb, 'message', (bot, message) => __awaiter(this, void 0, void 0, function* () {
+            this.controller.hears(verb, interfaces_1.MESSAGE, (bot, message) => __awaiter(this, void 0, void 0, function* () {
                 const { results } = yield run();
                 yield bot.reply(message, results.join(" "));
             }));
