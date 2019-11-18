@@ -20,7 +20,7 @@
         "menu": "Zero Badge",
         "id": "efc7eeb406f7b706429033b1c264ca50",
         "filepath": "src/feature.mdx",
-        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/feature.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/projects/public-badges/src/feature.mdx",
         "link": "",
         "slug": "src-feature",
         "route": "/src-feature",
@@ -34,7 +34,7 @@
         "menu": "Zero Badge",
         "id": "b8ad3c7bfa1f1f5dd0593c9df4bf11f5",
         "filepath": "src/fixture.mdx",
-        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/fixture.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/projects/public-badges/src/fixture.mdx",
         "link": "",
         "slug": "src-fixture",
         "route": "/src-fixture",
@@ -48,7 +48,7 @@
         "menu": "Zero Badge",
         "id": "092ca23d044316be7ec7238b5df5a7f8",
         "filepath": "src/flow.mdx",
-        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/flow.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/projects/public-badges/src/flow.mdx",
         "link": "",
         "slug": "src-flow",
         "route": "/src-flow",
@@ -62,7 +62,7 @@
         "route": "/",
         "id": "6576455a124f9aaefd860597f03a8fe4",
         "filepath": "src/index.mdx",
-        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/index.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/projects/public-badges/src/index.mdx",
         "link": "",
         "slug": "src-index",
         "menu": "",
@@ -76,7 +76,7 @@
         "menu": "Zero Badge",
         "id": "52db823779288c6d3862db6eaac738e5",
         "filepath": "src/introduction.mdx",
-        "fullpath": "/home/yeehaa/Documents/offcourse/sites/public-badges/src/introduction.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/projects/public-badges/src/introduction.mdx",
         "link": "",
         "slug": "src-introduction",
         "route": "/src-introduction",
@@ -92,9 +92,24 @@
             "value": "Get Involved"
           },
           {
-            "slug": "1-sign-up-for-the-public-spaces-registry",
+            "slug": "1-make-sure-that-your-organization-meets-the-criteria-for-zero-badge",
             "depth": 3,
-            "value": "1. Sign Up for the Public Spaces Registry"
+            "value": "1. Make sure that your organization meets the criteria for Zero Badge"
+          },
+          {
+            "slug": "2-download-the-public-spaces-badge-container",
+            "depth": 3,
+            "value": "2. Download the Public Spaces Badge Container"
+          },
+          {
+            "slug": "3-embed-the-zero-badge-into-your-webpage",
+            "depth": 3,
+            "value": "3. Embed the Zero Badge into your webpage"
+          },
+          {
+            "slug": "4-apply-for-the-zero-badge",
+            "depth": 3,
+            "value": "4. Apply for the Zero Badge"
           },
           {
             "slug": "example-request",
@@ -102,19 +117,9 @@
             "value": "Example Request"
           },
           {
-            "slug": "2-make-sure-that-your-organization-meets-the-criteria-for-zero-badge",
+            "slug": "4-add-the-zero-badge-to-your-container",
             "depth": 3,
-            "value": "2. Make sure that your organization meets the criteria for Zero Badge"
-          },
-          {
-            "slug": "3-apply-for-the-zero-badge",
-            "depth": 3,
-            "value": "3. Apply for the Zero Badge"
-          },
-          {
-            "slug": "4-embed-the-zero-badge-into-your-webpage",
-            "depth": 3,
-            "value": "4. Embed the Zero Badge into your webpage"
+            "value": "4. Add the Zero Badge to your container"
           }
         ]
       }

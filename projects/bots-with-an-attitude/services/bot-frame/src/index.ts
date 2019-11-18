@@ -1,59 +1,38 @@
-import { WebAdapter } from "botbuilder-adapter-web";
-import Gun from "gun";
-import { Botkit } from "botkit";
-import { ICassette, DBSchema, SYSTEM, COMMANDS, MESSAGE, JOIN } from "./interfaces";
+import { interpret } from "xstate";
 import testCassette from "./cassettes/test";
-import Cassette from "./Cassette";
 import _ from "gun/lib/then";
+import createBotMachine from "./frame";
 
-class BWA {
-  readonly controller: any;
-  private cassettes: ICassette[];
-  readonly memory: any;
+const init = async () => {
+  const botMachine = createBotMachine({ cassettes: [testCassette] });
 
-  constructor(cassettes: ICassette[]) {
-    const db = new Gun<DBSchema>();
-    this.memory = db.get(SYSTEM);
-    this.controller = new Botkit({
-      webhook_uri: "/api/messages",
-      adapter: new WebAdapter()
+  const botService = interpret(botMachine).onTransition(state => {
+    console.log("Transitioned:" + state.value);
+    console.log(state.context);
+  });
+
+  const cassettes = botService.state.context.cassettes;
+  const controller = botService.state.context.controller;
+
+  botService.start();
+  const promise = () => new Promise((resolve) => resolve(5555))
+  const health = await promise();
+
+  botService.send({ type: "SUCCEEDED", health });
+
+  controller.on("join", async (bot: any) => {
+    const commands = cassettes.map(({ verb }) => verb);
+    bot.say("Hello stranger!");
+    bot.say("Available commands for this bot are:");
+    bot.say(commands.length ? `${commands}` : "none yet");
+  });
+
+  cassettes.forEach(({ verb, run }) => {
+    controller.hears(verb, "message", async (bot: any, message: any) => {
+      const { results } = await run();
+      await bot.reply(message, results.join(" "));
     });
-
-    this.cassettes = cassettes.map(
-      cassette =>
-        new Cassette({
-          memory: db,
-          ...cassette
-        })
-    );
-
-    this.updateSystem();
-
-    this.firstContact();
-    this.listen();
-  }
-
-  firstContact() {
-    this.controller.on(JOIN, async (bot: any) => {
-      bot.say("Hello stranger!");
-      bot.say("Available commands for this bot are:");
-      bot.say(await this.memory.get(COMMANDS).then());
-    });
-  }
-
-  updateSystem() {
-    const commands = this.cassettes.map(({ verb }) => verb);
-    this.memory.put({ commands });
-  }
-
-  listen() {
-    this.cassettes.forEach(({ verb, run }) => {
-      this.controller.hears(verb, MESSAGE, async (bot: any, message: any) => {
-        const { results } = await run();
-        await bot.reply(message, results.join(" "));
-      });
-    });
-  }
+  });
 }
 
-new BWA([testCassette]);
+init();

@@ -17,7 +17,32 @@ partners of Public Spaces to apply for the Zero Badge.
 
 In a later phase, we will open this project up to other organizations.
 
-### 1. Sign Up for the Public Spaces Registry
+### 1. Make sure that your organization meets the criteria for Zero Badge
+
++ organization needs to be approved
+
+### 2. Download the Public Spaces Badge Container 
+
+```bash
+npm install @public-spaces/badge-container
+yarn add @public-spaces/badge-container
+```
+
+### 3. Embed the Zero Badge into your webpage
+
+```html
+<script src="./public-spaces-badge-container.js" async></script>
+```
+
+```js
+import PublicSpacesBadgeContainer from "@public-spaces/badge-container"
+```
+
+```html
+<PublicSpacesBadgesContainer />
+```
+
+### 4. Apply for the Zero Badge
 
 #### Example Request
 
@@ -27,7 +52,10 @@ curl -X POST -d @./payload.json https://api.publicbadges.com/v1 -H "Content-Type
 
 ```json
 {
-  "actionType": "REGISTER_ORGANIZATION",
+  "actionType": "APPLY_FOR_BADGE",
+  "badge": {
+    type: "Zero Badge"
+  },
   "organization": {
     "name": "Waag",
     "contact": {
@@ -38,7 +66,7 @@ curl -X POST -d @./payload.json https://api.publicbadges.com/v1 -H "Content-Type
       "name": "John Doer",
       "email": "johndoer@waag.org"
     }
-    "urls": [
+    "domains": [
       "https://www.waag.org"
     ]
   }
@@ -49,47 +77,15 @@ curl -X POST -d @./payload.json https://api.publicbadges.com/v1 -H "Content-Type
 
 ```json
 {
+  "badgeUrl": "https://publicbadges.com/e79a6c18-787e-4868-8e65-e6a4530fb419/zerobadge.json",
   "organizationId": "e79a6c18-787e-4868-8e65-e6a4530fb419",
   "status": "Pending"
 }
 ```
 
-Further documentation about the request can be found here: [Swagger](https://app.swaggerhub.com/apis/yeehaa123/PublicBadges/1.0.0#/Organization)
 
-### 2. Make sure that your organization meets the criteria for Zero Badge
-
-+ organization needs to be approved
-
-### 3. Apply for the Zero Badge
-
-**Example Request**
-
-```bash
-curl -X POST -d @./payload.json https://api.publicbadges.com/v1 -H "Content-Type: application/json"
-```
-
-```json
-{
-  "actionType": "APPLY_FOR_BADGE",
-  "badgeID": "e79a6c18-787e-4868-8e65-e6a4530fb418",
-  "organizationId": "e79a6c18-787e-4868-8e65-e6a4530fb419"
-  "urlsUnderTest": [
-    "https://www.waag.org/*",
-  ]
-}
-```
-
-**Example Response**
-
-```json
-{
-  "badgeUrl": "https://publicbadges.com/e79a6c18-787e-4868-8e65-e6a4530fb419/zerobadge.js",
-  "status": "Pending"
-}
-```
-
-### 4. Embed the Zero Badge into your webpage
+### 4. Add the Zero Badge to your container
 
 ```html
-<script src="https://publicbadges.com/e79a6c18-787e-4868-8e65-e6a4530fb419/zerobadge.js" async></script>
+<PublicSpacesBadgesContainer badges=["zerobadge.json"] /+>
 ```

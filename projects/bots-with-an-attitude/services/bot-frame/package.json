@@ -27,7 +27,8 @@
     "botbuilder-adapter-web": "^1.0.5",
     "botkit": "^4.6.1",
     "gun": "^0.2019.930",
-    "nodemon": "^1.18.3"
+    "nodemon": "^1.18.3",
+    "xstate": "^4.6.7"
   },
   "devDependencies": {
     "prettier": "1.18.2",

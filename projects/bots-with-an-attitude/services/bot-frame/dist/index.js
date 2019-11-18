@@ -11,44 +11,33 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const botbuilder_adapter_web_1 = require("botbuilder-adapter-web");
-const gun_1 = __importDefault(require("gun"));
-const botkit_1 = require("botkit");
-const interfaces_1 = require("./interfaces");
+const xstate_1 = require("xstate");
 const test_1 = __importDefault(require("./cassettes/test"));
-const Cassette_1 = __importDefault(require("./Cassette"));
-class BWA {
-    constructor(cassettes) {
-        const db = new gun_1.default();
-        this.memory = db.get(interfaces_1.SYSTEM);
-        this.controller = new botkit_1.Botkit({
-            webhook_uri: "/api/messages",
-            adapter: new botbuilder_adapter_web_1.WebAdapter()
-        });
-        this.cassettes = cassettes.map(cassette => new Cassette_1.default(Object.assign({ memory: db }, cassette)));
-        this.updateSystem();
-        this.firstContact();
-        this.listen();
-    }
-    firstContact() {
-        this.controller.on(interfaces_1.JOIN, (bot) => __awaiter(this, void 0, void 0, function* () {
-            bot.say("Hello stranger!");
-            bot.say("Available commands for this bot are:");
-            bot.say(yield this.memory.get(interfaces_1.COMMANDS).then());
+const frame_1 = __importDefault(require("./frame"));
+const init = () => __awaiter(this, void 0, void 0, function* () {
+    const botMachine = frame_1.default({ cassettes: [test_1.default] });
+    const botService = xstate_1.interpret(botMachine).onTransition(state => {
+        console.log("Transitioned:" + state.value);
+        console.log(state.context);
+    });
+    const cassettes = botService.state.context.cassettes;
+    const controller = botService.state.context.controller;
+    botService.start();
+    const promise = () => new Promise((resolve) => resolve(5555));
+    const health = yield promise();
+    botService.send({ type: "SUCCEEDED", health });
+    controller.on("join", (bot) => __awaiter(this, void 0, void 0, function* () {
+        const commands = cassettes.map(({ verb }) => verb);
+        bot.say("Hello stranger!");
+        bot.say("Available commands for this bot are:");
+        bot.say(commands.length ? `${commands}` : "none yet");
+    }));
+    cassettes.forEach(({ verb, run }) => {
+        controller.hears(verb, "message", (bot, message) => __awaiter(this, void 0, void 0, function* () {
+            const { results } = yield run();
+            yield bot.reply(message, results.join(" "));
         }));
-    }
-    updateSystem() {
-        const commands = this.cassettes.map(({ verb }) => verb);
-        this.memory.put({ commands });
-    }
-    listen() {
-        this.cassettes.forEach(({ verb, run }) => {
-            this.controller.hears(verb, interfaces_1.MESSAGE, (bot, message) => __awaiter(this, void 0, void 0, function* () {
-                const { results } = yield run();
-                yield bot.reply(message, results.join(" "));
-            }));
-        });
-    }
-}
-new BWA([test_1.default]);
+    });
+});
+init();
 //# sourceMappingURL=index.js.map
