@@ -24,13 +24,12 @@ If you're organization is interested in joining the Public Spaces coalition,
 please contact us: [contact@public-spaces.org](contact@public-spaces.org).
 
 
-### 2. Embed the Public Spaces Badge Container into your webpage
+### 2. Embed the Public Badges Container into your webpage
 
-In order to acquire the zero badge, you have to include the Public Spaces
-Badge Container webcomponent on your organization's website.
+In order to acquire the zero badge, you have to include the Public Badge
+Container webcomponent on your organization's website.
 
 You can download it from npm:
-
 
 ```bash
 npm install @public-badges/container
@@ -47,14 +46,14 @@ or host it directly:
 <script src="https://unpkg.com/@public-badges/container@1.0.0/umd/container.production.min.js" async></script>
 ```
 
-The Container is a [webcomponent](https://www.webcomponents.org/introduction)
+The Public Badges Container is a [webcomponent](https://www.webcomponents.org/introduction)
 that you can use directly in your html.
 
 ```html
-<PublicSpacesBadgesContainer />
+<PublicBadgesContainer />
 ```
 
-Documentation for the use of webcomponents in your frontend framework of choice,
+Documentation for the use of webcomponents with your frontend framework of choice,
 can be found here: [https://stenciljs.com/docs/overview](https://stenciljs.com/docs/overview).
 
 
@@ -63,7 +62,7 @@ catchy...
 
 ### 3. Apply for the Zero Badge
 
-After you embedded the badge in your webpage, you are ready to apply for
+When you have embedded the badge in your webpage, you are ready to apply for
 the zero-badge. 
 
 #### Example Request
@@ -112,7 +111,7 @@ curl -X POST -d @./payload.json https://api.publicbadges.com/v1 -H "Content-Type
 }
 ```
 
-After you submitted your request, we will check if your organization meets the
+Upon submission of your request, we will check if your organization meets the
 requirements for the zero badge. The two main criteria are:
 
 - Your organization is a member of the public spaces coalition.
@@ -122,5 +121,5 @@ website.
 The exact scenarios that the we test, can be found here: [Zero Badge Feature](/src-feature)
 
 As soon as your organization is verified and the badge is issued, it will appear in automatically your badge
-container. You can also download the [open badge artifact]() manually through
+container. You can also download the [open badge artifact](./src-fixture) manually through
 the link provided.
