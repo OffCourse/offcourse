@@ -97,29 +97,19 @@
             "value": "1. Make sure that your organization meets the criteria for Zero Badge"
           },
           {
-            "slug": "2-download-the-public-spaces-badge-container",
+            "slug": "2-embed-the-public-spaces-badge-container-into-your-webpage",
             "depth": 3,
-            "value": "2. Download the Public Spaces Badge Container"
+            "value": "2. Embed the Public Spaces Badge Container into your webpage"
           },
           {
-            "slug": "3-embed-the-zero-badge-into-your-webpage",
+            "slug": "3-apply-for-the-zero-badge",
             "depth": 3,
-            "value": "3. Embed the Zero Badge into your webpage"
-          },
-          {
-            "slug": "4-apply-for-the-zero-badge",
-            "depth": 3,
-            "value": "4. Apply for the Zero Badge"
+            "value": "3. Apply for the Zero Badge"
           },
           {
             "slug": "example-request",
             "depth": 4,
             "value": "Example Request"
-          },
-          {
-            "slug": "4-add-the-zero-badge-to-your-container",
-            "depth": 3,
-            "value": "4. Add the Zero Badge to your container"
           }
         ]
       }

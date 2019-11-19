@@ -12,37 +12,59 @@ implement the Public Spaces values in their online presence.
 
 ## Get Involved
 
+
+### 1. Make sure that your organization meets the criteria for Zero Badge
+
 During this phase of development, it is only possible for the founding
 partners of Public Spaces to apply for the Zero Badge.
 
 In a later phase, we will open this project up to other organizations.
 
-### 1. Make sure that your organization meets the criteria for Zero Badge
+If you're organization is interested in joining the Public Spaces coalition,
+please contact us: [contact@public-spaces.org](contact@public-spaces.org).
 
-+ organization needs to be approved
 
-### 2. Download the Public Spaces Badge Container 
+### 2. Embed the Public Spaces Badge Container into your webpage
+
+In order to acquire the zero badge, you have to include the Public Spaces
+Badge Container webcomponent on your organization's website.
+
+You can download it from npm:
+
 
 ```bash
-npm install @public-spaces/badge-container
-yarn add @public-spaces/badge-container
-```
-
-### 3. Embed the Zero Badge into your webpage
-
-```html
-<script src="./public-spaces-badge-container.js" async></script>
+npm install @public-badges/container
+yarn add @public-badges/container
 ```
 
 ```js
-import PublicSpacesBadgeContainer from "@public-spaces/badge-container"
+import PublicBadgesContainer from "@public-badges/container"
 ```
+
+or host it directly:
+
+```html
+<script src="https://unpkg.com/@public-badges/container@1.0.0/umd/container.production.min.js" async></script>
+```
+
+The Container is a [webcomponent](https://www.webcomponents.org/introduction)
+that you can use directly in your html.
 
 ```html
 <PublicSpacesBadgesContainer />
 ```
 
-### 4. Apply for the Zero Badge
+Documentation for the use of webcomponents in your frontend framework of choice,
+can be found here: [https://stenciljs.com/docs/overview](https://stenciljs.com/docs/overview).
+
+
+[todo]: Decide on the name. 'Public Badges Container' is not exactly
+catchy...
+
+### 3. Apply for the Zero Badge
+
+After you embedded the badge in your webpage, you are ready to apply for
+the zero-badge. 
 
 #### Example Request
 
@@ -77,15 +99,28 @@ curl -X POST -d @./payload.json https://api.publicbadges.com/v1 -H "Content-Type
 
 ```json
 {
-  "badgeUrl": "https://publicbadges.com/e79a6c18-787e-4868-8e65-e6a4530fb419/zerobadge.json",
-  "organizationId": "e79a6c18-787e-4868-8e65-e6a4530fb419",
-  "status": "Pending"
+  "badge": {
+    "id": "e79a6c18-787e-4868-8e65-e6a4530fb419",
+    "url": "https://public-badges.com/f79a6c18-083f-3852-4e62-e6b4520eb213/e79a6c18-787e-4868-8e65-e6a4530fb419",
+    "status": "Pending"
+  },
+  "organization": {
+    "id": "f79a6c18-083f-3852-4e62-e6b4520eb213",
+    "url": "https://public-badges.com/f79a6c18-083f-3852-4e62-e6b4520eb213",
+    "status": "Pending"
+  }
 }
 ```
 
+After you submitted your request, we will check if your organization meets the
+requirements for the zero badge. The two main criteria are:
 
-### 4. Add the Zero Badge to your container
+- Your organization is a member of the public spaces coalition.
+- Your organization has included the Public Spaces Badge Container on their
+website.
 
-```html
-<PublicSpacesBadgesContainer badges=["zerobadge.json"] /+>
-```
+The exact scenarios that the we test, can be found here: [Zero Badge Feature](/src-feature)
+
+As soon as your organization is verified and the badge is issued, it will appear in automatically your badge
+container. You can also download the [open badge artifact]() manually through
+the link provided.
