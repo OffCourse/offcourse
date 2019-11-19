@@ -113,6 +113,20 @@
           }
         ]
       }
+    },
+    {
+      "key": "src/schema.mdx",
+      "value": {
+        "name": "Graphql Schema",
+        "menu": "Zero Badge",
+        "id": "ea4aaf9559e10d8d42a9eeb644fd216b",
+        "filepath": "src/schema.mdx",
+        "fullpath": "/home/yeehaa/Documents/offcourse/projects/public-badges/src/schema.mdx",
+        "link": "",
+        "slug": "src-schema",
+        "route": "/src-schema",
+        "headings": []
+      }
     }
   ],
   "props": []

@@ -1,0 +1,40 @@
+---
+name: Graphql Schema
+menu: Zero Badge
+---
+
+```graphql
+type Feature {
+  name: String
+  scenario: [String]
+}
+
+type BadgeClass {
+  name: String
+  feature: Feature
+}
+
+type Badge {
+  type: String
+  id: String
+  status: String
+}
+
+type Contact {
+  name: String
+  email: String
+}
+
+type Organization {
+  name: String
+  contact: Contact
+  admin: Contact
+  domains: [String]
+}
+
+type Reference {
+  id: String
+  url: String
+  status: String
+}
+``` 

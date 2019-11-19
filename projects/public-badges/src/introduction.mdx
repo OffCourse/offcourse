@@ -12,19 +12,20 @@ implement the Public Spaces values in their online presence.
 
 ## Get Involved
 
-
 ### 1. Make sure that your organization meets the criteria for Zero Badge
-
 During this phase of development, it is only possible for the founding
 partners of Public Spaces to apply for the Zero Badge.
 
 In a later phase, we will open this project up to other organizations.
 
-If you're organization is interested in joining the Public Spaces coalition,
+If you're organization that is interested in joining the Public Spaces coalition,
 please contact us: [contact@public-spaces.org](contact@public-spaces.org).
 
 
 ### 2. Embed the Public Badges Container into your webpage
+
+[todo]: Decide on the name. 'Public Badges Container' is not exactly
+catchy...
 
 In order to acquire the zero badge, you have to include the Public Badge
 Container webcomponent on your organization's website.
@@ -57,23 +58,49 @@ Documentation for the use of webcomponents with your frontend framework of choic
 can be found here: [https://stenciljs.com/docs/overview](https://stenciljs.com/docs/overview).
 
 
-[todo]: Decide on the name. 'Public Badges Container' is not exactly
-catchy...
-
 ### 3. Apply for the Zero Badge
 
 When you have embedded the badge in your webpage, you are ready to apply for
-the zero-badge. 
+the zero-badge.
+
+You can call the api directly, or you can use a [graphql client](https://graphql.org/code/#graphql-clients)
 
 #### Example Request
 
 ```bash
-curl -X POST -d @./payload.json https://api.publicbadges.com/v1 -H "Content-Type: application/json"
+curl -X POST 'https://graphql.publicbadges.com/v1'
+  -H "Content-Type: application/json"
+  -d '{
+    "query": "...",
+    "variables": "..."
+  }'
 ```
+
+
+where query is:
+
+```graphql
+mutation($badge: Badge, $organization: Organization){
+  applyForBadge(badge: $badge, organization: $organization){
+    badge {
+      id
+      url
+      status
+    }
+    organization {
+      id
+      url
+      status
+    }
+  }
+}
+``` 
+The entire graphql schema can be [found here](/src-schema)
+
+and the variables are:
 
 ```json
 {
-  "actionType": "APPLY_FOR_BADGE",
   "badge": {
     type: "Zero Badge"
   },
@@ -91,7 +118,6 @@ curl -X POST -d @./payload.json https://api.publicbadges.com/v1 -H "Content-Type
       "https://www.waag.org"
     ]
   }
-}
 ```
 
 **Example Response**
@@ -111,14 +137,14 @@ curl -X POST -d @./payload.json https://api.publicbadges.com/v1 -H "Content-Type
 }
 ```
 
-Upon submission of your request, we will check if your organization meets the
-requirements for the zero badge. The two main criteria are:
+Upon submission of your application, we will check if your organization meets the
+requirements to get the zero badge. The two main criteria are:
 
 - Your organization is a member of the public spaces coalition.
 - Your organization has included the Public Spaces Badge Container on their
 website.
 
-The exact scenarios that the we test, can be found here: [Zero Badge Feature](/src-feature)
+The exact scenarios that the we test can be found here: [Zero Badge Feature](/src-feature)
 
 As soon as your organization is verified and the badge is issued, it will appear in automatically your badge
 container. You can also download the [open badge artifact](./src-fixture) manually through
