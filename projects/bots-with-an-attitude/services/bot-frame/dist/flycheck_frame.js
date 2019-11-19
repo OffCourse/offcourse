@@ -15,6 +15,7 @@ const controller = new botkit_1.Botkit({
 const db = new gun_1.default();
 const initialize = xstate_1.assign({
     health: (_, { health }) => {
+        console.log(health);
         return health || 100;
     }
 });
@@ -23,8 +24,8 @@ const createBotMachine = ({ cassettes }) => {
         id: "bot",
         initial: "booting",
         context: {
-            health: "UNKNOWN",
             controller,
+            health: "UNKNOWN",
             cassettes: cassettes.map(cassette => new Cassette_1.default(Object.assign({ memory: db }, cassette)))
         },
         states: {

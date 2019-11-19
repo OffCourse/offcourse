@@ -44,7 +44,7 @@ const createBotMachine = ({ cassettes }) => {
             crashed: {
                 type: "final"
             }
-        },
+        }
     }, {
         actions: {
             initialize

@@ -15,7 +15,9 @@ const init = async () => {
   const controller = botService.state.context.controller;
 
   botService.start();
-  const promise = () => new Promise((resolve) => resolve(5555))
+
+  const promise = () => new Promise((resolve) => resolve(5555));
+
   const health = await promise();
 
   botService.send({ type: "SUCCEEDED", health });

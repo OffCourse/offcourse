@@ -18,7 +18,8 @@ interface BotContext {
 
 const initialize = assign({
   health: (_: BotContext, { health }: any) => {
-    console.log(health); return health || 100;
+    console.log(health);
+    return health || 100;
   }
 });
 
@@ -60,7 +61,8 @@ const createBotMachine = ({ cassettes }: { cassettes: ICassette[] }) => {
         crashed: {
           type: "final"
         }
-      },
+      }
+    },
     {
       actions: {
         initialize
