@@ -8,17 +8,13 @@ const gun_1 = __importDefault(require("gun"));
 const botkit_1 = require("botkit");
 const botbuilder_adapter_web_1 = require("botbuilder-adapter-web");
 const Cassette_1 = __importDefault(require("./Cassette"));
+const actions_1 = require("./actions");
+const services_1 = require("./services");
 const controller = new botkit_1.Botkit({
     webhook_uri: "/api/messages",
     adapter: new botbuilder_adapter_web_1.WebAdapter()
 });
 const db = new gun_1.default();
-const initialize = xstate_1.assign({
-    health: (_, { health }) => {
-        console.log(health);
-        return health || 100;
-    }
-});
 const createBotMachine = ({ cassettes }) => {
     return xstate_1.Machine({
         id: "bot",
@@ -30,24 +26,37 @@ const createBotMachine = ({ cassettes }) => {
         },
         states: {
             booting: {
-                on: {
-                    SUCCEEDED: {
+                invoke: {
+                    src: "getHealth",
+                    onDone: {
                         target: "booted",
-                        actions: "initialize"
+                        actions: ["initialize", "assignHealth"]
                     },
-                    FAILED: "crashed"
-                }
+                    onError: {
+                        target: "crashed",
+                        actions: "echo"
+                    }
+                },
             },
             booted: {
-                type: "final"
+                type: "final",
+                entry: ["welcome", "listen"]
             },
             crashed: {
-                type: "final"
+                type: "final",
+                entry: "echo"
             }
         }
     }, {
+        services: {
+            getHealth: services_1.getHealth
+        },
         actions: {
-            initialize
+            initialize: actions_1.initialize,
+            welcome: actions_1.welcome,
+            listen: actions_1.listen,
+            echo: actions_1.echo,
+            assignHealth: actions_1.assignHealth
         }
     });
 };

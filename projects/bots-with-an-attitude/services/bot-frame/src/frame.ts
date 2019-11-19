@@ -1,9 +1,11 @@
-import { Machine, assign } from "xstate";
+import { Machine } from "xstate";
 import Gun from "gun";
 import { Botkit } from "botkit";
 import { WebAdapter } from "botbuilder-adapter-web";
-import { ICassette, DBSchema } from "./interfaces";
+import { IBotConfig, IBotContext, DBSchema } from "./interfaces";
 import Cassette from "./Cassette";
+import { assignHealth, initialize, listen, welcome, echo } from "./actions";
+import { getHealth } from "./services";
 
 const controller = new Botkit({
   webhook_uri: "/api/messages",
@@ -11,26 +13,9 @@ const controller = new Botkit({
 });
 
 const db = new Gun<DBSchema>();
-interface BotContext {
-  health: number | string;
-  cassettes: ICassette[];
-}
 
-const initialize = assign({
-  health: (_: BotContext, { health }: any) => {
-    console.log(health);
-    return health || 100;
-  }
-});
-
-interface BotContext {
-  health: number | string;
-  controller: any;
-  cassettes: ICassette[];
-}
-
-const createBotMachine = ({ cassettes }: { cassettes: ICassette[] }) => {
-  return Machine<BotContext>(
+const createBotMachine = ({ cassettes }: IBotConfig) => {
+  return Machine<IBotContext>(
     {
       id: "bot",
       initial: "booting",
@@ -47,25 +32,38 @@ const createBotMachine = ({ cassettes }: { cassettes: ICassette[] }) => {
       },
       states: {
         booting: {
-          on: {
-            SUCCEEDED: {
+          invoke: {
+            src: "getHealth",
+            onDone: {
               target: "booted",
-              actions: "initialize"
+              actions: ["initialize", "assignHealth"]
             },
-            FAILED: "crashed"
-          }
+            onError: {
+              target: "crashed",
+              actions: "echo"
+            }
+          },
         },
         booted: {
-          type: "final"
+          type: "final",
+          entry: ["welcome", "listen"]
         },
         crashed: {
-          type: "final"
+          type: "final",
+          entry: "echo"
         }
       }
     },
     {
+      services: {
+        getHealth
+      },
       actions: {
-        initialize
+        initialize,
+        welcome,
+        listen,
+        echo,
+        assignHealth
       }
     }
   );

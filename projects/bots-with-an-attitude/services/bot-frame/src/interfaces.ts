@@ -14,7 +14,13 @@ export interface ISentence {
   results: any[];
 }
 
-export interface IBot {
+export interface IBotConfig {
+  cassettes: ICassette[];
+}
+
+export interface IBotContext {
+  health: number | string;
+  controller: any;
   cassettes: ICassette[];
 }
 
