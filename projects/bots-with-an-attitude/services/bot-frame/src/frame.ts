@@ -1,42 +1,29 @@
-import { Machine } from "xstate";
+import { Machine, spawn, assign, sendParent } from "xstate";
 import Gun from "gun";
-import { Botkit } from "botkit";
-import { WebAdapter } from "botbuilder-adapter-web";
-import { IBotConfig, IBotContext, DBSchema } from "./interfaces";
-import Cassette from "./Cassette";
-import { assignHealth, initialize, listen, welcome, echo } from "./actions";
+import { BotContext, DBSchema } from "./interfaces";
+import { assignHealth, echo, welcome, insertCassette, playCassette } from "./actions";
 import { getHealth } from "./services";
-
-const controller = new Botkit({
-  webhook_uri: "/api/messages",
-  adapter: new WebAdapter()
-});
+import controller from "./controller";
 
 const db = new Gun<DBSchema>();
 
-const createBotMachine = ({ cassettes }: IBotConfig) => {
-  return Machine<IBotContext>(
+const createBotMachine = () => {
+  return Machine<BotContext>(
     {
       id: "bot",
-      initial: "booting",
+      initial: "idle",
       context: {
-        controller,
         health: "UNKNOWN",
-        cassettes: cassettes.map(
-          cassette =>
-            new Cassette({
-              memory: db,
-              ...cassette
-            })
-        )
+        controller,
+        cassettes: []
       },
       states: {
-        booting: {
+        idle: {
           invoke: {
             src: "getHealth",
             onDone: {
               target: "booted",
-              actions: ["initialize", "assignHealth"]
+              actions: ["assignHealth"]
             },
             onError: {
               target: "crashed",
@@ -45,8 +32,14 @@ const createBotMachine = ({ cassettes }: IBotConfig) => {
           },
         },
         booted: {
-          type: "final",
-          entry: ["welcome", "listen"]
+          on: {
+            INSERT_CASSETTE: {
+              actions: ["welcome", "insertCassette", "playCassette"]
+            },
+            CASSETTE_PLAYING: {
+              actions: () => console.log("SUCCESS")
+            }
+          }
         },
         crashed: {
           type: "final",
@@ -59,11 +52,11 @@ const createBotMachine = ({ cassettes }: IBotConfig) => {
         getHealth
       },
       actions: {
-        initialize,
-        welcome,
-        listen,
         echo,
-        assignHealth
+        welcome,
+        assignHealth,
+        insertCassette,
+        playCassette
       }
     }
   );

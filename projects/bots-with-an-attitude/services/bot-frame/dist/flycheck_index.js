@@ -14,12 +14,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
 const test_1 = __importDefault(require("./cassettes/test"));
 const frame_1 = __importDefault(require("./frame"));
-const init = (config) => __awaiter(this, void 0, void 0, function* () {
-    const botMachine = frame_1.default(config);
+const init = () => __awaiter(this, void 0, void 0, function* () {
+    const botMachine = frame_1.default();
     const botService = xstate_1.interpret(botMachine).onTransition(state => {
-        console.log("Transitioned:" + state.value + " " + state.context.health);
+        console.log("Transitioned:" + state.value + " " + state.changed);
     });
     botService.start();
+    setTimeout(() => botService.send("INSERT_CASSETTE", { cassette: test_1.default }), 1000);
 });
-init({ cassettes: [test_1.default, Object.assign({}, test_1.default, { verb: "recommend" })] });
+init();
 //# sourceMappingURL=flycheck_index.js.map

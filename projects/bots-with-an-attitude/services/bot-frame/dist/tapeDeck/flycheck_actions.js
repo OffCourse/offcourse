@@ -7,20 +7,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
-const test_1 = __importDefault(require("./cassettes/test"));
-const frame_1 = __importDefault(require("./frame"));
-const init = () => __awaiter(this, void 0, void 0, function* () {
-    const botMachine = frame_1.default();
-    const botService = xstate_1.interpret(botMachine).onTransition(state => {
-        console.log("Transitioned:" + state.value + " " + state.changed);
-    });
-    botService.start();
-    setTimeout(() => botService.send("INSERT_CASSETTE", { cassette: test_1.default }), 1000);
-});
-init();
-//# sourceMappingURL=index.js.map
+const register = xstate_1.sendParent("CASSETTE_PLAYING");
+exports.register = register;
+const echo = (_context, event) => {
+    console.log(event);
+};
+exports.echo = echo;
+const welcome = ({ controller }) => {
+    controller.on("join", (bot) => __awaiter(this, void 0, void 0, function* () {
+        bot.say("Hello stranger!");
+    }));
+};
+exports.welcome = welcome;
+const listen = ({ controller, cassette }) => {
+    const { verb, run } = cassette;
+    controller.hears(verb, "message", (bot, message) => __awaiter(this, void 0, void 0, function* () {
+        yield bot.reply(message, "HELLO WORLD");
+    }));
+};
+exports.listen = listen;
+//# sourceMappingURL=flycheck_actions.js.map

@@ -1,18 +1,19 @@
 import { interpret } from "xstate";
 import testCassette from "./cassettes/test";
 import _ from "gun/lib/then";
-
-import { IBotConfig } from "./interfaces";
 import createBotMachine from "./frame";
 
-const init = async (config: IBotConfig) => {
-  const botMachine = createBotMachine(config);
+const init = async () => {
+  const botMachine = createBotMachine();
 
   const botService = interpret(botMachine).onTransition(state => {
-    console.log("Transitioned:" + state.value + " " + state.context.health);
+    console.log("Transitioned:" + state.value + " " + state.changed);
   });
 
   botService.start();
+
+  setTimeout(() => botService.send("INSERT_CASSETTE", { cassette: testCassette }), 1000);
+
 }
 
-init({ cassettes: [testCassette, { ...testCassette, verb: "recommend" }] });
+init();

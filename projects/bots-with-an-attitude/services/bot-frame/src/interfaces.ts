@@ -18,11 +18,11 @@ export interface IBotConfig {
   cassettes: ICassette[];
 }
 
-export interface IBotContext {
+export type BotContext = {
   health: number | string;
   controller: any;
-  cassettes: ICassette[];
-}
+  cassettes: { verb: string; ref: any }[];
+};
 
 export const SYSTEM = "system";
 export const COMMANDS = "commands";
@@ -35,3 +35,8 @@ export type DBSchema = {
     [COMMANDS]: string;
   };
 };
+
+export type TapeDeckContext = {
+  cassette: ICassette;
+  controller: any;
+}
