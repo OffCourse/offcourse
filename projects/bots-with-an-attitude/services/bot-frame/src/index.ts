@@ -11,9 +11,10 @@ const init = async () => {
   });
 
   botService.start();
-
-  setTimeout(() => botService.send("INSERT_CASSETTE", { cassette: testCassette }), 1000);
-
-}
+  botService.send("INSERT_CASSETTE", { cassette: testCassette });
+  botService.send("INSERT_CASSETTE", { cassette: testCassette });
+  botService.send("INSERT_CASSETTE", { cassette: testCassette });
+  botService.send("INSERT_CASSETTE", { cassette: testCassette });
+};
 
 init();

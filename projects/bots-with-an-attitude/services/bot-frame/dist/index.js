@@ -20,7 +20,10 @@ const init = () => __awaiter(this, void 0, void 0, function* () {
         console.log("Transitioned:" + state.value + " " + state.changed);
     });
     botService.start();
-    setTimeout(() => botService.send("INSERT_CASSETTE", { cassette: test_1.default }), 1000);
+    botService.send("INSERT_CASSETTE", { cassette: test_1.default });
+    botService.send("INSERT_CASSETTE", { cassette: test_1.default });
+    botService.send("INSERT_CASSETTE", { cassette: test_1.default });
+    botService.send("INSERT_CASSETTE", { cassette: test_1.default });
 });
 init();
 //# sourceMappingURL=index.js.map

@@ -21,7 +21,7 @@ export interface IBotConfig {
 export type BotContext = {
   health: number | string;
   controller: any;
-  cassettes: { verb: string; ref: any }[];
+  decks: any[];
 };
 
 export const SYSTEM = "system";
@@ -37,6 +37,5 @@ export type DBSchema = {
 };
 
 export type TapeDeckContext = {
-  cassette: ICassette;
   controller: any;
 }

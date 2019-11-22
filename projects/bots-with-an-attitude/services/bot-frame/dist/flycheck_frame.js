@@ -1,62 +1,45 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
-const gun_1 = __importDefault(require("gun"));
 const actions_1 = require("./actions");
-const services_1 = require("./services");
-const controller_1 = __importDefault(require("./controller"));
-const db = new gun_1.default();
 const createBotMachine = () => {
     return xstate_1.Machine({
         id: "bot",
         initial: "idle",
         context: {
             health: "UNKNOWN",
-            controller: controller_1.default,
-            cassettes: []
+            controller: '',
+            decks: [{}]
         },
         states: {
             idle: {
-                invoke: {
-                    src: "getHealth",
-                    onDone: {
-                        target: "booted",
-                        actions: ["assignHealth"]
-                    },
-                    onError: {
-                        target: "crashed",
-                        actions: "echo"
-                    }
-                },
-            },
-            booted: {
+                entry: [actions_1.initializeDecks, actions_1.sendMessage],
                 on: {
-                    INSERT_CASSETTE: {
-                        actions: ["welcome", "insertCassette", "playCassette"]
+                    DECK_INITIALIZED: {
+                        target: "initialized",
+                        actions: actions_1.echo
                     },
-                    CASSETTE_PLAYING: {
-                        actions: () => console.log("SUCCESS")
-                    }
                 }
+            },
+            initialized: {
+                on: {
+                    INSERT_CASSETTE: [
+                        {
+                            target: "initialized",
+                            actions: actions_1.insertCassette,
+                            cond: actions_1.deckNotFull
+                        },
+                        { target: "deck_full" }
+                    ]
+                }
+            },
+            deck_full: {
+                entry: () => console.log("NO MORE ROOM IN THIS BOT")
             },
             crashed: {
                 type: "final",
-                entry: "echo"
+                entry: actions_1.echo
             }
-        }
-    }, {
-        services: {
-            getHealth: services_1.getHealth
-        },
-        actions: {
-            echo: actions_1.echo,
-            welcome: actions_1.welcome,
-            assignHealth: actions_1.assignHealth,
-            insertCassette: actions_1.insertCassette,
-            playCassette: actions_1.playCassette
         }
     });
 };
