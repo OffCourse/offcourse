@@ -1,13 +1,15 @@
-import { Machine, sendParent } from "xstate";
-import { echo, welcome, register, listen } from "./actions";
+import { Machine } from "xstate";
+import * as actions from "./actions";
 import { TapeDeckContext } from "../interfaces";
 
-export const tapeDeck = ({ controller }: TapeDeckContext) => {
-  return Machine<TapeDeckContext>(
+export const tapeDeck = ({ controller, index }: TapeDeckContext) => {
+  return Machine<TapeDeckContext & { cassette: string | null }>(
     {
-      id: "takeDeck",
+      id: "tapeDeck",
       context: {
-        controller
+        index,
+        controller,
+        cassette: null
       },
       initial: "idle",
       states: {
@@ -15,25 +17,46 @@ export const tapeDeck = ({ controller }: TapeDeckContext) => {
           on: {
             POWER_ON: {
               target: "empty",
-              actions: echo
             }
           },
         },
         empty: {
-          entry: [register, echo],
+          entry: "register",
           on: {
             INSERT: {
-              target: "full",
-              actions: echo
+              target: "loaded",
+              actions: "insertTape"
+            },
+            POWER_OFF: {
+              target: "idle"
             }
           }
         },
-        full: {
-          entry: () => console.log("READY")
+        loaded: {
+          on: {
+            RECORD: {
+              target: "recording"
+            },
+            EJECT: {
+              target: "empty"
+            }
+
+          }
+        },
+        recording: {
+          entry: "listen",
+          on: {
+            STOP: {
+              target: "loaded"
+            }
+          }
         }
       }
     },
+    {
+      actions
+    }
   );
-}
+};
 
 export default tapeDeck;

@@ -1,47 +1,55 @@
 import { Machine } from "xstate";
 import { BotContext } from "./interfaces";
-import { initializeDecks, sendMessage, echo, insertCassette, deckNotFull } from "./actions";
+import * as actions from "./actions";
+import * as guards from "./guards";
+import controller from "./controller";
 
 const createBotMachine = () => {
-  return Machine<BotContext>({
-    id: "bot",
-    initial: "idle",
-    context: {
-      health: "UNKNOWN",
-      controller: '',
-      decks: [{}]
-    },
-    states: {
-      idle: {
-        entry: [initializeDecks, sendMessage],
-        on: {
-          DECK_INITIALIZED: {
-            target: "initialized",
-            actions: echo
-          },
-        }
+  return Machine<BotContext>(
+    {
+      id: "bot",
+      initial: "idle",
+      context: {
+        health: "UNKNOWN",
+        controller,
+        decks: [{}, {}, {}]
       },
-      initialized: {
-        on: {
-          INSERT_CASSETTE: [
-            {
+      states: {
+        idle: {
+          entry: ["initializeDecks", "sendMessage"],
+          on: {
+            DECK_INITIALIZED: {
               target: "initialized",
-              actions: insertCassette,
-              cond: deckNotFull
+              actions: "echo"
             },
-            { target: "deck_full" }
-          ]
+          }
+        },
+        initialized: {
+          on: {
+            INSERT_CASSETTE: [
+              {
+                target: "initialized",
+                actions: "insertCassette",
+                cond: "decksNotFull"
+              },
+              { target: "decks_full" }
+            ]
+          }
+        },
+        decks_full: {
+          entry: () => console.log("NO MORE ROOM IN THIS BOT")
+        },
+        crashed: {
+          type: "final",
+          entry: "echo"
         }
-      },
-      deck_full: {
-        entry: () => console.log("NO MORE ROOM IN THIS BOT")
-      },
-      crashed: {
-        type: "final",
-        entry: echo
       }
+    },
+    {
+      guards,
+      actions
     }
-  });
+  );
 };
 
 export default createBotMachine;

@@ -1,8 +1,9 @@
-import { sendParent } from "xstate";
+import { assign, sendParent } from "xstate";
 export const register = sendParent("DECK_INITIALIZED");
 
-export const echo = (_context: any, event: any) => {
-  console.log(event);
+export const echo = (context: any, event: any) => {
+  console.log("CONTEXT: ", context);
+  console.log("EVENT: ", event);
 };
 
 export const welcome = ({ controller }: any) => {
@@ -11,9 +12,13 @@ export const welcome = ({ controller }: any) => {
   })
 };
 
-export const listen = ({ controller, cassette }: any) => {
+export const listen = ({ controller, index, cassette }: any) => {
   const { verb, run } = cassette;
   controller.hears(verb, "message", async (bot: any, message: any) => {
-    await bot.reply(message, "HELLO WORLD");
+    await bot.reply(message, `HELLO WORLD ${index}`);
   });
 }
+
+export const insertTape = assign({
+  cassette: (_context: any, { payload }: any) => payload.cassette
+});

@@ -10,18 +10,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
 exports.register = xstate_1.sendParent("DECK_INITIALIZED");
-exports.echo = (_context, event) => {
-    console.log(event);
+exports.echo = (context, event) => {
+    console.log("CONTEXT: ", context);
+    console.log("EVENT: ", event);
 };
 exports.welcome = ({ controller }) => {
     controller.on("join", (bot) => __awaiter(this, void 0, void 0, function* () {
         bot.say("Hello stranger!");
     }));
 };
-exports.listen = ({ controller, cassette }) => {
+exports.listen = ({ controller, index, cassette }) => {
     const { verb, run } = cassette;
     controller.hears(verb, "message", (bot, message) => __awaiter(this, void 0, void 0, function* () {
-        yield bot.reply(message, "HELLO WORLD");
+        yield bot.reply(message, `HELLO WORLD ${index}`);
     }));
 };
+exports.insertTape = xstate_1.assign({
+    cassette: (_context, { payload }) => payload.cassette
+});
 //# sourceMappingURL=actions.js.map

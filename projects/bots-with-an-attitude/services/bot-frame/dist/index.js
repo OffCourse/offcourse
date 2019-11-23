@@ -21,9 +21,15 @@ const init = () => __awaiter(this, void 0, void 0, function* () {
     });
     botService.start();
     botService.send("INSERT_CASSETTE", { cassette: test_1.default });
-    botService.send("INSERT_CASSETTE", { cassette: test_1.default });
-    botService.send("INSERT_CASSETTE", { cassette: test_1.default });
-    botService.send("INSERT_CASSETTE", { cassette: test_1.default });
+    botService.send("INSERT_CASSETTE", {
+        cassette: Object.assign({}, test_1.default, { verb: "run" })
+    });
+    botService.send("INSERT_CASSETTE", {
+        cassette: Object.assign({}, test_1.default, { verb: "play" })
+    });
+    botService.send("INSERT_CASSETTE", {
+        cassette: Object.assign({}, test_1.default, { verb: "say" })
+    });
 });
 init();
 //# sourceMappingURL=index.js.map

@@ -1,12 +1,21 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
-const actions_1 = require("./actions");
-exports.tapeDeck = ({ controller }) => {
+const actions = __importStar(require("./actions"));
+exports.tapeDeck = ({ controller, index }) => {
     return xstate_1.Machine({
-        id: "takeDeck",
+        id: "tapeDeck",
         context: {
-            controller
+            index,
+            controller,
+            cassette: null
         },
         initial: "idle",
         states: {
@@ -14,23 +23,42 @@ exports.tapeDeck = ({ controller }) => {
                 on: {
                     POWER_ON: {
                         target: "empty",
-                        actions: actions_1.echo
                     }
                 },
             },
             empty: {
-                entry: [actions_1.register, actions_1.echo],
+                entry: "register",
                 on: {
                     INSERT: {
-                        target: "full",
-                        actions: actions_1.echo
+                        target: "loaded",
+                        actions: "insertTape"
+                    },
+                    POWER_OFF: {
+                        target: "idle"
                     }
                 }
             },
-            full: {
-                entry: () => console.log("READY")
+            loaded: {
+                on: {
+                    RECORD: {
+                        target: "recording"
+                    },
+                    EJECT: {
+                        target: "empty"
+                    }
+                }
+            },
+            recording: {
+                entry: "listen",
+                on: {
+                    STOP: {
+                        target: "loaded"
+                    }
+                }
             }
         }
+    }, {
+        actions
     });
 };
 exports.default = exports.tapeDeck;

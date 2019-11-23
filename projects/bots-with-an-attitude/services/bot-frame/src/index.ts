@@ -12,9 +12,17 @@ const init = async () => {
 
   botService.start();
   botService.send("INSERT_CASSETTE", { cassette: testCassette });
-  botService.send("INSERT_CASSETTE", { cassette: testCassette });
-  botService.send("INSERT_CASSETTE", { cassette: testCassette });
-  botService.send("INSERT_CASSETTE", { cassette: testCassette });
+
+  botService.send("INSERT_CASSETTE", {
+    cassette: { ...testCassette, verb: "run" }
+  });
+  botService.send("INSERT_CASSETTE", {
+    cassette: { ...testCassette, verb: "play" }
+  });
+  botService.send("INSERT_CASSETTE", {
+    cassette:
+      { ...testCassette, verb: "say" }
+  });
 };
 
 init();

@@ -1,23 +1,35 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
-const actions_1 = require("./actions");
+const actions = __importStar(require("./actions"));
+const guards = __importStar(require("./guards"));
+const controller_1 = __importDefault(require("./controller"));
 const createBotMachine = () => {
     return xstate_1.Machine({
         id: "bot",
         initial: "idle",
         context: {
             health: "UNKNOWN",
-            controller: '',
-            decks: [{}]
+            controller: controller_1.default,
+            decks: [{}, {}, {}]
         },
         states: {
             idle: {
-                entry: [actions_1.initializeDecks, actions_1.sendMessage],
+                entry: ["initializeDecks", "sendMessage"],
                 on: {
                     DECK_INITIALIZED: {
                         target: "initialized",
-                        actions: actions_1.echo
+                        actions: "echo"
                     },
                 }
             },
@@ -26,21 +38,24 @@ const createBotMachine = () => {
                     INSERT_CASSETTE: [
                         {
                             target: "initialized",
-                            actions: actions_1.insertCassette,
-                            cond: actions_1.deckNotFull
+                            actions: "insertCassette",
+                            cond: "decksNotFull"
                         },
-                        { target: "deck_full" }
+                        { target: "decks_full" }
                     ]
                 }
             },
-            deck_full: {
+            decks_full: {
                 entry: () => console.log("NO MORE ROOM IN THIS BOT")
             },
             crashed: {
                 type: "final",
-                entry: actions_1.echo
+                entry: "echo"
             }
         }
+    }, {
+        guards,
+        actions
     });
 };
 exports.default = createBotMachine;

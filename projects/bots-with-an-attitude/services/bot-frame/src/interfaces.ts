@@ -38,4 +38,5 @@ export type DBSchema = {
 
 export type TapeDeckContext = {
   controller: any;
+  index: number;
 }
