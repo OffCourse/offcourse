@@ -6,57 +6,52 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
 const actions = __importStar(require("./actions"));
 const guards = __importStar(require("./guards"));
-const controller_1 = __importDefault(require("./controller"));
-const createBotMachine = () => {
-    return xstate_1.Machine({
-        id: "bot",
-        initial: "idle",
-        context: {
-            health: "UNKNOWN",
-            controller: controller_1.default,
-            decks: [{}, {}, {}]
-        },
-        states: {
-            idle: {
-                entry: ["initializeDecks", "sendMessage"],
-                on: {
-                    DECK_INITIALIZED: {
-                        target: "initialized",
-                        actions: "echo"
-                    },
+const state = {
+    id: "bot",
+    initial: "idle",
+    states: {
+        idle: {
+            entry: ["initializeDecks", "sendMessage"],
+            on: {
+                DECK_INITIALIZED: {
+                    target: "initialized",
+                    actions: "echo"
                 }
-            },
-            initialized: {
-                on: {
-                    INSERT_CASSETTE: [
-                        {
-                            target: "initialized",
-                            actions: "insertCassette",
-                            cond: "decksNotFull"
-                        },
-                        { target: "decks_full" }
-                    ]
-                }
-            },
-            decks_full: {
-                entry: () => console.log("NO MORE ROOM IN THIS BOT")
-            },
-            crashed: {
-                type: "final",
-                entry: "echo"
             }
+        },
+        initialized: {
+            on: {
+                INSERT_CASSETTE: [
+                    {
+                        target: "initialized",
+                        actions: "insertCassette",
+                        cond: "decksNotFull"
+                    },
+                    { target: "decks_full" }
+                ]
+            }
+        },
+        decks_full: {
+            entry: () => console.log("NO MORE ROOM IN THIS BOT")
+        },
+        crashed: {
+            type: "final",
+            entry: "echo"
         }
-    }, {
-        guards,
-        actions
-    });
+    }
 };
-exports.default = createBotMachine;
+exports.context = {
+    health: "UNKNOWN",
+    controller: null,
+    decks: [{}, {}, {}]
+};
+exports.config = {
+    guards,
+    actions
+};
+exports.default = xstate_1.Machine(state);
 //# sourceMappingURL=flycheck_frame.js.map

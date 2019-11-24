@@ -9,57 +9,57 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
 const actions = __importStar(require("./actions"));
-exports.tapeDeck = ({ controller, index }) => {
-    return xstate_1.Machine({
-        id: "tapeDeck",
-        context: {
-            index,
-            controller,
-            cassette: null
+const state = {
+    id: "tapeDeck",
+    initial: "idle",
+    states: {
+        idle: {
+            on: {
+                POWER_ON: {
+                    target: "empty",
+                }
+            },
         },
-        initial: "idle",
-        states: {
-            idle: {
-                on: {
-                    POWER_ON: {
-                        target: "empty",
-                    }
+        empty: {
+            entry: "register",
+            on: {
+                INSERT: {
+                    target: "loaded",
+                    actions: "insertTape"
                 },
-            },
-            empty: {
-                entry: "register",
-                on: {
-                    INSERT: {
-                        target: "loaded",
-                        actions: "insertTape"
-                    },
-                    POWER_OFF: {
-                        target: "idle"
-                    }
+                POWER_OFF: {
+                    target: "idle"
                 }
-            },
-            loaded: {
-                on: {
-                    RECORD: {
-                        target: "recording"
-                    },
-                    EJECT: {
-                        target: "empty"
-                    }
+            }
+        },
+        loaded: {
+            on: {
+                RECORD: {
+                    target: "recording"
+                },
+                EJECT: {
+                    target: "empty"
                 }
-            },
-            recording: {
-                entry: "listen",
-                on: {
-                    STOP: {
-                        target: "loaded"
-                    }
+            }
+        },
+        recording: {
+            entry: "listen",
+            on: {
+                STOP: {
+                    target: "loaded"
                 }
             }
         }
-    }, {
-        actions
-    });
+    }
 };
-exports.default = exports.tapeDeck;
+exports.config = {
+    actions
+};
+exports.context = {
+    name: null,
+    index: null,
+    controller: null,
+    cassette: null
+};
+exports.default = xstate_1.Machine(state);
 //# sourceMappingURL=flycheck_index.js.map

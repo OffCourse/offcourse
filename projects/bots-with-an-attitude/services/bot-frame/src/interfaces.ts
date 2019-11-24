@@ -37,6 +37,8 @@ export type DBSchema = {
 };
 
 export type TapeDeckContext = {
+  name: string;
   controller: any;
   index: number;
+  cassette: string | null;
 }
