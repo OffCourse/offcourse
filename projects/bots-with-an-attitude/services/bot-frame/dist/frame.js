@@ -10,7 +10,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
 const actions = __importStar(require("./actions"));
 const guards = __importStar(require("./guards"));
-const state = {
+const machine = xstate_1.Machine({
     id: "bot",
     initial: "idle",
     states: {
@@ -18,32 +18,37 @@ const state = {
             entry: ["initializeDecks", "sendMessage"],
             on: {
                 DECK_INITIALIZED: {
-                    target: "initialized",
+                    target: "operational",
                     actions: "echo"
                 }
             }
         },
-        initialized: {
-            on: {
-                INSERT_CASSETTE: [
-                    {
-                        target: "initialized",
-                        actions: "insertCassette",
-                        cond: "decksNotFull"
-                    },
-                    { target: "decks_full" }
-                ]
+        operational: {
+            initial: "available",
+            states: {
+                available: {
+                    on: {
+                        INSERT_CASSETTE: [
+                            {
+                                target: "available",
+                                actions: "insertCassette",
+                                cond: "decksNotFull"
+                            },
+                            { target: "decks_full" }
+                        ]
+                    }
+                },
+                decks_full: {
+                    entry: () => console.log("NO MORE ROOM IN THIS BOT")
+                }
             }
-        },
-        decks_full: {
-            entry: () => console.log("NO MORE ROOM IN THIS BOT")
         },
         crashed: {
             type: "final",
             entry: "echo"
         }
     }
-};
+});
 exports.context = {
     health: "UNKNOWN",
     controller: null,
@@ -53,5 +58,5 @@ exports.config = {
     guards,
     actions
 };
-exports.default = xstate_1.Machine(state);
+exports.default = machine;
 //# sourceMappingURL=frame.js.map

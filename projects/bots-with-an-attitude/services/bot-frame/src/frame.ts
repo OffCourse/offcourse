@@ -3,7 +3,7 @@ import { BotContext } from "./interfaces";
 import * as actions from "./actions";
 import * as guards from "./guards";
 
-const state = {
+const machine = Machine<BotContext>({
   id: "bot",
   initial: "idle",
   states: {
@@ -11,32 +11,37 @@ const state = {
       entry: ["initializeDecks", "sendMessage"],
       on: {
         DECK_INITIALIZED: {
-          target: "initialized",
+          target: "operational",
           actions: "echo"
         }
       }
     },
-    initialized: {
-      on: {
-        INSERT_CASSETTE: [
-          {
-            target: "initialized",
-            actions: "insertCassette",
-            cond: "decksNotFull"
-          },
-          { target: "decks_full" }
-        ]
+    operational: {
+      initial: "available",
+      states: {
+        available: {
+          on: {
+            INSERT_CASSETTE: [
+              {
+                target: "available",
+                actions: "insertCassette",
+                cond: "decksNotFull"
+              },
+              { target: "decks_full" }
+            ]
+          }
+        },
+        decks_full: {
+          entry: () => console.log("NO MORE ROOM IN THIS BOT")
+        }
       }
-    },
-    decks_full: {
-      entry: () => console.log("NO MORE ROOM IN THIS BOT")
     },
     crashed: {
       type: "final",
       entry: "echo"
     }
   }
-};
+});
 
 export const context: BotContext = {
   health: "UNKNOWN",
@@ -49,4 +54,4 @@ export const config = {
   actions
 };
 
-export default Machine<BotContext>(state);
+export default machine;

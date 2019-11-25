@@ -15,6 +15,7 @@ export const welcome = ({ controller }: any) => {
 export const listen = ({ controller, index, cassette }: any) => {
   const { verb, run } = cassette;
   controller.hears(verb, "message", async (bot: any, message: any) => {
+    console.log(verb);
     await bot.reply(message, `HELLO WORLD ${index}`);
   });
 }

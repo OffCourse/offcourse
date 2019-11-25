@@ -2,26 +2,16 @@ import { Machine } from "xstate";
 import * as actions from "./actions";
 import { TapeDeckContext } from "../interfaces";
 
-const state = {
+const machine = Machine<TapeDeckContext>({
   id: "tapeDeck",
-  initial: "idle",
+  initial: "empty",
   states: {
-    idle: {
-      on: {
-        POWER_ON: {
-          target: "empty",
-        }
-      },
-    },
     empty: {
       entry: "register",
       on: {
         INSERT: {
           target: "loaded",
           actions: "insertTape"
-        },
-        POWER_OFF: {
-          target: "idle"
         }
       }
     },
@@ -33,7 +23,6 @@ const state = {
         EJECT: {
           target: "empty"
         }
-
       }
     },
     recording: {
@@ -45,7 +34,7 @@ const state = {
       }
     }
   }
-};
+});
 
 export const config = {
   actions
@@ -58,4 +47,4 @@ export const context = {
   cassette: null
 };
 
-export default Machine<TapeDeckContext>(state);
+export default machine;

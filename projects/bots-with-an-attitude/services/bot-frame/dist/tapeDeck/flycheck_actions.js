@@ -22,6 +22,7 @@ exports.welcome = ({ controller }) => {
 exports.listen = ({ controller, index, cassette }) => {
     const { verb, run } = cassette;
     controller.hears(verb, "message", (bot, message) => __awaiter(this, void 0, void 0, function* () {
+        console.log(verb);
         yield bot.reply(message, `HELLO WORLD ${index}`);
     }));
 };

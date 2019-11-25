@@ -9,26 +9,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
 const actions = __importStar(require("./actions"));
-const state = {
+const machine = xstate_1.Machine({
     id: "tapeDeck",
-    initial: "idle",
+    initial: "empty",
     states: {
-        idle: {
-            on: {
-                POWER_ON: {
-                    target: "empty",
-                }
-            },
-        },
         empty: {
             entry: "register",
             on: {
                 INSERT: {
                     target: "loaded",
                     actions: "insertTape"
-                },
-                POWER_OFF: {
-                    target: "idle"
                 }
             }
         },
@@ -51,7 +41,7 @@ const state = {
             }
         }
     }
-};
+});
 exports.config = {
     actions
 };
@@ -61,5 +51,5 @@ exports.context = {
     controller: null,
     cassette: null
 };
-exports.default = xstate_1.Machine(state);
+exports.default = machine;
 //# sourceMappingURL=flycheck_index.js.map

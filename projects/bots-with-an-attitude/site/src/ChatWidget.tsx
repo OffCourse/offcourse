@@ -4,8 +4,11 @@ import useWebSocket from "react-use-websocket";
 
 import "react-chat-widget/lib/styles.css";
 
+const tunnelUrl = "myawesomebot.localtunnel.me";
+const localUrl = "localhost:3000";
+
 const ChatWidget = (props: any) => {
-  const url = "ws://localhost:3000/api/messages";
+  const url = `ws://${tunnelUrl}/api/messages`;
   const [history, updateHistory] = useState([]);
   const [sendMessage, lastMessage, readyState] = useWebSocket(`${url}`);
 

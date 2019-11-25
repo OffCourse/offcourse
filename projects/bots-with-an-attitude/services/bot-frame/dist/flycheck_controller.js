@@ -52,4 +52,4 @@ controller.webserver.get('/install/auth', (req, res) => __awaiter(this, void 0, 
     }
 }));
 exports.default = controller;
-//# sourceMappingURL=controller.js.map
+//# sourceMappingURL=flycheck_controller.js.map
