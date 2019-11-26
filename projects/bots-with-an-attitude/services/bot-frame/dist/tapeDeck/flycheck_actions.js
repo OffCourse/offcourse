@@ -18,11 +18,14 @@ exports.welcome = ({ controller }) => {
     controller.on("join", (bot) => __awaiter(this, void 0, void 0, function* () {
         bot.say("Hello stranger!");
     }));
+    controller.hears("hello", "direct_mention", (bot, message) => __awaiter(this, void 0, void 0, function* () {
+        console.log(message);
+        yield bot.reply(message, "Hello yourself!");
+    }));
 };
 exports.listen = ({ controller, index, cassette }) => {
-    const { verb, run } = cassette;
-    controller.hears(verb, "message", (bot, message) => __awaiter(this, void 0, void 0, function* () {
-        console.log(verb);
+    const { verb } = cassette;
+    controller.hears(verb, ["message", "direct_message"], (bot, message) => __awaiter(this, void 0, void 0, function* () {
         yield bot.reply(message, `HELLO WORLD ${index}`);
     }));
 };

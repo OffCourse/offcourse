@@ -9,33 +9,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const botkit_1 = require("botkit");
-const { SlackAdapter } = require('botbuilder-adapter-slack');
+const botbuilder_adapter_slack_1 = require("botbuilder-adapter-slack");
 require('dotenv').config();
-if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.PORT || !process.env.VERIFICATION_TOKEN) {
-    console.log('Error: Specify CLIENT_ID, CLIENT_SECRET, VERIFICATION_TOKEN and PORT in environment');
-    process.exit(1);
-}
-else {
-    console.log('Good job, you have the variables!');
-}
-console.log(process.env.CLIENT_SIGNING_SECRET);
-console.log(process.env.BOT_TOKEN);
-const adapter = new SlackAdapter({
+const adapter = new botbuilder_adapter_slack_1.SlackAdapter({
     clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,
+    redirectUri: "/",
     botToken: process.env.BOT_TOKEN
 });
+adapter.use(new botbuilder_adapter_slack_1.SlackEventMiddleware());
+adapter.use(new botbuilder_adapter_slack_1.SlackMessageTypeMiddleware());
 const controller = new botkit_1.Botkit({
     webhook_uri: "/api/messages",
     adapter
 });
-controller.webserver.get('/', (req, res) => {
+controller.webserver.get("/", (_req, res) => {
     res.send(`This app is running Botkit ${controller.version}.`);
 });
-controller.webserver.get('/install', (req, res) => {
-    // getInstallLink points to slack's oauth endpoint and includes clientId and scopes
+controller.webserver.get("/install", (_req, res) => {
     res.redirect(controller.adapter.getInstallLink());
 });
-controller.webserver.get('/install/auth', (req, res) => __awaiter(this, void 0, void 0, function* () {
+controller.webserver.get("/install/auth", (req, res) => __awaiter(this, void 0, void 0, function* () {
     try {
         const results = yield controller.adapter.validateOauthCode(req.query.code);
         console.log('FULL OAUTH DETAILS', results);
@@ -46,10 +39,20 @@ controller.webserver.get('/install/auth', (req, res) => __awaiter(this, void 0, 
         res.json('Success! Bot installed.');
     }
     catch (err) {
-        console.error('OAUTH ERROR:', err);
+        console.error("OAUTH ERROR:", err);
         res.status(401);
         res.send(err.message);
     }
 }));
+// controller.middleware.receive.use(function(bot: any, message: any, next: any) {
+//   console.log('RECEIVED: ', message);
+//   message.logged = true;
+//   next();
+// });
+// controller.middleware.send.use(function(bot: any, message: any, next: any) {
+//   console.log('SENT: ', message);
+//   message.logged = true;
+//   next();
+// });
 exports.default = controller;
 //# sourceMappingURL=flycheck_controller.js.map

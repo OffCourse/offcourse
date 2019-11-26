@@ -9,15 +9,23 @@ export const echo = (context: any, event: any) => {
 export const welcome = ({ controller }: any) => {
   controller.on("join", async (bot: any) => {
     bot.say("Hello stranger!");
-  })
+  });
+
+  controller.hears("hello", "direct_mention",
+    async (bot: any, message: any) => {
+      console.log(message);
+      await bot.reply(message, "Hello yourself!");
+    }
+  );
 };
 
 export const listen = ({ controller, index, cassette }: any) => {
-  const { verb, run } = cassette;
-  controller.hears(verb, "message", async (bot: any, message: any) => {
-    console.log(verb);
-    await bot.reply(message, `HELLO WORLD ${index}`);
-  });
+  const { verb } = cassette;
+  controller.hears(
+    verb, ["message", "direct_message"], async (bot: any, message: any) => {
+      await bot.reply(message, `HELLO WORLD ${index}`);
+    }
+  );
 }
 
 export const insertTape = assign({
