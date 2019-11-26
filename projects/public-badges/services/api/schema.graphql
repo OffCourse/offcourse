@@ -1,0 +1,40 @@
+schema {
+  query: Query
+}
+
+type Query {
+  getBadge(badgeId: ID!): Badge
+}
+
+type Score {
+  accountable: Int
+  sovereign: Int
+  userCentric: Int
+  transparent: Int
+  open: Int
+}
+
+type BadgeClass {
+  name: String
+  id: ID!
+  Score: Score
+}
+
+type BadgeArtifact {
+  json: String
+  yaml: String
+}
+
+type Recipient {
+  type: String
+  email: String
+}
+
+type Badge {
+  id: ID!
+  type: String
+  recipient: Recipient
+  issuedOn: String
+  expires: String
+  artifact: BadgeArtifact
+}

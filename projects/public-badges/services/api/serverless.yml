@@ -1,0 +1,27 @@
+endpointHandler:
+  component: "@serverless/aws-lambda"
+  inputs:
+    handler: index.handler
+    code: ./
+
+api:
+  component: "@serverless/aws-app-sync"
+  inputs:
+    domain: www.publicbadges.com
+    name: Posts
+    authenticationType: API_KEY
+    apiKeys:
+      - publicBadgesApiKey
+
+    # defining your lambda data source
+    dataSources:
+      - type: AWS_LAMBDA
+        name: getBadge
+        config:
+          lambdaFunctionArn: ${endpointHandler.arn}
+
+    # mapping schema fields to the data source
+    mappingTemplates:
+      - dataSource: getBadge
+        type: Query
+        field: getBadge

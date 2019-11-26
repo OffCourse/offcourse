@@ -1,0 +1,17 @@
+{
+  "name": "u158xp-o3m08b",
+  "hash": "eyj9B3c2yX1eYV6aC8HE3N2XB2WdIg6zfKSFLalRUAc=",
+  "description": "AWS Lambda Component",
+  "memory": 512,
+  "timeout": 10,
+  "code": "./",
+  "shims": [],
+  "handler": "index.handler",
+  "runtime": "nodejs10.x",
+  "env": {},
+  "role": {
+    "arn": "arn:aws:iam::667764274250:role/u158xp-7j7q7u"
+  },
+  "arn": "arn:aws:lambda:us-east-1:667764274250:function:u158xp-o3m08b",
+  "region": "us-east-1"
+}

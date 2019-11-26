@@ -1,0 +1,29 @@
+{
+  "arn": "arn:aws:appsync:us-east-1:667764274250:apis/vzc75or2t5ffxpksb4fnilacoe",
+  "schemaChecksum": "c3e5de280d68075d6846b54b0d4791dc66d639989b1b2f074820d04b6a943e61",
+  "apiKeys": [
+    {
+      "name": "publicBadgesApiKey",
+      "id": "da2-dzdrybmg4jelrpodaghit4cz4a"
+    }
+  ],
+  "uris": {
+    "REALTIME": "wss://i3iuur5cffel7ad5tv7ekjyapi.appsync-realtime-api.us-east-1.amazonaws.com/graphql",
+    "GRAPHQL": "https://i3iuur5cffel7ad5tv7ekjyapi.appsync-api.us-east-1.amazonaws.com/graphql"
+  },
+  "apiId": "vzc75or2t5ffxpksb4fnilacoe",
+  "isApiCreator": true,
+  "dataSources": [
+    {
+      "name": "getBadge",
+      "type": "AWS_LAMBDA"
+    }
+  ],
+  "mappingTemplates": [
+    {
+      "type": "Query",
+      "field": "getBadge"
+    }
+  ],
+  "functions": []
+}
