@@ -11,15 +11,16 @@ export const welcome = ({ controller }: any) => {
     bot.say("Hello stranger!");
   });
 
+};
+
+export const listen = ({ controller, index, cassette }: any) => {
+
   controller.hears("hello", "direct_mention",
     async (bot: any, message: any) => {
       console.log(message);
       await bot.reply(message, "Hello yourself!");
     }
   );
-};
-
-export const listen = ({ controller, index, cassette }: any) => {
   const { verb } = cassette;
   controller.hears(
     verb, ["message", "direct_message"], async (bot: any, message: any) => {

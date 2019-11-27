@@ -11,6 +11,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const botkit_1 = require("botkit");
 const botbuilder_adapter_slack_1 = require("botbuilder-adapter-slack");
 require('dotenv').config();
+console.log(process.env.CLIENT_SIGNING_SECRET);
+console.log(process.env.BOT_TOKEN);
 const adapter = new botbuilder_adapter_slack_1.SlackAdapter({
     clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,
     redirectUri: "/",
@@ -54,5 +56,7 @@ controller.webserver.get("/install/auth", (req, res) => __awaiter(this, void 0, 
 //   message.logged = true;
 //   next();
 // });
+const port = process.env.PORT;
+console.log(`Your port is ${port}`);
 exports.default = controller;
 //# sourceMappingURL=controller.js.map

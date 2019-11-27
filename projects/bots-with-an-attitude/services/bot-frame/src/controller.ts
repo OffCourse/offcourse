@@ -7,6 +7,9 @@ import {
 
 require('dotenv').config()
 
+console.log(process.env.CLIENT_SIGNING_SECRET);
+console.log(process.env.BOT_TOKEN);
+
 const adapter = new SlackAdapter({
   clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,
   redirectUri: "/",
@@ -61,5 +64,8 @@ controller.webserver.get("/install/auth", async (req: any, res: any) => {
 //   message.logged = true;
 //   next();
 // });
+
+const port = process.env.PORT;
+console.log(`Your port is ${port}`);
 
 export default controller;
