@@ -1,10 +1,134 @@
-
 ---
-name: Protobot
-route: /
+name: Getting Started
+menu: ProtoBot
 ---
-import ChatWidget from './ChatWidget';
-
 # Bots With An Attitude
 
-<ChatWidget title="Protobot" subtitle="The One that will Outlive Everyone and Everything"/>
+## Run Your BWA Locally
+
+1. Install the BWA CLI
+
+```bash
+yarn global bwa-cli
+```
+
+or
+
+```bash
+npm install -g bwa-cli
+```
+
+create a bwa.yaml file
+
+```yaml
+name: <NAME OF YOUR BOT>
+cassettes:
+  - @offcourse/me-myself-and-ai
+  - @waag/planetbebop
+  - @hva/tweet-it
+environment:
+  type: slack
+  variables:
+    local:
+      clientID: <Your Slack CLIENT ID> 
+      clientSecret: <Your Slack Client Secret> 
+      verification: <Your Slack Verification TOKEN>
+      botToken: <Your Slack Bot OAuth Token>
+      clientSigningSecret: <Your Slack Client Signing Secret>
+    remote:
+      clientID: <Your Slack CLIENT ID> 
+      clientSecret: <Your Slack Client Secret> 
+      verification: <Your Slack Verification TOKEN>
+      botToken: <Your Slack Bot OAuth Token>
+      clientSigningSecret: <Your Slack Client Signing Secret>
+```
++ as an alternative your can set your environment variables manually or in a .env file
+
+```bash
+CLIENT_ID=<Your Slack CLIENT ID>
+CLIENT_SECRET=<Your Slack Client Secret>
+VERIFICATION_TOKEN=<Your Slack Verification TOKEN>
+BOT_TOKEN=<Your Slack Bot OAuth Token>
+CLIENT_SIGNING_SECRET=<Your Slack Client Signing Secret>
+```
+
++ run your bot
+
+```bash
+bwa start
+```
+
+## Deploy Your BWA
+
+### Heroku
+
++ Install the Heroku Toolbelt
++ Create your Heroku Project
+
++ Create A Procfile
+
+```bash
+web: yarn start
+```
+
++ add a remote section to your environment variables
+  + You cannot use the same credentials locally and remotely
+
+```yaml
+name: <NAME OF YOUR BOT>
+cassettes:
+  - @offcourse/me-myself-and-ai
+  - @waag/planetbebop
+  - @hva/tweet-it
+environment:
+  type: slack
+  variables:
+    local:
+      clientID: <Your Slack CLIENT ID> 
+      clientSecret: <Your Slack Client Secret> 
+      verification: <Your Slack Verification TOKEN>
+      botToken: <Your Slack Bot OAuth Token>
+      clientSigningSecret: <Your Slack Client Signing Secret>
+    remote:
+      clientID: <Your Slack CLIENT ID> 
+      clientSecret: <Your Slack Client Secret> 
+      verification: <Your Slack Verification TOKEN>
+      botToken: <Your Slack Bot OAuth Token>
+      clientSigningSecret: <Your Slack Client Signing Secret>
+```
+
++ as an alternative your can set your environment variables manually or in a .remote_env file
+
+```bash
+CLIENT_ID=<Your Slack CLIENT ID>
+CLIENT_SECRET=<Your Slack Client Secret>
+VERIFICATION_TOKEN=<Your Slack Verification TOKEN>
+BOT_TOKEN=<Your Slack Bot OAuth Token>
+CLIENT_SIGNING_SECRET=<Your Slack Client Signing Secret>
+```
+
++ an upload them to heroku like this
+
+```bash
+heroku config:set $(cat .remote_env | sed '/^$/d; /#[[:print:]]*$/d')
+```
+
+## Configure your Slack Account
+
++ Create a new bot app
++ under **interactive components**:
+  + use https://your-url.something/api/messages as the url for 'interactivity'
+  + use https://your-url.something/api/messages as the url for 'select menus'
+  + use bot as your scope
++ under **oauth and permissions**:
+  + add localtunnel/heroku url as OAuth redirect URL
++ under **event subscriptions**:
+  + use https://your-url.something/api/messages as the url for both 'request url'
+  + select the following bot events:
+    + app_mention
+    + im_created
+    + message.channels
+    + message.im
+    + message.groups
++ under **bot users**:
+  + make sure that 'Always Show My Bot as Online' is enabled.
