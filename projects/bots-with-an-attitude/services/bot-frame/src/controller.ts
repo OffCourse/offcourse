@@ -7,6 +7,8 @@ import {
 
 require('dotenv').config()
 
+console.log(process.env);
+
 const adapter = new SlackAdapter({
   clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,
   redirectUri: "/",
