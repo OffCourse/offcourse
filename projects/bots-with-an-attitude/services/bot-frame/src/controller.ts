@@ -7,7 +7,8 @@ import {
 
 require('dotenv').config()
 
-console.log(process.env);
+console.log(process.env.CLIENT_SIGNING_SECRET);
+console.log(process.env.BOT_TOKEN);
 
 const adapter = new SlackAdapter({
   clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,
