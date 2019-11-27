@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -15,17 +16,17 @@ exports.echo = (context, event) => {
     console.log("EVENT: ", event);
 };
 exports.welcome = ({ controller }) => {
-    controller.on("join", (bot) => __awaiter(this, void 0, void 0, function* () {
+    controller.on("join", (bot) => __awaiter(void 0, void 0, void 0, function* () {
         bot.say("Hello stranger!");
     }));
-    controller.hears("hello", "direct_mention", (bot, message) => __awaiter(this, void 0, void 0, function* () {
+    controller.hears("hello", "direct_mention", (bot, message) => __awaiter(void 0, void 0, void 0, function* () {
         console.log(message);
         yield bot.reply(message, "Hello yourself!");
     }));
 };
 exports.listen = ({ controller, index, cassette }) => {
     const { verb } = cassette;
-    controller.hears(verb, ["message", "direct_message"], (bot, message) => __awaiter(this, void 0, void 0, function* () {
+    controller.hears(verb, ["message", "direct_message"], (bot, message) => __awaiter(void 0, void 0, void 0, function* () {
         yield bot.reply(message, `HELLO WORLD ${index}`);
     }));
 };

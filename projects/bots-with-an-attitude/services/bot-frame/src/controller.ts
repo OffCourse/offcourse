@@ -62,4 +62,7 @@ controller.webserver.get("/install/auth", async (req: any, res: any) => {
 //   next();
 // });
 
+const port = process.env.PORT;
+console.log(`Your port is ${port}`);
+
 export default controller;
