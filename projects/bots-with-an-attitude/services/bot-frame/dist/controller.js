@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const botkit_1 = require("botkit");
 const botbuilder_adapter_slack_1 = require("botbuilder-adapter-slack");
+const BotsAreUsersTooMiddleWare_1 = require("./BotsAreUsersTooMiddleWare");
 require('dotenv').config();
 console.log(process.env.CLIENT_SIGNING_SECRET);
 console.log(process.env.BOT_TOKEN);
@@ -18,8 +19,14 @@ const adapter = new botbuilder_adapter_slack_1.SlackAdapter({
     redirectUri: "/",
     botToken: process.env.BOT_TOKEN
 });
+// if (event.event.type === 'message' && !event.event.subtype) {
+//     activity.type = ActivityTypes.Message;
+//     activity.text = event.event.text;
+// }
+adapter.use(new BotsAreUsersTooMiddleWare_1.BotsAreUsersTooMiddleWareFirst());
 adapter.use(new botbuilder_adapter_slack_1.SlackEventMiddleware());
 adapter.use(new botbuilder_adapter_slack_1.SlackMessageTypeMiddleware());
+adapter.use(new BotsAreUsersTooMiddleWare_1.BotsAreUsersTooMiddleWareLast());
 const controller = new botkit_1.Botkit({
     webhook_uri: "/api/messages",
     adapter

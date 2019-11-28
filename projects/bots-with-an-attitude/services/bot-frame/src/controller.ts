@@ -1,9 +1,12 @@
 import { Botkit } from "botkit";
 import {
+  SlackEventMiddleware,
   SlackAdapter,
-  SlackMessageTypeMiddleware,
-  SlackEventMiddleware
+  SlackMessageTypeMiddleware
 } from "botbuilder-adapter-slack";
+import {
+  BotsAreUsersTooMiddleWareFirst, BotsAreUsersTooMiddleWareLast
+} from "./BotsAreUsersTooMiddleWare"
 
 require('dotenv').config()
 
@@ -16,8 +19,15 @@ const adapter = new SlackAdapter({
   botToken: process.env.BOT_TOKEN
 });
 
+// if (event.event.type === 'message' && !event.event.subtype) {
+//     activity.type = ActivityTypes.Message;
+//     activity.text = event.event.text;
+// }
+
+adapter.use(new BotsAreUsersTooMiddleWareFirst());
 adapter.use(new SlackEventMiddleware());
 adapter.use(new SlackMessageTypeMiddleware());
+adapter.use(new BotsAreUsersTooMiddleWareLast());
 
 const controller = new Botkit({
   webhook_uri: "/api/messages",

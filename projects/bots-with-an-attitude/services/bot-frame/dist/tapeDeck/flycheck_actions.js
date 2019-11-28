@@ -18,17 +18,28 @@ exports.welcome = ({ controller }) => {
     controller.on("join", (bot) => __awaiter(this, void 0, void 0, function* () {
         bot.say("Hello stranger!");
     }));
-    controller.hears("hello", "direct_mention", (bot, message) => __awaiter(this, void 0, void 0, function* () {
-        console.log(message);
-        yield bot.reply(message, "Hello yourself!");
-    }));
 };
 exports.listen = ({ controller, index, cassette }) => {
-    const { verb } = cassette;
-    controller.hears(verb, ["message", "direct_message"], (bot, message) => __awaiter(this, void 0, void 0, function* () {
-        yield bot.reply(message, `HELLO WORLD ${index}`);
+    controller.hears("hello", ["direct_mention", "bot_message"], (bot, message) => __awaiter(this, void 0, void 0, function* () {
+        console.log(message);
+        try {
+            const response = message.bot_id
+                ? yield bot.api.bots.info({ bot: message.bot_id })
+                : yield bot.api.users.info({ user: message.user });
+            const name = message.bot_id ? response.bot.name : response.user.name;
+            yield bot.reply(message, `@${name} hello`);
+        }
+        catch (e) {
+            console.log(e);
+        }
     }));
 };
+// const { verb } = cassette;
+// controller.hears(
+//   verb, ["message", "direct_message"], async (bot: any, message: any) => {
+//     await bot.reply(message, `HELLO WORLD ${index}`);
+//   }
+// );
 exports.insertTape = xstate_1.assign({
     cassette: (_context, { payload }) => payload.cassette
 });
