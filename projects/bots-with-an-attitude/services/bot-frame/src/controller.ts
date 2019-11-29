@@ -15,14 +15,9 @@ console.log(process.env.BOT_TOKEN);
 
 const adapter = new SlackAdapter({
   clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,
-  redirectUri: "/",
+  redirectUri: "/install/auth",
   botToken: process.env.BOT_TOKEN
 });
-
-// if (event.event.type === 'message' && !event.event.subtype) {
-//     activity.type = ActivityTypes.Message;
-//     activity.text = event.event.text;
-// }
 
 adapter.use(new BotsAreUsersTooMiddleWareFirst());
 adapter.use(new SlackEventMiddleware());

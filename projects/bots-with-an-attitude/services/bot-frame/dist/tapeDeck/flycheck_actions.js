@@ -26,8 +26,10 @@ exports.listen = ({ controller, index, cassette }) => {
             const response = message.bot_id
                 ? yield bot.api.bots.info({ bot: message.bot_id })
                 : yield bot.api.users.info({ user: message.user });
-            const name = message.bot_id ? response.bot.name : response.user.name;
-            yield bot.reply(message, `@${name} hello`);
+            const user_id = message.bot_id
+                ? response.bot.user_id
+                : response.user.id;
+            yield bot.reply(message, `<@${user_id}> hello`);
         }
         catch (e) {
             console.log(e);

@@ -12,8 +12,9 @@ const botbuilder_1 = require("botbuilder");
 class BotsAreUsersTooMiddleWareFirst extends botbuilder_1.MiddlewareSet {
     onTurn(context, next) {
         return __awaiter(this, void 0, void 0, function* () {
-            const info = yield context.adapter.slack.bots.info({ bot: context.activity.channelData.bot_id });
-            const bot_user_id = yield context.adapter.getBotUserByTeam(context.activity);
+            const adapter = context.adapter;
+            const info = yield adapter.slack.bots.info({ bot: context.activity.channelData.bot_id });
+            const bot_user_id = yield adapter.getBotUserByTeam(context.activity);
             let isTalkingToMyself = false;
             if (info.bot) {
                 isTalkingToMyself = bot_user_id === info.bot.user_id;

@@ -16,13 +16,9 @@ console.log(process.env.CLIENT_SIGNING_SECRET);
 console.log(process.env.BOT_TOKEN);
 const adapter = new botbuilder_adapter_slack_1.SlackAdapter({
     clientSigningSecret: process.env.CLIENT_SIGNING_SECRET,
-    redirectUri: "/",
+    redirectUri: "/install/auth",
     botToken: process.env.BOT_TOKEN
 });
-// if (event.event.type === 'message' && !event.event.subtype) {
-//     activity.type = ActivityTypes.Message;
-//     activity.text = event.event.text;
-// }
 adapter.use(new BotsAreUsersTooMiddleWare_1.BotsAreUsersTooMiddleWareFirst());
 adapter.use(new botbuilder_adapter_slack_1.SlackEventMiddleware());
 adapter.use(new botbuilder_adapter_slack_1.SlackMessageTypeMiddleware());
