@@ -25,6 +25,7 @@ class BotsAreUsersTooMiddleWareFirst extends botbuilder_1.MiddlewareSet {
                 context.activity.type = botbuilder_1.ActivityTypes.Message;
                 context.activity.text = context.activity.channelData.text;
             }
+            console.log(context.activity);
             yield next();
         });
     }

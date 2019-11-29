@@ -20,7 +20,7 @@ exports.welcome = ({ controller }) => {
     }));
 };
 exports.listen = ({ controller, index, cassette }) => {
-    controller.hears("hello", ["direct_mention", "bot_message"], (bot, message) => __awaiter(this, void 0, void 0, function* () {
+    controller.hears("hello", ["direct_mention"], (bot, message) => __awaiter(this, void 0, void 0, function* () {
         console.log(message);
         try {
             const response = message.bot_id

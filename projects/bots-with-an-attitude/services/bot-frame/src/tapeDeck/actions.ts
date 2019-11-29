@@ -15,7 +15,7 @@ export const welcome = ({ controller }: any) => {
 export const listen = ({ controller, index, cassette }: any) => {
   controller.hears(
     "hello",
-    ["direct_mention", "bot_message"],
+    ["direct_mention"],
     async (bot: any, message: any) => {
       console.log(message);
       try {

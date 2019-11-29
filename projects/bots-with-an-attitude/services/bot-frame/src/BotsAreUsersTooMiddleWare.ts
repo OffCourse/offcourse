@@ -20,6 +20,7 @@ export class BotsAreUsersTooMiddleWareFirst extends MiddlewareSet {
       context.activity.type = ActivityTypes.Message;
       context.activity.text = context.activity.channelData.text;
     }
+    console.log(context.activity);
     await next();
   }
 }
