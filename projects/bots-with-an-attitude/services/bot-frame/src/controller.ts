@@ -2,10 +2,11 @@ import { Botkit } from "botkit";
 import {
   SlackEventMiddleware,
   SlackAdapter,
-  SlackMessageTypeMiddleware
 } from "botbuilder-adapter-slack";
 import {
-  BotsAreUsersTooMiddleWareFirst, BotsAreUsersTooMiddleWareLast
+  SlackMessageTypeMiddleware,
+  BotsAreUsersTooMiddleWareFirst,
+  BotsAreUsersTooMiddleWareLast
 } from "./BotsAreUsersTooMiddleWare"
 
 require('dotenv').config()

@@ -22,15 +22,14 @@ exports.welcome = ({ controller }) => {
 exports.listen = ({ controller, index, cassette }) => {
     controller.hears("hello", ["direct_mention"], (bot, message) => __awaiter(this, void 0, void 0, function* () {
         try {
-            // const response = message.bot_id
-            //   ? await bot.api.bots.info({ bot: message.bot_id })
-            //   : await bot.api.users.info({ user: message.user });
-            // const user_id = message.bot_id
-            //   ? response.bot.user_id
-            //   : response.user.id;
-            // const user_id = bot_id ? response.bot.user_id : response.user.id;
-            const user_id = "UQYL72RLM";
-            yield bot.reply(message, `<@${user_id}> hello`);
+            const response = message.bot_id
+                ? yield bot.api.bots.info({ bot: message.bot_id })
+                : yield bot.api.users.info({ user: message.user });
+            const user_id = message.bot_id
+                ? response.bot.user_id
+                : response.user.id;
+            const greeting = Math.random() < 0.5 ? "hello" : "hi";
+            yield bot.reply(message, `<@${user_id}> ${greeting}`);
         }
         catch (e) {
             console.log(e);

@@ -21,7 +21,7 @@ const adapter = new botbuilder_adapter_slack_1.SlackAdapter({
 });
 adapter.use(new BotsAreUsersTooMiddleWare_1.BotsAreUsersTooMiddleWareFirst());
 adapter.use(new botbuilder_adapter_slack_1.SlackEventMiddleware());
-adapter.use(new botbuilder_adapter_slack_1.SlackMessageTypeMiddleware());
+adapter.use(new BotsAreUsersTooMiddleWare_1.SlackMessageTypeMiddleware());
 adapter.use(new BotsAreUsersTooMiddleWare_1.BotsAreUsersTooMiddleWareLast());
 const controller = new botkit_1.Botkit({
     webhook_uri: "/api/messages",
