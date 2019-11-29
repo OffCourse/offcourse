@@ -24,7 +24,8 @@ export const listen = ({ controller, index, cassette }: any) => {
         const user_id = message.bot_id
           ? response.bot.user_id
           : response.user.id;
-        const greeting = Math.random() < 0.5 ? "hello" : "hi"
+        // const user_id = "UQTV5A3LZ";
+        const greeting = Math.random() < 0.5 ? "hello" : "hi";
         await bot.reply(message, `<@${user_id}> ${greeting}`);
       } catch (e) {
         console.log(e);

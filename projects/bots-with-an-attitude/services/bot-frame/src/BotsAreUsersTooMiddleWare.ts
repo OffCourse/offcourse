@@ -37,18 +37,21 @@ export class SlackMessageTypeMiddleware extends MiddlewareSet {
   }
 }
 
-export class BotsAreUsersTooMiddleWareFirst extends MiddlewareSet {
+export class BotsAreUsersTooMiddleWare extends MiddlewareSet {
   public async onTurn(
     context: TurnContext,
     next: () => Promise<any>
   ): Promise<any> {
-    const adapter: any = context.adapter;
+    const adapter = context.adapter as SlackAdapter;
+    // @ts-ignore
     const info = await adapter.slack.bots.info({ bot: context.activity.channelData.bot_id });
     const bot_user_id = await adapter.getBotUserByTeam(context.activity);
     let isTalkingToMyself = false;
+
     if (info.bot) {
       isTalkingToMyself = bot_user_id === info.bot.user_id;
     }
+
     if (
       context.activity.type === 'event' &&
       context.activity.channelData.subtype === "bot_message" &&
@@ -58,24 +61,6 @@ export class BotsAreUsersTooMiddleWareFirst extends MiddlewareSet {
       context.activity.text = context.activity.channelData.text;
       delete context.activity.channelData.subtype;
     }
-    await next();
-  }
-}
-
-export class BotsAreUsersTooMiddleWareLast extends MiddlewareSet {
-  public async onTurn(
-    context: TurnContext,
-    next: () => Promise<any>
-  ): Promise<any> {
-    if (
-      context.activity.type === 'event' &&
-      context.activity.channelData.subtype === "bot_message"
-    ) {
-      console.log("SHOULDNT APPEAR:", context.activity);
-      context.activity.type = ActivityTypes.Message;
-    }
-    console.log(context.activity);
-    console.log("----");
     await next();
   }
 }

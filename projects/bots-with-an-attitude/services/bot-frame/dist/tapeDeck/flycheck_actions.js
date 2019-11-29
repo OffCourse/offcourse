@@ -28,6 +28,7 @@ exports.listen = ({ controller, index, cassette }) => {
             const user_id = message.bot_id
                 ? response.bot.user_id
                 : response.user.id;
+            // const user_id = "UQTV5A3LZ";
             const greeting = Math.random() < 0.5 ? "hello" : "hi";
             yield bot.reply(message, `<@${user_id}> ${greeting}`);
         }

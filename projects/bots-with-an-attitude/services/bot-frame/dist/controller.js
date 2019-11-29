@@ -19,10 +19,9 @@ const adapter = new botbuilder_adapter_slack_1.SlackAdapter({
     redirectUri: "/install/auth",
     botToken: process.env.BOT_TOKEN
 });
-adapter.use(new BotsAreUsersTooMiddleWare_1.BotsAreUsersTooMiddleWareFirst());
+adapter.use(new BotsAreUsersTooMiddleWare_1.BotsAreUsersTooMiddleWare());
 adapter.use(new botbuilder_adapter_slack_1.SlackEventMiddleware());
 adapter.use(new BotsAreUsersTooMiddleWare_1.SlackMessageTypeMiddleware());
-adapter.use(new BotsAreUsersTooMiddleWare_1.BotsAreUsersTooMiddleWareLast());
 const controller = new botkit_1.Botkit({
     webhook_uri: "/api/messages",
     adapter

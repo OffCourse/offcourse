@@ -46,10 +46,11 @@ class SlackMessageTypeMiddleware extends botbuilder_1.MiddlewareSet {
     }
 }
 exports.SlackMessageTypeMiddleware = SlackMessageTypeMiddleware;
-class BotsAreUsersTooMiddleWareFirst extends botbuilder_1.MiddlewareSet {
+class BotsAreUsersTooMiddleWare extends botbuilder_1.MiddlewareSet {
     onTurn(context, next) {
         return __awaiter(this, void 0, void 0, function* () {
             const adapter = context.adapter;
+            // @ts-ignore
             const info = yield adapter.slack.bots.info({ bot: context.activity.channelData.bot_id });
             const bot_user_id = yield adapter.getBotUserByTeam(context.activity);
             let isTalkingToMyself = false;
@@ -67,20 +68,5 @@ class BotsAreUsersTooMiddleWareFirst extends botbuilder_1.MiddlewareSet {
         });
     }
 }
-exports.BotsAreUsersTooMiddleWareFirst = BotsAreUsersTooMiddleWareFirst;
-class BotsAreUsersTooMiddleWareLast extends botbuilder_1.MiddlewareSet {
-    onTurn(context, next) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (context.activity.type === 'event' &&
-                context.activity.channelData.subtype === "bot_message") {
-                console.log("SHOULDNT APPEAR:", context.activity);
-                context.activity.type = botbuilder_1.ActivityTypes.Message;
-            }
-            console.log(context.activity);
-            console.log("----");
-            yield next();
-        });
-    }
-}
-exports.BotsAreUsersTooMiddleWareLast = BotsAreUsersTooMiddleWareLast;
+exports.BotsAreUsersTooMiddleWare = BotsAreUsersTooMiddleWare;
 //# sourceMappingURL=flycheck_BotsAreUsersTooMiddleWare.js.map
