@@ -17,14 +17,15 @@ export const listen = ({ controller, index, cassette }: any) => {
     "hello",
     ["direct_mention"],
     async (bot: any, message: any) => {
-      console.log(message);
       try {
-        const response = message.bot_id
-          ? await bot.api.bots.info({ bot: message.bot_id })
-          : await bot.api.users.info({ user: message.user });
-        const user_id = message.bot_id
-          ? response.bot.user_id
-          : response.user.id;
+        // const response = message.bot_id
+        //   ? await bot.api.bots.info({ bot: message.bot_id })
+        //   : await bot.api.users.info({ user: message.user });
+        // const user_id = message.bot_id
+        //   ? response.bot.user_id
+        //   : response.user.id;
+        // const user_id = bot_id ? response.bot.user_id : response.user.id;
+        const user_id = "UQYL72RLM"
         await bot.reply(message, `<@${user_id}> hello`);
       } catch (e) {
         console.log(e);

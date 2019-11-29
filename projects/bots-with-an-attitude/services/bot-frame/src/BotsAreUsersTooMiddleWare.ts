@@ -10,6 +10,7 @@ export class BotsAreUsersTooMiddleWareFirst extends MiddlewareSet {
     const bot_user_id = await adapter.getBotUserByTeam(context.activity);
     let isTalkingToMyself = false;
     if (info.bot) {
+      console.log(bot_user_id, info.bot.user_id);
       isTalkingToMyself = bot_user_id === info.bot.user_id;
     }
     if (
@@ -20,7 +21,6 @@ export class BotsAreUsersTooMiddleWareFirst extends MiddlewareSet {
       context.activity.type = ActivityTypes.Message;
       context.activity.text = context.activity.channelData.text;
     }
-    console.log(context.activity);
     await next();
   }
 }

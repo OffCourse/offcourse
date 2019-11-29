@@ -17,6 +17,7 @@ class BotsAreUsersTooMiddleWareFirst extends botbuilder_1.MiddlewareSet {
             const bot_user_id = yield adapter.getBotUserByTeam(context.activity);
             let isTalkingToMyself = false;
             if (info.bot) {
+                console.log(bot_user_id, info.bot.user_id);
                 isTalkingToMyself = bot_user_id === info.bot.user_id;
             }
             if (context.activity.type === 'event' &&
@@ -25,7 +26,6 @@ class BotsAreUsersTooMiddleWareFirst extends botbuilder_1.MiddlewareSet {
                 context.activity.type = botbuilder_1.ActivityTypes.Message;
                 context.activity.text = context.activity.channelData.text;
             }
-            console.log(context.activity);
             yield next();
         });
     }
