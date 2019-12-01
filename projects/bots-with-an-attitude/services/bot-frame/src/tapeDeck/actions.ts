@@ -18,13 +18,13 @@ export const listen = ({ controller, index, cassette }: any) => {
     ["direct_mention"],
     async (bot: any, message: any) => {
       try {
-        const response = message.bot_id
-          ? await bot.api.bots.info({ bot: message.bot_id })
-          : await bot.api.users.info({ user: message.user });
-        const user_id = message.bot_id
-          ? response.bot.user_id
-          : response.user.id;
-        // const user_id = "UQTV5A3LZ";
+        // const response = message.bot_id
+        //   ? await bot.api.bots.info({ bot: message.bot_id })
+        //   : await bot.api.users.info({ user: message.user });
+        // const user_id = message.bot_id
+        //   ? response.bot.user_id
+        //   : response.user.id;
+        const user_id = "UQTV5A3LZ";
         const greeting = Math.random() < 0.5 ? "hello" : "hi";
         await bot.reply(message, `<@${user_id}> ${greeting}`);
       } catch (e) {
