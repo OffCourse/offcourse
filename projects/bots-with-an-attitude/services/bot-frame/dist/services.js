@@ -8,21 +8,5 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-const verb = "test";
-const objects = ["funk"];
-const run = ({ memory }) => __awaiter(this, void 0, void 0, function* () {
-    const seconds = 1;
-    yield timeout(seconds * 1000);
-    const answer = yield memory.get("name").then();
-    return { results: [answer] };
-});
-const cassette = {
-    verb,
-    objects,
-    run
-};
-exports.default = cassette;
-//# sourceMappingURL=flycheck_test.js.map
+exports.getHealth = () => __awaiter(this, void 0, void 0, function* () { return 5555; });
+//# sourceMappingURL=services.js.map

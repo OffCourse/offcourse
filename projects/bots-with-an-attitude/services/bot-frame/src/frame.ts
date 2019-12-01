@@ -1,74 +1,57 @@
-import { Machine, assign } from "xstate";
-import Gun from "gun";
-import { Botkit } from "botkit";
-import { WebAdapter } from "botbuilder-adapter-web";
-import { ICassette, DBSchema } from "./interfaces";
-import Cassette from "./Cassette";
+import { Machine } from "xstate";
+import { BotContext } from "./interfaces";
+import * as actions from "./actions";
+import * as guards from "./guards";
 
-const controller = new Botkit({
-  webhook_uri: "/api/messages",
-  adapter: new WebAdapter()
-});
-
-const db = new Gun<DBSchema>();
-interface BotContext {
-  health: number | string;
-  cassettes: ICassette[];
-}
-
-const initialize = assign({
-  health: (_: BotContext, { health }: any) => {
-    console.log(health);
-    return health || 100;
-  }
-});
-
-interface BotContext {
-  health: number | string;
-  controller: any;
-  cassettes: ICassette[];
-}
-
-const createBotMachine = ({ cassettes }: { cassettes: ICassette[] }) => {
-  return Machine<BotContext>(
-    {
-      id: "bot",
-      initial: "booting",
-      context: {
-        controller,
-        health: "UNKNOWN",
-        cassettes: cassettes.map(
-          cassette =>
-            new Cassette({
-              memory: db,
-              ...cassette
-            })
-        )
-      },
-      states: {
-        booting: {
-          on: {
-            SUCCEEDED: {
-              target: "booted",
-              actions: "initialize"
-            },
-            FAILED: "crashed"
-          }
-        },
-        booted: {
-          type: "final"
-        },
-        crashed: {
-          type: "final"
+const machine = Machine<BotContext>({
+  id: "bot",
+  initial: "idle",
+  states: {
+    idle: {
+      entry: ["initializeDecks", "sendMessage"],
+      on: {
+        DECK_INITIALIZED: {
+          target: "operational",
+          actions: "echo"
         }
       }
     },
-    {
-      actions: {
-        initialize
+    operational: {
+      initial: "available",
+      states: {
+        available: {
+          on: {
+            INSERT_CASSETTE: [
+              {
+                target: "available",
+                actions: "insertCassette",
+                cond: "decksNotFull"
+              },
+              { target: "decks_full" }
+            ]
+          }
+        },
+        decks_full: {
+          entry: () => console.log("NO MORE ROOM IN THIS BOT")
+        }
       }
+    },
+    crashed: {
+      type: "final",
+      entry: "echo"
     }
-  );
+  }
+});
+
+export const context: BotContext = {
+  health: "UNKNOWN",
+  controller: null,
+  decks: [{}, {}, {}]
 };
 
-export default createBotMachine;
+export const config = {
+  guards,
+  actions
+};
+
+export default machine;

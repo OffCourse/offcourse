@@ -1,6 +1,6 @@
 {
   "arn": "arn:aws:appsync:us-east-1:667764274250:apis/vzc75or2t5ffxpksb4fnilacoe",
-  "schemaChecksum": "c3e5de280d68075d6846b54b0d4791dc66d639989b1b2f074820d04b6a943e61",
+  "schemaChecksum": "384b3119465624d2c692bff4c7e54fa324682befe72487b84d73e9f8def84e8f",
   "apiKeys": [
     {
       "name": "publicBadgesApiKey",

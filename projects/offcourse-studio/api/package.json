@@ -3,7 +3,17 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+  },
   "dependencies": {
     "serverless": "^1.57.0"
+  },
+  "devDependencies": {
+    "prettier": "1.18.2",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.6.4",
+    "@graphql-codegen/typescript": "^0.0.0"
   }
 }

@@ -4,11 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "start": "concurrently \"tsc -w\"",
+    "prebuild": "yarn codegen",
+    "build": "tsc",
+    "predeploy": "yarn build",
+    "deploy": "sls"
   },
   "author": "Yeehaa",
   "license": "MIT",
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.9.1",
+    "graphql": "^14.5.8",
+    "concurrently": "^5.0.0",
+    "@graphql-codegen/typescript": "1.9.1",
+    "@graphql-codegen/typescript-resolvers": "1.9.1",
+    "@graphql-codegen/typescript-document-nodes": "1.9.1",
+    "@graphql-codegen/introspection": "1.9.1"
+  },
+  "dependencies": {
     "serverless": "^1.58.0"
   }
 }

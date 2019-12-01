@@ -14,9 +14,15 @@ export interface ISentence {
   results: any[];
 }
 
-export interface IBot {
+export interface IBotConfig {
   cassettes: ICassette[];
 }
+
+export type BotContext = {
+  health: number | string;
+  controller: any;
+  decks: any[];
+};
 
 export const SYSTEM = "system";
 export const COMMANDS = "commands";
@@ -29,3 +35,10 @@ export type DBSchema = {
     [COMMANDS]: string;
   };
 };
+
+export type TapeDeckContext = {
+  name: string;
+  controller: any;
+  index: number;
+  cassette: string | null;
+}

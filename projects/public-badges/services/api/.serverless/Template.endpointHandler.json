@@ -1,12 +1,12 @@
 {
   "name": "u158xp-o3m08b",
-  "hash": "eyj9B3c2yX1eYV6aC8HE3N2XB2WdIg6zfKSFLalRUAc=",
+  "hash": "I0yw04ui+d3u/2p2WMpAZ+O1HF//mMEVuMq/0eQyjgo=",
   "description": "AWS Lambda Component",
   "memory": 512,
   "timeout": 10,
   "code": "./",
   "shims": [],
-  "handler": "index.handler",
+  "handler": "dist/src/index.handler",
   "runtime": "nodejs10.x",
   "env": {},
   "role": {

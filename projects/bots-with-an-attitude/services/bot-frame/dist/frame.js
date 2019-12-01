@@ -1,55 +1,62 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
-const gun_1 = __importDefault(require("gun"));
-const botkit_1 = require("botkit");
-const botbuilder_adapter_web_1 = require("botbuilder-adapter-web");
-const Cassette_1 = __importDefault(require("./Cassette"));
-const controller = new botkit_1.Botkit({
-    webhook_uri: "/api/messages",
-    adapter: new botbuilder_adapter_web_1.WebAdapter()
-});
-const db = new gun_1.default();
-const initialize = xstate_1.assign({
-    health: (_, { health }) => {
-        console.log(health);
-        return health || 100;
+const actions = __importStar(require("./actions"));
+const guards = __importStar(require("./guards"));
+const machine = xstate_1.Machine({
+    id: "bot",
+    initial: "idle",
+    states: {
+        idle: {
+            entry: ["initializeDecks", "sendMessage"],
+            on: {
+                DECK_INITIALIZED: {
+                    target: "operational",
+                    actions: "echo"
+                }
+            }
+        },
+        operational: {
+            initial: "available",
+            states: {
+                available: {
+                    on: {
+                        INSERT_CASSETTE: [
+                            {
+                                target: "available",
+                                actions: "insertCassette",
+                                cond: "decksNotFull"
+                            },
+                            { target: "decks_full" }
+                        ]
+                    }
+                },
+                decks_full: {
+                    entry: () => console.log("NO MORE ROOM IN THIS BOT")
+                }
+            }
+        },
+        crashed: {
+            type: "final",
+            entry: "echo"
+        }
     }
 });
-const createBotMachine = ({ cassettes }) => {
-    return xstate_1.Machine({
-        id: "bot",
-        initial: "booting",
-        context: {
-            controller,
-            health: "UNKNOWN",
-            cassettes: cassettes.map(cassette => new Cassette_1.default(Object.assign({ memory: db }, cassette)))
-        },
-        states: {
-            booting: {
-                on: {
-                    SUCCEEDED: {
-                        target: "booted",
-                        actions: "initialize"
-                    },
-                    FAILED: "crashed"
-                }
-            },
-            booted: {
-                type: "final"
-            },
-            crashed: {
-                type: "final"
-            }
-        }
-    }, {
-        actions: {
-            initialize
-        }
-    });
+exports.context = {
+    health: "UNKNOWN",
+    controller: null,
+    decks: [{}, {}, {}]
 };
-exports.default = createBotMachine;
+exports.config = {
+    guards,
+    actions
+};
+exports.default = machine;
 //# sourceMappingURL=frame.js.map

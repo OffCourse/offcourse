@@ -16,19 +16,39 @@
     {
       "key": "src/index.mdx",
       "value": {
-        "name": "Protobot",
-        "route": "/",
+        "name": "Getting Started",
+        "menu": "ProtoBot",
         "id": "6576455a124f9aaefd860597f03a8fe4",
         "filepath": "src/index.mdx",
         "fullpath": "/home/yeehaa/Documents/offcourse/projects/bots-with-an-attitude/site/src/index.mdx",
         "link": "",
         "slug": "src-index",
-        "menu": "",
+        "route": "/src-index",
         "headings": [
           {
             "slug": "bots-with-an-attitude",
             "depth": 1,
             "value": "Bots With An Attitude"
+          },
+          {
+            "slug": "run-your-bwa-locally",
+            "depth": 2,
+            "value": "Run Your BWA Locally"
+          },
+          {
+            "slug": "deploy-your-bwa",
+            "depth": 2,
+            "value": "Deploy Your BWA"
+          },
+          {
+            "slug": "heroku",
+            "depth": 3,
+            "value": "Heroku"
+          },
+          {
+            "slug": "configure-your-slack-account",
+            "depth": 2,
+            "value": "Configure your Slack Account"
           }
         ]
       }

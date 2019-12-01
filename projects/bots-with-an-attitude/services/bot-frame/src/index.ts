@@ -1,40 +1,38 @@
 import { interpret } from "xstate";
 import testCassette from "./cassettes/test";
 import _ from "gun/lib/then";
-import createBotMachine from "./frame";
+import botMachine, { context, config } from "./frame";
+import controller from "./controller";
 
 const init = async () => {
-  const botMachine = createBotMachine({ cassettes: [testCassette] });
+  const machine = botMachine
+    .withContext({ ...context, controller })
+    .withConfig(config);
 
-  const botService = interpret(botMachine).onTransition(state => {
-    console.log("Transitioned:" + state.value);
-    console.log(state.context);
+  const botService = interpret(machine).onTransition(state => {
+    console.log("Transitioned:" + state.value + " " + state.changed);
   });
-
-  const cassettes = botService.state.context.cassettes;
-  const controller = botService.state.context.controller;
 
   botService.start();
+  return botService;
+};
 
-  const promise = () => new Promise((resolve) => resolve(5555));
+const main = async () => {
+  const botService = await init();
 
-  const health = await promise();
-
-  botService.send({ type: "SUCCEEDED", health });
-
-  controller.on("join", async (bot: any) => {
-    const commands = cassettes.map(({ verb }) => verb);
-    bot.say("Hello stranger!");
-    bot.say("Available commands for this bot are:");
-    bot.say(commands.length ? `${commands}` : "none yet");
+  botService.send("INSERT_CASSETTE", {
+    cassette: testCassette
   });
 
-  cassettes.forEach(({ verb, run }) => {
-    controller.hears(verb, "message", async (bot: any, message: any) => {
-      const { results } = await run();
-      await bot.reply(message, results.join(" "));
-    });
+  botService.send("INSERT_CASSETTE", {
+    cassette: { ...testCassette, verb: "run" }
   });
-}
+  botService.send("INSERT_CASSETTE", {
+    cassette: { ...testCassette, verb: "play" }
+  });
+  botService.send("INSERT_CASSETTE", {
+    cassette: { ...testCassette, verb: "say" }
+  });
+};
 
-init();
+main();

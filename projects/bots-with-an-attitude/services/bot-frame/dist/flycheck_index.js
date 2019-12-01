@@ -10,34 +10,42 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const xstate_1 = require("xstate");
 const test_1 = __importDefault(require("./cassettes/test"));
-const frame_1 = __importDefault(require("./frame"));
+const frame_1 = __importStar(require("./frame"));
+const controller_1 = __importDefault(require("./controller"));
 const init = () => __awaiter(this, void 0, void 0, function* () {
-    const botMachine = frame_1.default({ cassettes: [test_1.default] });
-    const botService = xstate_1.interpret(botMachine).onTransition(state => {
-        console.log("Transitioned:" + state.value);
-        console.log(state.context);
+    const machine = frame_1.default
+        .withContext(Object.assign({}, frame_1.context, { controller: controller_1.default }))
+        .withConfig(frame_1.config);
+    const botService = xstate_1.interpret(machine).onTransition(state => {
+        console.log("Transitioned:" + state.value + " " + state.changed);
     });
-    const cassettes = botService.state.context.cassettes;
-    const controller = botService.state.context.controller;
     botService.start();
-    const promise = () => new Promise((resolve) => resolve(5555));
-    const health = yield promise();
-    botService.send({ type: "SUCCEEDED", health });
-    controller.on("join", (bot) => __awaiter(this, void 0, void 0, function* () {
-        const commands = cassettes.map(({ verb }) => verb);
-        bot.say("Hello stranger!");
-        bot.say("Available commands for this bot are:");
-        bot.say(commands.length ? `${commands}` : "none yet");
-    }));
-    cassettes.forEach(({ verb, run }) => {
-        controller.hears(verb, "message", (bot, message) => __awaiter(this, void 0, void 0, function* () {
-            const { results } = yield run();
-            yield bot.reply(message, results.join(" "));
-        }));
+    return botService;
+});
+const main = () => __awaiter(this, void 0, void 0, function* () {
+    const botService = yield init();
+    botService.send("INSERT_CASSETTE", {
+        cassette: test_1.default
+    });
+    botService.send("INSERT_CASSETTE", {
+        cassette: Object.assign({}, test_1.default, { verb: "run" })
+    });
+    botService.send("INSERT_CASSETTE", {
+        cassette: Object.assign({}, test_1.default, { verb: "play" })
+    });
+    botService.send("INSERT_CASSETTE", {
+        cassette: Object.assign({}, test_1.default, { verb: "say" })
     });
 });
-init();
+main();
 //# sourceMappingURL=flycheck_index.js.map

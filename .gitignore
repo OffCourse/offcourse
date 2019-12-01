@@ -66,3 +66,5 @@ package-deps.json
 
 **/.cache
 **/public
+**/*/.env
+**/*/.remote_env
