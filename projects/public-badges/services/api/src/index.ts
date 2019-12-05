@@ -1,41 +1,26 @@
-import { Badge, Score } from "./generated/graphql";
+import "graphql-import-node";
+import { ApolloServer } from "apollo-server-lambda";
+import * as schema from "./schema.graphql";
+import { badges } from "./fixtures";
+import { Resolvers } from "./generated/graphql";
 
-import artifact from "../fixture.json";
-
-const { id, type, recipient, issuedOn, expires } = artifact;
-
-const score: Score = {
-  accountable: 0,
-  sovereign: 70,
-  userCentric: 10,
-  transparent: 10,
-  open: 10
-};
-const badgeWrapper: Badge = {
-  id,
-  type,
-  score,
-  recipient,
-  issuedOn,
-  expires,
-  artifact: {
-    json: JSON.stringify(artifact)
+const typeDefs = schema;
+const resolvers: Resolvers = {
+  Query: {
+    getAllBadges: () => badges,
+    getBadge: (_, { badgeId }, __) => {
+      if (badgeId) {
+        const badge = badges.find((badge) => badge.badgeId = badgeId);
+        return badge || null;
+      }
+      return badges[0]
+    }
   }
 };
 
-exports.handler = async (event: { badgeId: string }) => {
-  const badges: Badge[] = [
-    {
-      ...badgeWrapper
-    },
-    {
-      ...badgeWrapper,
-      id: "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb419"
-    }
-  ];
+const server = new ApolloServer({
+  typeDefs,
+  resolvers: resolvers as any
+});
 
-  const badge: Badge | undefined = badges.find(
-    ({ id }) => id === event.badgeId
-  );
-  return badge;
-};
+export const handler = server.createHandler();

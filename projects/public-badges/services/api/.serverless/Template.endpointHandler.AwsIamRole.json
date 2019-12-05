@@ -1,9 +1,0 @@
-{
-  "name": "u158xp-7j7q7u",
-  "arn": "arn:aws:iam::667764274250:role/u158xp-7j7q7u",
-  "service": "lambda.amazonaws.com",
-  "policy": {
-    "arn": "arn:aws:iam::aws:policy/AdministratorAccess"
-  },
-  "region": "us-east-1"
-}

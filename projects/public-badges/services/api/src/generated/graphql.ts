@@ -1,6 +1,5 @@
 import { GraphQLResolveInfo } from 'graphql';
 export type Maybe<T> = T | null;
-export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string,
@@ -10,53 +9,28 @@ export type Scalars = {
   Float: number,
 };
 
-export type Badge = {
-   __typename?: 'Badge',
-  id: Scalars['ID'],
-  score: Score,
-  type?: Maybe<Scalars['String']>,
-  recipient?: Maybe<Recipient>,
+export type PublicBadge = {
+   __typename?: 'PublicBadge',
+  badgeId?: Maybe<Scalars['ID']>,
+  badgeClassId?: Maybe<Scalars['ID']>,
+  name: Scalars['String'],
+  tags?: Maybe<Array<Maybe<Scalars['String']>>>,
+  description?: Maybe<Scalars['String']>,
+  narrative?: Maybe<Scalars['String']>,
+  recipientId?: Maybe<Scalars['ID']>,
   issuedOn?: Maybe<Scalars['String']>,
   expires?: Maybe<Scalars['String']>,
-  artifact?: Maybe<BadgeArtifact>,
-};
-
-export type BadgeArtifact = {
-   __typename?: 'BadgeArtifact',
-  json?: Maybe<Scalars['String']>,
-  yaml?: Maybe<Scalars['String']>,
-};
-
-export type BadgeClass = {
-   __typename?: 'BadgeClass',
-  name?: Maybe<Scalars['String']>,
-  id: Scalars['ID'],
-  Score?: Maybe<Score>,
 };
 
 export type Query = {
    __typename?: 'Query',
-  getBadge?: Maybe<Badge>,
+  getBadge?: Maybe<PublicBadge>,
+  getAllBadges?: Maybe<Array<Maybe<PublicBadge>>>,
 };
 
 
 export type QueryGetBadgeArgs = {
-  badgeId: Scalars['ID']
-};
-
-export type Recipient = {
-   __typename?: 'Recipient',
-  type?: Maybe<Scalars['String']>,
-  email?: Maybe<Scalars['String']>,
-};
-
-export type Score = {
-   __typename?: 'Score',
-  accountable?: Maybe<Scalars['Int']>,
-  sovereign?: Maybe<Scalars['Int']>,
-  userCentric?: Maybe<Scalars['Int']>,
-  transparent?: Maybe<Scalars['Int']>,
-  open?: Maybe<Scalars['Int']>,
+  badgeId?: Maybe<Scalars['ID']>
 };
 
 
@@ -132,75 +106,40 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>,
   ID: ResolverTypeWrapper<Scalars['ID']>,
-  Badge: ResolverTypeWrapper<Badge>,
-  Score: ResolverTypeWrapper<Score>,
-  Int: ResolverTypeWrapper<Scalars['Int']>,
+  PublicBadge: ResolverTypeWrapper<PublicBadge>,
   String: ResolverTypeWrapper<Scalars['String']>,
-  Recipient: ResolverTypeWrapper<Recipient>,
-  BadgeArtifact: ResolverTypeWrapper<BadgeArtifact>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
-  BadgeClass: ResolverTypeWrapper<BadgeClass>,
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Query: {},
   ID: Scalars['ID'],
-  Badge: Badge,
-  Score: Score,
-  Int: Scalars['Int'],
+  PublicBadge: PublicBadge,
   String: Scalars['String'],
-  Recipient: Recipient,
-  BadgeArtifact: BadgeArtifact,
   Boolean: Scalars['Boolean'],
-  BadgeClass: BadgeClass,
 };
 
-export type BadgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['Badge'] = ResolversParentTypes['Badge']> = {
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
-  score?: Resolver<ResolversTypes['Score'], ParentType, ContextType>,
-  type?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  recipient?: Resolver<Maybe<ResolversTypes['Recipient']>, ParentType, ContextType>,
+export type PublicBadgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['PublicBadge'] = ResolversParentTypes['PublicBadge']> = {
+  badgeId?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>,
+  badgeClassId?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>,
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  tags?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  narrative?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  recipientId?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>,
   issuedOn?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   expires?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  artifact?: Resolver<Maybe<ResolversTypes['BadgeArtifact']>, ParentType, ContextType>,
-};
-
-export type BadgeArtifactResolvers<ContextType = any, ParentType extends ResolversParentTypes['BadgeArtifact'] = ResolversParentTypes['BadgeArtifact']> = {
-  json?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  yaml?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-};
-
-export type BadgeClassResolvers<ContextType = any, ParentType extends ResolversParentTypes['BadgeClass'] = ResolversParentTypes['BadgeClass']> = {
-  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
-  Score?: Resolver<Maybe<ResolversTypes['Score']>, ParentType, ContextType>,
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  getBadge?: Resolver<Maybe<ResolversTypes['Badge']>, ParentType, ContextType, RequireFields<QueryGetBadgeArgs, 'badgeId'>>,
-};
-
-export type RecipientResolvers<ContextType = any, ParentType extends ResolversParentTypes['Recipient'] = ResolversParentTypes['Recipient']> = {
-  type?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-};
-
-export type ScoreResolvers<ContextType = any, ParentType extends ResolversParentTypes['Score'] = ResolversParentTypes['Score']> = {
-  accountable?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
-  sovereign?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
-  userCentric?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
-  transparent?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
-  open?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  getBadge?: Resolver<Maybe<ResolversTypes['PublicBadge']>, ParentType, ContextType, QueryGetBadgeArgs>,
+  getAllBadges?: Resolver<Maybe<Array<Maybe<ResolversTypes['PublicBadge']>>>, ParentType, ContextType>,
 };
 
 export type Resolvers<ContextType = any> = {
-  Badge?: BadgeResolvers<ContextType>,
-  BadgeArtifact?: BadgeArtifactResolvers<ContextType>,
-  BadgeClass?: BadgeClassResolvers<ContextType>,
+  PublicBadge?: PublicBadgeResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
-  Recipient?: RecipientResolvers<ContextType>,
-  Score?: ScoreResolvers<ContextType>,
 };
 
 

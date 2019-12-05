@@ -1,41 +1,88 @@
-schema {
-  query: Query
-}
+# schema {
+#   query: Query
+# }
 
-type Query {
-  getBadge(badgeId: ID!): Badge
-}
+# enum PublicBadgeName {
+#   ZERO_BADGE
+# }
 
-type Score {
-  accountable: Int
-  sovereign: Int
-  userCentric: Int
-  transparent: Int
-  open: Int
-}
+# type OpenBadgeClassCriteria {
+#   narrative: String
+# }
 
-type BadgeClass {
-  name: String
-  id: ID!
-  Score: Score
-}
+# type IssuerVerification {
+#   allowedOrigins: [String]
+# }
 
-type BadgeArtifact {
-  json: String
-  yaml: String
-}
+# type Issuer {
+#   id: ID
+#   type: String
+#   name: String
+#   email: String
+#   verification: IssuerVerification
+# }
 
-type Recipient {
-  type: String
-  email: String
-}
+# type OpenBadgeClass {
+#   type: String
+#   id: ID
+#   name: String!
+#   tags: [String]
+#   description: String
+#   criteria: OpenBadgeClassCriteria!
+# }
 
-type Badge {
-  id: ID!
-  score: Score!
-  type: String
-  recipient: Recipient
-  issuedOn: String
-  expires: String
-  artifact: BadgeArtifact
-}
+# type OpenBadgeArtifact {
+#   json: String
+#   yaml: String
+#   js: OpenBadge
+# }
+
+# type OpenBadge {
+#   id: ID
+#   badgeClass: OpenBadgeClass
+#   type: String
+#   recipient: Recipient
+#   issuedOn: String
+#   expires: String
+#   evidence: [Proof]
+# }
+
+# type Recipient {
+#   type: String
+#   identity: String
+# }
+
+
+# type BadgeScore {
+#   accountable: Int
+#   sovereign: Int
+#   userCentric: Int
+#   transparent: Int
+#   open: Int
+# }
+
+# type Proof {
+#   id: ID
+#   name: String
+#   genre: String
+#   description: String
+#   narrative: String
+# }
+
+
+# type Query {
+#   getBadge(badgeId: ID): PublicBadge
+#   getAllBadges: [PublicBadge]
+# }
+
+# type PublicBadge {
+#   badgeId: ID
+#   badgeClassId: ID
+#   name: String!
+#   tags: [String]
+#   description: String
+#   narrative: String
+#   recipientId: ID
+#   issuedOn: String
+#   expires: String
+# }
