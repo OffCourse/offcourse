@@ -1,0 +1,15 @@
+{
+    "organizationId": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb361",
+    "name": "Waag",
+    "contact": {
+        "name": "John Doe",
+        "email": "johndoe@waag.org"
+    },
+    "admin": {
+        "name": "John Doer",
+        "email": "johndoer@waag.org"
+    },
+    "domains": [
+        "https://www.waag.org"
+    ]
+}

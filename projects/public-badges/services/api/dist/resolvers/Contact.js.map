@@ -1,0 +1,1 @@
+{"version":3,"file":"Contact.js","sourceRoot":"","sources":["../../src/resolvers/Contact.ts"],"names":[],"mappings":";;AAEA,MAAM,OAAO,GAAqB;IAChC,IAAI,CAAC,EAAE,IAAI,EAAE;QACX,OAAO,IAAI,CAAC;IACd,CAAC;IACD,KAAK,CAAC,EAAE,KAAK,EAAE;QACb,OAAO,KAAK,CAAC;IACf,CAAC;CACF,CAAC;AAEF,kBAAe,OAAO,CAAC"}

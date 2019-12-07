@@ -1,0 +1,12 @@
+type PublicSpacesContact {
+  name: String
+  email: String
+}
+
+type PublicSpacesOrganization {
+  organizationId: ID!
+  name: String!
+  contact: PublicSpacesContact!
+  admin: PublicSpacesContact!
+  domains: [String]!
+}

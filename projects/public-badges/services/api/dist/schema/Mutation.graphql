@@ -1,0 +1,23 @@
+input PublicBadgeClassInput {
+  name: String!
+  tags: [String]!
+  narrative: String!
+  description: String!
+}
+
+input ContactInput{
+  name: String
+  email: String
+}
+
+input OrganizationInput {
+  name: String!
+  contact: ContactInput!
+  admin: ContactInput!
+  domains: [String]!
+}
+
+type Mutation {
+  addBadgeClass(input: PublicBadgeClassInput!): PublicBadgeClass
+  registerOrganization(input: OrganizationInput!): Organization
+}

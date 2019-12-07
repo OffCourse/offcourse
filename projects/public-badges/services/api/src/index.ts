@@ -1,26 +1,20 @@
 import "graphql-import-node";
 import { ApolloServer } from "apollo-server-lambda";
-import * as schema from "./schema.graphql";
-import { badges } from "./fixtures";
-import { Resolvers } from "./generated/graphql";
+import * as Schema from "./schema/Schema.graphql";
+import * as Query from "./schema/Query.graphql";
+import * as Mutation from "./schema/Mutation.graphql";
+import * as PublicBadge from "./schema/PublicBadge.graphql";
+import * as Organization from "./schema/Organization.graphql";
+import * as stores from "./stores";
+import resolvers from "./resolvers";
+import { ApolloContext } from "./types";
 
-const typeDefs = schema;
-const resolvers: Resolvers = {
-  Query: {
-    getAllBadges: () => badges,
-    getBadge: (_, { badgeId }, __) => {
-      if (badgeId) {
-        const badge = badges.find((badge) => badge.badgeId = badgeId);
-        return badge || null;
-      }
-      return badges[0]
-    }
-  }
-};
+const context: ApolloContext = { stores };
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers: resolvers as any
+  typeDefs: [Schema, Query, Mutation, PublicBadge, Organization],
+  resolvers,
+  context
 });
 
 export const handler = server.createHandler();

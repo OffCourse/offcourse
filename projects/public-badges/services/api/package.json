@@ -9,7 +9,7 @@
     "start": "concurrently \"tsc -w\"",
     "prebuild": "yarn codegen",
     "build": "tsc",
-    "postbuild": "cp src/schema.graphql dist",
+    "postbuild": "cp src/schema dist -r",
     "predeploy": "yarn build",
     "deploy": "sls deploy"
   },

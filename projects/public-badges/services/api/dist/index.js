@@ -6,27 +6,24 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 require("graphql-import-node");
 const apollo_server_lambda_1 = require("apollo-server-lambda");
-const schema = __importStar(require("./schema.graphql"));
-const fixtures_1 = require("./fixtures");
-const typeDefs = schema;
-const resolvers = {
-    Query: {
-        getAllBadges: () => fixtures_1.badges,
-        getBadge: (_, { badgeId }, __) => {
-            if (badgeId) {
-                const badge = fixtures_1.badges.find((badge) => badge.badgeId = badgeId);
-                return badge || null;
-            }
-            return fixtures_1.badges[0];
-        }
-    }
-};
+const Schema = __importStar(require("./schema/Schema.graphql"));
+const Query = __importStar(require("./schema/Query.graphql"));
+const Mutation = __importStar(require("./schema/Mutation.graphql"));
+const PublicBadge = __importStar(require("./schema/PublicBadge.graphql"));
+const Organization = __importStar(require("./schema/Organization.graphql"));
+const stores = __importStar(require("./stores"));
+const resolvers_1 = __importDefault(require("./resolvers"));
+const context = { stores };
 const server = new apollo_server_lambda_1.ApolloServer({
-    typeDefs,
-    resolvers: resolvers
+    typeDefs: [Schema, Query, Mutation, PublicBadge, Organization],
+    resolvers: resolvers_1.default,
+    context
 });
 exports.handler = server.createHandler();
 //# sourceMappingURL=index.js.map

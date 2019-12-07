@@ -1,0 +1,34 @@
+type Proof {
+  proofId: ID!
+  name: String!
+  genre: String!
+  description: String!
+  narrative: String!
+}
+
+type OpenBadgeArtifact {
+  json: String!
+}
+
+type PublicBadgeClass {
+  badgeClassId: ID!
+  name: String
+  tags: [String]!
+  description: String!
+  narrative: String!
+}
+
+type PublicBadge {
+  badgeId: ID!
+  badgeClassId: ID!
+  badgeClass: PublicBadgeClass!
+  name: String!
+  tags: [String]!
+  description: String!
+  narrative: String!
+  recipientId: ID!
+  issuedOn: String!
+  expires: String!
+  evidence: [Proof]!
+  artifact: OpenBadgeArtifact!
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"Mutation.js","sourceRoot":"","sources":["../../src/resolvers/Mutation.ts"],"names":[],"mappings":";;;;;AAAA,sFAAqE;AACrE,kFAAqD;AAGrD,MAAM,QAAQ,GAAsB;IAClC,aAAa;QACX,OAAO,yBAAU,CAAC;IACpB,CAAC;IACD,oBAAoB;QAClB,OAAO,2BAAwB,CAAC;IAClC,CAAC;CACF,CAAC;AAEF,kBAAe,QAAQ,CAAC"}

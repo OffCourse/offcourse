@@ -1,0 +1,12 @@
+type Contact {
+  name: String
+  email: String
+}
+
+type Organization {
+  organizationId: ID!
+  name: String!
+  contact: Contact!
+  admin: Contact!
+  domains: [String]!
+}
