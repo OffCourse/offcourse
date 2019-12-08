@@ -11,6 +11,20 @@ export type Scalars = {
   Float: number,
 };
 
+export type ApprovedPublicBadge = PublicBadge & {
+   __typename?: 'ApprovedPublicBadge',
+  badgeId: Scalars['ID'],
+  status: Status,
+  badgeClassId: Scalars['ID'],
+  badgeClass: PublicBadgeClass,
+  name: Scalars['String'],
+  tags: Array<Maybe<Scalars['String']>>,
+  description: Scalars['String'],
+  narrative: Scalars['String'],
+  recipientId: Scalars['ID'],
+  evidence: Array<Maybe<Proof>>,
+};
+
 export type Contact = {
    __typename?: 'Contact',
   name: Maybe<Scalars['String']>,
@@ -69,8 +83,8 @@ export type Proof = {
 };
 
 export type PublicBadge = {
-   __typename?: 'PublicBadge',
   badgeId: Scalars['ID'],
+  status: Status,
   badgeClassId: Scalars['ID'],
   badgeClass: PublicBadgeClass,
   name: Scalars['String'],
@@ -78,10 +92,6 @@ export type PublicBadge = {
   description: Scalars['String'],
   narrative: Scalars['String'],
   recipientId: Scalars['ID'],
-  issuedOn: Scalars['String'],
-  expires: Scalars['String'],
-  evidence: Array<Maybe<Proof>>,
-  artifact: OpenBadgeArtifact,
 };
 
 export type PublicBadgeClass = {
@@ -117,6 +127,42 @@ export type QueryGetBadgeArgs = {
 export type QueryGetOrganizationArgs = {
   organizationId: Scalars['ID']
 };
+
+export type RequestedPublicBadge = PublicBadge & {
+   __typename?: 'RequestedPublicBadge',
+  badgeId: Scalars['ID'],
+  status: Status,
+  badgeClassId: Scalars['ID'],
+  badgeClass: PublicBadgeClass,
+  name: Scalars['String'],
+  tags: Array<Maybe<Scalars['String']>>,
+  description: Scalars['String'],
+  narrative: Scalars['String'],
+  recipientId: Scalars['ID'],
+};
+
+export type SignedPublicBadge = PublicBadge & {
+   __typename?: 'SignedPublicBadge',
+  badgeId: Scalars['ID'],
+  status: Status,
+  badgeClassId: Scalars['ID'],
+  badgeClass: PublicBadgeClass,
+  name: Scalars['String'],
+  tags: Array<Maybe<Scalars['String']>>,
+  description: Scalars['String'],
+  narrative: Scalars['String'],
+  recipientId: Scalars['ID'],
+  evidence: Array<Maybe<Proof>>,
+  issuedOn: Scalars['String'],
+  expires: Scalars['String'],
+  artifact: OpenBadgeArtifact,
+};
+
+export enum Status {
+  Requested = 'REQUESTED',
+  Approved = 'APPROVED',
+  Signed = 'SIGNED'
+}
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
 export type ResolversObject<TObject> = WithIndex<TObject>;
@@ -193,10 +239,9 @@ export type ResolversTypes = ResolversObject<{
   Query: ResolverTypeWrapper<{}>,
   ID: ResolverTypeWrapper<Scalars['ID']>,
   PublicBadge: ResolverTypeWrapper<OpenBadge>,
+  Status: Status,
   PublicBadgeClass: ResolverTypeWrapper<PublicBadgeClass>,
   String: ResolverTypeWrapper<Scalars['String']>,
-  Proof: ResolverTypeWrapper<OpenBadgeProof>,
-  OpenBadgeArtifact: ResolverTypeWrapper<OpenBadge>,
   Organization: ResolverTypeWrapper<Organization>,
   Contact: ResolverTypeWrapper<Contact>,
   Mutation: ResolverTypeWrapper<{}>,
@@ -204,6 +249,11 @@ export type ResolversTypes = ResolversObject<{
   OrganizationInput: OrganizationInput,
   ContactInput: ContactInput,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
+  Proof: ResolverTypeWrapper<OpenBadgeProof>,
+  OpenBadgeArtifact: ResolverTypeWrapper<OpenBadge>,
+  RequestedPublicBadge: ResolverTypeWrapper<OpenBadge>,
+  ApprovedPublicBadge: ResolverTypeWrapper<OpenBadge>,
+  SignedPublicBadge: ResolverTypeWrapper<OpenBadge>,
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -211,10 +261,9 @@ export type ResolversParentTypes = ResolversObject<{
   Query: {},
   ID: Scalars['ID'],
   PublicBadge: OpenBadge,
+  Status: Status,
   PublicBadgeClass: PublicBadgeClass,
   String: Scalars['String'],
-  Proof: OpenBadgeProof,
-  OpenBadgeArtifact: OpenBadge,
   Organization: Organization,
   Contact: Contact,
   Mutation: {},
@@ -222,6 +271,24 @@ export type ResolversParentTypes = ResolversObject<{
   OrganizationInput: OrganizationInput,
   ContactInput: ContactInput,
   Boolean: Scalars['Boolean'],
+  Proof: OpenBadgeProof,
+  OpenBadgeArtifact: OpenBadge,
+  RequestedPublicBadge: OpenBadge,
+  ApprovedPublicBadge: OpenBadge,
+  SignedPublicBadge: OpenBadge,
+}>;
+
+export type ApprovedPublicBadgeResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['ApprovedPublicBadge'] = ResolversParentTypes['ApprovedPublicBadge']> = ResolversObject<{
+  badgeId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  status: Resolver<ResolversTypes['Status'], ParentType, ContextType>,
+  badgeClassId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  badgeClass: Resolver<ResolversTypes['PublicBadgeClass'], ParentType, ContextType>,
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  tags: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>,
+  description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  recipientId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  evidence: Resolver<Array<Maybe<ResolversTypes['Proof']>>, ParentType, ContextType>,
 }>;
 
 export type ContactResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Contact'] = ResolversParentTypes['Contact']> = ResolversObject<{
@@ -255,7 +322,9 @@ export type ProofResolvers<ContextType = ApolloContext, ParentType extends Resol
 }>;
 
 export type PublicBadgeResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['PublicBadge'] = ResolversParentTypes['PublicBadge']> = ResolversObject<{
+  __resolveType: TypeResolveFn<'RequestedPublicBadge' | 'ApprovedPublicBadge' | 'SignedPublicBadge', ParentType, ContextType>,
   badgeId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  status: Resolver<ResolversTypes['Status'], ParentType, ContextType>,
   badgeClassId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
   badgeClass: Resolver<ResolversTypes['PublicBadgeClass'], ParentType, ContextType>,
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
@@ -263,10 +332,6 @@ export type PublicBadgeResolvers<ContextType = ApolloContext, ParentType extends
   description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   recipientId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
-  issuedOn: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  expires: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  evidence: Resolver<Array<Maybe<ResolversTypes['Proof']>>, ParentType, ContextType>,
-  artifact: Resolver<ResolversTypes['OpenBadgeArtifact'], ParentType, ContextType>,
 }>;
 
 export type PublicBadgeClassResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['PublicBadgeClass'] = ResolversParentTypes['PublicBadgeClass']> = ResolversObject<{
@@ -284,15 +349,46 @@ export type QueryResolvers<ContextType = ApolloContext, ParentType extends Resol
   getAllOrganizations: Resolver<Maybe<Array<Maybe<ResolversTypes['Organization']>>>, ParentType, ContextType>,
 }>;
 
+export type RequestedPublicBadgeResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['RequestedPublicBadge'] = ResolversParentTypes['RequestedPublicBadge']> = ResolversObject<{
+  badgeId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  status: Resolver<ResolversTypes['Status'], ParentType, ContextType>,
+  badgeClassId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  badgeClass: Resolver<ResolversTypes['PublicBadgeClass'], ParentType, ContextType>,
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  tags: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>,
+  description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  recipientId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+}>;
+
+export type SignedPublicBadgeResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['SignedPublicBadge'] = ResolversParentTypes['SignedPublicBadge']> = ResolversObject<{
+  badgeId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  status: Resolver<ResolversTypes['Status'], ParentType, ContextType>,
+  badgeClassId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  badgeClass: Resolver<ResolversTypes['PublicBadgeClass'], ParentType, ContextType>,
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  tags: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>,
+  description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  recipientId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  evidence: Resolver<Array<Maybe<ResolversTypes['Proof']>>, ParentType, ContextType>,
+  issuedOn: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  expires: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  artifact: Resolver<ResolversTypes['OpenBadgeArtifact'], ParentType, ContextType>,
+}>;
+
 export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
+  ApprovedPublicBadge: ApprovedPublicBadgeResolvers<ContextType>,
   Contact: ContactResolvers<ContextType>,
   Mutation: MutationResolvers<ContextType>,
   OpenBadgeArtifact: OpenBadgeArtifactResolvers<ContextType>,
   Organization: OrganizationResolvers<ContextType>,
   Proof: ProofResolvers<ContextType>,
-  PublicBadge: PublicBadgeResolvers<ContextType>,
+  PublicBadge: PublicBadgeResolvers,
   PublicBadgeClass: PublicBadgeClassResolvers<ContextType>,
   Query: QueryResolvers<ContextType>,
+  RequestedPublicBadge: RequestedPublicBadgeResolvers<ContextType>,
+  SignedPublicBadge: SignedPublicBadgeResolvers<ContextType>,
 }>;
 
 

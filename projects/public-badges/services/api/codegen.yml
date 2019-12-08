@@ -13,6 +13,9 @@ generates:
       contextType: ../types#ApolloContext
       mappers:
         PublicBadge: ../types#OpenBadge
+        RequestedPublicBadge: ../types#OpenBadge
+        ApprovedPublicBadge: ../types#OpenBadge
+        SignedPublicBadge: ../types#OpenBadge
         Proof: ../types#OpenBadgeProof
         OpenBadgeArtifact: ../types#OpenBadge
   ./graphql.schema.json:

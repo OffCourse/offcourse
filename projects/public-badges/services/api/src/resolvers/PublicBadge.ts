@@ -1,11 +1,23 @@
-import { PublicBadgeResolvers } from "../generated/graphql";
+import {
+  PublicBadgeResolvers,
+  Status,
+  RequestedPublicBadgeResolvers,
+  ApprovedPublicBadgeResolvers,
+  SignedPublicBadgeResolvers
+} from "../generated/graphql";
 
 const PublicBadge: PublicBadgeResolvers = {
+  __resolveType() {
+    return "SignedPublicBadge";
+  },
   badgeId({ id }) {
     return id;
   },
   badgeClassId({ badge }) {
     return badge.id;
+  },
+  status() {
+    return Status.Signed;
   },
   badgeClass({ badge }, _args, { stores }) {
     return stores.badgeClass.fetch({ badgeClassId: badge.id });
@@ -24,19 +36,36 @@ const PublicBadge: PublicBadgeResolvers = {
   },
   recipientId({ recipient }) {
     return recipient.identity;
-  },
+  }
+};
+
+const RequestedPublicBadge: RequestedPublicBadgeResolvers = {
+  ...PublicBadge
+};
+
+const ApprovedPublicBadge: ApprovedPublicBadgeResolvers = {
+  ...RequestedPublicBadge,
+  evidence({ evidence }) {
+    return evidence;
+  }
+};
+
+const SignedPublicBadge: SignedPublicBadgeResolvers = {
+  ...ApprovedPublicBadge,
   issuedOn({ issuedOn }) {
     return issuedOn;
   },
   expires({ expires }) {
     return expires;
   },
-  evidence({ evidence }) {
-    return evidence;
-  },
   artifact(badge) {
     return badge;
   }
 };
 
-export default PublicBadge;
+export {
+  PublicBadge,
+  RequestedPublicBadge,
+  ApprovedPublicBadge,
+  SignedPublicBadge
+};
