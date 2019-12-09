@@ -5,6 +5,8 @@ type Contact {
 
 type Organization {
   organizationId: ID!
+  status: Status!
+  path: String!
   name: String!
   contact: Contact!
   admin: Contact!

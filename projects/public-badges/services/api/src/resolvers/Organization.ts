@@ -4,6 +4,12 @@ const Organization: OrganizationResolvers = {
   organizationId({ organizationId }) {
     return organizationId;
   },
+  status({ status }) {
+    return status;
+  },
+  path({ path }) {
+    return path;
+  },
   name({ name }) {
     return name;
   },

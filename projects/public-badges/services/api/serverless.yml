@@ -1,10 +1,22 @@
-service: apollo-lambda
+service: public-badges
+
+custom:
+  registry_bucket: public-badges-registry-${opt:stage}
+  datalake_bucket: public-badges-datalake-${opt:stage}
+
 provider:
   name: aws
   runtime: nodejs10.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:PutObjectAcl
+      Resource: "arn:aws:s3:::${self:custom.datalake_bucket}/*"
+
 functions:
   graphql:
-    handler: dist/index.handler
+    handler: dist/index.graphql
     events:
     - http:
         path: graphql
@@ -14,3 +26,14 @@ functions:
         path: graphql
         method: get
         cors: true
+    environment:
+      DATALAKE_BUCKET: ${self:custom.datalake_bucket}
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+  approve:
+    handler: dist/index.approve
+    events:
+      - s3: ${self:custom.datalake_bucket}
+  indexer:
+    handler: dist/index.approve
+    events:
+      - s3: ${self:custom.registry_bucket}

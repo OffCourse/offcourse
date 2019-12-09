@@ -18,12 +18,6 @@ type PublicBadgeClass {
   narrative: String!
 }
 
-enum Status {
-  REQUESTED
-  APPROVED
-  SIGNED
-}
-
 interface PublicBadge {
   badgeId: ID!
   status: Status!

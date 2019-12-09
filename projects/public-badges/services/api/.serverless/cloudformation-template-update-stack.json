@@ -59,7 +59,19 @@
     "GraphqlLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/apollo-lambda-dev-graphql"
+        "LogGroupName": "/aws/lambda/public-badges-dev-graphql"
+      }
+    },
+    "ApproveLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/public-badges-dev-approve"
+      }
+    },
+    "IndexerLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/public-badges-dev-indexer"
       }
     },
     "IamRoleLambdaExecution": {
@@ -88,7 +100,7 @@
                 "-",
                 [
                   "dev",
-                  "apollo-lambda",
+                  "public-badges",
                   "lambda"
                 ]
               ]
@@ -103,7 +115,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/apollo-lambda-dev*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/public-badges-dev*:*"
                     }
                   ]
                 },
@@ -114,9 +126,17 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/apollo-lambda-dev*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/public-badges-dev*:*:*"
                     }
                   ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:PutObject",
+                    "s3:PutObjectAcl"
+                  ],
+                  "Resource": "arn:aws:s3:::public-badges-datalake-dev/*"
                 }
               ]
             }
@@ -127,7 +147,7 @@
           "Fn::Join": [
             "-",
             [
-              "apollo-lambda",
+              "public-badges",
               "dev",
               {
                 "Ref": "AWS::Region"
@@ -145,10 +165,52 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/apollo-lambda/dev/1575812547967-2019-12-08T13:42:27.967Z/apollo-lambda.zip"
+          "S3Key": "serverless/public-badges/dev/1575929551793-2019-12-09T22:12:31.793Z/public-badges.zip"
         },
-        "FunctionName": "apollo-lambda-dev-graphql",
-        "Handler": "dist/index.handler",
+        "FunctionName": "public-badges-dev-graphql",
+        "Handler": "dist/index.graphql",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs10.x",
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "DATALAKE_BUCKET": "public-badges-datalake-dev",
+            "REGISTRY_BUCKET": "public-badges-registry-dev"
+          }
+        }
+      },
+      "DependsOn": [
+        "GraphqlLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "GraphqlLambdaVersionV8vOJlFCSX8VfISjh4HT364k5VN5JbOlBd0hWxkMVQ": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GraphqlLambdaFunction"
+        },
+        "CodeSha256": "hz8LQ5rR7Jz8OXISCtAGw28HKJvkcVRZMqiUwBw/M30="
+      }
+    },
+    "ApproveLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/public-badges/dev/1575929551793-2019-12-09T22:12:31.793Z/public-badges.zip"
+        },
+        "FunctionName": "public-badges-dev-approve",
+        "Handler": "dist/index.approve",
         "MemorySize": 1024,
         "Role": {
           "Fn::GetAtt": [
@@ -160,24 +222,154 @@
         "Timeout": 6
       },
       "DependsOn": [
-        "GraphqlLogGroup",
+        "ApproveLogGroup",
         "IamRoleLambdaExecution"
       ]
     },
-    "GraphqlLambdaVersionhG4LUq40n4Xlm4Qzic2maoyyrFYAgoutQWvqcRDn4": {
+    "ApproveLambdaVersionMaUya1G4yFB2EpYPR6KrZPwDJYvpaOSg92N2mdqb3Y": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "GraphqlLambdaFunction"
+          "Ref": "ApproveLambdaFunction"
         },
-        "CodeSha256": "MnDI0adrWWSiqBnTHEG5RzVBmoLaZ0mKbAW8Xgq9LfE="
+        "CodeSha256": "hz8LQ5rR7Jz8OXISCtAGw28HKJvkcVRZMqiUwBw/M30="
+      }
+    },
+    "IndexerLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/public-badges/dev/1575929551793-2019-12-09T22:12:31.793Z/public-badges.zip"
+        },
+        "FunctionName": "public-badges-dev-indexer",
+        "Handler": "dist/index.approve",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs10.x",
+        "Timeout": 6
+      },
+      "DependsOn": [
+        "IndexerLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "IndexerLambdaVersion5CTYQ0wL1uPyfzLuS2gY0cT62ZLa3SIWvHm4BzEY": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "IndexerLambdaFunction"
+        },
+        "CodeSha256": "hz8LQ5rR7Jz8OXISCtAGw28HKJvkcVRZMqiUwBw/M30="
+      }
+    },
+    "S3BucketPublicbadgesdatalakedev": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "public-badges-datalake-dev",
+        "NotificationConfiguration": {
+          "LambdaConfigurations": [
+            {
+              "Event": "s3:ObjectCreated:*",
+              "Function": {
+                "Fn::GetAtt": [
+                  "ApproveLambdaFunction",
+                  "Arn"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "ApproveLambdaPermissionPublicbadgesdatalakedevS3"
+      ]
+    },
+    "S3BucketPublicbadgesregistrydev": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "BucketName": "public-badges-registry-dev",
+        "NotificationConfiguration": {
+          "LambdaConfigurations": [
+            {
+              "Event": "s3:ObjectCreated:*",
+              "Function": {
+                "Fn::GetAtt": [
+                  "IndexerLambdaFunction",
+                  "Arn"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "IndexerLambdaPermissionPublicbadgesregistrydevS3"
+      ]
+    },
+    "ApproveLambdaPermissionPublicbadgesdatalakedevS3": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "ApproveLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "s3.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":s3:::public-badges-datalake-dev"
+            ]
+          ]
+        }
+      }
+    },
+    "IndexerLambdaPermissionPublicbadgesregistrydevS3": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "IndexerLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "s3.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":s3:::public-badges-registry-dev"
+            ]
+          ]
+        }
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "dev-apollo-lambda",
+        "Name": "dev-public-badges",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -333,7 +525,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1575812529422": {
+    "ApiGatewayDeployment1575929534884": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -394,7 +586,19 @@
     "GraphqlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GraphqlLambdaVersionhG4LUq40n4Xlm4Qzic2maoyyrFYAgoutQWvqcRDn4"
+        "Ref": "GraphqlLambdaVersionV8vOJlFCSX8VfISjh4HT364k5VN5JbOlBd0hWxkMVQ"
+      }
+    },
+    "ApproveLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "ApproveLambdaVersionMaUya1G4yFB2EpYPR6KrZPwDJYvpaOSg92N2mdqb3Y"
+      }
+    },
+    "IndexerLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "IndexerLambdaVersion5CTYQ0wL1uPyfzLuS2gY0cT62ZLa3SIWvHm4BzEY"
       }
     },
     "ServiceEndpoint": {

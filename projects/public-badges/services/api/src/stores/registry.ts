@@ -1,12 +1,13 @@
 import { RegistryStore } from "../types.js";
 import organization from "../fixtures/organization.json";
+import { Organization } from "../generated/graphql.js";
 
 const registry: RegistryStore = {
   async fetch() {
-    return organization;
+    return organization as Organization;
   },
   async fetchAll() {
-    return [organization];
+    return [organization as Organization];
   }
 };
 

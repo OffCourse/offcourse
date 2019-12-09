@@ -11,7 +11,7 @@
     "build": "tsc",
     "postbuild": "cp src/schema dist -r",
     "predeploy": "yarn build",
-    "deploy": "sls deploy"
+    "deploy": "sls deploy --stage dev"
   },
   "author": "Yeehaa",
   "license": "MIT",
@@ -24,6 +24,8 @@
     "concurrently": "^5.0.0"
   },
   "dependencies": {
+    "@types/aws-lambda": "^8.10.37",
+    "@types/node": "^12.12.14",
     "@types/node-fetch": "^2.5.4",
     "@types/ramda": "^0.26.36",
     "@types/uuid": "^3.4.6",

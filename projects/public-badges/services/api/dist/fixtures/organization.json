@@ -1,6 +1,8 @@
 {
     "organizationId": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb361",
     "name": "Waag",
+    "status": "APPROVED",
+    "path": "/waag",
     "contact": {
         "name": "John Doe",
         "email": "johndoe@waag.org"

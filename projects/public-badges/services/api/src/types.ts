@@ -1,4 +1,9 @@
-import { PublicBadgeClass, Organization } from "./generated/graphql";
+import {
+  PublicBadgeClass,
+  Organization,
+  OrganizationInput,
+  Status
+} from "./generated/graphql";
 
 type OpenBadgeRecipient = {
   identity: string;
@@ -48,6 +53,20 @@ export type PublicBadgesStores = {
   registry: RegistryStore;
 };
 
+export enum PublicBadgesEventType {
+  "ORGANIZATION_REQUESTED_REGISTRATION" = "ORGANIZATION_REQUESTED_REGISTRATION"
+}
+
+export interface PublicBadgesEvent {
+  type: PublicBadgesEventType;
+  data: Organization;
+}
+
+export type PublicBadgesDataLake = {
+  dump: (args: PublicBadgesEvent) => Promise<Organization>;
+};
+
 export interface ApolloContext {
   stores: PublicBadgesStores;
-};
+  datalake: PublicBadgesDataLake;
+}

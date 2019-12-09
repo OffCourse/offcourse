@@ -60,6 +60,8 @@ export type OpenBadgeArtifact = {
 export type Organization = {
    __typename?: 'Organization',
   organizationId: Scalars['ID'],
+  status: Status,
+  path: Scalars['String'],
   name: Scalars['String'],
   contact: Contact,
   admin: Contact,
@@ -307,6 +309,8 @@ export type OpenBadgeArtifactResolvers<ContextType = ApolloContext, ParentType e
 
 export type OrganizationResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Organization'] = ResolversParentTypes['Organization']> = ResolversObject<{
   organizationId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
+  status: Resolver<ResolversTypes['Status'], ParentType, ContextType>,
+  path: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   contact: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,
   admin: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,

@@ -1,20 +1,18 @@
 import "graphql-import-node";
 import { ApolloServer } from "apollo-server-lambda";
-import * as Schema from "./schema/Schema.graphql";
-import * as Query from "./schema/Query.graphql";
-import * as Mutation from "./schema/Mutation.graphql";
-import * as PublicBadge from "./schema/PublicBadge.graphql";
-import * as Organization from "./schema/Organization.graphql";
-import * as stores from "./stores";
 import resolvers from "./resolvers";
-import { ApolloContext } from "./types";
-
-const context: ApolloContext = { stores };
+import typeDefs from "./schema";
+import context from "./context";
+import { Handler } from "aws-lambda";
 
 const server = new ApolloServer({
-  typeDefs: [Schema, Query, Mutation, PublicBadge, Organization],
+  typeDefs,
   resolvers,
   context
 });
 
-export const handler = server.createHandler();
+export const graphql = server.createHandler();
+
+export const approve: Handler = (event, _context, callback) => {
+  callback(null, event);
+};
