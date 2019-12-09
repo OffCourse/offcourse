@@ -54,16 +54,21 @@ export type PublicBadgesStores = {
 };
 
 export enum PublicBadgesEventType {
-  "ORGANIZATION_REQUESTED_REGISTRATION" = "ORGANIZATION_REQUESTED_REGISTRATION"
+  "ORGANIZATION_REGISTRATION_REQUESTED" = "ORGANIZATION_REGISTRATION_REQUESTED",
+  "NEW_BADGECLASS_PROPOSED" = "NEW_BADGECLASS_PROPOSED",
+  "BADGE_ISSUANCE_REQUESTED" = "BADGE_ISSUANCE_REQUESTED"
 }
 
 export interface PublicBadgesEvent {
-  type: PublicBadgesEventType;
-  data: Organization;
+  eventType: PublicBadgesEventType;
+  payload: Organization;
 }
 
 export type PublicBadgesDataLake = {
-  dump: (args: PublicBadgesEvent) => Promise<Organization>;
+  dump: (
+    eventType: PublicBadgesEventType,
+    payload: Organization
+  ) => Promise<Organization>;
 };
 
 export interface ApolloContext {

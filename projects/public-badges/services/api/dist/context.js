@@ -23,7 +23,7 @@ const aws_sdk_1 = __importDefault(require("aws-sdk")); // eslint-disable-line im
 const v1_1 = __importDefault(require("uuid/v1"));
 const s3 = new aws_sdk_1.default.S3();
 const datalake = {
-    dump(event) {
+    dump(eventType, payload) {
         return __awaiter(this, void 0, void 0, function* () {
             const Bucket = process.env.DATALAKE_BUCKET;
             if (!Bucket) {
@@ -33,11 +33,11 @@ const datalake = {
                 .putObject({
                 Bucket,
                 Key: `${v1_1.default()}.json`,
-                Body: JSON.stringify(event, null, 2)
+                Body: JSON.stringify({ eventType, payload }, null, 2)
             })
                 .promise();
             console.log(reply);
-            return event.data;
+            return payload;
         });
     }
 };

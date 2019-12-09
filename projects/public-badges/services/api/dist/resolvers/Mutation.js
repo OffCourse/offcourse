@@ -13,14 +13,8 @@ const Mutation = {
     },
     registerOrganization(_root, { input }, { datalake }) {
         const uuid = v5_1.default("publicspaces.org", v5_1.default.DNS);
-        const organizationId = `urn:uuid:${uuid}`;
-        const status = graphql_js_1.Status.Requested;
-        const event = {
-            type: types_js_1.PublicBadgesEventType.ORGANIZATION_REQUESTED_REGISTRATION,
-            data: Object.assign({}, input, { path: `${uuid}/meta.json`, organizationId,
-                status })
-        };
-        return datalake.dump(event);
+        const payload = Object.assign({}, input, { path: `organizations/${uuid}/meta.json`, organizationId: `urn:uuid:${uuid}`, status: graphql_js_1.Status.Requested });
+        return datalake.dump(types_js_1.PublicBadgesEventType.ORGANIZATION_REQUESTED_REGISTRATION, payload);
     }
 };
 exports.default = Mutation;

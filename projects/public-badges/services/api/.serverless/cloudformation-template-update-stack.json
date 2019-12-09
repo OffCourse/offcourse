@@ -165,7 +165,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1575929551793-2019-12-09T22:12:31.793Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1575930531701-2019-12-09T22:28:51.701Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-graphql",
         "Handler": "dist/index.graphql",
@@ -190,14 +190,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GraphqlLambdaVersionV8vOJlFCSX8VfISjh4HT364k5VN5JbOlBd0hWxkMVQ": {
+    "GraphqlLambdaVersionQgCbE9ULz8HxnVEAhYEsHR7tftXja4KJHqxfcnU": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GraphqlLambdaFunction"
         },
-        "CodeSha256": "hz8LQ5rR7Jz8OXISCtAGw28HKJvkcVRZMqiUwBw/M30="
+        "CodeSha256": "DsAU/g79CiJIyxH2PQfpa4ZMv/7B687BeK8Upbl+ce4="
       }
     },
     "ApproveLambdaFunction": {
@@ -207,7 +207,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1575929551793-2019-12-09T22:12:31.793Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1575930531701-2019-12-09T22:28:51.701Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-approve",
         "Handler": "dist/index.approve",
@@ -226,14 +226,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "ApproveLambdaVersionMaUya1G4yFB2EpYPR6KrZPwDJYvpaOSg92N2mdqb3Y": {
+    "ApproveLambdaVersionrO7d748OgbfWwUAAm5yhMJd6s2H4VL4O95gTKtdyg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApproveLambdaFunction"
         },
-        "CodeSha256": "hz8LQ5rR7Jz8OXISCtAGw28HKJvkcVRZMqiUwBw/M30="
+        "CodeSha256": "DsAU/g79CiJIyxH2PQfpa4ZMv/7B687BeK8Upbl+ce4="
       }
     },
     "IndexerLambdaFunction": {
@@ -243,7 +243,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1575929551793-2019-12-09T22:12:31.793Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1575930531701-2019-12-09T22:28:51.701Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-indexer",
         "Handler": "dist/index.approve",
@@ -262,14 +262,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "IndexerLambdaVersion5CTYQ0wL1uPyfzLuS2gY0cT62ZLa3SIWvHm4BzEY": {
+    "IndexerLambdaVersion4bBeQp6kqXBbTc1Is6NwQATccbRGW1cIxI54gcYE": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "IndexerLambdaFunction"
         },
-        "CodeSha256": "hz8LQ5rR7Jz8OXISCtAGw28HKJvkcVRZMqiUwBw/M30="
+        "CodeSha256": "DsAU/g79CiJIyxH2PQfpa4ZMv/7B687BeK8Upbl+ce4="
       }
     },
     "S3BucketPublicbadgesdatalakedev": {
@@ -525,7 +525,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1575929534884": {
+    "ApiGatewayDeployment1575930513872": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -586,19 +586,19 @@
     "GraphqlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GraphqlLambdaVersionV8vOJlFCSX8VfISjh4HT364k5VN5JbOlBd0hWxkMVQ"
+        "Ref": "GraphqlLambdaVersionQgCbE9ULz8HxnVEAhYEsHR7tftXja4KJHqxfcnU"
       }
     },
     "ApproveLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApproveLambdaVersionMaUya1G4yFB2EpYPR6KrZPwDJYvpaOSg92N2mdqb3Y"
+        "Ref": "ApproveLambdaVersionrO7d748OgbfWwUAAm5yhMJd6s2H4VL4O95gTKtdyg"
       }
     },
     "IndexerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "IndexerLambdaVersion5CTYQ0wL1uPyfzLuS2gY0cT62ZLa3SIWvHm4BzEY"
+        "Ref": "IndexerLambdaVersion4bBeQp6kqXBbTc1Is6NwQATccbRGW1cIxI54gcYE"
       }
     },
     "ServiceEndpoint": {

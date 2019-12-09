@@ -9,7 +9,7 @@ import uuidv1 from "uuid/v1";
 const s3 = new AWS.S3();
 
 const datalake: PublicBadgesDataLake = {
-  async dump(event) {
+  async dump(eventType, payload) {
     const Bucket = process.env.DATALAKE_BUCKET;
     if (!Bucket) {
       throw "Bucket Name is Required";
@@ -18,11 +18,11 @@ const datalake: PublicBadgesDataLake = {
       .putObject({
         Bucket,
         Key: `${uuidv1()}.json`,
-        Body: JSON.stringify(event, null, 2)
+        Body: JSON.stringify({ eventType, payload }, null, 2)
       })
       .promise();
     console.log(reply);
-    return event.data;
+    return payload;
   }
 };
 
