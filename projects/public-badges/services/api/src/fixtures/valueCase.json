@@ -5,12 +5,44 @@
     "manifesto",
     "intention"
   ],
-  "proposedBy": ["yeehaa@offcourse.io", "alain@waag.org"],
+  "proposedBy": [
+    "yeehaa@offcourse.io",
+    "alain@waag.org\""
+  ],
   "approvedBy": "sander@offcourse.io",
-  "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website\n",
+  "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",
   "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n",
-  "scenarios": [{
-    "title": "SOmethign",
-    "statements": ["hdfsjlakd"]
-  }]
+  "scenarios": [
+    {
+      "title": "Organization is listed in Public Spaces Registry",
+      "statements": [
+        "Given a user visits the organizations website",
+        "And the website displays the Zero Badge",
+        "Then the organization is listed in the Public Spaces Registry",
+        "And the Badge is valid",
+        "And the user knows that the organization subscribes to the Public Spaces manifesto"
+      ]
+    },
+    {
+      "title": "Badge is Publicly Visible on Website",
+      "statements": [
+        "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto",
+        "And visits the organizations homepage",
+        "When the user scrolls to the footer of the page",
+        "Then the user should see the Zero Badge",
+        "And the Badge should be displayed with sufficient color contrast",
+        "And the Badge should have sufficient padding around it"
+      ]
+    },
+    {
+      "title": "Website links to Public Spaces Manifesto",
+      "statements": [
+        "Given a user wants to know what the Public Spaces manifesto entails",
+        "And visits the website of an affiliated organization",
+        "When the webiste displays the Zero Badge",
+        "And the user clicks on the Badge",
+        "Then the user should be redirected to the Public Spaces manifesto"
+      ]
+    }
+  ]
 }
