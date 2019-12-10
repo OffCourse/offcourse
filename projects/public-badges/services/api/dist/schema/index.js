@@ -11,8 +11,17 @@ const Schema = __importStar(require("./Schema.graphql"));
 const Query = __importStar(require("./Query.graphql"));
 const Mutation = __importStar(require("./Mutation.graphql"));
 const PublicBadge = __importStar(require("./PublicBadge.graphql"));
+const ValueCase = __importStar(require("./ValueCase.graphql"));
 const Organization = __importStar(require("./Organization.graphql"));
 const Status = __importStar(require("./Status.graphql"));
-const typeDefs = [Schema, Query, Mutation, Status, PublicBadge, Organization];
+const typeDefs = [
+    Schema,
+    Query,
+    Mutation,
+    Status,
+    PublicBadge,
+    ValueCase,
+    Organization
+];
 exports.default = typeDefs;
 //# sourceMappingURL=index.js.map

@@ -1,4 +1,4 @@
-import badgeClass from "../fixtures/badgeClass.json";
+import valueCase from "../fixtures/valueCase.json";
 import { MutationResolvers, Status } from "../generated/graphql.js";
 import uuidv5 from "uuid/v5";
 import { PublicBadgesEventType } from "../types.js";
@@ -10,10 +10,10 @@ const {
 } = PublicBadgesEventType;
 
 const Mutation: MutationResolvers = {
-  addBadgeClass() {
+  proposeValueCase() {
     console.log(NEW_BADGECLASS_PROPOSED);
     console.log(BADGE_ISSUANCE_REQUESTED);
-    return badgeClass;
+    return valueCase;
   },
   registerOrganization(_root, { input }, { datalake }) {
     const uuid = uuidv5("publicspaces.org", uuidv5.DNS);

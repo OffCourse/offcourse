@@ -1,0 +1,16 @@
+{
+    "valueCaseId": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb419",
+    "name": "Zero Badge",
+    "tags": [
+        "manifesto",
+        "intention"
+    ],
+    "proposedBy": ["yeehaa@offcourse.io", "alain@waag.org"],
+    "approvedBy": "sander@offcourse.io",
+    "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website\n",
+    "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n",
+    "scenarios": [{
+            "title": "SOmethign",
+            "statements": ["hdfsjlakd"]
+        }]
+}

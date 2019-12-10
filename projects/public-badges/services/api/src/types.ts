@@ -1,8 +1,6 @@
 import {
-  PublicBadgeClass,
   Organization,
-  OrganizationInput,
-  Status
+  ValueCase
 } from "./generated/graphql";
 
 type OpenBadgeRecipient = {
@@ -43,12 +41,12 @@ export interface Store<A, T> {
   fetchAll: () => Promise<NonNullable<T>[]>;
 }
 
-export type BadgeClassStore = Store<{ badgeClassId: string }, PublicBadgeClass>;
+export type ValueCaseStore = Store<{ valueCaseId: string }, ValueCase>;
 export type BadgeInstanceStore = Store<{ badgeId: string }, OpenBadge | null>;
 export type RegistryStore = Store<{ organizationId: string }, Organization>;
 
 export type PublicBadgesStores = {
-  badgeClass: BadgeClassStore;
+  valueCase: ValueCaseStore;
   badgeInstance: BadgeInstanceStore;
   registry: RegistryStore;
 };

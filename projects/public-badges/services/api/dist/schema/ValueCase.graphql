@@ -1,0 +1,15 @@
+type Scenario {
+  title: String!
+  statements: [String]!
+}
+
+type ValueCase {
+  valueCaseId: ID!
+  name: String
+  tags: [String]!
+  proposedBy: [String!]
+  approvedBy: String!
+  description: String!
+  narrative: String!
+  scenarios: [Scenario]!
+}

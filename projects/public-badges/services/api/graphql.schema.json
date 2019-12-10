@@ -153,7 +153,7 @@
             "deprecationReason": null
           },
           {
-            "name": "badgeClassId",
+            "name": "valueCaseId",
             "description": "",
             "args": [],
             "type": {
@@ -169,7 +169,7 @@
             "deprecationReason": null
           },
           {
-            "name": "badgeClass",
+            "name": "valueCase",
             "description": "",
             "args": [],
             "type": {
@@ -177,7 +177,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "PublicBadgeClass",
+                "name": "ValueCase",
                 "ofType": null
               }
             },
@@ -321,11 +321,11 @@
       },
       {
         "kind": "OBJECT",
-        "name": "PublicBadgeClass",
+        "name": "ValueCase",
         "description": "",
         "fields": [
           {
-            "name": "badgeClassId",
+            "name": "valueCaseId",
             "description": "",
             "args": [],
             "type": {
@@ -373,6 +373,42 @@
             "deprecationReason": null
           },
           {
+            "name": "proposedBy",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "approvedBy",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "description",
             "description": "",
             "args": [],
@@ -403,6 +439,26 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "scenarios",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Scenario",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -417,6 +473,53 @@
         "fields": null,
         "inputFields": null,
         "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Scenario",
+        "description": "",
+        "fields": [
+          {
+            "name": "title",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "statements",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -588,7 +691,7 @@
         "description": "",
         "fields": [
           {
-            "name": "addBadgeClass",
+            "name": "proposeValueCase",
             "description": "",
             "args": [
               {
@@ -599,7 +702,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "PublicBadgeClassInput",
+                    "name": "ValueCaseInput",
                     "ofType": null
                   }
                 },
@@ -608,7 +711,7 @@
             ],
             "type": {
               "kind": "OBJECT",
-              "name": "PublicBadgeClass",
+              "name": "ValueCase",
               "ofType": null
             },
             "isDeprecated": false,
@@ -649,7 +752,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PublicBadgeClassInput",
+        "name": "ValueCaseInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -1782,7 +1885,7 @@
             "deprecationReason": null
           },
           {
-            "name": "badgeClassId",
+            "name": "valueCaseId",
             "description": "",
             "args": [],
             "type": {
@@ -1798,7 +1901,7 @@
             "deprecationReason": null
           },
           {
-            "name": "badgeClass",
+            "name": "valueCase",
             "description": "",
             "args": [],
             "type": {
@@ -1806,7 +1909,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "PublicBadgeClass",
+                "name": "ValueCase",
                 "ofType": null
               }
             },
@@ -1947,7 +2050,7 @@
             "deprecationReason": null
           },
           {
-            "name": "badgeClassId",
+            "name": "valueCaseId",
             "description": "",
             "args": [],
             "type": {
@@ -1963,7 +2066,7 @@
             "deprecationReason": null
           },
           {
-            "name": "badgeClass",
+            "name": "valueCase",
             "description": "",
             "args": [],
             "type": {
@@ -1971,7 +2074,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "PublicBadgeClass",
+                "name": "ValueCase",
                 "ofType": null
               }
             },
@@ -2132,7 +2235,7 @@
             "deprecationReason": null
           },
           {
-            "name": "badgeClassId",
+            "name": "valueCaseId",
             "description": "",
             "args": [],
             "type": {
@@ -2148,7 +2251,7 @@
             "deprecationReason": null
           },
           {
-            "name": "badgeClass",
+            "name": "valueCase",
             "description": "",
             "args": [],
             "type": {
@@ -2156,7 +2259,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "PublicBadgeClass",
+                "name": "ValueCase",
                 "ofType": null
               }
             },

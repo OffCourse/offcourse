@@ -8,7 +8,7 @@ import {
   ApprovedPublicBadge,
   SignedPublicBadge
 } from "./PublicBadge";
-import PublicBadgeClass from "./PublicBadgeClass";
+import { ValueCase, Scenario } from "./ValueCase";
 import Organization from "./Organization";
 import Contact from "./Contact";
 import OpenBadgeArtifact from "./OpenBadgeArtifact";
@@ -21,7 +21,8 @@ const resolvers: Resolvers = {
   RequestedPublicBadge,
   ApprovedPublicBadge,
   SignedPublicBadge,
-  PublicBadgeClass,
+  ValueCase,
+  Scenario,
   Organization,
   Contact,
   OpenBadgeArtifact

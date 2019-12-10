@@ -8,14 +8,14 @@ const PublicBadge = {
     badgeId({ id }) {
         return id;
     },
-    badgeClassId({ badge }) {
+    valueCaseId({ badge }) {
         return badge.id;
     },
     status() {
         return graphql_1.Status.Signed;
     },
-    badgeClass({ badge }, _args, { stores }) {
-        return stores.badgeClass.fetch({ badgeClassId: badge.id });
+    valueCase({ badge }, _args, { stores }) {
+        return stores.valueCase.fetch({ valueCaseId: badge.id });
     },
     name({ badge }) {
         return badge.name;

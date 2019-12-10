@@ -11,18 +11,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const badgeClass_json_1 = __importDefault(require("../fixtures/badgeClass.json"));
-const badgeClass = {
+const feature_json_1 = __importDefault(require("../fixtures/feature.json"));
+const feature = {
     fetch() {
         return __awaiter(this, void 0, void 0, function* () {
-            return badgeClass_json_1.default;
+            return feature_json_1.default;
         });
     },
     fetchAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            return [badgeClass_json_1.default];
+            return [feature_json_1.default];
         });
     }
 };
-exports.default = badgeClass;
+exports.default = feature;
 //# sourceMappingURL=badgeClass.js.map

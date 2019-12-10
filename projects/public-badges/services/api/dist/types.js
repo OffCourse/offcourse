@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var PublicBadgesEventType;
 (function (PublicBadgesEventType) {
-    PublicBadgesEventType["ORGANIZATION_REQUESTED_REGISTRATION"] = "ORGANIZATION_REQUESTED_REGISTRATION";
+    PublicBadgesEventType["ORGANIZATION_REGISTRATION_REQUESTED"] = "ORGANIZATION_REGISTRATION_REQUESTED";
+    PublicBadgesEventType["NEW_BADGECLASS_PROPOSED"] = "NEW_BADGECLASS_PROPOSED";
+    PublicBadgesEventType["BADGE_ISSUANCE_REQUESTED"] = "BADGE_ISSUANCE_REQUESTED";
 })(PublicBadgesEventType = exports.PublicBadgesEventType || (exports.PublicBadgesEventType = {}));
 //# sourceMappingURL=types.js.map

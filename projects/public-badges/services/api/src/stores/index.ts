@@ -1,5 +1,5 @@
-import badgeClass from "./badgeClass";
+import valueCase from "./valueCase";
 import badgeInstance from "./badgeInstance";
 import registry from "./registry";
 
-export { badgeClass, badgeInstance, registry };
+export { valueCase, badgeInstance, registry };
