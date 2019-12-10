@@ -36,8 +36,8 @@ export interface PublicBadgesEvent {
   payload: Organization;
 }
 
-export type PublicBadgesDataLake = {
-  dump: (
+export type PublicBadgesEventBus = {
+  put: (
     eventType: PublicBadgesEventType,
     payload: Organization
   ) => Promise<Organization>;
@@ -45,5 +45,5 @@ export type PublicBadgesDataLake = {
 
 export interface ApolloContext {
   stores: PublicBadgesStores;
-  datalake: PublicBadgesDataLake;
+  eventBus: PublicBadgesEventBus;
 }

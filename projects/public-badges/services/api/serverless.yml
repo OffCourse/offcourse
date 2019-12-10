@@ -1,6 +1,7 @@
 service: public-badges
 
 custom:
+  event_bus: public-badges-${opt:stage}
   registry_bucket: public-badges-registry-${opt:stage}
   datalake_bucket: public-badges-datalake-${opt:stage}
 
@@ -13,22 +14,36 @@ provider:
         - s3:PutObject
         - s3:PutObjectAcl
       Resource: "arn:aws:s3:::${self:custom.datalake_bucket}/*"
+    - Effect: Allow
+      Action:
+        - events:PutEvents
+      Resource: "*"
+
 
 functions:
   graphql:
     handler: dist/index.graphql
     events:
-    - http:
-        path: graphql
-        method: post
-        cors: true
-    - http:
-        path: graphql
-        method: get
-        cors: true
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
     environment:
       DATALAKE_BUCKET: ${self:custom.datalake_bucket}
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      EVENT_BUS: ${self:custom.event_bus}
+  echo:
+    handler: dist/index.echo
+    events:
+      - eventBridge:
+          eventBus: ${self:custom.event_bus}
+          pattern:
+            source:
+              - public-badges.api-handler
   approve:
     handler: dist/index.approve
     events:

@@ -3,6 +3,7 @@ import Query from "./Query";
 import Mutation from "./Mutation";
 import Proof from "./Proof";
 import {
+  OpenBadgeArtifact,
   OpenBadge,
   OpenBadgeClass,
   OpenBadgeCriteria,
@@ -18,7 +19,6 @@ import {
 import { ValueCase, Scenario } from "./ValueCase";
 import Organization from "./Organization";
 import Contact from "./Contact";
-import OpenBadgeArtifact from "./OpenBadgeArtifact";
 
 const resolvers: Resolvers = {
   ApprovedPublicBadge,

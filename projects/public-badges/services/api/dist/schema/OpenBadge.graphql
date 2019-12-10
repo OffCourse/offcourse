@@ -30,3 +30,8 @@ type OpenBadge {
   expires: String!
   evidence: [OpenBadgeProof]!
 }
+
+type OpenBadgeArtifact {
+  json: String!
+  js: OpenBadge!
+}

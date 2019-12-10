@@ -1,24 +1,25 @@
 import * as stores from "./stores";
-import {
-  ApolloContext,
-  PublicBadgesDataLake,
-} from "./types";
+import { ApolloContext, PublicBadgesEventBus } from "./types";
 import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependencies
-import uuidv1 from "uuid/v1";
 
-const s3 = new AWS.S3();
+const eventBridge = new AWS.EventBridge({ region: 'us-east-1' });
 
-const datalake: PublicBadgesDataLake = {
-  async dump(eventType, payload) {
-    const Bucket = process.env.DATALAKE_BUCKET;
-    if (!Bucket) {
-      throw "Bucket Name is Required";
+const eventBus: PublicBadgesEventBus = {
+  async put(eventType, payload) {
+    const EventBusName = process.env.EVENT_BUS;
+    if (!EventBusName) {
+      throw "Event Bus Name is Required";
     }
-    const reply = await s3
-      .putObject({
-        Bucket,
-        Key: `${uuidv1()}.json`,
-        Body: JSON.stringify({ eventType, payload }, null, 2)
+    const reply = await eventBridge
+      .putEvents({
+        Entries: [
+          {
+            EventBusName,
+            Source: "public-badges.api-handler",
+            DetailType: eventType,
+            Detail: JSON.stringify({ eventType, payload }, null, 2)
+          }
+        ]
       })
       .promise();
     console.log(reply);
@@ -26,6 +27,6 @@ const datalake: PublicBadgesDataLake = {
   }
 };
 
-const context: ApolloContext = { stores, datalake };
+const context: ApolloContext = { stores, eventBus };
 
 export default context;

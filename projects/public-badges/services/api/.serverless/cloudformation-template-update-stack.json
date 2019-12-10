@@ -62,6 +62,12 @@
         "LogGroupName": "/aws/lambda/public-badges-dev-graphql"
       }
     },
+    "EchoLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/public-badges-dev-echo"
+      }
+    },
     "ApproveLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
@@ -137,6 +143,13 @@
                     "s3:PutObjectAcl"
                   ],
                   "Resource": "arn:aws:s3:::public-badges-datalake-dev/*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "events:PutEvents"
+                  ],
+                  "Resource": "*"
                 }
               ]
             }
@@ -165,7 +178,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1575973362035-2019-12-10T10:22:42.035Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-graphql",
         "Handler": "dist/index.graphql",
@@ -181,7 +194,8 @@
         "Environment": {
           "Variables": {
             "DATALAKE_BUCKET": "public-badges-datalake-dev",
-            "REGISTRY_BUCKET": "public-badges-registry-dev"
+            "REGISTRY_BUCKET": "public-badges-registry-dev",
+            "EVENT_BUS": "public-badges-dev"
           }
         }
       },
@@ -190,14 +204,50 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GraphqlLambdaVersionP7OPnjU3nzCFg5xzI9xVMxPaKCv9gkZeztrej76zLQ": {
+    "GraphqlLambdaVersionnxxFEMgz0q0hrbuL9f0yLGuGJxJk3V9fkmj01fgbvbM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GraphqlLambdaFunction"
         },
-        "CodeSha256": "g/oH14+JRuiBJXULzhWWR9dpFU4cR81i+wvkqqPhrbc="
+        "CodeSha256": "tVASK4Iydq8FGqd/V2BqyBP+m0aOjX57hKo4Zh23YsU="
+      }
+    },
+    "EchoLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/public-badges.zip"
+        },
+        "FunctionName": "public-badges-dev-echo",
+        "Handler": "dist/index.echo",
+        "MemorySize": 1024,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        },
+        "Runtime": "nodejs10.x",
+        "Timeout": 6
+      },
+      "DependsOn": [
+        "EchoLogGroup",
+        "IamRoleLambdaExecution"
+      ]
+    },
+    "EchoLambdaVersionEvevmMDzsVJDQywk6dL9meLAwIzlBRAQmYMXx5VZn4": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "EchoLambdaFunction"
+        },
+        "CodeSha256": "tVASK4Iydq8FGqd/V2BqyBP+m0aOjX57hKo4Zh23YsU="
       }
     },
     "ApproveLambdaFunction": {
@@ -207,7 +257,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1575973362035-2019-12-10T10:22:42.035Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-approve",
         "Handler": "dist/index.approve",
@@ -226,14 +276,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "ApproveLambdaVersionzbhEjoE7W6TpMJpLSupj9edlaEI8HkhbyHqSW6aBQM": {
+    "ApproveLambdaVersionSAaox7XUbCCGTv2N1z9IpllrzdmPy0luVZZ0LX67M": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApproveLambdaFunction"
         },
-        "CodeSha256": "g/oH14+JRuiBJXULzhWWR9dpFU4cR81i+wvkqqPhrbc="
+        "CodeSha256": "tVASK4Iydq8FGqd/V2BqyBP+m0aOjX57hKo4Zh23YsU="
       }
     },
     "IndexerLambdaFunction": {
@@ -243,7 +293,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1575973362035-2019-12-10T10:22:42.035Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-indexer",
         "Handler": "dist/index.approve",
@@ -262,14 +312,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "IndexerLambdaVersionE310r4tMhe6nSjZLxbN7NDsjqxIUzgzHwqLzWNFha0": {
+    "IndexerLambdaVersions7sEp6mHh1mySWlOnHzkWR8qb8fQ9zSqGffDaIv6CA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "IndexerLambdaFunction"
         },
-        "CodeSha256": "g/oH14+JRuiBJXULzhWWR9dpFU4cR81i+wvkqqPhrbc="
+        "CodeSha256": "tVASK4Iydq8FGqd/V2BqyBP+m0aOjX57hKo4Zh23YsU="
       }
     },
     "S3BucketPublicbadgesdatalakedev": {
@@ -525,7 +575,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1575973345203": {
+    "ApiGatewayDeployment1576020105258": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -575,6 +625,166 @@
           ]
         }
       }
+    },
+    "EchoCustomEventBridge1": {
+      "Type": "Custom::EventBridge",
+      "Version": 1,
+      "DependsOn": [
+        "EchoLambdaFunction",
+        "CustomDashresourceDasheventDashbridgeLambdaFunction"
+      ],
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "CustomDashresourceDasheventDashbridgeLambdaFunction",
+            "Arn"
+          ]
+        },
+        "FunctionName": "public-badges-dev-echo",
+        "EventBridgeConfig": {
+          "RuleName": "public-badges-dev-echo-rule-1",
+          "EventBus": "public-badges-dev",
+          "Pattern": {
+            "source": [
+              "public-badges.api-handler"
+            ]
+          }
+        }
+      }
+    },
+    "IamRoleCustomResourcesLambdaExecution": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": {
+              "Fn::Join": [
+                "-",
+                [
+                  "dev",
+                  "public-badges",
+                  "custom-resources-lambda"
+                ]
+              ]
+            },
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      ":",
+                      [
+                        "arn:aws:events",
+                        {
+                          "Ref": "AWS::Region"
+                        },
+                        {
+                          "Ref": "AWS::AccountId"
+                        },
+                        "event-bus/public-badges-dev"
+                      ]
+                    ]
+                  },
+                  "Action": [
+                    "events:CreateEventBus",
+                    "events:DeleteEventBus"
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      ":",
+                      [
+                        "arn:aws:events",
+                        {
+                          "Ref": "AWS::Region"
+                        },
+                        {
+                          "Ref": "AWS::AccountId"
+                        },
+                        "rule/public-badges-dev/public-badges-dev-echo-rule-1"
+                      ]
+                    ]
+                  },
+                  "Action": [
+                    "events:PutRule",
+                    "events:RemoveTargets",
+                    "events:PutTargets",
+                    "events:DeleteRule"
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Resource": {
+                    "Fn::Join": [
+                      ":",
+                      [
+                        "arn:aws:lambda",
+                        {
+                          "Ref": "AWS::Region"
+                        },
+                        {
+                          "Ref": "AWS::AccountId"
+                        },
+                        "function",
+                        "public-badges-dev-echo"
+                      ]
+                    ]
+                  },
+                  "Action": [
+                    "lambda:AddPermission",
+                    "lambda:RemovePermission"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "CustomDashresourceDasheventDashbridgeLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/custom-resources.zip"
+        },
+        "FunctionName": "public-badges-dev-custom-resource-event-bridge",
+        "Handler": "eventBridge/handler.handler",
+        "MemorySize": 1024,
+        "Runtime": "nodejs12.x",
+        "Timeout": 180,
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleCustomResourcesLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "IamRoleCustomResourcesLambdaExecution"
+      ]
     }
   },
   "Outputs": {
@@ -586,19 +796,25 @@
     "GraphqlLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GraphqlLambdaVersionP7OPnjU3nzCFg5xzI9xVMxPaKCv9gkZeztrej76zLQ"
+        "Ref": "GraphqlLambdaVersionnxxFEMgz0q0hrbuL9f0yLGuGJxJk3V9fkmj01fgbvbM"
+      }
+    },
+    "EchoLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "EchoLambdaVersionEvevmMDzsVJDQywk6dL9meLAwIzlBRAQmYMXx5VZn4"
       }
     },
     "ApproveLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApproveLambdaVersionzbhEjoE7W6TpMJpLSupj9edlaEI8HkhbyHqSW6aBQM"
+        "Ref": "ApproveLambdaVersionSAaox7XUbCCGTv2N1z9IpllrzdmPy0luVZZ0LX67M"
       }
     },
     "IndexerLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "IndexerLambdaVersionE310r4tMhe6nSjZLxbN7NDsjqxIUzgzHwqLzWNFha0"
+        "Ref": "IndexerLambdaVersions7sEp6mHh1mySWlOnHzkWR8qb8fQ9zSqGffDaIv6CA"
       }
     },
     "ServiceEndpoint": {

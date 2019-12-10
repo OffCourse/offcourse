@@ -65,6 +65,7 @@ export type OpenBadge = {
 export type OpenBadgeArtifact = {
    __typename?: 'OpenBadgeArtifact',
   json: Scalars['String'],
+  js: OpenBadge,
 };
 
 export type OpenBadgeClass = {
@@ -305,8 +306,8 @@ export type ResolversTypes = ResolversObject<{
   OpenBadgeCriteria: ResolverTypeWrapper<OpenBadgeCriteria>,
   OpenBadgeClass: ResolverTypeWrapper<OpenBadgeClass>,
   OpenBadge: ResolverTypeWrapper<OpenBadge>,
-  Proof: ResolverTypeWrapper<OpenBadgeProof>,
   OpenBadgeArtifact: ResolverTypeWrapper<OpenBadge>,
+  Proof: ResolverTypeWrapper<OpenBadgeProof>,
   RequestedPublicBadge: ResolverTypeWrapper<OpenBadge>,
   ApprovedPublicBadge: ResolverTypeWrapper<OpenBadge>,
   SignedPublicBadge: ResolverTypeWrapper<OpenBadge>,
@@ -333,8 +334,8 @@ export type ResolversParentTypes = ResolversObject<{
   OpenBadgeCriteria: OpenBadgeCriteria,
   OpenBadgeClass: OpenBadgeClass,
   OpenBadge: OpenBadge,
-  Proof: OpenBadgeProof,
   OpenBadgeArtifact: OpenBadge,
+  Proof: OpenBadgeProof,
   RequestedPublicBadge: OpenBadge,
   ApprovedPublicBadge: OpenBadge,
   SignedPublicBadge: OpenBadge,
@@ -374,6 +375,7 @@ export type OpenBadgeResolvers<ContextType = ApolloContext, ParentType extends R
 
 export type OpenBadgeArtifactResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['OpenBadgeArtifact'] = ResolversParentTypes['OpenBadgeArtifact']> = ResolversObject<{
   json: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  js: Resolver<ResolversTypes['OpenBadge'], ParentType, ContextType>,
 }>;
 
 export type OpenBadgeClassResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['OpenBadgeClass'] = ResolversParentTypes['OpenBadgeClass']> = ResolversObject<{

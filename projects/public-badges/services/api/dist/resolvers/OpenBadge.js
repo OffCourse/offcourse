@@ -1,5 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const OpenBadgeArtifact = {
+    json(badge) {
+        return JSON.stringify(badge);
+    },
+    js(badge) {
+        return badge;
+    }
+};
+exports.OpenBadgeArtifact = OpenBadgeArtifact;
 const OpenBadgeCriteria = {
     narrative({ narrative }) {
         return narrative;

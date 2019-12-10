@@ -20,20 +20,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const stores = __importStar(require("./stores"));
 const aws_sdk_1 = __importDefault(require("aws-sdk")); // eslint-disable-line import/no-extraneous-dependencies
-const v1_1 = __importDefault(require("uuid/v1"));
-const s3 = new aws_sdk_1.default.S3();
-const datalake = {
-    dump(eventType, payload) {
+const eventBridge = new aws_sdk_1.default.EventBridge({ region: 'us-east-1' });
+const eventBus = {
+    put(eventType, payload) {
         return __awaiter(this, void 0, void 0, function* () {
-            const Bucket = process.env.DATALAKE_BUCKET;
-            if (!Bucket) {
-                throw "Bucket Name is Required";
+            const EventBusName = process.env.EVENT_BUS;
+            if (!EventBusName) {
+                throw "Event Bus Name is Required";
             }
-            const reply = yield s3
-                .putObject({
-                Bucket,
-                Key: `${v1_1.default()}.json`,
-                Body: JSON.stringify({ eventType, payload }, null, 2)
+            const reply = yield eventBridge
+                .putEvents({
+                Entries: [
+                    {
+                        EventBusName,
+                        Source: "public-badges.api-handler",
+                        DetailType: eventType,
+                        Detail: JSON.stringify({ eventType, payload }, null, 2)
+                    }
+                ]
             })
                 .promise();
             console.log(reply);
@@ -41,6 +45,6 @@ const datalake = {
         });
     }
 };
-const context = { stores, datalake };
+const context = { stores, eventBus };
 exports.default = context;
 //# sourceMappingURL=context.js.map

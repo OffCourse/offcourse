@@ -17,4 +17,8 @@ exports.graphql = server.createHandler();
 exports.approve = (event, _context, callback) => {
     callback(null, event);
 };
+exports.echo = (event, _context, callback) => {
+    console.log("EVENT:", JSON.stringify(event, null, 2));
+    callback(null, event);
+};
 //# sourceMappingURL=index.js.map

@@ -16,3 +16,8 @@ export const graphql = server.createHandler();
 export const approve: Handler = (event, _context, callback) => {
   callback(null, event);
 };
+
+export const echo: Handler = (event, _context, callback) => {
+  console.log("EVENT:", JSON.stringify(event, null, 2));
+  callback(null, event);
+};

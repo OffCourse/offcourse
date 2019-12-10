@@ -15,7 +15,7 @@ const Mutation: MutationResolvers = {
     console.log(BADGE_ISSUANCE_REQUESTED);
     return valueCase;
   },
-  registerOrganization(_root, { input }, { datalake }) {
+  registerOrganization(_root, { input }, { eventBus }) {
     const uuid = uuidv5("publicspaces.org", uuidv5.DNS);
     const payload = {
       ...input,
@@ -23,7 +23,7 @@ const Mutation: MutationResolvers = {
       organizationId: `urn:uuid:${uuid}`,
       status: Status.Requested
     };
-    return datalake.dump(ORGANIZATION_REGISTRATION_REQUESTED, payload);
+    return eventBus.put(ORGANIZATION_REGISTRATION_REQUESTED, payload);
   }
 };
 

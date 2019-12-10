@@ -14,10 +14,10 @@ const Mutation = {
         console.log(BADGE_ISSUANCE_REQUESTED);
         return valueCase_json_1.default;
     },
-    registerOrganization(_root, { input }, { datalake }) {
+    registerOrganization(_root, { input }, { eventBus }) {
         const uuid = v5_1.default("publicspaces.org", v5_1.default.DNS);
         const payload = Object.assign({}, input, { path: `organizations/${uuid}/meta.json`, organizationId: `urn:uuid:${uuid}`, status: graphql_js_1.Status.Requested });
-        return datalake.dump(ORGANIZATION_REGISTRATION_REQUESTED, payload);
+        return eventBus.put(ORGANIZATION_REGISTRATION_REQUESTED, payload);
     }
 };
 exports.default = Mutation;
