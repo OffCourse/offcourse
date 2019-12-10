@@ -1,40 +1,14 @@
 import {
   Organization,
-  ValueCase
+  ValueCase,
+  OpenBadgeProof as OBP,
+  OpenBadgeClass as OBC,
+  OpenBadge as OB
 } from "./generated/graphql";
 
-type OpenBadgeRecipient = {
-  identity: string;
-  type: string;
-};
-
-type OpenBadgeCriteria = {
-  narrative: string;
-};
-
-export type OpenBadgeProof = {
-  id: string;
-  name: string;
-  genre: string;
-  description: string;
-  narrative: string;
-};
-export type OpenBadgeClass = {
-  id: string;
-  name: string;
-  tags: string[];
-  description: string;
-  criteria: OpenBadgeCriteria;
-};
-
-export interface OpenBadge {
-  id: string;
-  badge: OpenBadgeClass;
-  recipient: OpenBadgeRecipient;
-  issuedOn: string;
-  expires: string;
-  evidence: OpenBadgeProof[];
-}
+export type OpenBadgeProof = OBP;
+export type OpenBadgeClass = OBC;
+export type OpenBadge = OB;
 
 export interface Store<A, T> {
   fetch: (args: A) => Promise<T>;

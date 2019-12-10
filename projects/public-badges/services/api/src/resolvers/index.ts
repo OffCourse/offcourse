@@ -3,6 +3,13 @@ import Query from "./Query";
 import Mutation from "./Mutation";
 import Proof from "./Proof";
 import {
+  OpenBadge,
+  OpenBadgeClass,
+  OpenBadgeCriteria,
+  OpenBadgeProof,
+  OpenBadgeRecipient
+} from "./OpenBadge";
+import {
   PublicBadge,
   RequestedPublicBadge,
   ApprovedPublicBadge,
@@ -14,18 +21,23 @@ import Contact from "./Contact";
 import OpenBadgeArtifact from "./OpenBadgeArtifact";
 
 const resolvers: Resolvers = {
-  Query,
+  ApprovedPublicBadge,
+  Contact,
   Mutation,
+  OpenBadge,
+  OpenBadgeArtifact,
+  OpenBadgeClass,
+  OpenBadgeCriteria,
+  OpenBadgeProof,
+  OpenBadgeRecipient,
+  Organization,
   Proof,
+  Query,
   PublicBadge,
   RequestedPublicBadge,
-  ApprovedPublicBadge,
-  SignedPublicBadge,
-  ValueCase,
   Scenario,
-  Organization,
-  Contact,
-  OpenBadgeArtifact
+  SignedPublicBadge,
+  ValueCase
 };
 
 export default resolvers;

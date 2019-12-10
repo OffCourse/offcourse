@@ -52,9 +52,48 @@ export type MutationRegisterOrganizationArgs = {
   input: OrganizationInput
 };
 
+export type OpenBadge = {
+   __typename?: 'OpenBadge',
+  id: Scalars['String'],
+  badge: OpenBadgeClass,
+  recipient: OpenBadgeRecipient,
+  issuedOn: Scalars['String'],
+  expires: Scalars['String'],
+  evidence: Array<Maybe<OpenBadgeProof>>,
+};
+
 export type OpenBadgeArtifact = {
    __typename?: 'OpenBadgeArtifact',
   json: Scalars['String'],
+};
+
+export type OpenBadgeClass = {
+   __typename?: 'OpenBadgeClass',
+  id: Scalars['String'],
+  name: Scalars['String'],
+  tags: Array<Maybe<Scalars['String']>>,
+  description: Scalars['String'],
+  criteria: OpenBadgeCriteria,
+};
+
+export type OpenBadgeCriteria = {
+   __typename?: 'OpenBadgeCriteria',
+  narrative: Scalars['String'],
+};
+
+export type OpenBadgeProof = {
+   __typename?: 'OpenBadgeProof',
+  id: Scalars['String'],
+  name: Scalars['String'],
+  genre: Scalars['String'],
+  description: Scalars['String'],
+  narrative: Scalars['String'],
+};
+
+export type OpenBadgeRecipient = {
+   __typename?: 'OpenBadgeRecipient',
+  identity: Scalars['String'],
+  type: Scalars['String'],
 };
 
 export type Organization = {
@@ -261,6 +300,11 @@ export type ResolversTypes = ResolversObject<{
   OrganizationInput: OrganizationInput,
   ContactInput: ContactInput,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
+  OpenBadgeRecipient: ResolverTypeWrapper<OpenBadgeRecipient>,
+  OpenBadgeProof: ResolverTypeWrapper<OpenBadgeProof>,
+  OpenBadgeCriteria: ResolverTypeWrapper<OpenBadgeCriteria>,
+  OpenBadgeClass: ResolverTypeWrapper<OpenBadgeClass>,
+  OpenBadge: ResolverTypeWrapper<OpenBadge>,
   Proof: ResolverTypeWrapper<OpenBadgeProof>,
   OpenBadgeArtifact: ResolverTypeWrapper<OpenBadge>,
   RequestedPublicBadge: ResolverTypeWrapper<OpenBadge>,
@@ -284,6 +328,11 @@ export type ResolversParentTypes = ResolversObject<{
   OrganizationInput: OrganizationInput,
   ContactInput: ContactInput,
   Boolean: Scalars['Boolean'],
+  OpenBadgeRecipient: OpenBadgeRecipient,
+  OpenBadgeProof: OpenBadgeProof,
+  OpenBadgeCriteria: OpenBadgeCriteria,
+  OpenBadgeClass: OpenBadgeClass,
+  OpenBadge: OpenBadge,
   Proof: OpenBadgeProof,
   OpenBadgeArtifact: OpenBadge,
   RequestedPublicBadge: OpenBadge,
@@ -314,8 +363,42 @@ export type MutationResolvers<ContextType = ApolloContext, ParentType extends Re
   registerOrganization: Resolver<Maybe<ResolversTypes['Organization']>, ParentType, ContextType, RequireFields<MutationRegisterOrganizationArgs, 'input'>>,
 }>;
 
+export type OpenBadgeResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['OpenBadge'] = ResolversParentTypes['OpenBadge']> = ResolversObject<{
+  id: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  badge: Resolver<ResolversTypes['OpenBadgeClass'], ParentType, ContextType>,
+  recipient: Resolver<ResolversTypes['OpenBadgeRecipient'], ParentType, ContextType>,
+  issuedOn: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  expires: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  evidence: Resolver<Array<Maybe<ResolversTypes['OpenBadgeProof']>>, ParentType, ContextType>,
+}>;
+
 export type OpenBadgeArtifactResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['OpenBadgeArtifact'] = ResolversParentTypes['OpenBadgeArtifact']> = ResolversObject<{
   json: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+}>;
+
+export type OpenBadgeClassResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['OpenBadgeClass'] = ResolversParentTypes['OpenBadgeClass']> = ResolversObject<{
+  id: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  tags: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>,
+  description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  criteria: Resolver<ResolversTypes['OpenBadgeCriteria'], ParentType, ContextType>,
+}>;
+
+export type OpenBadgeCriteriaResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['OpenBadgeCriteria'] = ResolversParentTypes['OpenBadgeCriteria']> = ResolversObject<{
+  narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+}>;
+
+export type OpenBadgeProofResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['OpenBadgeProof'] = ResolversParentTypes['OpenBadgeProof']> = ResolversObject<{
+  id: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  genre: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+}>;
+
+export type OpenBadgeRecipientResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['OpenBadgeRecipient'] = ResolversParentTypes['OpenBadgeRecipient']> = ResolversObject<{
+  identity: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  type: Resolver<ResolversTypes['String'], ParentType, ContextType>,
 }>;
 
 export type OrganizationResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Organization'] = ResolversParentTypes['Organization']> = ResolversObject<{
@@ -404,7 +487,12 @@ export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   ApprovedPublicBadge: ApprovedPublicBadgeResolvers<ContextType>,
   Contact: ContactResolvers<ContextType>,
   Mutation: MutationResolvers<ContextType>,
+  OpenBadge: OpenBadgeResolvers<ContextType>,
   OpenBadgeArtifact: OpenBadgeArtifactResolvers<ContextType>,
+  OpenBadgeClass: OpenBadgeClassResolvers<ContextType>,
+  OpenBadgeCriteria: OpenBadgeCriteriaResolvers<ContextType>,
+  OpenBadgeProof: OpenBadgeProofResolvers<ContextType>,
+  OpenBadgeRecipient: OpenBadgeRecipientResolvers<ContextType>,
   Organization: OrganizationResolvers<ContextType>,
   Proof: ProofResolvers<ContextType>,
   PublicBadge: PublicBadgeResolvers,
