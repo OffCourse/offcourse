@@ -10,11 +10,16 @@ input ContactInput{
   email: String
 }
 
+input DomainsInput {
+  main: String!
+  other: [String]
+}
+
 input OrganizationInput {
   name: String!
   contact: ContactInput!
   admin: ContactInput!
-  domains: [String]!
+  domains: DomainsInput!
 }
 
 type Mutation {

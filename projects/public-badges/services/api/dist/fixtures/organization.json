@@ -11,7 +11,7 @@
         "name": "John Doer",
         "email": "johndoer@waag.org"
     },
-    "domains": [
-        "https://www.waag.org"
-    ]
+    "domains": {
+        "main": "https://www.waag.org"
+    }
 }

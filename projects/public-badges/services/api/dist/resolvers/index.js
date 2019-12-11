@@ -9,11 +9,12 @@ const Proof_1 = __importDefault(require("./Proof"));
 const OpenBadge_1 = require("./OpenBadge");
 const PublicBadge_1 = require("./PublicBadge");
 const ValueCase_1 = require("./ValueCase");
-const Organization_1 = __importDefault(require("./Organization"));
+const Organization_1 = require("./Organization");
 const Contact_1 = __importDefault(require("./Contact"));
 const resolvers = {
     ApprovedPublicBadge: PublicBadge_1.ApprovedPublicBadge,
     Contact: Contact_1.default,
+    Domains: Organization_1.Domains,
     Mutation: Mutation_1.default,
     OpenBadge: OpenBadge_1.OpenBadge,
     OpenBadgeArtifact: OpenBadge_1.OpenBadgeArtifact,
@@ -21,7 +22,7 @@ const resolvers = {
     OpenBadgeCriteria: OpenBadge_1.OpenBadgeCriteria,
     OpenBadgeProof: OpenBadge_1.OpenBadgeProof,
     OpenBadgeRecipient: OpenBadge_1.OpenBadgeRecipient,
-    Organization: Organization_1.default,
+    Organization: Organization_1.Organization,
     Proof: Proof_1.default,
     Query: Query_1.default,
     PublicBadge: PublicBadge_1.PublicBadge,

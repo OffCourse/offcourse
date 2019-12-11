@@ -3,6 +3,11 @@ type Contact {
   email: String
 }
 
+type Domains {
+  main: String!
+  other: [String]
+}
+
 type Organization {
   organizationId: ID!
   status: Status!
@@ -10,5 +15,5 @@ type Organization {
   name: String!
   contact: Contact!
   admin: Contact!
-  domains: [String]!
+  domains: Domains!
 }

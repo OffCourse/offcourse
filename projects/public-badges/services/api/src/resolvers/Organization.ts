@@ -1,4 +1,4 @@
-import { OrganizationResolvers } from "../generated/graphql.js";
+import { OrganizationResolvers, DomainsResolvers } from "../generated/graphql.js";
 
 const Organization: OrganizationResolvers = {
   organizationId({ organizationId }) {
@@ -24,4 +24,13 @@ const Organization: OrganizationResolvers = {
   }
 }
 
-export default Organization;
+const Domains: DomainsResolvers = {
+  main({ main }) {
+    return main
+  },
+  other({ other }) {
+    return other
+  }
+}
+
+export { Organization, Domains };

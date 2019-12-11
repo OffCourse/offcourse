@@ -37,6 +37,17 @@ export type ContactInput = {
   email: Maybe<Scalars['String']>,
 };
 
+export type Domains = {
+   __typename?: 'Domains',
+  main: Scalars['String'],
+  other: Maybe<Array<Maybe<Scalars['String']>>>,
+};
+
+export type DomainsInput = {
+  main: Scalars['String'],
+  other: Maybe<Array<Maybe<Scalars['String']>>>,
+};
+
 export type Mutation = {
    __typename?: 'Mutation',
   proposeValueCase: Maybe<ValueCase>,
@@ -106,14 +117,14 @@ export type Organization = {
   name: Scalars['String'],
   contact: Contact,
   admin: Contact,
-  domains: Array<Maybe<Scalars['String']>>,
+  domains: Domains,
 };
 
 export type OrganizationInput = {
   name: Scalars['String'],
   contact: ContactInput,
   admin: ContactInput,
-  domains: Array<Maybe<Scalars['String']>>,
+  domains: DomainsInput,
 };
 
 export type Proof = {
@@ -297,10 +308,12 @@ export type ResolversTypes = ResolversObject<{
   Scenario: ResolverTypeWrapper<Scenario>,
   Organization: ResolverTypeWrapper<Organization>,
   Contact: ResolverTypeWrapper<Contact>,
+  Domains: ResolverTypeWrapper<Domains>,
   Mutation: ResolverTypeWrapper<{}>,
   ValueCaseInput: ValueCaseInput,
   OrganizationInput: OrganizationInput,
   ContactInput: ContactInput,
+  DomainsInput: DomainsInput,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
   OpenBadgeRecipient: ResolverTypeWrapper<OpenBadgeRecipient>,
   OpenBadgeProof: ResolverTypeWrapper<OpenBadgeProof>,
@@ -325,10 +338,12 @@ export type ResolversParentTypes = ResolversObject<{
   Scenario: Scenario,
   Organization: Organization,
   Contact: Contact,
+  Domains: Domains,
   Mutation: {},
   ValueCaseInput: ValueCaseInput,
   OrganizationInput: OrganizationInput,
   ContactInput: ContactInput,
+  DomainsInput: DomainsInput,
   Boolean: Scalars['Boolean'],
   OpenBadgeRecipient: OpenBadgeRecipient,
   OpenBadgeProof: OpenBadgeProof,
@@ -358,6 +373,11 @@ export type ApprovedPublicBadgeResolvers<ContextType = ApolloContext, ParentType
 export type ContactResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Contact'] = ResolversParentTypes['Contact']> = ResolversObject<{
   name: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   email: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+}>;
+
+export type DomainsResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Domains'] = ResolversParentTypes['Domains']> = ResolversObject<{
+  main: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  other: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
 }>;
 
 export type MutationResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
@@ -411,7 +431,7 @@ export type OrganizationResolvers<ContextType = ApolloContext, ParentType extend
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   contact: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,
   admin: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,
-  domains: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>,
+  domains: Resolver<ResolversTypes['Domains'], ParentType, ContextType>,
 }>;
 
 export type ProofResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Proof'] = ResolversParentTypes['Proof']> = ResolversObject<{
@@ -489,6 +509,7 @@ export type ValueCaseResolvers<ContextType = ApolloContext, ParentType extends R
 export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   ApprovedPublicBadge: ApprovedPublicBadgeResolvers<ContextType>,
   Contact: ContactResolvers<ContextType>,
+  Domains: DomainsResolvers<ContextType>,
   Mutation: MutationResolvers<ContextType>,
   OpenBadge: OpenBadgeResolvers<ContextType>,
   OpenBadgeArtifact: OpenBadgeArtifactResolvers<ContextType>,

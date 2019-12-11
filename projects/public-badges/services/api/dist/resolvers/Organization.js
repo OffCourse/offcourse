@@ -23,5 +23,14 @@ const Organization = {
         return domains;
     }
 };
-exports.default = Organization;
+exports.Organization = Organization;
+const Domains = {
+    main({ main }) {
+        return main;
+    },
+    other({ other }) {
+        return other;
+    }
+};
+exports.Domains = Domains;
 //# sourceMappingURL=Organization.js.map

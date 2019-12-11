@@ -17,12 +17,13 @@ import {
   SignedPublicBadge
 } from "./PublicBadge";
 import { ValueCase, Scenario } from "./ValueCase";
-import Organization from "./Organization";
+import { Organization, Domains } from "./Organization";
 import Contact from "./Contact";
 
 const resolvers: Resolvers = {
   ApprovedPublicBadge,
   Contact,
+  Domains,
   Mutation,
   OpenBadge,
   OpenBadgeArtifact,
