@@ -32,6 +32,10 @@ functions:
           path: graphql
           method: get
           cors: true
+      - http:
+          path: playground
+          method: any
+          cors: true
     environment:
       DATALAKE_BUCKET: ${self:custom.datalake_bucket}
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
@@ -44,6 +48,7 @@ functions:
           pattern:
             source:
               - public-badges.api-handler
+            detail-type: ["ORGANIZATION_REGISTRATION_REQUESTED"]
   approve:
     handler: dist/index.approve
     events:

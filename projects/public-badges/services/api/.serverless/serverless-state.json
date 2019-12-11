@@ -200,7 +200,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/public-badges.zip"
+                "S3Key": "serverless/public-badges/dev/1576101969846-2019-12-11T22:06:09.846Z/public-badges.zip"
               },
               "FunctionName": "public-badges-dev-graphql",
               "Handler": "dist/index.graphql",
@@ -226,14 +226,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GraphqlLambdaVersionnxxFEMgz0q0hrbuL9f0yLGuGJxJk3V9fkmj01fgbvbM": {
+          "GraphqlLambdaVersionFyNZ8RaLsoiMTgYQoIPyu7m7ZmGvF9rg3v9Y8MoB9E": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GraphqlLambdaFunction"
               },
-              "CodeSha256": "tVASK4Iydq8FGqd/V2BqyBP+m0aOjX57hKo4Zh23YsU="
+              "CodeSha256": "ezENunzVyLiIhPBFOJmfxrHs30LXmcc0Uh8iCMCe+1M="
             }
           },
           "EchoLambdaFunction": {
@@ -243,7 +243,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/public-badges.zip"
+                "S3Key": "serverless/public-badges/dev/1576101969846-2019-12-11T22:06:09.846Z/public-badges.zip"
               },
               "FunctionName": "public-badges-dev-echo",
               "Handler": "dist/index.echo",
@@ -262,14 +262,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "EchoLambdaVersionEvevmMDzsVJDQywk6dL9meLAwIzlBRAQmYMXx5VZn4": {
+          "EchoLambdaVersion1e6y64lPUsW3oyQZisHu6buJC3KGZuyeTCFui3Vh4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "EchoLambdaFunction"
               },
-              "CodeSha256": "tVASK4Iydq8FGqd/V2BqyBP+m0aOjX57hKo4Zh23YsU="
+              "CodeSha256": "ezENunzVyLiIhPBFOJmfxrHs30LXmcc0Uh8iCMCe+1M="
             }
           },
           "ApproveLambdaFunction": {
@@ -279,7 +279,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/public-badges.zip"
+                "S3Key": "serverless/public-badges/dev/1576101969846-2019-12-11T22:06:09.846Z/public-badges.zip"
               },
               "FunctionName": "public-badges-dev-approve",
               "Handler": "dist/index.approve",
@@ -298,14 +298,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ApproveLambdaVersionSAaox7XUbCCGTv2N1z9IpllrzdmPy0luVZZ0LX67M": {
+          "ApproveLambdaVersionbJX4dXSA28Xt3WyU0opx6ldPBWDRGKmsW2RL2G4Aw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApproveLambdaFunction"
               },
-              "CodeSha256": "tVASK4Iydq8FGqd/V2BqyBP+m0aOjX57hKo4Zh23YsU="
+              "CodeSha256": "ezENunzVyLiIhPBFOJmfxrHs30LXmcc0Uh8iCMCe+1M="
             }
           },
           "IndexerLambdaFunction": {
@@ -315,7 +315,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/public-badges.zip"
+                "S3Key": "serverless/public-badges/dev/1576101969846-2019-12-11T22:06:09.846Z/public-badges.zip"
               },
               "FunctionName": "public-badges-dev-indexer",
               "Handler": "dist/index.approve",
@@ -334,14 +334,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "IndexerLambdaVersions7sEp6mHh1mySWlOnHzkWR8qb8fQ9zSqGffDaIv6CA": {
+          "IndexerLambdaVersionQbV7aeSAlYh5K9hMRM13TGQIALjCgthcIeUbzmgKWw": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "IndexerLambdaFunction"
               },
-              "CodeSha256": "tVASK4Iydq8FGqd/V2BqyBP+m0aOjX57hKo4Zh23YsU="
+              "CodeSha256": "ezENunzVyLiIhPBFOJmfxrHs30LXmcc0Uh8iCMCe+1M="
             }
           },
           "S3BucketPublicbadgesdatalakedev": {
@@ -464,6 +464,21 @@
               }
             }
           },
+          "ApiGatewayResourcePlayground": {
+            "Type": "AWS::ApiGateway::Resource",
+            "Properties": {
+              "ParentId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "PathPart": "playground",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
           "ApiGatewayMethodGraphqlOptions": {
             "Type": "AWS::ApiGateway::Method",
             "Properties": {
@@ -505,6 +520,53 @@
               },
               "ResourceId": {
                 "Ref": "ApiGatewayResourceGraphql"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodPlaygroundOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true,
+                    "method.response.header.Access-Control-Allow-Credentials": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,GET,HEAD,PATCH,POST,PUT'",
+                      "method.response.header.Access-Control-Allow-Credentials": "'false'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": "#set($origin = $input.params(\"Origin\"))\n#if($origin == \"\") #set($origin = $input.params(\"origin\")) #end\n#if($origin.matches(\".*\")) #set($context.responseOverride.header.Access-Control-Allow-Origin = $origin) #end"
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourcePlayground"
               },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
@@ -597,7 +659,50 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1576020105258": {
+          "ApiGatewayMethodPlaygroundAny": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "HttpMethod": "ANY",
+              "RequestParameters": {},
+              "ResourceId": {
+                "Ref": "ApiGatewayResourcePlayground"
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              },
+              "ApiKeyRequired": false,
+              "AuthorizationType": "NONE",
+              "Integration": {
+                "IntegrationHttpMethod": "POST",
+                "Type": "AWS_PROXY",
+                "Uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition"
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "GraphqlLambdaFunction",
+                          "Arn"
+                        ]
+                      },
+                      "/invocations"
+                    ]
+                  ]
+                }
+              },
+              "MethodResponses": []
+            }
+          },
+          "ApiGatewayDeployment1576101952798": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -607,8 +712,10 @@
             },
             "DependsOn": [
               "ApiGatewayMethodGraphqlOptions",
+              "ApiGatewayMethodPlaygroundOptions",
               "ApiGatewayMethodGraphqlPost",
-              "ApiGatewayMethodGraphqlGet"
+              "ApiGatewayMethodGraphqlGet",
+              "ApiGatewayMethodPlaygroundAny"
             ]
           },
           "GraphqlLambdaPermissionApiGateway": {
@@ -669,6 +776,9 @@
                 "Pattern": {
                   "source": [
                     "public-badges.api-handler"
+                  ],
+                  "detail-type": [
+                    "ORGANIZATION_REGISTRATION_REQUESTED"
                   ]
                 }
               }
@@ -790,7 +900,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z/custom-resources.zip"
+                "S3Key": "serverless/public-badges/dev/1576101969846-2019-12-11T22:06:09.846Z/custom-resources.zip"
               },
               "FunctionName": "public-badges-dev-custom-resource-event-bridge",
               "Handler": "eventBridge/handler.handler",
@@ -818,25 +928,25 @@
           "GraphqlLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GraphqlLambdaVersionnxxFEMgz0q0hrbuL9f0yLGuGJxJk3V9fkmj01fgbvbM"
+              "Ref": "GraphqlLambdaVersionFyNZ8RaLsoiMTgYQoIPyu7m7ZmGvF9rg3v9Y8MoB9E"
             }
           },
           "EchoLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "EchoLambdaVersionEvevmMDzsVJDQywk6dL9meLAwIzlBRAQmYMXx5VZn4"
+              "Ref": "EchoLambdaVersion1e6y64lPUsW3oyQZisHu6buJC3KGZuyeTCFui3Vh4"
             }
           },
           "ApproveLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApproveLambdaVersionSAaox7XUbCCGTv2N1z9IpllrzdmPy0luVZZ0LX67M"
+              "Ref": "ApproveLambdaVersionbJX4dXSA28Xt3WyU0opx6ldPBWDRGKmsW2RL2G4Aw"
             }
           },
           "IndexerLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "IndexerLambdaVersions7sEp6mHh1mySWlOnHzkWR8qb8fQ9zSqGffDaIv6CA"
+              "Ref": "IndexerLambdaVersionQbV7aeSAlYh5K9hMRM13TGQIALjCgthcIeUbzmgKWw"
             }
           },
           "ServiceEndpoint": {
@@ -994,6 +1104,32 @@
               },
               "integration": "AWS_PROXY"
             }
+          },
+          {
+            "http": {
+              "path": "playground",
+              "method": "any",
+              "cors": {
+                "origins": [
+                  "*"
+                ],
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "ANY"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent"
+                ],
+                "allowCredentials": false
+              },
+              "integration": "AWS_PROXY"
+            }
           }
         ],
         "environment": {
@@ -1017,6 +1153,9 @@
               "pattern": {
                 "source": [
                   "public-badges.api-handler"
+                ],
+                "detail-type": [
+                  "ORGANIZATION_REGISTRATION_REQUESTED"
                 ]
               }
             }
@@ -1063,7 +1202,7 @@
     "artifact": "/home/yeehaa/Documents/offcourse/projects/public-badges/services/api/.serverless/public-badges.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/public-badges/dev/1576020123317-2019-12-10T23:22:03.317Z",
+    "artifactDirectoryName": "serverless/public-badges/dev/1576101969846-2019-12-11T22:06:09.846Z",
     "artifact": "public-badges.zip"
   }
 }

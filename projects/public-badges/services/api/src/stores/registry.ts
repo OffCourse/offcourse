@@ -1,4 +1,4 @@
-import { RegistryStore } from "../types.js";
+import { RegistryStore } from "../types";
 import organization from "../fixtures/organization.json";
 import { Organization } from "../generated/graphql.js";
 

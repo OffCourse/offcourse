@@ -22,7 +22,7 @@ const stores = __importStar(require("./stores"));
 const aws_sdk_1 = __importDefault(require("aws-sdk")); // eslint-disable-line import/no-extraneous-dependencies
 const eventBridge = new aws_sdk_1.default.EventBridge({ region: 'us-east-1' });
 const eventBus = {
-    put(eventType, payload) {
+    put({ eventType, payload }) {
         return __awaiter(this, void 0, void 0, function* () {
             const EventBusName = process.env.EVENT_BUS;
             if (!EventBusName) {
@@ -35,7 +35,7 @@ const eventBus = {
                         EventBusName,
                         Source: "public-badges.api-handler",
                         DetailType: eventType,
-                        Detail: JSON.stringify({ eventType, payload }, null, 2)
+                        Detail: JSON.stringify(payload, null, 2)
                     }
                 ]
             })

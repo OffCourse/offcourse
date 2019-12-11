@@ -1,7 +1,7 @@
 import valueCase from "../fixtures/valueCase.json";
 import { MutationResolvers, Status } from "../generated/graphql.js";
 import uuidv5 from "uuid/v5";
-import { PublicBadgesEventType } from "../types.js";
+import { PublicBadgesEventType } from "../types/events.js";
 
 const {
   ORGANIZATION_REGISTRATION_REQUESTED,
@@ -23,7 +23,10 @@ const Mutation: MutationResolvers = {
       organizationId: `urn:uuid:${uuid}`,
       status: Status.Requested
     };
-    return eventBus.put(ORGANIZATION_REGISTRATION_REQUESTED, payload);
+    return eventBus.put({
+      eventType: ORGANIZATION_REGISTRATION_REQUESTED,
+      payload
+    });
   }
 };
 

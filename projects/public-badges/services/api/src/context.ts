@@ -5,7 +5,7 @@ import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependenc
 const eventBridge = new AWS.EventBridge({ region: 'us-east-1' });
 
 const eventBus: PublicBadgesEventBus = {
-  async put(eventType, payload) {
+  async put({ eventType, payload }) {
     const EventBusName = process.env.EVENT_BUS;
     if (!EventBusName) {
       throw "Event Bus Name is Required";
@@ -17,7 +17,7 @@ const eventBus: PublicBadgesEventBus = {
             EventBusName,
             Source: "public-badges.api-handler",
             DetailType: eventType,
-            Detail: JSON.stringify({ eventType, payload }, null, 2)
+            Detail: JSON.stringify(payload, null, 2)
           }
         ]
       })

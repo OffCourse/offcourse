@@ -12,12 +12,12 @@ generates:
       avoidOptionals: true
       contextType: ../types#ApolloContext
       mappers:
-        PublicBadge: ../types#OpenBadge
-        RequestedPublicBadge: ../types#OpenBadge
-        ApprovedPublicBadge: ../types#OpenBadge
-        SignedPublicBadge: ../types#OpenBadge
-        Proof: ../types#OpenBadgeProof
-        OpenBadgeArtifact: ../types#OpenBadge
+        PublicBadge: ../types/index#OpenBadge
+        RequestedPublicBadge: ../types/index#OpenBadge
+        ApprovedPublicBadge: ../types/index#OpenBadge
+        SignedPublicBadge: ../types/index#OpenBadge
+        Proof: ../types/index#OpenBadgeProof
+        OpenBadgeArtifact: ../types/index#OpenBadge
   ./graphql.schema.json:
     plugins:
       - "introspection"

@@ -1,7 +1,7 @@
 import artifact from "../fixtures/fixture.json";
 import uuidv5 from "uuid/v5";
 import { times, partial } from "ramda";
-import { BadgeInstanceStore } from "../types.js";
+import { BadgeInstanceStore } from "../types";
 
 const generateBadge = (opts: { id: string }) => ({
   ...artifact,

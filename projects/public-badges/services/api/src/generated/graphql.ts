@@ -1,5 +1,6 @@
 import { GraphQLResolveInfo } from 'graphql';
-import { OpenBadge, OpenBadgeProof, ApolloContext } from '../types';
+import { OpenBadge, OpenBadgeProof } from '../types/index';
+import { ApolloContext } from '../types';
 export type Maybe<T> = T | null;
 export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
