@@ -32,6 +32,6 @@ type OpenBadge {
 }
 
 type OpenBadgeArtifact {
-  json: String!
+  json: JSON!
   js: OpenBadge!
 }

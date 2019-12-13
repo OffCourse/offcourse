@@ -15,8 +15,10 @@ const ValueCase = __importStar(require("./ValueCase.graphql"));
 const Organization = __importStar(require("./Organization.graphql"));
 const Status = __importStar(require("./Status.graphql"));
 const OpenBadge = __importStar(require("./OpenBadge.graphql"));
+const Scalars = __importStar(require("./Scalars.graphql"));
 const typeDefs = [
     Schema,
+    Scalars,
     Query,
     Mutation,
     Status,

@@ -2,7 +2,7 @@ import { ProofResolvers } from "../generated/graphql";
 
 const Proof: ProofResolvers = {
   proofId({ id }) {
-    return id;
+    return id.replace(/urn:uuid:/, "");
   },
   name({ name }) {
     return name;

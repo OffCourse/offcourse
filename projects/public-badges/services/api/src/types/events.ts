@@ -1,4 +1,4 @@
-import { Organization } from "../generated/graphql";
+import { PendingOrganization } from "../generated/graphql";
 
 export interface Event {
   eventType: string;
@@ -6,12 +6,12 @@ export interface Event {
 }
 
 export enum PublicBadgesEventType {
-  "ORGANIZATION_REGISTRATION_REQUESTED" = "ORGANIZATION_REGISTRATION_REQUESTED",
-  "NEW_BADGECLASS_PROPOSED" = "NEW_BADGECLASS_PROPOSED",
-  "BADGE_ISSUANCE_REQUESTED" = "BADGE_ISSUANCE_REQUESTED"
+  ORGANIZATION_REGISTRATION_REQUESTED = "ORGANIZATION_REGISTRATION_REQUESTED",
+  NEW_BADGECLASS_PROPOSED = "NEW_BADGECLASS_PROPOSED",
+  BADGE_ISSUANCE_REQUESTED = "BADGE_ISSUANCE_REQUESTED"
 }
 
-export type PublicBadgesEventPayload = Organization;
+export type PublicBadgesEventPayload = PendingOrganization;
 
 interface PBEvent extends Event {
   eventType: PublicBadgesEventType;
@@ -20,13 +20,7 @@ interface PBEvent extends Event {
 
 export interface OrganizationRegistrationRequestedEvent extends PBEvent {
   eventType: PublicBadgesEventType.ORGANIZATION_REGISTRATION_REQUESTED;
-  payload: Organization;
-}
-
-export interface BOrganizationRegistrationRequestedEvent extends PBEvent {
-  eventType: PublicBadgesEventType.NEW_BADGECLASS_PROPOSED;
-  payload: Organization;
+  payload: PendingOrganization;
 }
 
 export type PublicBadgesEvent = OrganizationRegistrationRequestedEvent
-  | BOrganizationRegistrationRequestedEvent;

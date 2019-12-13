@@ -1,5 +1,5 @@
 type Proof {
-  proofId: ID!
+  proofId: GUID!
   name: String!
   genre: String!
   description: String!
@@ -7,7 +7,7 @@ type Proof {
 }
 
 interface PublicBadge {
-  badgeId: ID!
+  badgeId: GUID!
   status: Status!
   valueCaseId: ID!
   valueCase: ValueCase!
@@ -19,7 +19,7 @@ interface PublicBadge {
 }
 
 type RequestedPublicBadge implements PublicBadge {
-  badgeId: ID!
+  badgeId: GUID!
   status: Status!
   valueCaseId: ID!
   valueCase: ValueCase!
@@ -31,7 +31,7 @@ type RequestedPublicBadge implements PublicBadge {
 }
 
 type ApprovedPublicBadge implements PublicBadge {
-  badgeId: ID!
+  badgeId: GUID!
   status: Status!
   valueCaseId: ID!
   valueCase: ValueCase!
@@ -44,7 +44,7 @@ type ApprovedPublicBadge implements PublicBadge {
 }
 
 type SignedPublicBadge implements PublicBadge {
-  badgeId: ID!
+  badgeId: GUID!
   status: Status!
   valueCaseId: ID!
   valueCase: ValueCase!

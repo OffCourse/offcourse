@@ -3,13 +3,24 @@ type Scenario {
   statements: [String]!
 }
 
+type ProposedBy {
+  organizationId: String!
+}
+
 type ValueCase {
-  valueCaseId: ID!
+  valueCaseId: ValueCaseID!
   name: String
   tags: [String]!
-  proposedBy: [String!]
+  proposedBy: Organization!
   approvedBy: String!
   description: String!
   narrative: String!
   scenarios: [Scenario]!
+}
+
+input ValueCaseInput {
+  name: String!
+  tags: [String]!
+  narrative: String!
+  description: String!
 }

@@ -1,12 +1,12 @@
 import {
   Organization,
-  ValueCase,
   OpenBadgeProof as OBP,
   OpenBadgeClass as OBC,
-  OpenBadge as OB
+  OpenBadge as OB,
+  ValueCase
 } from "../generated/graphql";
 
-import { Event, PublicBadgesEvent, PublicBadgesEventPayload } from "./events";
+import { Event, PublicBadgesEvent } from "./events";
 
 export type OpenBadgeProof = OBP;
 export type OpenBadgeClass = OBC;
@@ -17,7 +17,7 @@ export interface Store<A, T> {
   fetchAll: () => Promise<NonNullable<T>[]>;
 }
 
-export type ValueCaseStore = Store<{ valueCaseId: string }, ValueCase>;
+export type ValueCaseStore = Store<{ valueCaseId: string }, ValueCaseProxy>;
 export type BadgeInstanceStore = Store<{ badgeId: string }, OpenBadge | null>;
 export type RegistryStore = Store<{ organizationId: string }, Organization>;
 
@@ -30,6 +30,10 @@ export type PublicBadgesStores = {
 export interface EventBus<E extends Event> {
   put: (event: E) => Promise<E["payload"]>;
 }
+
+export type ValueCaseProxy = Omit<ValueCase, "proposedBy"> & {
+  proposedBy: string;
+};
 
 export type PublicBadgesEventBus = EventBus<PublicBadgesEvent>;
 

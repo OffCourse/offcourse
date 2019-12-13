@@ -11,7 +11,7 @@ const PublicBadge: PublicBadgeResolvers = {
     return "SignedPublicBadge";
   },
   badgeId({ id }) {
-    return id;
+    return id.replace(/urn:uuid:/, "");
   },
   valueCaseId({ badge }) {
     return badge.id;
@@ -19,8 +19,8 @@ const PublicBadge: PublicBadgeResolvers = {
   status() {
     return Status.Signed;
   },
-  valueCase({ badge }, _args, { stores }) {
-    return stores.valueCase.fetch({ valueCaseId: badge.id });
+  async valueCase({ badge }, _args, { stores }) {
+    return await stores.valueCase.fetch({ valueCaseId: badge.id });
   },
   name({ badge }) {
     return badge.name;

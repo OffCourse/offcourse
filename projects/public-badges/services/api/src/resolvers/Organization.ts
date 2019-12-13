@@ -1,6 +1,22 @@
-import { OrganizationResolvers, DomainsResolvers } from "../generated/graphql.js";
+import {
+  OrganizationResolvers,
+  PendingOrganizationResolvers,
+  ApprovedOrganizationResolvers,
+  DomainsResolvers,
+  OrganizationStatus
+} from "../generated/graphql.js";
 
 const Organization: OrganizationResolvers = {
+  __resolveType({ status }) {
+    switch (status) {
+      case OrganizationStatus.Pending: {
+        return "PendingOrganization";
+      }
+      case OrganizationStatus.Approved: {
+        return "ApprovedOrganization";
+      }
+    }
+  },
   organizationId({ organizationId }) {
     return organizationId;
   },
@@ -22,6 +38,20 @@ const Organization: OrganizationResolvers = {
   domains({ domains }) {
     return domains;
   }
+};
+
+const PendingOrganization: PendingOrganizationResolvers = {
+  ...Organization
+};
+
+const ApprovedOrganization: ApprovedOrganizationResolvers = {
+  ...PendingOrganization,
+  approvedBy({ approvedBy }) {
+    return approvedBy
+  },
+  approvedOn({ approvedOn }) {
+    return approvedOn
+  }
 }
 
 const Domains: DomainsResolvers = {
@@ -33,4 +63,9 @@ const Domains: DomainsResolvers = {
   }
 }
 
-export { Organization, Domains };
+export {
+  Organization,
+  ApprovedOrganization,
+  PendingOrganization,
+  Domains
+};

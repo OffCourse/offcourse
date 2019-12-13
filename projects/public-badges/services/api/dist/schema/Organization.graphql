@@ -1,19 +1,64 @@
-type Contact {
-  name: String
-  email: String
-}
-
 type Domains {
   main: String!
   other: [String]
 }
 
-type Organization {
+enum OrganizationStatus {
+  PENDING
+  APPROVED
+}
+
+interface Organization {
   organizationId: ID!
-  status: Status!
+  status: OrganizationStatus!
   path: String!
   name: String!
   contact: Contact!
   admin: Contact!
   domains: Domains!
+}
+
+input ContactInput{
+  name: String!
+  email: EmailAddress!
+}
+
+type Contact {
+  name: String!
+  email: EmailAddress!
+}
+
+
+input DomainsInput {
+  main: String!
+  other: [String]
+}
+
+type PendingOrganization implements Organization {
+  organizationId: ID!
+  status: OrganizationStatus!
+  path: String!
+  name: String!
+  contact: Contact!
+  admin: Contact!
+  domains: Domains!
+}
+
+type ApprovedOrganization implements Organization {
+  organizationId: ID!
+  status: OrganizationStatus!
+  path: String!
+  name: String!
+  contact: Contact!
+  admin: Contact!
+  domains: Domains!
+  approvedBy: EmailAddress!
+  approvedOn: String!
+}
+
+input OrganizationInput {
+  name: String!
+  contact: ContactInput!
+  admin: ContactInput!
+  domains: DomainsInput!
 }

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const Proof = {
     proofId({ id }) {
-        return id;
+        return id.replace(/urn:uuid:/, "");
     },
     name({ name }) {
         return name;

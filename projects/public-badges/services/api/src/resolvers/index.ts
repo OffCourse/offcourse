@@ -1,7 +1,8 @@
-import { Resolvers } from "../generated/graphql";
+import { Resolvers, ProposedByResolvers } from "../generated/graphql";
 import Query from "./Query";
 import Mutation from "./Mutation";
 import Proof from "./Proof";
+import { ValueCaseID } from "./Scalars";
 import {
   OpenBadgeArtifact,
   OpenBadge,
@@ -17,13 +18,31 @@ import {
   SignedPublicBadge
 } from "./PublicBadge";
 import { ValueCase, Scenario } from "./ValueCase";
-import { Organization, Domains } from "./Organization";
+import {
+  Organization,
+  ApprovedOrganization,
+  PendingOrganization,
+  Domains
+} from "./Organization";
 import Contact from "./Contact";
+import {
+  EmailAddressResolver as EmailAddress,
+  GUIDResolver as GUID,
+  JSONResolver as JSON
+} from "graphql-scalars";
+
+const ProposedBy: ProposedByResolvers = {
+  organizationId({ organizationId }) {
+    return organizationId;
+  }
+}
 
 const resolvers: Resolvers = {
   ApprovedPublicBadge,
   Contact,
   Domains,
+  EmailAddress,
+  JSON,
   Mutation,
   OpenBadge,
   OpenBadgeArtifact,
@@ -32,13 +51,18 @@ const resolvers: Resolvers = {
   OpenBadgeProof,
   OpenBadgeRecipient,
   Organization,
+  ApprovedOrganization,
+  PendingOrganization,
   Proof,
   Query,
   PublicBadge,
+  ProposedBy,
   RequestedPublicBadge,
   Scenario,
   SignedPublicBadge,
-  ValueCase
+  GUID,
+  ValueCase,
+  ValueCaseID
 };
 
 export default resolvers;

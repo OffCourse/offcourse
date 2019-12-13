@@ -4,7 +4,7 @@ import resolvers from "../resolvers";
 import typeDefs from "../schema";
 import context from "../context";
 import { Handler } from "aws-lambda";
-import { Organization } from "../generated/graphql";
+import { PendingOrganization } from "../generated/graphql";
 
 const server = new ApolloServer({
   typeDefs,
@@ -22,7 +22,7 @@ export const approve: Handler = (event, _context, callback) => {
   callback(null, event);
 };
 
-export const echo: Handler<{ detail: Organization }> = (
+export const echo: Handler<{ detail: PendingOrganization }> = (
   { detail },
   _context,
   callback

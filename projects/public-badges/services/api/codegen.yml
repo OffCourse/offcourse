@@ -11,6 +11,10 @@ generates:
     config:
       avoidOptionals: true
       contextType: ../types#ApolloContext
+      scalars:
+        EmailAddress: string
+        JSON: string
+        UUID: string
       mappers:
         PublicBadge: ../types/index#OpenBadge
         RequestedPublicBadge: ../types/index#OpenBadge
@@ -18,6 +22,7 @@ generates:
         SignedPublicBadge: ../types/index#OpenBadge
         Proof: ../types/index#OpenBadgeProof
         OpenBadgeArtifact: ../types/index#OpenBadge
+        ValueCase: ../types/index#ValueCaseProxy
   ./graphql.schema.json:
     plugins:
       - "introspection"

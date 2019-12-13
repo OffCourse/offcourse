@@ -1,16 +1,5 @@
-import valueCase from "../fixtures/valueCase.json";
 import { ScenarioResolvers, ValueCaseResolvers } from "../generated/graphql.js";
-
-const {
-  valueCaseId,
-  name,
-  tags,
-  description,
-  proposedBy,
-  approvedBy,
-  narrative,
-  scenarios
-} = valueCase;
+import { slugify } from "voca";
 
 const Scenario: ScenarioResolvers = {
   title({ title }) {
@@ -19,31 +8,32 @@ const Scenario: ScenarioResolvers = {
   statements({ statements }) {
     return statements;
   }
-}
+};
 
 const ValueCase: ValueCaseResolvers = {
-  valueCaseId() {
-    return valueCaseId;
+  valueCaseId({ proposedBy, name }) {
+    const normalizedName = slugify(name!);
+    return `${proposedBy}@${normalizedName}`;
   },
-  name() {
+  name({ name }) {
     return name;
   },
-  proposedBy() {
-    return proposedBy;
+  proposedBy({ proposedBy }, _args, { stores }) {
+    return stores.registry.fetch({ organizationId: proposedBy });
   },
-  approvedBy() {
+  approvedBy({ approvedBy }) {
     return approvedBy;
   },
-  tags() {
+  tags({ tags }) {
     return tags;
   },
-  description() {
+  description({ description }) {
     return description;
   },
-  narrative() {
+  narrative({ narrative }) {
     return narrative;
   },
-  scenarios() {
+  scenarios({ scenarios }) {
     return scenarios;
   }
 };

@@ -1,10 +1,6 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const valueCase_json_1 = __importDefault(require("../fixtures/valueCase.json"));
-const { valueCaseId, name, tags, description, proposedBy, approvedBy, narrative, scenarios } = valueCase_json_1.default;
+const voca_1 = require("voca");
 const Scenario = {
     title({ title }) {
         return title;
@@ -15,28 +11,29 @@ const Scenario = {
 };
 exports.Scenario = Scenario;
 const ValueCase = {
-    valueCaseId() {
-        return valueCaseId;
+    valueCaseId({ proposedBy, name }) {
+        const normalizedName = voca_1.slugify(name);
+        return `${proposedBy}@${normalizedName}`;
     },
-    name() {
+    name({ name }) {
         return name;
     },
-    proposedBy() {
-        return proposedBy;
+    proposedBy({ proposedBy }, _args, { stores }) {
+        return stores.registry.fetch({ organizationId: proposedBy });
     },
-    approvedBy() {
+    approvedBy({ approvedBy }) {
         return approvedBy;
     },
-    tags() {
+    tags({ tags }) {
         return tags;
     },
-    description() {
+    description({ description }) {
         return description;
     },
-    narrative() {
+    narrative({ narrative }) {
         return narrative;
     },
-    scenarios() {
+    scenarios({ scenarios }) {
         return scenarios;
     }
 };

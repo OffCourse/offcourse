@@ -6,9 +6,11 @@ import * as ValueCase from "./ValueCase.graphql";
 import * as Organization from "./Organization.graphql";
 import * as Status from "./Status.graphql";
 import * as OpenBadge from "./OpenBadge.graphql";
+import * as Scalars from "./Scalars.graphql";
 
 const typeDefs = [
   Schema,
+  Scalars,
   Query,
   Mutation,
   Status,

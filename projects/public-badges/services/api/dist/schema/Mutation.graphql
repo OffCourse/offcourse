@@ -1,28 +1,4 @@
-input ValueCaseInput {
-  name: String!
-  tags: [String]!
-  narrative: String!
-  description: String!
-}
-
-input ContactInput{
-  name: String
-  email: String
-}
-
-input DomainsInput {
-  main: String!
-  other: [String]
-}
-
-input OrganizationInput {
-  name: String!
-  contact: ContactInput!
-  admin: ContactInput!
-  domains: DomainsInput!
-}
-
 type Mutation {
-  proposeValueCase(input: ValueCaseInput!): ValueCase
-  registerOrganization(input: OrganizationInput!): Organization
+  proposeValueCase(input: ValueCaseInput!): String!
+  registerOrganization(input: OrganizationInput!): PendingOrganization
 }
