@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -14,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fixture_json_1 = __importDefault(require("../fixtures/fixture.json"));
 const v5_1 = __importDefault(require("uuid/v5"));
 const ramda_1 = require("ramda");
-const generateBadge = (opts) => (Object.assign({}, fixture_json_1.default, { id: opts.id || `urn:uuid:${v5_1.default("waag.org", v5_1.default.DNS)}`, artifact: {
+const generateBadge = (opts) => (Object.assign(Object.assign({}, fixture_json_1.default), { id: opts.id || `urn:uuid:${v5_1.default("waag.org", v5_1.default.DNS)}`, artifact: {
         json: JSON.stringify(fixture_json_1.default)
     } }));
 const badges = [

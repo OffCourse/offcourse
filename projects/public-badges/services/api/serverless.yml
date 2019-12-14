@@ -1,9 +1,7 @@
 service: public-badges
 
 custom:
-  event_bus: public-badges-${opt:stage}
   registry_bucket: public-badges-registry-${opt:stage}
-  datalake_bucket: public-badges-datalake-${opt:stage}
 
 provider:
   name: aws
@@ -13,12 +11,11 @@ provider:
       Action:
         - s3:PutObject
         - s3:PutObjectAcl
-      Resource: "arn:aws:s3:::${self:custom.datalake_bucket}/*"
+      Resource: "arn:aws:s3:::${self:custom.registry_bucket}/*"
     - Effect: Allow
       Action:
         - events:PutEvents
       Resource: "*"
-
 
 functions:
   graphql:
@@ -36,23 +33,24 @@ functions:
           path: playground
           method: any
           cors: true
+  registerOrganization:
+    handler: dist/index.registerOrganization
     environment:
-      DATALAKE_BUCKET: ${self:custom.datalake_bucket}
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
-      EVENT_BUS: ${self:custom.event_bus}
-  echo:
-    handler: dist/index.echo
     events:
       - eventBridge:
-          eventBus: ${self:custom.event_bus}
           pattern:
             source:
               - public-badges.api-handler
             detail-type: ["ORGANIZATION_REGISTRATION_REQUESTED"]
-  approve:
-    handler: dist/index.approve
+  echo:
+    handler: dist/index.echo
     events:
-      - s3: ${self:custom.datalake_bucket}
+      - eventBridge:
+          pattern:
+            source:
+              - public-badges.register-organization-handler
+            detail-type: ["ORGANIZATION_APPROVAL_REQUESTED"]
   indexer:
     handler: dist/index.approve
     events:

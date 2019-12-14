@@ -1,10 +1,29 @@
 import {
   PublicBadgeResolvers,
   Status,
+  ProofResolvers,
   RequestedPublicBadgeResolvers,
   ApprovedPublicBadgeResolvers,
   SignedPublicBadgeResolvers
 } from "../generated/graphql";
+
+const Proof: ProofResolvers = {
+  proofId({ id }) {
+    return id.replace(/urn:uuid:/, "");
+  },
+  name({ name }) {
+    return name;
+  },
+  genre({ genre }) {
+    return genre;
+  },
+  description({ description }) {
+    return description;
+  },
+  narrative({ narrative }) {
+    return narrative;
+  }
+};
 
 const PublicBadge: PublicBadgeResolvers = {
   __resolveType() {
@@ -65,6 +84,7 @@ const SignedPublicBadge: SignedPublicBadgeResolvers = {
 
 export {
   PublicBadge,
+  Proof,
   RequestedPublicBadge,
   ApprovedPublicBadge,
   SignedPublicBadge

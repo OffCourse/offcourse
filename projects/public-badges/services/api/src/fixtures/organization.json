@@ -2,7 +2,6 @@
   "organizationId": "waag.org",
   "name": "Waag",
   "status": "APPROVED",
-  "path": "/waag",
   "contact": {
     "name": "John Doe",
     "email": "johndoe@waag.org"
@@ -12,6 +11,6 @@
     "email": "johndoer@waag.org"
   },
   "domains": {
-    "main": "https://www.waag.org"
+    "main": "waag.org"
   }
 }

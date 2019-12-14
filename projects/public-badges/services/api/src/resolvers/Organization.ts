@@ -1,10 +1,20 @@
 import {
+  ContactResolvers,
   OrganizationResolvers,
   PendingOrganizationResolvers,
   ApprovedOrganizationResolvers,
   DomainsResolvers,
   OrganizationStatus
 } from "../generated/graphql.js";
+
+const Contact: ContactResolvers = {
+  name({ name }) {
+    return name;
+  },
+  email({ email }) {
+    return email;
+  }
+};
 
 const Organization: OrganizationResolvers = {
   __resolveType({ status }) {
@@ -17,14 +27,11 @@ const Organization: OrganizationResolvers = {
       }
     }
   },
-  organizationId({ organizationId }) {
-    return organizationId;
+  organizationId({ domains }) {
+    return domains.main;
   },
   status({ status }) {
     return status;
-  },
-  path({ path }) {
-    return path;
   },
   name({ name }) {
     return name;
@@ -64,6 +71,7 @@ const Domains: DomainsResolvers = {
 }
 
 export {
+  Contact,
   Organization,
   ApprovedOrganization,
   PendingOrganization,

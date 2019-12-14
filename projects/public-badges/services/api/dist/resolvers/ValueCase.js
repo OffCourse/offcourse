@@ -10,6 +10,12 @@ const Scenario = {
     }
 };
 exports.Scenario = Scenario;
+const ProposedBy = {
+    organizationId({ organizationId }) {
+        return organizationId;
+    }
+};
+exports.ProposedBy = ProposedBy;
 const ValueCase = {
     valueCaseId({ proposedBy, name }) {
         const normalizedName = voca_1.slugify(name);

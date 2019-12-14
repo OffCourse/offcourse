@@ -1,14 +1,33 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_1 = require("../generated/graphql");
+const Proof = {
+    proofId({ id }) {
+        return id.replace(/urn:uuid:/, "");
+    },
+    name({ name }) {
+        return name;
+    },
+    genre({ genre }) {
+        return genre;
+    },
+    description({ description }) {
+        return description;
+    },
+    narrative({ narrative }) {
+        return narrative;
+    }
+};
+exports.Proof = Proof;
 const PublicBadge = {
     __resolveType() {
         return "SignedPublicBadge";
@@ -46,11 +65,11 @@ const PublicBadge = {
 exports.PublicBadge = PublicBadge;
 const RequestedPublicBadge = Object.assign({}, PublicBadge);
 exports.RequestedPublicBadge = RequestedPublicBadge;
-const ApprovedPublicBadge = Object.assign({}, RequestedPublicBadge, { evidence({ evidence }) {
+const ApprovedPublicBadge = Object.assign(Object.assign({}, RequestedPublicBadge), { evidence({ evidence }) {
         return evidence;
     } });
 exports.ApprovedPublicBadge = ApprovedPublicBadge;
-const SignedPublicBadge = Object.assign({}, ApprovedPublicBadge, { issuedOn({ issuedOn }) {
+const SignedPublicBadge = Object.assign(Object.assign({}, ApprovedPublicBadge), { issuedOn({ issuedOn }) {
         return issuedOn;
     },
     expires({ expires }) {

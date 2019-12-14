@@ -1,16 +1,10 @@
 import {
   Organization,
-  OpenBadgeProof as OBP,
-  OpenBadgeClass as OBC,
-  OpenBadge as OB,
+  OpenBadge,
   ValueCase
 } from "../generated/graphql";
 
 import { Event, PublicBadgesEvent } from "./events";
-
-export type OpenBadgeProof = OBP;
-export type OpenBadgeClass = OBC;
-export type OpenBadge = OB;
 
 export interface Store<A, T> {
   fetch: (args: A) => Promise<T>;

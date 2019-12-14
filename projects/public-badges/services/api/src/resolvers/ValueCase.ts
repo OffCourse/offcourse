@@ -1,4 +1,4 @@
-import { ScenarioResolvers, ValueCaseResolvers } from "../generated/graphql.js";
+import { ScenarioResolvers, ValueCaseResolvers, ProposedByResolvers } from "../generated/graphql.js";
 import { slugify } from "voca";
 
 const Scenario: ScenarioResolvers = {
@@ -7,6 +7,12 @@ const Scenario: ScenarioResolvers = {
   },
   statements({ statements }) {
     return statements;
+  }
+};
+
+const ProposedBy: ProposedByResolvers = {
+  organizationId({ organizationId }) {
+    return organizationId;
   }
 };
 
@@ -38,4 +44,4 @@ const ValueCase: ValueCaseResolvers = {
   }
 };
 
-export { ValueCase, Scenario };
+export { ValueCase, Scenario, ProposedBy };

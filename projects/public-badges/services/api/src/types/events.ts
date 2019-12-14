@@ -7,6 +7,7 @@ export interface Event {
 
 export enum PublicBadgesEventType {
   ORGANIZATION_REGISTRATION_REQUESTED = "ORGANIZATION_REGISTRATION_REQUESTED",
+  ORGANIZATION_APPROVAL_REQUESTED = "ORGANIZATION_APPROVAL_REQUESTED",
   NEW_BADGECLASS_PROPOSED = "NEW_BADGECLASS_PROPOSED",
   BADGE_ISSUANCE_REQUESTED = "BADGE_ISSUANCE_REQUESTED"
 }
@@ -23,4 +24,4 @@ export interface OrganizationRegistrationRequestedEvent extends PBEvent {
   payload: PendingOrganization;
 }
 
-export type PublicBadgesEvent = OrganizationRegistrationRequestedEvent
+export type PublicBadgesEvent = OrganizationRegistrationRequestedEvent;

@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
-import { OpenBadge, OpenBadgeProof, ValueCaseProxy } from '../types/index';
+import { ValueCaseProxy } from '../types/index';
 import { ApolloContext } from '../types';
 export type Maybe<T> = T | null;
 export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
@@ -20,7 +20,6 @@ export type ApprovedOrganization = Organization & {
    __typename?: 'ApprovedOrganization',
   organizationId: Scalars['ID'],
   status: OrganizationStatus,
-  path: Scalars['String'],
   name: Scalars['String'],
   contact: Contact,
   admin: Contact,
@@ -132,7 +131,6 @@ export type OpenBadgeRecipient = {
 export type Organization = {
   organizationId: Scalars['ID'],
   status: OrganizationStatus,
-  path: Scalars['String'],
   name: Scalars['String'],
   contact: Contact,
   admin: Contact,
@@ -155,7 +153,6 @@ export type PendingOrganization = Organization & {
    __typename?: 'PendingOrganization',
   organizationId: Scalars['ID'],
   status: OrganizationStatus,
-  path: Scalars['String'],
   name: Scalars['String'],
   contact: Contact,
   admin: Contact,
@@ -417,7 +414,6 @@ export type ResolversParentTypes = ResolversObject<{
 export type ApprovedOrganizationResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['ApprovedOrganization'] = ResolversParentTypes['ApprovedOrganization']> = ResolversObject<{
   organizationId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
   status: Resolver<ResolversTypes['OrganizationStatus'], ParentType, ContextType>,
-  path: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   contact: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,
   admin: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,
@@ -509,7 +505,6 @@ export type OrganizationResolvers<ContextType = ApolloContext, ParentType extend
   __resolveType: TypeResolveFn<'PendingOrganization' | 'ApprovedOrganization', ParentType, ContextType>,
   organizationId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
   status: Resolver<ResolversTypes['OrganizationStatus'], ParentType, ContextType>,
-  path: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   contact: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,
   admin: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,
@@ -519,7 +514,6 @@ export type OrganizationResolvers<ContextType = ApolloContext, ParentType extend
 export type PendingOrganizationResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['PendingOrganization'] = ResolversParentTypes['PendingOrganization']> = ResolversObject<{
   organizationId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
   status: Resolver<ResolversTypes['OrganizationStatus'], ParentType, ContextType>,
-  path: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   contact: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,
   admin: Resolver<ResolversTypes['Contact'], ParentType, ContextType>,

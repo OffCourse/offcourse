@@ -16,12 +16,12 @@ generates:
         JSON: string
         UUID: string
       mappers:
-        PublicBadge: ../types/index#OpenBadge
-        RequestedPublicBadge: ../types/index#OpenBadge
-        ApprovedPublicBadge: ../types/index#OpenBadge
-        SignedPublicBadge: ../types/index#OpenBadge
-        Proof: ../types/index#OpenBadgeProof
-        OpenBadgeArtifact: ../types/index#OpenBadge
+        PublicBadge: OpenBadge
+        RequestedPublicBadge: OpenBadge
+        ApprovedPublicBadge: OpenBadge
+        SignedPublicBadge: OpenBadge
+        Proof: OpenBadgeProof
+        OpenBadgeArtifact: OpenBadge
         ValueCase: ../types/index#ValueCaseProxy
   ./graphql.schema.json:
     plugins:

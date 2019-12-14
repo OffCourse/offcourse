@@ -1,3 +1,3 @@
-import { graphql, approve, echo } from "./handlers";
+import { graphql, approve, echo, registerOrganization } from "./handlers";
 
-export { graphql, approve, echo };
+export { graphql, approve, echo, registerOrganization };

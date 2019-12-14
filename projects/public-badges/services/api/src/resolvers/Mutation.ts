@@ -1,6 +1,5 @@
 import valueCase from "../fixtures/valueCase.json";
 import { MutationResolvers, OrganizationStatus } from "../generated/graphql.js";
-import uuidv5 from "uuid/v5";
 import { PublicBadgesEventType } from "../types/events.js";
 
 const {
@@ -16,11 +15,9 @@ const Mutation: MutationResolvers = {
     return "valueCase";
   },
   registerOrganization(_root, { input }, { eventBus }) {
-    const uuid = uuidv5("publicspaces.org", uuidv5.DNS);
     const payload = {
       ...input,
-      path: `organizations/${uuid}/meta.json`,
-      organizationId: `urn:uuid:${uuid}`,
+      organizationId: input.domains.main,
       status: OrganizationStatus.Pending
     };
     return eventBus.put({
