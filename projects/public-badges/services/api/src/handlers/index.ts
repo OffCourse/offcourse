@@ -1,6 +1,11 @@
 import echo from "./echo";
 import graphql from "./graphql";
 import approve from "./approve";
-import registerOrganization from "./registerOrganization";
+import saveOrganization from "./saveOrganization";
 
-export { echo, graphql, approve, registerOrganization };
+export {
+  echo,
+  graphql,
+  approve,
+  saveOrganization
+};

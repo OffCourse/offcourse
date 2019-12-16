@@ -9,6 +9,7 @@ generates:
       - "typescript"
       - "typescript-resolvers"
     config:
+      skipTypename: true
       avoidOptionals: true
       contextType: ../types#ApolloContext
       scalars:

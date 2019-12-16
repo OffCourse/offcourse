@@ -2,6 +2,8 @@ service: public-badges
 
 custom:
   registry_bucket: public-badges-registry-${opt:stage}
+  api: public-badges.api
+  save_organization: public-badges.save-organization
 
 provider:
   name: aws
@@ -33,25 +35,33 @@ functions:
           path: playground
           method: any
           cors: true
-  registerOrganization:
-    handler: dist/index.registerOrganization
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.api}
+  saveOrganization:
+    handler: dist/index.saveOrganization
     events:
       - eventBridge:
           pattern:
             source:
-              - public-badges.api-handler
+              - ${self:custom.api}
             detail-type: ["ORGANIZATION_REGISTRATION_REQUESTED"]
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.save_organization}
   echo:
     handler: dist/index.echo
     events:
       - eventBridge:
           pattern:
             source:
-              - public-badges.register-organization-handler
+              - ${self:custom.save_organization}
             detail-type: ["ORGANIZATION_APPROVAL_REQUESTED"]
+    environment:
+      HANDLER_NAME: public-badges.echo
   indexer:
     handler: dist/index.approve
     events:
       - s3: ${self:custom.registry_bucket}
+    environment:
+      HANDLER_NAME: public-badges.indexer

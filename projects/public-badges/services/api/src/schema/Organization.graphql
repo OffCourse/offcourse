@@ -4,6 +4,7 @@ type Domains {
 }
 
 enum OrganizationStatus {
+  REQUESTED
   PENDING
   APPROVED
 }

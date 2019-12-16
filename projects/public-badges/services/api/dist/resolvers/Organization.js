@@ -13,6 +13,9 @@ exports.Contact = Contact;
 const Organization = {
     __resolveType({ status }) {
         switch (status) {
+            case graphql_js_1.OrganizationStatus.Requested: {
+                return "PendingOrganization";
+            }
             case graphql_js_1.OrganizationStatus.Pending: {
                 return "PendingOrganization";
             }

@@ -1,4 +1,3 @@
-import valueCase from "../fixtures/valueCase.json";
 import { MutationResolvers, OrganizationStatus } from "../generated/graphql.js";
 import { PublicBadgesEventType } from "../types/events.js";
 
@@ -15,14 +14,13 @@ const Mutation: MutationResolvers = {
     return "valueCase";
   },
   registerOrganization(_root, { input }, { eventBus }) {
-    const payload = {
-      ...input,
-      organizationId: input.domains.main,
-      status: OrganizationStatus.Pending
-    };
     return eventBus.put({
-      eventType: ORGANIZATION_REGISTRATION_REQUESTED,
-      payload
+      detailType: ORGANIZATION_REGISTRATION_REQUESTED,
+      detail: {
+        ...input,
+        organizationId: input.domains.main,
+        status: OrganizationStatus.Requested
+      }
     });
   }
 };

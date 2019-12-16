@@ -1,8 +1,23 @@
 import {
   Organization,
+  ApprovedOrganization as AO,
+  PendingOrganization as PO,
+  OrganizationStatus,
   OpenBadge,
   ValueCase
 } from "../generated/graphql";
+
+export type RequestedOrganization = Omit<PO, "status"> & {
+  status: OrganizationStatus.Requested;
+};
+
+export type PendingOrganization = Omit<PO, "status"> & {
+  status: OrganizationStatus.Pending;
+};
+
+export type ApprovedOrganization = Omit<AO, "status"> & {
+  status: OrganizationStatus.Approved;
+};
 
 import { Event, PublicBadgesEvent } from "./events";
 
@@ -22,7 +37,7 @@ export type PublicBadgesStores = {
 };
 
 export interface EventBus<E extends Event> {
-  put: (event: E) => Promise<E["payload"]>;
+  put: (event: E) => Promise<E["detail"]>;
 }
 
 export type ValueCaseProxy = Omit<ValueCase, "proposedBy"> & {

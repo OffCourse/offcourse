@@ -4,5 +4,5 @@ const handlers_1 = require("./handlers");
 exports.graphql = handlers_1.graphql;
 exports.approve = handlers_1.approve;
 exports.echo = handlers_1.echo;
-exports.registerOrganization = handlers_1.registerOrganization;
+exports.saveOrganization = handlers_1.saveOrganization;
 //# sourceMappingURL=index.js.map

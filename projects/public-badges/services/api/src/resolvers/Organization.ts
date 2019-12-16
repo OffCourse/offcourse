@@ -19,6 +19,9 @@ const Contact: ContactResolvers = {
 const Organization: OrganizationResolvers = {
   __resolveType({ status }) {
     switch (status) {
+      case OrganizationStatus.Requested: {
+        return "PendingOrganization";
+      }
       case OrganizationStatus.Pending: {
         return "PendingOrganization";
       }

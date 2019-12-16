@@ -10,10 +10,9 @@ const Mutation = {
         return "valueCase";
     },
     registerOrganization(_root, { input }, { eventBus }) {
-        const payload = Object.assign(Object.assign({}, input), { organizationId: input.domains.main, status: graphql_js_1.OrganizationStatus.Pending });
         return eventBus.put({
-            eventType: ORGANIZATION_REGISTRATION_REQUESTED,
-            payload
+            detailType: ORGANIZATION_REGISTRATION_REQUESTED,
+            detail: Object.assign(Object.assign({}, input), { organizationId: input.domains.main, status: graphql_js_1.OrganizationStatus.Requested })
         });
     }
 };

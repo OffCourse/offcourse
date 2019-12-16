@@ -619,6 +619,12 @@
         "interfaces": null,
         "enumValues": [
           {
+            "name": "REQUESTED",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "PENDING",
             "description": "",
             "isDeprecated": false,
