@@ -12,33 +12,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const eventBus_1 = __importDefault(require("../../eventBus"));
 const putOrganization_1 = __importDefault(require("./putOrganization"));
 const events_js_1 = require("../../types/events.js");
 const graphql_1 = require("../../generated/graphql");
-const saveOrganization = (event, _context, callback) => __awaiter(void 0, void 0, void 0, function* () {
-    const detail = event.detail;
+const saveOrganization = ({ detailType, detail }) => __awaiter(void 0, void 0, void 0, function* () {
     const { organizationId: id } = detail;
-    console.log(event["detail-type"]);
-    switch (event["detail-type"]) {
+    console.log("XXX");
+    switch (detailType) {
         case events_js_1.PublicBadgesEventType.ORGANIZATION_REGISTRATION_REQUESTED: {
             const organization = Object.assign(Object.assign({}, detail), { status: graphql_1.OrganizationStatus.Pending });
-            const response = yield putOrganization_1.default(id, organization);
-            const reply = yield eventBus_1.default.put({
+            yield putOrganization_1.default(id, organization);
+            return {
                 detailType: events_js_1.PublicBadgesEventType.ORGANIZATION_APPROVAL_REQUESTED,
                 detail: organization
-            });
-            console.log(reply);
-            callback(null, id);
+            };
         }
         case events_js_1.PublicBadgesEventType.ORGANIZATION_APPROVAL_ACCEPTED: {
             const organization = Object.assign(Object.assign({}, detail), { status: graphql_1.OrganizationStatus.Approved, approvedBy: "yeehaa@fasljfsd.com", approvedOn: `${Date.now()}` });
-            const reply = yield eventBus_1.default.put({
+            yield putOrganization_1.default(id, organization);
+            return {
                 detailType: events_js_1.PublicBadgesEventType.ORGANIZATION_APPROVED,
                 detail: organization
-            });
-            console.log(reply);
-            callback(null, id);
+            };
         }
     }
 });

@@ -1,3 +1,8 @@
-import { graphql, approve, echo, saveOrganization } from "./handlers";
+import {
+  graphql,
+  echo,
+  saveOrganization,
+  approveOrganization
+} from "./handlers";
 
-export { graphql, approve, echo, saveOrganization };
+export { graphql, echo, saveOrganization, approveOrganization };

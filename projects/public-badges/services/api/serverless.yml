@@ -4,6 +4,7 @@ custom:
   registry_bucket: public-badges-registry-${opt:stage}
   api: public-badges.api
   save_organization: public-badges.save-organization
+  approve_organization: public-badges.approve-organization
 
 provider:
   name: aws
@@ -45,10 +46,24 @@ functions:
           pattern:
             source:
               - ${self:custom.api}
-            detail-type: ["ORGANIZATION_REGISTRATION_REQUESTED"]
+              - ${self:custom.approve_organization}
+            detail-type: 
+             - ORGANIZATION_REGISTRATION_REQUESTED
+             - ORGANIZATION_APPROVAL_ACCEPTED
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.save_organization}
+  approveOrganization:
+    handler: dist/index.approveOrganization
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.save_organization}
+            detail-type:
+              - ORGANIZATION_APPROVAL_REQUESTED
+    environment:
+      HANDLER_NAME: ${self:custom.approve_organization}
   echo:
     handler: dist/index.echo
     events:
@@ -56,11 +71,12 @@ functions:
           pattern:
             source:
               - ${self:custom.save_organization}
-            detail-type: ["ORGANIZATION_APPROVAL_REQUESTED"]
+            detail-type:
+              - ORGANIZATION_APPROVED
     environment:
       HANDLER_NAME: public-badges.echo
   indexer:
-    handler: dist/index.approve
+    handler: dist/index.echo
     events:
       - s3: ${self:custom.registry_bucket}
     environment:

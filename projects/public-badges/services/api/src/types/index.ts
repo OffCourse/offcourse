@@ -36,6 +36,10 @@ export type PublicBadgesStores = {
   registry: RegistryStore;
 };
 
+export type PublicBadgesHandler<T, U> = (
+  event: T
+) => Promise<U>;
+
 export interface EventBus<E extends Event> {
   put: (event: E) => Promise<E["detail"]>;
 }
