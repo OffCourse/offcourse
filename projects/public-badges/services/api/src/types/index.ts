@@ -7,10 +7,6 @@ import {
   ValueCase
 } from "../generated/graphql";
 
-export type RequestedOrganization = Omit<PO, "status"> & {
-  status: OrganizationStatus.Requested;
-};
-
 export type PendingOrganization = Omit<PO, "status"> & {
   status: OrganizationStatus.Pending;
 };

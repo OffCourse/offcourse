@@ -17,7 +17,6 @@ const events_js_1 = require("../../types/events.js");
 const graphql_1 = require("../../generated/graphql");
 const saveOrganization = ({ detailType, detail }) => __awaiter(void 0, void 0, void 0, function* () {
     const { organizationId: id } = detail;
-    console.log("XXX");
     switch (detailType) {
         case events_js_1.PublicBadgesEventType.ORGANIZATION_REGISTRATION_REQUESTED: {
             const organization = Object.assign(Object.assign({}, detail), { status: graphql_1.OrganizationStatus.Pending });

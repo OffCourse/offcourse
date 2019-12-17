@@ -506,7 +506,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "ID",
+                "name": "GUID",
                 "ofType": null
               }
             },
@@ -578,15 +578,31 @@
             "deprecationReason": null
           },
           {
-            "name": "domains",
+            "name": "identity",
             "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
-                "name": "Domains",
+                "kind": "UNION",
+                "name": "Identity",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "urls",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "URL",
                 "ofType": null
               }
             },
@@ -618,12 +634,6 @@
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
-          {
-            "name": "REQUESTED",
-            "description": "",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
           {
             "name": "PENDING",
             "description": "",
@@ -693,12 +703,28 @@
         "possibleTypes": null
       },
       {
+        "kind": "UNION",
+        "name": "Identity",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "DomainNameIdentity",
+            "ofType": null
+          }
+        ]
+      },
+      {
         "kind": "OBJECT",
-        "name": "Domains",
+        "name": "DomainNameIdentity",
         "description": "",
         "fields": [
           {
-            "name": "main",
+            "name": "domainName",
             "description": "",
             "args": [],
             "type": {
@@ -706,23 +732,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "other",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
+                "name": "URL",
                 "ofType": null
               }
             },
@@ -732,6 +742,16 @@
         ],
         "inputFields": null,
         "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "URL",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
@@ -971,14 +991,14 @@
             "defaultValue": null
           },
           {
-            "name": "domains",
+            "name": "domainName",
             "description": "",
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "INPUT_OBJECT",
-                "name": "DomainsInput",
+                "kind": "SCALAR",
+                "name": "URL",
                 "ofType": null
               }
             },
@@ -1029,45 +1049,6 @@
         "possibleTypes": null
       },
       {
-        "kind": "INPUT_OBJECT",
-        "name": "DomainsInput",
-        "description": "",
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "main",
-            "description": "",
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "other",
-            "description": "",
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "OBJECT",
         "name": "PendingOrganization",
         "description": "",
@@ -1081,7 +1062,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "ID",
+                "name": "GUID",
                 "ofType": null
               }
             },
@@ -1153,15 +1134,31 @@
             "deprecationReason": null
           },
           {
-            "name": "domains",
+            "name": "identity",
             "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
-                "name": "Domains",
+                "kind": "UNION",
+                "name": "Identity",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "urls",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "URL",
                 "ofType": null
               }
             },
@@ -2420,7 +2417,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "ID",
+                "name": "GUID",
                 "ofType": null
               }
             },
@@ -2492,22 +2489,6 @@
             "deprecationReason": null
           },
           {
-            "name": "domains",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Domains",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "approvedBy",
             "description": "",
             "args": [],
@@ -2533,6 +2514,38 @@
               "ofType": {
                 "kind": "SCALAR",
                 "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "identity",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "UNION",
+                "name": "Identity",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "urls",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "URL",
                 "ofType": null
               }
             },

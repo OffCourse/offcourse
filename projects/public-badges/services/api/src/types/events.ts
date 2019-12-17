@@ -1,5 +1,4 @@
 import {
-  RequestedOrganization,
   PendingOrganization,
   ApprovedOrganization
 } from "./index"
@@ -20,8 +19,7 @@ export enum PublicBadgesEventType {
 
 export type PublicBadgesEventPayload =
   | PendingOrganization
-  | ApprovedOrganization
-  | RequestedOrganization;
+  | ApprovedOrganization;
 
 export interface PBEvent extends Event {
   detailType: PublicBadgesEventType;
@@ -30,7 +28,7 @@ export interface PBEvent extends Event {
 
 export interface OrganizationRegistrationRequestedEvent extends PBEvent {
   detailType: PublicBadgesEventType.ORGANIZATION_REGISTRATION_REQUESTED;
-  detail: RequestedOrganization;
+  detail: PendingOrganization;
 }
 
 export interface OrganizationApprovalRequestedEvent extends PBEvent {

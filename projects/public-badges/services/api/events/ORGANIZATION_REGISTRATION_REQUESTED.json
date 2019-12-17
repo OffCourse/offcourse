@@ -17,10 +17,10 @@
             "name": "John Doer",
             "email": "johndoer@waag.org"
         },
-        "domains": {
-            "main": "waag.org"
+        "identity": {
+            "domainName": "https://waag.org/"
         },
-        "organizationId": "waag.org",
-        "status": "PENDING"
+        "status": "PENDING",
+        "urls": ["https://waag.org/"]
     }
 }

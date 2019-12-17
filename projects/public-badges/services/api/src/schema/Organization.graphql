@@ -1,21 +1,22 @@
-type Domains {
-  main: String!
-  other: [String]
-}
-
 enum OrganizationStatus {
-  REQUESTED
   PENDING
   APPROVED
 }
 
+type DomainNameIdentity {
+  domainName: URL!
+}
+
+union Identity = DomainNameIdentity
+
 interface Organization {
-  organizationId: ID!
+  organizationId: GUID!
   status: OrganizationStatus!
   name: String!
   contact: Contact!
   admin: Contact!
-  domains: Domains!
+  identity: Identity!
+  urls: [URL]
 }
 
 input ContactInput{
@@ -29,34 +30,31 @@ type Contact {
 }
 
 
-input DomainsInput {
-  main: String!
-  other: [String]
-}
-
 type PendingOrganization implements Organization {
-  organizationId: ID!
+  organizationId: GUID!
   status: OrganizationStatus!
   name: String!
   contact: Contact!
   admin: Contact!
-  domains: Domains!
+  identity: Identity!
+  urls: [URL]
 }
 
 type ApprovedOrganization implements Organization {
-  organizationId: ID!
+  organizationId: GUID!
   status: OrganizationStatus!
   name: String!
   contact: Contact!
   admin: Contact!
-  domains: Domains!
   approvedBy: EmailAddress!
   approvedOn: String!
+  identity: Identity!
+  urls: [URL]
 }
 
 input OrganizationInput {
   name: String!
   contact: ContactInput!
   admin: ContactInput!
-  domains: DomainsInput!
+  domainName: URL!
 }

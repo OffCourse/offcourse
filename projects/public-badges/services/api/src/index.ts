@@ -2,7 +2,14 @@ import {
   graphql,
   echo,
   saveOrganization,
-  approveOrganization
+  approveOrganization,
+  updateRegistry
 } from "./handlers";
 
-export { graphql, echo, saveOrganization, approveOrganization };
+export {
+  graphql,
+  echo,
+  saveOrganization,
+  approveOrganization,
+  updateRegistry
+};

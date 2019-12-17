@@ -17,6 +17,11 @@ const server = new apollo_server_lambda_1.ApolloServer({
         endpoint: "/dev/graphql"
     }
 });
-const graphql = server.createHandler();
+const graphql = server.createHandler({
+    cors: {
+        origin: "*",
+        credentials: true
+    }
+});
 exports.default = graphql;
 //# sourceMappingURL=graphql.js.map

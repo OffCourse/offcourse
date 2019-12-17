@@ -2,6 +2,7 @@ import echo from "./echo";
 import graphql from "./graphql";
 import so from "./saveOrganization";
 import ao from "./approveOrganization";
+import ur from "./updateRegistry";
 import { Handler as AWSHandler } from "aws-lambda";
 import eventBus from "../eventBus";
 import { PublicBadgesHandler } from "../types";
@@ -20,10 +21,12 @@ const handler: (
 
 const saveOrganization = handler(so);
 const approveOrganization = handler(ao);
+const updateRegistry = ur;
 
 export {
   echo,
   graphql,
+  updateRegistry,
   approveOrganization,
   saveOrganization
 };

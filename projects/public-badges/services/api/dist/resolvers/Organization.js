@@ -10,12 +10,21 @@ const Contact = {
     }
 };
 exports.Contact = Contact;
+const DomainNameIdentity = {
+    domainName({ domainName }) {
+        return domainName;
+    }
+};
+exports.DomainNameIdentity = DomainNameIdentity;
+const Identity = {
+    __resolveType({ domainName }) {
+        return "DomainNameIdentity";
+    }
+};
+exports.Identity = Identity;
 const Organization = {
     __resolveType({ status }) {
         switch (status) {
-            case graphql_js_1.OrganizationStatus.Requested: {
-                return "PendingOrganization";
-            }
             case graphql_js_1.OrganizationStatus.Pending: {
                 return "PendingOrganization";
             }
@@ -24,8 +33,8 @@ const Organization = {
             }
         }
     },
-    organizationId({ domains }) {
-        return domains.main;
+    organizationId({ organizationId }) {
+        return organizationId;
     },
     status({ status }) {
         return status;
@@ -39,8 +48,11 @@ const Organization = {
     admin({ admin }) {
         return admin;
     },
-    domains({ domains }) {
-        return domains;
+    urls({ urls }) {
+        return urls;
+    },
+    identity({ identity }) {
+        return identity;
     }
 };
 exports.Organization = Organization;
@@ -53,13 +65,4 @@ const ApprovedOrganization = Object.assign(Object.assign({}, PendingOrganization
         return approvedOn;
     } });
 exports.ApprovedOrganization = ApprovedOrganization;
-const Domains = {
-    main({ main }) {
-        return main;
-    },
-    other({ other }) {
-        return other;
-    }
-};
-exports.Domains = Domains;
 //# sourceMappingURL=Organization.js.map

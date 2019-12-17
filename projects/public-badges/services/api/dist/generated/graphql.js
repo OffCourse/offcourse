@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var OrganizationStatus;
 (function (OrganizationStatus) {
-    OrganizationStatus["Requested"] = "REQUESTED";
     OrganizationStatus["Pending"] = "PENDING";
     OrganizationStatus["Approved"] = "APPROVED";
 })(OrganizationStatus = exports.OrganizationStatus || (exports.OrganizationStatus = {}));

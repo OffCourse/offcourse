@@ -1,5 +1,6 @@
 import { MutationResolvers, OrganizationStatus } from "../generated/graphql.js";
 import { PublicBadgesEventType } from "../types/events.js";
+import uuid from "uuid/v1";
 
 const {
   ORGANIZATION_REGISTRATION_REQUESTED,
@@ -14,12 +15,19 @@ const Mutation: MutationResolvers = {
     return "valueCase";
   },
   registerOrganization(_root, { input }, { eventBus }) {
+    const { name, contact, admin, domainName } = input;
     return eventBus.put({
       detailType: ORGANIZATION_REGISTRATION_REQUESTED,
       detail: {
-        ...input,
-        organizationId: input.domains.main,
-        status: OrganizationStatus.Requested
+        organizationId: uuid(),
+        name,
+        contact,
+        admin,
+        identity: {
+          domainName
+        },
+        status: OrganizationStatus.Pending,
+        urls: [domainName]
       }
     });
   }

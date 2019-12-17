@@ -22,7 +22,6 @@ const saveOrganization: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
   detail
 }) => {
   const { organizationId: id } = detail;
-  console.log("XXX");
   switch (detailType) {
     case EV.ORGANIZATION_REGISTRATION_REQUESTED: {
       const organization: PendingOrganization = {

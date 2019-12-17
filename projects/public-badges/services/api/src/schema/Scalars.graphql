@@ -2,3 +2,7 @@ scalar EmailAddress
 scalar JSON
 scalar GUID
 scalar ValueCaseID
+scalar URL
+
+
+

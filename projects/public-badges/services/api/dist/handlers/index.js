@@ -18,6 +18,7 @@ const graphql_1 = __importDefault(require("./graphql"));
 exports.graphql = graphql_1.default;
 const saveOrganization_1 = __importDefault(require("./saveOrganization"));
 const approveOrganization_1 = __importDefault(require("./approveOrganization"));
+const updateRegistry_1 = __importDefault(require("./updateRegistry"));
 const eventBus_1 = __importDefault(require("../eventBus"));
 const handler = handler => {
     return (awsEvent, _context, callback) => __awaiter(void 0, void 0, void 0, function* () {
@@ -32,4 +33,6 @@ const saveOrganization = handler(saveOrganization_1.default);
 exports.saveOrganization = saveOrganization;
 const approveOrganization = handler(approveOrganization_1.default);
 exports.approveOrganization = approveOrganization;
+const updateRegistry = updateRegistry_1.default;
+exports.updateRegistry = updateRegistry;
 //# sourceMappingURL=index.js.map
