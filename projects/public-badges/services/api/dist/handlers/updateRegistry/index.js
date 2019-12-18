@@ -14,7 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const aws_sdk_1 = __importDefault(require("aws-sdk")); // eslint-disable-line import/no-extraneous-dependencies
 const s3 = new aws_sdk_1.default.S3({ apiVersion: "2006-03-01" });
-const echo = (event, _context, callback) => __awaiter(void 0, void 0, void 0, function* () {
+const ddb = new aws_sdk_1.default.DynamoDB.DocumentClient();
+const updateRegistry = (event, _context, callback) => __awaiter(void 0, void 0, void 0, function* () {
     const { eventName, s3: detail } = event.Records[0];
     const { bucket, object } = detail;
     const Bucket = bucket.name;
@@ -22,14 +23,19 @@ const echo = (event, _context, callback) => __awaiter(void 0, void 0, void 0, fu
     const { Body } = yield s3.getObject({ Bucket, Key }).promise();
     const json = Body ? Body.toString('utf-8') : "{}";
     const { identity, status, organizationId } = JSON.parse(json);
-    const res = {
+    const TableName = process.env.REGISTRY_LOOKUP_TABLE;
+    if (!TableName) {
+        throw "The table name name must be set in your environment";
+    }
+    const Item = {
         identityType: "domainName",
         identityKey: identity.domainName,
-        status,
+        approvalStatus: status,
         organizationId
     };
+    const res = yield ddb.put({ TableName, Item }).promise();
     console.log(JSON.stringify(res));
     callback(null, event.detail);
 });
-exports.default = echo;
+exports.default = updateRegistry;
 //# sourceMappingURL=index.js.map

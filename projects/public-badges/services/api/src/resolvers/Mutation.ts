@@ -1,6 +1,8 @@
 import { MutationResolvers, OrganizationStatus } from "../generated/graphql.js";
 import { PublicBadgesEventType } from "../types/events.js";
 import uuid from "uuid/v1";
+import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependencies
+const ddb = new AWS.DynamoDB.DocumentClient();
 
 const {
   ORGANIZATION_REGISTRATION_REQUESTED,
@@ -14,19 +16,44 @@ const Mutation: MutationResolvers = {
     console.log(BADGE_ISSUANCE_REQUESTED);
     return "valueCase";
   },
-  registerOrganization(_root, { input }, { eventBus }) {
+  async registerOrganization(_root, { input }, { eventBus, stores }) {
     const { name, contact, admin, domainName } = input;
+
+    const organization = await stores.registry.fetch({ domainName });
+
+    if (organization) {
+      throw "ORG ALREADY EXISTS";
+    }
+
+    const TableName = process.env.REGISTRY_LOOKUP_TABLE;
+    if (!TableName) {
+      throw "The table name name must be set in your environment";
+    }
+
+    const organizationId = uuid();
+    const status = OrganizationStatus.Pending;
+
+    const Item = {
+      identityType: "domainName",
+      identityKey: `${domainName}`,
+      approvalStatus: status,
+      organizationId
+    };
+    console.log(Item);
+
+    await ddb.put({ TableName, Item }).promise();
+
     return eventBus.put({
       detailType: ORGANIZATION_REGISTRATION_REQUESTED,
       detail: {
-        organizationId: uuid(),
+        organizationId,
+        status,
         name,
         contact,
         admin,
         identity: {
           domainName
         },
-        status: OrganizationStatus.Pending,
         urls: [domainName]
       }
     });

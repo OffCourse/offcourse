@@ -24,7 +24,10 @@ export interface Store<A, T> {
 
 export type ValueCaseStore = Store<{ valueCaseId: string }, ValueCaseProxy>;
 export type BadgeInstanceStore = Store<{ badgeId: string }, OpenBadge | null>;
-export type RegistryStore = Store<{ organizationId: string }, Organization>;
+export type RegistryStore = Store<
+  { organizationId?: string | null; domainName?: string | null },
+  Organization
+>;
 
 export type PublicBadgesStores = {
   valueCase: ValueCaseStore;

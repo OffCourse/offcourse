@@ -7,8 +7,8 @@ const Query = {
     getAllBadges(_root, _args, { stores }) {
         return stores.badgeInstance.fetchAll();
     },
-    getOrganization(_root, args, { stores }) {
-        return stores.registry.fetch(args);
+    getOrganization(_root, { organizationId, domainName }, { stores }) {
+        return stores.registry.fetch({ organizationId, domainName });
     },
     getAllOrganizations(_root, _args, { stores }) {
         return stores.registry.fetchAll();

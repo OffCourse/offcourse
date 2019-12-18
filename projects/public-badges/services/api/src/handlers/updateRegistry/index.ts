@@ -2,8 +2,9 @@ import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependenc
 import { Handler } from "aws-lambda";
 
 const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
+const ddb = new AWS.DynamoDB.DocumentClient();
 
-const echo: Handler = async (
+const updateRegistry: Handler = async (
   event,
   _context,
   callback
@@ -15,14 +16,21 @@ const echo: Handler = async (
   const { Body } = await s3.getObject({ Bucket, Key }).promise();
   const json = Body ? Body.toString('utf-8') : "{}";
   const { identity, status, organizationId } = JSON.parse(json)
-  const res = {
+
+  const TableName = process.env.REGISTRY_LOOKUP_TABLE;
+  if (!TableName) {
+    throw "The table name name must be set in your environment";
+  }
+  const Item = {
     identityType: "domainName",
     identityKey: identity.domainName,
-    status,
+    approvalStatus: status,
     organizationId
   };
+
+  const res = await ddb.put({ TableName, Item }).promise()
   console.log(JSON.stringify(res));
   callback(null, event.detail);
 };
 
-export default echo;
+export default updateRegistry;

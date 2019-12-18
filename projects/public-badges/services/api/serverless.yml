@@ -6,6 +6,7 @@ custom:
   save_organization: public-badges.save-organization
   approve_organization: public-badges.approve-organization
   update_registry_lookup: public-badges.update-registry-lookup
+  registry_lookup_table: registry-lookup-${opt:stage}
 
 provider:
   name: aws
@@ -13,6 +14,7 @@ provider:
   iamRoleStatements:
     - Effect: Allow
       Action:
+        - s3:ListBucket
         - s3:GetObject
         - s3:PutObject
         - s3:PutObjectAcl
@@ -21,6 +23,17 @@ provider:
       Action:
         - events:PutEvents
       Resource: "*"
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:custom.registry_lookup_table}"
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:custom.registry_lookup_table}/index/*"
 
 functions:
   graphql:
@@ -41,6 +54,7 @@ functions:
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.api}
+      REGISTRY_LOOKUP_TABLE: ${self:custom.registry_lookup_table}
   saveOrganization:
     handler: dist/index.saveOrganization
     events:
@@ -67,10 +81,11 @@ functions:
     environment:
       HANDLER_NAME: ${self:custom.approve_organization}
   updateRegistry:
-    handler: dist/index.updateRegistry
+    handler: dist/index.echo
     events:
       - s3: ${self:custom.registry_bucket}
     environment:
+      REGISTRY_LOOKUP_TABLE: ${self:custom.registry_lookup_table}
       HANDLER_NAME: ${self:custom.update_registry_lookup}
   echo:
     handler: dist/index.echo
@@ -89,7 +104,7 @@ resources:
     registryTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: registry-lookup-${opt:stage}
+        TableName: ${self:custom.registry_lookup_table}
         AttributeDefinitions:
           - AttributeName: organizationId
             AttributeType: S

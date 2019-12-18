@@ -13,10 +13,50 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const organization_json_1 = __importDefault(require("../fixtures/organization.json"));
+const aws_sdk_1 = __importDefault(require("aws-sdk"));
+const ddb = new aws_sdk_1.default.DynamoDB.DocumentClient();
+const s3 = new aws_sdk_1.default.S3();
+const getOrganization = (organizationId) => __awaiter(void 0, void 0, void 0, function* () {
+    const Bucket = process.env.REGISTRY_BUCKET;
+    if (!Bucket) {
+        throw "Bucket Name is Required";
+    }
+    const Key = `${organizationId}/meta.json`;
+    const { Body } = yield s3.getObject({ Bucket, Key }).promise();
+    const json = Body ? Body.toString("utf-8") : "{}";
+    const organization = JSON.parse(json);
+    return organization;
+});
+const getOrganizationId = (domainName) => __awaiter(void 0, void 0, void 0, function* () {
+    const TableName = process.env.REGISTRY_LOOKUP_TABLE;
+    if (!TableName) {
+        throw "TableName is Required";
+    }
+    const Key = {
+        identityType: "domainName",
+        identityKey: `${domainName}`
+    };
+    const { Item } = yield ddb.get({ TableName, Key }).promise();
+    return Item && Item.organizationId;
+});
 const registry = {
-    fetch() {
+    fetch({ organizationId, domainName }) {
         return __awaiter(this, void 0, void 0, function* () {
-            return organization_json_1.default;
+            try {
+                if (organizationId) {
+                    return yield getOrganization(organizationId);
+                }
+                if (domainName) {
+                    const organizationId = yield getOrganizationId(domainName);
+                    if (organizationId) {
+                        return yield getOrganization(organizationId);
+                    }
+                }
+            }
+            catch (e) {
+                console.log(e);
+            }
+            return null;
         });
     },
     fetchAll() {

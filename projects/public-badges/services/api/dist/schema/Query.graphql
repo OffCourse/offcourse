@@ -1,6 +1,6 @@
 type Query {
   getBadge(badgeId: ID!): PublicBadge
   getAllBadges: [PublicBadge]
-  getOrganization(organizationId: ID!): Organization
+  getOrganization(organizationId: ID, domainName: URL): Organization
   getAllOrganizations: [Organization]
 }
