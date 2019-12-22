@@ -1,6 +1,5 @@
 import { RegistryStore } from "../types";
-import organization from "../fixtures/organization.json";
-import { Organization, OrganizationStatus } from "../generated/graphql.js";
+import { OrganizationStatus } from "../generated/graphql.js";
 import AWS from "aws-sdk";
 
 const ddb = new AWS.DynamoDB.DocumentClient();
@@ -23,7 +22,7 @@ const listOrganizations = async () => {
     throw "Bucket Name is Required";
   }
   const { Contents, NextContinuationToken } = await s3
-    .listObjectsV2({ Bucket, MaxKeys: 2 })
+    .listObjectsV2({ Bucket, MaxKeys: 10 })
     .promise();
   const keys: string[] = Contents
     ? Contents.map(({ Key }) => Key as string)
@@ -46,13 +45,15 @@ const getOrganizationId = async (domainName: string) => {
 
 const queryOrganizationStatus = async (status: OrganizationStatus) => {
   const TableName = process.env.REGISTRY_LOOKUP_TABLE;
-  if (!TableName) {
+  const IndexName = process.env.ORGANIZATION_STATUS_INDEX;
+
+  if (!TableName || !IndexName) {
     throw "TableName is Required";
   }
 
   var params = {
     TableName,
-    IndexName: "organization-status-dev",
+    IndexName,
     KeyConditionExpression: "approvalStatus = :approvalStatus",
     ExpressionAttributeValues: {
       ":approvalStatus": status

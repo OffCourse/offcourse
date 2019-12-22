@@ -31,7 +31,7 @@ const listOrganizations = () => __awaiter(void 0, void 0, void 0, function* () {
         throw "Bucket Name is Required";
     }
     const { Contents, NextContinuationToken } = yield s3
-        .listObjectsV2({ Bucket, MaxKeys: 2 })
+        .listObjectsV2({ Bucket, MaxKeys: 10 })
         .promise();
     const keys = Contents
         ? Contents.map(({ Key }) => Key)
@@ -52,12 +52,13 @@ const getOrganizationId = (domainName) => __awaiter(void 0, void 0, void 0, func
 });
 const queryOrganizationStatus = (status) => __awaiter(void 0, void 0, void 0, function* () {
     const TableName = process.env.REGISTRY_LOOKUP_TABLE;
-    if (!TableName) {
+    const IndexName = process.env.ORGANIZATION_STATUS_INDEX;
+    if (!TableName || !IndexName) {
         throw "TableName is Required";
     }
     var params = {
         TableName,
-        IndexName: "organization-status-dev",
+        IndexName,
         KeyConditionExpression: "approvalStatus = :approvalStatus",
         ExpressionAttributeValues: {
             ":approvalStatus": status
