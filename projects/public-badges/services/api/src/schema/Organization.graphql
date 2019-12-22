@@ -3,19 +3,13 @@ enum OrganizationStatus {
   APPROVED
 }
 
-type DomainNameIdentity {
-  domainName: URL!
-}
-
-union Identity = DomainNameIdentity
-
 interface Organization {
   organizationId: GUID!
   status: OrganizationStatus!
   name: String!
   contact: Contact!
   admin: Contact!
-  identity: Identity!
+  domainName: URL!
   urls: [URL]
 }
 
@@ -36,7 +30,7 @@ type PendingOrganization implements Organization {
   name: String!
   contact: Contact!
   admin: Contact!
-  identity: Identity!
+  domainName: URL!
   urls: [URL]
 }
 
@@ -48,7 +42,7 @@ type ApprovedOrganization implements Organization {
   admin: Contact!
   approvedBy: EmailAddress!
   approvedOn: String!
-  identity: Identity!
+  domainName: URL!
   urls: [URL]
 }
 

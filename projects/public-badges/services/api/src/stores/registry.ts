@@ -1,22 +1,35 @@
 import { RegistryStore } from "../types";
 import organization from "../fixtures/organization.json";
-import { Organization } from "../generated/graphql.js";
+import { Organization, OrganizationStatus } from "../generated/graphql.js";
 import AWS from "aws-sdk";
 
 const ddb = new AWS.DynamoDB.DocumentClient();
 const s3 = new AWS.S3();
 
-const getOrganization = async (organizationId: string) => {
+const getOrganization = async (objectKey: string) => {
   const Bucket = process.env.REGISTRY_BUCKET;
   if (!Bucket) {
     throw "Bucket Name is Required";
   }
-  const Key = `${organizationId}/meta.json`;
-  const { Body } = await s3.getObject({ Bucket, Key }).promise();
+  const { Body } = await s3.getObject({ Bucket, Key: objectKey }).promise();
   const json = Body ? Body.toString("utf-8") : "{}";
   const organization = JSON.parse(json);
   return organization;
-}
+};
+
+const listOrganizations = async () => {
+  const Bucket = process.env.REGISTRY_BUCKET;
+  if (!Bucket) {
+    throw "Bucket Name is Required";
+  }
+  const { Contents, NextContinuationToken } = await s3
+    .listObjectsV2({ Bucket, MaxKeys: 2 })
+    .promise();
+  const keys: string[] = Contents
+    ? Contents.map(({ Key }) => Key as string)
+    : [];
+  return { keys, continuationToken: NextContinuationToken };
+};
 
 const getOrganizationId = async (domainName: string) => {
   const TableName = process.env.REGISTRY_LOOKUP_TABLE;
@@ -31,17 +44,38 @@ const getOrganizationId = async (domainName: string) => {
   return Item && Item.organizationId;
 };
 
+const queryOrganizationStatus = async (status: OrganizationStatus) => {
+  const TableName = process.env.REGISTRY_LOOKUP_TABLE;
+  if (!TableName) {
+    throw "TableName is Required";
+  }
+
+  var params = {
+    TableName,
+    IndexName: "organization-status-dev",
+    KeyConditionExpression: "approvalStatus = :approvalStatus",
+    ExpressionAttributeValues: {
+      ":approvalStatus": status
+    }
+  };
+  const { Items, Count } = await ddb.query(params).promise();
+  const keys: string[] = Items
+    ? Items.map(({ organizationId }) => `${organizationId}/meta.json`)
+    : [];
+  return { keys, totalCount: Count };
+};
+
 const registry: RegistryStore = {
   async fetch({ organizationId, domainName }) {
     try {
       if (organizationId) {
-        return await getOrganization(organizationId);
+        return await getOrganization(`${organizationId}/meta.json`);
       }
 
       if (domainName) {
         const organizationId = await getOrganizationId(domainName);
         if (organizationId) {
-          return await getOrganization(organizationId);
+          return await getOrganization(`${organizationId}/meta.json`);
         }
       }
     } catch (e) {
@@ -49,8 +83,11 @@ const registry: RegistryStore = {
     }
     return null;
   },
-  async fetchAll() {
-    return [organization as Organization];
+  async fetchAll({ filter }) {
+    const { keys } = filter
+      ? await queryOrganizationStatus(filter)
+      : await listOrganizations();
+    return await Promise.all(keys.map(getOrganization));
   }
 };
 

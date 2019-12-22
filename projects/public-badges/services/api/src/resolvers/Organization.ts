@@ -1,8 +1,6 @@
 import {
   ContactResolvers,
   OrganizationResolvers,
-  DomainNameIdentityResolvers,
-  IdentityResolvers,
   PendingOrganizationResolvers,
   ApprovedOrganizationResolvers,
   OrganizationStatus
@@ -14,18 +12,6 @@ const Contact: ContactResolvers = {
   },
   email({ email }) {
     return email;
-  }
-};
-
-const DomainNameIdentity: DomainNameIdentityResolvers = {
-  domainName({ domainName }) {
-    return domainName;
-  }
-};
-
-const Identity: IdentityResolvers = {
-  __resolveType({ domainName }) {
-    return "DomainNameIdentity"
   }
 };
 
@@ -58,8 +44,8 @@ const Organization: OrganizationResolvers = {
   urls({ urls }) {
     return urls;
   },
-  identity({ identity }) {
-    return identity;
+  domainName({ domainName }) {
+    return domainName;
   }
 };
 
@@ -70,10 +56,10 @@ const PendingOrganization: PendingOrganizationResolvers = {
 const ApprovedOrganization: ApprovedOrganizationResolvers = {
   ...PendingOrganization,
   approvedBy({ approvedBy }) {
-    return approvedBy
+    return approvedBy;
   },
   approvedOn({ approvedOn }) {
-    return approvedOn
+    return approvedOn;
   }
 }
 
@@ -81,7 +67,5 @@ export {
   Contact,
   Organization,
   ApprovedOrganization,
-  PendingOrganization,
-  Identity,
-  DomainNameIdentity
+  PendingOrganization
 };

@@ -92,7 +92,18 @@
           {
             "name": "getAllOrganizations",
             "description": "",
-            "args": [],
+            "args": [
+              {
+                "name": "filter",
+                "description": "",
+                "type": {
+                  "kind": "ENUM",
+                  "name": "OrganizationStatus",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "LIST",
               "name": null,
@@ -584,15 +595,15 @@
             "deprecationReason": null
           },
           {
-            "name": "identity",
+            "name": "domainName",
             "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "UNION",
-                "name": "Identity",
+                "kind": "SCALAR",
+                "name": "URL",
                 "ofType": null
               }
             },
@@ -705,49 +716,6 @@
         "fields": null,
         "inputFields": null,
         "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "UNION",
-        "name": "Identity",
-        "description": "",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": [
-          {
-            "kind": "OBJECT",
-            "name": "DomainNameIdentity",
-            "ofType": null
-          }
-        ]
-      },
-      {
-        "kind": "OBJECT",
-        "name": "DomainNameIdentity",
-        "description": "",
-        "fields": [
-          {
-            "name": "domainName",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "URL",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -1140,15 +1108,15 @@
             "deprecationReason": null
           },
           {
-            "name": "identity",
+            "name": "domainName",
             "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "UNION",
-                "name": "Identity",
+                "kind": "SCALAR",
+                "name": "URL",
                 "ofType": null
               }
             },
@@ -2527,15 +2495,15 @@
             "deprecationReason": null
           },
           {
-            "name": "identity",
+            "name": "domainName",
             "description": "",
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "UNION",
-                "name": "Identity",
+                "kind": "SCALAR",
+                "name": "URL",
                 "ofType": null
               }
             },

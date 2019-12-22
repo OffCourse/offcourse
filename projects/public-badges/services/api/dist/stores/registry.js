@@ -12,20 +12,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const organization_json_1 = __importDefault(require("../fixtures/organization.json"));
 const aws_sdk_1 = __importDefault(require("aws-sdk"));
 const ddb = new aws_sdk_1.default.DynamoDB.DocumentClient();
 const s3 = new aws_sdk_1.default.S3();
-const getOrganization = (organizationId) => __awaiter(void 0, void 0, void 0, function* () {
+const getOrganization = (objectKey) => __awaiter(void 0, void 0, void 0, function* () {
     const Bucket = process.env.REGISTRY_BUCKET;
     if (!Bucket) {
         throw "Bucket Name is Required";
     }
-    const Key = `${organizationId}/meta.json`;
-    const { Body } = yield s3.getObject({ Bucket, Key }).promise();
+    const { Body } = yield s3.getObject({ Bucket, Key: objectKey }).promise();
     const json = Body ? Body.toString("utf-8") : "{}";
     const organization = JSON.parse(json);
     return organization;
+});
+const listOrganizations = () => __awaiter(void 0, void 0, void 0, function* () {
+    const Bucket = process.env.REGISTRY_BUCKET;
+    if (!Bucket) {
+        throw "Bucket Name is Required";
+    }
+    const { Contents, NextContinuationToken } = yield s3
+        .listObjectsV2({ Bucket, MaxKeys: 2 })
+        .promise();
+    const keys = Contents
+        ? Contents.map(({ Key }) => Key)
+        : [];
+    return { keys, continuationToken: NextContinuationToken };
 });
 const getOrganizationId = (domainName) => __awaiter(void 0, void 0, void 0, function* () {
     const TableName = process.env.REGISTRY_LOOKUP_TABLE;
@@ -39,17 +50,36 @@ const getOrganizationId = (domainName) => __awaiter(void 0, void 0, void 0, func
     const { Item } = yield ddb.get({ TableName, Key }).promise();
     return Item && Item.organizationId;
 });
+const queryOrganizationStatus = (status) => __awaiter(void 0, void 0, void 0, function* () {
+    const TableName = process.env.REGISTRY_LOOKUP_TABLE;
+    if (!TableName) {
+        throw "TableName is Required";
+    }
+    var params = {
+        TableName,
+        IndexName: "organization-status-dev",
+        KeyConditionExpression: "approvalStatus = :approvalStatus",
+        ExpressionAttributeValues: {
+            ":approvalStatus": status
+        }
+    };
+    const { Items, Count } = yield ddb.query(params).promise();
+    const keys = Items
+        ? Items.map(({ organizationId }) => `${organizationId}/meta.json`)
+        : [];
+    return { keys, totalCount: Count };
+});
 const registry = {
     fetch({ organizationId, domainName }) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 if (organizationId) {
-                    return yield getOrganization(organizationId);
+                    return yield getOrganization(`${organizationId}/meta.json`);
                 }
                 if (domainName) {
                     const organizationId = yield getOrganizationId(domainName);
                     if (organizationId) {
-                        return yield getOrganization(organizationId);
+                        return yield getOrganization(`${organizationId}/meta.json`);
                     }
                 }
             }
@@ -59,9 +89,12 @@ const registry = {
             return null;
         });
     },
-    fetchAll() {
+    fetchAll({ filter }) {
         return __awaiter(this, void 0, void 0, function* () {
-            return [organization_json_1.default];
+            const { keys } = filter
+                ? yield queryOrganizationStatus(filter)
+                : yield listOrganizations();
+            return yield Promise.all(keys.map(getOrganization));
         });
     }
 };

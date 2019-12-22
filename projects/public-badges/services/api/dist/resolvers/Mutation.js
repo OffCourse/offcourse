@@ -15,8 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_js_1 = require("../generated/graphql.js");
 const events_js_1 = require("../types/events.js");
 const v1_1 = __importDefault(require("uuid/v1"));
-const aws_sdk_1 = __importDefault(require("aws-sdk")); // eslint-disable-line import/no-extraneous-dependencies
-const ddb = new aws_sdk_1.default.DynamoDB.DocumentClient();
+const timeout = (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
 const { ORGANIZATION_REGISTRATION_REQUESTED, NEW_BADGECLASS_PROPOSED, BADGE_ISSUANCE_REQUESTED } = events_js_1.PublicBadgesEventType;
 const Mutation = {
     proposeValueCase() {
@@ -27,24 +28,18 @@ const Mutation = {
     registerOrganization(_root, { input }, { eventBus, stores }) {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, contact, admin, domainName } = input;
+            /**
+               just to make sure, the registry is updated to avoid duplicates.
+               It's highly unlikely (and relatively innocent) but still...
+               The unavoidable perils of async ;-)
+            **/
+            yield timeout(500);
             const organization = yield stores.registry.fetch({ domainName });
             if (organization) {
                 throw "ORG ALREADY EXISTS";
             }
-            const TableName = process.env.REGISTRY_LOOKUP_TABLE;
-            if (!TableName) {
-                throw "The table name name must be set in your environment";
-            }
             const organizationId = v1_1.default();
             const status = graphql_js_1.OrganizationStatus.Pending;
-            const Item = {
-                identityType: "domainName",
-                identityKey: `${domainName}`,
-                approvalStatus: status,
-                organizationId
-            };
-            console.log(Item);
-            yield ddb.put({ TableName, Item }).promise();
             return eventBus.put({
                 detailType: ORGANIZATION_REGISTRATION_REQUESTED,
                 detail: {
@@ -53,9 +48,7 @@ const Mutation = {
                     name,
                     contact,
                     admin,
-                    identity: {
-                        domainName
-                    },
+                    domainName,
                     urls: [domainName]
                 }
             });

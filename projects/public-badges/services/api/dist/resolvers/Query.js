@@ -4,14 +4,14 @@ const Query = {
     getBadge(_root, args, { stores }) {
         return stores.badgeInstance.fetch(args);
     },
-    getAllBadges(_root, _args, { stores }) {
-        return stores.badgeInstance.fetchAll();
+    getAllBadges(_root, args, { stores }) {
+        return stores.badgeInstance.fetchAll(args);
     },
     getOrganization(_root, { organizationId, domainName }, { stores }) {
         return stores.registry.fetch({ organizationId, domainName });
     },
-    getAllOrganizations(_root, _args, { stores }) {
-        return stores.registry.fetchAll();
+    getAllOrganizations(_root, args, { stores }) {
+        return stores.registry.fetchAll(args);
     }
 };
 exports.default = Query;

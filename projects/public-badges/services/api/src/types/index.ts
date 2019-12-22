@@ -17,15 +17,16 @@ export type ApprovedOrganization = Omit<AO, "status"> & {
 
 import { Event, PublicBadgesEvent } from "./events";
 
-export interface Store<A, T> {
-  fetch: (args: A) => Promise<T>;
-  fetchAll: () => Promise<NonNullable<T>[]>;
+export interface Store<O, A, T> {
+  fetch: (args: O) => Promise<T>;
+  fetchAll: (args: A) => Promise<NonNullable<T>[]>;
 }
 
-export type ValueCaseStore = Store<{ valueCaseId: string }, ValueCaseProxy>;
-export type BadgeInstanceStore = Store<{ badgeId: string }, OpenBadge | null>;
+export type ValueCaseStore = Store<{ valueCaseId: string }, {}, ValueCaseProxy>;
+export type BadgeInstanceStore = Store<{ badgeId: string }, {}, OpenBadge | null>;
 export type RegistryStore = Store<
   { organizationId?: string | null; domainName?: string | null },
+  { filter?: OrganizationStatus | null },
   Organization
 >;
 

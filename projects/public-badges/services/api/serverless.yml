@@ -18,7 +18,9 @@ provider:
         - s3:GetObject
         - s3:PutObject
         - s3:PutObjectAcl
-      Resource: "arn:aws:s3:::${self:custom.registry_bucket}/*"
+      Resource:
+        - "arn:aws:s3:::${self:custom.registry_bucket}"
+        - "arn:aws:s3:::${self:custom.registry_bucket}/*"
     - Effect: Allow
       Action:
         - events:PutEvents
@@ -81,21 +83,23 @@ functions:
     environment:
       HANDLER_NAME: ${self:custom.approve_organization}
   updateRegistry:
-    handler: dist/index.echo
+    handler: dist/index.updateRegistry
     events:
-      - s3: ${self:custom.registry_bucket}
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.api}
+              - ${self:custom.approve_organization}
+            detail-type: 
+             - ORGANIZATION_REGISTRATION_REQUESTED
+             - ORGANIZATION_APPROVAL_ACCEPTED
     environment:
       REGISTRY_LOOKUP_TABLE: ${self:custom.registry_lookup_table}
       HANDLER_NAME: ${self:custom.update_registry_lookup}
   echo:
     handler: dist/index.echo
     events:
-      - eventBridge:
-          pattern:
-            source:
-              - ${self:custom.save_organization}
-            detail-type:
-              - ORGANIZATION_APPROVED
+      - s3: ${self:custom.registry_bucket}
     environment:
       HANDLER_NAME: public-badges.echo
 

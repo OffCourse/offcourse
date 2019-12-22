@@ -10,18 +10,6 @@ const Contact = {
     }
 };
 exports.Contact = Contact;
-const DomainNameIdentity = {
-    domainName({ domainName }) {
-        return domainName;
-    }
-};
-exports.DomainNameIdentity = DomainNameIdentity;
-const Identity = {
-    __resolveType({ domainName }) {
-        return "DomainNameIdentity";
-    }
-};
-exports.Identity = Identity;
 const Organization = {
     __resolveType({ status }) {
         switch (status) {
@@ -51,8 +39,8 @@ const Organization = {
     urls({ urls }) {
         return urls;
     },
-    identity({ identity }) {
-        return identity;
+    domainName({ domainName }) {
+        return domainName;
     }
 };
 exports.Organization = Organization;

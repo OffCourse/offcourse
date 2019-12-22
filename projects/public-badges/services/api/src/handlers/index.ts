@@ -14,14 +14,17 @@ const handler: (
     const detail = awsEvent.detail;
     const detailType = awsEvent["detail-type"];
     const event = await handler({ detailType, detail });
-    const reply = await eventBus.put(event);
-    callback(null, reply);
+    if (event) {
+      const reply = await eventBus.put(event);
+      callback(null, reply);
+    }
+    callback(null, "success");
   };
 };
 
 const saveOrganization = handler(so);
 const approveOrganization = handler(ao);
-const updateRegistry = ur;
+const updateRegistry = handler(ur);
 
 export {
   echo,

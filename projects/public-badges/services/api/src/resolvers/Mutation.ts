@@ -1,9 +1,10 @@
 import { MutationResolvers, OrganizationStatus } from "../generated/graphql.js";
 import { PublicBadgesEventType } from "../types/events.js";
 import uuid from "uuid/v1";
-import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependencies
-const ddb = new AWS.DynamoDB.DocumentClient();
 
+const timeout = (ms: number) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 const {
   ORGANIZATION_REGISTRATION_REQUESTED,
   NEW_BADGECLASS_PROPOSED,
@@ -19,29 +20,21 @@ const Mutation: MutationResolvers = {
   async registerOrganization(_root, { input }, { eventBus, stores }) {
     const { name, contact, admin, domainName } = input;
 
+    /**
+       just to make sure, the registry is updated to avoid duplicates.
+       It's highly unlikely (and relatively innocent) but still...
+       The unavoidable perils of async ;-)
+    **/
+
+    await timeout(500);
     const organization = await stores.registry.fetch({ domainName });
 
     if (organization) {
       throw "ORG ALREADY EXISTS";
     }
 
-    const TableName = process.env.REGISTRY_LOOKUP_TABLE;
-    if (!TableName) {
-      throw "The table name name must be set in your environment";
-    }
-
     const organizationId = uuid();
     const status = OrganizationStatus.Pending;
-
-    const Item = {
-      identityType: "domainName",
-      identityKey: `${domainName}`,
-      approvalStatus: status,
-      organizationId
-    };
-    console.log(Item);
-
-    await ddb.put({ TableName, Item }).promise();
 
     return eventBus.put({
       detailType: ORGANIZATION_REGISTRATION_REQUESTED,
@@ -51,9 +44,7 @@ const Mutation: MutationResolvers = {
         name,
         contact,
         admin,
-        identity: {
-          domainName
-        },
+        domainName,
         urls: [domainName]
       }
     });

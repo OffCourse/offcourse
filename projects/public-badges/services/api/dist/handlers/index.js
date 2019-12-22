@@ -25,14 +25,17 @@ const handler = handler => {
         const detail = awsEvent.detail;
         const detailType = awsEvent["detail-type"];
         const event = yield handler({ detailType, detail });
-        const reply = yield eventBus_1.default.put(event);
-        callback(null, reply);
+        if (event) {
+            const reply = yield eventBus_1.default.put(event);
+            callback(null, reply);
+        }
+        callback(null, "success");
     });
 };
 const saveOrganization = handler(saveOrganization_1.default);
 exports.saveOrganization = saveOrganization;
 const approveOrganization = handler(approveOrganization_1.default);
 exports.approveOrganization = approveOrganization;
-const updateRegistry = updateRegistry_1.default;
+const updateRegistry = handler(updateRegistry_1.default);
 exports.updateRegistry = updateRegistry;
 //# sourceMappingURL=index.js.map
