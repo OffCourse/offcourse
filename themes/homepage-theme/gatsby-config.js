@@ -1,6 +1,6 @@
-
 module.exports = ({
-  dataPath = "data",
+  basePath = "data",
+  contentPath = "content",
   shapesPath = "shapes",
   projectImagesPath = "project-images"
 }) => ({
@@ -14,27 +14,27 @@ module.exports = ({
       resolve: "gatsby-source-filesystem",
       options: {
         name: "data",
-        path: dataPath
+        path: `${basePath}/${contentPath}`
       }
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "shapes",
-        path: shapesPath
+        path: `${basePath}/${shapesPath}`
       }
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "projectImages",
-        path: projectImagesPath
+        path: `${basePath}/${projectImagesPath}`
       }
     },
     {
       resolve: "gatsby-transformer-yaml",
       options: {
-        typeName: ({ node, object, isArray }) => object.role
+        typeName: ({  object }) => object.role
       }
     }
   ]

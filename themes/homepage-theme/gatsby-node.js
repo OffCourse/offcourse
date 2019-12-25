@@ -1,7 +1,7 @@
 const fs = require("fs");
 const remark = require(`remark`);
 const html = require(`remark-html`);
-
+const mkdir = require('mkdirp');
 
 exports.onCreateWebpackConfig = ({
   actions: { replaceWebpackConfig },
@@ -47,16 +47,23 @@ exports.createSchemaCustomization = ({ actions }) => {
         }
       };
     }
-  });
+  })
 };
 
-exports.onPreBootstrap = ({ reporter }, options) => {
-  const contentPath = options.contentPath || "data";
-  if (!fs.existsSync(contentPath)) {
-    reporter.info(`creating the ${contentPath} directory`);
-    fs.mkdirSync(contentPath);
-  }
-};
+exports.onPreBootstrap = ({ reporter }, {
+  basePath = "data",
+  contentPath = "content",
+  shapesPath = "shapes",
+  projectImagesPath = "project-images"
+}) => {
+  [contentPath, shapesPath, projectImagesPath].forEach((subPath) => {
+    const path = `${basePath}/${subPath}`;
+
+    if (!fs.existsSync(path)) {
+      reporter.info(`creating the ${path} directory`);
+      mkdir(path);
+    }});
+  };
 
 exports.sourceNodes = ({ actions }) => {
 actions.createTypes(`
