@@ -1,3 +1,6 @@
 module.exports = {
-  plugins: [`gatsby-plugin-typescript`, "gatsby-theme-docz"]
+  siteMetadata: {
+    siteName: `Offcourse Studio_`
+  },
+  plugins: ["@offcourse/homepage-theme"]
 };

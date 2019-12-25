@@ -1,12 +1,12 @@
 {
-    "private": true,
-    "workspaces": [
-        "interfaces",
-        "themes/homepage-theme",
-        "projects/offcourse-studio",
-        "projects/template-site",
-        "projects/bots-with-an-attitude/site",
-        "projects/public-badges/site",
-        "projects/bots-with-an-attitude/services/bot-frame"
-    ]
+  "private": true,
+  "workspaces": [
+    "interfaces",
+    "themes/homepage-theme",
+    "projects/offcourse-studio",
+    "projects/template-site",
+    "projects/bots-with-an-attitude/site",
+    "projects/public-badges/site",
+    "projects/bots-with-an-attitude/services/bot-frame"
+  ]
 }

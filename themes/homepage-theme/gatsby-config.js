@@ -1,3 +1,4 @@
+
 module.exports = ({
   dataPath = "data",
   shapesPath = "shapes",

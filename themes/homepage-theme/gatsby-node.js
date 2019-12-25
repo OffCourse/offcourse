@@ -2,6 +2,7 @@ const fs = require("fs");
 const remark = require(`remark`);
 const html = require(`remark-html`);
 
+
 exports.onCreateWebpackConfig = ({
   actions: { replaceWebpackConfig },
   getConfig
@@ -27,7 +28,7 @@ exports.createSchemaCustomization = ({ actions }) => {
         defaultValue: true
       }
     },
-    extend(options, prevFieldConfig) {
+    extend(options) {
       return {
         args: {
           sanitize: "Boolean"
@@ -57,122 +58,121 @@ exports.onPreBootstrap = ({ reporter }, options) => {
   }
 };
 
-exports.sourceNodes = ({ actions, reporter }) => {
-  actions.createTypes(`
-    type FormFieldOption {
-      value: String!
+exports.sourceNodes = ({ actions }) => {
+actions.createTypes(`
+  type FormFieldOption {
+    value: String!
+    label: String!
+  }
+
+  type FormField {
+      name: String!
+      placeholder: String
       label: String!
-    }
+      type: String
+      options: [FormFieldOption]
+  }
 
-    type FormField {
-        name: String!
-        placeholder: String
-        label: String!
-        type: String
-        options: [FormFieldOption]
-    }
+  type Form {
+      title: String!
+      fields: [FormField]
+  }
 
-    type Form {
-        title: String!
-        fields: [FormField]
-    }
+  type ContactInfo {
+    street: String
+    zipCode: String
+    city: String
+    country: String
+    email: String
+  }
 
-    type ContactInfo {
-      street: String
-      zipCode: String
-      city: String
-      country: String
-      email: String
-    }
+  type ProjectInfo {
+    title: String
+    description: String @md
+  }
 
-    type ProjectInfo {
-      title: String
-      description: String @md
-    }
+  type ContactSection implements Node & PageSection {
+    role: String!
+    order: Int!
+    title: String
+    description: String @md
+    backdropPath: String
+    publishable: Boolean
+    callToAction: String
+    form: Form
+   }
 
+  type HeroSection implements Node & PageSection {
+    role: String!
+    order: Int!
+    title: String
+    description: String @md
+    backdropPath: String
+    publishable: Boolean
+   }
 
-    type ContactSection implements Node & PageSection {
-      role: String!
-      order: Int!
-      title: String
-      description: String @md
-      backdropPath: String
-      publishable: Boolean
-      callToAction: String
-      form: Form
-     }
+  type AboutSection implements Node & PageSection {
+    role: String!
+    order: Int!
+    title: String
+    description: String @md
+    backdropPath: String
+    publishable: Boolean
+   }
 
-    type HeroSection implements Node & PageSection {
-      role: String!
-      order: Int!
-      title: String
-      description: String @md
-      backdropPath: String
-      publishable: Boolean
-     }
+  type FooterSection implements Node & PageSection {
+    role: String!
+    title: String
+    order: Int!
+    description: String @md
+    backdropPath: String
+    publishable: Boolean
+    contactInfo: ContactInfo
+  }
 
-    type AboutSection implements Node & PageSection {
-      role: String!
-      order: Int!
-      title: String
-      description: String @md
-      backdropPath: String
-      publishable: Boolean
-     }
+  type ProjectsSection implements Node & PageSection {
+    role: String!
+    title: String
+    order: Int!
+    description: String @md
+    backdropPath: String
+    publishable: Boolean
+    projects: [ProjectInfo]
+   }
 
-    type FooterSection implements Node & PageSection {
-      role: String!
-      title: String
-      order: Int!
-      description: String @md
-      backdropPath: String
-      publishable: Boolean
-      contactInfo: ContactInfo
-    }
+  type ProcessSection implements Node & PageSection {
+    role: String!
+    title: String
+    order: Int!
+    description: String @md
+    backdropPath: String
+    publishable: Boolean
+    steps: [ProjectInfo]
+   }
 
-    type ProjectsSection implements Node & PageSection {
-      role: String!
-      title: String
-      order: Int!
-      description: String @md
-      backdropPath: String
-      publishable: Boolean
-      projects: [ProjectInfo]
-     }
+  type ProfileSection implements Node & PageSection {
+    role: String!
+    title: String
+    order: Int!
+    description: String @md
+    backdropPath: String
+    publishable: Boolean
+    skills: [ProjectInfo]
+   }
 
-    type ProcessSection implements Node & PageSection {
-      role: String!
-      title: String
-      order: Int!
-      description: String @md
-      backdropPath: String
-      publishable: Boolean
-      steps: [ProjectInfo]
-     }
-
-    type ProfileSection implements Node & PageSection {
-      role: String!
-      title: String
-      order: Int!
-      description: String @md
-      backdropPath: String
-      publishable: Boolean
-      skills: [ProjectInfo]
-     }
-
-    interface PageSection @nodeInterface {
-      id: ID!
-      role: String!
-      order: Int!
-      title: String
-      description: String @md
-      backdropPath: String
-      publishable: Boolean
-    }
+  interface PageSection @nodeInterface {
+    id: ID!
+    role: String!
+    order: Int!
+    title: String
+    description: String @md
+    backdropPath: String
+    publishable: Boolean
+  }
 `);
 };
 
-exports.createPages = async ({ actions, graphql, reporter }, options) => {
+exports.createPages = async ({ actions }, options) => {
   const basePath = options.basePath || "/";
   actions.createPage({
     path: basePath,

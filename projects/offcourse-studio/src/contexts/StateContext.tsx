@@ -11,7 +11,7 @@ import useAnimationFrame from "@offcourse/homepage-theme/src/hooks/useAnimationF
 import { shuffle } from "d3-array";
 import elementsWorker from "./elementsWorker";
 
-const StateContext = createContext();
+const StateContext = createContext({});
 
 export const AppStateProvider: FunctionComponent = ({ children }) => {
   const { theme }: any = useThemeUI();
