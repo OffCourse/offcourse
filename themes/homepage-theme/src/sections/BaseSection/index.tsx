@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent, forwardRef } from "react";
 import { jsx } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import { IBaseSection } from "@offcourse/interfaces/src/pageSection";
 import styles from "./styles";
 

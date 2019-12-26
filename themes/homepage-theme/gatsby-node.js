@@ -2,6 +2,7 @@ const fs = require("fs");
 const remark = require(`remark`);
 const html = require(`remark-html`);
 const mkdir = require('mkdirp');
+const voca = require("voca");
 
 exports.onCreateWebpackConfig = ({
   actions: { replaceWebpackConfig },
@@ -95,6 +96,7 @@ actions.createTypes(`
 
   type ProjectInfo {
     title: String
+    imageUrl: String
     description: String @md
   }
 
@@ -177,6 +179,30 @@ actions.createTypes(`
     publishable: Boolean
   }
 `);
+};
+
+exports.createResolvers = ({ createResolvers }) => {
+  const resolvers = {
+    ProjectInfo: {
+      imageUrl: {
+         async resolve(source, args, context, info) {
+           const title = voca.snakeCase(source.title);
+           const { internal, name, ext } =  await context.nodeModel.runQuery({
+              query: {
+                filter: {
+                    sourceInstanceName: { eq: "projectImages" },
+                    name: { eq: title },
+                },
+              },
+              type: "File",
+              firstOnly: true,
+            });
+          return `static/${name}-${internal.contentDigest}${ext}`;
+          }
+        }
+      }
+    };
+  createResolvers(resolvers);
 };
 
 exports.createPages = async ({ actions }, options) => {

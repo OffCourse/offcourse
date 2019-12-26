@@ -15,10 +15,11 @@
   "author": "Yeehaa",
   "license": "MIT",
   "devDependencies": {
-      "serverless": "^1.60.4"
+    "serverless": "^1.60.4"
   },
   "dependencies": {
     "@offcourse/homepage-theme": "*",
+    "@offcourse/interfaces": "*",
     "@types/d3-array": "^2.0.0",
     "d3-array": "^2.4.0",
     "gatsby": "^2.18.17",

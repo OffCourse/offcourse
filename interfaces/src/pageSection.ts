@@ -1,5 +1,6 @@
 export interface IBaseSection {
   role: string;
+  order: number;
   publishable: boolean;
   backdropPath?: string;
   children: any;
@@ -23,7 +24,6 @@ interface IContactInfo {
   city: string;
   country: string;
   email: string;
-
 }
 
 export type IFooterSection = IBaseSection & {
@@ -56,7 +56,8 @@ export type IProcessSection = IBaseSection & {
   steps: IStep[];
 };
 
-export type IPageSection = IContactSection
+export type IPageSection =
+  | IContactSection
   | IHeroSection
   | IFooterSection
   | IProjectsSection

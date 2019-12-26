@@ -22,42 +22,14 @@ const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
   ...rest
 }) => {
   const [{ width }, { ref }] = useMeasure();
-  const x = useStaticQuery(graphql`
-    query ProjectImagesQuery {
-      allFile(filter: { sourceInstanceName: { eq: "projectImages" } }) {
-        edges {
-          node {
-            name
-            publicURL
-          }
-        }
-      }
-    }
-  `);
-
-  const imageUrls = x.allFile.edges.reduce(
-    (acc, { node }) => ({
-      ...acc,
-      [node.name]: node.publicURL
-    }),
-    {}
-  );
-
   return (
     <BaseSection {...rest} sx={wrapperStyles} className={className} ref={ref}>
       <Carousel
         visibleItems={width && width > 480 ? 3 : 1}
-        items={projects.map((project, index) => {
-          const imageName = snakeCase(project.title);
-          const imageUrl = imageUrls[imageName] || null;
-          return {
-            ...project,
-            imageUrl
-          };
-        })}
+        items={projects}
         delay={8000}
       >
-        {item => <Project {...(item as IProject & { index: number })} />}
+        {(item) => <Project {...(item as IProject & { index: number })} />}
       </Carousel>
     </BaseSection>
   );

@@ -1,7 +1,6 @@
 module.exports = ({
   basePath = "data",
   contentPath = "content",
-  shapesPath = "shapes",
   projectImagesPath = "project-images"
 }) => ({
   siteMetadata: {
@@ -20,13 +19,6 @@ module.exports = ({
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "shapes",
-        path: `${basePath}/${shapesPath}`
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
         name: "projectImages",
         path: `${basePath}/${projectImagesPath}`
       }
@@ -39,3 +31,12 @@ module.exports = ({
     }
   ]
 });
+/**
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "shapes",
+        path: `${basePath}/${shapesPath}`
+      }
+    },
+**/

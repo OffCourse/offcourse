@@ -4,14 +4,9 @@ import { IPageSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces";
 
 const {
-  AboutSection,
   BaseSection,
-  FooterSection,
-  HeroSection,
-  ContactSection,
-  ProjectsSection,
-  ProcessSection
 } = components;
+
 type PageSectionProps = IPageSection & IThemeable;
 
 const PageSection: FunctionComponent<PageSectionProps> = ({

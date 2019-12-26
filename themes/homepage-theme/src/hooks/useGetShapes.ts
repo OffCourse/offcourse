@@ -1,5 +1,4 @@
 import { graphql, useStaticQuery } from "gatsby";
-import { shuffle } from "d3-array"
 
 const useGetShapes: () => any = () => {
   const data = useStaticQuery(graphql`
@@ -11,12 +10,13 @@ const useGetShapes: () => any = () => {
           }
         }
       }
-    }`);
+    }
+  `);
   const allShapes = data.allFile.edges.reduce(
     (acc, { node }) => [...acc, node.name],
     []
   );
-  return allShapes
-}
+  return allShapes;
+};
 
 export default useGetShapes;
