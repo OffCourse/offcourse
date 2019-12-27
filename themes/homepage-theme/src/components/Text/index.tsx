@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import { wrapperStyles } from "./styles";
 
 type TextProps = {

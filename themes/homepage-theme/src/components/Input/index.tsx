@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent, ChangeEvent } from "react";
 import { jsx } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import { IInput } from "@offcourse/interfaces/src/form";
 import { formatTitle, lowerCase, formatValue } from "../helpers";
 import { wrapperStyles, inputStyles } from "./styles";
@@ -22,7 +22,7 @@ const Input: FunctionComponent<InputProps> = ({
   required = false,
   isNormalized = true
 }) => {
-  const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = e => {
+  const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = (e) => {
     if (!onChange) {
       return;
     }
@@ -30,16 +30,16 @@ const Input: FunctionComponent<InputProps> = ({
       return onChange(e);
     }
 
-    const value = lowerCase(e.target.value);
-    e.target.value = value;
+    const fieldValue = lowerCase(e.target.value);
+    e.target.value = fieldValue;
     return onChange(e);
   };
 
   const baseProps = {
-    name: name,
-    type: type,
+    name,
+    type,
     autoComplete: `${autoComplete}`,
-    autoFocus: autoFocus,
+    autoFocus,
     disabled,
     value: formatValue(value, isNormalized),
     placeholder: placeholder
@@ -47,7 +47,7 @@ const Input: FunctionComponent<InputProps> = ({
       : formatTitle(`enter your ${name}`),
     onChange: handleChange,
     required,
-    onBlur: onBlur
+    onBlur
   };
   return (
     <div className={className} sx={wrapperStyles}>

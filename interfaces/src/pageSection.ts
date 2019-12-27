@@ -1,23 +1,3 @@
-export interface IBaseSection {
-  role: string;
-  order: number;
-  publishable: boolean;
-  backdropPath?: string;
-  children: any;
-}
-
-export type IHeroSection = IBaseSection & {
-  role: "hero";
-  title: string;
-};
-
-export type IContactSection = IBaseSection & {
-  role: "contact";
-  title: string;
-  callToAction: string;
-  form: any;
-};
-
 interface IContactInfo {
   street: string;
   zipCode: string;
@@ -26,12 +6,14 @@ interface IContactInfo {
   email: string;
 }
 
-export type IFooterSection = IBaseSection & {
-  role: "footer";
-  contactInfo: IContactInfo;
-};
-
 export interface IProject {
+  title: string;
+  imageUrl: string;
+  description: string;
+  index: number;
+}
+
+export interface ISkill {
   title: string;
   description: string;
 }
@@ -42,15 +24,47 @@ export interface IStep {
   index: number;
 }
 
+export interface IBaseSection {
+  role: string;
+  order: number;
+  publishable: boolean;
+  backdropPath?: string;
+  children: any;
+}
+
+export type IFooterSection = IBaseSection & {
+  role: "FooterSection";
+  contactInfo: IContactInfo;
+};
+
+export type IHeroSection = IBaseSection & {
+  role: "HeroSection";
+  title: string;
+};
+
+export type IContactSection = IBaseSection & {
+  role: "ContactSection";
+  title: string;
+  callToAction: string;
+  form: any;
+};
+
 export type IProjectsSection = IBaseSection & {
-  role: "projects";
+  role: "ProjectsSection";
   title: string;
   description: string;
   projects: IProject[];
 };
 
+export type IProfileSection = IBaseSection & {
+  role: "ProfileSection";
+  title: string;
+  description: string;
+  skills: ISkill[];
+};
+
 export type IProcessSection = IBaseSection & {
-  role: "process";
+  role: "ProcessSection";
   title: string;
   description: string;
   steps: IStep[];
@@ -61,4 +75,5 @@ export type IPageSection =
   | IHeroSection
   | IFooterSection
   | IProjectsSection
-  | IProcessSection;
+  | IProcessSection
+  | IProfileSection;

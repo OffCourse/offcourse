@@ -1,24 +1,16 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { Styled, jsx } from "theme-ui";
-import { IBaseSection } from "@offcourse/interfaces/src/pageSection";
-import { IThemeable } from "@offcourse/interfaces";
+import { jsx } from "theme-ui";
+import { IProfileSection } from "@offcourse/interfaces/src/pageSection";
+import { IThemeable } from "@offcourse/interfaces/src";
 import Text from "../../components/Text";
-import DisplayText from "../../components/DisplayText";
 import BaseSection from "../BaseSection";
 import { wrapperStyles, columnStyles, titleStyles } from "./styles";
 
-type ProfileSectionProps = IBaseSection & {
-  title: string;
-  description: string;
-} & IThemeable;
-
-const gridColumns = ["1/4", "4/7", "7/10"];
+type ProfileSectionProps = IProfileSection & IThemeable;
 
 const ProfileSection: FunctionComponent<ProfileSectionProps> = ({
   className,
-  title,
-  description,
   skills,
   ...props
 }) => {

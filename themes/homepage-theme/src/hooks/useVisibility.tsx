@@ -16,7 +16,7 @@ const useVisibility = ({ canLeave = false }) => {
     <Waypoint
       scrollableAncestor={typeof window !== "undefined" ? window : null}
       onEnter={handlePositionChange}
-      onLeave={args => (canLeave ? handlePositionChange(args) : null)}
+      onLeave={(args) => (canLeave ? handlePositionChange(args) : null)}
     />
   );
 

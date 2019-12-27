@@ -48,16 +48,15 @@ exports.createSchemaCustomization = ({ actions }) => {
         }
       };
     }
-  })
+  });
 };
 
 exports.onPreBootstrap = ({ reporter }, {
   basePath = "data",
   contentPath = "content",
-  shapesPath = "shapes",
   projectImagesPath = "project-images"
 }) => {
-  [contentPath, shapesPath, projectImagesPath].forEach((subPath) => {
+  [contentPath, projectImagesPath].forEach((subPath) => {
     const path = `${basePath}/${subPath}`;
 
     if (!fs.existsSync(path)) {
@@ -197,7 +196,7 @@ exports.createResolvers = ({ createResolvers }) => {
               type: "File",
               firstOnly: true,
             });
-          return `static/${name}-${internal.contentDigest}${ext}`;
+            return `/static/${name}-${internal.contentDigest}${ext}`;
           }
         }
       }

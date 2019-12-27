@@ -1,24 +1,23 @@
 import { useState, CSSProperties } from "react";
 import { useTransition } from "react-spring";
 import useInterval from "./useInterval";
+import { IIndexable } from "@offcourse/interfaces/src";
 
-interface ICarouselProps {
-  items: any[];
+interface ICarouselProps<T extends IIndexable> {
+  items: T[];
   delay?: number;
   visibleItems: number;
-};
+}
 
-interface ICarouselItem {
-  item: { index: number };
+interface ICarouselItem<T extends IIndexable> {
+  item: T;
   style: CSSProperties;
   key: string;
-};
+}
 
-const useCarousel: (props: ICarouselProps) => ICarouselItem[] = ({
-  items,
-  visibleItems,
-  delay = 2000,
-}) => {
+const useCarousel: <T extends IIndexable>(
+  props: ICarouselProps<T>
+) => Array<ICarouselItem<T>> = ({ items, visibleItems, delay = 2000 }) => {
   const [index, setIndex] = useState(0);
   const goUp = (i: number) => setIndex(i + 1);
   const goDown = (i: number) => setIndex(i - 1);
@@ -52,9 +51,11 @@ const useCarousel: (props: ICarouselProps) => ICarouselItem[] = ({
       { transform: `translate3d(${index * -100}%, 0, 0)` }
     ]
   });
-  return transitions.map(({ item, props, key }) =>
-    ({ item, style: props, key })
-  );
+  return transitions.map(({ item, props, key }) => ({
+    item,
+    style: props,
+    key
+  }));
 };
 
 export default useCarousel;

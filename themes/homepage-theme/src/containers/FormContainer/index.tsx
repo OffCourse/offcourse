@@ -3,13 +3,13 @@ import { Formik } from "formik";
 import { IForm } from "@offcourse/interfaces/src/form";
 import { initialize } from "./helpers";
 
-type FormContainerProps = {
+interface IFormContainerProps {
   form: { fields: any; title: string };
   onSubmit: (args: any, helpers: any) => void;
   children: (formProps: IForm) => ReactNode;
-};
+}
 
-const FormContainer: FunctionComponent<FormContainerProps> = ({
+const FormContainer: FunctionComponent<IFormContainerProps> = ({
   form,
   onSubmit,
   children
@@ -22,7 +22,7 @@ const FormContainer: FunctionComponent<FormContainerProps> = ({
       validationSchema={validations}
       onSubmit={onSubmit}
     >
-      {formProps => {
+      {(formProps) => {
         const canSubmit = formProps.dirty && formProps.isValid;
         return children({ ...formProps, canSubmit, title, fields });
       }}

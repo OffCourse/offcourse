@@ -1,4 +1,6 @@
-export const wrapperStyles = {
+import {SxStyleProp} from "theme-ui";
+
+export const wrapperStyles: SxStyleProp = {
   userSelect: "none",
   display: "grid",
   gridTemplateRows: "auto 1fr auto",
@@ -8,7 +10,7 @@ export const wrapperStyles = {
   bg: "grayScale.0"
 };
 
-export const headerStyles = {
+export const headerStyles: SxStyleProp = {
   fontFamily: "monospace",
   fontSize: "2rem",
   lineHeight: "2rem",
@@ -16,14 +18,14 @@ export const headerStyles = {
   px: [6, 6]
 };
 
-export const imageStyles = {
+export const imageStyles: SxStyleProp = {
   paddingTop: "100%",
   position: "relative",
   bg: "grayScale.4",
   mb: 4
 };
 
-export const captionStyles = {
+export const captionStyles: SxStyleProp = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
@@ -33,9 +35,9 @@ export const captionStyles = {
   }
 };
 
-const dist = ["3rem", "3rem", "3rem", "3rem", "3rem"];
+const dist = ["6rem", "6rem", "6rem", "6rem", "6rem"];
 
-export const innerStyles = {
+export const innerStyles: SxStyleProp = {
   position: "absolute",
   top: dist,
   bottom: dist,

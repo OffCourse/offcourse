@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import BaseSection from "../BaseSection";
 import { wrapperStyles } from "./styles";
 import Step from "../../components/Step";
-import { Waypoint } from "react-waypoint";
 import { IProcessSection, IStep } from "@offcourse/interfaces/src/pageSection";
 
 type ProcessSectionProps = IProcessSection & IThemeable;

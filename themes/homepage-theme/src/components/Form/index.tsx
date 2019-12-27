@@ -3,10 +3,10 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { Form as FForm } from "formik";
 import { IForm } from "@offcourse/interfaces/src/form";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import InputField from "../InputField";
 import Button from "../Button";
-import { wrapperStyles, titleStyles, buttonStyles } from "./styles";
+import { wrapperStyles, buttonStyles } from "./styles";
 
 type FormProps = IForm & IThemeable;
 

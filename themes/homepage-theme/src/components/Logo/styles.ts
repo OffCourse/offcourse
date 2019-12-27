@@ -1,10 +1,12 @@
-export const wrapperStyles = {
+import { SxStyleProp } from "theme-ui";
+
+export const wrapperStyles: SxStyleProp = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
   alignContent: "flex-end",
   textAlign: "right",
-  userSelect: "none",
+  userSelect: "none"
 };
 
 export const textStyles = {
@@ -12,5 +14,5 @@ export const textStyles = {
   display: "inline-block",
   m: 0,
   fontSize: ["2rem", "2.5rem", "3rem"],
-  lineHeight: ["2.4rem", "3rem", "3.6rem"],
+  lineHeight: ["2.4rem", "3rem", "3.6rem"]
 };

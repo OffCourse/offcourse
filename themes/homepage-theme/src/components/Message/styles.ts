@@ -1,4 +1,6 @@
-export const messageStyles = {
+import { SxStyleProp } from "theme-ui";
+
+export const messageStyles: SxStyleProp = {
   fontFamily: "heading",
   boxSizing: "border-box",
   display: "flex",
@@ -9,7 +11,7 @@ export const messageStyles = {
   pb: 2
 };
 
-export const basicMessageStyles = {
+export const basicMessageStyles: SxStyleProp = {
   ...messageStyles,
   pt: 0
 };

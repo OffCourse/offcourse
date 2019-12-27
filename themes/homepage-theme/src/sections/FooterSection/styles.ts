@@ -1,3 +1,5 @@
+import { SxStyleProp } from "theme-ui";
+
 export const wrapperStyles = {
   display: "grid",
   pt: [7, 7, 7, 8, "5rem"],
@@ -6,10 +8,10 @@ export const wrapperStyles = {
   bg: "grayScale.4",
   maxHeight: "50vh",
   gridTemplateColumns: ["1fr", "1fr 2fr"],
-  gridGap: 7,
+  gridGap: 7
 };
 
-export const contactStyles = {
+export const contactStyles: SxStyleProp = {
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
@@ -30,6 +32,6 @@ export const contactStyles = {
 export const logoStyles = {
   h1: {
     color: "grayScale.4",
-    bg: "grayScale.0",
+    bg: "grayScale.0"
   }
 };

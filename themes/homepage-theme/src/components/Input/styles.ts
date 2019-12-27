@@ -1,4 +1,6 @@
-export const wrapperStyles = {
+import { SxStyleProp } from "theme-ui";
+
+export const wrapperStyles: SxStyleProp = {
   display: "flex",
   flex: 1,
   alignItems: "center",
@@ -10,7 +12,7 @@ export const wrapperStyles = {
   bg: "grayScale.1"
 };
 
-export const inputStyles = {
+export const inputStyles: SxStyleProp = {
   width: "100%",
   py: 0,
   px: 4,

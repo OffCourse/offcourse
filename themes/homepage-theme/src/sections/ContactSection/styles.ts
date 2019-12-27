@@ -1,14 +1,15 @@
-export const wrapperStyles = {
+import { SxStyleProp } from "theme-ui";
+
+export const wrapperStyles: SxStyleProp = {
   gridTemplateRows: ["auto 1fr", "auto 1fr", "1fr"],
   position: "relative",
   bg: "transparent",
   py: [0, 0, 7]
 };
 
-export const textStyles = {
-};
+export const textStyles = {};
 
-export const sloganSpaceStyles = {
+export const sloganSpaceStyles: SxStyleProp = {
   display: "flex",
   position: "relative",
   top: 0,

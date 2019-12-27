@@ -1,3 +1,5 @@
+import { SxStyleProp } from "theme-ui";
+
 export const wrapperStyles = {
   gridTemplateRows: ["auto 1fr", "1fr"],
   minHeight: ["auto", "auto", "auto", "30rem"],
@@ -5,12 +7,12 @@ export const wrapperStyles = {
   py: [7, 7, 7, 7, 8]
 };
 
-export const textStyles = {
+export const textStyles: SxStyleProp = {
   display: "flex",
   flexDirection: "column",
   gridColumn: ["2/12", "2/12", "2/12", "2/8"],
   gridRow: ["1/3", "1/2"],
-  justifyContent: ["start", "center"],
+  justifyContent: ["start", "center"]
 };
 
 export const displayStyles = {
@@ -19,13 +21,13 @@ export const displayStyles = {
   m: "-1.5rem",
   gridColumn: ["2/9", "8/13"],
   gridRow: "1/2",
-  minHeight: "15rem",
+  minHeight: "15rem"
 };
 
 const scale = [0.4, 0.4, 0.5, 0.5];
-const spacing = scale.map(size => `${size}rem`);
-const fontSize = scale.map(size => `${size * 5}rem`);
-const lineHeight = scale.map(size => `${size * 5}rem`);
+const spacing = scale.map((size) => `${size}rem`);
+const fontSize = scale.map((size) => `${size * 5}rem`);
+const lineHeight = scale.map((size) => `${size * 5}rem`);
 
 export const titleStyles = {
   fontSize,

@@ -1,4 +1,6 @@
-export const wrapperStyles = {
+import { SxStyleProp } from "theme-ui";
+
+export const wrapperStyles: SxStyleProp = {
   userSelect: "none",
   display: "flex",
   flexDirection: "row",
@@ -7,11 +9,11 @@ export const wrapperStyles = {
 };
 
 const scale = [0.6, 0.6, 0.7, 0.8];
-const spacing = scale.map(size => `${size}rem`);
-const fontSize = scale.map(size => `${size * 5}rem`)
-const lineHeight = scale.map(size => `${size * 6}rem`)
+const spacing = scale.map((size) => `${size}rem`);
+const fontSize = scale.map((size) => `${size * 5}rem`);
+const lineHeight = scale.map((size) => `${size * 6}rem`);
 
-export const spanStyles = {
+export const spanStyles: SxStyleProp = {
   userSelect: "none",
   px: 0,
   m: 0,
@@ -19,7 +21,7 @@ export const spanStyles = {
   "&:last-type": {
     mb: 0,
     mr: 0
-  },
+  }
 };
 
 export const textStyles = {
@@ -27,5 +29,5 @@ export const textStyles = {
   display: "inline-block",
   m: 0,
   fontSize,
-  lineHeight,
+  lineHeight
 };

@@ -2,7 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { animated, useSpring } from "react-spring";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import { wrapperStyles, titleStyles, numberStyles } from "./styles";
 import { formatTitle } from "../helpers";
 import useVisibility from "../../hooks/useVisibility";

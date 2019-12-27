@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import ResizeObserver from "resize-observer-polyfill";
-import { IMeasurable } from "@offcourse/interfaces";
+import { IMeasurable } from "@offcourse/interfaces/src";
 
 const useMeasure: () => [IMeasurable, { ref: any }] = () => {
   const ref: any = useRef();

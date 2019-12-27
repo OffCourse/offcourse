@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
-import { IThemeable, IButton } from "@offcourse/interfaces";
+import { IThemeable, IButton } from "@offcourse/interfaces/src";
 import { formatTitle } from "../helpers";
 import styles from "./styles";
 

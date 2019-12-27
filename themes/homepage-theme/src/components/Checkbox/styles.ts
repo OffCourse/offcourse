@@ -1,6 +1,8 @@
+import { SxStyleProp } from "theme-ui";
+
 export const checkboxStyles = {
-  "WebkitAppearance": "none",
-  "MozAppearance": "none",
+  WebkitAppearance: "none",
+  MozAppearance: "none",
   appearance: "none",
   bg: "grayScale.1",
   margin: 0,
@@ -10,7 +12,7 @@ export const checkboxStyles = {
   outline: "none",
   ":checked": {
     backgroundColor: "primary"
-  },
+  }
 };
 
 export const wrapperStyles = {
@@ -20,10 +22,10 @@ export const wrapperStyles = {
   alignItems: "center"
 };
 
-export const labelStyles = {
+export const labelStyles: SxStyleProp = {
   fontFamily: "body",
   fontSize: 1,
   lineHeight: 1,
   pt: 0,
-  userSelect: "none",
+  userSelect: "none"
 };

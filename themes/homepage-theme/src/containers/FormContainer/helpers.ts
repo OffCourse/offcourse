@@ -1,7 +1,9 @@
 import { object, string, StringSchema, ObjectSchema } from "yup";
-import { IFormSchema } from "../../interfaces/form";
+import { IFormSchema } from "@offcourse/interfaces/src/form";
 
-const initializeValues: (schema: IFormSchema) => { [key: string]: string } = (schema) =>
+const initializeValues: (
+  schema: IFormSchema
+) => { [key: string]: string } = (schema) =>
   schema.reduce((acc, { name }) => ({ ...acc, [name]: "" }), {});
 
 const textField = string()
@@ -35,9 +37,11 @@ const initializeValidations: (
   return object().shape(fields);
 };
 
-const initialize: (schema: IFormSchema) => {
-  values: { [key: string]: string }
-  validations: ObjectSchema<object>
+const initialize: (
+  schema: IFormSchema
+) => {
+  values: { [key: string]: string };
+  validations: ObjectSchema<object>;
 } = (schema) => {
   return {
     values: initializeValues(schema),

@@ -2,7 +2,7 @@
 import { ReactNode, FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IInputField } from "@offcourse/interfaces/src/form";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import { Field, ErrorMessage } from "formik";
 import { formatTitle } from "../helpers";
 import Input from "../Input";
@@ -34,7 +34,7 @@ const InputField: FunctionComponent<InputFieldProps> = ({
     <div className={className} sx={wrapperStyles}>
       <label sx={labelStyles}>{formatTitle(label)}</label>
       <ErrorMessage
-        render={msg => <Message isBasic={true}>{msg}</Message>}
+        render={(msg) => <Message isBasic={true}>{msg}</Message>}
         name={name}
       />
       <Field

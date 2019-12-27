@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IContactSection } from "@offcourse/interfaces/src/pageSection";
 import { IForm } from "@offcourse/interfaces/src/form";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import BaseSection from "../BaseSection";
 import useVisibility from "../../hooks/useVisibility";
 import { useMeasure } from "@offcourse/homepage-theme/src/hooks";
@@ -13,6 +13,7 @@ import FormContainer from "../../containers/FormContainer";
 import CallToAction from "../../components/CallToAction";
 import Form from "../../components/Form";
 import { wrapperStyles, formStyles, sloganSpaceStyles } from "./styles";
+import {FormikValues, FormikBag} from "formik";
 
 type ContactSectionProps = IContactSection & IThemeable;
 
@@ -22,7 +23,7 @@ type ContactSectionProps = IContactSection & IThemeable;
 const url =
   "https://v5s4r3b7s6.execute-api.us-east-1.amazonaws.com/dev/contact";
 
-const submitForm = async (values, { resetForm }) => {
+const submitForm = async (values: FormikValues, { resetForm }: FormikBag<never, FormikValues>) => {
   await fetch(url, {
     method: "POST",
     body: JSON.stringify({
@@ -51,8 +52,8 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
         <DisplayText>{title}</DisplayText>
       </div>
       <FormContainer form={form} onSubmit={submitForm}>
-        {(props: IForm) => (
-          <Form {...props} callToAction={callToAction} sx={formStyles} />
+        {(containerProps: IForm) => (
+          <Form {...containerProps} callToAction={callToAction} sx={formStyles} />
         )}
       </FormContainer>
     </BaseSection>

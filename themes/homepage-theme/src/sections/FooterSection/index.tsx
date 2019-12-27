@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { Styled, Footer } from "theme-ui";
 import Logo from "../../components/Logo";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
 import useHomepageData from "../../hooks/useHomepageData";
 import { wrapperStyles, logoStyles, contactStyles } from "./styles";

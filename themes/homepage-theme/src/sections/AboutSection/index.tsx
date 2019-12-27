@@ -2,7 +2,7 @@
 import { FunctionComponent } from "react";
 import { Styled, jsx } from "theme-ui";
 import { IBaseSection } from "@offcourse/interfaces/src/pageSection";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import Text from "../../components/Text";
 import BaseSection from "../BaseSection";
 import {

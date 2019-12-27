@@ -15,4 +15,7 @@ const createFont = ({ fontFamily, fontWeight, url, format }: IFontDef) => `
     }
 `;
 
-export default (fonts: { [key: string]: FontDef }) => Object.values(fonts).map(createFont).join("");
+export default (fonts: { [key: string]: IFontDef }) =>
+  Object.values(fonts)
+    .map(createFont)
+    .join("");

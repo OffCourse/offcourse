@@ -2,6 +2,10 @@ export interface IPublishable {
   publishable: boolean;
 }
 
+export interface IIndexable {
+  index: number;
+}
+
 export interface IMeasurable {
   width?: number;
   left?: number;
@@ -16,6 +20,7 @@ interface IColor {
   negative: string;
   secondary: string;
   error: string;
+  grayScale: string[];
 }
 
 interface IFonts {
@@ -61,10 +66,10 @@ export interface ITab {
 
 export interface IMessage {
   children: string;
-};
+}
 
 export interface IButton {
   type?: "submit" | "button";
-  children: "string";
+  children: string;
   disabled?: boolean;
 }

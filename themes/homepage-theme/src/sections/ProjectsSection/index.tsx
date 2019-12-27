@@ -1,18 +1,15 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { graphql, useStaticQuery } from "gatsby";
 import { jsx } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import BaseSection from "../BaseSection";
 import {
-  IProjectsSection,
-  IProject
+  IProjectsSection
 } from "@offcourse/interfaces/src/pageSection";
 import Project from "../../components/Project";
 import Carousel from "../../components/Carousel";
 import { wrapperStyles } from "./styles";
 import { useMeasure } from "../../hooks";
-import { snakeCase } from "voca";
 
 type ProjectsSectionProps = IProjectsSection & IThemeable;
 
@@ -29,7 +26,7 @@ const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
         items={projects}
         delay={8000}
       >
-        {(item) => <Project {...(item as IProject & { index: number })} />}
+        {(item) => <Project {...item} />}
       </Carousel>
     </BaseSection>
   );

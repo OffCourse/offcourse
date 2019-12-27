@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useShape = (shapeName: string) => {
-  const [code, setCode] = useState(false);
+  const [code, setCode] = useState<boolean | any>(false);
 
   useEffect(() => {
     import(`../../shapes/${shapeName}`).then(setCode);

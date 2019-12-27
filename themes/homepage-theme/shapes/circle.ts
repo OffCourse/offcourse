@@ -1,7 +1,16 @@
+// @ts-nocheck
 import { IShapeProps } from "@offcourse/interfaces/src/canvas";
-import { bin, min } from "d3-array";
+import { min } from "d3-array";
 
-const circ: (args: IShapeProps) => void = ({ ctx, x, y, value, colors, width, height }) => {
+const circ: (args: IShapeProps) => void = ({
+  ctx,
+  x,
+  y,
+  value,
+  colors,
+  width,
+  height
+}) => {
   const offset = min([width, height]) / 2;
   const radius = offset / 1.5;
   const length = radius * value;

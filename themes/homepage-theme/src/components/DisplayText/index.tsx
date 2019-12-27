@@ -2,7 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { wrapperStyles, spanStyles, textStyles } from "./styles";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 
 type DisplayTextProps = {
   children: string;

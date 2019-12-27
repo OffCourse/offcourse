@@ -1,6 +1,5 @@
 import fonts from "./default-fonts";
-import getFontFaces from "./utils";
-import { ITheme } from "@offcourse/interfaces";
+import { ITheme } from "@offcourse/interfaces/src";
 
 const baseColors = {
   black: "#000000",
@@ -11,11 +10,12 @@ const baseColors = {
   yellow: "#E5CF39",
   red: "#E34D2F",
   green: "#A5CC45",
-  blue: "#75C7B3",
+  blue: "#75C7B3"
 };
 const secondary = baseColors.mediumGray;
 const primary = baseColors.lightGray;
-const negative = primary === baseColors.mediumGray ? baseColors.white : baseColors.black;
+const negative =
+  primary === baseColors.mediumGray ? baseColors.white : baseColors.black;
 const error = baseColors.red;
 const grayScale = [
   baseColors.white,
@@ -60,12 +60,12 @@ const theme: ITheme = {
     "1.5rem",
     "2rem",
     "3rem",
-    "4rem",
+    "4rem"
   ],
   styles: {
     root: {
       fontFamily: "body",
-      fontSize: 1,
+      fontSize: 1
     },
     Main: {
       display: "flex",
@@ -80,7 +80,7 @@ const theme: ITheme = {
     },
     Footer: {
       display: "grid",
-      backgroundColor: baseColors.lightGray,
+      backgroundColor: baseColors.lightGray
     },
     Container: {
       overflowX: "hidden",
@@ -91,28 +91,31 @@ const theme: ITheme = {
       fontSize: 1,
       lineHeight: 1,
       margin: 0,
-      fontFamily: "body",
+      fontFamily: "body"
     },
     h1: {
       fontSize: 5,
       margin: 0,
-      fontFamily: "heading",
+      fontFamily: "heading"
     },
     h2: {
       fontSize: 2,
       margin: 0,
-      fontFamily: "heading",
+      fontFamily: "heading"
     },
     h3: {
       fontSize: 2,
       margin: 0,
-      fontFamily: "heading",
+      fontFamily: "heading"
     }
   },
   globals: {
     body: {
       fontFamily: "body",
-      top: 0, left: 0, right: 0, margin: 0,
+      top: 0,
+      left: 0,
+      right: 0,
+      margin: 0,
       "::-webkit-scrollbar": {
         width: "0px",
         background: "transparent"
@@ -123,7 +126,7 @@ const theme: ITheme = {
       mosOsxFontSmoothing: "grayscale",
       boxSizing: "border-box"
     }
-  },
+  }
 };
 
 export default theme;

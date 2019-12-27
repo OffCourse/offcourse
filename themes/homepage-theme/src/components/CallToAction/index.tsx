@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
+import { jsx, SxStyleProp } from "theme-ui";
 import { config, useSpring, animated } from "react-spring";
 import Tab from "../Tab";
-import { IStylable, IThemeable } from "@offcourse/interfaces";
+import { IStylable, IThemeable } from "@offcourse/interfaces/src";
 
 type CallToActionProps = IThemeable &
   Pick<IStylable, "isVisible"> & { children: string };
 
-const styles = {
+const styles: SxStyleProp = {
   userSelect: "none",
   position: "fixed",
   top: 0,
@@ -34,7 +34,7 @@ const CallToAction: FunctionComponent<CallToActionProps> = ({
       top: -200
     },
     top: isVisible ? 0 : -200,
-    config: config.fast
+    config: config.default
   });
   return (
     <animated.div sx={styles} style={animation} className={className}>

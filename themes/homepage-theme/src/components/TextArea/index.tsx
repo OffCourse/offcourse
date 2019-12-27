@@ -2,6 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IInput } from "@offcourse/interfaces/src/form";
+import { IThemeable } from "@offcourse/interfaces/src";
 import { formatTitle } from "../helpers";
 import { wrapperStyles, textAreaStyles } from "./styles";
 

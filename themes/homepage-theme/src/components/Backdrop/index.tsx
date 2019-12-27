@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent, useRef } from "react";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import { jsx } from "theme-ui";
 
 type BackdropProps = IThemeable & { width?: number; height?: number };
