@@ -13,7 +13,6 @@ export const ProjectsFragment = graphql`
   fragment ProjectsData on ProjectsSection {
     projects {
       title
-      imageUrl
       description
     }
   }

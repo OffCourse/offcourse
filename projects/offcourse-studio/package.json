@@ -15,6 +15,7 @@
   "author": "Yeehaa",
   "license": "MIT",
   "devDependencies": {
+    "@types/lodash.merge": "^4.6.6",
     "serverless": "^1.60.4"
   },
   "dependencies": {

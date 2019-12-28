@@ -12,6 +12,7 @@ const baseColors = {
   green: "#A5CC45",
   blue: "#75C7B3"
 };
+
 const secondary = baseColors.mediumGray;
 const primary = baseColors.lightGray;
 const negative =

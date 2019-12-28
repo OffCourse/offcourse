@@ -2,21 +2,17 @@ const fs = require("fs");
 const remark = require(`remark`);
 const html = require(`remark-html`);
 const mkdir = require('mkdirp');
-const voca = require("voca");
 
 exports.onCreateWebpackConfig = ({
   actions: { replaceWebpackConfig },
   getConfig
 }) => {
   const config = getConfig();
-
   config.module.rules.push({
     test: /\.worker\.ts$/,
     use: { loader: "workerize-loader" }
   });
-
   config.output.globalObject = "this";
-
   replaceWebpackConfig(config);
 };
 
@@ -95,7 +91,6 @@ actions.createTypes(`
 
   type ProjectInfo {
     title: String
-    imageUrl: String
     description: String @md
   }
 
@@ -180,34 +175,10 @@ actions.createTypes(`
 `);
 };
 
-exports.createResolvers = ({ createResolvers }) => {
-  const resolvers = {
-    ProjectInfo: {
-      imageUrl: {
-         async resolve(source, args, context, info) {
-           const title = voca.snakeCase(source.title);
-           const { internal, name, ext } =  await context.nodeModel.runQuery({
-              query: {
-                filter: {
-                    sourceInstanceName: { eq: "projectImages" },
-                    name: { eq: title },
-                },
-              },
-              type: "File",
-              firstOnly: true,
-            });
-            return `/static/${name}-${internal.contentDigest}${ext}`;
-          }
-        }
-      }
-    };
-  createResolvers(resolvers);
-};
-
 exports.createPages = async ({ actions }, options) => {
   const basePath = options.basePath || "/";
   actions.createPage({
     path: basePath,
-    component: require.resolve("./src/templates/HomePage.tsx")
+    component: require.resolve("./src/templates/HomePage/index.tsx")
   });
 };

@@ -12,10 +12,10 @@ const baseColors = {
   yellow: "#E5CF39",
   red: "#E34D2F",
   green: "#A5CC45",
-  blue: "#75C7B3",
+  blue: "#75C7B3"
 };
 
-const fontFaces = getFontFaces(fonts)
+const fontFaces = getFontFaces(fonts);
 
 const globals = `
 ${fontFaces}

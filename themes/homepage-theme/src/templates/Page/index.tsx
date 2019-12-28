@@ -5,7 +5,8 @@ import { Layout, Main, Container } from "theme-ui";
 const PageTemplate = forwardRef(
   (
     {
-      children
+      children,
+      className
     }: {
       className?: string;
       children: any;
@@ -14,8 +15,8 @@ const PageTemplate = forwardRef(
   ) => {
     return (
       <Layout>
-        <Global styles={theme => theme.globals} />
-        <Main>
+        <Global styles={(theme) => theme.globals} />
+        <Main className={className}>
           <Container>
             <div ref={ref}>{children}</div>
           </Container>

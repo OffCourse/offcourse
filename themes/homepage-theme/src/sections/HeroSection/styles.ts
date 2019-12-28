@@ -18,6 +18,7 @@ export const logoContainerStyles = {
   gridColumn: ["1/13", "1/13", "6/13"],
   gridRow: ["2/3"],
   alignContent: "end",
+  justifyContent: "end"
 };
 
 export const logoStyles = {};
