@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces";
+import { IThemeable } from "@offcourse/interfaces/src";
 import { wrapperStyles } from "./styles";
 import { ICanvasProps } from "@offcourse/interfaces/src/canvas";
-import useAnimatedGrid from "@offcourse/homepage-theme/src/hooks/useAnimatedGrid";
+import useAnimatedGrid from "../../../../hooks/useAnimatedGrid";
 import { useAppState } from "../../../../contexts/StateContext";
 
 type BackdropProps = IThemeable & ICanvasProps & { shapeName: string };

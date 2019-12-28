@@ -1,9 +1,10 @@
 /** @jsx jsx */
-import { useState } from "react";
+import { useState,  FunctionComponentFactory } from "react";
 import { Waypoint } from "react-waypoint";
 import { jsx } from "theme-ui";
 
-const useVisibility = ({ canLeave = false }) => {
+const useVisibility: (args: {canLeave?: boolean}) => [boolean, FunctionComponentFactory<{}>] =
+  ({canLeave = false}) => {
   const [isVisible, setVisibility] = useState(false);
 
   const handlePositionChange: (args: { currentPosition: string }) => void = ({
