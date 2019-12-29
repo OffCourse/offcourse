@@ -1,0 +1,12 @@
+{
+  "region": "us-east-1",
+  "privateZone": false,
+  "domain": "botswithanattitude.com",
+  "subdomains": [
+    {
+      "domain": "www.botswithanattitude.com",
+      "type": "awsS3Website",
+      "s3BucketName": "fofmpub-0tz3m6n"
+    }
+  ]
+}

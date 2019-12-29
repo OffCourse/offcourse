@@ -11,7 +11,7 @@ export const textStyles: SxStyleProp = {
   display: "flex",
   flexDirection: "column",
   gridColumn: ["2/12", "2/12", "2/12", "2/8"],
-  gridRow: ["1/3", "1/2"],
+  gridRow: ["2/3", "1/2"],
   justifyContent: ["start", "center"]
 };
 

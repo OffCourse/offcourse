@@ -1,21 +1,16 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { Styled, jsx } from "theme-ui";
-import { IBaseSection } from "@offcourse/interfaces/src/pageSection";
-import { IThemeable } from "@offcourse/interfaces/src";
-import Text from "../../components/Text";
-import BaseSection from "../BaseSection";
+import { AboutSectionProps } from "@offcourse/homepage-theme/src/sections/AboutSection";
+import Text from "@offcourse/homepage-theme/src/components/Text";
+import BaseSection from "@offcourse/homepage-theme/src/sections/BaseSection";
+import Cassettes from "./BWA_in_jar.inline.svg";
 import {
   wrapperStyles,
   textStyles,
   displayStyles,
   titleStyles
 } from "./styles";
-
-export type AboutSectionProps = IBaseSection & {
-  title: string;
-  description: string;
-} & IThemeable;
 
 const AboutSection: FunctionComponent<AboutSectionProps> = ({
   className,
@@ -29,7 +24,7 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({
         <Styled.h1 sx={titleStyles}>{title}</Styled.h1>
         <Text html={description} />
       </div>
-      <div sx={displayStyles}/>
+      <div sx={displayStyles}><Cassettes sx={{width: "100%"}}/></div>
     </BaseSection>
   );
 };

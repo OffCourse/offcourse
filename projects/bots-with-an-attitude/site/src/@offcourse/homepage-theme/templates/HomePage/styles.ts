@@ -1,3 +1,3 @@
 export const wrapperStyles = {
-  bg: "secondary"
+  bg: "primary"
 };
