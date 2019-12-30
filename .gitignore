@@ -68,3 +68,6 @@ package-deps.json
 **/public
 **/*/.env
 **/*/.remote_env
+
+**/*/.zip
+**/dist

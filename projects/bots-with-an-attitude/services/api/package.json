@@ -1,5 +1,5 @@
 {
-  "name": "@public-badges/api",
+  "name": "@bwa/frame",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "invoke": "lambda-local -l dist/index.js",
     "prebuild": "yarn codegen",
     "build": "tsc",
-    "postbuild": "cp src/schema dist -r",
+    "postbuild": "cp -r src/schema dist",
     "predeploy": "yarn build",
     "deploy": "sls deploy --stage dev"
   },
@@ -23,6 +23,8 @@
     "@graphql-codegen/typescript-document-nodes": "1.9.1",
     "@graphql-codegen/typescript-resolvers": "1.9.1",
     "concurrently": "^5.0.1",
+    "prettier": "^1.19.1",
+    "tslint": "^5.20.1",
     "tslint-plugin-prettier": "^2.1.0",
     "typescript": "^3.7.3"
   },
@@ -42,6 +44,7 @@
     "ramda": "^0.26.1",
     "serverless": "^1.59.3",
     "uuid": "^3.3.3",
-    "voca": "^1.4.0"
+    "voca": "^1.4.0",
+    "xstate": "^4.6.7"
   }
 }
