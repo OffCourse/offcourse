@@ -1,0 +1,25 @@
+service: bots-with-an-attitude
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+plugins:
+  - serverless-plugin-monorepo
+
+functions:
+  api:
+    handler: dist/index.api
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
+      - http:
+          path: playground
+          method: any
+          cors: true

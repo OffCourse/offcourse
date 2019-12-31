@@ -7,6 +7,7 @@
     "projects/template-site",
     "projects/bots-with-an-attitude/site",
     "projects/public-badges/site",
-    "projects/bots-with-an-attitude/services/bot-frame"
+    "projects/bots-with-an-attitude/bot/api",
+    "projects/bots-with-an-attitude/bot/botframe"
   ]
 }

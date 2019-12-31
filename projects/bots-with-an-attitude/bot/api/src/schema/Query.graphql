@@ -1,0 +1,8 @@
+type Status {
+  currentState: String
+  affordances: [String]
+}
+
+type Query {
+  getStatus: Status
+}

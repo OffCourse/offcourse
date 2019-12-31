@@ -1,0 +1,53 @@
+{
+  "name": "@bwa/botapi",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "start": "concurrently \"tsc -w\"",
+    "invoke": "lambda-local -l dist/index.js",
+    "prebuild": "yarn codegen",
+    "build": "tsc",
+    "postbuild": "cp -r src/schema dist",
+    "predeploy": "yarn build",
+    "deploy": "sls deploy --stage dev"
+  },
+  "author": "Yeehaa",
+  "license": "MIT",
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.9.1",
+    "@graphql-codegen/introspection": "1.9.1",
+    "@graphql-codegen/typescript": "1.9.1",
+    "@graphql-codegen/typescript-document-nodes": "1.9.1",
+    "@graphql-codegen/typescript-resolvers": "1.9.1",
+    "concurrently": "^5.0.1",
+    "prettier": "^1.19.1",
+    "serverless-plugin-monorepo": "^0.8.0",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.1.0",
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "@bwa/botframe": "*",
+    "@types/aws-lambda": "^8.10.39",
+    "@types/node": "^12.12.17",
+    "@types/node-fetch": "^2.5.4",
+    "@types/ramda": "^0.26.38",
+    "@types/uuid": "^3.4.6",
+    "apollo-server-lambda": "^2.9.15",
+    "aws-lambda": "^0.1.2",
+    "graphql": "^14.5.8",
+    "graphql-import-node": "^0.0.4",
+    "graphql-playground-middleware-lambda": "^1.7.13",
+    "graphql-scalars": "^1.0.4",
+    "graphql-tools": "^4.0.6",
+    "lambda-local": "^1.6.3",
+    "ramda": "^0.26.1",
+    "serverless": "^1.59.3",
+    "uuid": "^3.3.3",
+    "voca": "^1.4.0"
+  }
+}
