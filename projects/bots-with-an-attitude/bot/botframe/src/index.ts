@@ -1,47 +1,32 @@
 import "graphql-import-node";
-import { Machine, Interpreter, interpret } from "xstate";
-import { EventType } from "./types/generated/graphql";
-
-export type BWAEvent = { type: EventType };
-
-export type BWAContext = {};
-export type BWAStateContext = {
-  states: {
-    idle: {};
-    operational: {};
-    crashed: {};
-  };
-};
-export type BWAService = Interpreter<BWAContext, BWAStateContext, BWAEvent>;
-
-const BWAMachine = Machine<BWAContext, BWAStateContext, BWAEvent>({
-  initial: "idle",
-  states: {
-    idle: {
-      on: {
-        INITIALIZED: "operational",
-        ERROR: "crashed"
-      }
-    },
-    operational: {
-      on: {
-        RESET: "idle"
-      }
-    },
-    crashed: {
-      on: {
-        RESET: "idle"
-      }
-    }
-  }
-});
+import { interpret } from "xstate";
+import BWAMachine from "./machine";
+import { EventType, BWAService } from "./types";
+import * as actions from "./machine/actions";
+import * as guards from "./machine/guards";
+export { BWAService };
 
 export type BotConfig = {
   initialState?: string;
 };
 
-const init = ({ initialState = "idle" }: BotConfig) => {
-  return interpret(BWAMachine).start(initialState);
+const init: (config: BotConfig) => BWAService = ({
+  initialState = "idle"
+}: BotConfig) => {
+  const machine = BWAMachine.withConfig({ actions, guards });
+  const interpreter = interpret(machine).start(initialState);
+  return {
+    get context() {
+      return interpreter.state.context;
+    },
+    reset: () => interpreter.send({ type: EventType.Reset }),
+    initialize() {
+      interpreter.send({ type: EventType.Initialized });
+    },
+    insertCassette() {
+      interpreter.send({ type: "INSERT_CASSETTE", cassette: "HELLO" });
+    }
+  };
 };
 
 export { init };
