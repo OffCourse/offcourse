@@ -10,17 +10,25 @@ export interface BWAEvent {
   type: BWAEventType;
   cassette?: string;
   cassettes?: string[];
+  botId?: string;
 }
 
+export type BWAStats = {
+  health: number;
+};
+
 export type BWAContext = {
+  botId: string | null;
   cassettes: any[];
+  stats: BWAStats | null;
+  error: string | null;
 };
 
 export type BWAStateContext = {
   states: {
-    idle: {};
+    dormant: {};
     loading: {};
-    maintenance: {};
+    check: {};
     operational: {};
     crashed: {};
   };
@@ -28,7 +36,6 @@ export type BWAStateContext = {
 export type BWATestStateContext = {
   states: {
     idle: {};
-    maintenance: {};
     operational: {};
     crashed: {};
   };
@@ -37,7 +44,7 @@ export type BWATestStateContext = {
 export type BWAService = {
   currentState: StateValue;
   context: BWAContext;
-  initialize: () => void;
+  initialize: (config: { cassettes: any[]; botId: string }) => void;
   reset: () => void;
   insertCassette: (cassette: string) => void;
 };

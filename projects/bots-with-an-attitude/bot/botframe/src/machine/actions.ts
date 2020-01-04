@@ -2,21 +2,25 @@ import { assign } from "xstate";
 import { BWAContext, BWAEvent } from "../types";
 
 export const initialize = assign<BWAContext, BWAEvent>({
-  cassettes: ({ cassettes }, { data }: any) => {
-    if (data.cassettes) {
-      return [...data.cassettes];
-    } else {
-      return cassettes;
-    }
+  botId: (_context, { botId }: any) => botId,
+  cassettes: (_context, { cassettes }: any) => {
+    return cassettes ? cassettes : [];
   }
 });
 
-export const insertCassette = assign<BWAContext, BWAEvent>({
-  cassettes: ({ cassettes }, { cassette }) => {
-    if (cassette) {
-      return [...cassettes, cassette];
-    } else {
-      return cassettes;
+export const setStats = assign<BWAContext, BWAEvent>({
+  stats: (_context, { data: stats }: any) => stats
+});
+
+export const setError = assign<BWAContext, BWAEvent>({
+  error: (_context, { type }) => {
+    switch (type) {
+      case "INITIALIZED": {
+        return "invalid config";
+      }
+      default: {
+        return "oops";
+      }
     }
   }
 });

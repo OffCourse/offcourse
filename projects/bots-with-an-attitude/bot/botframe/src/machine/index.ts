@@ -1,70 +1,68 @@
 import { Machine } from "xstate";
 import { BWAStateContext, BWAContext, BWAEvent } from "../types";
 
-const fetchContext = async () => {
-  return { cassettes: ["HOOO", "HOO", "HOOO"] };
+const fetchStats = async (_botId: string) => {
+  return { health: 50 };
 };
 
 const BWAMachine = Machine<BWAContext, BWAStateContext, BWAEvent>({
-  initial: "idle",
+  initial: "dormant",
   context: {
-    cassettes: []
+    botId: null,
+    cassettes: [],
+    stats: null,
+    error: null
   },
   states: {
-    idle: {
+    dormant: {
       on: {
-        INITIALIZED: "loading"
+        INITIALIZED: [
+          {
+            target: "loading",
+            cond: "isConfigValid",
+            actions: "initialize"
+          },
+          {
+            target: "crashed",
+            actions: "setError"
+          }
+        ]
       }
     },
     loading: {
       invoke: {
-        id: "getStoredContext",
-        src: (_context, _event) => fetchContext(),
+        id: "getStats",
+        src: (context, _event) => {
+          return fetchStats(context.botId);
+        },
         onDone: [
           {
-            target: "maintenance",
-            cond: "isRightPayload",
-            actions: "initialize"
-          },
-          {
-            target: "crashed"
+            target: "check",
+            actions: "setStats"
           }
         ],
         onError: {
-          target: "crashed"
+          target: "crashed",
+          actions: "setError"
         }
       }
     },
-    maintenance: {
+    check: {
       on: {
         "": [
-          {
-            target: "crashed",
-            cond: "isBotTooFull"
-          },
-          {
-            target: "operational",
-            cond: "isBotFull"
-          }
-        ],
-        RESET: { target: "idle", actions: "ejectAllCassettes" },
-        INSERT_CASSETTE: [
-          {
-            target: "maintenance",
-            actions: "insertCassette",
-            cond: "isBotNotFull"
-          }
+          { target: "operational", cond: "isContextValid" },
+          { target: "crashed", actions: "setError" }
         ]
       }
     },
     operational: {
       on: {
-        RESET: { target: "idle", actions: "ejectAllCassettes" }
+        RESET: { target: "dormant", actions: "ejectAllCassettes" }
       }
     },
     crashed: {
       on: {
-        RESET: { target: "idle", actions: "ejectAllCassettes" }
+        RESET: { target: "dormant", actions: "ejectAllCassettes" }
       }
     }
   }

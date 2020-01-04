@@ -10,34 +10,39 @@ import {
 const BWAMachine = Machine<BWAContext, BWATestStateContext, BWAEvent>({
   initial: "idle",
   context: {
-    cassettes: []
+    botId: null,
+    cassettes: [],
+    stats: null,
+    error: null
   },
   states: {
     idle: {
       on: {
-        INITIALIZED: { target: "operational" }
+        INITIALIZED: [
+          {
+            target: "operational",
+            actions: "initialize",
+            cond: "isConfigValid"
+          },
+          {
+            target: "crashed"
+          }
+        ]
       },
       meta: {
         test: ({ context, currentState }: BWAService) => {
-          assert.strictEqual(currentState, "idle");
+          assert.strictEqual(currentState, "dormant");
           assert.strictEqual(context.cassettes.length, 0);
+          assert.isNotOk(context.error);
         }
       }
     },
     crashed: {
       meta: {
-        test: ({ context, currentState }: BWAService) => {
+        test: ({ currentState, context }: BWAService) => {
+          console.log(context.error);
           assert.strictEqual(currentState, "crashed");
-          assert.strictEqual(context.cassettes.length, 0);
-        }
-      }
-    },
-    maintenance: {
-      meta: {
-        test: ({ context, currentState }: BWAService) => {
-          assert.strictEqual(currentState, "maintenance");
-          assert.strictEqual(context.cassettes.length, 1);
-          assert.strictEqual(context.cassettes.length, 3);
+          assert.isOk(context.error);
         }
       }
     },
@@ -45,7 +50,10 @@ const BWAMachine = Machine<BWAContext, BWATestStateContext, BWAEvent>({
       meta: {
         test: ({ context, currentState }: BWAService) => {
           assert.strictEqual(currentState, "operational");
-          assert.strictEqual(context.cassettes.length, 3);
+          assert.isNotOk(context.error);
+          assert.isObject(context.stats);
+          assert.isAtLeast(context.cassettes.length, 1);
+          assert.isAtMost(context.cassettes.length, 3);
         }
       }
     }

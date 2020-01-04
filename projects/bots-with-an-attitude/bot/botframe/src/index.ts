@@ -10,7 +10,7 @@ export type BotConfig = {
 };
 
 const init: (config: BotConfig) => BWAService = ({
-  initialState = "idle"
+  initialState = "dormant"
 }: BotConfig) => {
   const machine = BWAMachine.withConfig({ actions, guards });
   const interpreter = interpret(machine).start(initialState);
@@ -21,8 +21,8 @@ const init: (config: BotConfig) => BWAService = ({
     get context() {
       return interpreter.state.context;
     },
-    initialize() {
-      interpreter.send({ type: BWAEventType.INITIALIZED });
+    initialize({ cassettes, botId }) {
+      interpreter.send({ type: BWAEventType.INITIALIZED, cassettes, botId });
     },
     reset() {
       interpreter.send({ type: BWAEventType.RESET });
