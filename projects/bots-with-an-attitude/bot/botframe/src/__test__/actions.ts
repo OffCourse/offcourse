@@ -2,9 +2,9 @@ import { assign } from "xstate";
 import { BWAContext, BWAEvent } from "../types";
 
 export const initialize = assign<BWAContext, BWAEvent>({
-  cassettes: ({ cassettes }, { data }: any) => {
-    if (data.cassettes) {
-      return [...data.cassettes];
+  cassettes: ({ cassettes }, event) => {
+    if (event.cassettes) {
+      return [...event.cassettes];
     } else {
       return cassettes;
     }

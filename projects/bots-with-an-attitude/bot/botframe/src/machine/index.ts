@@ -1,6 +1,9 @@
 import { Machine } from "xstate";
-import { assert } from "chai";
-import { BWAService, BWAStateContext, BWAContext, BWAEvent } from "../types";
+import { BWAStateContext, BWAContext, BWAEvent } from "../types";
+
+const fetchContext = async () => {
+  return { cassettes: ["HOOO", "HOO", "HOOO"] };
+};
 
 const BWAMachine = Machine<BWAContext, BWAStateContext, BWAEvent>({
   initial: "idle",
@@ -10,55 +13,58 @@ const BWAMachine = Machine<BWAContext, BWAStateContext, BWAEvent>({
   states: {
     idle: {
       on: {
-        INSERT_CASSETTE: [
+        INITIALIZED: "loading"
+      }
+    },
+    loading: {
+      invoke: {
+        id: "getStoredContext",
+        src: (_context, _event) => fetchContext(),
+        onDone: [
           {
-            target: "idle",
-            cond: {
-              type: "cassettesValid",
-              maxLength: 1
-            },
-            actions: "insertCassette"
+            target: "maintenance",
+            cond: "isRightPayload",
+            actions: "initialize"
+          },
+          {
+            target: "crashed"
+          }
+        ],
+        onError: {
+          target: "crashed"
+        }
+      }
+    },
+    maintenance: {
+      on: {
+        "": [
+          {
+            target: "crashed",
+            cond: "isBotTooFull"
           },
           {
             target: "operational",
-            cond: {
-              type: "cassettesValid",
-              maxLength: 2
-            },
-            actions: "insertCassette"
-          },
+            cond: "isBotFull"
+          }
+        ],
+        RESET: { target: "idle", actions: "ejectAllCassettes" },
+        INSERT_CASSETTE: [
           {
-            target: "crashed",
-            cond: {
-              type: "cassettesValid",
-              minLength: 3
-            }
+            target: "maintenance",
+            actions: "insertCassette",
+            cond: "isBotNotFull"
           }
         ]
-      },
-      meta: {
-        test: ({ context }: BWAService) => {
-          assert.isAtMost(context.cassettes.length, 3);
-        }
       }
     },
     operational: {
       on: {
-        RESET: "idle"
-      },
-      meta: {
-        test: ({ context }: BWAService) => {
-          assert.isAtLeast(context.cassettes.length, 1);
-          assert.isAtMost(context.cassettes.length, 3);
-        }
+        RESET: { target: "idle", actions: "ejectAllCassettes" }
       }
     },
     crashed: {
       on: {
-        RESET: "idle"
-      },
-      meta: {
-        test: () => assert.ok(true)
+        RESET: { target: "idle", actions: "ejectAllCassettes" }
       }
     }
   }

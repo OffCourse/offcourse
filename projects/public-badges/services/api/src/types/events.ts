@@ -1,7 +1,4 @@
-import {
-  PendingOrganization,
-  ApprovedOrganization
-} from "./index"
+import { PendingOrganization, ApprovedOrganization } from "./index";
 
 export interface Event {
   detailType: string;

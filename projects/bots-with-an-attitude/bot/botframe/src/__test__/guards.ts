@@ -1,18 +1,18 @@
 import { ConditionPredicate } from "xstate";
 import { BWAContext, BWAEvent } from "../types";
 
-export const isRightPayload: ConditionPredicate<BWAContext, any> = (
-  _context,
-  { data }
-) => {
-  return data.cassettes.length <= 3 && data.cassettes.length >= 1;
-};
-
 export const isBotTooFull: ConditionPredicate<BWAContext, BWAEvent> = (
   context,
   _event
 ) => {
-  return context.cassettes.length > 3;
+  return context.cassettes.length >= 3;
+};
+
+export const isBotEmpty: ConditionPredicate<BWAContext, BWAEvent> = (
+  { cassettes },
+  _event
+) => {
+  return cassettes.length <= 0;
 };
 
 export const isBotFull: ConditionPredicate<BWAContext, BWAEvent> = (
@@ -20,4 +20,11 @@ export const isBotFull: ConditionPredicate<BWAContext, BWAEvent> = (
   _event
 ) => {
   return context.cassettes.length === 3;
+};
+
+export const isBotNotFull: ConditionPredicate<BWAContext, BWAEvent> = (
+  { cassettes },
+  _event
+) => {
+  return cassettes.length < 3;
 };
