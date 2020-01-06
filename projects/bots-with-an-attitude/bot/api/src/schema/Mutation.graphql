@@ -1,9 +1,6 @@
-enum EventType {
-  INITIALIZED
-  ERROR
-  RESET
+input Event {
+  type: String
 }
-
 type Mutation {
-  sendEvent(eventType: EventType!): Status
+  sendEvent(event: Event!): Status
 }

@@ -1,14 +1,15 @@
 import { Resolvers } from "../types/generated/graphql";
+import { BWAEvent } from "@bwa/botframe/dist/types";
 
 const resolvers: Resolvers = {
   Query: {
-    getStatus(_, __, { context }) {
-      return context;
+    getStatus(_, __, { state }) {
+      return state;
     }
   },
   Mutation: {
-    sendEvent(_, { eventType }, { send }) {
-      return send(eventType);
+    sendEvent(_, { event }, { send }) {
+      return send(event as BWAEvent);
     }
   },
   Status: {

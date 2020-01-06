@@ -1,17 +1,15 @@
-import { Machine } from "xstate";
-import { BWAStateContext, BWAContext, BWAEvent } from "../types";
+import { createMachine } from "xstate";
+import { BWAService, BWAState, BWAContext, BWAEvent } from "../types";
+import { assert } from "chai";
+import { isEmpty, includes } from "ramda";
 
-const fetchStats = async (_botId: string) => {
-  return { health: 50 };
-};
-
-const BWAMachine = Machine<BWAContext, BWAStateContext, BWAEvent>({
+const BWAMachine = createMachine<BWAContext, BWAEvent, BWAState>({
   initial: "dormant",
   context: {
-    botId: null,
-    cassettes: [],
-    stats: null,
-    error: null
+    botName: undefined,
+    cassettes: undefined,
+    stats: undefined,
+    error: undefined
   },
   states: {
     dormant: {
@@ -27,42 +25,73 @@ const BWAMachine = Machine<BWAContext, BWAStateContext, BWAEvent>({
             actions: "setError"
           }
         ]
+      },
+      meta: {
+        test: ({ state: { context, value } }: BWAService) => {
+          assert.strictEqual(value, "dormant");
+          assert.isUndefined(context.stats);
+          assert.isUndefined(context.error);
+          assert.isUndefined(context.cassettes);
+        }
       }
     },
     loading: {
       invoke: {
-        id: "getStats",
-        src: (context, _event) => {
-          return fetchStats(context.botId);
-        },
-        onDone: [
-          {
-            target: "check",
-            actions: "setStats"
-          }
-        ],
-        onError: {
-          target: "crashed",
-          actions: "setError"
-        }
-      }
-    },
-    check: {
+        id: "fetchStats",
+        src: "fetchStats"
+      },
       on: {
-        "": [
-          { target: "operational", cond: "isContextValid" },
-          { target: "crashed", actions: "setError" }
+        FETCHED_STATS: [
+          {
+            target: "operational",
+            cond: "areStatsValid",
+            actions: "setStats"
+          },
+          {
+            target: "crashed",
+            actions: "setError"
+          }
         ]
+      },
+      meta: {
+        test: ({ state: { context, value } }: BWAService) => {
+          assert.strictEqual(value, "loading");
+          assert.isUndefined(context.error);
+          assert.isUndefined(context.stats);
+          assert.isAtLeast(context.cassettes!.length, 1);
+          assert.isAtMost(context.cassettes!.length, 3);
+        }
       }
     },
     operational: {
       on: {
+        FETCHED_STATS: [
+          { target: "operational", cond: "isContextValid" },
+          { target: "crashed", actions: "setError" }
+        ],
         RESET: { target: "dormant", actions: "ejectAllCassettes" }
+      },
+      meta: {
+        test: ({ state: { context, value } }: BWAService) => {
+          assert.strictEqual(value, "operational");
+          assert.isUndefined(context.error);
+          assert.isObject(context.stats);
+          assert.isNotEmpty(context.stats);
+          assert.isAtLeast(context.cassettes!.length, 1);
+          assert.isAtMost(context.cassettes!.length, 3);
+        }
       }
     },
     crashed: {
       on: {
         RESET: { target: "dormant", actions: "ejectAllCassettes" }
+      },
+      meta: {
+        test: ({ state: { context, value } }: BWAService) => {
+          const errors = ["invalid config", "invalid stats"];
+          assert.isTrue(includes(context!.error!, errors));
+          assert.strictEqual(value, "crashed");
+        }
       }
     }
   }

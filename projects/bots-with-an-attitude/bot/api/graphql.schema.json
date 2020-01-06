@@ -90,14 +90,14 @@
             "description": "",
             "args": [
               {
-                "name": "eventType",
+                "name": "event",
                 "description": "",
                 "type": {
                   "kind": "NON_NULL",
                   "name": null,
                   "ofType": {
-                    "kind": "ENUM",
-                    "name": "EventType",
+                    "kind": "INPUT_OBJECT",
+                    "name": "Event",
                     "ofType": null
                   }
                 },
@@ -119,32 +119,24 @@
         "possibleTypes": null
       },
       {
-        "kind": "ENUM",
-        "name": "EventType",
+        "kind": "INPUT_OBJECT",
+        "name": "Event",
         "description": "",
         "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
+        "inputFields": [
           {
-            "name": "INITIALIZED",
+            "name": "type",
             "description": "",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "ERROR",
-            "description": "",
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "RESET",
-            "description": "",
-            "isDeprecated": false,
-            "deprecationReason": null
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
           }
         ],
+        "interfaces": null,
+        "enumValues": null,
         "possibleTypes": null
       },
       {

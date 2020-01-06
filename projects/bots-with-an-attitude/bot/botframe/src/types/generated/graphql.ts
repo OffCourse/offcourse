@@ -8,11 +8,9 @@ export type Scalars = {
   Float: number,
 };
 
-export enum EventType {
-  Initialized = 'INITIALIZED',
-  Error = 'ERROR',
-  Reset = 'RESET'
-}
+export type Event = {
+  type: Maybe<Scalars['String']>,
+};
 
 export type Mutation = {
   sendEvent: Maybe<Status>,
@@ -20,7 +18,7 @@ export type Mutation = {
 
 
 export type MutationSendEventArgs = {
-  eventType: EventType
+  event: Event
 };
 
 export type Query = {

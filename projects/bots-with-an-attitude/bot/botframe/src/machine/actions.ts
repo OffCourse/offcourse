@@ -2,14 +2,16 @@ import { assign } from "xstate";
 import { BWAContext, BWAEvent } from "../types";
 
 export const initialize = assign<BWAContext, BWAEvent>({
-  botId: (_context, { botId }: any) => botId,
+  botName: (_context, { botName }: any) => botName,
   cassettes: (_context, { cassettes }: any) => {
     return cassettes ? cassettes : [];
   }
 });
 
 export const setStats = assign<BWAContext, BWAEvent>({
-  stats: (_context, { data: stats }: any) => stats
+  stats: (_context, event) => {
+    return event.stats;
+  }
 });
 
 export const setError = assign<BWAContext, BWAEvent>({
@@ -17,6 +19,9 @@ export const setError = assign<BWAContext, BWAEvent>({
     switch (type) {
       case "INITIALIZED": {
         return "invalid config";
+      }
+      case "FETCHED_STATS": {
+        return "invalid stats";
       }
       default: {
         return "oops";
@@ -26,5 +31,7 @@ export const setError = assign<BWAContext, BWAEvent>({
 });
 
 export const ejectAllCassettes = assign<BWAContext, BWAEvent>({
-  cassettes: []
+  cassettes: undefined,
+  stats: undefined,
+  error: undefined
 });

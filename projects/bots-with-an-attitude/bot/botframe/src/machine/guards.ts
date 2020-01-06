@@ -1,7 +1,8 @@
 import { ConditionPredicate } from "xstate";
-import { BWAContext } from "../types";
+import { isEmpty, isNil } from "ramda";
+import { BWAContext, BWAEvent } from "../types";
 
-export const isConfigValid: ConditionPredicate<BWAContext, any> = (
+export const isConfigValid: ConditionPredicate<BWAContext, BWAEvent> = (
   _context,
   event
 ) => {
@@ -9,13 +10,25 @@ export const isConfigValid: ConditionPredicate<BWAContext, any> = (
     event.cassettes &&
     event.cassettes.length <= 3 &&
     event.cassettes.length >= 1;
-  const hasBotId = event.botId;
-  return areCassettesPresent && hasBotId;
+  const hasBotName = event.botName;
+  return !!(areCassettesPresent && hasBotName);
 };
 
-export const isContextValid: ConditionPredicate<BWAContext, any> = context => {
+export const isContextValid: ConditionPredicate<
+  BWAContext,
+  BWAEvent
+> = context => {
+  const { cassettes, stats } = context;
   const areCassettesPresent =
-    context.cassettes.length <= 3 && context.cassettes.length >= 1;
-  const areStatsValid = !!context.stats;
-  return areCassettesPresent && areStatsValid;
+    cassettes && cassettes.length <= 3 && cassettes.length >= 1;
+  const areStatsPresent = !isNil(stats) && !isEmpty(stats);
+  const isValid = areCassettesPresent && areStatsPresent;
+  return !!isValid;
+};
+
+export const areStatsValid: ConditionPredicate<BWAContext, BWAEvent> = (
+  _context,
+  { stats }
+) => {
+  return !!(stats && !isEmpty(stats));
 };

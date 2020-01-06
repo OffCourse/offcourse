@@ -1,38 +1,27 @@
 import "graphql-import-node";
 import { interpret } from "xstate";
 import BWAMachine from "./machine";
-import { BWAService, BWAEventType } from "./types";
+import { BWAService } from "./types";
 import * as actions from "./machine/actions";
 import * as guards from "./machine/guards";
+import * as services from "./machine/services";
+export { BWAService };
 
 export type BotConfig = {
-  initialState?: string;
+  actions: any;
+  guards: any;
+  services: any;
 };
 
-const init: (config: BotConfig) => BWAService = ({
-  initialState = "dormant"
-}: BotConfig) => {
-  const machine = BWAMachine.withConfig({ actions, guards });
-  const interpreter = interpret(machine).start(initialState);
-  return {
-    get currentState() {
-      return interpreter.state.value;
-    },
-    get context() {
-      return interpreter.state.context;
-    },
-    initialize({ cassettes, botId }) {
-      interpreter.send({ type: BWAEventType.INITIALIZED, cassettes, botId });
-    },
-    reset() {
-      interpreter.send({ type: BWAEventType.RESET });
-    },
-    insertCassette() {
-      interpreter.send({
-        type: BWAEventType.INSERT_CASSETTE
-      });
-    }
-  };
+const defaultConfig = {
+  actions,
+  guards,
+  services
+};
+const init: (config?: BotConfig) => BWAService = config => {
+  const botConfig = config || defaultConfig;
+  const machine = BWAMachine.withConfig(botConfig);
+  return interpret(machine).start();
 };
 
 export { init };

@@ -1,50 +1,53 @@
-import { StateValueMap, StateValue } from "xstate";
+import { Interpreter } from "xstate";
 
 export enum BWAEventType {
   INSERT_CASSETTE = "INSERT_CASSETTE",
+  FETCHED_STATS = "FETCHED_STATS",
   RESET = "RESET",
   INITIALIZED = "INITIALIZED"
-}
-
-export interface BWAEvent {
-  type: BWAEventType;
-  cassette?: string;
-  cassettes?: string[];
-  botId?: string;
 }
 
 export type BWAStats = {
   health: number;
 };
 
+export interface BWAEvent {
+  type: BWAEventType;
+  cassette?: string;
+  cassettes?: string[];
+  botName?: string;
+  stats?: BWAStats;
+}
+
 export type BWAContext = {
-  botId: string | null;
-  cassettes: any[];
-  stats: BWAStats | null;
-  error: string | null;
+  botName: string | undefined;
+  cassettes: any[] | undefined;
+  stats: BWAStats | undefined;
+  error: string | undefined;
 };
 
 export type BWAStateContext = {
   states: {
     dormant: {};
     loading: {};
-    check: {};
-    operational: {};
-    crashed: {};
-  };
-};
-export type BWATestStateContext = {
-  states: {
-    idle: {};
     operational: {};
     crashed: {};
   };
 };
 
-export type BWAService = {
-  currentState: StateValue;
-  context: BWAContext;
-  initialize: (config: { cassettes: any[]; botId: string }) => void;
-  reset: () => void;
-  insertCassette: (cassette: string) => void;
-};
+export type BWAState =
+  | {
+      value: "dormant";
+      context: BWAContext;
+    }
+  | { value: "loading"; context: Required<BWAContext> }
+  | {
+      value: "operational";
+      context: Required<BWAContext>;
+    }
+  | {
+      value: "crashed";
+      context: BWAContext;
+    };
+
+export type BWAService = Interpreter<BWAContext, BWAState, BWAEvent>;

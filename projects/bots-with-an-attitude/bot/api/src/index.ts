@@ -6,7 +6,7 @@ import { init } from "@bwa/botframe";
 const server = new ApolloServer({
   typeDefs,
   introspection: true,
-  context: init({ initialState: "idle" }),
+  context: init(),
   resolvers,
   playground: {
     endpoint: "/dev/graphql"

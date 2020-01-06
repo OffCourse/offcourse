@@ -146,7 +146,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/bots-with-an-attitude/dev/1577831743196-2019-12-31T22:35:43.196Z/bots-with-an-attitude.zip"
+          "S3Key": "serverless/bots-with-an-attitude/dev/1578269018466-2020-01-06T00:03:38.466Z/bots-with-an-attitude.zip"
         },
         "FunctionName": "bots-with-an-attitude-dev-api",
         "Handler": "dist/index.api",
@@ -165,14 +165,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "ApiLambdaVersion3RcJP04uMyCLh0WMQkUASIruYkWepWEMaYRJryxCk": {
+    "ApiLambdaVersion0QgKGLaeNso2fzjRZMdCzfe2iqS0nJ3LXKp7PbgFG0": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "J733Y22+6wkG3fwltVrIOwnRDNU1QozPjRUZO1YaXas="
+        "CodeSha256": "p29OiMeweXIyYG210KowW9+OCWQ6WzjxiVmfMdQolOg="
       }
     },
     "ApiGatewayRestApi": {
@@ -435,7 +435,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1577831728545": {
+    "ApiGatewayDeployment1578269005099": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -505,7 +505,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersion3RcJP04uMyCLh0WMQkUASIruYkWepWEMaYRJryxCk"
+        "Ref": "ApiLambdaVersion0QgKGLaeNso2fzjRZMdCzfe2iqS0nJ3LXKp7PbgFG0"
       }
     },
     "ServiceEndpoint": {

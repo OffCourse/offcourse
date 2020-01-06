@@ -1,5 +1,4 @@
 import { BWAService } from "@bwa/botframe";
 
-type BWAContext = BWAService["context"];
-
-export { BWAService, BWAContext };
+type BWAState = BWAService["state"];
+export { BWAService, BWAState };
