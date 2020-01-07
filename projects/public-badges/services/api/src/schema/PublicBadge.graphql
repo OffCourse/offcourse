@@ -1,3 +1,8 @@
+enum PublicBadgeStatus {
+  PENDING
+  APPROVED
+  SIGNED
+}
 type Proof {
   proofId: GUID!
   name: String!
@@ -8,7 +13,7 @@ type Proof {
 
 interface PublicBadge {
   badgeId: GUID!
-  status: Status!
+  status: PublicBadgeStatus!
   valueCaseId: ID!
   valueCase: ValueCase!
   name: String!
@@ -16,11 +21,12 @@ interface PublicBadge {
   description: String!
   narrative: String!
   recipientId: ID!
+  recipient: Organization!
 }
 
-type RequestedPublicBadge implements PublicBadge {
+type PendingPublicBadge implements PublicBadge {
   badgeId: GUID!
-  status: Status!
+  status: PublicBadgeStatus!
   valueCaseId: ID!
   valueCase: ValueCase!
   name: String!
@@ -28,11 +34,12 @@ type RequestedPublicBadge implements PublicBadge {
   description: String!
   narrative: String!
   recipientId: ID!
+  recipient: Organization!
 }
 
 type ApprovedPublicBadge implements PublicBadge {
   badgeId: GUID!
-  status: Status!
+  status: PublicBadgeStatus!
   valueCaseId: ID!
   valueCase: ValueCase!
   name: String!
@@ -41,11 +48,12 @@ type ApprovedPublicBadge implements PublicBadge {
   narrative: String!
   recipientId: ID!
   evidence: [Proof]!
+  recipient: Organization!
 }
 
 type SignedPublicBadge implements PublicBadge {
   badgeId: GUID!
-  status: Status!
+  status: PublicBadgeStatus!
   valueCaseId: ID!
   valueCase: ValueCase!
   name: String!
@@ -56,5 +64,11 @@ type SignedPublicBadge implements PublicBadge {
   evidence: [Proof]!
   issuedOn: String!
   expires: String!
-  artifact: OpenBadgeArtifact!
+  artifact: JSON!
+  recipient: Organization!
+}
+
+input PublicBadgeInput {
+  valueCaseId: ID!
+  domainName: URL!
 }

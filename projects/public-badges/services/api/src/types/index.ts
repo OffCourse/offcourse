@@ -3,7 +3,7 @@ import {
   ApprovedOrganization as AO,
   PendingOrganization as PO,
   OrganizationStatus,
-  OpenBadge,
+  PublicBadge,
   ValueCase
 } from "../generated/graphql";
 
@@ -22,8 +22,20 @@ export interface Store<O, A, T> {
   fetchAll: (args: A) => Promise<NonNullable<T>[]>;
 }
 
+export type ValueCaseProxy = Omit<ValueCase, "proposedBy"> & {
+  proposedBy: string;
+};
+
 export type ValueCaseStore = Store<{ valueCaseId: string }, {}, ValueCaseProxy>;
-export type BadgeInstanceStore = Store<{ badgeId: string }, {}, OpenBadge | null>;
+
+export type PublicBadgeProxy = Omit<PublicBadge, "valueCase" | "recipient">;
+
+export type BadgeInstanceStore = Store<
+  { badgeId: string },
+  {},
+  PublicBadgeProxy | null
+>;
+
 export type RegistryStore = Store<
   { organizationId?: string | null; domainName?: string | null },
   { filter?: OrganizationStatus | null },
@@ -36,17 +48,11 @@ export type PublicBadgesStores = {
   registry: RegistryStore;
 };
 
-export type PublicBadgesHandler<T, U> = (
-  event: T
-) => Promise<U>;
+export type PublicBadgesHandler<T, U> = (event: T) => Promise<U>;
 
 export interface EventBus<E extends Event> {
   put: (event: E) => Promise<E["detail"]>;
 }
-
-export type ValueCaseProxy = Omit<ValueCase, "proposedBy"> & {
-  proposedBy: string;
-};
 
 export type PublicBadgesEventBus = EventBus<PublicBadgesEvent>;
 

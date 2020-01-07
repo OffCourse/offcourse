@@ -5,10 +5,10 @@ var OrganizationStatus;
     OrganizationStatus["Pending"] = "PENDING";
     OrganizationStatus["Approved"] = "APPROVED";
 })(OrganizationStatus = exports.OrganizationStatus || (exports.OrganizationStatus = {}));
-var Status;
-(function (Status) {
-    Status["Requested"] = "REQUESTED";
-    Status["Approved"] = "APPROVED";
-    Status["Signed"] = "SIGNED";
-})(Status = exports.Status || (exports.Status = {}));
+var PublicBadgeStatus;
+(function (PublicBadgeStatus) {
+    PublicBadgeStatus["Pending"] = "PENDING";
+    PublicBadgeStatus["Approved"] = "APPROVED";
+    PublicBadgeStatus["Signed"] = "SIGNED";
+})(PublicBadgeStatus = exports.PublicBadgeStatus || (exports.PublicBadgeStatus = {}));
 //# sourceMappingURL=graphql.js.map

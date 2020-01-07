@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const voca_1 = require("voca");
 const Scenario = {
     title({ title }) {
         return title;
@@ -10,22 +9,17 @@ const Scenario = {
     }
 };
 exports.Scenario = Scenario;
-const ProposedBy = {
-    organizationId({ organizationId }) {
-        return organizationId;
-    }
-};
-exports.ProposedBy = ProposedBy;
 const ValueCase = {
-    valueCaseId({ proposedBy, name }) {
-        const normalizedName = voca_1.slugify(name);
-        return `${proposedBy}@${normalizedName}`;
+    valueCaseId({ valueCaseId }) {
+        return valueCaseId;
     },
     name({ name }) {
         return name;
     },
     proposedBy({ proposedBy }, _args, { stores }) {
-        return stores.registry.fetch({ organizationId: proposedBy });
+        return stores.registry.fetch({
+            domainName: proposedBy
+        });
     },
     approvedBy({ approvedBy }) {
         return approvedBy;

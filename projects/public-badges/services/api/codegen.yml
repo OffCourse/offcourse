@@ -17,13 +17,8 @@ generates:
         JSON: string
         UUID: string
       mappers:
-        PublicBadge: OpenBadge
-        RequestedPublicBadge: OpenBadge
-        ApprovedPublicBadge: OpenBadge
-        SignedPublicBadge: OpenBadge
-        Proof: OpenBadgeProof
-        OpenBadgeArtifact: OpenBadge
-        ValueCase: ../types/index#ValueCaseProxy
+        ValueCase: ../types#ValueCaseProxy
+        PublicBadge: ../types#PublicBadgeProxy
   ./graphql.schema.json:
     plugins:
       - "introspection"

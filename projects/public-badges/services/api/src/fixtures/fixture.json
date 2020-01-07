@@ -3,7 +3,7 @@
   "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb418",
   "type": "Assertion",
   "recipient": {
-   "type": "email",
+    "type": "email",
     "identity": "sander@waag.org"
   },
   "issuedOn": "2019-10-31T23:59:59.000Z",
@@ -14,12 +14,9 @@
   },
   "badge": {
     "type": "BadgeClass",
-    "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb419",
+    "id": "urn:uuid:88c7a930-3181-11ea-9858-b312ce22102d@zero-badge",
     "name": "Zero Badge",
-    "tags": [
-      "manifesto",
-      "intention"
-    ],
+    "tags": ["manifesto", "intention"],
     "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website\n",
     "criteria": {
       "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n"
@@ -30,14 +27,12 @@
       "name": "Public Spaces",
       "email": "contact@publicspaces.net",
       "verification": {
-        "allowedOrigins": [
-          "publicspaces.net",
-          "publicbadges.com"
-        ]
+        "allowedOrigins": ["publicspaces.net", "publicbadges.com"]
       }
     }
   },
-  "evidence": [{
+  "evidence": [
+    {
       "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb420",
       "name": "Public Badges Registry Listing",
       "genre": "Gherkin Scenario",

@@ -229,7 +229,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1577058114306-2019-12-22T23:41:54.306Z/public-badges.zip"
+                "S3Key": "serverless/public-badges/dev/1578435077613-2020-01-07T22:11:17.613Z/public-badges.zip"
               },
               "FunctionName": "public-badges-dev-graphql",
               "Handler": "dist/index.graphql",
@@ -256,14 +256,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GraphqlLambdaVersionyHRKSbrjc4saNjVTpdYA7YTIPjLMZaSkZ4H7l1ohE": {
+          "GraphqlLambdaVersionI81LEtadUi7EKBE1UkMMpYiY2WzctMQNK1GgwIdlS0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GraphqlLambdaFunction"
               },
-              "CodeSha256": "GmwcHww3C3wMIPrdi+aHz3CtWJtQBOo2k4bwPtOh0hw="
+              "CodeSha256": "oGEKdE1QHiWKxmARUpYvJGodoyfEuOAS8K5uJo5a4B0="
             }
           },
           "SaveOrganizationLambdaFunction": {
@@ -273,7 +273,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1577058114306-2019-12-22T23:41:54.306Z/public-badges.zip"
+                "S3Key": "serverless/public-badges/dev/1578435077613-2020-01-07T22:11:17.613Z/public-badges.zip"
               },
               "FunctionName": "public-badges-dev-saveOrganization",
               "Handler": "dist/index.saveOrganization",
@@ -298,14 +298,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "SaveOrganizationLambdaVersionS2pl0hplP2d3kkBzgvYJQ1jhbuGeE9BnIkDbuOaPBw": {
+          "SaveOrganizationLambdaVersionOmJkLCQt5SSin0AqQ16HVTdb2XzNjcCsKSsAIyNr2oQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "SaveOrganizationLambdaFunction"
               },
-              "CodeSha256": "GmwcHww3C3wMIPrdi+aHz3CtWJtQBOo2k4bwPtOh0hw="
+              "CodeSha256": "oGEKdE1QHiWKxmARUpYvJGodoyfEuOAS8K5uJo5a4B0="
             }
           },
           "ApproveOrganizationLambdaFunction": {
@@ -315,7 +315,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1577058114306-2019-12-22T23:41:54.306Z/public-badges.zip"
+                "S3Key": "serverless/public-badges/dev/1578435077613-2020-01-07T22:11:17.613Z/public-badges.zip"
               },
               "FunctionName": "public-badges-dev-approveOrganization",
               "Handler": "dist/index.approveOrganization",
@@ -339,14 +339,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ApproveOrganizationLambdaVersionuvyFuBt9DJtiOzL0zUHUvYohr2dLiPZxeWuIXYxca6U": {
+          "ApproveOrganizationLambdaVersionw0FKgmIbhKdnYVYIrsCMYozp7Ei9tLDmFBOU2QlZab4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApproveOrganizationLambdaFunction"
               },
-              "CodeSha256": "GmwcHww3C3wMIPrdi+aHz3CtWJtQBOo2k4bwPtOh0hw="
+              "CodeSha256": "oGEKdE1QHiWKxmARUpYvJGodoyfEuOAS8K5uJo5a4B0="
             }
           },
           "UpdateRegistryLambdaFunction": {
@@ -356,7 +356,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1577058114306-2019-12-22T23:41:54.306Z/public-badges.zip"
+                "S3Key": "serverless/public-badges/dev/1578435077613-2020-01-07T22:11:17.613Z/public-badges.zip"
               },
               "FunctionName": "public-badges-dev-updateRegistry",
               "Handler": "dist/index.updateRegistry",
@@ -381,14 +381,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "UpdateRegistryLambdaVersionnIxo4E7FwpbQyZvHzXxIXRqnoua802kpOl9CTnHXQ": {
+          "UpdateRegistryLambdaVersionhGTPeFHR7XnjwgVo6jLmcTUy9KXAt0B28YTpVl9QZ8": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateRegistryLambdaFunction"
               },
-              "CodeSha256": "GmwcHww3C3wMIPrdi+aHz3CtWJtQBOo2k4bwPtOh0hw="
+              "CodeSha256": "oGEKdE1QHiWKxmARUpYvJGodoyfEuOAS8K5uJo5a4B0="
             }
           },
           "EchoLambdaFunction": {
@@ -398,7 +398,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1577058114306-2019-12-22T23:41:54.306Z/public-badges.zip"
+                "S3Key": "serverless/public-badges/dev/1578435077613-2020-01-07T22:11:17.613Z/public-badges.zip"
               },
               "FunctionName": "public-badges-dev-echo",
               "Handler": "dist/index.echo",
@@ -422,14 +422,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "EchoLambdaVersionQkKRPi6R7GZuOSK8Mfj23jTndC4RRLwPV6nYQ1ovs": {
+          "EchoLambdaVersionAtdKntpo1cS3RydiuqsRmsDx59SUlhvBB9wzdJXjg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "EchoLambdaFunction"
               },
-              "CodeSha256": "GmwcHww3C3wMIPrdi+aHz3CtWJtQBOo2k4bwPtOh0hw="
+              "CodeSha256": "oGEKdE1QHiWKxmARUpYvJGodoyfEuOAS8K5uJo5a4B0="
             }
           },
           "S3BucketPublicbadgesregistrydev": {
@@ -739,7 +739,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1577058096407": {
+          "ApiGatewayDeployment1578435058473": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1068,7 +1068,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/public-badges/dev/1577058114306-2019-12-22T23:41:54.306Z/custom-resources.zip"
+                "S3Key": "serverless/public-badges/dev/1578435077613-2020-01-07T22:11:17.613Z/custom-resources.zip"
               },
               "FunctionName": "public-badges-dev-custom-resource-event-bridge",
               "Handler": "eventBridge/handler.handler",
@@ -1157,31 +1157,31 @@
           "GraphqlLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GraphqlLambdaVersionyHRKSbrjc4saNjVTpdYA7YTIPjLMZaSkZ4H7l1ohE"
+              "Ref": "GraphqlLambdaVersionI81LEtadUi7EKBE1UkMMpYiY2WzctMQNK1GgwIdlS0"
             }
           },
           "SaveOrganizationLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SaveOrganizationLambdaVersionS2pl0hplP2d3kkBzgvYJQ1jhbuGeE9BnIkDbuOaPBw"
+              "Ref": "SaveOrganizationLambdaVersionOmJkLCQt5SSin0AqQ16HVTdb2XzNjcCsKSsAIyNr2oQ"
             }
           },
           "ApproveOrganizationLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApproveOrganizationLambdaVersionuvyFuBt9DJtiOzL0zUHUvYohr2dLiPZxeWuIXYxca6U"
+              "Ref": "ApproveOrganizationLambdaVersionw0FKgmIbhKdnYVYIrsCMYozp7Ei9tLDmFBOU2QlZab4"
             }
           },
           "UpdateRegistryLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateRegistryLambdaVersionnIxo4E7FwpbQyZvHzXxIXRqnoua802kpOl9CTnHXQ"
+              "Ref": "UpdateRegistryLambdaVersionhGTPeFHR7XnjwgVo6jLmcTUy9KXAt0B28YTpVl9QZ8"
             }
           },
           "EchoLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "EchoLambdaVersionQkKRPi6R7GZuOSK8Mfj23jTndC4RRLwPV6nYQ1ovs"
+              "Ref": "EchoLambdaVersionAtdKntpo1cS3RydiuqsRmsDx59SUlhvBB9wzdJXjg"
             }
           },
           "ServiceEndpoint": {
@@ -1554,10 +1554,10 @@
     },
     "serviceFilename": "serverless.yml",
     "layers": {},
-    "artifact": "/home/yeehaa/Documents/offcourse/projects/public-badges/services/api/.serverless/public-badges.zip"
+    "artifact": "/Users/yeehaa/Documents/offcourse/projects/public-badges/services/api/.serverless/public-badges.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/public-badges/dev/1577058114306-2019-12-22T23:41:54.306Z",
+    "artifactDirectoryName": "serverless/public-badges/dev/1578435077613-2020-01-07T22:11:17.613Z",
     "artifact": "public-badges.zip"
   }
 }

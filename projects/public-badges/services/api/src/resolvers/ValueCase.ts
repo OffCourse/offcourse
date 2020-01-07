@@ -1,5 +1,4 @@
-import { ScenarioResolvers, ValueCaseResolvers, ProposedByResolvers } from "../generated/graphql.js";
-import { slugify } from "voca";
+import { ScenarioResolvers, ValueCaseResolvers } from "../generated/graphql.js";
 
 const Scenario: ScenarioResolvers = {
   title({ title }) {
@@ -10,22 +9,17 @@ const Scenario: ScenarioResolvers = {
   }
 };
 
-const ProposedBy: ProposedByResolvers = {
-  organizationId({ organizationId }) {
-    return organizationId;
-  }
-};
-
 const ValueCase: ValueCaseResolvers = {
-  valueCaseId({ proposedBy, name }) {
-    const normalizedName = slugify(name!);
-    return `${proposedBy}@${normalizedName}`;
+  valueCaseId({ valueCaseId }) {
+    return valueCaseId;
   },
   name({ name }) {
     return name;
   },
   proposedBy({ proposedBy }, _args, { stores }) {
-    return stores.registry.fetch({ organizationId: proposedBy });
+    return stores.registry.fetch({
+      domainName: proposedBy
+    });
   },
   approvedBy({ approvedBy }) {
     return approvedBy;
@@ -44,4 +38,4 @@ const ValueCase: ValueCaseResolvers = {
   }
 };
 
-export { ValueCase, Scenario, ProposedBy };
+export { ValueCase, Scenario };

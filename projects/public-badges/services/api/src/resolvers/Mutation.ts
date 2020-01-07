@@ -1,4 +1,10 @@
-import { MutationResolvers, OrganizationStatus } from "../generated/graphql.js";
+import {
+  MutationResolvers,
+  OrganizationStatus,
+  PublicBadgeStatus,
+  PendingOrganization
+} from "../generated/graphql.js";
+import { PublicBadgeProxy } from "../types";
 import { PublicBadgesEventType } from "../types/events.js";
 import uuid from "uuid/v1";
 
@@ -7,28 +13,40 @@ const timeout = (ms: number) => {
 };
 const {
   ORGANIZATION_REGISTRATION_REQUESTED,
-  NEW_BADGECLASS_PROPOSED,
   BADGE_ISSUANCE_REQUESTED
 } = PublicBadgesEventType;
 
 const Mutation: MutationResolvers = {
-  proposeValueCase(_root, { input }, { stores }) {
-    const { domainName } = input;
+  async applyForBadge(_root, { input }, { stores, eventBus }) {
+    const { valueCaseId, domainName } = input;
     const organization = await stores.registry.fetch({ domainName });
-    console.log(input);
-    return "valueCase";
+
+    if (!organization) {
+      throw "ORG DOES NOT EXISTS";
+    }
+    const valueCase = await stores.valueCase.fetch({ valueCaseId });
+    if (!valueCase) {
+      throw "ValueCase does not exist";
+    }
+
+    const badgeId = uuid();
+    const status = PublicBadgeStatus.Pending;
+    const { name, tags, description, narrative } = valueCase;
+    const { organizationId: recipientId } = organization;
+
     return eventBus.put({
-      detailType: NEW_BADGECLASS_PROPOSED,
+      detailType: BADGE_ISSUANCE_REQUESTED,
       detail: {
-        organizationId,
+        badgeId,
         status,
+        valueCaseId,
         name,
-        contact,
-        admin,
-        domainName,
-        urls: [domainName]
+        tags,
+        description,
+        narrative,
+        recipientId
       }
-    });
+    }) as Promise<PublicBadgeProxy>;
   },
   async registerOrganization(_root, { input }, { eventBus, stores }) {
     const { name, contact, admin, domainName } = input;
@@ -45,7 +63,6 @@ const Mutation: MutationResolvers = {
     if (organization) {
       throw "ORG ALREADY EXISTS";
     }
-
     const organizationId = uuid();
     const status = OrganizationStatus.Pending;
 
@@ -60,7 +77,7 @@ const Mutation: MutationResolvers = {
         domainName,
         urls: [domainName]
       }
-    });
+    }) as Promise<PendingOrganization>;
   }
 };
 

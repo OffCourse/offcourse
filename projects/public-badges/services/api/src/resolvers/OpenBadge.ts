@@ -1,20 +1,10 @@
 import {
-  OpenBadgeArtifactResolvers,
   OpenBadgeResolvers,
   OpenBadgeClassResolvers,
   OpenBadgeCriteriaResolvers,
   OpenBadgeRecipientResolvers,
   OpenBadgeProofResolvers
 } from "../generated/graphql";
-
-const OpenBadgeArtifact: OpenBadgeArtifactResolvers = {
-  json(badge) {
-    return JSON.stringify(badge);
-  },
-  js(badge) {
-    return badge;
-  }
-};
 
 const OpenBadgeCriteria: OpenBadgeCriteriaResolvers = {
   narrative({ narrative }) {
@@ -65,7 +55,7 @@ const OpenBadgeProof: OpenBadgeProofResolvers = {
   narrative({ narrative }) {
     return narrative;
   }
-}
+};
 
 const OpenBadge: OpenBadgeResolvers = {
   id({ id }) {
@@ -89,7 +79,6 @@ const OpenBadge: OpenBadgeResolvers = {
 };
 
 export {
-  OpenBadgeArtifact,
   OpenBadge,
   OpenBadgeClass,
   OpenBadgeCriteria,

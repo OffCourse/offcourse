@@ -10,7 +10,7 @@
     "invoke": "lambda-local -l dist/index.js",
     "prebuild": "yarn codegen",
     "build": "tsc",
-    "postbuild": "cp src/schema dist -r",
+    "postbuild": "cp -r src/schema dist",
     "predeploy": "yarn build",
     "deploy": "sls deploy --stage dev"
   },

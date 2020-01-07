@@ -18,12 +18,37 @@ const v1_1 = __importDefault(require("uuid/v1"));
 const timeout = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 };
-const { ORGANIZATION_REGISTRATION_REQUESTED, NEW_BADGECLASS_PROPOSED, BADGE_ISSUANCE_REQUESTED } = events_js_1.PublicBadgesEventType;
+const { ORGANIZATION_REGISTRATION_REQUESTED, BADGE_ISSUANCE_REQUESTED } = events_js_1.PublicBadgesEventType;
 const Mutation = {
-    proposeValueCase() {
-        console.log(NEW_BADGECLASS_PROPOSED);
-        console.log(BADGE_ISSUANCE_REQUESTED);
-        return "valueCase";
+    applyForBadge(_root, { input }, { stores, eventBus }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { valueCaseId, domainName } = input;
+            const organization = yield stores.registry.fetch({ domainName });
+            if (!organization) {
+                throw "ORG DOES NOT EXISTS";
+            }
+            const valueCase = yield stores.valueCase.fetch({ valueCaseId });
+            if (!valueCase) {
+                throw "ValueCase does not exist";
+            }
+            const badgeId = v1_1.default();
+            const status = graphql_js_1.PublicBadgeStatus.Pending;
+            const { name, tags, description, narrative } = valueCase;
+            const { organizationId: recipientId } = organization;
+            return eventBus.put({
+                detailType: BADGE_ISSUANCE_REQUESTED,
+                detail: {
+                    badgeId,
+                    status,
+                    valueCaseId,
+                    name,
+                    tags,
+                    description,
+                    narrative,
+                    recipientId
+                }
+            });
+        });
     },
     registerOrganization(_root, { input }, { eventBus, stores }) {
         return __awaiter(this, void 0, void 0, function* () {

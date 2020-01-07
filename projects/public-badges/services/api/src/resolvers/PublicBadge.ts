@@ -1,69 +1,63 @@
 import {
   PublicBadgeResolvers,
-  Status,
-  ProofResolvers,
-  RequestedPublicBadgeResolvers,
+  PublicBadgeStatus,
+  PendingPublicBadgeResolvers,
   ApprovedPublicBadgeResolvers,
   SignedPublicBadgeResolvers
 } from "../generated/graphql";
 
-const Proof: ProofResolvers = {
-  proofId({ id }) {
-    return id.replace(/urn:uuid:/, "");
+const PublicBadge: PublicBadgeResolvers = {
+  __resolveType({ status }) {
+    switch (status) {
+      case PublicBadgeStatus.Signed: {
+        return "SignedPublicBadge";
+      }
+      case PublicBadgeStatus.Approved: {
+        return "ApprovedPublicBadge";
+      }
+      case PublicBadgeStatus.Pending: {
+        return "PendingPublicBadge";
+      }
+    }
+  },
+  badgeId({ badgeId }) {
+    return badgeId;
+  },
+  valueCaseId({ valueCaseId }) {
+    return valueCaseId;
+  },
+  status({ status }) {
+    return status;
+  },
+  valueCase({ valueCaseId }, _args, { stores }) {
+    return stores.valueCase.fetch({ valueCaseId: valueCaseId });
   },
   name({ name }) {
     return name;
   },
-  genre({ genre }) {
-    return genre;
+  tags({ tags }) {
+    return tags;
   },
   description({ description }) {
     return description;
   },
   narrative({ narrative }) {
     return narrative;
+  },
+  recipientId({ recipientId }) {
+    return recipientId;
+  },
+  recipient({ recipientId }, _args, { stores }) {
+    return stores.registry.fetch({ organizationId: recipientId });
   }
 };
 
-const PublicBadge: PublicBadgeResolvers = {
-  __resolveType() {
-    return "SignedPublicBadge";
-  },
-  badgeId({ id }) {
-    return id.replace(/urn:uuid:/, "");
-  },
-  valueCaseId({ badge }) {
-    return badge.id;
-  },
-  status() {
-    return Status.Signed;
-  },
-  async valueCase({ badge }, _args, { stores }) {
-    return await stores.valueCase.fetch({ valueCaseId: badge.id });
-  },
-  name({ badge }) {
-    return badge.name;
-  },
-  tags({ badge }) {
-    return badge.tags;
-  },
-  description({ badge }) {
-    return badge.description;
-  },
-  narrative({ badge }) {
-    return badge.criteria.narrative;
-  },
-  recipientId({ recipient }) {
-    return recipient.identity;
-  }
-};
-
-const RequestedPublicBadge: RequestedPublicBadgeResolvers = {
+const PendingPublicBadge: PendingPublicBadgeResolvers = {
   ...PublicBadge
 };
 
 const ApprovedPublicBadge: ApprovedPublicBadgeResolvers = {
-  ...RequestedPublicBadge,
+  ...PendingPublicBadge,
   evidence({ evidence }) {
     return evidence;
   }
@@ -77,15 +71,14 @@ const SignedPublicBadge: SignedPublicBadgeResolvers = {
   expires({ expires }) {
     return expires;
   },
-  artifact(badge) {
-    return badge;
+  artifact({ artifact }) {
+    return artifact;
   }
 };
 
 export {
   PublicBadge,
-  Proof,
-  RequestedPublicBadge,
+  PendingPublicBadge,
   ApprovedPublicBadge,
   SignedPublicBadge
 };

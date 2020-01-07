@@ -31,7 +31,3 @@ type OpenBadge {
   evidence: [OpenBadgeProof]!
 }
 
-type OpenBadgeArtifact {
-  json: JSON!
-  js: OpenBadge!
-}

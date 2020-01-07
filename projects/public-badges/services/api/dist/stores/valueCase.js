@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const valueCase_json_1 = __importDefault(require("../fixtures/valueCase.json"));
 const valueCase = {
-    fetch() {
+    fetch({ valueCaseId }) {
         return __awaiter(this, void 0, void 0, function* () {
             return valueCase_json_1.default;
         });

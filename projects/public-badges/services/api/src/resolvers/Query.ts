@@ -12,6 +12,12 @@ const Query: QueryResolvers = {
   },
   getAllOrganizations(_root, args, { stores }) {
     return stores.registry.fetchAll(args);
+  },
+  getValueCase(_root, args, { stores }) {
+    return stores.valueCase.fetch(args);
+  },
+  getAllValueCases(_root, args, { stores }) {
+    return stores.valueCase.fetchAll(args);
   }
 };
 

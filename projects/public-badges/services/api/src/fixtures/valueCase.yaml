@@ -1,11 +1,9 @@
-valueCaseId: urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb419
+valueCaseId: 88c7a930-3181-11ea-9858-b312ce22102d@zero-badge
 name: Zero Badge
 tags: 
 - manifesto
 - intention
-proposedBy:
-  - yeehaa@offcourse.io
-  - alain@waag.org
+proposedBy: https://offcourse.io/
 approvedBy: sander@offcourse.io
 description: |
   This badge is awarded to organization that publicly display their commitment

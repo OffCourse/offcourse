@@ -1,4 +1,8 @@
-import { PendingOrganization, ApprovedOrganization } from "./index";
+import {
+  PendingOrganization,
+  ApprovedOrganization,
+  PublicBadgeProxy
+} from "./index";
 
 export interface Event {
   detailType: string;
@@ -16,7 +20,8 @@ export enum PublicBadgesEventType {
 
 export type PublicBadgesEventPayload =
   | PendingOrganization
-  | ApprovedOrganization;
+  | ApprovedOrganization
+  | PublicBadgeProxy;
 
 export interface PBEvent extends Event {
   detailType: PublicBadgesEventType;
@@ -43,8 +48,14 @@ export interface OrganizationApprovedEvent extends PBEvent {
   detail: ApprovedOrganization;
 }
 
+export interface BadgeIssuanceRequestedEvent extends PBEvent {
+  detailType: PublicBadgesEventType.BADGE_ISSUANCE_REQUESTED;
+  detail: PublicBadgeProxy;
+}
+
 export type PublicBadgesEvent =
   | OrganizationRegistrationRequestedEvent
   | OrganizationApprovalRequestedEvent
   | OrganizationApprovalAcceptedEvent
-  | OrganizationApprovedEvent;
+  | OrganizationApprovedEvent
+  | BadgeIssuanceRequestedEvent;

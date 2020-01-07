@@ -1,4 +1,4 @@
 type Mutation {
-  proposeValueCase(input: ValueCaseInput!): String!
+  applyForBadge(input: PublicBadgeInput!): PublicBadge,
   registerOrganization(input: OrganizationInput!): PendingOrganization
 }

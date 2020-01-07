@@ -115,6 +115,49 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "getValueCase",
+            "description": "",
+            "args": [
+              {
+                "name": "valueCaseId",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "ValueCase",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "getAllValueCases",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "ValueCase",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -162,7 +205,7 @@
               "name": null,
               "ofType": {
                 "kind": "ENUM",
-                "name": "Status",
+                "name": "PublicBadgeStatus",
                 "ofType": null
               }
             },
@@ -284,6 +327,22 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "recipient",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INTERFACE",
+                "name": "Organization",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -292,7 +351,7 @@
         "possibleTypes": [
           {
             "kind": "OBJECT",
-            "name": "RequestedPublicBadge",
+            "name": "PendingPublicBadge",
             "ofType": null
           },
           {
@@ -319,14 +378,14 @@
       },
       {
         "kind": "ENUM",
-        "name": "Status",
+        "name": "PublicBadgeStatus",
         "description": "",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
           {
-            "name": "REQUESTED",
+            "name": "PENDING",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
@@ -372,9 +431,13 @@
             "description": "",
             "args": [],
             "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -782,7 +845,7 @@
         "description": "",
         "fields": [
           {
-            "name": "proposeValueCase",
+            "name": "applyForBadge",
             "description": "",
             "args": [
               {
@@ -793,7 +856,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "INPUT_OBJECT",
-                    "name": "ValueCaseInput",
+                    "name": "PublicBadgeInput",
                     "ofType": null
                   }
                 },
@@ -801,13 +864,9 @@
               }
             ],
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
+              "kind": "INTERFACE",
+              "name": "PublicBadge",
+              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -847,65 +906,33 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "ValueCaseInput",
+        "name": "PublicBadgeInput",
         "description": "",
         "fields": null,
         "inputFields": [
           {
-            "name": "name",
+            "name": "valueCaseId",
             "description": "",
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
+                "name": "ID",
                 "ofType": null
               }
             },
             "defaultValue": null
           },
           {
-            "name": "tags",
-            "description": "",
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "narrative",
+            "name": "domainName",
             "description": "",
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "description",
-            "description": "",
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
+                "name": "URL",
                 "ofType": null
               }
             },
@@ -2326,59 +2353,6 @@
       },
       {
         "kind": "OBJECT",
-        "name": "OpenBadgeArtifact",
-        "description": "",
-        "fields": [
-          {
-            "name": "json",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "JSON",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "js",
-            "description": "",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "OpenBadge",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "JSON",
-        "description": "",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
         "name": "ApprovedOrganization",
         "description": "",
         "fields": [
@@ -2631,7 +2605,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "RequestedPublicBadge",
+        "name": "PendingPublicBadge",
         "description": "",
         "fields": [
           {
@@ -2659,7 +2633,7 @@
               "name": null,
               "ofType": {
                 "kind": "ENUM",
-                "name": "Status",
+                "name": "PublicBadgeStatus",
                 "ofType": null
               }
             },
@@ -2781,6 +2755,22 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "recipient",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INTERFACE",
+                "name": "Organization",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -2824,7 +2814,7 @@
               "name": null,
               "ofType": {
                 "kind": "ENUM",
-                "name": "Status",
+                "name": "PublicBadgeStatus",
                 "ofType": null
               }
             },
@@ -2966,6 +2956,22 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "recipient",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INTERFACE",
+                "name": "Organization",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -3009,7 +3015,7 @@
               "name": null,
               "ofType": {
                 "kind": "ENUM",
-                "name": "Status",
+                "name": "PublicBadgeStatus",
                 "ofType": null
               }
             },
@@ -3192,8 +3198,24 @@
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
-                "name": "OpenBadgeArtifact",
+                "kind": "SCALAR",
+                "name": "JSON",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "recipient",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "INTERFACE",
+                "name": "Organization",
                 "ofType": null
               }
             },
@@ -3213,14 +3235,38 @@
         "possibleTypes": null
       },
       {
-        "kind": "OBJECT",
-        "name": "ProposedBy",
+        "kind": "SCALAR",
+        "name": "JSON",
         "description": "",
-        "fields": [
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "ValueCaseInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
           {
-            "name": "organizationId",
+            "name": "domainName",
             "description": "",
-            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "URL",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "name",
+            "description": "",
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -3230,12 +3276,56 @@
                 "ofType": null
               }
             },
-            "isDeprecated": false,
-            "deprecationReason": null
+            "defaultValue": null
+          },
+          {
+            "name": "tags",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "narrative",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "description",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
           }
         ],
-        "inputFields": null,
-        "interfaces": [],
+        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       }
