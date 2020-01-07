@@ -4,13 +4,14 @@ import { BWAContext, BWAEvent } from "../types";
 
 export const isConfigValid: ConditionPredicate<BWAContext, BWAEvent> = (
   _context,
-  event
+  { payload }: any
 ) => {
   const areCassettesPresent =
-    event.cassettes &&
-    event.cassettes.length <= 3 &&
-    event.cassettes.length >= 1;
-  const hasBotName = event.botName;
+    payload &&
+    payload.cassettes &&
+    payload.cassettes.length <= 3 &&
+    payload.cassettes.length >= 1;
+  const hasBotName = payload.botName;
   return !!(areCassettesPresent && hasBotName);
 };
 
@@ -28,7 +29,8 @@ export const isContextValid: ConditionPredicate<
 
 export const areStatsValid: ConditionPredicate<BWAContext, BWAEvent> = (
   _context,
-  { stats }
+  { payload }: any
 ) => {
+  const { stats } = payload;
   return !!(stats && !isEmpty(stats));
 };

@@ -6,39 +6,38 @@ import * as actions from "../machine/actions";
 import * as services from "./services";
 import { BWAService, BWAContext, BWAEventType } from "../types";
 
+const { INITIALIZED, RESET, FETCHED_STATS } = BWAEventType;
+
 const config = { guards, actions, services };
 
 describe("feedback app", () => {
   const machine = TestMachine.withConfig({ guards, actions, services });
 
   const testModel = createModel<BWAService, BWAContext>(machine).withEvents({
-    INSERT_CASSETTE: {
-      exec: ({ send }, { cassette }: any) => {
-        send({ type: BWAEventType.INSERT_CASSETTE, cassette });
-      },
-      cases: [{ cassette: "HELLO" }]
-    },
     INITIALIZED: {
-      exec: ({ send }, { botName, cassettes }: any) => {
-        send({ type: BWAEventType.INITIALIZED, botName, cassettes });
+      exec: ({ send }, { payload }: any) => {
+        send({
+          type: INITIALIZED,
+          payload
+        });
       },
       cases: [
-        { botName: "234", cassettes: [] },
-        { botName: "234", cassettes: ["HI"] },
-        { botName: "235" },
-        { botName: "212", cassettes: ["HI", "AA", "KKK"] },
-        { cassettes: ["HI", "AA", "KKK", "KKKK"] }
+        { payload: { botName: "234", cassettes: [] } },
+        { payload: { botName: "234", cassettes: ["HI"] } },
+        { payload: { botName: "235" } },
+        { payload: { botName: "212", cassettes: ["HI", "AA", "KKK"] } },
+        { payload: { cassettes: ["HI", "AA", "KKK", "KKKK"] } }
       ]
     },
     FETCHED_STATS: {
-      exec: ({ send }, { stats }: any) => {
-        send({ type: BWAEventType.FETCHED_STATS, stats });
+      exec: ({ send }, { payload }: any) => {
+        send({ type: FETCHED_STATS, payload });
       },
-      cases: [{}, { stats: { health: 50 } }]
+      cases: [{ payload: {} }, { payload: { stats: { health: 50 } } }]
     },
     RESET: {
       exec: ({ send }) => {
-        send({ type: BWAEventType.RESET });
+        send({ type: RESET });
       }
     }
   });

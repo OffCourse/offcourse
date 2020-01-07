@@ -2,15 +2,15 @@ import { assign } from "xstate";
 import { BWAContext, BWAEvent } from "../types";
 
 export const initialize = assign<BWAContext, BWAEvent>({
-  botName: (_context, { botName }: any) => botName,
-  cassettes: (_context, { cassettes }: any) => {
-    return cassettes ? cassettes : [];
+  botName: (_context, { payload }: any) => payload.botName,
+  cassettes: (_context, { payload }: any) => {
+    return payload.cassettes ? payload.cassettes : [];
   }
 });
 
 export const setStats = assign<BWAContext, BWAEvent>({
-  stats: (_context, event) => {
-    return event.stats;
+  stats: (_context, { payload }: any) => {
+    return payload.stats;
   }
 });
 
@@ -30,7 +30,7 @@ export const setError = assign<BWAContext, BWAEvent>({
   }
 });
 
-export const ejectAllCassettes = assign<BWAContext, BWAEvent>({
+export const reset = assign<BWAContext, BWAEvent>({
   cassettes: undefined,
   stats: undefined,
   error: undefined

@@ -160,7 +160,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/bots-with-an-attitude/dev/1578269018466-2020-01-06T00:03:38.466Z/bots-with-an-attitude.zip"
+                "S3Key": "serverless/bots-with-an-attitude/dev/1578350239185-2020-01-06T22:37:19.185Z/bots-with-an-attitude.zip"
               },
               "FunctionName": "bots-with-an-attitude-dev-api",
               "Handler": "dist/index.api",
@@ -179,14 +179,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ApiLambdaVersion0QgKGLaeNso2fzjRZMdCzfe2iqS0nJ3LXKp7PbgFG0": {
+          "ApiLambdaVersionu4km4Wpy4abGVDvZw2Qd30ulLZCIB0WA71rfSAbxMH4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "p29OiMeweXIyYG210KowW9+OCWQ6WzjxiVmfMdQolOg="
+              "CodeSha256": "Abtx6SQoVe/hI1UBbBwJO8Nf3guCIaWsYBzKBzV+OA4="
             }
           },
           "ApiGatewayRestApi": {
@@ -449,7 +449,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1578269005099": {
+          "ApiGatewayDeployment1578350224912": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -519,7 +519,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersion0QgKGLaeNso2fzjRZMdCzfe2iqS0nJ3LXKp7PbgFG0"
+              "Ref": "ApiLambdaVersionu4km4Wpy4abGVDvZw2Qd30ulLZCIB0WA71rfSAbxMH4"
             }
           },
           "ServiceEndpoint": {
@@ -709,7 +709,7 @@
         "timeout": 6,
         "runtime": "nodejs10.x",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersion0QgKGLaeNso2fzjRZMdCzfe2iqS0nJ3LXKp7PbgFG0"
+        "versionLogicalId": "ApiLambdaVersionu4km4Wpy4abGVDvZw2Qd30ulLZCIB0WA71rfSAbxMH4"
       }
     },
     "serviceFilename": "serverless.yml",
@@ -717,7 +717,7 @@
     "artifact": "/Users/yeehaa/Documents/offcourse/projects/bots-with-an-attitude/bot/api/.serverless/bots-with-an-attitude.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/bots-with-an-attitude/dev/1578269018466-2020-01-06T00:03:38.466Z",
+    "artifactDirectoryName": "serverless/bots-with-an-attitude/dev/1578350239185-2020-01-06T22:37:19.185Z",
     "artifact": "bots-with-an-attitude.zip"
   }
 }

@@ -19,6 +19,7 @@ type ValueCase {
 }
 
 input ValueCaseInput {
+  organizationId: String!
   name: String!
   tags: [String]!
   narrative: String!

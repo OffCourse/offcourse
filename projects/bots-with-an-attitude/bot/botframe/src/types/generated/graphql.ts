@@ -8,8 +8,19 @@ export type Scalars = {
   Float: number,
 };
 
-export type Event = {
-  type: Maybe<Scalars['String']>,
+export enum ApiEventType {
+  Initialized = 'INITIALIZED',
+  Reset = 'RESET'
+}
+
+export type BwaConfig = {
+  cassettes: Array<Maybe<Scalars['String']>>,
+  botName: Scalars['String'],
+};
+
+export type BwaEvent = {
+  eventType: ApiEventType,
+  payload: Maybe<BwaConfig>,
 };
 
 export type Mutation = {
@@ -18,7 +29,7 @@ export type Mutation = {
 
 
 export type MutationSendEventArgs = {
-  event: Event
+  event: BwaEvent
 };
 
 export type Query = {

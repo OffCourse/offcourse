@@ -1,6 +1,19 @@
-input Event {
-  type: String
+enum APIEventType {
+  INITIALIZED
+  RESET
 }
+
+input BWAConfig {
+  cassettes: [String]!
+  botName: String!
+}
+
+input BWAEvent {
+  eventType: APIEventType!
+  payload: BWAConfig
+}
+
+
 type Mutation {
-  sendEvent(event: Event!): Status
+  sendEvent(event: BWAEvent!): Status
 }

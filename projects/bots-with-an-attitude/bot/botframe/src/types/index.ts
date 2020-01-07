@@ -1,10 +1,10 @@
 import { Interpreter } from "xstate";
+import { BwaConfig } from "./generated/graphql";
 
 export enum BWAEventType {
-  INSERT_CASSETTE = "INSERT_CASSETTE",
-  FETCHED_STATS = "FETCHED_STATS",
+  INITIALIZED = "INITIALIZED",
   RESET = "RESET",
-  INITIALIZED = "INITIALIZED"
+  FETCHED_STATS = "FETCHED_STATS"
 }
 
 export type BWAStats = {
@@ -13,10 +13,7 @@ export type BWAStats = {
 
 export interface BWAEvent {
   type: BWAEventType;
-  cassette?: string;
-  cassettes?: string[];
-  botName?: string;
-  stats?: BWAStats;
+  payload?: BwaConfig | { stats: BWAStats };
 }
 
 export type BWAContext = {
@@ -29,9 +26,9 @@ export type BWAContext = {
 export type BWAStateContext = {
   states: {
     dormant: {};
-    loading: {};
-    operational: {};
-    crashed: {};
+    arising: {};
+    alive: {};
+    maintenance: {};
   };
 };
 
@@ -40,13 +37,13 @@ export type BWAState =
       value: "dormant";
       context: BWAContext;
     }
-  | { value: "loading"; context: Required<BWAContext> }
+  | { value: "arising"; context: Required<BWAContext> }
   | {
-      value: "operational";
+      value: "alive";
       context: Required<BWAContext>;
     }
   | {
-      value: "crashed";
+      value: "maintenance";
       context: BWAContext;
     };
 

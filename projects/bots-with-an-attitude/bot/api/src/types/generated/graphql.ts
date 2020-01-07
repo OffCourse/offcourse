@@ -11,8 +11,19 @@ export type Scalars = {
   Float: number,
 };
 
-export type Event = {
-  type: Maybe<Scalars['String']>,
+export enum ApiEventType {
+  Initialized = 'INITIALIZED',
+  Reset = 'RESET'
+}
+
+export type BwaConfig = {
+  cassettes: Array<Maybe<Scalars['String']>>,
+  botName: Scalars['String'],
+};
+
+export type BwaEvent = {
+  eventType: ApiEventType,
+  payload: Maybe<BwaConfig>,
 };
 
 export type Mutation = {
@@ -21,7 +32,7 @@ export type Mutation = {
 
 
 export type MutationSendEventArgs = {
-  event: Event
+  event: BwaEvent
 };
 
 export type Query = {
@@ -30,6 +41,7 @@ export type Query = {
 
 export type Status = {
   currentState: Maybe<Scalars['String']>,
+  toJSON: Maybe<Scalars['String']>,
   affordances: Maybe<Array<Maybe<Scalars['String']>>>,
 };
 
@@ -109,7 +121,9 @@ export type ResolversTypes = ResolversObject<{
   Status: ResolverTypeWrapper<BWAState>,
   String: ResolverTypeWrapper<Scalars['String']>,
   Mutation: ResolverTypeWrapper<{}>,
-  Event: Event,
+  BWAEvent: BwaEvent,
+  APIEventType: ApiEventType,
+  BWAConfig: BwaConfig,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 }>;
 
@@ -119,7 +133,9 @@ export type ResolversParentTypes = ResolversObject<{
   Status: BWAState,
   String: Scalars['String'],
   Mutation: {},
-  Event: Event,
+  BWAEvent: BwaEvent,
+  APIEventType: ApiEventType,
+  BWAConfig: BwaConfig,
   Boolean: Scalars['Boolean'],
 }>;
 
@@ -133,6 +149,7 @@ export type QueryResolvers<ContextType = BWAService, ParentType extends Resolver
 
 export type StatusResolvers<ContextType = BWAService, ParentType extends ResolversParentTypes['Status'] = ResolversParentTypes['Status']> = ResolversObject<{
   currentState: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  toJSON: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   affordances: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>,
 }>;
 

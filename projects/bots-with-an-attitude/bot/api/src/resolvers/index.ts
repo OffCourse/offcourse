@@ -1,5 +1,5 @@
-import { Resolvers } from "../types/generated/graphql";
-import { BWAEvent } from "@bwa/botframe/dist/types";
+import { Resolvers, ApiEventType } from "../types/generated/graphql";
+import { BWAEventType } from "@bwa/botframe/dist/types";
 
 const resolvers: Resolvers = {
   Query: {
@@ -9,12 +9,28 @@ const resolvers: Resolvers = {
   },
   Mutation: {
     sendEvent(_, { event }, { send }) {
-      return send(event as BWAEvent);
+      console.log(event.payload);
+      switch (event.eventType) {
+        case ApiEventType.Initialized: {
+          return send({
+            type: BWAEventType.INITIALIZED,
+            payload: event.payload!
+          });
+        }
+        case ApiEventType.Reset: {
+          return send({
+            type: BWAEventType.RESET
+          });
+        }
+      }
     }
   },
   Status: {
     currentState({ value }) {
       return value as string;
+    },
+    toJSON(state: any) {
+      return JSON.stringify(state, null, 2);
     },
     affordances({ nextEvents }) {
       return nextEvents;
