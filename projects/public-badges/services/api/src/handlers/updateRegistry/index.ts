@@ -9,10 +9,10 @@ import { PublicBadgesHandler } from "../../types";
 export type InputEvent = OrganizationRegistrationRequestedEvent;
 export type OutputEvent = null;
 
-const updateRegistry: PublicBadgesHandler<
-  InputEvent,
-  OutputEvent
-> = async ({ detailType, detail }) => {
+const updateRegistry: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
+  detailType,
+  detail
+}) => {
   const { organizationId, domainName, status } = detail;
   switch (detailType) {
     case EV.ORGANIZATION_REGISTRATION_REQUESTED: {
@@ -26,7 +26,7 @@ const updateRegistry: PublicBadgesHandler<
         approvalStatus: status,
         organizationId
       };
-      const res = await ddb.put({ TableName, Item }).promise()
+      const res = await ddb.put({ TableName, Item }).promise();
       console.log(JSON.stringify(res));
       return null;
     }

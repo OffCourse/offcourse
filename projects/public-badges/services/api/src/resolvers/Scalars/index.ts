@@ -6,10 +6,4 @@ import {
   JSONResolver as JSON
 } from "graphql-scalars";
 
-export {
-  ValueCaseID,
-  GUID,
-  JSON,
-  URL,
-  EmailAddress
-};
+export { ValueCaseID, GUID, JSON, URL, EmailAddress };

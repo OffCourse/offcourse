@@ -4,10 +4,7 @@ const s3 = new AWS.S3();
 
 type Save<T> = (id: string, document: T) => Promise<T>;
 
-const putOrganization: Save<PendingOrganization> = async (
-  id,
-  organization
-) => {
+const putOrganization: Save<PendingOrganization> = async (id, organization) => {
   const Bucket = process.env.REGISTRY_BUCKET;
   if (!Bucket) {
     throw "Bucket Name is Required";

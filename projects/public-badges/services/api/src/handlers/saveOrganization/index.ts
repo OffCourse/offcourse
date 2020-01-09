@@ -6,7 +6,11 @@ import {
   OrganizationApprovalRequestedEvent,
   OrganizationApprovedEvent
 } from "../../types/events.js";
-import { ApprovedOrganization, PendingOrganization, PublicBadgesHandler } from "../../types";
+import {
+  ApprovedOrganization,
+  PendingOrganization,
+  PublicBadgesHandler
+} from "../../types";
 import { OrganizationStatus } from "../../generated/graphql";
 
 export type InputEvent =
@@ -32,7 +36,7 @@ const saveOrganization: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
       return {
         detailType: EV.ORGANIZATION_APPROVAL_REQUESTED,
         detail: organization
-      }
+      };
     }
     case EV.ORGANIZATION_APPROVAL_ACCEPTED: {
       const organization: ApprovedOrganization = {
@@ -40,8 +44,7 @@ const saveOrganization: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
         status: OrganizationStatus.Approved,
         approvedBy: "yeehaa@fasljfsd.com",
         approvedOn: `${Date.now()}`
-
-      }
+      };
       await putOrganization(id, organization);
       return {
         detailType: EV.ORGANIZATION_APPROVED,
@@ -49,6 +52,6 @@ const saveOrganization: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
       };
     }
   }
-}
+};
 
 export default saveOrganization;

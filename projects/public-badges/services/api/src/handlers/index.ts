@@ -27,10 +27,4 @@ const saveOrganization = handler(so);
 const approveOrganization = handler(ao);
 const updateRegistry = handler(ur);
 
-export {
-  echo,
-  graphql,
-  updateRegistry,
-  approveOrganization,
-  saveOrganization
-};
+export { echo, graphql, updateRegistry, approveOrganization, saveOrganization };

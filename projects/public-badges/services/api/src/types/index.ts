@@ -28,7 +28,7 @@ export type ValueCaseProxy = Omit<ValueCase, "proposedBy"> & {
 
 export type ValueCaseStore = Store<{ valueCaseId: string }, {}, ValueCaseProxy>;
 
-export type PublicBadgeProxy = Omit<PublicBadge, "valueCase" | "recipient">;
+export type PublicBadgeProxy = Omit<PublicBadge, "recipient" | "valueCase">;
 
 export type BadgeInstanceStore = Store<
   { badgeId: string },

@@ -8,9 +8,8 @@ import { PublicBadgeProxy } from "../types";
 import { PublicBadgesEventType } from "../types/events.js";
 import uuid from "uuid/v1";
 
-const timeout = (ms: number) => {
-  return new Promise(resolve => setTimeout(resolve, ms));
-};
+const timeout = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
 const {
   ORGANIZATION_REGISTRATION_REQUESTED,
   BADGE_ISSUANCE_REQUESTED
@@ -24,6 +23,7 @@ const Mutation: MutationResolvers = {
     if (!organization) {
       throw "ORG DOES NOT EXISTS";
     }
+
     const valueCase = await stores.valueCase.fetch({ valueCaseId });
     if (!valueCase) {
       throw "ValueCase does not exist";

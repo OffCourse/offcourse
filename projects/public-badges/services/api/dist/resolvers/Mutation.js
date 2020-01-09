@@ -15,9 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_js_1 = require("../generated/graphql.js");
 const events_js_1 = require("../types/events.js");
 const v1_1 = __importDefault(require("uuid/v1"));
-const timeout = (ms) => {
-    return new Promise(resolve => setTimeout(resolve, ms));
-};
+const timeout = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const { ORGANIZATION_REGISTRATION_REQUESTED, BADGE_ISSUANCE_REQUESTED } = events_js_1.PublicBadgesEventType;
 const Mutation = {
     applyForBadge(_root, { input }, { stores, eventBus }) {
