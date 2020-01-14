@@ -8,6 +8,7 @@
     "codegen": "graphql-codegen --config codegen.yml",
     "start": "concurrently \"tsc -w\"",
     "invoke": "lambda-local -l dist/index.js",
+    "invoke:remote": "sls invoke --stage dev",
     "prebuild": "yarn codegen",
     "build": "tsc",
     "postbuild": "cp -r src/schema dist",

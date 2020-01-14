@@ -4,7 +4,8 @@ import {
   saveOrganization,
   saveBadge,
   approveOrganization,
-  updateRegistry
+  updateRegistry,
+  runValueCaseScenarios
 } from "./handlers";
 
 export {
@@ -13,5 +14,6 @@ export {
   saveOrganization,
   saveBadge,
   approveOrganization,
-  updateRegistry
+  updateRegistry,
+  runValueCaseScenarios
 };

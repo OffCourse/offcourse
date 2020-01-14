@@ -7,4 +7,5 @@ exports.saveOrganization = handlers_1.saveOrganization;
 exports.saveBadge = handlers_1.saveBadge;
 exports.approveOrganization = handlers_1.approveOrganization;
 exports.updateRegistry = handlers_1.updateRegistry;
+exports.runValueCaseScenarios = handlers_1.runValueCaseScenarios;
 //# sourceMappingURL=index.js.map

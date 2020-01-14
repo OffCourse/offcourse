@@ -10,6 +10,9 @@ const PublicBadge = {
             case graphql_1.PublicBadgeStatus.Approved: {
                 return "ApprovedPublicBadge";
             }
+            case graphql_1.PublicBadgeStatus.Rejected: {
+                return "RejectedPublicBadge";
+            }
             case graphql_1.PublicBadgeStatus.Pending: {
                 return "PendingPublicBadge";
             }
@@ -53,6 +56,8 @@ const ApprovedPublicBadge = Object.assign(Object.assign({}, PendingPublicBadge),
         return evidence;
     } });
 exports.ApprovedPublicBadge = ApprovedPublicBadge;
+const RejectedPublicBadge = Object.assign({}, ApprovedPublicBadge);
+exports.RejectedPublicBadge = RejectedPublicBadge;
 const SignedPublicBadge = Object.assign(Object.assign({}, ApprovedPublicBadge), { issuedOn({ issuedOn }) {
         return issuedOn;
     },

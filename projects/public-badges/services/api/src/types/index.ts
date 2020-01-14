@@ -5,7 +5,9 @@ import {
   OrganizationStatus,
   PendingPublicBadge,
   PublicBadge,
-  ValueCase
+  ValueCase,
+  ApprovedPublicBadge,
+  RejectedPublicBadge
 } from "../generated/graphql";
 
 export type PendingOrganization = Omit<PO, "status"> & {
@@ -30,6 +32,20 @@ export type ValueCaseProxy = Omit<ValueCase, "proposedBy"> & {
 export type ValueCaseStore = Store<{ valueCaseId: string }, {}, ValueCaseProxy>;
 
 export type PendingPublicBadgeProxy = Omit<PendingPublicBadge, "valueCase"> & {
+  valueCase: ValueCaseProxy;
+};
+
+export type ApprovedPublicBadgeProxy = Omit<
+  ApprovedPublicBadge,
+  "valueCase"
+> & {
+  valueCase: ValueCaseProxy;
+};
+
+export type RejectedPublicBadgeProxy = Omit<
+  RejectedPublicBadge,
+  "valueCase"
+> & {
   valueCase: ValueCaseProxy;
 };
 export type PublicBadgeProxy = Omit<PublicBadge, "recipient" | "valueCase">;

@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Scenario = {
-    title({ title }) {
-        return title;
+    description({ description }) {
+        return description;
     },
-    statements({ statements }) {
-        return statements;
+    narrative({ narrative }) {
+        return narrative;
     }
 };
 exports.Scenario = Scenario;

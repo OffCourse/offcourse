@@ -1,11 +1,11 @@
 import { ScenarioResolvers, ValueCaseResolvers } from "../generated/graphql.js";
 
 const Scenario: ScenarioResolvers = {
-  title({ title }) {
-    return title;
+  description({ description }) {
+    return description;
   },
-  statements({ statements }) {
-    return statements;
+  narrative({ narrative }) {
+    return narrative;
   }
 };
 

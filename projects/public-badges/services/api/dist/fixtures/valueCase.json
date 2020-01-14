@@ -8,8 +8,8 @@
     "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n",
     "scenarios": [
         {
-            "title": "Organization is listed in Public Spaces Registry",
-            "statements": [
+            "description": "Organization is listed in Public Spaces Registry",
+            "narrative": [
                 "Given a user visits the organizations website",
                 "And the website displays the Zero Badge",
                 "Then the organization is listed in the Public Spaces Registry",
@@ -18,8 +18,8 @@
             ]
         },
         {
-            "title": "Badge is Publicly Visible on Website",
-            "statements": [
+            "description": "Badge is Publicly Visible on Website",
+            "narrative": [
                 "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto",
                 "And visits the organizations homepage",
                 "When the user scrolls to the footer of the page",
@@ -29,8 +29,8 @@
             ]
         },
         {
-            "title": "Website links to Public Spaces Manifesto",
-            "statements": [
+            "description": "Website links to Public Spaces Manifesto",
+            "narrative": [
                 "Given a user wants to know what the Public Spaces manifesto entails",
                 "And visits the website of an affiliated organization",
                 "When the webiste displays the Zero Badge",

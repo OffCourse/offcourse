@@ -1,6 +1,6 @@
 type Scenario {
-  title: String!
-  statements: [String]!
+  description: String!
+  narrative: [String]!
 }
 
 type ValueCase {
@@ -11,7 +11,7 @@ type ValueCase {
   approvedBy: String!
   description: String!
   narrative: String!
-  scenarios: [Scenario]!
+  scenarios: [Scenario!]!
 }
 
 input ValueCaseInput {

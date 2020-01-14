@@ -5,6 +5,7 @@ custom:
   api: public-badges.api
   save_organization: public-badges.save-organization
   save_badge: public-badges.save-badge
+  run_value_case_scenarios: public-badges.run-value-case-scenarios
   approve_organization: public-badges.approve-organization
   update_registry_lookup: public-badges.update-registry-lookup
   registry_lookup_table: registry-lookup-${opt:stage}
@@ -86,6 +87,18 @@ functions:
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.save_badge}
+  runValueCaseScenarios:
+    handler: dist/index.runValueCaseScenarios
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.save_badge}
+            detail-type: 
+             - BADGE_ISSUANCE_APPROVAL_REQUESTED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.run_value_case_scenarios}
   approveOrganization:
     handler: dist/index.approveOrganization
     events:
@@ -118,9 +131,9 @@ functions:
       - eventBridge:
           pattern:
             source:
-              - ${self:custom.api}
+              - ${self:custom.run_value_case_scenarios}
             detail-type: 
-             - BADGE_ISSUANCE_REQUESTED
+             - BADGE_ISSUANCE_REJECTED
     environment:
       HANDLER_NAME: public-badges.echo
 

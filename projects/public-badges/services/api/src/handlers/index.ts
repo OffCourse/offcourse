@@ -5,6 +5,7 @@ import so from "./saveOrganization";
 import sb from "./saveBadge";
 import ao from "./approveOrganization";
 import ur from "./updateRegistry";
+import rvc from "./runValueCaseScenarios";
 import { Handler as AWSHandler } from "aws-lambda";
 import eventBus from "../eventBus";
 import { PublicBadgesHandler } from "../types";
@@ -28,6 +29,7 @@ const saveOrganization = handler(so);
 const saveBadge = handler(sb);
 const approveOrganization = handler(ao);
 const updateRegistry = handler(ur);
+const runValueCaseScenarios = handler(rvc);
 
 export {
   echo,
@@ -35,5 +37,6 @@ export {
   updateRegistry,
   approveOrganization,
   saveBadge,
-  saveOrganization
+  saveOrganization,
+  runValueCaseScenarios
 };

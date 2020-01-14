@@ -3,6 +3,7 @@ import {
   PublicBadgeStatus,
   PendingPublicBadgeResolvers,
   ApprovedPublicBadgeResolvers,
+  RejectedPublicBadgeResolvers,
   SignedPublicBadgeResolvers
 } from "../generated/graphql";
 
@@ -14,6 +15,9 @@ const PublicBadge: PublicBadgeResolvers = {
       }
       case PublicBadgeStatus.Approved: {
         return "ApprovedPublicBadge";
+      }
+      case PublicBadgeStatus.Rejected: {
+        return "RejectedPublicBadge";
       }
       case PublicBadgeStatus.Pending: {
         return "PendingPublicBadge";
@@ -63,6 +67,10 @@ const ApprovedPublicBadge: ApprovedPublicBadgeResolvers = {
   }
 };
 
+const RejectedPublicBadge: RejectedPublicBadgeResolvers = {
+  ...ApprovedPublicBadge
+};
+
 const SignedPublicBadge: SignedPublicBadgeResolvers = {
   ...ApprovedPublicBadge,
   issuedOn({ issuedOn }) {
@@ -80,5 +88,6 @@ export {
   PublicBadge,
   PendingPublicBadge,
   ApprovedPublicBadge,
+  RejectedPublicBadge,
   SignedPublicBadge
 };

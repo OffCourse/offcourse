@@ -2,13 +2,14 @@ enum PublicBadgeStatus {
   PENDING
   APPROVED
   SIGNED
+  REJECTED
 }
 type Proof {
   proofId: GUID!
   name: String!
   genre: String!
   description: String!
-  narrative: String!
+  narrative: [String]!
 }
 
 interface PublicBadge {
@@ -38,6 +39,20 @@ type PendingPublicBadge implements PublicBadge {
 }
 
 type ApprovedPublicBadge implements PublicBadge {
+  badgeId: GUID!
+  status: PublicBadgeStatus!
+  valueCaseId: ID!
+  valueCase: ValueCase!
+  name: String!
+  tags: [String]!
+  description: String!
+  narrative: String!
+  recipientId: ID!
+  evidence: [Proof]!
+  recipient: Organization!
+}
+
+type RejectedPublicBadge implements PublicBadge {
   badgeId: GUID!
   status: PublicBadgeStatus!
   valueCaseId: ID!

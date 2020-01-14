@@ -20,6 +20,7 @@ const saveOrganization_1 = __importDefault(require("./saveOrganization"));
 const saveBadge_1 = __importDefault(require("./saveBadge"));
 const approveOrganization_1 = __importDefault(require("./approveOrganization"));
 const updateRegistry_1 = __importDefault(require("./updateRegistry"));
+const runValueCaseScenarios_1 = __importDefault(require("./runValueCaseScenarios"));
 const eventBus_1 = __importDefault(require("../eventBus"));
 const handler = handler => {
     return (awsEvent, _context, callback) => __awaiter(void 0, void 0, void 0, function* () {
@@ -41,4 +42,6 @@ const approveOrganization = handler(approveOrganization_1.default);
 exports.approveOrganization = approveOrganization;
 const updateRegistry = handler(updateRegistry_1.default);
 exports.updateRegistry = updateRegistry;
+const runValueCaseScenarios = handler(runValueCaseScenarios_1.default);
+exports.runValueCaseScenarios = runValueCaseScenarios;
 //# sourceMappingURL=index.js.map

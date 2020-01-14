@@ -1,7 +1,10 @@
 import {
   PendingOrganization,
   ApprovedOrganization,
-  PublicBadgeProxy
+  PublicBadgeProxy,
+  PendingPublicBadgeProxy,
+  ApprovedPublicBadgeProxy,
+  RejectedPublicBadgeProxy
 } from "./index";
 
 export interface Event {
@@ -16,7 +19,9 @@ export enum PublicBadgesEventType {
   ORGANIZATION_APPROVED = "ORGANIZATION_APPROVED",
   NEW_BADGECLASS_PROPOSED = "NEW_BADGECLASS_PROPOSED",
   BADGE_ISSUANCE_REQUESTED = "BADGE_ISSUANCE_REQUESTED",
-  BADGE_ISSUANCE_APPROVAL_REQUESTED = "BADGE_ISSUANCE_APPROVAL_REQUESTED"
+  BADGE_ISSUANCE_APPROVAL_REQUESTED = "BADGE_ISSUANCE_APPROVAL_REQUESTED",
+  BADGE_ISSUANCE_APPROVED = "BADGE_ISSUANCE_APPROVED",
+  BADGE_ISSUANCE_REJECTED = "BADGE_ISSUANCE_REJECTED"
 }
 
 export type PublicBadgesEventPayload =
@@ -56,7 +61,17 @@ export interface BadgeIssuanceRequestedEvent extends PBEvent {
 
 export interface BadgeIssuanceApprovalRequestedEvent extends PBEvent {
   detailType: PublicBadgesEventType.BADGE_ISSUANCE_APPROVAL_REQUESTED;
-  detail: PublicBadgeProxy;
+  detail: PendingPublicBadgeProxy;
+}
+
+export interface BadgeIssuanceApprovedEvent extends PBEvent {
+  detailType: PublicBadgesEventType.BADGE_ISSUANCE_APPROVED;
+  detail: ApprovedPublicBadgeProxy;
+}
+
+export interface BadgeIssuanceRejectedEvent extends PBEvent {
+  detailType: PublicBadgesEventType.BADGE_ISSUANCE_REJECTED;
+  detail: RejectedPublicBadgeProxy;
 }
 
 export type PublicBadgesEvent =
@@ -64,4 +79,7 @@ export type PublicBadgesEvent =
   | OrganizationApprovalRequestedEvent
   | OrganizationApprovalAcceptedEvent
   | OrganizationApprovedEvent
-  | BadgeIssuanceRequestedEvent;
+  | BadgeIssuanceRequestedEvent
+  | BadgeIssuanceApprovalRequestedEvent
+  | BadgeIssuanceApprovedEvent
+  | BadgeIssuanceRejectedEvent;
