@@ -15,7 +15,8 @@ export enum PublicBadgesEventType {
   ORGANIZATION_APPROVAL_ACCEPTED = "ORGANIZATION_APPROVAL_ACCEPTED",
   ORGANIZATION_APPROVED = "ORGANIZATION_APPROVED",
   NEW_BADGECLASS_PROPOSED = "NEW_BADGECLASS_PROPOSED",
-  BADGE_ISSUANCE_REQUESTED = "BADGE_ISSUANCE_REQUESTED"
+  BADGE_ISSUANCE_REQUESTED = "BADGE_ISSUANCE_REQUESTED",
+  BADGE_ISSUANCE_APPROVAL_REQUESTED = "BADGE_ISSUANCE_APPROVAL_REQUESTED"
 }
 
 export type PublicBadgesEventPayload =
@@ -50,6 +51,11 @@ export interface OrganizationApprovedEvent extends PBEvent {
 
 export interface BadgeIssuanceRequestedEvent extends PBEvent {
   detailType: PublicBadgesEventType.BADGE_ISSUANCE_REQUESTED;
+  detail: PublicBadgeProxy;
+}
+
+export interface BadgeIssuanceApprovalRequestedEvent extends PBEvent {
+  detailType: PublicBadgesEventType.BADGE_ISSUANCE_APPROVAL_REQUESTED;
   detail: PublicBadgeProxy;
 }
 

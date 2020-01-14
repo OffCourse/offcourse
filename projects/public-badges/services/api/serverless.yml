@@ -4,6 +4,7 @@ custom:
   registry_bucket: public-badges-registry-${opt:stage}
   api: public-badges.api
   save_organization: public-badges.save-organization
+  save_badge: public-badges.save-badge
   approve_organization: public-badges.approve-organization
   update_registry_lookup: public-badges.update-registry-lookup
   registry_lookup_table: registry-lookup-${opt:stage}
@@ -73,6 +74,18 @@ functions:
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.save_organization}
+  saveBadge:
+    handler: dist/index.saveBadge
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.api}
+            detail-type: 
+             - BADGE_ISSUANCE_REQUESTED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.save_badge}
   approveOrganization:
     handler: dist/index.approveOrganization
     events:
@@ -102,6 +115,12 @@ functions:
     handler: dist/index.echo
     events:
       - s3: ${self:custom.registry_bucket}
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.api}
+            detail-type: 
+             - BADGE_ISSUANCE_REQUESTED
     environment:
       HANDLER_NAME: public-badges.echo
 

@@ -8,5 +8,6 @@ var PublicBadgesEventType;
     PublicBadgesEventType["ORGANIZATION_APPROVED"] = "ORGANIZATION_APPROVED";
     PublicBadgesEventType["NEW_BADGECLASS_PROPOSED"] = "NEW_BADGECLASS_PROPOSED";
     PublicBadgesEventType["BADGE_ISSUANCE_REQUESTED"] = "BADGE_ISSUANCE_REQUESTED";
+    PublicBadgesEventType["BADGE_ISSUANCE_APPROVAL_REQUESTED"] = "BADGE_ISSUANCE_APPROVAL_REQUESTED";
 })(PublicBadgesEventType = exports.PublicBadgesEventType || (exports.PublicBadgesEventType = {}));
 //# sourceMappingURL=events.js.map

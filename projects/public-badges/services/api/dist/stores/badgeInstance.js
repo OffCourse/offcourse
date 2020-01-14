@@ -42,7 +42,7 @@ const generateBadge = (opts) => ({
     evidence: evidence.map((_a) => {
         var { id } = _a, proof = __rest(_a, ["id"]);
         const proofId = id.replace(/urn:uuid:/, "");
-        return { proofId, proof };
+        return Object.assign(Object.assign({}, proof), { proofId });
     }),
     issuedOn: issuedOn,
     expires: expires,

@@ -19,7 +19,7 @@ const generateBadge = (opts: { id: string }) => ({
   recipientId: recipient.identity,
   evidence: evidence.map(({ id, ...proof }: any) => {
     const proofId = id.replace(/urn:uuid:/, "");
-    return { proofId, proof };
+    return { ...proof, proofId };
   }),
   issuedOn: issuedOn,
   expires: expires,

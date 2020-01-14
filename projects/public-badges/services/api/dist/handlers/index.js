@@ -17,6 +17,7 @@ exports.echo = echo_1.default;
 const graphql_1 = __importDefault(require("./graphql"));
 exports.graphql = graphql_1.default;
 const saveOrganization_1 = __importDefault(require("./saveOrganization"));
+const saveBadge_1 = __importDefault(require("./saveBadge"));
 const approveOrganization_1 = __importDefault(require("./approveOrganization"));
 const updateRegistry_1 = __importDefault(require("./updateRegistry"));
 const eventBus_1 = __importDefault(require("../eventBus"));
@@ -34,6 +35,8 @@ const handler = handler => {
 };
 const saveOrganization = handler(saveOrganization_1.default);
 exports.saveOrganization = saveOrganization;
+const saveBadge = handler(saveBadge_1.default);
+exports.saveBadge = saveBadge;
 const approveOrganization = handler(approveOrganization_1.default);
 exports.approveOrganization = approveOrganization;
 const updateRegistry = handler(updateRegistry_1.default);

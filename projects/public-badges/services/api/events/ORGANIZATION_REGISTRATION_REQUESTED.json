@@ -18,7 +18,7 @@
       "name": "John Doer",
       "email": "johndoer@waag.org"
     },
-      "domainName": "https://waag.org/",
+    "domainName": "https://waag.org/",
     "status": "PENDING",
     "urls": ["https://waag.org/"]
   }
