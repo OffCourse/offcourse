@@ -25,10 +25,7 @@
       "id": "https://publicbadges.com/registry/publicspaces",
       "type": "Profile",
       "name": "Public Spaces",
-      "email": "contact@publicspaces.net",
-      "verification": {
-        "allowedOrigins": ["publicspaces.net", "publicbadges.com"]
-      }
+      "email": "contact@publicspaces.net"
     }
   },
   "evidence": [

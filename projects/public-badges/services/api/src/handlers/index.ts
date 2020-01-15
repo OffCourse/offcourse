@@ -1,11 +1,11 @@
 import echo from "./echo";
-
 import graphql from "./graphql";
 import so from "./saveOrganization";
 import sb from "./saveBadge";
 import ao from "./approveOrganization";
 import ur from "./updateRegistry";
 import rvc from "./runValueCaseScenarios";
+import poba from "./prepareOpenBadgeArtifact";
 import { Handler as AWSHandler } from "aws-lambda";
 import eventBus from "../eventBus";
 import { PublicBadgesHandler } from "../types";
@@ -21,7 +21,7 @@ const handler: (
       const reply = await eventBus.put(event);
       callback(null, reply);
     }
-    callback(null, "success");
+    callback(null, "nothing memorable happened");
   };
 };
 
@@ -30,6 +30,7 @@ const saveBadge = handler(sb);
 const approveOrganization = handler(ao);
 const updateRegistry = handler(ur);
 const runValueCaseScenarios = handler(rvc);
+const prepareOpenBadgeArtifact = handler(poba);
 
 export {
   echo,
@@ -38,5 +39,6 @@ export {
   approveOrganization,
   saveBadge,
   saveOrganization,
-  runValueCaseScenarios
+  runValueCaseScenarios,
+  prepareOpenBadgeArtifact
 };

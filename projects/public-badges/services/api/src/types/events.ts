@@ -2,10 +2,10 @@ import {
   PendingOrganization,
   ApprovedOrganization,
   PublicBadgeProxy,
-  PendingPublicBadgeProxy,
   ApprovedPublicBadgeProxy,
   RejectedPublicBadgeProxy
 } from "./index";
+import { OpenBadge } from "../generated/graphql";
 
 export interface Event {
   detailType: string;
@@ -21,13 +21,16 @@ export enum PublicBadgesEventType {
   BADGE_ISSUANCE_REQUESTED = "BADGE_ISSUANCE_REQUESTED",
   BADGE_ISSUANCE_APPROVAL_REQUESTED = "BADGE_ISSUANCE_APPROVAL_REQUESTED",
   BADGE_ISSUANCE_APPROVED = "BADGE_ISSUANCE_APPROVED",
-  BADGE_ISSUANCE_REJECTED = "BADGE_ISSUANCE_REJECTED"
+  BADGE_ISSUANCE_REJECTED = "BADGE_ISSUANCE_REJECTED",
+  BADGE_INSTANCE_UPDATED = "BADGE_INSTANCE_UPDATED",
+  OPEN_BADGES_ARTIFACT_CREATED = "OPEN_BADGES_ARTIFACT_CREATED"
 }
 
 export type PublicBadgesEventPayload =
   | PendingOrganization
   | ApprovedOrganization
-  | PublicBadgeProxy;
+  | PublicBadgeProxy
+  | OpenBadge;
 
 export interface PBEvent extends Event {
   detailType: PublicBadgesEventType;
@@ -61,7 +64,7 @@ export interface BadgeIssuanceRequestedEvent extends PBEvent {
 
 export interface BadgeIssuanceApprovalRequestedEvent extends PBEvent {
   detailType: PublicBadgesEventType.BADGE_ISSUANCE_APPROVAL_REQUESTED;
-  detail: PendingPublicBadgeProxy;
+  detail: PublicBadgeProxy;
 }
 
 export interface BadgeIssuanceApprovedEvent extends PBEvent {
@@ -74,6 +77,15 @@ export interface BadgeIssuanceRejectedEvent extends PBEvent {
   detail: RejectedPublicBadgeProxy;
 }
 
+export interface BadgeInstanceUpdated extends PBEvent {
+  detailType: PublicBadgesEventType.BADGE_INSTANCE_UPDATED;
+  detail: PublicBadgeProxy;
+}
+export interface OpenBadgeArtifactCreated extends PBEvent {
+  detailType: PublicBadgesEventType.OPEN_BADGES_ARTIFACT_CREATED;
+  detail: OpenBadge;
+}
+
 export type PublicBadgesEvent =
   | OrganizationRegistrationRequestedEvent
   | OrganizationApprovalRequestedEvent
@@ -82,4 +94,6 @@ export type PublicBadgesEvent =
   | BadgeIssuanceRequestedEvent
   | BadgeIssuanceApprovalRequestedEvent
   | BadgeIssuanceApprovedEvent
-  | BadgeIssuanceRejectedEvent;
+  | BadgeIssuanceRejectedEvent
+  | BadgeInstanceUpdated
+  | OpenBadgeArtifactCreated;

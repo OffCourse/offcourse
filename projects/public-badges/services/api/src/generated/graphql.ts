@@ -39,7 +39,7 @@ export type ApprovedPublicBadge = PublicBadge & {
   description: Scalars['String'],
   narrative: Scalars['String'],
   recipientId: Scalars['ID'],
-  evidence: Array<Maybe<Proof>>,
+  evidence: Array<Proof>,
   recipient: Organization,
 };
 
@@ -155,7 +155,7 @@ export type Proof = {
   name: Scalars['String'],
   genre: Scalars['String'],
   description: Scalars['String'],
-  narrative: Array<Maybe<Scalars['String']>>,
+  narrative: Array<Scalars['String']>,
 };
 
 export type PublicBadge = {
@@ -223,13 +223,13 @@ export type RejectedPublicBadge = PublicBadge & {
   description: Scalars['String'],
   narrative: Scalars['String'],
   recipientId: Scalars['ID'],
-  evidence: Array<Maybe<Proof>>,
+  evidence: Array<Proof>,
   recipient: Organization,
 };
 
 export type Scenario = {
   description: Scalars['String'],
-  narrative: Array<Maybe<Scalars['String']>>,
+  narrative: Array<Scalars['String']>,
 };
 
 export type SignedPublicBadge = PublicBadge & {
@@ -242,7 +242,7 @@ export type SignedPublicBadge = PublicBadge & {
   description: Scalars['String'],
   narrative: Scalars['String'],
   recipientId: Scalars['ID'],
-  evidence: Array<Maybe<Proof>>,
+  evidence: Array<Proof>,
   issuedOn: Scalars['String'],
   expires: Scalars['String'],
   artifact: Scalars['JSON'],
@@ -436,7 +436,7 @@ export type ApprovedPublicBadgeResolvers<ContextType = ApolloContext, ParentType
   description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   recipientId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
-  evidence: Resolver<Array<Maybe<ResolversTypes['Proof']>>, ParentType, ContextType>,
+  evidence: Resolver<Array<ResolversTypes['Proof']>, ParentType, ContextType>,
   recipient: Resolver<ResolversTypes['Organization'], ParentType, ContextType>,
 }>;
 
@@ -535,7 +535,7 @@ export type ProofResolvers<ContextType = ApolloContext, ParentType extends Resol
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   genre: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  narrative: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>,
+  narrative: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>,
 }>;
 
 export type PublicBadgeResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['PublicBadge'] = ResolversParentTypes['PublicBadge']> = ResolversObject<{
@@ -571,13 +571,13 @@ export type RejectedPublicBadgeResolvers<ContextType = ApolloContext, ParentType
   description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   recipientId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
-  evidence: Resolver<Array<Maybe<ResolversTypes['Proof']>>, ParentType, ContextType>,
+  evidence: Resolver<Array<ResolversTypes['Proof']>, ParentType, ContextType>,
   recipient: Resolver<ResolversTypes['Organization'], ParentType, ContextType>,
 }>;
 
 export type ScenarioResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Scenario'] = ResolversParentTypes['Scenario']> = ResolversObject<{
   description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
-  narrative: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>,
+  narrative: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>,
 }>;
 
 export type SignedPublicBadgeResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['SignedPublicBadge'] = ResolversParentTypes['SignedPublicBadge']> = ResolversObject<{
@@ -590,7 +590,7 @@ export type SignedPublicBadgeResolvers<ContextType = ApolloContext, ParentType e
   description: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   recipientId: Resolver<ResolversTypes['ID'], ParentType, ContextType>,
-  evidence: Resolver<Array<Maybe<ResolversTypes['Proof']>>, ParentType, ContextType>,
+  evidence: Resolver<Array<ResolversTypes['Proof']>, ParentType, ContextType>,
   issuedOn: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   expires: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   artifact: Resolver<ResolversTypes['JSON'], ParentType, ContextType>,

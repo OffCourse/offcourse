@@ -1,4 +1,3 @@
-import putBadge from "./putBadge";
 import {
   PublicBadgesEventType as EV,
   BadgeIssuanceApprovalRequestedEvent,
@@ -8,10 +7,15 @@ import {
 import {
   PublicBadgesHandler,
   ApprovedPublicBadgeProxy,
-  PendingPublicBadgeProxy,
-  RejectedPublicBadgeProxy
+  RejectedPublicBadgeProxy,
+  ValueCaseProxy
 } from "../../types";
-import { PublicBadgeStatus, Proof } from "../../generated/graphql";
+import {
+  PublicBadgeStatus,
+  Proof,
+  Organization
+} from "../../generated/graphql";
+import { registry, valueCase as valueCaseStore } from "../../stores";
 import uuid from "uuid/v1";
 import { slugify } from "voca";
 
@@ -26,9 +30,10 @@ enum ScenarioOutcome {
   FAILED = "FAILED"
 }
 
-const checkScenarios: (
-  badge: PendingPublicBadgeProxy
-) => Promise<{ outcome: ScenarioOutcome; evidence: Proof[] }> = async ({
+const checkScenarios: (args: {
+  valueCase: ValueCaseProxy;
+  organization: Organization;
+}) => Promise<{ outcome: ScenarioOutcome; evidence: Proof[] }> = async ({
   valueCase
 }) => {
   const { scenarios } = valueCase;
@@ -54,8 +59,16 @@ const runValueCaseScenarios: PublicBadgesHandler<
   switch (detailType) {
     case EV.BADGE_ISSUANCE_APPROVAL_REQUESTED: {
       const { recipientId, valueCaseId } = detail;
-      const id = `${recipientId}/badges/${valueCaseId}`;
-      const { outcome, evidence } = await checkScenarios(detail);
+      const organization = await registry.fetch({
+        organizationId: recipientId
+      });
+      const valueCase = await valueCaseStore.fetch({
+        valueCaseId
+      });
+      const { outcome, evidence } = await checkScenarios({
+        valueCase,
+        organization
+      });
       switch (outcome) {
         case ScenarioOutcome.PASSED: {
           const badge: ApprovedPublicBadgeProxy = {
@@ -63,7 +76,6 @@ const runValueCaseScenarios: PublicBadgesHandler<
             evidence,
             status: PublicBadgeStatus.Approved
           };
-          await putBadge(id, badge);
           return {
             detailType: EV.BADGE_ISSUANCE_APPROVED,
             detail: badge
@@ -75,7 +87,6 @@ const runValueCaseScenarios: PublicBadgesHandler<
             evidence,
             status: PublicBadgeStatus.Rejected
           };
-          await putBadge(id, badge);
           return {
             detailType: EV.BADGE_ISSUANCE_REJECTED,
             detail: badge

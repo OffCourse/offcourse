@@ -5,6 +5,7 @@ import {
   saveBadge,
   approveOrganization,
   updateRegistry,
+  prepareOpenBadgeArtifact,
   runValueCaseScenarios
 } from "./handlers";
 
@@ -15,5 +16,6 @@ export {
   saveBadge,
   approveOrganization,
   updateRegistry,
+  prepareOpenBadgeArtifact,
   runValueCaseScenarios
 };

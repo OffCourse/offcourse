@@ -1,6 +1,6 @@
 type Scenario {
   description: String!
-  narrative: [String]!
+  narrative: [String!]!
 }
 
 type ValueCase {

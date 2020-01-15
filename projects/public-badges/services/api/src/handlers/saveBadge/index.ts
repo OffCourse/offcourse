@@ -2,15 +2,22 @@ import putBadge from "./putBadge";
 import {
   PublicBadgesEventType as EV,
   BadgeIssuanceRequestedEvent,
-  BadgeIssuanceApprovalRequestedEvent
+  BadgeIssuanceApprovalRequestedEvent,
+  BadgeIssuanceApprovedEvent,
+  BadgeIssuanceRejectedEvent,
+  BadgeInstanceUpdated
 } from "../../types/events.js";
-import { PublicBadgesHandler, PendingPublicBadgeProxy } from "../../types";
-import { registry, valueCase as valueCaseStore } from "../../stores";
+import { PublicBadgesHandler, PublicBadgeProxy } from "../../types";
 import { PublicBadgeStatus } from "../../generated/graphql";
 
-export type InputEvent = BadgeIssuanceRequestedEvent;
+export type InputEvent =
+  | BadgeIssuanceRequestedEvent
+  | BadgeIssuanceApprovedEvent
+  | BadgeIssuanceRejectedEvent;
 
-export type OutputEvent = BadgeIssuanceApprovalRequestedEvent;
+export type OutputEvent =
+  | BadgeIssuanceApprovalRequestedEvent
+  | BadgeInstanceUpdated;
 
 const saveBadge: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
   detailType,
@@ -19,18 +26,40 @@ const saveBadge: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
   switch (detailType) {
     case EV.BADGE_ISSUANCE_REQUESTED: {
       const { recipientId, valueCaseId } = detail;
-      const recipient = await registry.fetch({ organizationId: recipientId });
-      const valueCase = await valueCaseStore.fetch({ valueCaseId });
       const id = `${recipientId}/badges/${valueCaseId}`;
-      const badge: PendingPublicBadgeProxy = {
+      const badge: PublicBadgeProxy = {
         ...detail,
-        recipient,
-        valueCase,
         status: PublicBadgeStatus.Pending
       };
       await putBadge(id, badge);
       return {
         detailType: EV.BADGE_ISSUANCE_APPROVAL_REQUESTED,
+        detail: badge
+      };
+    }
+    case EV.BADGE_ISSUANCE_APPROVED: {
+      const { recipientId, valueCaseId } = detail;
+      const id = `${recipientId}/badges/${valueCaseId}`;
+      const badge: PublicBadgeProxy = {
+        ...detail,
+        status: PublicBadgeStatus.Approved
+      };
+      await putBadge(id, badge);
+      return {
+        detailType: EV.BADGE_INSTANCE_UPDATED,
+        detail: badge
+      };
+    }
+    case EV.BADGE_ISSUANCE_REJECTED: {
+      const { recipientId, valueCaseId } = detail;
+      const id = `${recipientId}/badges/${valueCaseId}`;
+      const badge: PublicBadgeProxy = {
+        ...detail,
+        status: PublicBadgeStatus.Rejected
+      };
+      await putBadge(id, badge);
+      return {
+        detailType: EV.BADGE_INSTANCE_UPDATED,
         detail: badge
       };
     }

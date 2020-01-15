@@ -9,7 +9,7 @@ type Proof {
   name: String!
   genre: String!
   description: String!
-  narrative: [String]!
+  narrative: [String!]!
 }
 
 interface PublicBadge {
@@ -48,7 +48,7 @@ type ApprovedPublicBadge implements PublicBadge {
   description: String!
   narrative: String!
   recipientId: ID!
-  evidence: [Proof]!
+  evidence: [Proof!]!
   recipient: Organization!
 }
 
@@ -62,7 +62,7 @@ type RejectedPublicBadge implements PublicBadge {
   description: String!
   narrative: String!
   recipientId: ID!
-  evidence: [Proof]!
+  evidence: [Proof!]!
   recipient: Organization!
 }
 
@@ -76,7 +76,7 @@ type SignedPublicBadge implements PublicBadge {
   description: String!
   narrative: String!
   recipientId: ID!
-  evidence: [Proof]!
+  evidence: [Proof!]!
   issuedOn: String!
   expires: String!
   artifact: JSON!

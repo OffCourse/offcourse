@@ -6,6 +6,8 @@ custom:
   save_organization: public-badges.save-organization
   save_badge: public-badges.save-badge
   run_value_case_scenarios: public-badges.run-value-case-scenarios
+  prepare_open_badge_artifact: public-badges.prepare-open-badge-artifact
+  sign_open_badge_artifact: public-badges.sign-open-badge-artifact
   approve_organization: public-badges.approve-organization
   update_registry_lookup: public-badges.update-registry-lookup
   registry_lookup_table: registry-lookup-${opt:stage}
@@ -82,8 +84,11 @@ functions:
           pattern:
             source:
               - ${self:custom.api}
+              - ${self:custom.run_value_case_scenarios}
             detail-type: 
              - BADGE_ISSUANCE_REQUESTED
+             - BADGE_ISSUANCE_APPROVED
+             - BADGE_ISSUANCE_REJECTED
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.save_badge}
@@ -99,6 +104,30 @@ functions:
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.run_value_case_scenarios}
+  prepareOpenBadgeArtifact:
+    handler: dist/index.prepareOpenBadgeArtifact
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.run_value_case_scenarios}
+            detail-type: 
+             - BADGE_ISSUANCE_APPROVED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.prepare_open_badge_artifact}
+  signOpenBadgeArtifact:
+    handler: dist/index.echo
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.prepare_open_badge_artifact}
+            detail-type: 
+             - OPEN_BADGES_ARTIFACT_CREATED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.sign_open_badge_artifact}
   approveOrganization:
     handler: dist/index.approveOrganization
     events:

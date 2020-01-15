@@ -11,5 +11,7 @@ var PublicBadgesEventType;
     PublicBadgesEventType["BADGE_ISSUANCE_APPROVAL_REQUESTED"] = "BADGE_ISSUANCE_APPROVAL_REQUESTED";
     PublicBadgesEventType["BADGE_ISSUANCE_APPROVED"] = "BADGE_ISSUANCE_APPROVED";
     PublicBadgesEventType["BADGE_ISSUANCE_REJECTED"] = "BADGE_ISSUANCE_REJECTED";
+    PublicBadgesEventType["BADGE_INSTANCE_UPDATED"] = "BADGE_INSTANCE_UPDATED";
+    PublicBadgesEventType["OPEN_BADGES_ARTIFACT_CREATED"] = "OPEN_BADGES_ARTIFACT_CREATED";
 })(PublicBadgesEventType = exports.PublicBadgesEventType || (exports.PublicBadgesEventType = {}));
 //# sourceMappingURL=events.js.map

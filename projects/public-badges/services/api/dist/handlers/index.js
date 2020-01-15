@@ -21,6 +21,7 @@ const saveBadge_1 = __importDefault(require("./saveBadge"));
 const approveOrganization_1 = __importDefault(require("./approveOrganization"));
 const updateRegistry_1 = __importDefault(require("./updateRegistry"));
 const runValueCaseScenarios_1 = __importDefault(require("./runValueCaseScenarios"));
+const prepareOpenBadgeArtifact_1 = __importDefault(require("./prepareOpenBadgeArtifact"));
 const eventBus_1 = __importDefault(require("../eventBus"));
 const handler = handler => {
     return (awsEvent, _context, callback) => __awaiter(void 0, void 0, void 0, function* () {
@@ -44,4 +45,6 @@ const updateRegistry = handler(updateRegistry_1.default);
 exports.updateRegistry = updateRegistry;
 const runValueCaseScenarios = handler(runValueCaseScenarios_1.default);
 exports.runValueCaseScenarios = runValueCaseScenarios;
+const prepareOpenBadgeArtifact = handler(prepareOpenBadgeArtifact_1.default);
+exports.prepareOpenBadgeArtifact = prepareOpenBadgeArtifact;
 //# sourceMappingURL=index.js.map

@@ -3,7 +3,6 @@ import {
   ApprovedOrganization as AO,
   PendingOrganization as PO,
   OrganizationStatus,
-  PendingPublicBadge,
   PublicBadge,
   ValueCase,
   ApprovedPublicBadge,
@@ -31,24 +30,15 @@ export type ValueCaseProxy = Omit<ValueCase, "proposedBy"> & {
 
 export type ValueCaseStore = Store<{ valueCaseId: string }, {}, ValueCaseProxy>;
 
-export type PendingPublicBadgeProxy = Omit<PendingPublicBadge, "valueCase"> & {
-  valueCase: ValueCaseProxy;
-};
-
+export type PublicBadgeProxy = Omit<PublicBadge, "recipient" | "valueCase">;
 export type ApprovedPublicBadgeProxy = Omit<
   ApprovedPublicBadge,
-  "valueCase"
-> & {
-  valueCase: ValueCaseProxy;
-};
-
+  "recipient" | "valueCase"
+>;
 export type RejectedPublicBadgeProxy = Omit<
   RejectedPublicBadge,
-  "valueCase"
-> & {
-  valueCase: ValueCaseProxy;
-};
-export type PublicBadgeProxy = Omit<PublicBadge, "recipient" | "valueCase">;
+  "recipient" | "valueCase"
+>;
 
 export type BadgeInstanceStore = Store<
   { badgeId: string },

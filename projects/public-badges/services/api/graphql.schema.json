@@ -839,9 +839,13 @@
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 }
               }
             },
@@ -2607,9 +2611,13 @@
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  }
                 }
               }
             },
@@ -2967,9 +2975,13 @@
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Proof",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Proof",
+                    "ofType": null
+                  }
                 }
               }
             },
@@ -3168,9 +3180,13 @@
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Proof",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Proof",
+                    "ofType": null
+                  }
                 }
               }
             },
@@ -3369,9 +3385,13 @@
                 "kind": "LIST",
                 "name": null,
                 "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Proof",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Proof",
+                    "ofType": null
+                  }
                 }
               }
             },
