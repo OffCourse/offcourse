@@ -6,6 +6,7 @@ import {
   approveOrganization,
   updateRegistry,
   prepareOpenBadgeArtifact,
+  signOpenBadgeArtifact,
   runValueCaseScenarios
 } from "./handlers";
 
@@ -17,5 +18,6 @@ export {
   approveOrganization,
   updateRegistry,
   prepareOpenBadgeArtifact,
+  signOpenBadgeArtifact,
   runValueCaseScenarios
 };

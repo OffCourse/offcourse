@@ -11,10 +11,10 @@ export type Scalars = {
   Int: number,
   Float: number,
   GUID: any,
-  ValueCaseID: any,
   EmailAddress: string,
   URL: any,
   JSON: string,
+  ValueCaseID: any,
 };
 
 export type ApprovedOrganization = Organization & {
@@ -251,7 +251,7 @@ export type SignedPublicBadge = PublicBadge & {
 
 
 export type ValueCase = {
-  valueCaseId: Scalars['ValueCaseID'],
+  valueCaseId: Scalars['GUID'],
   name: Scalars['String'],
   tags: Array<Maybe<Scalars['String']>>,
   proposedBy: Organization,
@@ -348,7 +348,6 @@ export type ResolversTypes = ResolversObject<{
   GUID: ResolverTypeWrapper<Scalars['GUID']>,
   PublicBadgeStatus: PublicBadgeStatus,
   ValueCase: ResolverTypeWrapper<ValueCaseProxy>,
-  ValueCaseID: ResolverTypeWrapper<Scalars['ValueCaseID']>,
   String: ResolverTypeWrapper<Scalars['String']>,
   Organization: ResolverTypeWrapper<Organization>,
   OrganizationStatus: OrganizationStatus,
@@ -374,6 +373,7 @@ export type ResolversTypes = ResolversObject<{
   RejectedPublicBadge: ResolverTypeWrapper<Omit<RejectedPublicBadge, 'valueCase'> & { valueCase: ResolversTypes['ValueCase'] }>,
   SignedPublicBadge: ResolverTypeWrapper<Omit<SignedPublicBadge, 'valueCase'> & { valueCase: ResolversTypes['ValueCase'] }>,
   JSON: ResolverTypeWrapper<Scalars['JSON']>,
+  ValueCaseID: ResolverTypeWrapper<Scalars['ValueCaseID']>,
   ValueCaseInput: ValueCaseInput,
 }>;
 
@@ -385,7 +385,6 @@ export type ResolversParentTypes = ResolversObject<{
   GUID: Scalars['GUID'],
   PublicBadgeStatus: PublicBadgeStatus,
   ValueCase: ValueCaseProxy,
-  ValueCaseID: Scalars['ValueCaseID'],
   String: Scalars['String'],
   Organization: Organization,
   OrganizationStatus: OrganizationStatus,
@@ -411,6 +410,7 @@ export type ResolversParentTypes = ResolversObject<{
   RejectedPublicBadge: Omit<RejectedPublicBadge, 'valueCase'> & { valueCase: ResolversParentTypes['ValueCase'] },
   SignedPublicBadge: Omit<SignedPublicBadge, 'valueCase'> & { valueCase: ResolversParentTypes['ValueCase'] },
   JSON: Scalars['JSON'],
+  ValueCaseID: Scalars['ValueCaseID'],
   ValueCaseInput: ValueCaseInput,
 }>;
 
@@ -602,7 +602,7 @@ export interface UrlScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes[
 }
 
 export type ValueCaseResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['ValueCase'] = ResolversParentTypes['ValueCase']> = ResolversObject<{
-  valueCaseId: Resolver<ResolversTypes['ValueCaseID'], ParentType, ContextType>,
+  valueCaseId: Resolver<ResolversTypes['GUID'], ParentType, ContextType>,
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   tags: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>,
   proposedBy: Resolver<ResolversTypes['Organization'], ParentType, ContextType>,

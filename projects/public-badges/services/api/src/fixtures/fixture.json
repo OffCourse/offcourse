@@ -14,7 +14,7 @@
   },
   "badge": {
     "type": "BadgeClass",
-    "id": "urn:uuid:88c7a930-3181-11ea-9858-b312ce22102d@zero-badge",
+    "id": "urn:uuid:88c7a930-3181-11ea-9858-b312ce22102d",
     "name": "Zero Badge",
     "tags": ["manifesto", "intention"],
     "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website\n",

@@ -29,7 +29,7 @@ const createBadgeClass: (args: {
   const { valueCaseId, name, tags, description, narrative } = valueCase;
   return {
     type: "BadgeClass",
-    id: valueCaseId,
+    id: `urn:uuid:${valueCaseId}`,
     name,
     tags,
     description,
@@ -59,14 +59,14 @@ const createArtifact: (args: {
   });
   return {
     "@context": "https://w3id.org/openbadges/v2",
-    id: badgeId,
+    id: `urn:uuid:${badgeId}`,
     type: "Assertion",
     recipient: {
       type: "email",
       identity: "sander@waag.org"
     },
-    issuedOn: `${Date.now()}`,
-    expires: "2022-10-31T23:59:59.000Z",
+    issuedOn: new Date(Date.now()).toISOString(),
+    expires: new Date(Date.now()).toISOString(),
     verification,
     badge,
     evidence
@@ -91,6 +91,7 @@ const prepareOpenBadgeArtifact: PublicBadgesHandler<
         valueCase,
         organization
       });
+      console.log(artifact);
       return {
         detailType: EV.OPEN_BADGES_ARTIFACT_CREATED,
         detail: artifact

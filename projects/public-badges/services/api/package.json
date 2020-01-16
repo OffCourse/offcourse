@@ -23,6 +23,7 @@
     "@graphql-codegen/typescript": "1.9.1",
     "@graphql-codegen/typescript-document-nodes": "1.9.1",
     "@graphql-codegen/typescript-resolvers": "1.9.1",
+    "@types/jws": "^3.2.1",
     "concurrently": "^5.0.1",
     "tslint-plugin-prettier": "^2.1.0",
     "typescript": "^3.7.3"
@@ -39,6 +40,7 @@
     "graphql-playground-middleware-lambda": "^1.7.13",
     "graphql-scalars": "^1.0.4",
     "graphql-tools": "^4.0.6",
+    "jws": "^4.0.0",
     "lambda-local": "^1.6.3",
     "ramda": "^0.26.1",
     "serverless": "^1.59.3",

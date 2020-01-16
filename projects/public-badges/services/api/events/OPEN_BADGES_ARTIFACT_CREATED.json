@@ -9,21 +9,22 @@
   "resources": [],
   "detail": {
     "@context": "https://w3id.org/openbadges/v2",
-    "id": "9b05f690-37e1-11ea-af07-c581adbf215a",
+    "id": "urn:uuid:9b05f690-37e1-11ea-af07-c581adbf215a",
     "type": "Assertion",
     "recipient": {
       "type": "email",
+      "hashed": false,
       "identity": "sander@waag.org"
     },
-    "issuedOn": "1579128869656",
-    "expires": "2022-10-31T23:59:59.000Z",
+    "issuedOn": "2020-01-16T14:42:43.628Z",
+    "expires": "2020-01-18T14:42:43.628Z",
     "verification": {
       "type": "signedBadge",
       "creator": "https://openbadges.com/publicKey.json"
     },
     "badge": {
       "type": "BadgeClass",
-      "id": "88c7a930-3181-11ea-9858-b312ce22102d@zero-badge",
+      "id": "urn:uuid:88c7a930-3181-11ea-9858-b312ce22102d",
       "name": "Zero Badge",
       "tags": ["manifesto", "intention"],
       "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",

@@ -6,6 +6,7 @@ import ao from "./approveOrganization";
 import ur from "./updateRegistry";
 import rvc from "./runValueCaseScenarios";
 import poba from "./prepareOpenBadgeArtifact";
+import soba from "./signOpenBadgeArtifact";
 import { Handler as AWSHandler } from "aws-lambda";
 import eventBus from "../eventBus";
 import { PublicBadgesHandler } from "../types";
@@ -31,6 +32,7 @@ const approveOrganization = handler(ao);
 const updateRegistry = handler(ur);
 const runValueCaseScenarios = handler(rvc);
 const prepareOpenBadgeArtifact = handler(poba);
+const signOpenBadgeArtifact = handler(soba);
 
 export {
   echo,
@@ -40,5 +42,6 @@ export {
   saveBadge,
   saveOrganization,
   runValueCaseScenarios,
-  prepareOpenBadgeArtifact
+  prepareOpenBadgeArtifact,
+  signOpenBadgeArtifact
 };

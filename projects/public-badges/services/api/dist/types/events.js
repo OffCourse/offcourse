@@ -13,5 +13,6 @@ var PublicBadgesEventType;
     PublicBadgesEventType["BADGE_ISSUANCE_REJECTED"] = "BADGE_ISSUANCE_REJECTED";
     PublicBadgesEventType["BADGE_INSTANCE_UPDATED"] = "BADGE_INSTANCE_UPDATED";
     PublicBadgesEventType["OPEN_BADGES_ARTIFACT_CREATED"] = "OPEN_BADGES_ARTIFACT_CREATED";
+    PublicBadgesEventType["OPEN_BADGES_ARTIFACT_SIGNED"] = "OPEN_BADGES_ARTIFACT_SIGNED";
 })(PublicBadgesEventType = exports.PublicBadgesEventType || (exports.PublicBadgesEventType = {}));
 //# sourceMappingURL=events.js.map

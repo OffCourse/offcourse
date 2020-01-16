@@ -4,7 +4,7 @@ type Scenario {
 }
 
 type ValueCase {
-  valueCaseId: ValueCaseID!
+  valueCaseId: GUID!
   name: String!
   tags: [String]!
   proposedBy: Organization!

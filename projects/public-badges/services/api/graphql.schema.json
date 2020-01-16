@@ -430,7 +430,7 @@
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "ValueCaseID",
+                "name": "GUID",
                 "ofType": null
               }
             },
@@ -564,16 +564,6 @@
         ],
         "inputFields": null,
         "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "ValueCaseID",
-        "description": "",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
@@ -3477,6 +3467,16 @@
       {
         "kind": "SCALAR",
         "name": "JSON",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "ValueCaseID",
         "description": "",
         "fields": null,
         "inputFields": null,

@@ -22,6 +22,7 @@ const approveOrganization_1 = __importDefault(require("./approveOrganization"));
 const updateRegistry_1 = __importDefault(require("./updateRegistry"));
 const runValueCaseScenarios_1 = __importDefault(require("./runValueCaseScenarios"));
 const prepareOpenBadgeArtifact_1 = __importDefault(require("./prepareOpenBadgeArtifact"));
+const signOpenBadgeArtifact_1 = __importDefault(require("./signOpenBadgeArtifact"));
 const eventBus_1 = __importDefault(require("../eventBus"));
 const handler = handler => {
     return (awsEvent, _context, callback) => __awaiter(void 0, void 0, void 0, function* () {
@@ -32,7 +33,7 @@ const handler = handler => {
             const reply = yield eventBus_1.default.put(event);
             callback(null, reply);
         }
-        callback(null, "success");
+        callback(null, "nothing memorable happened");
     });
 };
 const saveOrganization = handler(saveOrganization_1.default);
@@ -47,4 +48,6 @@ const runValueCaseScenarios = handler(runValueCaseScenarios_1.default);
 exports.runValueCaseScenarios = runValueCaseScenarios;
 const prepareOpenBadgeArtifact = handler(prepareOpenBadgeArtifact_1.default);
 exports.prepareOpenBadgeArtifact = prepareOpenBadgeArtifact;
+const signOpenBadgeArtifact = handler(signOpenBadgeArtifact_1.default);
+exports.signOpenBadgeArtifact = signOpenBadgeArtifact;
 //# sourceMappingURL=index.js.map

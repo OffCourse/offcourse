@@ -10,7 +10,7 @@
   "detail": {
     "badgeId": "9b05f690-37e1-11ea-af07-c581adbf215a",
     "status": "APPROVED",
-    "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d@zero",
+    "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d",
     "name": "Zero Badge",
     "tags": ["manifesto", "intention"],
     "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",

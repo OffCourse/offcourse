@@ -117,7 +117,7 @@ functions:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.prepare_open_badge_artifact}
   signOpenBadgeArtifact:
-    handler: dist/index.echo
+    handler: dist/index.signOpenBadgeArtifact
     events:
       - eventBridge:
           pattern:
@@ -126,7 +126,6 @@ functions:
             detail-type: 
              - OPEN_BADGES_ARTIFACT_CREATED
     environment:
-      REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.sign_open_badge_artifact}
   approveOrganization:
     handler: dist/index.approveOrganization

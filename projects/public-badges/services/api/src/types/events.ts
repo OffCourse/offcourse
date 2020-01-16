@@ -23,14 +23,20 @@ export enum PublicBadgesEventType {
   BADGE_ISSUANCE_APPROVED = "BADGE_ISSUANCE_APPROVED",
   BADGE_ISSUANCE_REJECTED = "BADGE_ISSUANCE_REJECTED",
   BADGE_INSTANCE_UPDATED = "BADGE_INSTANCE_UPDATED",
-  OPEN_BADGES_ARTIFACT_CREATED = "OPEN_BADGES_ARTIFACT_CREATED"
+  OPEN_BADGES_ARTIFACT_CREATED = "OPEN_BADGES_ARTIFACT_CREATED",
+  OPEN_BADGES_ARTIFACT_SIGNED = "OPEN_BADGES_ARTIFACT_SIGNED"
 }
+
+export type SignedOpenBadge = {
+  signature: string;
+};
 
 export type PublicBadgesEventPayload =
   | PendingOrganization
   | ApprovedOrganization
   | PublicBadgeProxy
-  | OpenBadge;
+  | OpenBadge
+  | SignedOpenBadge;
 
 export interface PBEvent extends Event {
   detailType: PublicBadgesEventType;
@@ -84,6 +90,10 @@ export interface BadgeInstanceUpdated extends PBEvent {
 export interface OpenBadgeArtifactCreated extends PBEvent {
   detailType: PublicBadgesEventType.OPEN_BADGES_ARTIFACT_CREATED;
   detail: OpenBadge;
+}
+export interface OpenBadgeArtifactSigned extends PBEvent {
+  detailType: PublicBadgesEventType.OPEN_BADGES_ARTIFACT_SIGNED;
+  detail: SignedOpenBadge;
 }
 
 export type PublicBadgesEvent =
