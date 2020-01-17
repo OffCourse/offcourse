@@ -42,7 +42,7 @@ export type RejectedPublicBadgeProxy = Omit<
 
 export type BadgeInstanceStore = Store<
   { badgeId: string },
-  {},
+  { domainName?: string },
   PublicBadgeProxy | null
 >;
 
@@ -67,6 +67,8 @@ export interface EventBus<E extends Event> {
 export type PublicBadgesEventBus = EventBus<PublicBadgesEvent>;
 
 export interface ApolloContext {
+  rawEvent: { headers: { origin: string } };
+  functionContext: { functionName: string };
   stores: PublicBadgesStores;
   eventBus: PublicBadgesEventBus;
 }

@@ -7,6 +7,7 @@ import {
   updateRegistry,
   prepareOpenBadgeArtifact,
   signOpenBadgeArtifact,
+  saveSignature,
   runValueCaseScenarios
 } from "./handlers";
 
@@ -19,5 +20,6 @@ export {
   updateRegistry,
   prepareOpenBadgeArtifact,
   signOpenBadgeArtifact,
+  saveSignature,
   runValueCaseScenarios
 };

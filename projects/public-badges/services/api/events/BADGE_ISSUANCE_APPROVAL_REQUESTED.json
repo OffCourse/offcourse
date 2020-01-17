@@ -10,7 +10,7 @@
   "detail": {
     "badgeId": "c994e0e0-36d6-11ea-a7ba-e1ac32df82d1",
     "status": "PENDING",
-    "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d@zero-badge",
+    "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d",
     "name": "Zero Badge",
     "tags": ["manifesto", "intention"],
     "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",
@@ -34,7 +34,7 @@
       "approvedOn": "1579013438324"
     },
     "valueCase": {
-      "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d@zero-badge",
+      "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d",
       "name": "Zero Badge",
       "tags": ["manifesto", "intention"],
       "proposedBy": "https://offcourse.io/",

@@ -13,7 +13,6 @@ const Mutation = __importStar(require("./Mutation.graphql"));
 const PublicBadge = __importStar(require("./PublicBadge.graphql"));
 const ValueCase = __importStar(require("./ValueCase.graphql"));
 const Organization = __importStar(require("./Organization.graphql"));
-const Status = __importStar(require("./Status.graphql"));
 const OpenBadge = __importStar(require("./OpenBadge.graphql"));
 const Scalars = __importStar(require("./Scalars.graphql"));
 const typeDefs = [
@@ -21,7 +20,6 @@ const typeDefs = [
     Scalars,
     Query,
     Mutation,
-    Status,
     OpenBadge,
     PublicBadge,
     ValueCase,

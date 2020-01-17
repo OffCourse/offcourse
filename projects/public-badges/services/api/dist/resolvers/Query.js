@@ -4,8 +4,10 @@ const Query = {
     getBadge(_root, args, { stores }) {
         return stores.badgeInstance.fetch(args);
     },
-    getAllBadges(_root, args, { stores }) {
-        return stores.badgeInstance.fetchAll(args);
+    getAllBadges(_root, _args, { rawEvent, stores }) {
+        console.log("origin:", rawEvent.headers.origin);
+        const domainName = "https://offcourse.io/";
+        return stores.badgeInstance.fetchAll({ domainName });
     },
     getOrganization(_root, { organizationId, domainName }, { stores }) {
         return stores.registry.fetch({ organizationId, domainName });

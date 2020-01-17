@@ -30,13 +30,18 @@ const listOrganizations = () => __awaiter(void 0, void 0, void 0, function* () {
     if (!Bucket) {
         throw "Bucket Name is Required";
     }
-    const { Contents, NextContinuationToken } = yield s3
-        .listObjectsV2({ Bucket, MaxKeys: 10 })
+    const { NextContinuationToken, CommonPrefixes } = yield s3
+        .listObjectsV2({ Bucket, MaxKeys: 10, Delimiter: "/" })
         .promise();
-    const keys = Contents
-        ? Contents.map(({ Key }) => Key)
+    const keys = CommonPrefixes
+        ? CommonPrefixes.map(({ Prefix }) => {
+            return `${Prefix}meta.json`;
+        })
         : [];
-    return { keys, continuationToken: NextContinuationToken };
+    return {
+        keys,
+        continuationToken: NextContinuationToken
+    };
 });
 const getOrganizationId = (domainName) => __awaiter(void 0, void 0, void 0, function* () {
     const TableName = process.env.REGISTRY_LOOKUP_TABLE;

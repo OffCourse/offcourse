@@ -5,6 +5,7 @@ type Scenario {
 
 type ValueCase {
   valueCaseId: GUID!
+  image: URL!
   name: String!
   tags: [String]!
   proposedBy: Organization!

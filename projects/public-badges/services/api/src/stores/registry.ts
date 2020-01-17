@@ -21,13 +21,18 @@ const listOrganizations = async () => {
   if (!Bucket) {
     throw "Bucket Name is Required";
   }
-  const { Contents, NextContinuationToken } = await s3
-    .listObjectsV2({ Bucket, MaxKeys: 10 })
+  const { NextContinuationToken, CommonPrefixes } = await s3
+    .listObjectsV2({ Bucket, MaxKeys: 10, Delimiter: "/" })
     .promise();
-  const keys: string[] = Contents
-    ? Contents.map(({ Key }) => Key as string)
+  const keys: string[] = CommonPrefixes
+    ? CommonPrefixes.map(({ Prefix }) => {
+        return `${Prefix!}meta.json`;
+      })
     : [];
-  return { keys, continuationToken: NextContinuationToken };
+  return {
+    keys,
+    continuationToken: NextContinuationToken
+  };
 };
 
 const getOrganizationId = async (domainName: string) => {

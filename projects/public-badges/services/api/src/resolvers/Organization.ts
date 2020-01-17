@@ -61,11 +61,6 @@ const ApprovedOrganization: ApprovedOrganizationResolvers = {
   approvedOn({ approvedOn }) {
     return approvedOn;
   }
-}
-
-export {
-  Contact,
-  Organization,
-  ApprovedOrganization,
-  PendingOrganization
 };
+
+export { Contact, Organization, ApprovedOrganization, PendingOrganization };

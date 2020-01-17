@@ -11,10 +11,9 @@ export type Scalars = {
   Int: number,
   Float: number,
   GUID: any,
-  EmailAddress: string,
   URL: any,
+  EmailAddress: string,
   JSON: string,
-  ValueCaseID: any,
 };
 
 export type ApprovedOrganization = Organization & {
@@ -252,6 +251,7 @@ export type SignedPublicBadge = PublicBadge & {
 
 export type ValueCase = {
   valueCaseId: Scalars['GUID'],
+  image: Scalars['URL'],
   name: Scalars['String'],
   tags: Array<Maybe<Scalars['String']>>,
   proposedBy: Organization,
@@ -260,7 +260,6 @@ export type ValueCase = {
   narrative: Scalars['String'],
   scenarios: Array<Scenario>,
 };
-
 
 export type ValueCaseInput = {
   domainName: Scalars['URL'],
@@ -348,12 +347,12 @@ export type ResolversTypes = ResolversObject<{
   GUID: ResolverTypeWrapper<Scalars['GUID']>,
   PublicBadgeStatus: PublicBadgeStatus,
   ValueCase: ResolverTypeWrapper<ValueCaseProxy>,
+  URL: ResolverTypeWrapper<Scalars['URL']>,
   String: ResolverTypeWrapper<Scalars['String']>,
   Organization: ResolverTypeWrapper<Organization>,
   OrganizationStatus: OrganizationStatus,
   Contact: ResolverTypeWrapper<Contact>,
   EmailAddress: ResolverTypeWrapper<Scalars['EmailAddress']>,
-  URL: ResolverTypeWrapper<Scalars['URL']>,
   Scenario: ResolverTypeWrapper<Scenario>,
   Mutation: ResolverTypeWrapper<{}>,
   PublicBadgeInput: PublicBadgeInput,
@@ -373,7 +372,6 @@ export type ResolversTypes = ResolversObject<{
   RejectedPublicBadge: ResolverTypeWrapper<Omit<RejectedPublicBadge, 'valueCase'> & { valueCase: ResolversTypes['ValueCase'] }>,
   SignedPublicBadge: ResolverTypeWrapper<Omit<SignedPublicBadge, 'valueCase'> & { valueCase: ResolversTypes['ValueCase'] }>,
   JSON: ResolverTypeWrapper<Scalars['JSON']>,
-  ValueCaseID: ResolverTypeWrapper<Scalars['ValueCaseID']>,
   ValueCaseInput: ValueCaseInput,
 }>;
 
@@ -385,12 +383,12 @@ export type ResolversParentTypes = ResolversObject<{
   GUID: Scalars['GUID'],
   PublicBadgeStatus: PublicBadgeStatus,
   ValueCase: ValueCaseProxy,
+  URL: Scalars['URL'],
   String: Scalars['String'],
   Organization: Organization,
   OrganizationStatus: OrganizationStatus,
   Contact: Contact,
   EmailAddress: Scalars['EmailAddress'],
-  URL: Scalars['URL'],
   Scenario: Scenario,
   Mutation: {},
   PublicBadgeInput: PublicBadgeInput,
@@ -410,7 +408,6 @@ export type ResolversParentTypes = ResolversObject<{
   RejectedPublicBadge: Omit<RejectedPublicBadge, 'valueCase'> & { valueCase: ResolversParentTypes['ValueCase'] },
   SignedPublicBadge: Omit<SignedPublicBadge, 'valueCase'> & { valueCase: ResolversParentTypes['ValueCase'] },
   JSON: Scalars['JSON'],
-  ValueCaseID: Scalars['ValueCaseID'],
   ValueCaseInput: ValueCaseInput,
 }>;
 
@@ -603,6 +600,7 @@ export interface UrlScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes[
 
 export type ValueCaseResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['ValueCase'] = ResolversParentTypes['ValueCase']> = ResolversObject<{
   valueCaseId: Resolver<ResolversTypes['GUID'], ParentType, ContextType>,
+  image: Resolver<ResolversTypes['URL'], ParentType, ContextType>,
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   tags: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>,
   proposedBy: Resolver<ResolversTypes['Organization'], ParentType, ContextType>,
@@ -611,10 +609,6 @@ export type ValueCaseResolvers<ContextType = ApolloContext, ParentType extends R
   narrative: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   scenarios: Resolver<Array<ResolversTypes['Scenario']>, ParentType, ContextType>,
 }>;
-
-export interface ValueCaseIdScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['ValueCaseID'], any> {
-  name: 'ValueCaseID'
-}
 
 export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   ApprovedOrganization: ApprovedOrganizationResolvers<ContextType>,
@@ -640,7 +634,6 @@ export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   SignedPublicBadge: SignedPublicBadgeResolvers<ContextType>,
   URL: GraphQLScalarType,
   ValueCase: ValueCaseResolvers<ContextType>,
-  ValueCaseID: GraphQLScalarType,
 }>;
 
 

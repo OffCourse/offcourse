@@ -12,6 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const stores = __importStar(require("./stores"));
 const eventBus_1 = __importDefault(require("./eventBus"));
-const context = { stores, eventBus: eventBus_1.default };
+const context = ({ event, context }) => {
+    return {
+        rawEvent: event,
+        functionContext: context,
+        stores,
+        eventBus: eventBus_1.default
+    };
+};
 exports.default = context;
 //# sourceMappingURL=context.js.map

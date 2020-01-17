@@ -21,6 +21,9 @@ const ValueCase: ValueCaseResolvers = {
       domainName: proposedBy
     });
   },
+  image({ image }) {
+    return image;
+  },
   approvedBy({ approvedBy }) {
     return approvedBy;
   },

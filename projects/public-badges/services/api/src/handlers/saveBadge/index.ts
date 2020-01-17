@@ -26,7 +26,7 @@ const saveBadge: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
   switch (detailType) {
     case EV.BADGE_ISSUANCE_REQUESTED: {
       const { recipientId, valueCaseId } = detail;
-      const id = `${recipientId}/badges/${valueCaseId}`;
+      const id = `${recipientId}/badges/${valueCaseId}/public-badge`;
       const badge: PublicBadgeProxy = {
         ...detail,
         status: PublicBadgeStatus.Pending
@@ -39,7 +39,7 @@ const saveBadge: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
     }
     case EV.BADGE_ISSUANCE_APPROVED: {
       const { recipientId, valueCaseId } = detail;
-      const id = `${recipientId}/badges/${valueCaseId}`;
+      const id = `${recipientId}/badges/${valueCaseId}/public-badge`;
       const badge: PublicBadgeProxy = {
         ...detail,
         status: PublicBadgeStatus.Approved
@@ -52,7 +52,7 @@ const saveBadge: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
     }
     case EV.BADGE_ISSUANCE_REJECTED: {
       const { recipientId, valueCaseId } = detail;
-      const id = `${recipientId}/badges/${valueCaseId}`;
+      const id = `${recipientId}/badges/${valueCaseId}/public-badge`;
       const badge: PublicBadgeProxy = {
         ...detail,
         status: PublicBadgeStatus.Rejected

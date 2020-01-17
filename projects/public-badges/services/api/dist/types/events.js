@@ -14,5 +14,6 @@ var PublicBadgesEventType;
     PublicBadgesEventType["BADGE_INSTANCE_UPDATED"] = "BADGE_INSTANCE_UPDATED";
     PublicBadgesEventType["OPEN_BADGES_ARTIFACT_CREATED"] = "OPEN_BADGES_ARTIFACT_CREATED";
     PublicBadgesEventType["OPEN_BADGES_ARTIFACT_SIGNED"] = "OPEN_BADGES_ARTIFACT_SIGNED";
+    PublicBadgesEventType["BADGE_INSTANCE_SIGNED"] = "BADGE_INSTANCE_SIGNED";
 })(PublicBadgesEventType = exports.PublicBadgesEventType || (exports.PublicBadgesEventType = {}));
 //# sourceMappingURL=events.js.map

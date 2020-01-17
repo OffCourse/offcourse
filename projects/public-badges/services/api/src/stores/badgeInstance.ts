@@ -1,4 +1,4 @@
-import artifact from "../fixtures/fixture.json";
+import artifact from "../fixtures/zerobadge.json";
 import uuidv5 from "uuid/v5";
 import { times, partial } from "ramda";
 import { BadgeInstanceStore } from "../types";
@@ -36,7 +36,8 @@ const badgeInstance: BadgeInstanceStore = {
     const badge = badges.find(badge => badge.badgeId === badgeId);
     return badge || null;
   },
-  async fetchAll() {
+  async fetchAll({ domainName }) {
+    console.log(domainName);
     return badges;
   }
 };

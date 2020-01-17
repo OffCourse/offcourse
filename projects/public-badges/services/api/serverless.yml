@@ -5,6 +5,7 @@ custom:
   api: public-badges.api
   save_organization: public-badges.save-organization
   save_badge: public-badges.save-badge
+  save_signature: public-badges.save-signature
   run_value_case_scenarios: public-badges.run-value-case-scenarios
   prepare_open_badge_artifact: public-badges.prepare-open-badge-artifact
   sign_open_badge_artifact: public-badges.sign-open-badge-artifact
@@ -85,13 +86,27 @@ functions:
             source:
               - ${self:custom.api}
               - ${self:custom.run_value_case_scenarios}
+              - ${self:custom.sign_open_badge_artifact}
             detail-type: 
              - BADGE_ISSUANCE_REQUESTED
              - BADGE_ISSUANCE_APPROVED
              - BADGE_ISSUANCE_REJECTED
+             - OPEN_BADGES_ARTIFACT_SIGNED
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.save_badge}
+  saveSignature:
+    handler: dist/index.saveSignature
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.sign_open_badge_artifact}
+            detail-type: 
+             - OPEN_BADGES_ARTIFACT_SIGNED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.save_signature}
   runValueCaseScenarios:
     handler: dist/index.runValueCaseScenarios
     events:

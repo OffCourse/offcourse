@@ -2,6 +2,7 @@ import echo from "./echo";
 import graphql from "./graphql";
 import so from "./saveOrganization";
 import sb from "./saveBadge";
+import ss from "./saveSignature";
 import ao from "./approveOrganization";
 import ur from "./updateRegistry";
 import rvc from "./runValueCaseScenarios";
@@ -15,6 +16,7 @@ const handler: (
   handler: PublicBadgesHandler<any, any>
 ) => AWSHandler = handler => {
   return async (awsEvent, _context, callback) => {
+    console.log(awsEvent);
     const detail = awsEvent.detail;
     const detailType = awsEvent["detail-type"];
     const event = await handler({ detailType, detail });
@@ -33,6 +35,7 @@ const updateRegistry = handler(ur);
 const runValueCaseScenarios = handler(rvc);
 const prepareOpenBadgeArtifact = handler(poba);
 const signOpenBadgeArtifact = handler(soba);
+const saveSignature = handler(ss);
 
 export {
   echo,
@@ -43,5 +46,6 @@ export {
   saveOrganization,
   runValueCaseScenarios,
   prepareOpenBadgeArtifact,
-  signOpenBadgeArtifact
+  signOpenBadgeArtifact,
+  saveSignature
 };

@@ -9,5 +9,6 @@ exports.approveOrganization = handlers_1.approveOrganization;
 exports.updateRegistry = handlers_1.updateRegistry;
 exports.prepareOpenBadgeArtifact = handlers_1.prepareOpenBadgeArtifact;
 exports.signOpenBadgeArtifact = handlers_1.signOpenBadgeArtifact;
+exports.saveSignature = handlers_1.saveSignature;
 exports.runValueCaseScenarios = handlers_1.runValueCaseScenarios;
 //# sourceMappingURL=index.js.map

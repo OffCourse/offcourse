@@ -17,15 +17,15 @@ const prepareOpenBadgeArtifact: PublicBadgesHandler<
 > = async ({ detailType, detail }) => {
   switch (detailType) {
     case EV.OPEN_BADGES_ARTIFACT_CREATED: {
+      const { artifact, recipientId, valueCaseId } = detail;
       const signature = jws.sign({
         header: { alg: "HS256" },
-        payload: detail,
+        payload: artifact,
         privateKey: fs.readFileSync(__dirname + "/../../../private-key.pem")
       });
-      console.log(signature);
       return {
         detailType: EV.OPEN_BADGES_ARTIFACT_SIGNED,
-        detail: { signature }
+        detail: { recipientId, valueCaseId, signature }
       };
     }
   }

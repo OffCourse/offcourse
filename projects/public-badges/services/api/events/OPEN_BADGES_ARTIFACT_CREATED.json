@@ -16,8 +16,8 @@
       "hashed": false,
       "identity": "sander@waag.org"
     },
-    "issuedOn": "2020-01-16T14:42:43.628Z",
-    "expires": "2020-01-18T14:42:43.628Z",
+    "issuedOn": "2020-01-17T19:17:40.605Z",
+    "expires": "2020-01-18T04:03:37.531Z",
     "verification": {
       "type": "signedBadge",
       "creator": "https://openbadges.com/publicKey.json"
@@ -31,8 +31,9 @@
       "criteria": {
         "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n"
       },
+      "image": "https://pngimage.net/wp-content/uploads/2018/06/imagenes-random-png-3.png",
       "issuer": {
-        "id": "https://publicbadges.com/registry/publicspaces",
+        "id": "https://pngimage.net/wp-content/uploads/2018/06/imagenes-random-png-3.png",
         "type": "Profile",
         "name": "Public Spaces",
         "email": "contact@publicspaces.net"

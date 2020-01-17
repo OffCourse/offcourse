@@ -18,6 +18,7 @@ const {
 const Mutation: MutationResolvers = {
   async applyForBadge(_root, { input }, { stores, eventBus }) {
     const { valueCaseId, domainName } = input;
+
     const organization = await stores.registry.fetch({ domainName });
 
     if (!organization) {

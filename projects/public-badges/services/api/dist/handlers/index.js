@@ -18,6 +18,7 @@ const graphql_1 = __importDefault(require("./graphql"));
 exports.graphql = graphql_1.default;
 const saveOrganization_1 = __importDefault(require("./saveOrganization"));
 const saveBadge_1 = __importDefault(require("./saveBadge"));
+const saveSignature_1 = __importDefault(require("./saveSignature"));
 const approveOrganization_1 = __importDefault(require("./approveOrganization"));
 const updateRegistry_1 = __importDefault(require("./updateRegistry"));
 const runValueCaseScenarios_1 = __importDefault(require("./runValueCaseScenarios"));
@@ -26,6 +27,7 @@ const signOpenBadgeArtifact_1 = __importDefault(require("./signOpenBadgeArtifact
 const eventBus_1 = __importDefault(require("../eventBus"));
 const handler = handler => {
     return (awsEvent, _context, callback) => __awaiter(void 0, void 0, void 0, function* () {
+        console.log(awsEvent);
         const detail = awsEvent.detail;
         const detailType = awsEvent["detail-type"];
         const event = yield handler({ detailType, detail });
@@ -50,4 +52,6 @@ const prepareOpenBadgeArtifact = handler(prepareOpenBadgeArtifact_1.default);
 exports.prepareOpenBadgeArtifact = prepareOpenBadgeArtifact;
 const signOpenBadgeArtifact = handler(signOpenBadgeArtifact_1.default);
 exports.signOpenBadgeArtifact = signOpenBadgeArtifact;
+const saveSignature = handler(saveSignature_1.default);
+exports.saveSignature = saveSignature;
 //# sourceMappingURL=index.js.map

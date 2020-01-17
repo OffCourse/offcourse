@@ -18,6 +18,7 @@ import { registry, valueCase as valueCaseStore } from "../../stores";
 export type InputEvent = BadgeIssuanceApprovedEvent;
 export type OutputEvent = OpenBadgeArtifactCreated;
 
+const yearInSeconds = 31556926;
 const verification = {
   type: "signedBadge",
   creator: "https://openbadges.com/publicKey.json"
@@ -26,16 +27,18 @@ const verification = {
 const createBadgeClass: (args: {
   valueCase: ValueCaseProxy;
 }) => OpenBadgeClass = ({ valueCase }) => {
-  const { valueCaseId, name, tags, description, narrative } = valueCase;
+  const { valueCaseId, image, name, tags, description, narrative } = valueCase;
   return {
     type: "BadgeClass",
     id: `urn:uuid:${valueCaseId}`,
     name,
     tags,
     description,
+    image,
     criteria: { narrative },
     issuer: {
-      id: "https://publicbadges.com/registry/publicspaces",
+      id:
+        "https://pngimage.net/wp-content/uploads/2018/06/imagenes-random-png-3.png",
       type: "Profile",
       name: "Public Spaces",
       email: "contact@publicspaces.net"
@@ -63,10 +66,11 @@ const createArtifact: (args: {
     type: "Assertion",
     recipient: {
       type: "email",
+      hashed: false,
       identity: "sander@waag.org"
     },
     issuedOn: new Date(Date.now()).toISOString(),
-    expires: new Date(Date.now()).toISOString(),
+    expires: new Date(Date.now() + yearInSeconds).toISOString(),
     verification,
     badge,
     evidence
@@ -91,10 +95,9 @@ const prepareOpenBadgeArtifact: PublicBadgesHandler<
         valueCase,
         organization
       });
-      console.log(artifact);
       return {
         detailType: EV.OPEN_BADGES_ARTIFACT_CREATED,
-        detail: artifact
+        detail: { recipientId, valueCaseId, artifact }
       };
     }
   }
