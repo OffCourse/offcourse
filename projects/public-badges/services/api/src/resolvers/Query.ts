@@ -4,10 +4,10 @@ const Query: QueryResolvers = {
   getBadge(_root, args, { stores }) {
     return stores.badgeInstance.fetch(args);
   },
-  getAllBadges(_root, _args, { rawEvent, stores }) {
-    console.log("origin:", rawEvent.headers.origin);
-    const domainName = "https://offcourse.io/";
-    return stores.badgeInstance.fetchAll({ domainName });
+  async getAllBadges(_root, args, { stores }) {
+    const domainName = args?.domainName;
+    const { organizationId } = await stores.registry.fetch({ domainName });
+    return stores.badgeInstance.fetchAll({ organizationId });
   },
   getOrganization(_root, { organizationId, domainName }, { stores }) {
     return stores.registry.fetch({ organizationId, domainName });

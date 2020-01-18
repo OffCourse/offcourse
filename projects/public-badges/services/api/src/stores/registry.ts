@@ -87,7 +87,7 @@ const registry: RegistryStore = {
     } catch (e) {
       console.log(e);
     }
-    return null;
+    return { organizationId: null };
   },
   async fetchAll({ filter }) {
     const { keys } = filter

@@ -43,7 +43,18 @@
           {
             "name": "getAllBadges",
             "description": "",
-            "args": [],
+            "args": [
+              {
+                "name": "domainName",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "URL",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
             "type": {
               "kind": "LIST",
               "name": null,

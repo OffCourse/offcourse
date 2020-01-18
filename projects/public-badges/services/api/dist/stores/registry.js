@@ -92,7 +92,7 @@ const registry = {
             catch (e) {
                 console.log(e);
             }
-            return null;
+            return { organizationId: null };
         });
     },
     fetchAll({ filter }) {

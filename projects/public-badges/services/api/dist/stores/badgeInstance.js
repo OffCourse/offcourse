@@ -27,6 +27,8 @@ const zerobadge_json_1 = __importDefault(require("../fixtures/zerobadge.json"));
 const v5_1 = __importDefault(require("uuid/v5"));
 const ramda_1 = require("ramda");
 const graphql_js_1 = require("../generated/graphql.js");
+const aws_sdk_1 = __importDefault(require("aws-sdk"));
+const s3 = new aws_sdk_1.default.S3();
 const { badge: badgeClass, recipient, evidence, issuedOn, expires } = zerobadge_json_1.default;
 const generateBadge = (opts) => ({
     status: graphql_js_1.PublicBadgeStatus.Signed,
@@ -52,17 +54,57 @@ const badges = [
     generateBadge({ id: zerobadge_json_1.default.id }),
     ...ramda_1.times(ramda_1.partial(generateBadge, [{}]), 10)
 ];
+const getBadgeInstance = (objectKey) => __awaiter(void 0, void 0, void 0, function* () {
+    const Bucket = process.env.REGISTRY_BUCKET;
+    if (!Bucket) {
+        throw "Bucket Name is Required";
+    }
+    const { Body } = yield s3.getObject({ Bucket, Key: objectKey }).promise();
+    const json = Body ? Body.toString("utf-8") : "{}";
+    const badge = JSON.parse(json);
+    return badge;
+});
+const listBadges = ({ organizationId }) => __awaiter(void 0, void 0, void 0, function* () {
+    const Bucket = process.env.REGISTRY_BUCKET;
+    if (!Bucket) {
+        throw "Bucket Name is Required";
+    }
+    const { NextContinuationToken, CommonPrefixes } = yield s3
+        .listObjectsV2({
+        Bucket,
+        MaxKeys: 10,
+        Delimiter: "/",
+        Prefix: `${organizationId}/badges/`
+    })
+        .promise();
+    const keys = CommonPrefixes
+        ? CommonPrefixes.map(({ Prefix }) => {
+            return `${Prefix}public-badge.json`;
+        })
+        : [];
+    return {
+        keys,
+        continuationToken: NextContinuationToken
+    };
+});
 const badgeInstance = {
-    fetch({ badgeId }) {
+    fetch(_args) {
         return __awaiter(this, void 0, void 0, function* () {
-            const badge = badges.find(badge => badge.badgeId === badgeId);
-            return badge || null;
+            return badges[0];
         });
     },
-    fetchAll({ domainName }) {
+    fetchAll(args) {
+        var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(domainName);
-            return badges;
+            const organizationId = (_a = args) === null || _a === void 0 ? void 0 : _a.organizationId;
+            if (!args) {
+                return badges;
+            }
+            if (!organizationId) {
+                return [];
+            }
+            const { keys } = yield listBadges({ organizationId });
+            return yield Promise.all(keys.map(getBadgeInstance));
         });
     }
 };

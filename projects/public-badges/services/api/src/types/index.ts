@@ -42,7 +42,7 @@ export type RejectedPublicBadgeProxy = Omit<
 
 export type BadgeInstanceStore = Store<
   { badgeId: string },
-  { domainName?: string },
+  { organizationId?: string },
   PublicBadgeProxy | null
 >;
 

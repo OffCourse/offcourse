@@ -197,6 +197,11 @@ export type QueryGetBadgeArgs = {
 };
 
 
+export type QueryGetAllBadgesArgs = {
+  domainName: Maybe<Scalars['URL']>
+};
+
+
 export type QueryGetOrganizationArgs = {
   organizationId: Maybe<Scalars['ID']>,
   domainName: Maybe<Scalars['URL']>
@@ -551,7 +556,7 @@ export type PublicBadgeResolvers<ContextType = ApolloContext, ParentType extends
 
 export type QueryResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   getBadge: Resolver<Maybe<ResolversTypes['PublicBadge']>, ParentType, ContextType, RequireFields<QueryGetBadgeArgs, 'badgeId'>>,
-  getAllBadges: Resolver<Maybe<Array<Maybe<ResolversTypes['PublicBadge']>>>, ParentType, ContextType>,
+  getAllBadges: Resolver<Maybe<Array<Maybe<ResolversTypes['PublicBadge']>>>, ParentType, ContextType, QueryGetAllBadgesArgs>,
   getOrganization: Resolver<Maybe<ResolversTypes['Organization']>, ParentType, ContextType, QueryGetOrganizationArgs>,
   getAllOrganizations: Resolver<Maybe<Array<Maybe<ResolversTypes['Organization']>>>, ParentType, ContextType, QueryGetAllOrganizationsArgs>,
   getValueCase: Resolver<Maybe<ResolversTypes['ValueCase']>, ParentType, ContextType, RequireFields<QueryGetValueCaseArgs, 'valueCaseId'>>,
