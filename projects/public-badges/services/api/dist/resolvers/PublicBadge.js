@@ -1,19 +1,28 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_1 = require("../types/generated/graphql");
+const _types_1 = require("@types");
 const PublicBadge = {
     __resolveType({ status }) {
         switch (status) {
-            case graphql_1.PublicBadgeStatus.Signed: {
+            case _types_1.PublicBadgeStatus.Signed: {
                 return "SignedPublicBadge";
             }
-            case graphql_1.PublicBadgeStatus.Approved: {
+            case _types_1.PublicBadgeStatus.Approved: {
                 return "ApprovedPublicBadge";
             }
-            case graphql_1.PublicBadgeStatus.Rejected: {
+            case _types_1.PublicBadgeStatus.Rejected: {
                 return "RejectedPublicBadge";
             }
-            case graphql_1.PublicBadgeStatus.Pending: {
+            case _types_1.PublicBadgeStatus.Pending: {
                 return "PendingPublicBadge";
             }
         }
@@ -28,7 +37,15 @@ const PublicBadge = {
         return status;
     },
     valueCase({ valueCaseId }, _args, { stores }) {
-        return stores.valueCase.fetch({ valueCaseId: valueCaseId });
+        return __awaiter(this, void 0, void 0, function* () {
+            const valueCase = yield stores.valueCase.fetch({
+                valueCaseId: valueCaseId
+            });
+            if (!valueCase) {
+                throw "invalid badge, no corresponding value case";
+            }
+            return valueCase;
+        });
     },
     name({ name }) {
         return name;

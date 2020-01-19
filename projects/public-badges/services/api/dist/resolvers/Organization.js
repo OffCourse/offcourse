@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_js_1 = require("../types/generated/graphql.js");
+const _types_1 = require("@types");
 const Contact = {
     name({ name }) {
         return name;
@@ -13,10 +13,10 @@ exports.Contact = Contact;
 const Organization = {
     __resolveType({ status }) {
         switch (status) {
-            case graphql_js_1.OrganizationStatus.Pending: {
+            case _types_1.OrganizationStatus.Pending: {
                 return "PendingOrganization";
             }
-            case graphql_js_1.OrganizationStatus.Approved: {
+            case _types_1.OrganizationStatus.Approved: {
                 return "ApprovedOrganization";
             }
         }

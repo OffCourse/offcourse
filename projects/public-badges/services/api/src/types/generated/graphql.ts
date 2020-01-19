@@ -1,6 +1,6 @@
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 import { ValueCaseProxy, PublicBadgeProxy } from '../models';
-import { ApolloContext } from '../index';
+import { ApolloContext } from '../../context';
 export type Maybe<T> = T | null;
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
@@ -11,8 +11,8 @@ export type Scalars = {
   Boolean: boolean,
   Int: number,
   Float: number,
-  GUID: any,
   URL: any,
+  GUID: any,
   EmailAddress: string,
   JSON: string,
 };
@@ -184,38 +184,12 @@ export enum PublicBadgeStatus {
 }
 
 export type Query = {
-  getBadge: Maybe<PublicBadge>,
   getAllBadges: Maybe<Array<Maybe<PublicBadge>>>,
-  getOrganization: Maybe<Organization>,
-  getAllOrganizations: Maybe<Array<Maybe<Organization>>>,
-  getValueCase: Maybe<ValueCase>,
-  getAllValueCases: Maybe<Array<Maybe<ValueCase>>>,
-};
-
-
-export type QueryGetBadgeArgs = {
-  badgeId: Scalars['ID']
 };
 
 
 export type QueryGetAllBadgesArgs = {
   domainName: Maybe<Scalars['URL']>
-};
-
-
-export type QueryGetOrganizationArgs = {
-  organizationId: Maybe<Scalars['ID']>,
-  domainName: Maybe<Scalars['URL']>
-};
-
-
-export type QueryGetAllOrganizationsArgs = {
-  filter: Maybe<OrganizationStatus>
-};
-
-
-export type QueryGetValueCaseArgs = {
-  valueCaseId: Scalars['ID']
 };
 
 export type RejectedPublicBadge = PublicBadge & {
@@ -348,12 +322,12 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
   Query: ResolverTypeWrapper<{}>,
-  ID: ResolverTypeWrapper<Scalars['ID']>,
+  URL: ResolverTypeWrapper<Scalars['URL']>,
   PublicBadge: ResolverTypeWrapper<PublicBadgeProxy>,
   GUID: ResolverTypeWrapper<Scalars['GUID']>,
   PublicBadgeStatus: PublicBadgeStatus,
+  ID: ResolverTypeWrapper<Scalars['ID']>,
   ValueCase: ResolverTypeWrapper<ValueCaseProxy>,
-  URL: ResolverTypeWrapper<Scalars['URL']>,
   String: ResolverTypeWrapper<Scalars['String']>,
   Organization: ResolverTypeWrapper<Organization>,
   OrganizationStatus: OrganizationStatus,
@@ -384,12 +358,12 @@ export type ResolversTypes = ResolversObject<{
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
   Query: {},
-  ID: Scalars['ID'],
+  URL: Scalars['URL'],
   PublicBadge: PublicBadgeProxy,
   GUID: Scalars['GUID'],
   PublicBadgeStatus: PublicBadgeStatus,
+  ID: Scalars['ID'],
   ValueCase: ValueCaseProxy,
-  URL: Scalars['URL'],
   String: Scalars['String'],
   Organization: Organization,
   OrganizationStatus: OrganizationStatus,
@@ -556,12 +530,7 @@ export type PublicBadgeResolvers<ContextType = ApolloContext, ParentType extends
 }>;
 
 export type QueryResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  getBadge: Resolver<Maybe<ResolversTypes['PublicBadge']>, ParentType, ContextType, RequireFields<QueryGetBadgeArgs, 'badgeId'>>,
   getAllBadges: Resolver<Maybe<Array<Maybe<ResolversTypes['PublicBadge']>>>, ParentType, ContextType, QueryGetAllBadgesArgs>,
-  getOrganization: Resolver<Maybe<ResolversTypes['Organization']>, ParentType, ContextType, QueryGetOrganizationArgs>,
-  getAllOrganizations: Resolver<Maybe<Array<Maybe<ResolversTypes['Organization']>>>, ParentType, ContextType, QueryGetAllOrganizationsArgs>,
-  getValueCase: Resolver<Maybe<ResolversTypes['ValueCase']>, ParentType, ContextType, RequireFields<QueryGetValueCaseArgs, 'valueCaseId'>>,
-  getAllValueCases: Resolver<Maybe<Array<Maybe<ResolversTypes['ValueCase']>>>, ParentType, ContextType>,
 }>;
 
 export type RejectedPublicBadgeResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['RejectedPublicBadge'] = ResolversParentTypes['RejectedPublicBadge']> = ResolversObject<{

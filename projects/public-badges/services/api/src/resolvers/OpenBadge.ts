@@ -4,7 +4,7 @@ import {
   OpenBadgeCriteriaResolvers,
   OpenBadgeRecipientResolvers,
   OpenBadgeProofResolvers
-} from "../types/generated/graphql";
+} from "@types";
 
 const OpenBadgeCriteria: OpenBadgeCriteriaResolvers = {
   narrative({ narrative }) {

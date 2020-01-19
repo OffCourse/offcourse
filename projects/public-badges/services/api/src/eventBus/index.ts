@@ -1,7 +1,9 @@
 import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependencies
-import { PublicBadgesEventBus } from "@types";
+import { EventBus, PublicBadgesEvent } from "@types";
 
 const eventBridge = new AWS.EventBridge();
+
+export type PublicBadgesEventBus = EventBus<PublicBadgesEvent>;
 
 const eventBus: PublicBadgesEventBus = {
   put: async ({ detailType, detail }) => {

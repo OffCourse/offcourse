@@ -11,7 +11,7 @@ generates:
     config:
       skipTypename: true
       avoidOptionals: true
-      contextType: ../index#ApolloContext
+      contextType: ../../context#ApolloContext
       scalars:
         EmailAddress: string
         JSON: string

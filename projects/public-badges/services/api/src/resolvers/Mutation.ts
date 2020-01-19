@@ -2,10 +2,10 @@ import {
   MutationResolvers,
   OrganizationStatus,
   PublicBadgeStatus,
-  PendingOrganization
-} from "../types/generated/graphql";
-import { PublicBadge } from "../types/models";
-import { PublicBadgesEventType } from "../types/events.js";
+  PublicBadge,
+  PublicBadgesEventType,
+  Organization
+} from "@types";
 import uuid from "uuid/v1";
 
 const timeout = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -19,21 +19,36 @@ const Mutation: MutationResolvers = {
   async applyForBadge(_root, { input }, { stores, eventBus }) {
     const { valueCaseId, domainName } = input;
 
-    const organization = await stores.registry.fetch({ domainName });
+    /**
+       short timeout just to make sure, the registry is updated to avoid duplicates.
+       It's highly unlikely (and relatively innocent) but still...
+       The unavoidable perils of async ;-)
+    **/
+    await timeout(500);
+    const { organizationId } = await stores.registry.fetch({ domainName });
 
-    if (!organization) {
+    if (!organizationId) {
       throw "ORG DOES NOT EXISTS";
     }
 
     const valueCase = await stores.valueCase.fetch({ valueCaseId });
+    console.log(valueCase);
     if (!valueCase) {
       throw "ValueCase does not exist";
+    }
+
+    const badge = await stores.badgeInstance.fetch({
+      organizationId,
+      valueCaseId
+    });
+
+    if (badge) {
+      throw "your organization already applied for this badge";
     }
 
     const badgeId = uuid();
     const status = PublicBadgeStatus.Pending;
     const { name, tags, description, narrative } = valueCase;
-    const { organizationId: recipientId } = organization;
 
     return eventBus.put({
       detailType: BADGE_ISSUANCE_REQUESTED,
@@ -45,7 +60,7 @@ const Mutation: MutationResolvers = {
         tags,
         description,
         narrative,
-        recipientId
+        recipientId: organizationId
       }
     }) as Promise<PublicBadge>;
   },
@@ -53,7 +68,7 @@ const Mutation: MutationResolvers = {
     const { name, contact, admin, domainName } = input;
 
     /**
-       just to make sure, the registry is updated to avoid duplicates.
+       short timeout just to make sure, the registry is updated to avoid duplicates.
        It's highly unlikely (and relatively innocent) but still...
        The unavoidable perils of async ;-)
     **/
@@ -78,7 +93,7 @@ const Mutation: MutationResolvers = {
         domainName,
         urls: [domainName]
       }
-    }) as Promise<PendingOrganization>;
+    }) as Promise<Organization>;
   }
 };
 

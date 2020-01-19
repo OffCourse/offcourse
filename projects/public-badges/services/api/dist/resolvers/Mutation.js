@@ -12,27 +12,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_1 = require("../types/generated/graphql");
-const events_js_1 = require("../types/events.js");
+const _types_1 = require("@types");
 const v1_1 = __importDefault(require("uuid/v1"));
 const timeout = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-const { ORGANIZATION_REGISTRATION_REQUESTED, BADGE_ISSUANCE_REQUESTED } = events_js_1.PublicBadgesEventType;
+const { ORGANIZATION_REGISTRATION_REQUESTED, BADGE_ISSUANCE_REQUESTED } = _types_1.PublicBadgesEventType;
 const Mutation = {
     applyForBadge(_root, { input }, { stores, eventBus }) {
         return __awaiter(this, void 0, void 0, function* () {
             const { valueCaseId, domainName } = input;
-            const organization = yield stores.registry.fetch({ domainName });
-            if (!organization) {
+            /**
+               short timeout just to make sure, the registry is updated to avoid duplicates.
+               It's highly unlikely (and relatively innocent) but still...
+               The unavoidable perils of async ;-)
+            **/
+            yield timeout(500);
+            const { organizationId } = yield stores.registry.fetch({ domainName });
+            if (!organizationId) {
                 throw "ORG DOES NOT EXISTS";
             }
             const valueCase = yield stores.valueCase.fetch({ valueCaseId });
+            console.log(valueCase);
             if (!valueCase) {
                 throw "ValueCase does not exist";
             }
+            const badge = yield stores.badgeInstance.fetch({
+                organizationId,
+                valueCaseId
+            });
+            if (badge) {
+                throw "your organization already applied for this badge";
+            }
             const badgeId = v1_1.default();
-            const status = graphql_1.PublicBadgeStatus.Pending;
+            const status = _types_1.PublicBadgeStatus.Pending;
             const { name, tags, description, narrative } = valueCase;
-            const { organizationId: recipientId } = organization;
             return eventBus.put({
                 detailType: BADGE_ISSUANCE_REQUESTED,
                 detail: {
@@ -43,7 +55,7 @@ const Mutation = {
                     tags,
                     description,
                     narrative,
-                    recipientId
+                    recipientId: organizationId
                 }
             });
         });
@@ -52,7 +64,7 @@ const Mutation = {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, contact, admin, domainName } = input;
             /**
-               just to make sure, the registry is updated to avoid duplicates.
+               short timeout just to make sure, the registry is updated to avoid duplicates.
                It's highly unlikely (and relatively innocent) but still...
                The unavoidable perils of async ;-)
             **/
@@ -62,7 +74,7 @@ const Mutation = {
                 throw "ORG ALREADY EXISTS";
             }
             const organizationId = v1_1.default();
-            const status = graphql_1.OrganizationStatus.Pending;
+            const status = _types_1.OrganizationStatus.Pending;
             return eventBus.put({
                 detailType: ORGANIZATION_REGISTRATION_REQUESTED,
                 detail: {

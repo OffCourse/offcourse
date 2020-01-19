@@ -5,7 +5,7 @@ import {
   ApprovedPublicBadgeResolvers,
   RejectedPublicBadgeResolvers,
   SignedPublicBadgeResolvers
-} from "../types/generated/graphql";
+} from "@types";
 
 const PublicBadge: PublicBadgeResolvers = {
   __resolveType({ status }) {
@@ -33,8 +33,14 @@ const PublicBadge: PublicBadgeResolvers = {
   status({ status }) {
     return status;
   },
-  valueCase({ valueCaseId }, _args, { stores }) {
-    return stores.valueCase.fetch({ valueCaseId: valueCaseId });
+  async valueCase({ valueCaseId }, _args, { stores }) {
+    const valueCase = await stores.valueCase.fetch({
+      valueCaseId: valueCaseId
+    });
+    if (!valueCase) {
+      throw "invalid badge, no corresponding value case";
+    }
+    return valueCase;
   },
   name({ name }) {
     return name;

@@ -9,7 +9,7 @@
     "start": "concurrently \"tsc -w\"",
     "invoke": "lambda-local -l dist/index.js",
     "invoke:remote": "sls invoke --stage dev",
-    "prebuild": "yarn codegen",
+    "prebuild": "rimraf dist && yarn codegen",
     "build": "tsc",
     "postbuild": "cp -r src/schema dist",
     "predeploy": "yarn build",
@@ -25,6 +25,7 @@
     "@graphql-codegen/typescript-resolvers": "1.9.1",
     "@types/jws": "^3.2.1",
     "concurrently": "^5.0.1",
+    "rimraf": "^3.0.0",
     "tslint-plugin-prettier": "^2.1.0",
     "typescript": "^3.7.3"
   },
