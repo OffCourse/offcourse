@@ -2,7 +2,7 @@ import artifact from "../fixtures/zerobadge.json";
 import uuidv5 from "uuid/v5";
 import { times, partial } from "ramda";
 import { BadgeInstanceStore } from "../types";
-import { PublicBadgeStatus } from "../generated/graphql.js";
+import { PublicBadgeStatus } from "../types/generated/graphql";
 import AWS from "aws-sdk";
 
 const s3 = new AWS.S3();

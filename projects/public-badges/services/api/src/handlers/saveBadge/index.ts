@@ -1,4 +1,3 @@
-import putBadge from "./putBadge";
 import {
   PublicBadgesEventType as EV,
   BadgeIssuanceRequestedEvent,
@@ -7,8 +6,10 @@ import {
   BadgeIssuanceRejectedEvent,
   BadgeInstanceUpdated
 } from "../../types/events.js";
-import { PublicBadgesHandler, PublicBadgeProxy } from "../../types";
-import { PublicBadgeStatus } from "../../generated/graphql";
+import { PublicBadgesHandler } from "../../types";
+import { PublicBadge } from "../../types/models";
+import { PublicBadgeStatus } from "../../types/generated/graphql";
+import putBadge from "./putBadge";
 
 export type InputEvent =
   | BadgeIssuanceRequestedEvent
@@ -27,7 +28,7 @@ const saveBadge: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
     case EV.BADGE_ISSUANCE_REQUESTED: {
       const { recipientId, valueCaseId } = detail;
       const id = `${recipientId}/badges/${valueCaseId}/public-badge`;
-      const badge: PublicBadgeProxy = {
+      const badge: PublicBadge = {
         ...detail,
         status: PublicBadgeStatus.Pending
       };
@@ -40,7 +41,7 @@ const saveBadge: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
     case EV.BADGE_ISSUANCE_APPROVED: {
       const { recipientId, valueCaseId } = detail;
       const id = `${recipientId}/badges/${valueCaseId}/public-badge`;
-      const badge: PublicBadgeProxy = {
+      const badge: PublicBadge = {
         ...detail,
         status: PublicBadgeStatus.Approved
       };
@@ -53,7 +54,7 @@ const saveBadge: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
     case EV.BADGE_ISSUANCE_REJECTED: {
       const { recipientId, valueCaseId } = detail;
       const id = `${recipientId}/badges/${valueCaseId}/public-badge`;
-      const badge: PublicBadgeProxy = {
+      const badge: PublicBadge = {
         ...detail,
         status: PublicBadgeStatus.Rejected
       };

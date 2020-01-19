@@ -3,17 +3,18 @@ import {
   BadgeIssuanceApprovedEvent,
   OpenBadgeArtifactCreated
 } from "../../types/events.js";
-import {
-  PublicBadgesHandler,
-  ApprovedPublicBadgeProxy,
-  ValueCaseProxy
-} from "../../types";
+
+import { PublicBadgesHandler } from "../../types";
+
+import { ApprovedPublicBadge, ValueCase } from "../../types/models";
+
 import {
   OpenBadge,
   Organization,
   OpenBadgeClass
-} from "../../generated/graphql";
-import { registry, valueCase as valueCaseStore } from "../../stores";
+} from "../../types/generated/graphql";
+
+import { registry, valueCase as valueCaseStore } from "@stores";
 
 export type InputEvent = BadgeIssuanceApprovedEvent;
 export type OutputEvent = OpenBadgeArtifactCreated;
@@ -24,9 +25,9 @@ const verification = {
   creator: "https://openbadges.com/publicKey.json"
 };
 
-const createBadgeClass: (args: {
-  valueCase: ValueCaseProxy;
-}) => OpenBadgeClass = ({ valueCase }) => {
+const createBadgeClass: (args: { valueCase: ValueCase }) => OpenBadgeClass = ({
+  valueCase
+}) => {
   const { valueCaseId, image, name, tags, description, narrative } = valueCase;
   return {
     type: "BadgeClass",
@@ -47,8 +48,8 @@ const createBadgeClass: (args: {
 };
 
 const createArtifact: (args: {
-  badgeInstance: ApprovedPublicBadgeProxy;
-  valueCase: ValueCaseProxy;
+  badgeInstance: ApprovedPublicBadge;
+  valueCase: ValueCase;
   organization: Organization;
 }) => OpenBadge = ({ badgeInstance, valueCase }) => {
   const { badgeId, evidence: pbEvidence } = badgeInstance;

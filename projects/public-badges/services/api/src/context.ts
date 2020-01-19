@@ -1,4 +1,4 @@
-import * as stores from "./stores";
+import * as stores from "@stores";
 import eventBus from "./eventBus";
 import { ApolloContext } from "./types";
 

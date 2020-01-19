@@ -26,12 +26,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const zerobadge_json_1 = __importDefault(require("../fixtures/zerobadge.json"));
 const v5_1 = __importDefault(require("uuid/v5"));
 const ramda_1 = require("ramda");
-const graphql_js_1 = require("../generated/graphql.js");
+const graphql_1 = require("../types/generated/graphql");
 const aws_sdk_1 = __importDefault(require("aws-sdk"));
 const s3 = new aws_sdk_1.default.S3();
 const { badge: badgeClass, recipient, evidence, issuedOn, expires } = zerobadge_json_1.default;
 const generateBadge = (opts) => ({
-    status: graphql_js_1.PublicBadgeStatus.Signed,
+    status: graphql_1.PublicBadgeStatus.Signed,
     name: badgeClass.name,
     badgeId: opts.id
         ? opts.id.replace(/urn:uuid:/, "")

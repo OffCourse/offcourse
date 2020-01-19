@@ -1,4 +1,7 @@
-import { ScenarioResolvers, ValueCaseResolvers } from "../generated/graphql.js";
+import {
+  ScenarioResolvers,
+  ValueCaseResolvers
+} from "../types/generated/graphql.js";
 
 const Scenario: ScenarioResolvers = {
   description({ description }) {

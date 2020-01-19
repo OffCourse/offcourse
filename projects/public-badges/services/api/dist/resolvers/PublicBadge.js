@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_1 = require("../generated/graphql");
+const graphql_1 = require("../types/generated/graphql");
 const PublicBadge = {
     __resolveType({ status }) {
         switch (status) {

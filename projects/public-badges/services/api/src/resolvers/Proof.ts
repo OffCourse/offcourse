@@ -1,4 +1,4 @@
-import { ProofResolvers } from "../generated/graphql";
+import { ProofResolvers } from "../types/generated/graphql";
 
 const Proof: ProofResolvers = {
   proofId({ proofId }) {

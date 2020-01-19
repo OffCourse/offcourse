@@ -1,4 +1,4 @@
-import { QueryResolvers } from "../generated/graphql.js";
+import { QueryResolvers } from "../types/generated/graphql";
 
 const Query: QueryResolvers = {
   getBadge(_root, args, { stores }) {

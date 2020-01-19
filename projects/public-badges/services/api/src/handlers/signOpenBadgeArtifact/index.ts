@@ -6,6 +6,7 @@ import {
   OpenBadgeArtifactCreated,
   OpenBadgeArtifactSigned
 } from "../../types/events.js";
+
 import { PublicBadgesHandler } from "../../types";
 
 export type InputEvent = OpenBadgeArtifactCreated;

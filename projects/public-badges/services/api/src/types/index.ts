@@ -1,21 +1,5 @@
-import {
-  Organization,
-  ApprovedOrganization as AO,
-  PendingOrganization as PO,
-  OrganizationStatus,
-  PublicBadge,
-  ValueCase,
-  ApprovedPublicBadge,
-  RejectedPublicBadge
-} from "../generated/graphql";
-
-export type PendingOrganization = Omit<PO, "status"> & {
-  status: OrganizationStatus.Pending;
-};
-
-export type ApprovedOrganization = Omit<AO, "status"> & {
-  status: OrganizationStatus.Approved;
-};
+import { Organization, OrganizationStatus } from "../types/generated/graphql";
+import { ValueCase, PublicBadge } from "./models";
 
 import { Event, PublicBadgesEvent } from "./events";
 
@@ -24,26 +8,12 @@ export interface Store<O, A, T> {
   fetchAll: (args: A) => Promise<NonNullable<T>[]>;
 }
 
-export type ValueCaseProxy = Omit<ValueCase, "proposedBy"> & {
-  proposedBy: string;
-};
-
-export type ValueCaseStore = Store<{ valueCaseId: string }, {}, ValueCaseProxy>;
-
-export type PublicBadgeProxy = Omit<PublicBadge, "recipient" | "valueCase">;
-export type ApprovedPublicBadgeProxy = Omit<
-  ApprovedPublicBadge,
-  "recipient" | "valueCase"
->;
-export type RejectedPublicBadgeProxy = Omit<
-  RejectedPublicBadge,
-  "recipient" | "valueCase"
->;
+export type ValueCaseStore = Store<{ valueCaseId: string }, {}, ValueCase>;
 
 export type BadgeInstanceStore = Store<
   { badgeId: string },
   { organizationId?: string },
-  PublicBadgeProxy | null
+  PublicBadge | null
 >;
 
 export type RegistryStore = Store<

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+require("module-alias/register");
 const handlers_1 = require("./handlers");
 exports.graphql = handlers_1.graphql;
 exports.echo = handlers_1.echo;

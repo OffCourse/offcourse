@@ -3,8 +3,8 @@ import {
   OrganizationStatus,
   PublicBadgeStatus,
   PendingOrganization
-} from "../generated/graphql.js";
-import { PublicBadgeProxy } from "../types";
+} from "../types/generated/graphql";
+import { PublicBadge } from "../types/models";
 import { PublicBadgesEventType } from "../types/events.js";
 import uuid from "uuid/v1";
 
@@ -47,7 +47,7 @@ const Mutation: MutationResolvers = {
         narrative,
         recipientId
       }
-    }) as Promise<PublicBadgeProxy>;
+    }) as Promise<PublicBadge>;
   },
   async registerOrganization(_root, { input }, { eventBus, stores }) {
     const { name, contact, admin, domainName } = input;

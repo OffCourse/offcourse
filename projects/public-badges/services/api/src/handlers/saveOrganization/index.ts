@@ -6,12 +6,9 @@ import {
   OrganizationApprovalRequestedEvent,
   OrganizationApprovedEvent
 } from "../../types/events.js";
-import {
-  ApprovedOrganization,
-  PendingOrganization,
-  PublicBadgesHandler
-} from "../../types";
-import { OrganizationStatus } from "../../generated/graphql";
+import { PublicBadgesHandler } from "../../types";
+import { ApprovedOrganization, PendingOrganization } from "../../types/models";
+import { OrganizationStatus } from "../../types/generated/graphql";
 
 export type InputEvent =
   | OrganizationRegistrationRequestedEvent

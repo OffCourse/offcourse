@@ -1,5 +1,5 @@
 import { RegistryStore } from "../types";
-import { OrganizationStatus } from "../generated/graphql.js";
+import { OrganizationStatus } from "../types/generated/graphql";
 import AWS from "aws-sdk";
 
 const ddb = new AWS.DynamoDB.DocumentClient();

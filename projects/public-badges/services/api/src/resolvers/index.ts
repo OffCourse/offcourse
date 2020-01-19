@@ -1,4 +1,4 @@
-import { Resolvers } from "../generated/graphql";
+import { Resolvers } from "../types/generated/graphql";
 import Query from "./Query";
 import Mutation from "./Mutation";
 import * as OpenBadge from "./OpenBadge";

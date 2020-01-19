@@ -1,5 +1,5 @@
 import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependencies
-import { PendingOrganization } from "../../generated/graphql";
+import { PendingOrganization } from "../../types/generated/graphql";
 const s3 = new AWS.S3();
 
 type Save<T> = (id: string, document: T) => Promise<T>;

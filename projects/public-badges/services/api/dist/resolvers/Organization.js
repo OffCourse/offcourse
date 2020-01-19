@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_js_1 = require("../generated/graphql.js");
+const graphql_js_1 = require("../types/generated/graphql.js");
 const Contact = {
     name({ name }) {
         return name;

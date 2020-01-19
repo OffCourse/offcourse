@@ -5,7 +5,7 @@ import {
   ApprovedPublicBadgeResolvers,
   RejectedPublicBadgeResolvers,
   SignedPublicBadgeResolvers
-} from "../generated/graphql";
+} from "../types/generated/graphql";
 
 const PublicBadge: PublicBadgeResolvers = {
   __resolveType({ status }) {

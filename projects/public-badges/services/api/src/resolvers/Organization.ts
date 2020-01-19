@@ -4,7 +4,7 @@ import {
   PendingOrganizationResolvers,
   ApprovedOrganizationResolvers,
   OrganizationStatus
-} from "../generated/graphql.js";
+} from "../types/generated/graphql.js";
 
 const Contact: ContactResolvers = {
   name({ name }) {

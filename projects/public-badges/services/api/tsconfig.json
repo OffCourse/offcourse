@@ -7,10 +7,12 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": "src/.",
+    "paths": {
+      "@stores": ["stores/index"],
+      "@types": ["types/index"]
+    }
   },
-  "include": [
-    "src/**/*"
-  ],
   "lib": ["es2015"]
 }

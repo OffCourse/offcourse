@@ -1,5 +1,5 @@
 import { Handler } from "aws-lambda";
-import { PendingOrganization } from "../generated/graphql";
+import { PendingOrganization } from "../types/generated/graphql";
 
 const echo: Handler<{ detail: PendingOrganization }> = (
   event,

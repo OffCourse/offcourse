@@ -1,5 +1,5 @@
 import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependencies
-import { PublicBadgesEventBus } from "../types";
+import { PublicBadgesEventBus } from "@types";
 
 const eventBridge = new AWS.EventBridge();
 

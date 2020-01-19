@@ -4,18 +4,20 @@ import {
   BadgeIssuanceApprovedEvent,
   BadgeIssuanceRejectedEvent
 } from "../../types/events.js";
+import { PublicBadgesHandler } from "../../types";
 import {
-  PublicBadgesHandler,
-  ApprovedPublicBadgeProxy,
-  RejectedPublicBadgeProxy,
-  ValueCaseProxy
-} from "../../types";
+  ApprovedPublicBadge,
+  RejectedPublicBadge,
+  ValueCase
+} from "../../types/models";
+
 import {
   PublicBadgeStatus,
   Proof,
   Organization
-} from "../../generated/graphql";
-import { registry, valueCase as valueCaseStore } from "../../stores";
+} from "../../types/generated/graphql";
+
+import { registry, valueCase as valueCaseStore } from "@stores";
 import uuid from "uuid/v1";
 import { slugify } from "voca";
 
@@ -31,7 +33,7 @@ enum ScenarioOutcome {
 }
 
 const checkScenarios: (args: {
-  valueCase: ValueCaseProxy;
+  valueCase: ValueCase;
   organization: Organization;
 }) => Promise<{ outcome: ScenarioOutcome; evidence: Proof[] }> = async ({
   valueCase
@@ -71,7 +73,7 @@ const runValueCaseScenarios: PublicBadgesHandler<
       });
       switch (outcome) {
         case ScenarioOutcome.PASSED: {
-          const badge: ApprovedPublicBadgeProxy = {
+          const badge: ApprovedPublicBadge = {
             ...detail,
             evidence,
             status: PublicBadgeStatus.Approved
@@ -82,7 +84,7 @@ const runValueCaseScenarios: PublicBadgesHandler<
           };
         }
         case ScenarioOutcome.FAILED: {
-          const badge: RejectedPublicBadgeProxy = {
+          const badge: RejectedPublicBadge = {
             ...detail,
             evidence,
             status: PublicBadgeStatus.Rejected

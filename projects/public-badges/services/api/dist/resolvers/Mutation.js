@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_js_1 = require("../generated/graphql.js");
+const graphql_1 = require("../types/generated/graphql");
 const events_js_1 = require("../types/events.js");
 const v1_1 = __importDefault(require("uuid/v1"));
 const timeout = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -30,7 +30,7 @@ const Mutation = {
                 throw "ValueCase does not exist";
             }
             const badgeId = v1_1.default();
-            const status = graphql_js_1.PublicBadgeStatus.Pending;
+            const status = graphql_1.PublicBadgeStatus.Pending;
             const { name, tags, description, narrative } = valueCase;
             const { organizationId: recipientId } = organization;
             return eventBus.put({
@@ -62,7 +62,7 @@ const Mutation = {
                 throw "ORG ALREADY EXISTS";
             }
             const organizationId = v1_1.default();
-            const status = graphql_js_1.OrganizationStatus.Pending;
+            const status = graphql_1.OrganizationStatus.Pending;
             return eventBus.put({
                 detailType: ORGANIZATION_REGISTRATION_REQUESTED,
                 detail: {

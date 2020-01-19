@@ -1,5 +1,5 @@
 import valueCaseFixture from "../fixtures/valueCase.json";
-import { ValueCaseStore } from "../types";
+import { ValueCaseStore } from "../types/index";
 
 const valueCase: ValueCaseStore = {
   async fetch({ valueCaseId }) {

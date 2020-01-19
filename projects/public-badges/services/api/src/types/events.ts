@@ -1,11 +1,11 @@
 import {
   PendingOrganization,
   ApprovedOrganization,
-  PublicBadgeProxy,
-  ApprovedPublicBadgeProxy,
-  RejectedPublicBadgeProxy
-} from "./index";
-import { OpenBadge } from "../generated/graphql";
+  PublicBadge,
+  ApprovedPublicBadge,
+  RejectedPublicBadge
+} from "./models";
+import { OpenBadge } from "../types/generated/graphql";
 
 export interface Event {
   detailType: string;
@@ -43,7 +43,7 @@ export type SignedOpenBadgeResponse = {
 export type PublicBadgesEventPayload =
   | PendingOrganization
   | ApprovedOrganization
-  | PublicBadgeProxy
+  | PublicBadge
   | UnsignedOpenBadgeResponse
   | SignedOpenBadgeResponse;
 
@@ -74,27 +74,27 @@ export interface OrganizationApprovedEvent extends PBEvent {
 
 export interface BadgeIssuanceRequestedEvent extends PBEvent {
   detailType: PublicBadgesEventType.BADGE_ISSUANCE_REQUESTED;
-  detail: PublicBadgeProxy;
+  detail: PublicBadge;
 }
 
 export interface BadgeIssuanceApprovalRequestedEvent extends PBEvent {
   detailType: PublicBadgesEventType.BADGE_ISSUANCE_APPROVAL_REQUESTED;
-  detail: PublicBadgeProxy;
+  detail: PublicBadge;
 }
 
 export interface BadgeIssuanceApprovedEvent extends PBEvent {
   detailType: PublicBadgesEventType.BADGE_ISSUANCE_APPROVED;
-  detail: ApprovedPublicBadgeProxy;
+  detail: ApprovedPublicBadge;
 }
 
 export interface BadgeIssuanceRejectedEvent extends PBEvent {
   detailType: PublicBadgesEventType.BADGE_ISSUANCE_REJECTED;
-  detail: RejectedPublicBadgeProxy;
+  detail: RejectedPublicBadge;
 }
 
 export interface BadgeInstanceUpdated extends PBEvent {
   detailType: PublicBadgesEventType.BADGE_INSTANCE_UPDATED;
-  detail: PublicBadgeProxy;
+  detail: PublicBadge;
 }
 export interface OpenBadgeArtifactCreated extends PBEvent {
   detailType: PublicBadgesEventType.OPEN_BADGES_ARTIFACT_CREATED;

@@ -4,21 +4,21 @@ config:
   useIndexSignature: true
 documents: null
 generates:
-  src/generated/graphql.ts:
+  src/types/generated/graphql.ts:
     plugins:
       - "typescript"
       - "typescript-resolvers"
     config:
       skipTypename: true
       avoidOptionals: true
-      contextType: ../types#ApolloContext
+      contextType: ../index#ApolloContext
       scalars:
         EmailAddress: string
         JSON: string
         UUID: string
       mappers:
-        ValueCase: ../types#ValueCaseProxy
-        PublicBadge: ../types#PublicBadgeProxy
+        ValueCase: ../models#ValueCaseProxy
+        PublicBadge: ../models#PublicBadgeProxy
   ./graphql.schema.json:
     plugins:
       - "introspection"

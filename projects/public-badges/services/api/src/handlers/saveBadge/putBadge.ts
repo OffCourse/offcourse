@@ -1,10 +1,10 @@
 import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependencies
-import { PublicBadgeProxy } from "../../types";
+import { PublicBadge } from "../../types/models";
 const s3 = new AWS.S3();
 
 type Save<T> = (id: string, document: T) => Promise<T>;
 
-const putBadge: Save<PublicBadgeProxy> = async (id, badge) => {
+const putBadge: Save<PublicBadge> = async (id, badge) => {
   const Bucket = process.env.REGISTRY_BUCKET;
   if (!Bucket) {
     throw "Bucket Name is Required";

@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const putOrganization_1 = __importDefault(require("./putOrganization"));
 const events_js_1 = require("../../types/events.js");
-const graphql_1 = require("../../generated/graphql");
+const graphql_1 = require("../../types/generated/graphql");
 const saveOrganization = ({ detailType, detail }) => __awaiter(void 0, void 0, void 0, function* () {
     const { organizationId: id } = detail;
     switch (detailType) {
