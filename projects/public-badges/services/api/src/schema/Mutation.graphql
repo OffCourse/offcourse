@@ -1,4 +1,0 @@
-type Mutation {
-  applyForBadge(input: PublicBadgeInput!): PublicBadge,
-  registerOrganization(input: OrganizationInput!): PendingOrganization
-}

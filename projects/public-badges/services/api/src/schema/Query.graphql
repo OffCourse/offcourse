@@ -1,3 +1,0 @@
-type Query {
-  getAllBadges(domainName: URL): [PublicBadge]
-}
