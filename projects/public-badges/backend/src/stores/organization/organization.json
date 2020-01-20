@@ -1,0 +1,15 @@
+{
+  "organizationId": "dedeaff9-e574-75e4-d516-1622d2bb3746",
+  "name": "Waag",
+  "status": "APPROVED",
+  "contact": {
+    "name": "John Doe",
+    "email": "johndoe@waag.org"
+  },
+  "admin": {
+    "name": "John Doer",
+    "email": "johndoer@waag.org"
+  },
+  "domainName": "waag.org",
+  "urls": ["https://waag.org"]
+}

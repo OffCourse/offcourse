@@ -1,0 +1,218 @@
+service: public-badges
+
+custom:
+  registry_bucket: public-badges-registry-${opt:stage}
+  api: public-badges.api
+  save_organization: public-badges.save-organization
+  save_badge: public-badges.save-badge
+  save_signature: public-badges.save-signature
+  run_value_case_scenarios: public-badges.run-value-case-scenarios
+  prepare_open_badge_artifact: public-badges.prepare-open-badge-artifact
+  sign_open_badge_artifact: public-badges.sign-open-badge-artifact
+  approve_organization: public-badges.approve-organization
+  update_registry_lookup: public-badges.update-registry-lookup
+  registry_lookup_table: registry-lookup-${opt:stage}
+  organization-status-index: organization-status-${opt:stage}
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:ListBucket
+        - s3:GetObject
+        - s3:PutObject
+        - s3:PutObjectAcl
+      Resource:
+        - "arn:aws:s3:::${self:custom.registry_bucket}"
+        - "arn:aws:s3:::${self:custom.registry_bucket}/*"
+    - Effect: Allow
+      Action:
+        - events:PutEvents
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:custom.registry_lookup_table}"
+        - "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:custom.registry_lookup_table}/index/*"
+
+functions:
+  graphql:
+    handler: dist/index.graphql
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+      - http:
+          path: graphql
+          method: get
+          cors: true
+      - http:
+          path: playground
+          method: any
+          cors: true
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.api}
+      REGISTRY_LOOKUP_TABLE: ${self:custom.registry_lookup_table}
+      ORGANIZATION_STATUS_INDEX: ${self:custom.organization-status-index}
+  saveOrganization:
+    handler: dist/index.saveOrganization
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.api}
+              - ${self:custom.approve_organization}
+            detail-type: 
+             - ORGANIZATION_REGISTRATION_REQUESTED
+             - ORGANIZATION_APPROVAL_ACCEPTED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.save_organization}
+  saveBadge:
+    handler: dist/index.saveBadge
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.api}
+              - ${self:custom.run_value_case_scenarios}
+              - ${self:custom.sign_open_badge_artifact}
+            detail-type: 
+             - BADGE_ISSUANCE_REQUESTED
+             - BADGE_ISSUANCE_APPROVED
+             - BADGE_ISSUANCE_REJECTED
+             - OPEN_BADGES_ARTIFACT_SIGNED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.save_badge}
+  saveSignature:
+    handler: dist/index.saveSignature
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.sign_open_badge_artifact}
+            detail-type: 
+             - OPEN_BADGES_ARTIFACT_SIGNED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.save_signature}
+  runValueCaseScenarios:
+    handler: dist/index.runValueCaseScenarios
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.save_badge}
+            detail-type: 
+             - BADGE_ISSUANCE_APPROVAL_REQUESTED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.run_value_case_scenarios}
+  prepareOpenBadgeArtifact:
+    handler: dist/index.prepareOpenBadgeArtifact
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.run_value_case_scenarios}
+            detail-type: 
+             - BADGE_ISSUANCE_APPROVED
+    environment:
+      REGISTRY_BUCKET: ${self:custom.registry_bucket}
+      HANDLER_NAME: ${self:custom.prepare_open_badge_artifact}
+  signOpenBadgeArtifact:
+    handler: dist/index.signOpenBadgeArtifact
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.prepare_open_badge_artifact}
+            detail-type: 
+             - OPEN_BADGES_ARTIFACT_CREATED
+    environment:
+      HANDLER_NAME: ${self:custom.sign_open_badge_artifact}
+  approveOrganization:
+    handler: dist/index.approveOrganization
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.save_organization}
+            detail-type:
+              - ORGANIZATION_APPROVAL_REQUESTED
+    environment:
+      HANDLER_NAME: ${self:custom.approve_organization}
+  updateRegistry:
+    handler: dist/index.updateRegistry
+    events:
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.api}
+              - ${self:custom.approve_organization}
+            detail-type: 
+             - ORGANIZATION_REGISTRATION_REQUESTED
+             - ORGANIZATION_APPROVAL_ACCEPTED
+    environment:
+      REGISTRY_LOOKUP_TABLE: ${self:custom.registry_lookup_table}
+      HANDLER_NAME: ${self:custom.update_registry_lookup}
+  echo:
+    handler: dist/index.echo
+    events:
+      - s3: ${self:custom.registry_bucket}
+      - eventBridge:
+          pattern:
+            source:
+              - ${self:custom.run_value_case_scenarios}
+            detail-type: 
+             - BADGE_ISSUANCE_REJECTED
+    environment:
+      HANDLER_NAME: public-badges.echo
+
+resources:
+  Resources:
+    registryTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.registry_lookup_table}
+        AttributeDefinitions:
+          - AttributeName: organizationId
+            AttributeType: S
+          - AttributeName: identityType
+            AttributeType: S
+          - AttributeName: identityKey
+            AttributeType: S
+          - AttributeName: approvalStatus
+            AttributeType: S
+        KeySchema:
+          - AttributeName: identityKey
+            KeyType: HASH
+          - AttributeName: identityType
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        GlobalSecondaryIndexes:
+          - IndexName: organization-status-${opt:stage}
+            KeySchema:
+              - AttributeName: approvalStatus
+                KeyType: HASH
+              - AttributeName: organizationId
+                KeyType: RANGE
+            Projection:
+              NonKeyAttributes: []
+              ProjectionType: KEYS_ONLY
+            ProvisionedThroughput:
+              ReadCapacityUnits: 1
+              WriteCapacityUnits: 1

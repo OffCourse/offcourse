@@ -1,6 +1,0 @@
-type Query {
-  getBadge(badgeId: ID!): PublicBadge
-  getAllBadges: [PublicBadge]
-  getOrganization(organizationId: ID, domainName: URL): Organization
-  getAllOrganizations(filter: OrganizationStatus): [Organization]
-}

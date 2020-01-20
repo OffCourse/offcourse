@@ -1,0 +1,43 @@
+{
+  "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d",
+  "image": "https://pngimage.net/wp-content/uploads/2018/06/imagenes-random-png-3.png",
+  "name": "Zero Badge",
+  "tags": ["manifesto", "intention"],
+  "proposedBy": "https://offcourse.io/",
+  "approvedBy": "sander@waag.org",
+  "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",
+  "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n",
+  "scenarios": [
+    {
+      "description": "Organization is listed in Public Spaces Registry",
+      "narrative": [
+        "Given a user visits the organizations website",
+        "And the website displays the Zero Badge",
+        "Then the organization is listed in the Public Spaces Registry",
+        "And the Badge is valid",
+        "And the user knows that the organization subscribes to the Public Spaces manifesto"
+      ]
+    },
+    {
+      "description": "Badge is Publicly Visible on Website",
+      "narrative": [
+        "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto",
+        "And visits the organizations homepage",
+        "When the user scrolls to the footer of the page",
+        "Then the user should see the Zero Badge",
+        "And the Badge should be displayed with sufficient color contrast",
+        "And the Badge should have sufficient padding around it"
+      ]
+    },
+    {
+      "description": "Website links to Public Spaces Manifesto",
+      "narrative": [
+        "Given a user wants to know what the Public Spaces manifesto entails",
+        "And visits the website of an affiliated organization",
+        "When the webiste displays the Zero Badge",
+        "And the user clicks on the Badge",
+        "Then the user should be redirected to the Public Spaces manifesto"
+      ]
+    }
+  ]
+}

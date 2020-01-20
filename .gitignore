@@ -71,3 +71,4 @@ package-deps.json
 
 **/*/.zip
 **/dist
+**/*/private-key.pem

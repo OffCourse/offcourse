@@ -1,0 +1,25 @@
+{
+  "version": "0",
+  "id": "dedeaff9-e574-75e4-d516-1622d2bb3746",
+  "detail-type": "ORGANIZATION_REGISTRATION_REQUESTED",
+  "source": "public-badges.api-handler",
+  "account": "667764274250",
+  "time": "2019-12-14T21:46:05Z",
+  "region": "us-east-1",
+  "resources": [],
+  "detail": {
+    "organizationId": "dedeaff9-e574-75e4-d516-1622d2bb3746",
+    "name": "Waag",
+    "contact": {
+      "name": "John Doe",
+      "email": "johndoe@waag.org"
+    },
+    "admin": {
+      "name": "John Doer",
+      "email": "johndoer@waag.org"
+    },
+    "domainName": "https://waag.org/",
+    "status": "PENDING",
+    "urls": ["https://waag.org/"]
+  }
+}

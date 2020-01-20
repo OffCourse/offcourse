@@ -1,4 +1,0 @@
-type Mutation {
-  proposeValueCase(input: ValueCaseInput!): String!
-  registerOrganization(input: OrganizationInput!): PendingOrganization
-}

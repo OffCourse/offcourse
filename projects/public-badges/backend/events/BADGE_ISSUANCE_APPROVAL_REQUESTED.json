@@ -1,0 +1,79 @@
+{
+  "version": "0",
+  "id": "9d5ddd3a-4f46-cc35-e01e-8cd2c83e4771",
+  "detail-type": "BADGE_ISSUANCE_APPROVAL_REQUESTED",
+  "source": "public-badges.save-badge",
+  "account": "667764274250",
+  "time": "2020-01-14T21:04:16Z",
+  "region": "us-east-1",
+  "resources": [],
+  "detail": {
+    "badgeId": "c994e0e0-36d6-11ea-a7ba-e1ac32df82d1",
+    "status": "PENDING",
+    "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d",
+    "name": "Zero Badge",
+    "tags": ["manifesto", "intention"],
+    "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",
+    "narrative": "The Zero Badge s a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n",
+    "recipientId": "393246d0-36dd-11ea-8e80-6f6ea8079d5e",
+    "recipient": {
+      "organizationId": "393246d0-36dd-11ea-8e80-6f6ea8079d5e",
+      "status": "APPROVED",
+      "name": "offcourse",
+      "contact": {
+        "name": "yeehaa",
+        "email": "contact@offcourse.io"
+      },
+      "admin": {
+        "name": "yeehaa",
+        "email": "contact@offcourse.io"
+      },
+      "domainName": "https://offcourse.io/",
+      "urls": ["https://offcourse.io/"],
+      "approvedBy": "yeehaa@fasljfsd.com",
+      "approvedOn": "1579013438324"
+    },
+    "valueCase": {
+      "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d",
+      "name": "Zero Badge",
+      "tags": ["manifesto", "intention"],
+      "proposedBy": "https://offcourse.io/",
+      "approvedBy": "sander@waag.org",
+      "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",
+      "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n",
+      "scenarios": [
+        {
+          "description": "Organization is listed in Public Spaces Registry",
+          "narrative": [
+            "Given a user visits the organizations website",
+            "And the website displays the Zero Badge",
+            "Then the organization is listed in the Public Spaces Registry",
+            "And the Badge is valid",
+            "And the user knows that the organization subscribes to the Public Spaces manifesto"
+          ]
+        },
+        {
+          "description": "Badge is Publicly Visible on Website",
+          "narrative": [
+            "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto",
+            "And visits the organizations homepage",
+            "When the user scrolls to the footer of the page",
+            "Then the user should see the Zero Badge",
+            "And the Badge should be displayed with sufficient color contrast",
+            "And the Badge should have sufficient padding around it"
+          ]
+        },
+        {
+          "description": "Website links to Public Spaces Manifesto",
+          "narrative": [
+            "Given a user wants to know what the Public Spaces manifesto entails",
+            "And visits the website of an affiliated organization",
+            "When the webiste displays the Zero Badge",
+            "And the user clicks on the Badge",
+            "Then the user should be redirected to the Public Spaces manifesto"
+          ]
+        }
+      ]
+    }
+  }
+}

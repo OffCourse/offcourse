@@ -1,0 +1,54 @@
+enum OrganizationStatus {
+  PENDING
+  APPROVED
+}
+
+interface Organization {
+  organizationId: GUID!
+  status: OrganizationStatus!
+  name: String!
+  contact: Contact!
+  admin: Contact!
+  domainName: URL!
+  urls: [URL]
+}
+
+input ContactInput{
+  name: String!
+  email: EmailAddress!
+}
+
+type Contact {
+  name: String!
+  email: EmailAddress!
+}
+
+
+type PendingOrganization implements Organization {
+  organizationId: GUID!
+  status: OrganizationStatus!
+  name: String!
+  contact: Contact!
+  admin: Contact!
+  domainName: URL!
+  urls: [URL]
+}
+
+type ApprovedOrganization implements Organization {
+  organizationId: GUID!
+  status: OrganizationStatus!
+  name: String!
+  contact: Contact!
+  admin: Contact!
+  approvedBy: EmailAddress!
+  approvedOn: String!
+  domainName: URL!
+  urls: [URL]
+}
+
+input OrganizationInput {
+  name: String!
+  contact: ContactInput!
+  admin: ContactInput!
+  domainName: URL!
+}

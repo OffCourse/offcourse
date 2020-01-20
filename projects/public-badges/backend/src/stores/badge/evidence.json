@@ -1,0 +1,22 @@
+[{
+    "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb420",
+    "name": "Public Badges Registry Listing",
+    "genre": "Gherkin Scenario",
+    "description": "Organization is listed in public spaces registry",
+    "narrative": "Given a user visits the organizations website\nAnd the website displays the Zero Badge\nThen the organization is listed in the Public Spaces Registry\nAnd the Badge is valid\nAnd the user knows that the organization subscribes to the Public Spaces manifesto\n"
+  },
+  {
+    "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb421",
+    "name": "Badge Visibility",
+    "genre": "Gherkin Scenario",
+    "description": "Badge is public visible on the organization's website",
+    "narrative": "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto\nAnd visits the organizations homepage\nWhen the user scrolls to the footer of the page\nThen the user should see the Zero Badge\nAnd the Badge should be displayed with sufficient color contrast\nAnd the Badge should have sufficient padding around it\n"
+  },
+  {
+    "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb420",
+    "name": "Manifesto Link",
+    "genre": "Gherkin Scenario",
+    "description": "Organization's website",
+    "narrative": "Given a user wants to know what the Public Spaces manifesto entails\nAnd visits the website of an affiliated organization\nWhen the webiste displays the Zero Badge\nAnd the user clicks on the Badge\nThen the user should be redirected to the Public Spaces manifesto\n"
+  }
+]
