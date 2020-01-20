@@ -1,6 +1,6 @@
 import "module-alias/register";
 import { map } from "ramda";
-import eventBus from "./eventBus";
+import eventBus from "@eventBus";
 import { graphql, echo } from "./handlers";
 import { Handler as AWSHandler } from "aws-lambda";
 import { PublicBadgesHandler } from "@types";

@@ -234,7 +234,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-graphql",
         "Handler": "dist/index.graphql",
@@ -278,7 +278,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-saveOrganization",
         "Handler": "dist/index.saveOrganization",
@@ -320,7 +320,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-saveBadge",
         "Handler": "dist/index.saveBadge",
@@ -362,7 +362,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-saveSignature",
         "Handler": "dist/index.saveSignature",
@@ -404,7 +404,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-runValueCaseScenarios",
         "Handler": "dist/index.runValueCaseScenarios",
@@ -446,7 +446,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-prepareOpenBadgeArtifact",
         "Handler": "dist/index.prepareOpenBadgeArtifact",
@@ -488,7 +488,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-signOpenBadgeArtifact",
         "Handler": "dist/index.signOpenBadgeArtifact",
@@ -529,7 +529,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-approveOrganization",
         "Handler": "dist/index.approveOrganization",
@@ -570,7 +570,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-updateRegistry",
         "Handler": "dist/index.updateRegistry",
@@ -612,7 +612,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/public-badges.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/public-badges.zip"
         },
         "FunctionName": "public-badges-dev-echo",
         "Handler": "dist/index.echo",
@@ -953,7 +953,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1579472174286": {
+    "ApiGatewayDeployment1579472296877": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -1737,7 +1737,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/public-badges/dev/1579472194391-2020-01-19T22:16:34.391Z/custom-resources.zip"
+          "S3Key": "serverless/public-badges/dev/1579472315676-2020-01-19T22:18:35.676Z/custom-resources.zip"
         },
         "FunctionName": "public-badges-dev-custom-resource-event-bridge",
         "Handler": "eventBridge/handler.handler",
