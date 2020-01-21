@@ -71,4 +71,5 @@ package-deps.json
 
 **/*/.zip
 **/dist
+**/.serverless
 **/*/private-key.pem
