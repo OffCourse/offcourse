@@ -13,7 +13,8 @@
     "build": "tsc",
     "postbuild": "cp -r src/handlers/graphql/schema dist/handlers/graphql",
     "predeploy": "yarn build",
-    "deploy": "sls deploy --stage dev"
+    "deploy": "sls deploy --stage dev",
+    "deploy:pilot": "sls deploy --stage pilot"
   },
   "author": "Yeehaa",
   "license": "MIT",
@@ -26,6 +27,7 @@
     "@types/jws": "^3.2.1",
     "concurrently": "^5.0.1",
     "rimraf": "^3.0.0",
+    "serverless-domain-manager": "^3.3.1",
     "tslint-plugin-prettier": "^2.1.0",
     "typescript": "^3.7.3"
   },

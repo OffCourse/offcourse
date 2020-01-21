@@ -8,59 +8,111 @@
   "region": "us-east-1",
   "resources": [],
   "detail": {
-    "@context": "https://w3id.org/openbadges/v2",
-    "id": "urn:uuid:9b05f690-37e1-11ea-af07-c581adbf215a",
-    "type": "Assertion",
-    "recipient": {
-      "type": "email",
-      "hashed": false,
-      "identity": "sander@waag.org"
-    },
-    "issuedOn": "2020-01-17T19:17:40.605Z",
-    "expires": "2020-01-18T04:03:37.531Z",
-    "verification": {
-      "type": "signedBadge",
-      "creator": "https://openbadges.com/publicKey.json"
-    },
-    "badge": {
-      "type": "BadgeClass",
-      "id": "urn:uuid:88c7a930-3181-11ea-9858-b312ce22102d",
-      "name": "Zero Badge",
-      "tags": ["manifesto", "intention"],
-      "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",
-      "criteria": {
-        "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n"
-      },
-      "image": "https://pngimage.net/wp-content/uploads/2018/06/imagenes-random-png-3.png",
-      "issuer": {
-        "id": "https://pngimage.net/wp-content/uploads/2018/06/imagenes-random-png-3.png",
-        "type": "Profile",
-        "name": "Public Spaces",
-        "email": "contact@publicspaces.net"
-      }
-    },
+    "badgeId": "9b05f690-37e1-11ea-af07-c581adbf215a",
+    "status": "APPROVED",
+    "name": "Zero Badge",
+    "tags": ["manifesto", "intention"],
+    "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",
+    "narrative": "he Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n",
     "evidence": [
       {
-        "id": "urn:uuid:9dce1740-37e1-11ea-a1d2-71e588a12c85",
+        "proofId": "9dce1740-37e1-11ea-a1d2-71e588a12c85",
         "genre": "Gherkin Scenario",
         "name": "organization-is-listed-in-public-spaces-registry",
         "description": "Organization is listed in Public Spaces Registry",
-        "narrative": "Given a user visits the organizations website\nAnd the website displays the Zero Badge\nThen the organization is listed in the Public Spaces Registry\nAnd the Badge is valid\nAnd the user knows that the organization subscribes to the Public Spaces manifesto"
+        "narrative": [
+          "Given a user visits the organizations website",
+          "And the website displays the Zero Badge",
+          "Then the organization is listed in the Public Spaces Registry",
+          "And the Badge is valid",
+          "And the user knows that the organization subscribes to the Public Spaces manifesto"
+        ]
       },
       {
-        "id": "urn:uuid:9dce6560-37e1-11ea-a1d2-71e588a12c85",
+        "proofId": "9dce6560-37e1-11ea-a1d2-71e588a12c85",
         "genre": "Gherkin Scenario",
         "name": "badge-is-publicly-visible-on-website",
         "description": "Badge is Publicly Visible on Website",
-        "narrative": "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto\nAnd visits the organizations homepage\nWhen the user scrolls to the footer of the page\nThen the user should see the Zero Badge\nAnd the Badge should be displayed with sufficient color contrast\nAnd the Badge should have sufficient padding around it"
+        "narrative": [
+          "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto",
+          "And visits the organizations homepage",
+          "When the user scrolls to the footer of the page",
+          "Then the user should see the Zero Badge",
+          "And the Badge should be displayed with sufficient color contrast",
+          "And the Badge should have sufficient padding around it"
+        ]
       },
       {
-        "id": "urn:uuid:9dce6561-37e1-11ea-a1d2-71e588a12c85",
+        "proofId": "9dce6561-37e1-11ea-a1d2-71e588a12c85",
         "genre": "Gherkin Scenario",
         "name": "website-links-to-public-spaces-manifesto",
         "description": "Website links to Public Spaces Manifesto",
-        "narrative": "Given a user wants to know what the Public Spaces manifesto entails\nAnd visits the website of an affiliated organization\nWhen the webiste displays the Zero Badge\nAnd the user clicks on the Badge\nThen the user should be redirected to the Public Spaces manifesto"
+        "narrative": [
+          "Given a user wants to know what the Public Spaces manifesto entails",
+          "And visits the website of an affiliated organization",
+          "When the webiste displays the Zero Badge",
+          "And the user clicks on the Badge",
+          "Then the user should be redirected to the Public Spaces manifesto"
+        ]
       }
-    ]
+    ],
+    "recipientId": "393246d0-36dd-11ea-8e80-6f6ea8079d5e",
+    "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d",
+    "artifact": {
+      "@context": "https://w3id.org/openbadges/v2",
+      "id": "urn:uuid:9b05f690-37e1-11ea-af07-c581adbf215a",
+      "type": "Assertion",
+      "recipient": {
+        "type": "email",
+        "hashed": false,
+        "identity": "sander@waag.org"
+      },
+      "issuedOn": "2020-01-20T21:29:08.380Z",
+      "expires": "2020-01-21T06:15:05.306Z",
+      "verification": {
+        "type": "signedBadge",
+        "creator": "https://openbadges.com/publicKey.json"
+      },
+      "badge": {
+        "type": "BadgeClass",
+        "id": "urn:uuid:88c7a930-3181-11ea-9858-b312ce22102d",
+        "name": "Zero Badge",
+        "tags": ["manifesto", "intention"],
+        "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",
+        "image": "https://publicbadges.com/public-badges.svg",
+        "criteria": {
+          "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n"
+        },
+        "issuer": {
+          "id": "https://publicbadges.com/public-badges.svg",
+          "type": "Profile",
+          "name": "Public Spaces",
+          "email": "contact@publicspaces.net"
+        }
+      },
+      "evidence": [
+        {
+          "id": "urn:uuid:9dce1740-37e1-11ea-a1d2-71e588a12c85",
+          "genre": "Gherkin Scenario",
+          "name": "organization-is-listed-in-public-spaces-registry",
+          "description": "Organization is listed in Public Spaces Registry",
+          "narrative": "Given a user visits the organizations website\nAnd the website displays the Zero Badge\nThen the organization is listed in the Public Spaces Registry\nAnd the Badge is valid\nAnd the user knows that the organization subscribes to the Public Spaces manifesto"
+        },
+        {
+          "id": "urn:uuid:9dce6560-37e1-11ea-a1d2-71e588a12c85",
+          "genre": "Gherkin Scenario",
+          "name": "badge-is-publicly-visible-on-website",
+          "description": "Badge is Publicly Visible on Website",
+          "narrative": "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto\nAnd visits the organizations homepage\nWhen the user scrolls to the footer of the page\nThen the user should see the Zero Badge\nAnd the Badge should be displayed with sufficient color contrast\nAnd the Badge should have sufficient padding around it"
+        },
+        {
+          "id": "urn:uuid:9dce6561-37e1-11ea-a1d2-71e588a12c85",
+          "genre": "Gherkin Scenario",
+          "name": "website-links-to-public-spaces-manifesto",
+          "description": "Website links to Public Spaces Manifesto",
+          "narrative": "Given a user wants to know what the Public Spaces manifesto entails\nAnd visits the website of an affiliated organization\nWhen the webiste displays the Zero Badge\nAnd the user clicks on the Badge\nThen the user should be redirected to the Public Spaces manifesto"
+        }
+      ]
+    }
   }
 }

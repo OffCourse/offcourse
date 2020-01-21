@@ -1589,6 +1589,21 @@ aws-sdk@^2.488.0, aws-sdk@^2.584.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
+aws-sdk@^2.490.0:
+  version "2.607.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.607.0.tgz#d3a8bdacdbcb5097629b2cf3f74ba953d80f7e46"
+  integrity sha512-j4SGSuu5GaUxa1KwDkAta4iDGKeYgb6ECF68C8HqYEn4+PdJz/fQ8gnszUHzt1sHxvVK2dso6d4eUdt5DSiuGw==
+  dependencies:
+    buffer "4.9.1"
+    events "1.1.1"
+    ieee754 "1.1.13"
+    jmespath "0.15.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    uuid "3.3.2"
+    xml2js "0.4.19"
+
 aws-sign2@~0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
@@ -5670,6 +5685,14 @@ sentence-case@^2.1.0:
   dependencies:
     no-case "^2.2.0"
     upper-case-first "^1.1.2"
+
+serverless-domain-manager@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-3.3.1.tgz#2814b46e897369b7f0142c411a56ab6317fdb897"
+  integrity sha512-IpxGPUUUmUgYI8iPRXz8egKIYn3M8bpOjJyuzNoeb3PvKncVLMl435nUUBHSxoIqif2WRlwebL6Ri5FTl9Kulg==
+  dependencies:
+    aws-sdk "^2.490.0"
+    chalk "^2.4.1"
 
 serverless@^1.59.3:
   version "1.59.3"

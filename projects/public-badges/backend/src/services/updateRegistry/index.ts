@@ -1,5 +1,4 @@
 import AWS from "aws-sdk"; // eslint-disable-line import/no-extraneous-dependencies
-const ddb = new AWS.DynamoDB.DocumentClient();
 import {
   PublicBadgesEventType as EV,
   OrganizationRegistrationRequestedEvent,
@@ -9,6 +8,7 @@ import {
 export type InputEvent = OrganizationRegistrationRequestedEvent;
 export type OutputEvent = null;
 
+const ddb = new AWS.DynamoDB.DocumentClient();
 const updateRegistry: PublicBadgesHandler<InputEvent, OutputEvent> = async ({
   detailType,
   detail

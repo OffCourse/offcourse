@@ -1,18 +1,24 @@
 service: public-badges
+plugins:
+  - serverless-domain-manager
 
 custom:
+  customDomain:
+    domainName: api.publicbadges.com
+    stage: ${opt:stage}
+    basePath: ${opt:stage}
+    createRoute53Record: true
   registry_bucket: public-badges-registry-${opt:stage}
+  registry_lookup_table: registry-lookup-${opt:stage}
+  organization-status-index: organization-status-${opt:stage}
   api: public-badges.api
   save_organization: public-badges.save-organization
   save_badge: public-badges.save-badge
-  save_signature: public-badges.save-signature
   run_value_case_scenarios: public-badges.run-value-case-scenarios
   prepare_open_badge_artifact: public-badges.prepare-open-badge-artifact
   sign_open_badge_artifact: public-badges.sign-open-badge-artifact
   approve_organization: public-badges.approve-organization
   update_registry_lookup: public-badges.update-registry-lookup
-  registry_lookup_table: registry-lookup-${opt:stage}
-  organization-status-index: organization-status-${opt:stage}
 
 provider:
   name: aws
@@ -95,27 +101,15 @@ functions:
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.save_badge}
-  saveSignature:
-    handler: dist/index.saveSignature
-    events:
-      - eventBridge:
-          pattern:
-            source:
-              - ${self:custom.sign_open_badge_artifact}
-            detail-type: 
-             - OPEN_BADGES_ARTIFACT_SIGNED
-    environment:
-      REGISTRY_BUCKET: ${self:custom.registry_bucket}
-      HANDLER_NAME: ${self:custom.save_signature}
   runValueCaseScenarios:
     handler: dist/index.runValueCaseScenarios
     events:
       - eventBridge:
           pattern:
             source:
-              - ${self:custom.save_badge}
+              - ${self:custom.api}
             detail-type: 
-             - BADGE_ISSUANCE_APPROVAL_REQUESTED
+             - BADGE_ISSUANCE_REQUESTED
     environment:
       REGISTRY_BUCKET: ${self:custom.registry_bucket}
       HANDLER_NAME: ${self:custom.run_value_case_scenarios}

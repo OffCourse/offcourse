@@ -44,11 +44,6 @@ export interface BadgeIssuanceRequestedEvent extends PBEvent {
   detail: PublicBadge;
 }
 
-export interface BadgeIssuanceApprovalRequestedEvent extends PBEvent {
-  detailType: PublicBadgesEventType.BADGE_ISSUANCE_APPROVAL_REQUESTED;
-  detail: PublicBadge;
-}
-
 export interface BadgeIssuanceApprovedEvent extends PBEvent {
   detailType: PublicBadgesEventType.BADGE_ISSUANCE_APPROVED;
   detail: ApprovedPublicBadge;

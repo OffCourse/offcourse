@@ -1,34 +1,45 @@
 import jws from "jws";
-import fs from "fs";
 
 import {
   PublicBadgesEventType as EV,
   OpenBadgeArtifactCreated,
   OpenBadgeArtifactSigned,
-  PublicBadgesHandler
+  PublicBadgesHandler,
+  PublicBadgeStatus
 } from "@types";
 
 export type InputEvent = OpenBadgeArtifactCreated;
 export type OutputEvent = OpenBadgeArtifactSigned;
 
-const prepareOpenBadgeArtifact: PublicBadgesHandler<
+const signOpenBadgeArtifact: PublicBadgesHandler<
   InputEvent,
   OutputEvent
 > = async ({ detailType, detail }) => {
   switch (detailType) {
     case EV.OPEN_BADGES_ARTIFACT_CREATED: {
-      const { artifact, recipientId, valueCaseId } = detail;
+      const { artifact, ...rest } = detail;
+      const privateKey = process.env.PRIVATE_KEY;
+      const { issuedOn, expires } = artifact;
+      if (!privateKey) {
+        throw "no privateKey set";
+      }
       const signature = jws.sign({
         header: { alg: "HS256" },
         payload: artifact,
-        privateKey: fs.readFileSync(__dirname + "/../../../private-key.pem")
+        privateKey
       });
       return {
         detailType: EV.OPEN_BADGES_ARTIFACT_SIGNED,
-        detail: { recipientId, valueCaseId, signature }
+        detail: {
+          ...rest,
+          issuedOn,
+          expires,
+          status: PublicBadgeStatus.Signed,
+          signature
+        }
       };
     }
   }
 };
 
-export default prepareOpenBadgeArtifact;
+export default signOpenBadgeArtifact;

@@ -34,8 +34,7 @@ const createBadgeClass: (args: { valueCase: ValueCase }) => OpenBadgeClass = ({
     image,
     criteria: { narrative },
     issuer: {
-      id:
-        "https://pngimage.net/wp-content/uploads/2018/06/imagenes-random-png-3.png",
+      id: "https://publicbadges.com/public-badges.svg",
       type: "Profile",
       name: "Public Spaces",
       email: "contact@publicspaces.net"
@@ -80,7 +79,7 @@ const prepareOpenBadgeArtifact: PublicBadgesHandler<
 > = async ({ detailType, detail }) => {
   switch (detailType) {
     case EV.BADGE_ISSUANCE_APPROVED: {
-      const { recipientId, valueCaseId } = detail;
+      const { recipientId, valueCaseId, ...rest } = detail;
       const organization = await registry.fetch({
         organizationId: recipientId
       });
@@ -97,7 +96,7 @@ const prepareOpenBadgeArtifact: PublicBadgesHandler<
       });
       return {
         detailType: EV.OPEN_BADGES_ARTIFACT_CREATED,
-        detail: { recipientId, valueCaseId, artifact }
+        detail: { ...rest, recipientId, valueCaseId, artifact }
       };
     }
   }

@@ -7,15 +7,11 @@ import {
 } from "../models";
 import { OpenBadge } from "../generated/graphql";
 
-export type UnsignedOpenBadgeResponse = {
-  recipientId: string;
-  valueCaseId: string;
+export type UnsignedOpenBadgeResponse = ApprovedPublicBadge & {
   artifact: OpenBadge;
 };
 
-export type SignedOpenBadgeResponse = {
-  recipientId: string;
-  valueCaseId: string;
+export type SignedOpenBadgeResponse = ApprovedPublicBadge & {
   signature: string;
 };
 

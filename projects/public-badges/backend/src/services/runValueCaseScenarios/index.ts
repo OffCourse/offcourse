@@ -1,6 +1,5 @@
 import {
   PublicBadgesEventType as EV,
-  BadgeIssuanceApprovalRequestedEvent,
   BadgeIssuanceApprovedEvent,
   BadgeIssuanceRejectedEvent,
   ApprovedPublicBadge,
@@ -9,14 +8,15 @@ import {
   PublicBadgesHandler,
   PublicBadgeStatus,
   Proof,
-  Organization
+  Organization,
+  BadgeIssuanceRequestedEvent
 } from "@types";
 
 import { registry, valueCase as valueCaseStore } from "@stores";
 import uuid from "uuid/v1";
 import { slugify } from "voca";
 
-export type InputEvent = BadgeIssuanceApprovalRequestedEvent;
+export type InputEvent = BadgeIssuanceRequestedEvent;
 export type OutputEvent =
   | BadgeIssuanceApprovedEvent
   | BadgeIssuanceRejectedEvent;
@@ -53,7 +53,7 @@ const runValueCaseScenarios: PublicBadgesHandler<
   OutputEvent
 > = async ({ detailType, detail }) => {
   switch (detailType) {
-    case EV.BADGE_ISSUANCE_APPROVAL_REQUESTED: {
+    case EV.BADGE_ISSUANCE_REQUESTED: {
       const { recipientId, valueCaseId } = detail;
       const organization = await registry.fetch({
         organizationId: recipientId

@@ -29,7 +29,6 @@ const {
   updateRegistry,
   prepareOpenBadgeArtifact,
   signOpenBadgeArtifact,
-  saveSignature,
   runValueCaseScenarios
 } = map(service => handler(service), services);
 
@@ -42,6 +41,5 @@ export {
   updateRegistry,
   prepareOpenBadgeArtifact,
   signOpenBadgeArtifact,
-  saveSignature,
   runValueCaseScenarios
 };

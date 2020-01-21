@@ -4,7 +4,6 @@ import {
   OrganizationApprovalAcceptedEvent,
   OrganizationApprovedEvent,
   BadgeIssuanceRequestedEvent,
-  BadgeIssuanceApprovalRequestedEvent,
   BadgeIssuanceApprovedEvent,
   BadgeInstanceUpdated,
   BadgeIssuanceRejectedEvent,
@@ -23,7 +22,6 @@ export type PublicBadgesEvent =
   | OrganizationApprovalAcceptedEvent
   | OrganizationApprovedEvent
   | BadgeIssuanceRequestedEvent
-  | BadgeIssuanceApprovalRequestedEvent
   | BadgeIssuanceApprovedEvent
   | BadgeIssuanceRejectedEvent
   | BadgeInstanceUpdated

@@ -1,6 +1,5 @@
 import saveOrganization from "./saveOrganization";
 import saveBadge from "./saveBadge";
-import saveSignature from "./saveSignature";
 import approveOrganization from "./approveOrganization";
 import updateRegistry from "./updateRegistry";
 import runValueCaseScenarios from "./runValueCaseScenarios";
@@ -14,6 +13,5 @@ export {
   saveOrganization,
   runValueCaseScenarios,
   prepareOpenBadgeArtifact,
-  signOpenBadgeArtifact,
-  saveSignature
+  signOpenBadgeArtifact
 };
