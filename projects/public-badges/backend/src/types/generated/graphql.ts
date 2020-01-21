@@ -194,7 +194,7 @@ export type Query = {
 
 
 export type QueryGetAllBadgesArgs = {
-  domainName: Maybe<Scalars['URL']>
+  domainName: Scalars['URL']
 };
 
 export type RejectedPublicBadge = PublicBadge & {
@@ -542,7 +542,7 @@ export type PublicBadgeResolvers<ContextType = ApolloContext, ParentType extends
 }>;
 
 export type QueryResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  getAllBadges: Resolver<Maybe<Array<Maybe<ResolversTypes['PublicBadge']>>>, ParentType, ContextType, QueryGetAllBadgesArgs>,
+  getAllBadges: Resolver<Maybe<Array<Maybe<ResolversTypes['PublicBadge']>>>, ParentType, ContextType, RequireFields<QueryGetAllBadgesArgs, 'domainName'>>,
 }>;
 
 export type RejectedPublicBadgeResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['RejectedPublicBadge'] = ResolversParentTypes['RejectedPublicBadge']> = ResolversObject<{

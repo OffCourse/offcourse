@@ -21,9 +21,13 @@
                 "name": "domainName",
                 "description": "",
                 "type": {
-                  "kind": "SCALAR",
-                  "name": "URL",
-                  "ofType": null
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "URL",
+                    "ofType": null
+                  }
                 },
                 "defaultValue": null
               }

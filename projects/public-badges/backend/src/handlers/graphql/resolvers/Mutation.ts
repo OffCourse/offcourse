@@ -75,6 +75,8 @@ const Mutation: MutationResolvers = {
 
     await timeout(500);
     const organization = await stores.registry.fetch({ domainName });
+    console.log(organization);
+    console.log(process.env.REGISTRY_BUCKET, process.env.REGISTRY_BUCKET);
 
     if (organization) {
       throw "ORG ALREADY EXISTS";

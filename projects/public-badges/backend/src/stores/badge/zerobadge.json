@@ -1,57 +1,57 @@
 {
-  "@context": "https://w3id.org/openbadges/v2",
-  "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb418",
-  "type": "Assertion",
-  "recipient": {
-    "type": "email",
-    "identity": "sander@waag.org"
-  },
-  "issuedOn": "2019-10-31T23:59:59.000Z",
-  "expires": "2020-10-31T23:59:59.000Z",
-  "verification": {
-    "type": "signedBadge",
-    "creator": "https://openbadges.com/publicKey.json"
-  },
-  "badge": {
-    "type": "BadgeClass",
-    "id": "urn:uuid:88c7a930-3181-11ea-9858-b312ce22102d",
-    "name": "Zero Badge",
-    "tags": ["manifesto", "intention"],
-    "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website\n",
-    "criteria": {
-      "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n"
-    },
-    "issuer": {
-      "id": "https://publicbadges.com/registry/publicspaces",
-      "type": "Profile",
-      "name": "Public Spaces",
-      "email": "contact@publicspaces.net"
-    }
-  },
+  "badgeId": "e8aeca90-3c9e-11ea-89f3-53484d1a963f",
+  "status": "SIGNED",
+  "name": "Zero Badge",
+  "tags": ["manifesto", "intention"],
+  "description": "This badge is awarded to organization that publicly display their commitment\nto the values of the public spaces manifesto on their website.\n",
+  "narrative": "The Zero Badge is a way for organizations that are part of the Public Spaces\ncoalition to show their affiliation on their website. It provides visible\nevidence to the user that the organization has the intention to implement\nthe Public Spaces values in their online presence.\n",
   "evidence": [
     {
-      "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb420",
-      "name": "Public Badges Registry Listing",
+      "proofId": "ea44acd0-3c9e-11ea-8f99-5f4617c2c328",
       "genre": "Gherkin Scenario",
-      "description": "Organization is listed in public spaces registry",
-      "narrative": "Given a user visits the organizations website\nAnd the website displays the Zero Badge\nThen the organization is listed in the Public Spaces Registry\nAnd the Badge is valid\nAnd the user knows that the organization subscribes to the Public Spaces manifesto\n"
+      "name": "organization-is-lised-in-public-spaces-registry",
+      "description": "Organization is listed in Public Spaces Registry",
+      "narrative": [
+        "Given a user visits the organizations website",
+        "And the website displays the Zero Badge",
+        "Then the organization is listed in the Public Spaces Registry",
+        "And the Badge is valid",
+        "And the user knows that the organization subscribes to the Public Spaces manifesto"
+      ]
     },
     {
-      "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb421",
-      "name": "Badge Visibility",
+      "proofId": "ea44d3e0-3c9e-11ea-8f99-5f4617c2c328",
       "genre": "Gherkin Scenario",
-      "description": "Badge is public visible on the organization's website",
-      "narrative": "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto\nAnd visits the organizations homepage\nWhen the user scrolls to the footer of the page\nThen the user should see the Zero Badge\nAnd the Badge should be displayed with sufficient color contrast\nAnd the Badge should have sufficient padding around it\n"
+      "name": "badge-is-publicly-visible-on-website",
+      "description": "Badge is Publicly Visible on Website",
+      "narrative": [
+        "Given a user wants to know if the organization subscribes to the Public Spaces Manifesto",
+        "And visits the organizations homepage",
+        "When the user scrolls to the footer of the page",
+        "Then the user should see the Zero Badge",
+        "And the Badge should be displayed with sufficient color contrast",
+        "And the Badge should have sufficient padding around it"
+      ]
     },
     {
-      "id": "urn:uuid:e79a6c18-787e-4868-8e65-e6a4530fb420",
-      "name": "Manifesto Link",
+      "proofId": "ea44d3e1-3c9e-11ea-8f99-5f4617c2c328",
       "genre": "Gherkin Scenario",
-      "description": "Organization's website",
-      "narrative": "Given a user wants to know what the Public Spaces manifesto entails\nAnd visits the website of an affiliated organization\nWhen the webiste displays the Zero Badge\nAnd the user clicks on the Badge\nThen the user should be redirected to the Public Spaces manifesto\n"
+      "name": "website-links-to-public-spaces-manifesto",
+      "description": "Website links to Public Spaces Manifesto",
+      "narrative": [
+        "Given a user wants to know what the Public Spaces manifesto entails",
+        "And visits the website of an affiliated organization",
+        "When the webiste displays the Zero Badge",
+        "And the user clicks on the Badge",
+        "Then the user should be redirected to the Public Spaces manifesto"
+      ]
     }
   ],
+  "recipientId": "391c87f0-3c9b-11ea-90a3-2b4cfc1d891a",
+  "valueCaseId": "88c7a930-3181-11ea-9858-b312ce22102d",
+  "issuedOn": "2020-01-21T22:39:44.188Z",
+  "expires": "2020-01-22T07:25:41.114Z",
   "artifact": {
-    "signature": "eyJhbGciOiJIUzI1NiJ9.eyJAY29udGV4dCI6Imh0dHBzOi8vdzNpZC5vcmcvb3BlbmJhZGdlcy92MiIsImlkIjoidXJuOnV1aWQ6MDViMThjYTAtMzk2YS0xMWVhLTk3YmEtOWI1Mjc3ZDYwYjIyIiwidHlwZSI6IkFzc2VydGlvbiIsInJlY2lwaWVudCI6eyJ0eXBlIjoiZW1haWwiLCJoYXNoZWQiOmZhbHNlLCJpZGVudGl0eSI6InNhbmRlckB3YWFnLm9yZyJ9LCJpc3N1ZWRPbiI6IjIwMjAtMDEtMTdUMjA6NDM6MzcuNTYxWiIsImV4cGlyZXMiOiIyMDIwLTAxLT4VDA1OjI5OjM0LjQ4N1oiLCJ2ZXJpZmljYXRpb24iOnsidHlwZSI6InNpZ25lZEJhZGdlIiwiY3JlYXRvciI6Imh0dHBzOi8vb3BlbmJhZGdlcy5jb20vcHVibGljS2V5Lmpzb24ifSwiYmFkZ2UiOnsidHlwZSI6IkJhZGdlQ2xhc3MiLCJpZCI6InVybjp1dWlkOjg4YzdhOTMwLTMxODEtMTFlYS05ODU4LWIzMTJjZTIyMTAyZCIsIm5hbWUiOiJaZXJvIEJhZGdlIiwidGFncyI6WyJtYW5pZmVzdG8iLCJpbnRlbnRpb24iXSwiZGVzY3JpcHRpb24iOiJUaGlzIGJhZGdlIGlzIGF3YXJkZWQgdG8gb3JnYW5pemF0aW9uIHRoYXQgcHVibGljbHkgZGlzcGxheSB0aGVpciBjb21taXRtZW50XG50byB0aGUgdmFsdWVzIG9mIHRoZSBwdWJsaWMgc3BhY2VzIG1hbmlmZXN0byBvbiB0aGVpciB3ZWJzaXRlLlxuIiwiaW1hZ2UiOiJodHRwczovL3BuZ2ltYWdlLm5ldC93cC1jb250ZW50L3VwbG9hZHMvMjAxOC8wNi9pbWFnZW5lcy1yYW5kb20tcG5nLTMucG5nIiwiY3JpdGVyaWEiOnsibmFycmF0aXZlIjoiVGhlIFplcm8gQmFkZ2UgaXMgYSB3YXkgZm9yIG9yZ2FuaXphdGlvbnMgdGhhdCBhcmUgcGFydCBvZiB0aGUgUHVibGljIFNwYWNlc1xuY29hbGl0aW9uIHRvIHNob3cgdGhlaXIgYWZmaWxpYXRpb24gb24gdGhlaXIgd2Vic2l0ZS4gSXQgcHJvdmlkZXMgdmlzaWJsZVxuZXZpZGVuY2UgdG8gdGhlIHVzZXIgdGhhdCB0aGUgb3JnYW5pemF0aW9uIGhhcyB0aGUgaW50ZW50aW9uIHRvIGltcGxlbWVudFxudGhlIFB1YmxpYyBTcGFjZXMgdmFsdWVzIGluIHRoZWlyIG9ubGluZSBwcmVzZW5jZS5cbiJ9LCJpc3N1ZXIiOnsiaWQiOiJodHRwczovL3BuZ2ltYWdlLm5ldC93cC1jb250ZW50L3VwbG9hZHMvMjAxOC8wNi9pbWFnZW5lcy1yYW5kb20tcG5nLTMucG5nIiwidHlwZSI6IlByb2ZpbGUiLCJuYW1lIjoiUHVibGljIFNwYWNlcyIsImVtYWlsIjoiY29udGFjdEBwdWJsaWNzcGFjZXMubmV0In19LCJldmlkZW5jZSI6W3siaWQiOiJ1cm46dXVpZDowODJmMzZkMC0zOTZhLTExZWEtOTk4Mi01OWM2M2YzMWU1MjQiLCJnZW5yZSI6IkdoZXJraW4gU2NlbmFyaW8iLCJuYW1lIjoib3JnYW5pemF0aW9uLWlzLWxpc3RlZC1pbi1wdWJsaWMtc3BhY2VzLXJlZ2lzdHJ5IiwiZGVzY3JpcHRpb24iOiJPcmdhbml6YXRpb24gaXMgbGlzdGVkIGluIFB1YmxpYyBTcGFjZXMgUmVnaXN0cnkiLCJuYXJyYXRpdmUiOiJHaXZlbiBhIHVzZXIgdmlzaXRzIHRoZSBvcmdhbml6YXRpb25zIHdlYnNpdGVcbkFuZCB0aGUgd2Vic2l0ZSBkaXNwbGF5cyB0aGUgWmVybyBCYWRnZVxuVGhlbiB0aGUgb3JnYW5pemF0aW9uIGlzIGxpc3RlZCBpbiB0aGUgUHVibGljIFNwYWNlcyBSZWdpc3RyeVxuQW5kIHRoZSBCYWRnZSBpcyB2YWxpZFxuQW5kIHRoZSB1c2VyIGtub3dzIHRoYXQgdGhlIG9yZ2FuaXphdGlvbiBzdWJzY3JpYmVzIHRvIHRoZSBQdWJsaWMgU3BhY2VzIG1hbmlmZXN0byJ9LHsiaWQiOiJ1cm46dXVpZDowODJmNWRlMC0zOTZhLTExZWEtOTk4Mi01OWM2M2YzMWU1MjQiLCJnZW5yZSI6IkdoZXJraW4gU2NlbmFyaW8iLCJuYW1lIjoiYmFkZ2UtaXMtcHVibGljbHktdmlzaWJsZS1vbi13ZWJzaXRlIiwiZGVzY3JpcHRpb24iOiJCYWRnZSBpcyBQdWJsaWNseSBWaXNpYmxlIG9uIFdlYnNpdGUiLCJuYXJyYXRpdmUiOiJHaXZlbiBhIHVzZXIgd2FudHMgdG8ga25vdyBpZiB0aGUgb3JnYW5pemF0aW9uIHN1YnNjcmliZXMgdG8gdGhlIFB1YmxpYyBTcGFjZXMgTWFuaWZlc3RvXG5BbmQgdmlzaXRzIHRoZSBvcmdhbml6YXRpb25zIGhvbWVwYWdlXG5XaGVuIHRoZSB1c2VyIHNjcm9sbHMgdG8gdGhlIGZvb3RlciBvZiB0aGUgcGFnZVxuVGhlbiB0aGUgdXNlciBzaG91bGQgc2VlIHRoZSBaZXJvIEJhZGdlXG5BbmQgdGhlIEJhZGdlIHNob3VsZCBiZSBkaXNwbGF5ZWQgd2l0aCBzdWZmaWNpZW50IGNvbG9yIGNvbnRyYXN0XG5BbmQgdGhlIEJhZGdlIHNob3VsZCBoYXZlIHN1ZmZpY2llbnQgcGFkZGluZyBhcm91bmQgaXQifSx7ImlkIjoidXJuOnV1aWQ6MDgyZjVkZTEtMzk2YS0xMWVhLTk5ODItNTljNjNmMzFlNTI0IiwiZ2VucmUiOiJHaGVya2luIFNjZW5hcmlvIiwibmFtZSI6IndlYnNpdGUtbGlua3MtdG8tcHVibGljLXNwYWNlcy1tYW5pZmVzdG8iLCJkZXNjcmlwdGlvbiI6IldlYnNpdGUgbGlua3MgdG8gUHVibGljIFNwYWNlcyBNYW5pZmVzdG8iLCJuYXJyYXRpdmUiOiJHaXZlbiBhIHVzZXIgd2FudHMgdG8ga25vdyB3aGF0IHRoZSBQdWJsaWMgU3BhY2VzIG1hbmlmZXN0byBlbnRhaWxzXG5BbmQgdmlzaXRzIHRoZSB3ZWJzaXRlIG9mIGFuIGFmZmlsaWF0ZWQgb3JnYW5pemF0aW9uXG5XaGVuIHRoZSB3ZWJpc3RlIGRpc3BsYXlzIHRoZSBaZXJvIEJhZGdlXG5BbmQgdGhlIHVzZXIgY2xpY2tzIG9uIHRoZSBCYWRnZVxuVGhlbiB0aGUgdXNlciBzaG91bGQgYmUgcmVkaXJlY3RlZCB0byB0aGUgUHVibGljIFNwYWNlcyBtYW5pZmVzdG8ifV19.tzmAI6Nf9VbIL7Z_owH0Dt3SUXZl8GzMDQHUE6oeodw"
+    "signature": "eyJhbGciOiJIUzI1NiJ9.eyJAY29udGV4dCI6Imh0dHBzOi8vdzNpZC5vcmcvb3BlbmJhZGdlcy92MiIsImlkIjoidXJuOnV1aWQ6ZThhZWNhOTAtM2M5ZS0xMWVhLTg5ZjMtNTM0ODRkMWE5NjNmIiwidHlwZSI6IkFzc2VydGlvbiIsImlzc3VlZE9uIjoiMjAyMC0wMS0yMVQyMjozOTo0NC4xODhaIiwiZXhwaXJlcyI6IjIwMjAtMDEtMjJUMDc6MjU6NDEuMTE0WiIsInJlY2lwaWVudCI6eyJ0eXBlIjoiZW1haWwiLCJoYXNoZWQiOnRydWUsImlkZW50aXR5Ijoic2hhMjU2JGRhMmFiNDA4ODYzNDVhMDcyM2I3YzFkZDE3ZTU2ZDk2NDlkMDRlZTAwMTBhNDM5MWZlMjIyOWUyMjA4Yzg0NjIiLCJzYWx0IjoiUFVCTElDIEJBREdFUyJ9LCJ2ZXJpZmljYXRpb24iOnsidHlwZSI6InNpZ25lZEJhZGdlIiwiY3JlYXRvciI6Imh0dHBzOi8vb3BlbmJhZGdlcy5jb20vcHVibGljLWtleS5wZW0ifSwiYmFkZ2UiOnsidHlwZSI6IkJhZGdlQ2xhc3MiLCJpZCI6InVybjp1dWlkOjg4YzdhOTMwLTMxODEtMTFlYS05ODU4LWIzMTJjZTIyMTAyZCIsIm5hbWUiOiJaZXJvIEJhZGdlIiwidGFncyI6WyJtYW5pZmVzdG8iLCJpbnRlbnRpb24iXSwiZGVzY3JpcHRpb24iOiJUaGlzIGJhZGdlIGlzIGF3YXJkZWQgdG8gb3JnYW5pemF0aW9uIHRoYXQgcHVibGljbHkgZGlzcGxheSB0aGVpciBjb21taXRtZW50XG50byB0aGUgdmFsdWVzIG9mIHRoZSBwdWJsaWMgc3BhY2VzIG1hbmlmZXN0byBvbiB0aGVpciB3ZWJzaXRlLlxuIiwiaW1hZ2UiOiJodHRwczovL3B1YmxpY2JhZGdlcy5jb20vcHVibGljLWJhZGdlcy5zdmciLCJjcml0ZXJpYSI6eyJuYXJyYXRpdmUiOiJUaGUgWmVybyBCYWRnZSBpcyBhIHdheSBmb3Igb3JnYW5pemF0aW9ucyB0aGF0IGFyZSBwYXJ0IG9mIHRoZSBQdWJsaWMgU3BhY2VzXG5jb2FsaXRpb24gdG8gc2hvdyB0aGVpciBhZmZpbGlhdGlvbiBvbiB0aGVpciB3ZWJzaXRlLiBJdCBwcm92aWRlcyB2aXNpYmxlXG5ldmlkZW5jZSB0byB0aGUgdXNlciB0aGF0IHRoZSBvcmdhbml6YXRpb24gaGFzIHRoZSBpbnRlbnRpb24gdG8gaW1wbGVtZW50XG50aGUgUHVibGljIFNwYWNlcyB2YWx1ZXMgaW4gdGhlaXIgb25saW5lIHByZXNlbmNlLlxuIn0sImlzc3VlciI6eyJpZCI6Imh0dHBzOi8vcHVibGljYmFkZ2VzLmNvbS9wdWJsaWMtYmFkZ2VzLnN2ZyIsInR5cGUiOiJQcm9maWxlIiwibmFtZSI6IlB1YmxpYyBTcGFjZXMiLCJlbWFpbCI6ImNvbnRhY3RAcHVibGljc3BhY2VzLm5ldCJ9fSwiZXZpZGVuY2UiOlt7ImdlbnJlIjoiR2hlcmtpbiBTY2VuYXJpbyIsIm5hbWUiOiJvcmdhbml6YXRpb24taXMtbGlzdGVkLWluLXB1YmxpYy1zcGFjZXMtcmVnaXN0cnkiLCJkZXNjcmlwdGlvbiI6Ik9yZ2FuaXphdGlvbiBpcyBsaXN0ZWQgaW4gUHVibGljIFNwYWNlcyBSZWdpc3RyeSIsImlkIjoidXJuOnV1aWQ6ZWE0NGFjZDAtM2M5ZS0xMWVhLThmOTktNWY0NjE3YzJjMzI4IiwibmFycmF0aXZlIjoiR2l2ZW4gYSB1c2VyIHZpc2l0cyB0aGUgb3JnYW5pemF0aW9ucyB3ZWJzaXRlXG5BbmQgdGhlIHdlYnNpdGUgZGlzcGxheXMgdGhlIFplcm8gQmFkZ2VcblRoZW4gdGhlIG9yZ2FuaXphdGlvbiBpcyBsaXN0ZWQgaW4gdGhlIFB1YmxpYyBTcGFjZXMgUmVnaXN0cnlcbkFuZCB0aGUgQmFkZ2UgaXMgdmFsaWRcbkFuZCB0aGUgdXNlciBrbm93cyB0aGF0IHRoZSBvcmdhbml6YXRpb24gc3Vic2NyaWJlcyB0byB0aGUgUHVibGljIFNwYWNlcyBtYW5pZmVzdG8ifSx7ImdlbnJlIjoiR2hlcmtpbiBTY2VuYXJpbyIsIm5hbWUiOiJiYWRnZS1pcy1wdWJsaWNseS12aXNpYmxlLW9uLXdlYnNpdGUiLCJkZXNjcmlwdGlvbiI6IkJhZGdlIGlzIFB1YmxpY2x5IFZpc2libGUgb24gV2Vic2l0ZSIsImlkIjoidXJuOnV1aWQ6ZWE0NGQzZTAtM2M5ZS0xMWVhLThmOTktNWY0NjE3YzJjMzI4IiwibmFycmF0aXZlIjoiR2l2ZW4gYSB1c2VyIHdhbnRzIHRvIGtub3cgaWYgdGhlIG9yZ2FuaXphdGlvbiBzdWJzY3JpYmVzIHRvIHRoZSBQdWJsaWMgU3BhY2VzIE1hbmlmZXN0b1xuQW5kIHZpc2l0cyB0aGUgb3JnYW5pemF0aW9ucyBob21lcGFnZVxuV2hlbiB0aGUgdXNlciBzY3JvbGxzIHRvIHRoZSBmb290ZXIgb2YgdGhlIHBhZ2VcblRoZW4gdGhlIHVzZXIgc2hvdWxkIHNlZSB0aGUgWmVybyBCYWRnZVxuQW5kIHRoZSBCYWRnZSBzaG91bGQgYmUgZGlzcGxheWVkIHdpdGggc3VmZmljaWVudCBjb2xvciBjb250cmFzdFxuQW5kIHRoZSBCYWRnZSBzaG91bGQgaGF2ZSBzdWZmaWNpZW50IHBhZGRpbmcgYXJvdW5kIGl0In0seyJnZW5yZSI6IkdoZXJraW4gU2NlbmFyaW8iLCJuYW1lIjoid2Vic2l0ZS1saW5rcy10by1wdWJsaWMtc3BhY2VzLW1hbmlmZXN0byIsImRlc2NyaXB0aW9uIjoiV2Vic2l0ZSBsaW5rcyB0byBQdWJsaWMgU3BhY2VzIE1hbmlmZXN0byIsImlkIjoidXJuOnV1aWQ6ZWE0NGQzZTEtM2M5ZS0xMWVhLThmOTktNWY0NjE3YzJjMzI4IiwibmFycmF0aXZlIjoiR2l2ZW4gYSB1c2VyIHdhbnRzIHRvIGtub3cgd2hhdCB0aGUgUHVibGljIFNwYWNlcyBtYW5pZmVzdG8gZW50YWlsc1xuQW5kIHZpc2l0cyB0aGUgd2Vic2l0ZSBvZiBhbiBhZmZpbGlhdGVkIG9yZ2FuaXphdGlvblxuV2hlbiB0aGUgd2ViaXN0ZSBkaXNwbGF5cyB0aGUgWmVybyBCYWRnZVxuQW5kIHRoZSB1c2VyIGNsaWNrcyBvbiB0aGUgQmFkZ2VcblRoZW4gdGhlIHVzZXIgc2hvdWxkIGJlIHJlZGlyZWN0ZWQgdG8gdGhlIFB1YmxpYyBTcGFjZXMgbWFuaWZlc3RvIn1dfQ.rZcG07aF5yq1B7bkB5YjBZ0cicoIWagd9Bp7Xm-d5CA"
   }
 }

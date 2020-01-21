@@ -13,6 +13,7 @@
     "build": "tsc",
     "postbuild": "cp -r src/handlers/graphql/schema dist/handlers/graphql",
     "predeploy": "yarn build",
+    "predeploy:pilot": "yarn build",
     "deploy": "sls deploy --stage dev",
     "deploy:pilot": "sls deploy --stage pilot"
   },
