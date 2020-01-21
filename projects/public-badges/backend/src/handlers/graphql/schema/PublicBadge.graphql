@@ -80,6 +80,7 @@ type SignedPublicBadge implements PublicBadge {
   issuedOn: String!
   expires: String!
   artifact: JSON!
+  signature: String!
   recipient: Organization!
 }
 

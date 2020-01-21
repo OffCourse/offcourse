@@ -225,6 +225,7 @@ export type SignedPublicBadge = PublicBadge & {
   issuedOn: Scalars['String'],
   expires: Scalars['String'],
   artifact: Scalars['JSON'],
+  signature: Scalars['String'],
   recipient: Organization,
 };
 
@@ -566,6 +567,7 @@ export type SignedPublicBadgeResolvers<ContextType = ApolloContext, ParentType e
   issuedOn: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   expires: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   artifact: Resolver<ResolversTypes['JSON'], ParentType, ContextType>,
+  signature: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   recipient: Resolver<ResolversTypes['Organization'], ParentType, ContextType>,
 }>;
 
