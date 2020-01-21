@@ -1,9 +1,11 @@
+import jws from "jws";
 import {
   OpenBadgeResolvers,
   OpenBadgeClassResolvers,
   OpenBadgeCriteriaResolvers,
   OpenBadgeRecipientResolvers,
-  OpenBadgeProofResolvers
+  OpenBadgeProofResolvers,
+  OpenBadgeArtifactResolvers
 } from "@types";
 
 const OpenBadgeCriteria: OpenBadgeCriteriaResolvers = {
@@ -78,10 +80,21 @@ const OpenBadge: OpenBadgeResolvers = {
   }
 };
 
+const OpenBadgeArtifact: OpenBadgeArtifactResolvers = {
+  signature({ signature }) {
+    return signature;
+  },
+  json({ signature }) {
+    const { payload } = jws.decode(signature);
+    return payload;
+  }
+};
+
 export {
   OpenBadge,
   OpenBadgeClass,
   OpenBadgeCriteria,
   OpenBadgeRecipient,
-  OpenBadgeProof
+  OpenBadgeProof,
+  OpenBadgeArtifact
 };

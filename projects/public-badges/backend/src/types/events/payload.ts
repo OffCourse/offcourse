@@ -3,7 +3,8 @@ import {
   ApprovedOrganization,
   PublicBadge,
   ApprovedPublicBadge,
-  RejectedPublicBadge
+  RejectedPublicBadge,
+  SignedPublicBadge
 } from "../models";
 import { OpenBadge } from "../generated/graphql";
 
@@ -11,9 +12,7 @@ export type UnsignedOpenBadgeResponse = ApprovedPublicBadge & {
   artifact: OpenBadge;
 };
 
-export type SignedOpenBadgeResponse = ApprovedPublicBadge & {
-  signature: string;
-};
+export type SignedOpenBadgeResponse = SignedPublicBadge;
 
 export type PublicBadgesEventPayload =
   | PendingOrganization

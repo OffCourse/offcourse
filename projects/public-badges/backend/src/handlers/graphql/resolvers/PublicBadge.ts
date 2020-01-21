@@ -1,4 +1,3 @@
-import jws from "jws";
 import {
   PublicBadgeResolvers,
   PublicBadgeStatus,
@@ -86,12 +85,8 @@ const SignedPublicBadge: SignedPublicBadgeResolvers = {
   expires({ expires }) {
     return expires;
   },
-  signature({ signature }) {
-    return signature;
-  },
-  artifact({ signature }) {
-    const { payload } = jws.decode(signature);
-    return payload;
+  artifact({ artifact }) {
+    return artifact;
   }
 };
 

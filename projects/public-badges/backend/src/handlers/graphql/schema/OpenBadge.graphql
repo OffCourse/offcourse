@@ -3,6 +3,11 @@ type OpenBadgeRecipient {
   type: String!
 }
 
+type OpenBadgeArtifact {
+  signature: String!
+  json: JSON!
+}
+
 type OpenBadgeProof  {
   id: String!
   name: String!

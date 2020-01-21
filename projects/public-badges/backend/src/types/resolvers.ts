@@ -4,6 +4,7 @@ export {
   QueryResolvers,
   OpenBadgeResolvers,
   OpenBadgeClassResolvers,
+  OpenBadgeArtifactResolvers,
   OpenBadgeCriteriaResolvers,
   OpenBadgeRecipientResolvers,
   OpenBadgeProofResolvers,
@@ -20,4 +21,3 @@ export {
   SignedPublicBadgeResolvers,
   ApprovedOrganizationResolvers
 } from "./generated/graphql";
-

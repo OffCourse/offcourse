@@ -35,7 +35,9 @@ const signOpenBadgeArtifact: PublicBadgesHandler<
           issuedOn,
           expires,
           status: PublicBadgeStatus.Signed,
-          signature
+          artifact: {
+            signature
+          }
         }
       };
     }

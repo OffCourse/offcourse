@@ -24,8 +24,7 @@ const generateBadge = (opts: { id: string }) => ({
     return { ...proof, proofId };
   }),
   issuedOn: issuedOn,
-  expires: expires,
-  artifact
+  expires: expires
 });
 
 const badges = [

@@ -19,6 +19,7 @@ generates:
       mappers:
         ValueCase: ../models#ValueCaseProxy
         PublicBadge: ../models#PublicBadgeProxy
+        OpenBadgeArtifact: ../models#OpenBadgesArtifactProxy
   ./graphql.schema.json:
     plugins:
       - "introspection"

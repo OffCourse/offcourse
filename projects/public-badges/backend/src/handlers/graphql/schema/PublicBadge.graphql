@@ -79,8 +79,7 @@ type SignedPublicBadge implements PublicBadge {
   evidence: [Proof!]!
   issuedOn: String!
   expires: String!
-  artifact: JSON!
-  signature: String!
+  artifact: OpenBadgeArtifact!
   recipient: Organization!
 }
 
