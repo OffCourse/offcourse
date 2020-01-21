@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import {
   PublicBadgesEventType as EV,
   BadgeIssuanceApprovedEvent,
@@ -10,15 +11,22 @@ import {
   OpenBadgeClass
 } from "@types";
 
+const hashEmailAddress = (email: string, salt: string) => {
+  var sum = crypto.createHash("sha256");
+  sum.update(email + salt);
+  return "sha256$" + sum.digest("hex");
+};
+
 import { registry, valueCase as valueCaseStore } from "@stores";
 
 export type InputEvent = BadgeIssuanceApprovedEvent;
 export type OutputEvent = OpenBadgeArtifactCreated;
 
 const yearInSeconds = 31556926;
+
 const verification = {
   type: "signedBadge",
-  creator: "https://openbadges.com/publicKey.json"
+  creator: "https://openbadges.com/public-key.pem"
 };
 
 const createBadgeClass: (args: { valueCase: ValueCase }) => OpenBadgeClass = ({
@@ -42,31 +50,37 @@ const createBadgeClass: (args: { valueCase: ValueCase }) => OpenBadgeClass = ({
   };
 };
 
+const createRecipient = ({ email }: { email: string }) => {
+  const salt = "PUBLIC BADGES";
+  const identity = hashEmailAddress(email, salt);
+  return {
+    type: "email",
+    hashed: true,
+    identity,
+    salt
+  };
+};
+
 const createArtifact: (args: {
   badgeInstance: ApprovedPublicBadge;
   valueCase: ValueCase;
   organization: Organization;
-}) => OpenBadge = ({ badgeInstance, valueCase }) => {
+}) => OpenBadge = ({ badgeInstance, valueCase, organization }) => {
   const { badgeId, evidence: pbEvidence } = badgeInstance;
   const badge = createBadgeClass({ valueCase });
-  const evidence = pbEvidence.map(({ proofId, narrative, ...proof }) => {
-    return {
-      id: `urn:uuid:${proofId}`,
-      ...proof,
-      narrative: narrative.join("\n")
-    };
-  });
+  const recipient = createRecipient(organization.contact);
+  const evidence = pbEvidence.map(({ proofId, narrative, ...proof }) => ({
+    ...proof,
+    id: `urn:uuid:${proofId}`,
+    narrative: narrative.join("\n")
+  }));
   return {
     "@context": "https://w3id.org/openbadges/v2",
     id: `urn:uuid:${badgeId}`,
     type: "Assertion",
-    recipient: {
-      type: "email",
-      hashed: false,
-      identity: "sander@waag.org"
-    },
     issuedOn: new Date(Date.now()).toISOString(),
     expires: new Date(Date.now() + yearInSeconds).toISOString(),
+    recipient,
     verification,
     badge,
     evidence
