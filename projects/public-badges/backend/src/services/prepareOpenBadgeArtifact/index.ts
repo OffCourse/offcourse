@@ -8,16 +8,20 @@ import {
   ValueCase,
   OpenBadge,
   Organization,
-  OpenBadgeClass
+  OpenBadgeClass,
+  Issuer
 } from "@types";
+import {
+  registry,
+  issuer as issuerStore,
+  valueCase as valueCaseStore
+} from "@stores";
 
 const hashEmailAddress = (email: string, salt: string) => {
   var sum = crypto.createHash("sha256");
   sum.update(email + salt);
   return "sha256$" + sum.digest("hex");
 };
-
-import { registry, valueCase as valueCaseStore } from "@stores";
 
 export type InputEvent = BadgeIssuanceApprovedEvent;
 export type OutputEvent = OpenBadgeArtifactCreated;
@@ -29,10 +33,12 @@ const verification = {
   creator: "https://openbadges.com/public-key.pem"
 };
 
-const createBadgeClass: (args: { valueCase: ValueCase }) => OpenBadgeClass = ({
-  valueCase
-}) => {
+const createBadgeClass: (args: {
+  valueCase: ValueCase;
+  issuer: Issuer;
+}) => OpenBadgeClass = ({ issuer, valueCase }) => {
   const { valueCaseId, image, name, tags, description, narrative } = valueCase;
+  const { issuerId, ...issuerData } = issuer;
   return {
     type: "BadgeClass",
     id: `urn:uuid:${valueCaseId}`,
@@ -42,10 +48,8 @@ const createBadgeClass: (args: { valueCase: ValueCase }) => OpenBadgeClass = ({
     image,
     criteria: { narrative },
     issuer: {
-      id: "https://publicbadges.com/public-badges.svg",
-      type: "Profile",
-      name: "Public Spaces",
-      email: "contact@publicspaces.net"
+      id: issuerId,
+      ...issuerData
     }
   };
 };
@@ -65,9 +69,10 @@ const createArtifact: (args: {
   badgeInstance: ApprovedPublicBadge;
   valueCase: ValueCase;
   organization: Organization;
-}) => OpenBadge = ({ badgeInstance, valueCase, organization }) => {
+  issuer: Issuer;
+}) => OpenBadge = ({ badgeInstance, valueCase, organization, issuer }) => {
   const { badgeId, evidence: pbEvidence } = badgeInstance;
-  const badge = createBadgeClass({ valueCase });
+  const badge = createBadgeClass({ valueCase, issuer });
   const recipient = createRecipient(organization.contact);
   const evidence = pbEvidence.map(({ proofId, narrative, ...proof }) => ({
     ...proof,
@@ -103,10 +108,15 @@ const prepareOpenBadgeArtifact: PublicBadgesHandler<
       if (!valueCase) {
         throw "invalid badge, no corresponding value case";
       }
+      const issuer = await issuerStore.fetch({});
+      if (!issuer) {
+        throw "invalid badge, no corresponding issuer";
+      }
       const artifact = createArtifact({
         badgeInstance: detail,
         valueCase,
-        organization
+        organization,
+        issuer
       });
       return {
         detailType: EV.OPEN_BADGES_ARTIFACT_CREATED,

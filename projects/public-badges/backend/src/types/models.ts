@@ -42,6 +42,7 @@ export {
   OrganizationStatus,
   OpenBadge,
   OpenBadgeClass,
+  Issuer,
   Proof,
   PublicBadgeStatus
 } from "./generated/graphql";

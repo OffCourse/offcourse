@@ -55,6 +55,13 @@ export type ContactInput = {
 
 
 
+export type Issuer = {
+  issuerId: Scalars['URL'],
+  type: Maybe<Scalars['String']>,
+  name: Maybe<Scalars['String']>,
+  email: Scalars['EmailAddress'],
+};
+
 
 export type Mutation = {
   applyForBadge: Maybe<PublicBadge>,
@@ -345,6 +352,7 @@ export type ResolversTypes = ResolversObject<{
   ContactInput: ContactInput,
   PendingOrganization: ResolverTypeWrapper<PendingOrganization>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
+  Issuer: ResolverTypeWrapper<Issuer>,
   OpenBadgeRecipient: ResolverTypeWrapper<OpenBadgeRecipient>,
   OpenBadgeArtifact: ResolverTypeWrapper<OpenBadgesArtifactProxy>,
   JSON: ResolverTypeWrapper<Scalars['JSON']>,
@@ -382,6 +390,7 @@ export type ResolversParentTypes = ResolversObject<{
   ContactInput: ContactInput,
   PendingOrganization: PendingOrganization,
   Boolean: Scalars['Boolean'],
+  Issuer: Issuer,
   OpenBadgeRecipient: OpenBadgeRecipient,
   OpenBadgeArtifact: OpenBadgesArtifactProxy,
   JSON: Scalars['JSON'],
@@ -436,6 +445,13 @@ export interface EmailAddressScalarConfig extends GraphQLScalarTypeConfig<Resolv
 export interface GuidScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['GUID'], any> {
   name: 'GUID'
 }
+
+export type IssuerResolvers<ContextType = ApolloContext, ParentType extends ResolversParentTypes['Issuer'] = ResolversParentTypes['Issuer']> = ResolversObject<{
+  issuerId: Resolver<ResolversTypes['URL'], ParentType, ContextType>,
+  type: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  name: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  email: Resolver<ResolversTypes['EmailAddress'], ParentType, ContextType>,
+}>;
 
 export interface JsonScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['JSON'], any> {
   name: 'JSON'
@@ -603,6 +619,7 @@ export type Resolvers<ContextType = ApolloContext> = ResolversObject<{
   Contact: ContactResolvers<ContextType>,
   EmailAddress: GraphQLScalarType,
   GUID: GraphQLScalarType,
+  Issuer: IssuerResolvers<ContextType>,
   JSON: GraphQLScalarType,
   Mutation: MutationResolvers<ContextType>,
   OpenBadge: OpenBadgeResolvers<ContextType>,

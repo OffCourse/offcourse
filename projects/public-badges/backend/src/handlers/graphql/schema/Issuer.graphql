@@ -1,0 +1,6 @@
+type Issuer {
+  issuerId: URL!
+  type: String
+  name: String
+  email: EmailAddress!
+}

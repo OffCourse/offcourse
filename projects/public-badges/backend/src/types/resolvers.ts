@@ -13,6 +13,7 @@ export {
   PendingOrganizationResolvers,
   ScenarioResolvers,
   ValueCaseResolvers,
+  IssuerResolvers,
   ProofResolvers,
   PublicBadgeResolvers,
   PendingPublicBadgeResolvers,
