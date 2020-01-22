@@ -7,6 +7,7 @@ import {
 } from "@types";
 import createBadgeClass from "./createBadgeClass";
 import createRecipient from "./createRecipient";
+import createProof from "./createProof";
 
 const yearInSeconds = 31556926;
 
@@ -21,24 +22,17 @@ const createArtifact: (args: {
   organization: Organization;
   issuer: Issuer;
 }) => OpenBadge = ({ badgeInstance, valueCase, organization, issuer }) => {
-  const { badgeId, evidence: pbEvidence } = badgeInstance;
-  const badge = createBadgeClass({ valueCase, issuer });
-  const recipient = createRecipient(organization.contact);
-  const evidence = pbEvidence.map(({ proofId, narrative, ...proof }) => ({
-    ...proof,
-    id: `urn:uuid:${proofId}`,
-    narrative: narrative.join("\n")
-  }));
+  const { badgeId, evidence } = badgeInstance;
   return {
     "@context": "https://w3id.org/openbadges/v2",
     id: `urn:uuid:${badgeId}`,
     type: "Assertion",
+    verification,
     issuedOn: new Date(Date.now()).toISOString(),
     expires: new Date(Date.now() + yearInSeconds).toISOString(),
-    recipient,
-    verification,
-    badge,
-    evidence
+    recipient: createRecipient(organization.contact),
+    badge: createBadgeClass({ valueCase, issuer }),
+    evidence: evidence.map(createProof)
   };
 };
 
