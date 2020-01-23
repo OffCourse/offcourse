@@ -1,6 +1,6 @@
 import baseTheme from "@offcourse/homepage-theme/src/theme";
 import getFontFaces from "@offcourse/homepage-theme/src/theme/utils";
-import fonts from "./bwa-fonts";
+import fonts from "./ps-fonts";
 import merge from "lodash.merge";
 
 const baseColors = {
@@ -38,7 +38,7 @@ ${fontFaces}
   }
 
   body {
-    font-family: Nitti Grotesk, Helvetica, sans-serif;
+    font-family: ManropeGX, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 20px;
     margin: 0;

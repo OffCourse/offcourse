@@ -1,20 +1,20 @@
 // @ts-nocheck
 
 import DA from "../fonts/DIN Alternate/DINAlternate-Bold.woff";
-import Mistral from "../fonts/Mistral/Mistral.woff2";
+import Manrope from "../fonts/manrope/ManropeGX.ttf";
 
 const fonts = {
   body: {
-    fontFamily: "DIN Alternate",
-    fontWeight: 400,
-    url: DA,
-    format: "woff"
+    fontFamily: "Manrope",
+    fontWeight: 450,
+    url: Manrope,
+    format: "ttf"
   },
   heading: {
-    fontFamily: "Mistral",
-    fontWeight: 700,
-    url: Mistral,
-    format: "woff2"
+    fontFamily: "Manrope",
+    fontWeight: 650,
+    url: Manrope,
+    format: "ttf"
   },
   monospace: {
     fontFamily: "DIN Alternate",

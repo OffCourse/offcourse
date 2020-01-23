@@ -15,7 +15,10 @@ const spanStyles = {
 const textStyles = {
   ...parentTextStyles,
   color: "white",
-  fontFamily: "body",
+  fontFamily: "heading",
+  fontWeight: 650,
+  lineHeight: "3rem",
+  mb: "1rem",
   fontSize: ["3rem", "3rem", "3rem", "3rem"]
 };
 

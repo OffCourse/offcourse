@@ -40,6 +40,7 @@ export type IFooterSection = IBaseSection & {
 export type IHeroSection = IBaseSection & {
   role: "HeroSection";
   title: string;
+  description: string;
 };
 
 export type IContactSection = IBaseSection & {

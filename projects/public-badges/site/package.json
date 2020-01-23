@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@offcourse/homepage-theme": "*",
+    "@offcourse/public-badges-drawer": "^0.0.10",
     "@types/d3-array": "^2.0.0",
     "d3-array": "^2.4.0",
     "gatsby": "^2.18.17",

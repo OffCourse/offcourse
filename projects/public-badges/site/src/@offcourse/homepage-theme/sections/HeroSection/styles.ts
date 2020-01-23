@@ -7,8 +7,8 @@ import {
 
 const textStyles = {
   ...parentTextStyles,
-  gridColumn: ["1/8", "1/8", "1/8", "1/8", "1/9"],
-  textAlign: ["center", "left"]
+  gridColumn: ["1/13", "1/8", "1/8", "1/8", "1/9"],
+  textAlign: ["left", "left"]
 };
 
 const wrapperStyles = {

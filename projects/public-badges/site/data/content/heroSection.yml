@@ -1,5 +1,5 @@
 role: HeroSection
 order: 10
 title: Public Badges
-subtitle: An evidence-based certification system for ethical values
+description: An evidence-based certification system for ethical values
 publishable: true
