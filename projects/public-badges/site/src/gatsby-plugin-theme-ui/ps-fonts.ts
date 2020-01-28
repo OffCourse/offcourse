@@ -1,6 +1,5 @@
 // @ts-nocheck
-
-import DA from "../fonts/DIN Alternate/DINAlternate-Bold.woff";
+import NB from "../fonts/Nitti/NB.woff";
 import Manrope from "../fonts/manrope/ManropeGX.ttf";
 
 const fonts = {
@@ -17,9 +16,9 @@ const fonts = {
     format: "ttf"
   },
   monospace: {
-    fontFamily: "DIN Alternate",
+    fontFamily: "Nitti Bold",
     fontWeight: 700,
-    url: DA,
+    url: NB,
     format: "woff"
   }
 };

@@ -2,18 +2,20 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces/src";
-import { wrapperStyles,  } from "./styles";
-// @ts-ignore
-import Mascot from "./public-badge.inline.svg";
+import { wrapperStyles, textStyles, spanStyles } from "./styles";
+import { formatTitle } from "@offcourse/homepage-theme/src/components/helpers";
 
 type LogoProps = { children: string } & IThemeable;
 
-const Logo: FunctionComponent<LogoProps> = ({ className }) => {
+const Logo: FunctionComponent<LogoProps> = ({ children, className }) => {
+  const words = formatTitle(children).split(" ");
   return (
     <div sx={wrapperStyles} className={className}>
-      <div sx={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
-        <Mascot sx={{width: "10rem", ml: 4}}/>
-      </div>
+      {words.map((word, index) => (
+        <span sx={spanStyles} key={index}>
+          <h1 sx={textStyles}>{word}</h1>
+        </span>
+      ))}
     </div>
   );
 };

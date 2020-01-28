@@ -1,21 +1,41 @@
 import { SxStyleProp } from "theme-ui";
 
-import {
-  wrapperStyles as parentWrapperStyles,
-  textStyles as parentTextStyles
-} from "@offcourse/homepage-theme/src/components/Logo/styles";
-
-const wrapperStyles: SxStyleProp = {
-  ...parentWrapperStyles,
-  justifyContent: "center",
-  alignContent: "center",
-  textAlign: "center"
+export const wrapperStyles: SxStyleProp = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-end",
+  alignContent: "flex-end",
+  textAlign: "right",
+  userSelect: "none"
 };
 
-const textStyles = {
-  ...parentTextStyles,
-  color: "black",
-  fontSize: ["3rem", "3rem", "3rem", "3rem"]
-};
+const scale = [0.4, 0.4, 0.5, 0.5];
+const spacing = scale.map((size) => `${size}rem`);
+const fontSize = scale.map((size) => `${size * 5}rem`);
+const lineHeight = scale.map((size) => `${size * 6}rem`);
 
-export { wrapperStyles, textStyles };
+export const spanStyles: SxStyleProp = {
+  userSelect: "none",
+  px: 0,
+  m: 0,
+  mb: spacing,
+  "&:last-of-type": {
+    mb: 0
+  }
+};
+export const textStyles = {
+  fontFamily: "monospace",
+  display: "inline-block",
+  fontSize,
+  lineHeight,
+  wordSpacing: "-0.2em",
+  m: 0,
+  px: spacing,
+  mb: 0,
+  color: "grayScale.0",
+  bg: "grayScale.4",
+  "&:last-type": {
+    mb: 0,
+    mr: 0
+  }
+};

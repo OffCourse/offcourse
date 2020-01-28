@@ -38,7 +38,8 @@ const PublicBadgesDrawer: FunctionComponent<IPublicBadgesDrawerProp> =
     // tslint:disable-next-line
       inBrowser && defineCustomElements(window);
     }, [inBrowser]);
-    return <publicbadges-drawer badge-color={badgeColor} modal-theme={modalTheme} / > ;
+    return <publicbadges-drawer domain-name={"https://offcourse-studio.com/"}
+      badge-color={badgeColor} modal-theme={modalTheme} / > ;
 };
 
 export default PublicBadgesDrawer;
