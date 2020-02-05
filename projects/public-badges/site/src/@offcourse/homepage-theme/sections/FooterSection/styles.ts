@@ -9,7 +9,10 @@ const wrapperStyles = {
   gridTemplateRows: ["1fr 1fr", "1fr 1fr", "1fr", "1fr"],
   alignItems: "center",
   gridColumnGap: "1rem",
-  gridRowGap: "0rem"
+  gridRowGap: "0rem",
+  "@media(max-width: 20rem)": {
+    height: "50vh"
+  }
 };
 
 const scale = [0.3, 0.375, 0.5, 0.5];

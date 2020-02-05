@@ -17,7 +17,7 @@ const FooterSection: FunctionComponent<FooterSectionProps> = ({
 }) => {
   return (
     <BaseSection {...props} className={className} sx={wrapperStyles}>
-      <a href="https://publicspaces.org" sx={publicSpacesLogoStyle}><PublicSpacesLogo/></a>
+      <a href="https://publicspaces.net" sx={publicSpacesLogoStyle}><PublicSpacesLogo/></a>
       <a href="https://waag.org/" sx={waagLogoStyle}><WaagLogo /></a>
       <a sx={offcourseLogoStyle} href="https://offcourse-studio.com/">
       <OffcourseLogo>Offcourse Studio</OffcourseLogo>

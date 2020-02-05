@@ -6,7 +6,7 @@ import Logo from "@offcourse/homepage-theme/src/components/Logo";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
 import useHomepageData from "@offcourse/homepage-theme/src/hooks/useHomepageData";
-import { drawerStyles, outerWrapperStyles, logoStyles, contactStyles } from "./styles";
+import { drawerStyles, outerWrapperStyles, logoStyles, contactStyles, scalingContainerStyles } from "./styles";
 import PublicBadgesDrawer from "../../../../components/PublicBadgesDrawer";
 
 type FooterProps = IFooterSection & IThemeable;
@@ -19,6 +19,7 @@ const FooterSection: FunctionComponent<FooterProps> = ({
   const { siteName } = useHomepageData();
   return (
     <Footer sx={outerWrapperStyles} className={className}>
+      <div sx={scalingContainerStyles}>
         <div sx={contactStyles}>
           <Styled.h2>Contact</Styled.h2>
           <section>
@@ -32,6 +33,7 @@ const FooterSection: FunctionComponent<FooterProps> = ({
         <PublicBadgesDrawer modalTheme="light"/>
       </div>
       <Logo sx={logoStyles}>{siteName}</Logo>
+      </div>
     </Footer>
   );
 };

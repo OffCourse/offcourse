@@ -6,10 +6,7 @@ export const outerWrapperStyles = {
   pb: 6,
   px: 6,
   bg: "grayScale.4",
-  maxHeight: "60vh",
-  gridTemplateColumns: ["1fr 1fr", "1fr 1fr 1fr"],
-  gridTemplateRows: ["1fr 1fr", "1fr"],
-  gridRowGap: [6, 7]
+  maxHeight: "60vh"
 };
 
 export const contactStyles: SxStyleProp = {
@@ -32,6 +29,17 @@ export const contactStyles: SxStyleProp = {
   }
 };
 
+export const scalingContainerStyles = {
+  display: "grid",
+  gridTemplateColumns: ["1fr 1fr", "1fr 1fr 1fr"],
+  gridTemplateRows: ["1fr 1fr", "1fr"],
+  gridRowGap: [6, 7],
+  "@media(max-width: 20rem)": {
+    transformOrigin: "top left",
+    transform: ["scale(0.8)", "none"]
+  }
+};
+
 export const drawerStyles: SxStyleProp = {
   alignItems: "center",
   justifySelf: ["center"],
@@ -41,8 +49,6 @@ export const drawerStyles: SxStyleProp = {
 };
 
 export const logoStyles = {
-  transformOrigin: "center right",
-  transform: ["scale(0.8)", "none"],
   gridRow: [2, 1],
   order: [2, 2],
   alignSelf: "center",

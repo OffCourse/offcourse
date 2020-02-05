@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@offcourse/homepage-theme": "*",
-    "@offcourse/public-badges-drawer": "^0.0.23",
+    "@offcourse/public-badges-drawer": "^0.1.0",
     "@offcourse/interfaces": "*",
     "@types/d3-array": "^2.0.0",
     "d3-array": "^2.4.0",
