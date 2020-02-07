@@ -9,6 +9,7 @@ module.exports = {
       },
     },
   },
+         "@offcourse/homepage-theme",
          "@offcourse/blog-theme",
   ],
   siteMetadata: {

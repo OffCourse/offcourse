@@ -1,41 +1,50 @@
 {
   "name": "@offcourse/atoms",
-  "version": "1.4.11",
+  "version": "0.2.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "jsnext:main": "build/index.es.js",
   "scripts": {
-    "build": "echo 'HI'",
-    "storybook": "start-storybook"
+    "build": "rollup -c",
+    "lint": "standard",
+    "format": "prettier-standard --format",
+    "test": "jest --coverage"
   },
+  "keywords": [],
   "author": "",
-  "license": "MIT",
-    "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@emotion/core": "^10.0.16",
-    "@storybook/addon-actions": "^5.1.11",
-    "@storybook/addon-backgrounds": "^5.1.11",
-    "@storybook/addon-knobs": "^5.1.11",
-    "@storybook/addon-links": "^5.1.11",
-    "@storybook/addon-storyshots": "^5.1.11",
-    "@storybook/addons": "^5.1.11",
-    "@storybook/react": "~5.1.11",
-    "@types/react": "^16.9.2",
-    "@types/storybook__addon-actions": "^3.4.3",
-    "@types/storybook__addon-knobs": "^5.0.3",
-    "@types/storybook__addon-storyshots": "^4.0.1",
-    "@types/storybook__react": "^4.0.2",
-    "@types/styled-components": "4.1.8",
-    "awesome-typescript-loader": "~5.2.1",
-    "babel-loader": "~8.0.6",
-    "clean-webpack-plugin": "~3.0.0",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.0.24",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
     "jest": "^24.9.0",
-    "jest-styled-components": "^6.3.3",
-    "react": "^16.9.0",
-    "react-docgen-typescript-loader": "^3.1.1",
-    "react-dom": "^16.9.0",
-    "storybook-addon-styled-component-theme": "^1.2.4",
-    "styled-components": "^4.3.2",
-    "webpack": "~4.39.3",
-    "webpack-cli": "^3.3.7"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "rollup": "^1.27.13",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "standard": "^14.3.1",
+    "standard-prettier": "^1.0.1",
+    "theme-ui": "^0.3.1",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "standard": {
+    "ignore": [
+      "node_modules/",
+      "build/"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^16",
+    "react-dom": "^16",
+    "theme-ui": "^0.3.1"
   }
 }

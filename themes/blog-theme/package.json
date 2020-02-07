@@ -45,6 +45,7 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "@offcourse/atoms": "*",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "d3-array": "^2.4.0",

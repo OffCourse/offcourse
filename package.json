@@ -3,6 +3,7 @@
   "workspaces": {
     "packages": [
       "interfaces",
+      "components/atoms",
       "themes/homepage-theme",
       "themes/blog-theme",
       "projects/offcourse-studio",
