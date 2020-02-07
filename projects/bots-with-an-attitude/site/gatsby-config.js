@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
+  "gatsby-plugin-typescript",
   {
     resolve: "gatsby-plugin-react-svg",
     options: {
@@ -8,16 +9,8 @@ module.exports = {
       },
     },
   },
-  {
-    resolve: `gatsby-theme-blog`,
-    options: {
-      basePath: `/blog`,
-      contentPath: "./data/posts",
-      assetPath: "./data/assets",
-     },
-},
-  "@offcourse/homepage-theme",
-],
+         "@offcourse/blog-theme",
+  ],
   siteMetadata: {
     author: "Yeehaa",
     description: `My site description...`,
@@ -32,6 +25,7 @@ module.exports = {
         url: "https://github.com/offcourse/bots-with-an-attitude",
       },
     ],
+    siteName: "Bots with an Attitude",
     title: "Bots with an Attitude",
   },
 };

@@ -7,9 +7,9 @@
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
-    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "noUnusedLocals": false
+    "noUnusedLocals": false,
+    "allowJs": true
   },
   "exclude": ["node_modules", "public", ".cache"]
 }

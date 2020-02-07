@@ -1,9 +1,0 @@
-role: FooterSection
-order: 70
-publishable: true
-contactInfo:
-  street: Some Street
-  zipCode: 10001AA
-  city: Some City
-  country: Some Contry
-  email: contact@something.etc

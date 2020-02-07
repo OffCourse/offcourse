@@ -14,7 +14,7 @@ const textStyles = {
 const wrapperStyles = {
   ...parentWrapperStyles,
   bg: "secondary",
-  height: ["100vh", "100vh", "100vh", "80vh", "80vh", "80vh"],
+  height: ["100vh", "100vh", "100vh", "100vh", "100vh", "100vh"],
   gridTemplateRows: "1fr"
 };
 

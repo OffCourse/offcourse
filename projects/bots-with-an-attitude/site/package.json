@@ -15,17 +15,18 @@
   "author": "Yeehaa",
   "license": "MIT",
   "devDependencies": {
-    "gatsby-plugin-react-svg": "^2.1.2",
+    "gatsby-plugin-react-svg": "^3.0.0",
     "prettier": "^1.19.1",
-    "serverless": "^1.60.4"
+    "serverless": "^1.63.0"
   },
   "dependencies": {
+    "@mdx-js/react": "^1.0.27",
+    "@offcourse/blog-theme": "*",
     "@offcourse/homepage-theme": "*",
     "@types/d3-array": "^2.0.0",
     "d3-array": "^2.4.0",
-    "gatsby": "^2.18.17",
-    "gatsby-plugin-typescript": "^2.1.23",
-    "gatsby-theme-blog": "^1.2.40",
+    "gatsby": "^2.19.12",
+    "gatsby-plugin-typescript": "^2.1.27",
     "lodash.merge": "^4.6.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

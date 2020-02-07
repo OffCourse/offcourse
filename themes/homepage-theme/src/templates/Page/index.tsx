@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { Global } from "@emotion/core";
-import { Layout, Main, Container } from "theme-ui";
+import { Box, Container } from "theme-ui";
 
 const PageTemplate = forwardRef(
   (
@@ -14,14 +14,14 @@ const PageTemplate = forwardRef(
     ref: any
   ) => {
     return (
-      <Layout>
+      <Box>
         <Global styles={(theme) => theme.globals} />
-        <Main className={className}>
+        <Box className={className}>
           <Container>
             <div ref={ref}>{children}</div>
           </Container>
-        </Main>
-      </Layout>
+        </Box>
+      </Box>
     );
   }
 );

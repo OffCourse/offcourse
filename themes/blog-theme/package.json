@@ -1,5 +1,5 @@
 {
-  "name": "@offcourse/homepage-theme",
+  "name": "@offcourse/blog-theme",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
@@ -25,7 +25,11 @@
     "@types/d3-array": "^2.0.0",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
+    "@types/ramda": "^0.26.41",
+    "@types/theme-ui": "^0.3.0",
+    "@types/voca": "^1.4.0",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "gatsby-plugin-compile-es6-packages": "^2.1.0",
     "@typescript-eslint/parser": "^2.19.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
@@ -43,25 +47,12 @@
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
-    "@types/ramda": "^0.26.41",
-    "@types/theme-ui": "^0.3.0",
-    "@types/voca": "^1.4.0",
-    "@types/yup": "^0.26.30",
     "d3-array": "^2.4.0",
     "formik": "^2.1.4",
-    "gatsby-plugin-react-svg": "^3.0.0",
-    "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-theme-blog": "^1.2.40",
-    "gatsby-transformer-yaml": "^2.2.24",
+    "gatsby-theme-blog-core": "1.1.0",
     "mkdirp": "^1.0.3",
     "ramda": "^0.27.0",
-    "react-spring": "^8.0.27",
-    "react-waypoint": "^9.0.2",
-    "remark": "^11.0.2",
-    "remark-html": "^10.0.0",
-    "resize-observer-polyfill": "^1.5.1",
     "theme-ui": "^0.3.1",
-    "voca": "^1.4.0",
-    "yup": "^0.28.1"
+    "voca": "^1.4.0"
   }
 }
