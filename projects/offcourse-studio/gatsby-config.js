@@ -6,14 +6,18 @@ module.exports = {
     social: [
       {
         name: `Twitter`,
-        url: "https://twitter.com/yeehaa",
+        url: "https://twitter.com/yeehaa"
       },
       {
         name: "GitHub",
         url: "https://github.com/offcourse/"
-      },
+      }
     ],
-    title: "Offcourse",
+    title: "Offcourse"
   },
-plugins: ["@offcourse/blog-theme", "@offcourse/homepage-theme"]
+  plugins: [
+    "@offcourse/blog-theme",
+    "@offcourse/homepage-theme",
+    "@offcourse/presentation-theme"
+  ]
 };

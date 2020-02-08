@@ -29,6 +29,8 @@ const grayScale = [
 const theme: ITheme = {
   colors: {
     primary,
+    background: baseColors.yellow,
+    text: baseColors.black,
     secondary,
     negative,
     error,
@@ -95,7 +97,8 @@ const theme: ITheme = {
       fontFamily: "body"
     },
     h1: {
-      fontSize: 5,
+      fontSize: 4,
+      lineHeight: 4,
       margin: 0,
       fontFamily: "heading"
     },

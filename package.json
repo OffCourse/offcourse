@@ -5,6 +5,7 @@
       "interfaces",
       "components/atoms",
       "themes/homepage-theme",
+      "themes/presentation-theme",
       "themes/blog-theme",
       "projects/offcourse-studio",
       "projects/bots-with-an-attitude/site",

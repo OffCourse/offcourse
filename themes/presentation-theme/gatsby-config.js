@@ -8,16 +8,15 @@ module.exports = ({
     {
       resolve: `gatsby-plugin-compile-es6-packages`,
       options: {
-        modules: ["gatsby-theme-blog-core"]
+        modules: ["gatsby-theme-mdx-deck"]
       }
     },
 
     {
-      resolve: `gatsby-theme-blog-core`,
+      resolve: "gatsby-theme-mdx-deck",
       options: {
-        basePath: `/blog`,
-        contentPath: "./data/posts",
-        assetPath: "./data/assets"
+        basePath: `/presentations`,
+        contentPath: "./data/decks"
       }
     },
     `gatsby-plugin-theme-ui`

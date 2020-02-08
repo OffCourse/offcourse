@@ -17,6 +17,8 @@ export interface IMeasurable {
 
 interface IColor {
   primary: string;
+  background: string;
+  text: string;
   negative: string;
   secondary: string;
   error: string;
