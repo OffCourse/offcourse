@@ -4,6 +4,13 @@ import { jsx, Box, Flex } from "theme-ui";
 import { Global } from "@emotion/core";
 import Logo from "@offcourse/atoms/src/components/Logo";
 
+export const logoStyles = {
+  h1: {
+    bg: "grayScale.4",
+    color: "grayScale.0"
+  }
+};
+
 const Layout: FunctionComponent = ({ children }) => {
   return (
     <Box
@@ -18,8 +25,8 @@ const Layout: FunctionComponent = ({ children }) => {
       <Flex sx={{ justifyContent: "center", alignItems: "center" }}>
         {children}
       </Flex>
-      <Box sx={{ display: "grid", bg: "white", p: 4, justifyContent: "end" }}>
-        <Logo>Offcourse Studio_</Logo>
+      <Box sx={{ display: "grid",  p: 4, justifyContent: "end" }}>
+        <Logo sx={logoStyles}>Offcourse Studio_</Logo>
       </Box>
     </Box>
   );
