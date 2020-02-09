@@ -41,6 +41,7 @@ export interface ITheme {
   lineHeights: string[];
   styles: any;
   globals: any;
+  Provider?: any;
 }
 
 export interface IThemeable {

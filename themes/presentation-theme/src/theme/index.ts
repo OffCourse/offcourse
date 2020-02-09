@@ -28,6 +28,8 @@ const grayScale = [
 
 const theme: ITheme = {
   colors: {
+    background: baseColors.yellow,
+    text: baseColors.black,
     primary,
     secondary,
     negative,

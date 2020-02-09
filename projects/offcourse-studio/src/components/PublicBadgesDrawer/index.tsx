@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { FunctionComponent, useEffect} from "react";
+import { FunctionComponent, useEffect } from "react";
 import { jsx } from "theme-ui";
 import {
   defineCustomElements,
@@ -30,16 +30,23 @@ interface IPublicBadgesDrawerProp {
   modalTheme?: "light" | "dark";
 }
 
-const PublicBadgesDrawer: FunctionComponent<IPublicBadgesDrawerProp> =
-  ({ badgeColor = "white", modalTheme = "light"}) => {
+const PublicBadgesDrawer: FunctionComponent<IPublicBadgesDrawerProp> = ({
+  badgeColor = "white",
+  modalTheme = "light"
+}) => {
+  // tslint:disable-next-line
+  const inBrowser = typeof window !== `undefined` ? true : null;
+  useEffect(() => {
     // tslint:disable-next-line
-    const inBrowser = typeof window !== `undefined` ? true : null;
-    useEffect(() => {
-    // tslint:disable-next-line
-      inBrowser && defineCustomElements(window);
-    }, [inBrowser]);
-    return <publicbadges-drawer domain-name={"https://offcourse-studio.com/"}
-      badge-color={badgeColor} modal-theme={modalTheme} / > ;
+    inBrowser && defineCustomElements(window);
+  }, [inBrowser]);
+  return (
+    <publicbadges-drawer
+      domain-name={"https://offcourse-studio.com/"}
+      badge-color={badgeColor}
+      modal-theme={modalTheme}
+    />
+  );
 };
 
 export default PublicBadgesDrawer;

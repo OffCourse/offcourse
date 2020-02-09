@@ -1,4 +1,4 @@
-import {  SxStyleProp } from "theme-ui";
+import { SxStyleProp } from "theme-ui";
 
 const wrapperStyles: SxStyleProp = {
   display: "flex",
@@ -10,9 +10,9 @@ const wrapperStyles: SxStyleProp = {
 };
 
 const scale = [0.4, 0.4, 0.5, 0.5];
-const spacing = scale.map((size) => `${size}rem`);
-const fontSize = scale.map((size) => `${size * 5}rem`);
-const lineHeight = scale.map((size) => `${size * 6}rem`);
+const spacing = scale.map(size => `${size}rem`);
+const fontSize = scale.map(size => `${size * 5}rem`);
+const lineHeight = scale.map(size => `${size * 6}rem`);
 
 const spanStyles: SxStyleProp = {
   userSelect: "none",
