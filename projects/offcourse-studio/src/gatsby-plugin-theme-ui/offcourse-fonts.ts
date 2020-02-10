@@ -3,6 +3,7 @@
 import NB from "../fonts/Nitti/NB.woff";
 import NGB from "../fonts/Nitti/NGB.woff";
 import NGN from "../fonts/Nitti/NGN.woff";
+import Mistral from "../fonts/Mistral/Mistral.woff2";
 
 const fonts = {
   body: {
@@ -22,6 +23,12 @@ const fonts = {
     fontWeight: 700,
     url: NB,
     format: "woff"
+  },
+  BWA: {
+    fontFamily: "Mistral",
+    fontWeight: 700,
+    url: Mistral,
+    format: "woff2"
   }
 };
 
