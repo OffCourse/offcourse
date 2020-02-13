@@ -1,14 +1,16 @@
-import { Children, cloneElement } from "react";
+import { Fragment } from "react";
 import { Slide } from "gatsby-theme-mdx-deck/src/components/slide";
 import Layout from "../../components/Layout";
 
+import { Global } from "@emotion/core";
+
 const NewSlide = ({ slide, ...props }: any) => {
-  const children = Children.map(slide, s =>
-    cloneElement(s, {
-      slideData: { index: props.index, total: props.navigate.length }
-    })
+  return (
+    <Fragment>
+      <Global styles={theme => theme.globals} />
+      <Slide slide={<Layout>{slide}</Layout>} {...props} />
+    </Fragment>
   );
-  return <Slide slide={<Layout>{children}</Layout>} {...props} />;
 };
 
 export { NewSlide as Slide };

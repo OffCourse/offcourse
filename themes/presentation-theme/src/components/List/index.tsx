@@ -1,19 +1,19 @@
 /** @jsx jsx */
-import { FunctionComponent, ReactNodeArray } from "react";
+import { FunctionComponent, Fragment, ReactNodeArray, Children } from "react";
 import { jsx, Box } from "theme-ui";
 import { outerWrapper, innerWrapper } from "./styles";
 import SlideMeta from "../SlideMeta";
 
-const Agenda: FunctionComponent<{
-  children: ReactNodeArray;
+const List: FunctionComponent<{
+  children: ReactNodeArray[];
   slideData: any;
 }> = ({ children, slideData }) => {
   return (
     <Box sx={outerWrapper}>
-      <div sx={innerWrapper}>{children}</div>
+      <dl sx={innerWrapper}>{children}</dl>
       <SlideMeta slideData={slideData} />
     </Box>
   );
 };
 
-export default Agenda;
+export default List;

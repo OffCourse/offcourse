@@ -111,6 +111,23 @@ const theme: ITheme = {
       fontSize: 2,
       margin: 0,
       fontFamily: "heading"
+    },
+    table: {
+      fontSize: [1, 2, 2, 3]
+    },
+    th: {
+      color: "white",
+      fontWeight: 700,
+      p: [2, 4, 4, 6],
+      lineHeight: 2,
+      textAlign: "left"
+    },
+    td: {
+      p: [2, 4, 4, 6],
+      pb: [0, 0, 0, 0],
+      lineHeight: [2, 2, 4, 4],
+      verticalAlign: "top",
+      textAlign: "left"
     }
   },
   globals: {

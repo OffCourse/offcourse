@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
-import { Global } from "@emotion/core";
 
 const Layout: FunctionComponent = ({ children }) => {
   return (
@@ -16,7 +15,6 @@ const Layout: FunctionComponent = ({ children }) => {
       }}
     >
       {children}
-      <Global styles={theme => theme.globals} />
     </Box>
   );
 };

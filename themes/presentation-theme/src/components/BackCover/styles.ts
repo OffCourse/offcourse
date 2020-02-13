@@ -5,6 +5,18 @@ const logoStyles = {
   }
 };
 
+const infoStyles = {
+  display: "grid",
+  alignContent: ["end", "end", "end"],
+  justifyContent: ["end", "end"],
+  pb: [4, 4, 4],
+  p: {
+    textAlign: ["right", "right"],
+    fontSize: [2, 2, 4],
+    mb: [4, 4, 5]
+  }
+};
+
 const footerStyles = {
   display: "grid",
   bg: "white",
@@ -21,36 +33,30 @@ const outerWrapper = {
 
 const innerWrapper = {
   display: "grid",
-  gridTemplateColumns: ["1fr", "2fr 1fr"],
-  px: [6, 8],
-  gridTemplateRows: ["3fr 1fr", "1fr"],
+  gridTemplateColumns: ["1fr", "1fr", "1fr", "2fr 1fr"],
+  px: [4, 5],
+  gridTemplateRows: ["3fr 1fr", "3fr 1fr", "3fr 1fr", "1fr"],
   justifyContent: "stretch"
 };
 
 const headlineStyles = {
   display: "grid",
-  gridRow: ["2/3", "1/2"],
   alignItems: ["center"],
-  mb: [4, 0],
+  mb: [6, 0],
   h1: {
-    textAlign: ["center", "left"],
+    p: 4,
+    textAlign: ["left", "left"],
     fontFamily: "mistral",
     color: "white",
     fontSize: ["4rem", "7rem"],
-    lineHeight: ["4rem", "7rem"]
+    lineHeight: "4rem"
   }
 };
 
-const imageStyles = {
-  display: "grid",
-  justifyContent: "stretch",
-  alignContent: "center"
-};
-
 export {
+  infoStyles,
   headlineStyles,
   logoStyles,
-  imageStyles,
   outerWrapper,
   footerStyles,
   innerWrapper
