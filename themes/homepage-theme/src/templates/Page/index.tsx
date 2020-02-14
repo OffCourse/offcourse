@@ -14,12 +14,10 @@ const PageTemplate = forwardRef(
     ref: any
   ) => {
     return (
-      <Box>
-        <Global styles={(theme) => theme.globals} />
+      <Box sx={{ overflowX: "hidden" }}>
+        <Global styles={theme => theme.globals} />
         <Box className={className}>
-          <Container>
-            <div ref={ref}>{children}</div>
-          </Container>
+          <div ref={ref}>{children}</div>
         </Box>
       </Box>
     );

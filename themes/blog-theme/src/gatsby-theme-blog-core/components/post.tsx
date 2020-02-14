@@ -1,17 +1,15 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx, Heading, Box } from "theme-ui";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import { jsx } from "theme-ui";
+import Page from "../../templates/Page";
+import Post from "../../components/Post";
 
-const post: FunctionComponent = ({ pageResources, data, ...props }: any) => {
-  const { body, title, ...post } = data.blogPost;
+const post: FunctionComponent = ({ pageResources, data }: any) => {
+  const blogPost = data.blogPost;
   return (
-    <Box sx={{ m: 6 }}>
-      <Heading as="h1" sx={{ mb: 6 }}>
-        {title}
-      </Heading>
-      <MDXRenderer>{body}</MDXRenderer>;
-    </Box>
+    <Page>
+      <Post {...blogPost} />
+    </Page>
   );
 };
 

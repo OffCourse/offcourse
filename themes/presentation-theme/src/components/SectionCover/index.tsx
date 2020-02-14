@@ -2,12 +2,8 @@
 import { FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
 import { outerWrapper, innerWrapper } from "./styles";
-import SlideMeta from "../SlideMeta";
 
-const Cover: FunctionComponent<{ slideData: any }> = ({
-  children,
-  slideData
-}) => {
+const Cover: FunctionComponent<{ slideData: any }> = ({ children }) => {
   return (
     <Box sx={outerWrapper}>
       <Box sx={innerWrapper}>{children}</Box>

@@ -12,7 +12,7 @@ export const wrapperStyles = {
 export const columnStyles: SxStyleProp = {
   display: "flex",
   flexDirection: "column",
-  gridColumn: ["2/12", "2/12", "2/12", "span 4"],
+  gridColumn: ["2/9", "2/12", "2/12", "span 4"],
   mb: [6, 6, 6, 0],
   "&:last-of-type": {
     mb: 0
@@ -31,9 +31,9 @@ export const columnStyles: SxStyleProp = {
 };
 
 const scale = [0.4, 0.4, 0.5, 0.5];
-const spacing = scale.map((size) => `${size}rem`);
-const fontSize = scale.map((size) => `${size * 5}rem`);
-const lineHeight = scale.map((size) => `${size * 6}rem`);
+const spacing = scale.map(size => `${size}rem`);
+const fontSize = scale.map(size => `${size * 5}rem`);
+const lineHeight = scale.map(size => `${size * 6}rem`);
 
 export const titleStyles = {
   gridRow: ["1/2"],

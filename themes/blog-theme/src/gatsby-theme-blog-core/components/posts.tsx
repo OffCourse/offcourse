@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx, Styled, NavLink } from "theme-ui";
+import { jsx } from "theme-ui";
 import Page from "../../templates/Page";
-import { Box } from "theme-ui";
+import Post from "../../components/Post";
 
 type PostPageProps = {
   data: any;
@@ -15,7 +15,7 @@ type PostPageProps = {
   navigate: any;
 };
 
-const ListItem: FunctionComponent<any> = ({ slug, title, excerpt }) => (
+const ListItem: FunctionComponent<any> = post => (
   <li
     sx={{
       listStyle: "none",
@@ -24,29 +24,7 @@ const ListItem: FunctionComponent<any> = ({ slug, title, excerpt }) => (
     }}
   >
     <section>
-      <Box sx={{ bg: "black", height: "32rem" }} />
-      <Box
-        sx={{
-          p: 6,
-          justifyContent: "stretch",
-          display: "grid"
-        }}
-      >
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "minmax(auto, 60rem)",
-            justifyContent: "center"
-          }}
-        >
-          <Box sx={{ width: "100%", maxWidth: "60rem" }}>
-            <NavLink href={slug}>
-              <Styled.h1>{title}</Styled.h1>
-            </NavLink>
-            <p>{excerpt}</p>
-          </Box>
-        </Box>
-      </Box>
+      <Post {...post} />
     </section>
   </li>
 );

@@ -5,8 +5,7 @@ import { outerWrapper } from "./styles";
 import { useDeck } from "gatsby-theme-mdx-deck";
 
 const SlideMeta: FunctionComponent = () => {
-  const { index, length, ...x } = useDeck();
-  console.log(x);
+  const { index, length } = useDeck();
   return <Box sx={outerWrapper}>{`${index}/${length}`}</Box>;
 };
 

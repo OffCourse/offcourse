@@ -1,2 +1,3 @@
 import Logo from "./components/Logo";
-export { Logo };
+import DisplayText from "./components/DisplayText";
+export { Logo, DisplayText };

@@ -10,7 +10,7 @@ export const wrapperStyles = {
 export const textStyles: SxStyleProp = {
   display: "flex",
   flexDirection: "column",
-  gridColumn: ["2/12", "2/12", "2/12", "2/8"],
+  gridColumn: ["2/9", "2/12", "2/12", "2/8"],
   gridRow: ["2/3", "1/2"],
   justifyContent: ["start", "center"]
 };
@@ -25,9 +25,9 @@ export const displayStyles = {
 };
 
 const scale = [0.4, 0.4, 0.5, 0.5];
-const spacing = scale.map((size) => `${size}rem`);
-const fontSize = scale.map((size) => `${size * 5}rem`);
-const lineHeight = scale.map((size) => `${size * 5}rem`);
+const spacing = scale.map(size => `${size}rem`);
+const fontSize = scale.map(size => `${size * 5}rem`);
+const lineHeight = scale.map(size => `${size * 5}rem`);
 
 export const titleStyles = {
   fontSize,

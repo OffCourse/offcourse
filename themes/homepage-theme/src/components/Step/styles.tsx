@@ -18,12 +18,12 @@ export const titleStyles = {
 };
 
 export const wrapperStyles = {
-  gridColumn: ["2/12", "2/12", "2/11", "3/10"],
+  gridColumn: ["2/9", "2/12", "2/11", "3/10"],
   fontFamily: "heading",
   py: 6,
   width: "100%",
   "&:nth-of-type(even)": {
-    gridColumn: ["2/12", "2/12", "3/12", "4/11"],
+    gridColumn: ["2/9", "2/12", "3/12", "4/11"],
     textAlign: "end"
   }
 };
