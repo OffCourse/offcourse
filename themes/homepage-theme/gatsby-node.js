@@ -1,7 +1,7 @@
 const fs = require("fs");
 const remark = require(`remark`);
 const html = require(`remark-html`);
-const mkdir = require('mkdirp');
+const mkdir = require("mkdirp");
 
 exports.onCreateWebpackConfig = ({
   actions: { replaceWebpackConfig },
@@ -47,22 +47,26 @@ exports.createSchemaCustomization = ({ actions }) => {
   });
 };
 
-exports.onPreBootstrap = ({ reporter }, {
-  basePath = "data",
-  contentPath = "content",
-  projectImagesPath = "project-images"
-}) => {
-  [contentPath, projectImagesPath].forEach((subPath) => {
+exports.onPreBootstrap = (
+  { reporter },
+  {
+    basePath = "data",
+    contentPath = "content",
+    projectImagesPath = "project-images"
+  }
+) => {
+  [contentPath, projectImagesPath].forEach(subPath => {
     const path = `${basePath}/${subPath}`;
 
     if (!fs.existsSync(path)) {
       reporter.info(`creating the ${path} directory`);
       mkdir(path);
-    }});
-  };
+    }
+  });
+};
 
 exports.sourceNodes = ({ actions }) => {
-actions.createTypes(`
+  actions.createTypes(`
   type FormFieldOption {
     value: String!
     label: String!

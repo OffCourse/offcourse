@@ -94,6 +94,7 @@ const theme: ITheme = {
       fontSize: 1,
       lineHeight: 1,
       margin: 0,
+      mb: 4,
       fontFamily: "body"
     },
     h1: {

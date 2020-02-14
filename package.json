@@ -7,7 +7,8 @@
       "themes/homepage-theme",
       "themes/presentation-theme",
       "themes/blog-theme",
-      "projects/offcourse-studio",
+      "projects/offcourse-studio/site",
+      "projects/bots-with-an-attitude/api",
       "projects/bots-with-an-attitude/site",
       "projects/public-badges/site"
     ]
