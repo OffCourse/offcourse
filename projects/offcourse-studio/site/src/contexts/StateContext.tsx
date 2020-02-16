@@ -7,7 +7,7 @@ import React, {
   useRef
 } from "react";
 import { useThemeUI } from "theme-ui";
-import useAnimationFrame from "@offcourse/homepage-theme/src/hooks/useAnimationFrame";
+import { useAnimationFrame } from "@offcourse/hooks";
 import { shuffle } from "d3-array";
 import elementsWorker from "./elementsWorker";
 

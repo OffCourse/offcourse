@@ -29,6 +29,7 @@
     "@types/d3-array": "^2.0.0",
     "d3-array": "^2.4.0",
     "gatsby": "^2.19.17",
+    "gatsby-plugin-canonical-urls": "^2.1.20",
     "gatsby-plugin-typescript": "^2.1.27",
     "lodash.merge": "^4.6.2",
     "react": "^16.12.0",

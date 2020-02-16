@@ -1,6 +1,6 @@
 import { useState, CSSProperties } from "react";
 import { useTransition } from "react-spring";
-import useInterval from "./useInterval";
+import { useInterval } from "@offcourse/hooks";
 import { IIndexable } from "@offcourse/interfaces/src";
 
 interface ICarouselProps<T extends IIndexable> {
@@ -17,23 +17,24 @@ interface ICarouselItem<T extends IIndexable> {
 
 const useCarousel: <T extends IIndexable>(
   props: ICarouselProps<T>
-) => Array<ICarouselItem<T>> = ({ items, visibleItems, delay = 2000 }) => {
+) => ICarouselItem<T>[] = ({ items, visibleItems, delay = 2000 }) => {
   const [index, setIndex] = useState(0);
-  const goUp = (i: number) => setIndex(i + 1);
-  const goDown = (i: number) => setIndex(i - 1);
+  const goUp = (itemIndex: number) => setIndex(itemIndex + 1);
+  const goDown = (itemIndex: number) => setIndex(itemIndex - 1);
 
   const [direction, setDirection] = useState("UP");
 
-  const orderedProjects = [...items].map((item, i) => ({
+  const orderedProjects = [...items].map((item, itemIndex) => ({
     ...item,
-    index: i
+    index: itemIndex
   }));
   useInterval(() => {
     let next = null;
     if (direction === "UP") {
       next = goUp;
-      const reachedEnd = index >= orderedProjects.length - (visibleItems + 1);
-      if (reachedEnd) {
+      const reachedBeginning =
+        index >= orderedProjects.length - (visibleItems + 1);
+      if (reachedBeginning) {
         setDirection("DOWN");
       }
     } else {
@@ -45,7 +46,7 @@ const useCarousel: <T extends IIndexable>(
     }
     next(index);
   }, delay);
-  const transitions = useTransition(orderedProjects, (item) => item.index, {
+  const transitions = useTransition(orderedProjects, item => item.index, {
     update: [
       { transform: `translate3d(${index * -100}%, 0, 0)` },
       { transform: `translate3d(${index * -100}%, 0, 0)` }
@@ -59,3 +60,4 @@ const useCarousel: <T extends IIndexable>(
 };
 
 export default useCarousel;
+

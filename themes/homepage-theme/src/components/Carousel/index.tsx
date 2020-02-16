@@ -2,7 +2,7 @@
 import { ReactElement } from "react";
 import { jsx } from "theme-ui";
 import { animated } from "react-spring";
-import useCarousel from "../../hooks/useCarousel";
+import { useCarousel } from "../../hooks";
 import { IThemeable, IIndexable } from "@offcourse/interfaces/src";
 import { itemStyles, wrapperStyles } from "./styles";
 

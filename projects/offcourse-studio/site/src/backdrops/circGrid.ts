@@ -1,6 +1,20 @@
 import { IShapeProps } from "@offcourse/interfaces/src/canvas";
 
-const circ: (args: IShapeProps) => void = ({ ctx, x, y, value, colors, width }) => {
+const circ: (args: IShapeProps) => void = ({
+  ctx,
+  x,
+  y,
+  value,
+  colors,
+  width
+}) => {
+  ctx,
+  x,
+  y,
+  value,
+  colors,
+  width
+}) => {
   const radius = width / 2;
   ctx.lineWidth = 0;
   ctx.beginPath();

@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IHeroSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
-import { useMeasure } from "@offcourse/homepage-theme/src/hooks";
+import { useMeasure } from "../../hooks";
 import DisplayText from "../../components/DisplayText";
 import Backdrop from "../../components/Backdrop";
 import BaseSection from "../BaseSection";

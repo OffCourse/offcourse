@@ -58,9 +58,9 @@
     "react-waypoint": "^9.0.2",
     "remark": "^11.0.2",
     "remark-html": "^10.0.0",
-    "resize-observer-polyfill": "^1.5.1",
     "theme-ui": "^0.3.1",
     "voca": "^1.4.0",
-    "yup": "^0.28.1"
+    "yup": "^0.28.1",
+    "resize-observer-polyfill": "^1.5.1"
   }
 }

@@ -4,6 +4,7 @@
     "packages": [
       "interfaces",
       "components/atoms",
+      "components/hooks",
       "themes/homepage-theme",
       "themes/presentation-theme",
       "themes/blog-theme",

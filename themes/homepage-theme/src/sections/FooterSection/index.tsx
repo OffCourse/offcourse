@@ -5,7 +5,7 @@ import { Styled, Box } from "theme-ui";
 import Logo from "../../components/Logo";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
-import useHomepageData from "../../hooks/useHomepageData";
+import { useHomepageData } from "../../hooks";
 import { wrapperStyles, logoStyles, contactStyles } from "./styles";
 
 type FooterProps = IFooterSection & IThemeable;

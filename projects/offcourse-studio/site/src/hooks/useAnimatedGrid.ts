@@ -1,7 +1,8 @@
-import useCanvas from "@offcourse/homepage-theme/src/hooks/useCanvas";
+import { useCanvas } from "@offcourse/hooks";
 import useShape from "@offcourse/homepage-theme/src/hooks/useShape";
 import { ICanvasProps } from "@offcourse/interfaces/src/canvas";
 // @ts-ignore
+//
 import { bin, sum } from "d3-array";
 
 const useAnimatedGrid: (
@@ -25,16 +26,16 @@ const useAnimatedGrid: (
     return ref;
   }
 
-  const cols: Array<{ x0: number; x1: number }> = xbin(elements);
-  const binnedElements = cols.map((col) => {
-    const cells: Array<{ x0: number; x1: number }> = ybin(col);
-    return cells.map((cell) => {
+  const cols: { x0: number; x1: number }[] = xbin(elements);
+  const binnedElements = cols.map(col => {
+    const cells: { x0: number; x1: number }[] = ybin(col);
+    return cells.map(cell => {
       const u = col.x0;
       const v = cell.x0;
       const w = col.x1 - col.x0;
       const h = cell.x1 - cell.x0;
       // @ts-ignore
-      const value = sum(cell, (c) => c.value) / cell.length;
+      const value = sum(cell, c => c.value) / cell.length;
       return { u, v, width: w, height: h, value: value || 0 };
     });
   });
