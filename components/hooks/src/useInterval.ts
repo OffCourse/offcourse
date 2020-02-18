@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+
 type Callback = (args?: any) => void;
 
 const useInterval: (callback: Callback, delay: number) => void = (

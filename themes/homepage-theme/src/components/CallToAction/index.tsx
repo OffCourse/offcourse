@@ -1,28 +1,13 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx, SxStyleProp } from "theme-ui";
+import { jsx } from "theme-ui";
 import { config, useSpring, animated } from "react-spring";
-import Tab from "../Tab";
+import { Tab } from "@offcourse/atoms";
 import { IStylable, IThemeable } from "@offcourse/interfaces/src";
+import { wrapperStyles } from "./styles";
 
 type CallToActionProps = IThemeable &
   Pick<IStylable, "isVisible"> & { children: string };
-
-const styles: SxStyleProp = {
-  userSelect: "none",
-  position: "fixed",
-  top: 0,
-  right: 0,
-  bg: "transparent",
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "flex-end",
-  alignItems: "flex-start",
-  py: 0,
-  px: 4,
-  width: "100%",
-  zIndex: 100
-};
 
 const CallToAction: FunctionComponent<CallToActionProps> = ({
   className,
@@ -37,7 +22,7 @@ const CallToAction: FunctionComponent<CallToActionProps> = ({
     config: config.default
   });
   return (
-    <animated.div sx={styles} style={animation} className={className}>
+    <animated.div sx={wrapperStyles} style={animation} className={className}>
       <Tab title={children} />
     </animated.div>
   );

@@ -7,7 +7,7 @@ import { IThemeable } from "@offcourse/interfaces/src";
 import { useVisibility, useMeasure } from "../../hooks";
 import BaseSection from "../BaseSection";
 import Backdrop from "../../components/Backdrop";
-import DisplayText from "../../components/DisplayText";
+import { DisplayText } from "@offcourse/atoms";
 import FormContainer from "../../containers/FormContainer";
 import CallToAction from "../../components/CallToAction";
 import Form from "../../components/Form";

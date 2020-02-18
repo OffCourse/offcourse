@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IProfileSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
-import Text from "../../components/Text";
+import { Text } from "@offcourse/atoms";
 import BaseSection from "../BaseSection";
 import { wrapperStyles, columnStyles, titleStyles } from "./styles";
 

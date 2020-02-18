@@ -2,7 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { Styled, Box } from "theme-ui";
-import Logo from "@offcourse/homepage-theme/src/components/Logo";
+import { Logo } from "@offcourse/atoms";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
 import useHomepageData from "@offcourse/homepage-theme/src/hooks/useHomepageData";

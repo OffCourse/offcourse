@@ -5,7 +5,7 @@ import { Form as FForm } from "formik";
 import { IForm } from "@offcourse/interfaces/src/form";
 import { IThemeable } from "@offcourse/interfaces/src";
 import InputField from "../InputField";
-import Button from "../Button";
+import { Button } from "@offcourse/atoms";
 import { wrapperStyles, buttonStyles } from "./styles";
 
 type FormProps = IForm & IThemeable;

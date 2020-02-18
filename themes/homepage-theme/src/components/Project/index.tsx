@@ -4,7 +4,7 @@ import { Styled, jsx } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IProject } from "@offcourse/interfaces/src/pageSection";
 import { formatTitle } from "../helpers";
-import Text from "../Text";
+import { Text } from "@offcourse/atoms";
 import {
   imageStyles,
   innerStyles,

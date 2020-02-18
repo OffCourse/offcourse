@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent, ReactNodeArray } from "react";
 import { jsx, Box } from "theme-ui";
-import Logo from "@offcourse/atoms/src/components/Logo";
+import { Logo } from "@offcourse/atoms";
 import {
   headlineStyles,
   imageStyles,

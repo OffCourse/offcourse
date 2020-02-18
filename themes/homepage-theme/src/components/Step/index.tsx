@@ -6,7 +6,7 @@ import { IThemeable } from "@offcourse/interfaces/src";
 import { wrapperStyles, titleStyles, numberStyles } from "./styles";
 import { formatTitle } from "../helpers";
 import useVisibility from "../../hooks/useVisibility";
-import Text from "../Text";
+import { Text } from "@offcourse/atoms";
 import { IStep } from "@offcourse/interfaces/src/pageSection";
 
 type StepProps = IStep & IThemeable;

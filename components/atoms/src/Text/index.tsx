@@ -6,7 +6,7 @@ import { IThemeable } from "@offcourse/interfaces/src";
 import { wrapperStyles } from "./styles";
 
 type TextProps = {
-  children?: string | any[];
+  children?: string | string[];
   html?: string;
 } & IThemeable;
 
@@ -24,7 +24,7 @@ const Text: FunctionComponent<TextProps> = ({ className, children, html }) => {
   if (children instanceof Array) {
     return (
       <div {...styleProps}>
-        {Array.prototype.map.call(children, (child, index) => (
+        {Array.prototype.map.call(children, (child: string, index: number) => (
           <p key={index}>{child}</p>
         ))}
       </div>

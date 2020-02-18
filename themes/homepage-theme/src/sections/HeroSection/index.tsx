@@ -4,10 +4,9 @@ import { jsx } from "theme-ui";
 import { IHeroSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { useMeasure } from "../../hooks";
-import DisplayText from "../../components/DisplayText";
+import { DisplayText, Logo } from "@offcourse/atoms";
 import Backdrop from "../../components/Backdrop";
 import BaseSection from "../BaseSection";
-import Logo from "../../components/Logo";
 import useHomepageData from "../../hooks/useHomepageData";
 import {
   wrapperStyles,
