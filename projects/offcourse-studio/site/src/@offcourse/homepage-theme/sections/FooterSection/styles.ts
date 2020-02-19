@@ -3,8 +3,8 @@ import { SxStyleProp } from "theme-ui";
 export const outerWrapperStyles = {
   display: "grid",
   pt: [7, 7, 7, 8, "5rem"],
-  pb: 6,
-  px: 6,
+  pb: [6, 6, 6, 6],
+  px: [6, 6, 8, 8],
   bg: "grayScale.4",
   maxHeight: "60vh"
 };
