@@ -5,6 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var themeUi = require('theme-ui');
 var voca = require('voca');
 var ramda = require('ramda');
+var formik = require('formik');
 
 var titleize = function (str) {
     return voca.titleCase(str, ["'", "-", "’"]);
@@ -58,7 +59,60 @@ var Button = function (_a) {
     return (themeUi.jsx("button", { sx: styles, disabled: disabled, className: className, type: type }, formatTitle(children)));
 };
 
+var checkboxStyles = {
+    WebkitAppearance: "none",
+    MozAppearance: "none",
+    appearance: "none",
+    bg: "grayScale.1",
+    margin: 0,
+    height: "1.5rem",
+    width: "1.5rem",
+    cursor: "pointer",
+    outline: "none",
+    ":checked": {
+        backgroundColor: "primary"
+    }
+};
 var wrapperStyles = {
+    display: "grid",
+    gridGap: "0.75rem",
+    gridTemplateColumns: "1.5rem 1fr",
+    alignItems: "center"
+};
+var labelStyles = {
+    fontFamily: "body"
+};
+
+var labelStyles$1 = {
+    fontFamily: "heading",
+    fontSize: 1,
+    lineHeight: 1,
+    pt: 0,
+    userSelect: "none"
+};
+/* export const labelStyles: SxStyleProp = {
+  fontFamily: "heading",
+  fontSize: 1,
+  lineHeight: 1,
+  pt: 0,
+  px: 4,
+  pb: 2,
+  userSelect: "none"
+}; */
+
+var Label = function (_a) {
+    var className = _a.className, children = _a.children, htmlFor = _a.htmlFor;
+    return (themeUi.jsx("label", { className: className, htmlFor: htmlFor, sx: labelStyles$1 }, formatTitle(children)));
+};
+
+var Checkbox = function (_a) {
+    var label = _a.label, className = _a.className, id = _a.id, name = _a.name, value = _a.value;
+    return (themeUi.jsx(themeUi.Box, { sx: wrapperStyles },
+        themeUi.jsx(formik.Field, { sx: checkboxStyles, className: className, id: id, type: "radio", name: name, value: value }),
+        themeUi.jsx(Label, { sx: labelStyles, htmlFor: id }, label)));
+};
+
+var wrapperStyles$1 = {
     userSelect: "none",
     display: "flex",
     flexDirection: "row",
@@ -103,7 +157,7 @@ var textStyles = {
 
 var DisplayText = function (_a) {
     var children = _a.children, className = _a.className;
-    return (themeUi.jsx("div", { sx: wrapperStyles, className: className }, children.split(" ").map(function (word, index) { return (themeUi.jsx("span", { sx: spanStyles, key: index },
+    return (themeUi.jsx(themeUi.Box, { sx: wrapperStyles$1, className: className }, children.split(" ").map(function (word, index) { return (themeUi.jsx("span", { sx: spanStyles, key: index },
         themeUi.jsx("h1", { sx: textStyles }, word))); })));
 };
 
@@ -133,7 +187,7 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-var wrapperStyles$1 = {
+var wrapperStyles$2 = {
     display: "flex",
     flex: 1,
     alignItems: "center",
@@ -197,11 +251,11 @@ var Input = function (_a) {
         required: required,
         onBlur: onBlur
     };
-    return (themeUi.jsx("div", { className: className, sx: wrapperStyles$1 },
+    return (themeUi.jsx(themeUi.Box, { className: className, sx: wrapperStyles$2 },
         themeUi.jsx("input", __assign({ sx: inputStyles }, baseProps))));
 };
 
-var wrapperStyles$2 = {
+var wrapperStyles$3 = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
@@ -242,7 +296,7 @@ var textStyles$1 = {
 var Logo = function (_a) {
     var children = _a.children, className = _a.className;
     var words = children.split(" ");
-    return (themeUi.jsx("div", { sx: wrapperStyles$2, className: className }, words.map(function (word, index) { return (themeUi.jsx("span", { sx: spanStyles$1, key: index },
+    return (themeUi.jsx(themeUi.Box, { sx: wrapperStyles$3, className: className }, words.map(function (word, index) { return (themeUi.jsx("span", { sx: spanStyles$1, key: index },
         themeUi.jsx("h1", { sx: textStyles$1 }, word))); })));
 };
 
@@ -260,10 +314,10 @@ var basicMessageStyles = __assign(__assign({}, messageStyles), { pt: 0 });
 
 var Message = function (_a) {
     var children = _a.children, isBasic = _a.isBasic, className = _a.className;
-    return (themeUi.jsx("div", { className: className, sx: isBasic ? basicMessageStyles : messageStyles }, formatTitle(children)));
+    return (themeUi.jsx(themeUi.Box, { className: className, sx: isBasic ? basicMessageStyles : messageStyles }, formatTitle(children)));
 };
 
-var wrapperStyles$3 = {
+var wrapperStyles$4 = {
     display: "flex",
     userSelect: "none",
     p: [2, 3],
@@ -299,11 +353,11 @@ var linkStyles = {
 
 var Tab = function (_a) {
     var className = _a.className, title = _a.title;
-    return (themeUi.jsx("div", { sx: wrapperStyles$3, className: className },
+    return (themeUi.jsx(themeUi.Box, { sx: wrapperStyles$4, className: className },
         themeUi.jsx("a", { sx: linkStyles, href: "#ContactSection" }, formatTitle(title))));
 };
 
-var wrapperStyles$4 = {
+var wrapperStyles$5 = {
     fontFamily: "body",
     fontSize: 2,
     lineHeight: 3,
@@ -319,32 +373,34 @@ var wrapperStyles$4 = {
 /** @jsx jsx */
 var Text = function (_a) {
     var className = _a.className, children = _a.children, html = _a.html;
-    var styleProps = { className: className, sx: wrapperStyles$4 };
+    var styleProps = { className: className, sx: wrapperStyles$5 };
     if (html) {
-        return themeUi.jsx("div", __assign({ dangerouslySetInnerHTML: { __html: html } }, styleProps));
+        return themeUi.jsx(themeUi.Box, __assign({ dangerouslySetInnerHTML: { __html: html } }, styleProps));
     }
     if (!children) {
         return null;
     }
     if (children instanceof Array) {
-        return (themeUi.jsx("div", __assign({}, styleProps), Array.prototype.map.call(children, function (child, index) { return (themeUi.jsx("p", { key: index }, child)); })));
+        return (themeUi.jsx(themeUi.Box, __assign({}, styleProps), Array.prototype.map.call(children, function (child, index) { return (themeUi.jsx("p", { key: index }, child)); })));
     }
-    return (themeUi.jsx("div", __assign({}, styleProps),
+    return (themeUi.jsx(themeUi.Box, __assign({}, styleProps),
         themeUi.jsx("p", null, children)));
 };
 
-var wrapperStyles$5 = __assign({}, wrapperStyles$1);
+var wrapperStyles$6 = __assign({}, wrapperStyles$2);
 var textAreaStyles = __assign(__assign({}, inputStyles), { fontFamily: "body", fontSize: 1, lineHeight: 1 });
 
 var TextArea = function (_a) {
     var className = _a.className, _b = _a.placeholder, placeholder = _b === void 0 ? "Enter Something" : _b, name = _a.name, _c = _a.value, value = _c === void 0 ? "" : _c, onChange = _a.onChange, onBlur = _a.onBlur, _d = _a.rows, rows = _d === void 0 ? 4 : _d, _e = _a.autoFocus, autoFocus = _e === void 0 ? false : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f;
-    return (themeUi.jsx("div", { sx: wrapperStyles$5 },
+    return (themeUi.jsx("div", { sx: wrapperStyles$6 },
         themeUi.jsx("textarea", { className: className, sx: textAreaStyles, autoFocus: autoFocus, rows: rows, name: name, disabled: disabled, value: value, placeholder: formatTitle(placeholder), onChange: onChange, onBlur: onBlur })));
 };
 
 exports.Button = Button;
+exports.Checkbox = Checkbox;
 exports.DisplayText = DisplayText;
 exports.Input = Input;
+exports.Label = Label;
 exports.Logo = Logo;
 exports.Message = Message;
 exports.Tab = Tab;

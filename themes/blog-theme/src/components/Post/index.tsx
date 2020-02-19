@@ -11,7 +11,7 @@ import {
 } from "./styles";
 
 const Post: FunctionComponent<any> = ({ slug, title, excerpt, body }) => (
-  <section>
+  <Box as={"section"}>
     <Box sx={displayStyles}>
       <Box sx={{ ...innerWrapper, alignContent: "end", bg: "transparent" }}>
         <NavLink href={slug}>
@@ -25,7 +25,7 @@ const Post: FunctionComponent<any> = ({ slug, title, excerpt, body }) => (
         {body && <MDXRenderer>{body}</MDXRenderer>}
       </Box>
     </Box>
-  </section>
+  </Box>
 );
 
 export default Post;

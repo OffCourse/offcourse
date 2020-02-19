@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { Styled, jsx } from "theme-ui";
+import { jsx, Box, Heading } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IProject } from "@offcourse/interfaces/src/pageSection";
 import { formatTitle } from "../helpers";
@@ -23,20 +23,20 @@ const Project: FunctionComponent<ProjectProps> = ({
   description
 }) => {
   return (
-    <article sx={wrapperStyles} className={className}>
-      <div sx={imageStyles}>
-        <div
+    <Box as={"article"} sx={wrapperStyles} className={className}>
+      <Box sx={imageStyles}>
+        <Box
           sx={{
             ...innerStyles,
             backgroundImage: `url(${imageUrl})`
           }}
         >
           {children}
-        </div>
-      </div>
+        </Box>
+      </Box>
       <Text sx={captionStyles} html={description} />
-      <Styled.h2 sx={headerStyles}>{formatTitle(title)}</Styled.h2>
-    </article>
+      <Heading sx={headerStyles}>{formatTitle(title)}</Heading>
+    </Box>
   );
 };
 export default Project;

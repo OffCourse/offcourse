@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 import { IHeroSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { useMeasure } from "../../hooks";
@@ -27,12 +27,12 @@ const HeroSection: FunctionComponent<HeroSectionProps> = ({
   return (
     <BaseSection {...props} {...bind} className={className} sx={wrapperStyles}>
       <Backdrop width={width} height={height} />
-      <div sx={textStyles}>
+      <Box sx={textStyles}>
         <DisplayText>{title}</DisplayText>
-      </div>
-      <div sx={logoContainerStyles}>
+      </Box>
+      <Box sx={logoContainerStyles}>
         <Logo sx={logoStyles}>{siteName}</Logo>
-      </div>
+      </Box>
     </BaseSection>
   );
 };

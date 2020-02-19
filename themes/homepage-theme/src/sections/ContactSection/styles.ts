@@ -7,7 +7,6 @@ export const wrapperStyles: SxStyleProp = {
   py: [0, 0, 7]
 };
 
-export const textStyles = {};
 
 export const sloganSpaceStyles: SxStyleProp = {
   display: "flex",
@@ -17,13 +16,13 @@ export const sloganSpaceStyles: SxStyleProp = {
   left: 0,
   right: 0,
   alignItems: "center",
-  gridColumn: ["1/12", "1/13", "1/13", "1/5", "1/5"],
+  gridColumn: ["1/12", "1/13", "1/13", "1/6", "1/6"],
   py: [7],
   gridRow: ["1/2"]
 };
 
 export const formStyles = {
-  gridColumn: ["1/13", "1/13", "1/13", "6/12", "7/12"],
+  gridColumn: ["1/13", "1/13", "1/13", "6/13", "7/13"],
   bg: "grayScale.0",
   gridRow: ["2/3", "2/3", "2/3", "1/2"],
   mb: [6, 6, 6, 0],

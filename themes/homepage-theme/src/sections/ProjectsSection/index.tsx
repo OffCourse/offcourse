@@ -20,7 +20,7 @@ const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
   const [{ width }, { ref }] = useMeasure();
   const imageUrls = useGetProjectImages();
   return (
-    <BaseSection {...rest} sx={wrapperStyles} className={className} ref={ref}>
+    <BaseSection useInnerWrapper={false} {...rest} sx={wrapperStyles} className={className} ref={ref}>
       <Carousel
         visibleItems={width && width > 480 ? 3 : 1}
         items={projects.map(project => {

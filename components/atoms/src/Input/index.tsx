@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent, ChangeEvent } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IInput } from "@offcourse/interfaces/src/form";
 import { formatTitle, lowerCase, formatValue } from "../helpers";
@@ -22,7 +22,7 @@ const Input: FunctionComponent<InputProps> = ({
   required = false,
   isNormalized = true
 }) => {
-  const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = (e) => {
+  const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = e => {
     if (!onChange) {
       return;
     }
@@ -50,9 +50,9 @@ const Input: FunctionComponent<InputProps> = ({
     onBlur
   };
   return (
-    <div className={className} sx={wrapperStyles}>
+    <Box className={className} sx={wrapperStyles}>
       <input sx={inputStyles} {...baseProps} />
-    </div>
+    </Box>
   );
 };
 

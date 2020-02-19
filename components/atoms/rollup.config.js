@@ -32,6 +32,7 @@ export default {
     commonjs({
       include: ["node_modules/**"],
       namedExports: {
+        "node_modules/formik/dist/index": ["Field"],
         "node_modules/theme-ui/dist/index": ["jsx"],
         "node_modules/react/react.js": [
           "Children",

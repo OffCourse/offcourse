@@ -1,10 +1,11 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 import { Field } from "formik";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IInput } from "@offcourse/interfaces/src/form";
 import { checkboxStyles, wrapperStyles, labelStyles } from "./styles";
+import Label from "../Label";
 
 type CheckboxProps = IInput & IThemeable;
 
@@ -16,7 +17,7 @@ const Checkbox: FunctionComponent<CheckboxProps> = ({
   value
 }) => {
   return (
-    <div sx={wrapperStyles}>
+    <Box sx={wrapperStyles}>
       <Field
         sx={checkboxStyles}
         className={className}
@@ -25,10 +26,10 @@ const Checkbox: FunctionComponent<CheckboxProps> = ({
         name={name}
         value={value}
       />
-      <label sx={labelStyles} htmlFor={id}>
+      <Label sx={labelStyles} htmlFor={id}>
         {label}
-      </label>
-    </div>
+      </Label>
+    </Box>
   );
 };
 export default Checkbox;

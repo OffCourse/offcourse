@@ -1,7 +1,7 @@
 /** @jsx jsx */
 
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { wrapperStyles } from "./styles";
 
@@ -14,7 +14,7 @@ const Text: FunctionComponent<TextProps> = ({ className, children, html }) => {
   const styleProps = { className, sx: wrapperStyles };
 
   if (html) {
-    return <div dangerouslySetInnerHTML={{ __html: html }} {...styleProps} />;
+    return <Box dangerouslySetInnerHTML={{ __html: html }} {...styleProps} />;
   }
 
   if (!children) {
@@ -23,18 +23,18 @@ const Text: FunctionComponent<TextProps> = ({ className, children, html }) => {
 
   if (children instanceof Array) {
     return (
-      <div {...styleProps}>
+      <Box {...styleProps}>
         {Array.prototype.map.call(children, (child: string, index: number) => (
           <p key={index}>{child}</p>
         ))}
-      </div>
+      </Box>
     );
   }
 
   return (
-    <div {...styleProps}>
+    <Box {...styleProps}>
       <p>{children}</p>
-    </div>
+    </Box>
   );
 };
 

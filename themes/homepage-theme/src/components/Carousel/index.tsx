@@ -33,6 +33,7 @@ const Carousel = <T extends IIndexable>({
   }
 
   const transitions = useCarousel({ items, delay, visibleItems });
+
   return (
     <div sx={wrapperStyles} className={className}>
       {transitions.map(({ item, style, key }) => (

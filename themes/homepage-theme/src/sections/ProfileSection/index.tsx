@@ -3,9 +3,9 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IProfileSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
-import { Text } from "@offcourse/atoms";
+import { TextSection } from "@offcourse/molecules";
 import BaseSection from "../BaseSection";
-import { wrapperStyles, columnStyles, titleStyles } from "./styles";
+import { wrapperStyles, columnStyles } from "./styles";
 
 type ProfileSectionProps = IProfileSection & IThemeable;
 
@@ -16,11 +16,8 @@ const ProfileSection: FunctionComponent<ProfileSectionProps> = ({
 }) => {
   return (
     <BaseSection {...props} className={className} sx={wrapperStyles}>
-      {skills.map(({ title, description }, index) => (
-        <div key={index} sx={columnStyles}>
-          <h2 sx={titleStyles}>{title}</h2>
-          <Text html={description} />
-        </div>
+      {skills.map((skill, index) => (
+        <TextSection {...skill} sx={columnStyles} key={index} />
       ))}
     </BaseSection>
   );

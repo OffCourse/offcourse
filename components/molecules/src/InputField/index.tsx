@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { ReactNode, FunctionComponent } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 import { IInputField } from "@offcourse/interfaces/src/form";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { Field, ErrorMessage } from "formik";
-import { formatTitle } from "../helpers";
-import { Input, TextArea, Message } from "@offcourse/atoms";
+import { Input, TextArea, Message, Label } from "@offcourse/atoms";
 import RadioButtonGroup from "../RadioButtonGroup";
 import { wrapperStyles, labelStyles } from "./styles";
 
@@ -29,8 +28,8 @@ const InputField: FunctionComponent<InputFieldProps> = ({
 }) => {
   const Component = components[type || "text"];
   return (
-    <div className={className} sx={wrapperStyles}>
-      <label sx={labelStyles}>{formatTitle(label)}</label>
+    <Box className={className} sx={wrapperStyles}>
+      <Label sx={labelStyles}>{label}</Label>
       <ErrorMessage
         render={msg => <Message isBasic={true}>{msg}</Message>}
         name={name}
@@ -41,7 +40,7 @@ const InputField: FunctionComponent<InputFieldProps> = ({
         placeholder={placeholder}
         name={name}
       />
-    </div>
+    </Box>
   );
 };
 

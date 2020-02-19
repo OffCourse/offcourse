@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { Styled, jsx } from "theme-ui";
+import { Styled, jsx, Box } from "theme-ui";
 import { IBaseSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { Text } from "@offcourse/atoms";
@@ -25,11 +25,11 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({
 }) => {
   return (
     <BaseSection {...props} className={className} sx={wrapperStyles}>
-      <div sx={textStyles}>
+      <Box sx={textStyles}>
         <Styled.h1 sx={titleStyles}>{title}</Styled.h1>
         <Text html={description} />
-      </div>
-      <div sx={displayStyles} />
+      </Box>
+      <Box sx={displayStyles} />
     </BaseSection>
   );
 };

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 import { IContactSection } from "@offcourse/interfaces/src/pageSection";
 import { IForm } from "@offcourse/interfaces/src/form";
 import { IThemeable } from "@offcourse/interfaces/src";
@@ -11,7 +11,12 @@ import { DisplayText } from "@offcourse/atoms";
 import FormContainer from "../../containers/FormContainer";
 import CallToAction from "../../components/CallToAction";
 import Form from "../../components/Form";
-import { wrapperStyles, formStyles, sloganSpaceStyles } from "./styles";
+import {
+  wrapperStyles,
+  innerWrapperStyles,
+  formStyles,
+  sloganSpaceStyles
+} from "./styles";
 import { FormikValues, FormikBag } from "formik";
 
 type ContactSectionProps = IContactSection & IThemeable;
@@ -50,9 +55,9 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
       <Backdrop width={width} height={height} />
       <Marker />
       <CallToAction isVisible={!isVisible}>{callToAction}</CallToAction>
-      <div sx={sloganSpaceStyles}>
+      <Box sx={sloganSpaceStyles}>
         <DisplayText>{title}</DisplayText>
-      </div>
+      </Box>
       <FormContainer form={form} onSubmit={submitForm}>
         {(containerProps: IForm) => (
           <Form

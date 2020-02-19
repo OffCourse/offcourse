@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
-import { Styled, Box } from "theme-ui";
-import Logo from "../../components/Logo";
+import { jsx, Box, Heading } from "theme-ui";
+import { Logo } from "@offcourse/atoms";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
 import { useHomepageData } from "../../hooks";
@@ -18,15 +17,15 @@ const FooterSection: FunctionComponent<FooterProps> = ({
   const { siteName } = useHomepageData();
   return (
     <Box sx={wrapperStyles} className={className}>
-      <div sx={contactStyles}>
-        <Styled.h2>Contact</Styled.h2>
-        <section>
+      <Box sx={contactStyles}>
+        <Heading>Contact</Heading>
+        <Box as={"section"}>
           <p>{street}</p>
           <p>{`${zipCode} ${city}`}</p>
           <p>{country}</p>
           <p>{email}</p>
-        </section>
-      </div>
+        </Box>
+      </Box>
       <Logo sx={logoStyles}>{siteName}</Logo>
     </Box>
   );

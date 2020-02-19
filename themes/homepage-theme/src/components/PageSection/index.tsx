@@ -3,9 +3,7 @@ import * as components from "../../sections";
 import { IPageSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
 
-const {
-  BaseSection,
-} = components;
+const { BaseSection } = components;
 
 type PageSectionProps = IPageSection & IThemeable;
 

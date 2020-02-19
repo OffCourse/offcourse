@@ -23,9 +23,5 @@ export const wrapperStyles = {
 };
 
 export const labelStyles: SxStyleProp = {
-  fontFamily: "body",
-  fontSize: 1,
-  lineHeight: 1,
-  pt: 0,
-  userSelect: "none"
+  fontFamily: "body"
 };

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 import { formatTitle } from "../helpers";
 import { IStylable, IThemeable, IMessage } from "@offcourse/interfaces/src";
 import { messageStyles, basicMessageStyles } from "./styles";
@@ -13,12 +13,12 @@ const Message: FunctionComponent<MessageProps> = ({
   className
 }) => {
   return (
-    <div
+    <Box
       className={className}
       sx={isBasic ? basicMessageStyles : messageStyles}
     >
       {formatTitle(children)}
-    </div>
+    </Box>
   );
 };
 

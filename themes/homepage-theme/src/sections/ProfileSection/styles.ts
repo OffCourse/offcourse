@@ -1,6 +1,7 @@
 import { SxStyleProp } from "theme-ui";
 
 export const wrapperStyles = {
+  display: "grid",
   gridTemplateRows: ["1fr"],
   bg: ["grayScale.0"],
   color: "grayScale.4",
@@ -30,16 +31,3 @@ export const columnStyles: SxStyleProp = {
   }
 };
 
-const scale = [0.4, 0.4, 0.5, 0.5];
-const spacing = scale.map(size => `${size}rem`);
-const fontSize = scale.map(size => `${size * 5}rem`);
-const lineHeight = scale.map(size => `${size * 6}rem`);
-
-export const titleStyles = {
-  gridRow: ["1/2"],
-  gridColumn: ["1/13"],
-  fontFamily: "monospace",
-  fontSize,
-  lineHeight,
-  m: 0
-};

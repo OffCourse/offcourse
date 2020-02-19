@@ -4,7 +4,7 @@ import { jsx } from "theme-ui";
 import { Form as FForm } from "formik";
 import { IForm } from "@offcourse/interfaces/src/form";
 import { IThemeable } from "@offcourse/interfaces/src";
-import InputField from "../InputField";
+import { InputField } from "@offcourse/molecules";
 import { Button } from "@offcourse/atoms";
 import { wrapperStyles, buttonStyles } from "./styles";
 

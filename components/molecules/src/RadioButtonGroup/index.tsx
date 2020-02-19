@@ -2,7 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { IInput } from "@offcourse/interfaces/src/form";
-import Checkbox from "../Checkbox";
+import { Checkbox } from "@offcourse/atoms";
 import styles from "./styles";
 import { IThemeable } from "@offcourse/interfaces/src";
 
@@ -15,7 +15,7 @@ const RadioButtonGroup: FunctionComponent<RadioButtonGroupProps> = ({
 }) => {
   return (
     <div className={className} sx={styles}>
-      {options.map((props) => {
+      {options.map(props => {
         const id = `${name}-${props.value}`;
         return <Checkbox key={id} name={name} id={id} {...props} />;
       })}
