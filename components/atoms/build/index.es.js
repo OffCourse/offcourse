@@ -86,15 +86,6 @@ var labelStyles$1 = {
     pt: 0,
     userSelect: "none"
 };
-/* export const labelStyles: SxStyleProp = {
-  fontFamily: "heading",
-  fontSize: 1,
-  lineHeight: 1,
-  pt: 0,
-  px: 4,
-  pb: 2,
-  userSelect: "none"
-}; */
 
 var Label = function (_a) {
     var className = _a.className, children = _a.children, htmlFor = _a.htmlFor;

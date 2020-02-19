@@ -89,5 +89,44 @@ var TextSection = function (_a) {
         jsx(Text, { html: description })));
 };
 
-export { InputField, RadioButtonGroup, TextSection };
+var numberStyles = {
+    borderBottom: "0.25rem solid",
+    borderColor: "grayScale.4",
+    fontFamily: "monospace",
+    fontSize: ["3.5rem", "5rem"],
+    lineHeight: ["4rem", "5.5rem"],
+    mb: 2
+};
+var titleStyles$1 = {
+    display: "grid",
+    fontFamily: "monospace",
+    wordSpacing: "-0.2em",
+    fontSize: ["1.5rem", "2rem"],
+    lineHeight: ["2rem", "2.5rem"],
+    m: 0,
+    mb: 4
+};
+var wrapperStyles$1 = {
+    gridColumn: ["2/9", "2/12", "2/11", "3/10"],
+    fontFamily: "heading",
+    py: 6,
+    width: "100%",
+    "&:nth-of-type(even)": {
+        gridColumn: ["2/9", "2/12", "3/12", "4/11"],
+        textAlign: "end"
+    }
+};
+
+var formatTitle = function (str) { return str; };
+var Step = function (_a) {
+    var as = _a.as, style = _a.style, children = _a.children, title = _a.title, description = _a.description, className = _a.className, index = _a.index;
+    return (jsx(Box, { as: as, sx: wrapperStyles$1, style: style, className: className },
+        children,
+        jsx(Heading, { as: "h1", sx: titleStyles$1 },
+            jsx("span", { sx: numberStyles }, index),
+            formatTitle(title)),
+        jsx(Text, { html: description })));
+};
+
+export { InputField, RadioButtonGroup, Step, TextSection };
 //# sourceMappingURL=index.es.js.map

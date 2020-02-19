@@ -1,4 +1,5 @@
 import InputField from "./InputField";
 import TextSection from "./TextSection";
 import RadioButtonGroup from "./RadioButtonGroup";
-export { InputField, TextSection, RadioButtonGroup };
+import Step from "./Step";
+export { InputField, TextSection, RadioButtonGroup, Step };
