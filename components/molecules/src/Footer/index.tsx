@@ -1,11 +1,9 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
-import { Styled, Box } from "theme-ui";
+import { jsx, Box, Heading } from "theme-ui";
+import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
 import { Logo } from "@offcourse/atoms";
 import { IThemeable } from "@offcourse/interfaces/src";
-import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
-import useHomepageData from "@offcourse/homepage-theme/src/hooks/useHomepageData";
 import {
   drawerStyles,
   outerWrapperStyles,
@@ -13,28 +11,28 @@ import {
   contactStyles,
   scalingContainerStyles
 } from "./styles";
-import PublicBadgesDrawer from "../../../../components/PublicBadgesDrawer";
+import PublicBadgesDrawer from "../PublicBadgesDrawer";
 
 type FooterProps = IFooterSection & IThemeable;
 
 const FooterSection: FunctionComponent<FooterProps> = ({
   className,
+  siteName,
   contactInfo
 }) => {
   const { street, zipCode, country, city, email } = contactInfo;
-  const { siteName } = useHomepageData();
   return (
     <Box sx={outerWrapperStyles} className={className}>
       <div sx={scalingContainerStyles}>
-        <div sx={contactStyles}>
-          <Styled.h2>Contact</Styled.h2>
-          <section>
+        <Box sx={contactStyles}>
+          <Heading>Contact</Heading>
+          <Box as={"section"}>
             <p>{street}</p>
             <p>{`${zipCode} ${city}`}</p>
             <p>{country}</p>
             <p>{email}</p>
-          </section>
-        </div>
+          </Box>
+        </Box>
         <div sx={drawerStyles}>
           <PublicBadgesDrawer modalTheme="light" />
         </div>

@@ -5,6 +5,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var themeUi = require('theme-ui');
 var formik = require('formik');
 var atoms = require('@offcourse/atoms');
+var loader = require('@offcourse/public-badges-drawer/loader');
+var react = require('react');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -93,6 +95,66 @@ var TextSection = function (_a) {
         themeUi.jsx(atoms.Text, { html: description })));
 };
 
+var wrapperStyles$1 = {
+    userSelect: "none",
+    display: "grid",
+    gridTemplateRows: "auto 1fr auto",
+    gridGap: [6, 6],
+    pb: 7,
+    alignItems: "start",
+    bg: "grayScale.0"
+};
+var headerStyles = {
+    fontFamily: "monospace",
+    fontSize: "2rem",
+    lineHeight: "2rem",
+    wordSpacing: "-0.2em",
+    px: [6, 6]
+};
+var imageStyles = {
+    paddingTop: "100%",
+    position: "relative",
+    bg: "grayScale.4",
+    mb: 4
+};
+var captionStyles = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    px: [6, 6],
+    "p:last-of-type": {
+        mb: 0
+    }
+};
+var dist = ["6rem", "6rem", "6rem", "6rem", "6rem"];
+var innerStyles = {
+    position: "absolute",
+    top: dist,
+    bottom: dist,
+    left: dist,
+    right: dist,
+    img: {
+        width: "100%"
+    },
+    display: "flex",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center center",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "monospace",
+    fontSize: "2rem",
+    wordSpacing: "-0.2em"
+};
+
+var Project = function (_a) {
+    var className = _a.className, children = _a.children, title = _a.title, imageUrl = _a.imageUrl, description = _a.description;
+    return (themeUi.jsx(themeUi.Box, { as: "article", sx: wrapperStyles$1, className: className },
+        themeUi.jsx(themeUi.Box, { sx: imageStyles },
+            themeUi.jsx(themeUi.Box, { sx: __assign(__assign({}, innerStyles), { backgroundImage: "url(" + imageUrl + ")" }) }, children)),
+        themeUi.jsx(atoms.Text, { sx: captionStyles, html: description }),
+        themeUi.jsx(atoms.Heading, { sx: headerStyles }, title)));
+};
+
 var numberStyles = {
     borderBottom: "0.25rem solid",
     borderColor: "grayScale.4",
@@ -110,7 +172,7 @@ var titleStyles$1 = {
     m: 0,
     mb: 4
 };
-var wrapperStyles$1 = {
+var wrapperStyles$2 = {
     gridColumn: ["2/9", "2/12", "2/11", "3/10"],
     fontFamily: "heading",
     py: 6,
@@ -124,7 +186,7 @@ var wrapperStyles$1 = {
 var formatTitle = function (str) { return str; };
 var Step = function (_a) {
     var as = _a.as, style = _a.style, children = _a.children, title = _a.title, description = _a.description, className = _a.className, index = _a.index;
-    return (themeUi.jsx(themeUi.Box, { as: as, sx: wrapperStyles$1, style: style, className: className },
+    return (themeUi.jsx(themeUi.Box, { as: as, sx: wrapperStyles$2, style: style, className: className },
         children,
         themeUi.jsx(themeUi.Heading, { as: "h1", sx: titleStyles$1 },
             themeUi.jsx("span", { sx: numberStyles }, index),
@@ -132,7 +194,92 @@ var Step = function (_a) {
         themeUi.jsx(atoms.Text, { html: description })));
 };
 
+var outerWrapperStyles = {
+    display: "grid",
+    pt: [7, 7, 7, 8, "5rem"],
+    pb: [6, 6, 6, 6],
+    px: [6, 6, 8, 8],
+    bg: "grayScale.4",
+    maxHeight: "60vh"
+};
+var contactStyles = {
+    order: [0, 1],
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    alignSelf: "center",
+    lineHeight: "0.4rem",
+    fontFamily: "body",
+    color: "grayScale.0",
+    gridRow: [2, 1],
+    h2: {
+        fontFamily: "monospace",
+        wordSpacing: "-0.3em",
+        mb: 1
+    },
+    p: {
+        mb: 0
+    }
+};
+var scalingContainerStyles = {
+    display: "grid",
+    gridTemplateColumns: ["1fr 1fr", "1fr 1fr 1fr"],
+    gridTemplateRows: ["1fr 1fr", "1fr"],
+    gridRowGap: [6, 7],
+    "@media(max-width: 20rem)": {
+        transformOrigin: "top left",
+        transform: ["scale(0.8)", "none"]
+    }
+};
+var drawerStyles = {
+    alignItems: "center",
+    justifySelf: ["center"],
+    gridColumn: ["span 2", "span 1"],
+    order: [0, 1],
+    gridRow: [1, 1]
+};
+var logoStyles = {
+    gridRow: [2, 1],
+    order: [2, 2],
+    alignSelf: "center",
+    h1: {
+        color: "grayScale.4",
+        bg: "grayScale.0"
+    }
+};
+
+/** @jsx jsx */
+var PublicBadgesDrawer = function (_a) {
+    var _b = _a.badgeColor, badgeColor = _b === void 0 ? "white" : _b, _c = _a.modalTheme, modalTheme = _c === void 0 ? "light" : _c;
+    // tslint:disable-next-line
+    var inBrowser = typeof window !== "undefined" ? true : null;
+    react.useEffect(function () {
+        // tslint:disable-next-line
+        inBrowser && loader.defineCustomElements(window);
+    }, [inBrowser]);
+    return (themeUi.jsx("publicbadges-drawer", { "domain-name": "https://offcourse-studio.com/", "badge-color": badgeColor, "modal-theme": modalTheme }));
+};
+
+var FooterSection = function (_a) {
+    var className = _a.className, siteName = _a.siteName, contactInfo = _a.contactInfo;
+    var street = contactInfo.street, zipCode = contactInfo.zipCode, country = contactInfo.country, city = contactInfo.city, email = contactInfo.email;
+    return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles, className: className },
+        themeUi.jsx("div", { sx: scalingContainerStyles },
+            themeUi.jsx(themeUi.Box, { sx: contactStyles },
+                themeUi.jsx(themeUi.Heading, null, "Contact"),
+                themeUi.jsx(themeUi.Box, { as: "section" },
+                    themeUi.jsx("p", null, street),
+                    themeUi.jsx("p", null, zipCode + " " + city),
+                    themeUi.jsx("p", null, country),
+                    themeUi.jsx("p", null, email))),
+            themeUi.jsx("div", { sx: drawerStyles },
+                themeUi.jsx(PublicBadgesDrawer, { modalTheme: "light" })),
+            themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
+};
+
+exports.Footer = FooterSection;
 exports.InputField = InputField;
+exports.Project = Project;
 exports.RadioButtonGroup = RadioButtonGroup;
 exports.Step = Step;
 exports.TextSection = TextSection;

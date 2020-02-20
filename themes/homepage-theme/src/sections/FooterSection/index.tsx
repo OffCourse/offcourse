@@ -17,16 +17,21 @@ const FooterSection: FunctionComponent<FooterProps> = ({
   const { siteName } = useHomepageData();
   return (
     <Box sx={wrapperStyles} className={className}>
-      <Box sx={contactStyles}>
-        <Heading>Contact</Heading>
-        <Box as={"section"}>
-          <p>{street}</p>
-          <p>{`${zipCode} ${city}`}</p>
-          <p>{country}</p>
-          <p>{email}</p>
+      <div sx={scalingContainerStyles}>
+        <Box sx={contactStyles}>
+          <Heading>Contact</Heading>
+          <Box as={"section"}>
+            <p>{street}</p>
+            <p>{`${zipCode} ${city}`}</p>
+            <p>{country}</p>
+            <p>{email}</p>
+          </Box>
         </Box>
-      </Box>
-      <Logo sx={logoStyles}>{siteName}</Logo>
+        <div sx={drawerStyles}>
+          <PublicBadgesDrawer modalTheme="light" />
+        </div>
+        <Logo sx={logoStyles}>{siteName}</Logo>
+      </div>
     </Box>
   );
 };

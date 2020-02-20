@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { ReactElement } from "react";
-import { jsx } from "theme-ui";
-import { animated } from "react-spring";
-import { useCarousel } from "../../hooks";
+import { jsx, Box } from "theme-ui";
+import { animated, useTransition } from "react-spring";
+import { useCycleItems } from "@offcourse/hooks";
 import { IThemeable, IIndexable } from "@offcourse/interfaces/src";
 import { itemStyles, wrapperStyles } from "./styles";
 
@@ -20,28 +20,39 @@ const Carousel = <T extends IIndexable>({
   visibleItems,
   delay
 }: CarouselProps<T>) => {
+  const [index, orderedProjects] = useCycleItems({
+    items,
+    visibleItems,
+    delay
+  });
+
+  const transitions = useTransition(orderedProjects, item => item.index, {
+    update: [
+      { transform: `translate3d(${index * -100}%, 0, 0)` },
+      { transform: `translate3d(${index * -100}%, 0, 0)` }
+    ]
+  });
+
   if (items.length <= visibleItems) {
     return (
-      <div sx={wrapperStyles} className={className}>
-        {items.map((item, index) => (
-          <div sx={itemStyles} key={index}>
+      <Box sx={wrapperStyles} className={className}>
+        {items.map((item, itemIndex) => (
+          <Box sx={itemStyles} key={itemIndex}>
             {children(item)}
-          </div>
+          </Box>
         ))}
-      </div>
+      </Box>
     );
   }
 
-  const transitions = useCarousel({ items, delay, visibleItems });
-
   return (
-    <div sx={wrapperStyles} className={className}>
-      {transitions.map(({ item, style, key }) => (
-        <animated.div sx={itemStyles} style={style} key={key}>
+    <Box sx={wrapperStyles} className={className}>
+      {transitions.map(({ item, props, key }) => (
+        <Box as={animated.div} sx={itemStyles} style={props} key={key}>
           {children(item)}
-        </animated.div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 };
 

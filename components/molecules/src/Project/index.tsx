@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx, Box, Heading } from "theme-ui";
+import { jsx, Box } from "theme-ui";
+import { Heading } from "@offcourse/atoms";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IProject } from "@offcourse/interfaces/src/pageSection";
-import { formatTitle } from "../helpers";
 import { Text } from "@offcourse/atoms";
 import {
   imageStyles,
@@ -35,7 +35,7 @@ const Project: FunctionComponent<ProjectProps> = ({
         </Box>
       </Box>
       <Text sx={captionStyles} html={description} />
-      <Heading sx={headerStyles}>{formatTitle(title)}</Heading>
+      <Heading sx={headerStyles}>{title}</Heading>
     </Box>
   );
 };

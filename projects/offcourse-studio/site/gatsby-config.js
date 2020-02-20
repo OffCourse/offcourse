@@ -5,6 +5,13 @@ module.exports = {
     author: "Yeehaa",
     description: `My site description...`,
     siteName: `Offcourse Studio_`,
+    contactInfo: {
+      street: "Schiemond 20-22",
+      zipCode: "3024EE",
+      city: "Rotterdam",
+      country: "The Netherlands",
+      email: "contact@offcourse.io"
+    },
     social: [
       {
         name: `Twitter`,

@@ -1,11 +1,15 @@
 /** @jsx jsx */
-import { FunctionComponent, useEffect } from "react";
 import { jsx } from "theme-ui";
 import {
   defineCustomElements,
   JSX as LocalJSX
 } from "@offcourse/public-badges-drawer/loader";
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import {
+  FunctionComponent,
+  useEffect,
+  DetailedHTMLProps,
+  HTMLAttributes
+} from "react";
 
 type StencilProps<T> = {
   [P in keyof T]?: Omit<T[P], "ref"> | HTMLAttributes<T>;

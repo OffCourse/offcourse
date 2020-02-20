@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { Global } from "@emotion/core";
-import { Box, Container } from "theme-ui";
+import { Box } from "theme-ui";
 
 const PageTemplate = forwardRef(
   (

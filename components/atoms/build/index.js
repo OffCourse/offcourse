@@ -152,6 +152,11 @@ var DisplayText = function (_a) {
         themeUi.jsx("h1", { sx: textStyles }, word))); })));
 };
 
+var Heading = function (_a) {
+    var children = _a.children, className = _a.className;
+    return themeUi.jsx(themeUi.Heading, { className: className }, formatTitle(children));
+};
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -390,6 +395,7 @@ var TextArea = function (_a) {
 exports.Button = Button;
 exports.Checkbox = Checkbox;
 exports.DisplayText = DisplayText;
+exports.Heading = Heading;
 exports.Input = Input;
 exports.Label = Label;
 exports.Logo = Logo;

@@ -1,4 +1,4 @@
-import { jsx, Box } from 'theme-ui';
+import { jsx, Box, Heading as Heading$1 } from 'theme-ui';
 import { trimLeft, lowerCase, titleCase } from 'voca';
 import { compose } from 'ramda';
 import { Field } from 'formik';
@@ -146,6 +146,11 @@ var DisplayText = function (_a) {
     var children = _a.children, className = _a.className;
     return (jsx(Box, { sx: wrapperStyles$1, className: className }, children.split(" ").map(function (word, index) { return (jsx("span", { sx: spanStyles, key: index },
         jsx("h1", { sx: textStyles }, word))); })));
+};
+
+var Heading = function (_a) {
+    var children = _a.children, className = _a.className;
+    return jsx(Heading$1, { className: className }, formatTitle(children));
 };
 
 /*! *****************************************************************************
@@ -383,5 +388,5 @@ var TextArea = function (_a) {
         jsx("textarea", { className: className, sx: textAreaStyles, autoFocus: autoFocus, rows: rows, name: name, disabled: disabled, value: value, placeholder: formatTitle(placeholder), onChange: onChange, onBlur: onBlur })));
 };
 
-export { Button, Checkbox, DisplayText, Input, Label, Logo, Message, Tab, Text, TextArea };
+export { Button, Checkbox, DisplayText, Heading, Input, Label, Logo, Message, Tab, Text, TextArea };
 //# sourceMappingURL=index.es.js.map

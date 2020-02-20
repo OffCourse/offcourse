@@ -32,8 +32,8 @@ export interface IBaseSection {
   children: any;
 }
 
-export type IFooterSection = IBaseSection & {
-  role: "FooterSection";
+export type IFooterSection = {
+  siteName: string;
   contactInfo: IContactInfo;
 };
 

@@ -1,6 +1,7 @@
 import Button from "./Button";
 import Checkbox from "./Checkbox";
 import DisplayText from "./DisplayText";
+import Heading from "./Heading";
 import Input from "./Input";
 import Label from "./Label";
 import Logo from "./Logo";
@@ -13,6 +14,7 @@ export {
   Button,
   Checkbox,
   DisplayText,
+  Heading,
   Input,
   Label,
   Logo,

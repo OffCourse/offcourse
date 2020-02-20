@@ -11,12 +11,7 @@ import { DisplayText } from "@offcourse/atoms";
 import FormContainer from "../../containers/FormContainer";
 import CallToAction from "../../components/CallToAction";
 import Form from "../../components/Form";
-import {
-  wrapperStyles,
-  innerWrapperStyles,
-  formStyles,
-  sloganSpaceStyles
-} from "./styles";
+import { wrapperStyles, formStyles, sloganSpaceStyles } from "./styles";
 import { FormikValues, FormikBag } from "formik";
 
 type ContactSectionProps = IContactSection & IThemeable;

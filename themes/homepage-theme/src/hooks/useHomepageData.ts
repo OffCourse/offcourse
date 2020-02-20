@@ -7,6 +7,13 @@ const useHomepageData = () => {
       site {
         siteMetadata {
           siteName
+          contactInfo {
+            street
+            zipCode
+            city
+            country
+            email
+          }
         }
       }
       allPageSection {
@@ -40,7 +47,7 @@ const useHomepageData = () => {
       }
     }
   `);
-  const { siteName } = data.site.siteMetadata;
+  const { siteName, contactInfo } = data.site.siteMetadata;
   const rawSections: IPageSection[] = data.allPageSection.edges.map(
     ({ node }: { node: IPageSection }) => node
   );
@@ -48,7 +55,7 @@ const useHomepageData = () => {
     .filter(({ publishable }) => publishable)
     .sort((a, b) => a.order - b.order);
 
-  return { siteName, sections };
+  return { siteName, contactInfo, sections };
 };
 
 export default useHomepageData;
