@@ -29,7 +29,6 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({
         <Styled.h1 sx={titleStyles}>{title}</Styled.h1>
         <Text html={description} />
       </Box>
-      <Box sx={displayStyles} />
     </BaseSection>
   );
 };

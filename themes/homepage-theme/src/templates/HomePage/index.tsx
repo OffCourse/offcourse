@@ -4,7 +4,7 @@ import { jsx } from "theme-ui";
 import useHomepageData from "../../hooks/useHomepageData";
 import PageTemplate from "../Page";
 import PageSection from "../../components/PageSection";
-import { Footer } from "@offcourse/molecules";
+import { Footer, Header } from "@offcourse/molecules";
 import { IPageSection } from "@offcourse/interfaces/src/pageSection";
 import { wrapperStyles } from "./styles";
 
@@ -20,6 +20,7 @@ const HomePageTemplate: FunctionComponent = () => {
   } = useHomepageData();
   return (
     <PageTemplate sx={wrapperStyles}>
+      <Header />
       {sections.map(section => (
         <PageSection key={section.order} {...section} />
       ))}

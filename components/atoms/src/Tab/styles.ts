@@ -3,8 +3,10 @@ import { SxStyleProp } from "theme-ui";
 export const wrapperStyles: SxStyleProp = {
   display: "flex",
   userSelect: "none",
-  p: [2, 3],
   boxShadow: "0px 3px 15px rgba(0, 0, 0, 0.2)",
+  px: [4],
+  height: ["2.5rem", "3rem"],
+  alignItems: "center",
   bg: "white",
   "&:hover": {
     bg: "grayScale.4",
@@ -17,19 +19,16 @@ export const wrapperStyles: SxStyleProp = {
 
 export const linkStyles = {
   color: "negative",
-  borderColor: "negative",
-  fontSize: [1, 2],
   lineHeight: [2, 3],
-  border: "none",
+  fontSize: [2, 3],
   bg: "transparent",
   textAlign: "inherit",
   p: 0,
+  wordSpacing: "-0.2em",
   userSelect: "none",
-  boxSizing: "border-box",
-  fontFamily: "heading",
+  textDecoration: "none",
+  fontFamily: "monospace",
   fontWeight: "bold",
-  borderBottom: "0.125rem solid black",
-  textDecoration: "inherit",
   ":focus": {
     outline: "none"
   }

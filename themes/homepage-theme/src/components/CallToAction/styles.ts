@@ -5,14 +5,17 @@ const wrapperStyles: SxStyleProp = {
   position: "fixed",
   top: 0,
   right: 0,
+  height: ["4rem", "5rem"],
+
   bg: "transparent",
   display: "flex",
+  // display: "none",
   flexDirection: "row",
   justifyContent: "flex-end",
-  alignItems: "flex-start",
+  alignItems: "center",
   py: 0,
   px: 4,
-  width: "100%",
+  width: "60%",
   zIndex: 100
 };
 

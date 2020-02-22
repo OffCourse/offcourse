@@ -2,8 +2,7 @@
 import { forwardRef } from "react";
 import { jsx } from "theme-ui";
 import { Global } from "@emotion/core";
-import { Logo } from "@offcourse/atoms";
-import { Footer } from "@offcourse/molecules";
+import { Header, Footer } from "@offcourse/molecules";
 import { Box } from "theme-ui";
 import { useSiteMetaData } from "../../hooks";
 
@@ -33,10 +32,8 @@ const PageTemplate = forwardRef(
     } = useSiteMetaData();
     return (
       <Box sx={wrapperStyles}>
-        <a sx={{ position: "fixed", right: 0, p: 4 }} href="/">
-          <Logo sx={{ textAlign: "right" }}>Offcourse Studio_</Logo>
-        </a>
         <Global styles={theme => theme.globals} />
+        <Header />
         <Box className={className}>
           <div ref={ref}>{children}</div>
         </Box>

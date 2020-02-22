@@ -1,8 +1,8 @@
 import { jsx, Box, Heading } from 'theme-ui';
 import { ErrorMessage, Field } from 'formik';
-import { Checkbox, Label, Message, Input, TextArea, Text, Heading as Heading$1, Logo } from '@offcourse/atoms';
+import { Checkbox, Label, Message, Input, TextArea, Text, Heading as Heading$1, Logo, Tab, Avatar } from '@offcourse/atoms';
 import { defineCustomElements } from '@offcourse/public-badges-drawer/loader';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -36,6 +36,7 @@ var styles = {
     py: 2,
     px: 0
 };
+//# sourceMappingURL=styles.js.map
 
 var RadioButtonGroup = function (_a) {
     var className = _a.className, name = _a.name, _b = _a.options, options = _b === void 0 ? [] : _b;
@@ -44,6 +45,7 @@ var RadioButtonGroup = function (_a) {
         return jsx(Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -55,6 +57,7 @@ var labelStyles = {
     px: 4,
     pb: 2
 };
+//# sourceMappingURL=styles.js.map
 
 var components = {
     text: Input,
@@ -71,6 +74,7 @@ var InputField = function (_a) {
         jsx(ErrorMessage, { render: function (msg) { return jsx(Message, { isBasic: true }, msg); }, name: name }),
         jsx(Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
+//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -83,6 +87,7 @@ var titleStyles = {
     lineHeight: lineHeight,
     m: 0
 };
+//# sourceMappingURL=styles.js.map
 
 var TextSection = function (_a) {
     var title = _a.title, className = _a.className, description = _a.description;
@@ -90,6 +95,7 @@ var TextSection = function (_a) {
         jsx(Heading, { sx: titleStyles }, title),
         jsx(Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -141,6 +147,7 @@ var innerStyles = {
     fontSize: "2rem",
     wordSpacing: "-0.2em"
 };
+//# sourceMappingURL=styles.js.map
 
 var Project = function (_a) {
     var className = _a.className, children = _a.children, title = _a.title, imageUrl = _a.imageUrl, description = _a.description;
@@ -150,6 +157,7 @@ var Project = function (_a) {
         jsx(Text, { sx: captionStyles, html: description }),
         jsx(Heading$1, { sx: headerStyles }, title)));
 };
+//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -178,6 +186,7 @@ var wrapperStyles$2 = {
         textAlign: "end"
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var formatTitle = function (str) { return str; };
 var Step = function (_a) {
@@ -189,6 +198,7 @@ var Step = function (_a) {
             formatTitle(title)),
         jsx(Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var outerWrapperStyles = {
     display: "grid",
@@ -243,6 +253,7 @@ var logoStyles = {
         bg: "grayScale.0"
     }
 };
+//# sourceMappingURL=styles.js.map
 
 /** @jsx jsx */
 var PublicBadgesDrawer = function (_a) {
@@ -255,6 +266,7 @@ var PublicBadgesDrawer = function (_a) {
     }, [inBrowser]);
     return (jsx("publicbadges-drawer", { "domain-name": "https://offcourse-studio.com/", "badge-color": badgeColor, "modal-theme": modalTheme }));
 };
+//# sourceMappingURL=index.js.map
 
 var FooterSection = function (_a) {
     var className = _a.className, siteName = _a.siteName, contactInfo = _a.contactInfo;
@@ -272,6 +284,50 @@ var FooterSection = function (_a) {
                 jsx(PublicBadgesDrawer, { modalTheme: "light" })),
             jsx(Logo, { sx: logoStyles }, siteName))));
 };
+//# sourceMappingURL=index.js.map
 
-export { FooterSection as Footer, InputField, Project, RadioButtonGroup, Step, TextSection };
+var outerWrapperStyles$1 = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    display: "grid",
+    bg: "transparant",
+    zIndex: 100,
+    alignContent: "center",
+    justifyContent: "stretch"
+};
+var menuStyles = {
+    bg: "transparant",
+    px: [4],
+    py: [4],
+    display: "flex",
+    flexDirection: ["column", "column", "row"],
+    alignItems: ["flex-start", "flex-start", "center"],
+    justifyItems: "flex-start",
+    height: ["12rem", "5rem"],
+    "> *": {
+        mr: [0, 0, 4],
+        mb: [4, 4, 0]
+    }
+};
+var menuBarStyles = {
+    height: ["4rem", "5rem"],
+    mt: 4,
+    px: [4]
+};
+
+var HeaderSection = function (_a) {
+    var className = _a.className;
+    var _b = useState("CLOSED"), mode = _b[0], setMode = _b[1];
+    return (jsx(Box, { sx: outerWrapperStyles$1, className: className },
+        jsx(Box, { sx: __assign(__assign({}, menuStyles), { display: mode === "OPEN" ? "flex" : "none" }) },
+            jsx(Tab, { title: "Home" }),
+            jsx(Tab, { title: "Blog" }),
+            jsx(Tab, { title: "Presentations" })),
+        jsx(Box, { sx: menuBarStyles },
+            jsx(Avatar, { onClick: function () { return setMode(mode === "OPEN" ? "CLOSED" : "OPEN"); } }))));
+};
+
+export { FooterSection as Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };
 //# sourceMappingURL=index.es.js.map

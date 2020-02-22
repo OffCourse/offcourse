@@ -8,7 +8,7 @@ export const wrapperStyles = {
 };
 
 export const innerWrapperStyles = {
-  gridColumn: ["1/10", "1/13", "1/13", "2/12"],
+  gridColumn: ["1/13", "1/13", "1/13", "2/12"],
   display: "grid",
   gridColumnGap: [2, 4, 6, 7],
   gridTemplateColumns: ["repeat(9, 1fr)", "repeat(12, 1fr)"]

@@ -7,6 +7,30 @@ var voca = require('voca');
 var ramda = require('ramda');
 var formik = require('formik');
 
+var avatarStyles = {
+    fontFamily: "monospace",
+    display: "block",
+    width: ["2.5rem", "3rem"],
+    height: ["2.5rem", "3rem"],
+    bg: "black",
+    textAlign: "center",
+    m: 0,
+    boxShadow: "0px 0px 0.5rem rgba(255, 255, 255, 0.6)",
+    color: "white",
+    lineHeight: ["2.5rem", "3rem"],
+    fontSize: ["2.1rem", "2.5rem"],
+    "&:hover": {
+        transform: "rotate(180deg)"
+    }
+};
+//# sourceMappingURL=styles.js.map
+
+var Logo = function (_a) {
+    var className = _a.className, onClick = _a.onClick;
+    return (themeUi.jsx(themeUi.Heading, { onClick: onClick, sx: avatarStyles, className: className }, "_"));
+};
+//# sourceMappingURL=index.js.map
+
 var titleize = function (str) {
     return voca.titleCase(str, ["'", "-", "’"]);
 };
@@ -17,6 +41,7 @@ var formatValue = function (value, isNormalized) {
     }
     return isNormalized ? formatTitle(value) : value;
 };
+//# sourceMappingURL=helpers.js.map
 
 var styles = {
     display: "flex",
@@ -53,11 +78,13 @@ var styles = {
         borderColor: "grayScale.1"
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var Button = function (_a) {
     var type = _a.type, children = _a.children, className = _a.className, disabled = _a.disabled;
     return (themeUi.jsx("button", { sx: styles, disabled: disabled, className: className, type: type }, formatTitle(children)));
 };
+//# sourceMappingURL=index.js.map
 
 var checkboxStyles = {
     WebkitAppearance: "none",
@@ -82,6 +109,7 @@ var wrapperStyles = {
 var labelStyles = {
     fontFamily: "body"
 };
+//# sourceMappingURL=styles.js.map
 
 var labelStyles$1 = {
     fontFamily: "heading",
@@ -90,11 +118,13 @@ var labelStyles$1 = {
     pt: 0,
     userSelect: "none"
 };
+//# sourceMappingURL=styles.js.map
 
 var Label = function (_a) {
     var className = _a.className, children = _a.children, htmlFor = _a.htmlFor;
     return (themeUi.jsx("label", { className: className, htmlFor: htmlFor, sx: labelStyles$1 }, formatTitle(children)));
 };
+//# sourceMappingURL=index.js.map
 
 var Checkbox = function (_a) {
     var label = _a.label, className = _a.className, id = _a.id, name = _a.name, value = _a.value;
@@ -102,6 +132,7 @@ var Checkbox = function (_a) {
         themeUi.jsx(formik.Field, { sx: checkboxStyles, className: className, id: id, type: "radio", name: name, value: value }),
         themeUi.jsx(Label, { sx: labelStyles, htmlFor: id }, label)));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -145,17 +176,20 @@ var textStyles = {
         transform: ["scale(0.95)", "none"]
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var DisplayText = function (_a) {
     var children = _a.children, className = _a.className;
     return (themeUi.jsx(themeUi.Box, { sx: wrapperStyles$1, className: className }, children.split(" ").map(function (word, index) { return (themeUi.jsx("span", { sx: spanStyles, key: index },
         themeUi.jsx("h1", { sx: textStyles }, word))); })));
 };
+//# sourceMappingURL=index.js.map
 
 var Heading = function (_a) {
     var children = _a.children, className = _a.className;
     return themeUi.jsx(themeUi.Heading, { className: className }, formatTitle(children));
 };
+//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -219,6 +253,7 @@ var inputStyles = {
         outline: "none"
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var Input = function (_a) {
     var className = _a.className, placeholder = _a.placeholder, name = _a.name, _b = _a.value, value = _b === void 0 ? "" : _b, onChange = _a.onChange, onBlur = _a.onBlur, _c = _a.type, type = _c === void 0 ? "text" : _c, _d = _a.autoComplete, autoComplete = _d === void 0 ? false : _d, _e = _a.autoFocus, autoFocus = _e === void 0 ? false : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, _g = _a.required, required = _g === void 0 ? false : _g, _h = _a.isNormalized, isNormalized = _h === void 0 ? true : _h;
@@ -250,6 +285,7 @@ var Input = function (_a) {
     return (themeUi.jsx(themeUi.Box, { className: className, sx: wrapperStyles$2 },
         themeUi.jsx("input", __assign({ sx: inputStyles }, baseProps))));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -288,13 +324,15 @@ var textStyles$1 = {
         mr: 0
     }
 };
+//# sourceMappingURL=styles.js.map
 
-var Logo = function (_a) {
+var Logo$1 = function (_a) {
     var children = _a.children, className = _a.className;
     var words = children.split(" ");
     return (themeUi.jsx(themeUi.Box, { sx: wrapperStyles$3, className: className }, words.map(function (word, index) { return (themeUi.jsx("span", { sx: spanStyles$1, key: index },
         themeUi.jsx("h1", { sx: textStyles$1 }, word))); })));
 };
+//# sourceMappingURL=index.js.map
 
 var messageStyles = {
     fontFamily: "heading",
@@ -307,17 +345,21 @@ var messageStyles = {
     pb: 2
 };
 var basicMessageStyles = __assign(__assign({}, messageStyles), { pt: 0 });
+//# sourceMappingURL=styles.js.map
 
 var Message = function (_a) {
     var children = _a.children, isBasic = _a.isBasic, className = _a.className;
     return (themeUi.jsx(themeUi.Box, { className: className, sx: isBasic ? basicMessageStyles : messageStyles }, formatTitle(children)));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$4 = {
     display: "flex",
     userSelect: "none",
-    p: [2, 3],
     boxShadow: "0px 3px 15px rgba(0, 0, 0, 0.2)",
+    px: [4],
+    height: ["2.5rem", "3rem"],
+    alignItems: "center",
     bg: "white",
     "&:hover": {
         bg: "grayScale.4",
@@ -329,23 +371,21 @@ var wrapperStyles$4 = {
 };
 var linkStyles = {
     color: "negative",
-    borderColor: "negative",
-    fontSize: [1, 2],
     lineHeight: [2, 3],
-    border: "none",
+    fontSize: [2, 3],
     bg: "transparent",
     textAlign: "inherit",
     p: 0,
+    wordSpacing: "-0.2em",
     userSelect: "none",
-    boxSizing: "border-box",
-    fontFamily: "heading",
+    textDecoration: "none",
+    fontFamily: "monospace",
     fontWeight: "bold",
-    borderBottom: "0.125rem solid black",
-    textDecoration: "inherit",
     ":focus": {
         outline: "none"
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var Tab = function (_a) {
     var className = _a.className, title = _a.title;
@@ -365,6 +405,7 @@ var wrapperStyles$5 = {
         }
     }
 };
+//# sourceMappingURL=styles.js.map
 
 /** @jsx jsx */
 var Text = function (_a) {
@@ -382,23 +423,27 @@ var Text = function (_a) {
     return (themeUi.jsx(themeUi.Box, __assign({}, styleProps),
         themeUi.jsx("p", null, children)));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$6 = __assign({}, wrapperStyles$2);
 var textAreaStyles = __assign(__assign({}, inputStyles), { fontFamily: "body", fontSize: 1, lineHeight: 1 });
+//# sourceMappingURL=styles.js.map
 
 var TextArea = function (_a) {
     var className = _a.className, _b = _a.placeholder, placeholder = _b === void 0 ? "Enter Something" : _b, name = _a.name, _c = _a.value, value = _c === void 0 ? "" : _c, onChange = _a.onChange, onBlur = _a.onBlur, _d = _a.rows, rows = _d === void 0 ? 4 : _d, _e = _a.autoFocus, autoFocus = _e === void 0 ? false : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f;
     return (themeUi.jsx("div", { sx: wrapperStyles$6 },
         themeUi.jsx("textarea", { className: className, sx: textAreaStyles, autoFocus: autoFocus, rows: rows, name: name, disabled: disabled, value: value, placeholder: formatTitle(placeholder), onChange: onChange, onBlur: onBlur })));
 };
+//# sourceMappingURL=index.js.map
 
+exports.Avatar = Logo;
 exports.Button = Button;
 exports.Checkbox = Checkbox;
 exports.DisplayText = DisplayText;
 exports.Heading = Heading;
 exports.Input = Input;
 exports.Label = Label;
-exports.Logo = Logo;
+exports.Logo = Logo$1;
 exports.Message = Message;
 exports.Tab = Tab;
 exports.Text = Text;

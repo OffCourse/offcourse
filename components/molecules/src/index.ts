@@ -4,5 +4,14 @@ import Project from "./Project";
 import RadioButtonGroup from "./RadioButtonGroup";
 import Step from "./Step";
 import Footer from "./Footer";
+import Header from "./Header";
 
-export { InputField, TextSection, Project, RadioButtonGroup, Step, Footer };
+export {
+  InputField,
+  TextSection,
+  Project,
+  RadioButtonGroup,
+  Step,
+  Footer,
+  Header
+};

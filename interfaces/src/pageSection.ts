@@ -74,7 +74,6 @@ export type IProcessSection = IBaseSection & {
 export type IPageSection =
   | IContactSection
   | IHeroSection
-  | IFooterSection
   | IProjectsSection
   | IProcessSection
   | IProfileSection;

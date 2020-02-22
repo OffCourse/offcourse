@@ -1,3 +1,4 @@
+import Avatar from "./Avatar";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
 import DisplayText from "./DisplayText";
@@ -11,6 +12,7 @@ import Text from "./Text";
 import TextArea from "./TextArea";
 
 export {
+  Avatar,
   Button,
   Checkbox,
   DisplayText,
