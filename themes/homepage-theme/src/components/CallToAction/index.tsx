@@ -28,7 +28,7 @@ const CallToAction: FunctionComponent<CallToActionProps> = ({
       style={animation}
       className={className}
     >
-      <Tab title={children} />
+      <Tab href="#ContactSection">{children}</Tab>
     </Box>
   );
 };

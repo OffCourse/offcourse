@@ -7,11 +7,11 @@ import { formatTitle } from "../helpers";
 
 type TabProps = IThemeable & ITab;
 
-const Tab: FunctionComponent<TabProps> = ({ className, title }) => {
+const Tab: FunctionComponent<TabProps> = ({ className, children, href }) => {
   return (
     <Box sx={wrapperStyles} className={className}>
-      <a sx={linkStyles} href="#ContactSection">
-        {formatTitle(title)}
+      <a sx={linkStyles} href={href}>
+        {formatTitle(children)}
       </a>
     </Box>
   );

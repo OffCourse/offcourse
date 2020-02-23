@@ -22,6 +22,7 @@
     "serverless": "^1.63.0"
   },
   "dependencies": {
+    "framer-motion": "^1.8.4",
     "@offcourse/blog-theme": "*",
     "@offcourse/homepage-theme": "*",
     "@offcourse/interfaces": "*",

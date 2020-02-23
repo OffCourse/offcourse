@@ -2,7 +2,8 @@ import { jsx, Box, Heading } from 'theme-ui';
 import { ErrorMessage, Field } from 'formik';
 import { Checkbox, Label, Message, Input, TextArea, Text, Heading as Heading$1, Logo, Tab, Avatar } from '@offcourse/atoms';
 import { defineCustomElements } from '@offcourse/public-badges-drawer/loader';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
+import { motion } from 'framer-motion';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -286,47 +287,107 @@ var FooterSection = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
+var avatarStyles = {
+    "&:hover": {
+        opacity: 0.75
+    }
+};
 var outerWrapperStyles$1 = {
     position: "fixed",
     top: 0,
     left: 0,
     right: 0,
-    display: "grid",
     bg: "transparant",
     zIndex: 100,
     alignContent: "center",
-    justifyContent: "stretch"
-};
-var menuStyles = {
-    bg: "transparant",
-    px: [4],
-    py: [4],
+    p: [4],
+    height: ["4rem", "5rem"],
     display: "flex",
-    flexDirection: ["column", "column", "row"],
-    alignItems: ["flex-start", "flex-start", "center"],
-    justifyItems: "flex-start",
-    height: ["12rem", "5rem"],
-    "> *": {
-        mr: [0, 0, 4],
-        mb: [4, 4, 0]
+    flexDirection: "row",
+    justifyContent: "space-between"
+};
+var menuItemsStyles = {
+    display: "flex",
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between"
+};
+//# sourceMappingURL=styles.js.map
+
+var avatarVariants = {
+    hidden: { x: "-200%", opacity: 0.2 },
+    visible: { x: 0, opacity: 1 }
+};
+var AvatarAnimation = function (_a) {
+    var children = _a.children;
+    return (jsx(motion.div, { initial: "hidden", animate: "visible", variants: avatarVariants }, children));
+};
+var menuVariants = {
+    hidden: { y: "-400%", opacity: 0.2 },
+    visible: { y: 0, opacity: 1 }
+};
+var MenuAnimation = function (_a) {
+    var children = _a.children, mode = _a.mode;
+    return (jsx(motion.div, { initial: "hidden", animate: mode === "OPEN" ? "visible" : "hidden", variants: menuVariants }, children));
+};
+var callToActionVariants = {
+    hidden: { x: "200%", opacity: 0.2 },
+    visible: { x: 0, opacity: 1 }
+};
+var CallToActionAnimation = function (_a) {
+    var children = _a.children, mode = _a.mode;
+    return (jsx(motion.div, { initial: "hidden", animate: mode === "CLOSED" ? "visible" : "hidden", variants: callToActionVariants }, children));
+};
+//# sourceMappingURL=animations.js.map
+
+var wrapperStyles$3 = {
+    display: "flex",
+    flexDirection: ["column", "row"],
+    "> div": {
+        ml: [4],
+        mb: [4]
     }
 };
-var menuBarStyles = {
-    height: ["4rem", "5rem"],
-    mt: 4,
-    px: [4]
-};
+//# sourceMappingURL=styles.js.map
 
+var MenuSection = function (_a) {
+    var className = _a.className, links = _a.links;
+    return (jsx(Box, { className: className, sx: wrapperStyles$3 }, links.map(function (_a) {
+        var href = _a.href, title = _a.title;
+        return (jsx(Tab, { href: href }, title));
+    })));
+};
+//# sourceMappingURL=index.js.map
+
+/** @jsx jsx */
+var useModeToggle = function () {
+    var _a = useState("CLOSED"), mode = _a[0], setMode = _a[1];
+    var toggleMode = useCallback(function () {
+        setMode(mode === "OPEN" ? "CLOSED" : "OPEN");
+    }, [mode, setMode]);
+    return [mode, toggleMode];
+};
 var HeaderSection = function (_a) {
     var className = _a.className;
-    var _b = useState("CLOSED"), mode = _b[0], setMode = _b[1];
+    var _b = useModeToggle(), mode = _b[0], toggleMode = _b[1];
+    var links = [
+        {
+            title: "blog",
+            href: "/blog"
+        },
+        {
+            title: "decks",
+            href: "/presentations"
+        }
+    ];
     return (jsx(Box, { sx: outerWrapperStyles$1, className: className },
-        jsx(Box, { sx: __assign(__assign({}, menuStyles), { display: mode === "OPEN" ? "flex" : "none" }) },
-            jsx(Tab, { title: "Home" }),
-            jsx(Tab, { title: "Blog" }),
-            jsx(Tab, { title: "Presentations" })),
-        jsx(Box, { sx: menuBarStyles },
-            jsx(Avatar, { onClick: function () { return setMode(mode === "OPEN" ? "CLOSED" : "OPEN"); } }))));
+        jsx(AvatarAnimation, null,
+            jsx(Avatar, { sx: avatarStyles, onClick: toggleMode })),
+        jsx(Box, { sx: menuItemsStyles },
+            jsx(MenuAnimation, { mode: mode },
+                jsx(MenuSection, { links: links })),
+            jsx(CallToActionAnimation, { mode: mode },
+                jsx(Tab, { href: "#ContactSection" }, "Contact Us")))));
 };
 
 export { FooterSection as Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };

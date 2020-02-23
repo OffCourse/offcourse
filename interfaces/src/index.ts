@@ -1,3 +1,4 @@
+import { ComponentType } from "react";
 export interface IPublishable {
   publishable: boolean;
 }
@@ -48,6 +49,7 @@ export interface IThemeable {
   className?: string;
   theme?: ITheme;
   id?: string;
+  as?: keyof JSX.IntrinsicElements | ComponentType<any>;
   style?: any;
 }
 
@@ -61,10 +63,12 @@ export interface IStylable {
 
 export interface ILink {
   href: string;
+  title: string;
 }
 
 export interface ITab {
-  title: string;
+  children: string;
+  href?: string;
 }
 
 export interface IMessage {

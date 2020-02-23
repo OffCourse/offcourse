@@ -8,8 +8,8 @@ const wrapperStyles: SxStyleProp = {
   height: ["4rem", "5rem"],
 
   bg: "transparent",
-  display: "flex",
-  // display: "none",
+  // display: "flex",
+  display: "none",
   flexDirection: "row",
   justifyContent: "flex-end",
   alignItems: "center",

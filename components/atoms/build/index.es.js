@@ -4,6 +4,7 @@ import { compose } from 'ramda';
 import { Field } from 'formik';
 
 var avatarStyles = {
+    userSelect: "none",
     fontFamily: "monospace",
     display: "block",
     width: ["2.5rem", "3rem"],
@@ -14,18 +15,13 @@ var avatarStyles = {
     boxShadow: "0px 0px 0.5rem rgba(255, 255, 255, 0.6)",
     color: "white",
     lineHeight: ["2.5rem", "3rem"],
-    fontSize: ["2.1rem", "2.5rem"],
-    "&:hover": {
-        transform: "rotate(180deg)"
-    }
+    fontSize: ["2.1rem", "2.5rem"]
 };
-//# sourceMappingURL=styles.js.map
 
 var Logo = function (_a) {
     var className = _a.className, onClick = _a.onClick;
     return (jsx(Heading$1, { onClick: onClick, sx: avatarStyles, className: className }, "_"));
 };
-//# sourceMappingURL=index.js.map
 
 var titleize = function (str) {
     return titleCase(str, ["'", "-", "’"]);
@@ -384,10 +380,11 @@ var linkStyles = {
 //# sourceMappingURL=styles.js.map
 
 var Tab = function (_a) {
-    var className = _a.className, title = _a.title;
+    var className = _a.className, children = _a.children, href = _a.href;
     return (jsx(Box, { sx: wrapperStyles$4, className: className },
-        jsx("a", { sx: linkStyles, href: "#ContactSection" }, formatTitle(title))));
+        jsx("a", { sx: linkStyles, href: href }, formatTitle(children))));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$5 = {
     fontFamily: "body",

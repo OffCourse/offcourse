@@ -48,7 +48,7 @@ ${fontFaces}
 
 const newTheme = merge({}, baseTheme, {
   colors: {
-    background: baseColors.yellow,
+    background: baseColors.black,
     text: baseColors.black,
     primary: baseColors.yellow,
     secondary: baseColors.blue
