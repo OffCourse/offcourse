@@ -273,7 +273,7 @@ var PublicBadgesDrawer = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
-var FooterSection = function (_a) {
+var Footer = function (_a) {
     var className = _a.className, siteName = _a.siteName, contactInfo = _a.contactInfo;
     var street = contactInfo.street, zipCode = contactInfo.zipCode, country = contactInfo.country, city = contactInfo.city, email = contactInfo.email;
     return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles, className: className },
@@ -289,7 +289,6 @@ var FooterSection = function (_a) {
                 themeUi.jsx(PublicBadgesDrawer, { modalTheme: "light" })),
             themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
 };
-//# sourceMappingURL=index.js.map
 
 var avatarStyles = {
     "&:hover": {
@@ -358,7 +357,7 @@ var MenuSection = function (_a) {
     var className = _a.className, links = _a.links;
     return (themeUi.jsx(themeUi.Box, { className: className, sx: wrapperStyles$3 }, links.map(function (_a) {
         var href = _a.href, title = _a.title;
-        return (themeUi.jsx(atoms.Tab, { href: href }, title));
+        return (themeUi.jsx(atoms.Tab, { key: title, href: href }, title));
     })));
 };
 //# sourceMappingURL=index.js.map
@@ -393,8 +392,9 @@ var HeaderSection = function (_a) {
             themeUi.jsx(CallToActionAnimation, { mode: mode },
                 themeUi.jsx(atoms.Tab, { href: "#ContactSection" }, "Contact Us")))));
 };
+//# sourceMappingURL=index.js.map
 
-exports.Footer = FooterSection;
+exports.Footer = Footer;
 exports.Header = HeaderSection;
 exports.InputField = InputField;
 exports.Project = Project;

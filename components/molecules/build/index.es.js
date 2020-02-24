@@ -269,7 +269,7 @@ var PublicBadgesDrawer = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
-var FooterSection = function (_a) {
+var Footer = function (_a) {
     var className = _a.className, siteName = _a.siteName, contactInfo = _a.contactInfo;
     var street = contactInfo.street, zipCode = contactInfo.zipCode, country = contactInfo.country, city = contactInfo.city, email = contactInfo.email;
     return (jsx(Box, { sx: outerWrapperStyles, className: className },
@@ -285,7 +285,6 @@ var FooterSection = function (_a) {
                 jsx(PublicBadgesDrawer, { modalTheme: "light" })),
             jsx(Logo, { sx: logoStyles }, siteName))));
 };
-//# sourceMappingURL=index.js.map
 
 var avatarStyles = {
     "&:hover": {
@@ -354,7 +353,7 @@ var MenuSection = function (_a) {
     var className = _a.className, links = _a.links;
     return (jsx(Box, { className: className, sx: wrapperStyles$3 }, links.map(function (_a) {
         var href = _a.href, title = _a.title;
-        return (jsx(Tab, { href: href }, title));
+        return (jsx(Tab, { key: title, href: href }, title));
     })));
 };
 //# sourceMappingURL=index.js.map
@@ -389,6 +388,7 @@ var HeaderSection = function (_a) {
             jsx(CallToActionAnimation, { mode: mode },
                 jsx(Tab, { href: "#ContactSection" }, "Contact Us")))));
 };
+//# sourceMappingURL=index.js.map
 
-export { FooterSection as Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };
+export { Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };
 //# sourceMappingURL=index.es.js.map

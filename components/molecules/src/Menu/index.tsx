@@ -11,7 +11,9 @@ const MenuSection: FunctionComponent<MenuProps> = ({ className, links }) => {
   return (
     <Box className={className} sx={wrapperStyles}>
       {links.map(({ href, title }) => (
-        <Tab href={href}>{title}</Tab>
+        <Tab key={title} href={href}>
+          {title}
+        </Tab>
       ))}
     </Box>
   );

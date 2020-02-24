@@ -1,3 +1,1 @@
-export const wrapperStyles = {
-  bg: "white"
-};
+export const wrapperStyles = {};

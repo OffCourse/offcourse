@@ -15,7 +15,7 @@ import PublicBadgesDrawer from "../PublicBadgesDrawer";
 
 type FooterProps = IFooterSection & IThemeable;
 
-const FooterSection: FunctionComponent<FooterProps> = ({
+const Footer: FunctionComponent<FooterProps> = ({
   className,
   siteName,
   contactInfo
@@ -42,4 +42,4 @@ const FooterSection: FunctionComponent<FooterProps> = ({
   );
 };
 
-export default FooterSection;
+export default Footer;

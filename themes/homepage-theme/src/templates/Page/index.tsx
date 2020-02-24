@@ -1,27 +1,20 @@
-import React, { forwardRef } from "react";
-import { Global } from "@emotion/core";
-import { Box } from "theme-ui";
+import React from "react";
+import { PageLayout } from "@offcourse/layouts";
 
-const PageTemplate = forwardRef(
-  (
-    {
-      children,
-      className
-    }: {
-      className?: string;
-      children: any;
-    },
-    ref: any
-  ) => {
-    return (
-      <Box sx={{ overflowX: "hidden" }}>
-        <Global styles={theme => theme.globals} />
-        <Box className={className}>
-          <div ref={ref}>{children}</div>
-        </Box>
-      </Box>
-    );
-  }
-);
+const PageTemplate = ({
+  children,
+  siteName,
+  contactInfo
+}: {
+  children: any;
+  siteName: string;
+  contactInfo: any;
+}) => {
+  return (
+    <PageLayout siteName={siteName} contactInfo={contactInfo}>
+      {children}
+    </PageLayout>
+  );
+};
 
 export default PageTemplate;

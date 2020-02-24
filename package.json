@@ -8,6 +8,7 @@
       "interfaces",
       "components/atoms",
       "components/molecules",
+      "components/layouts",
       "components/hooks",
       "themes/homepage-theme",
       "themes/presentation-theme",
