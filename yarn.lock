@@ -2686,6 +2686,11 @@
   dependencies:
     tslib "^1.9.3"
 
+"@xstate/react@^0.8.1":
+  version "0.8.1"
+  resolved "https://registry.npmjs.org/@xstate/react/-/react-0.8.1.tgz#df200547cca24c909572b7aef1ddab8bca3a0603"
+  integrity sha512-8voZm4GX3x70lNQVvoGedoObPYapkQIbgMhE+xOQEsm8Ait4Zto6R01SZ6WJD4qvLl8JPV6uq96OcFRdEsVESg==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
@@ -19795,7 +19800,7 @@ xregexp@2.0.0:
   resolved "https://registry.npmjs.org/xregexp/-/xregexp-2.0.0.tgz#52a63e56ca0b84a7f3a5f3d61872f126ad7a5943"
   integrity sha1-UqY+VsoLhKfzpfPWGHLxJq16WUM=
 
-xstate@^4.7.2:
+xstate@^4.7.2, xstate@^4.7.8:
   version "4.7.8"
   resolved "https://registry.npmjs.org/xstate/-/xstate-4.7.8.tgz#a12ae521b105711b06cf95ab2652c1640d75d62d"
   integrity sha512-pRCBefTPvQRJWpvFi9xP4PkgozqpppKjC4xM1WjeFWxIroV1b7Jch4tnky30ZO4ywpVyn8bQMNRIC+5tuTfEKQ==

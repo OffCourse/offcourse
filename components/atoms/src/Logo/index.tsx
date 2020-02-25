@@ -2,9 +2,9 @@
 import { FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
 import { wrapperStyles, spanStyles, textStyles } from "./styles";
-import { IThemeable } from "@offcourse/interfaces/src";
+import { IThemeable, Heading } from "@offcourse/interfaces/src";
 
-type LogoProps = { children?: string } & IThemeable;
+type LogoProps = Heading & IThemeable;
 
 const Logo: FunctionComponent<LogoProps> = ({ children, className }) => {
   const words = children!.split(" ");

@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
-import { IThemeable, ITab } from "@offcourse/interfaces/src";
+import { IThemeable, Tab } from "@offcourse/interfaces/src";
 import { wrapperStyles, linkStyles } from "./styles";
 import { formatTitle } from "../helpers";
 
-type TabProps = IThemeable & ITab;
+type TabProps = Tab & IThemeable;
 
 const Tab: FunctionComponent<TabProps> = ({ className, children, href }) => {
   return (

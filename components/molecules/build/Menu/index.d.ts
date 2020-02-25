@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { IThemeable, ILink } from "@offcourse/interfaces/src";
+import { IThemeable, Link } from "@offcourse/interfaces/src";
 declare type MenuProps = {
-    links: ILink[];
+    links: Link[];
 } & IThemeable;
-declare const MenuSection: FunctionComponent<MenuProps>;
-export default MenuSection;
+declare const Menu: FunctionComponent<MenuProps>;
+export default Menu;

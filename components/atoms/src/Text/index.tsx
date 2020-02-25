@@ -2,13 +2,10 @@
 
 import { FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces/src";
+import { IThemeable, Text } from "@offcourse/interfaces/src";
 import { wrapperStyles } from "./styles";
 
-type TextProps = {
-  children?: string | string[];
-  html?: string;
-} & IThemeable;
+type TextProps = Text & IThemeable;
 
 const Text: FunctionComponent<TextProps> = ({ className, children, html }) => {
   const styleProps = { className, sx: wrapperStyles };

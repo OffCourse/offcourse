@@ -1,4 +1,6 @@
 import { useRef, useCallback, useEffect, useState } from 'react';
+import { useMachine } from '@xstate/react';
+import { Machine } from 'xstate';
 
 const useAnimationFrame = ({ callback, delay = 0 }) => {
     const requestRef = useRef(null);
@@ -21,6 +23,29 @@ const useAnimationFrame = ({ callback, delay = 0 }) => {
         return () => cancelAnimationFrame(requestRef.current || 0);
     }, [callback, animate]);
 };
+//# sourceMappingURL=useAnimationFrame.js.map
+
+const toggleMachine = Machine({
+    id: "toggle",
+    initial: "default",
+    states: {
+        default: {
+            on: { TOGGLE: "menuOpen" }
+        },
+        menuOpen: {
+            on: { TOGGLE: "default" }
+        }
+    }
+});
+//# sourceMappingURL=machine.js.map
+
+const useAppState = ({ siteMetaData, path }) => {
+    const { links: allLinks } = siteMetaData;
+    const links = allLinks.filter(({ href }) => href !== path);
+    const [current, send] = useMachine(toggleMachine);
+    const toggleMode = useCallback(() => send("TOGGLE"), [send]);
+    return [current, Object.assign(Object.assign({}, siteMetaData), { links }), toggleMode];
+};
 
 const useInterval = (callback, delay) => {
     const savedCallback = useRef();
@@ -40,6 +65,7 @@ const useInterval = (callback, delay) => {
         return;
     }, [delay]);
 };
+//# sourceMappingURL=useInterval.js.map
 
 const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     const [index, setIndex] = useState(0);
@@ -67,6 +93,7 @@ const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     }, delay);
     return [index, orderedProjects];
 };
+//# sourceMappingURL=useCycleItems.js.map
 
 const useCanvas = ({ width, height }) => {
     const canvasRef = useRef();
@@ -80,6 +107,7 @@ const useCanvas = ({ width, height }) => {
     }
     return [canvasRef, ctx];
 };
+//# sourceMappingURL=useCanvas.js.map
 
 const useShowTab = () => {
     const [isVisible, setVisibility] = useState(true);
@@ -88,6 +116,7 @@ const useShowTab = () => {
     };
     return [isVisible, handlePositionChange];
 };
+//# sourceMappingURL=useShowTab.js.map
 
-export { useAnimationFrame, useCanvas, useCycleItems, useInterval, useShowTab };
+export { useAnimationFrame, useAppState, useCanvas, useCycleItems, useInterval, useShowTab };
 //# sourceMappingURL=index.es.js.map

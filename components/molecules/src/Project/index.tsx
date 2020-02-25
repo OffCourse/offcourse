@@ -2,8 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
 import { Heading } from "@offcourse/atoms";
-import { IThemeable } from "@offcourse/interfaces/src";
-import { IProject } from "@offcourse/interfaces/src/pageSection";
+import { IThemeable, IProject, IIndexable } from "@offcourse/interfaces/src";
 import { Text } from "@offcourse/atoms";
 import {
   imageStyles,
@@ -13,7 +12,7 @@ import {
   wrapperStyles
 } from "./styles";
 
-type ProjectProps = IProject & IThemeable & { index: number };
+type ProjectProps = IProject & IThemeable & IIndexable;
 
 const Project: FunctionComponent<ProjectProps> = ({
   className,

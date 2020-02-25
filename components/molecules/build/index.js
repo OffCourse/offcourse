@@ -193,14 +193,13 @@ var wrapperStyles$2 = {
 };
 //# sourceMappingURL=styles.js.map
 
-var formatTitle = function (str) { return str; };
 var Step = function (_a) {
     var as = _a.as, style = _a.style, children = _a.children, title = _a.title, description = _a.description, className = _a.className, index = _a.index;
     return (themeUi.jsx(themeUi.Box, { as: as, sx: wrapperStyles$2, style: style, className: className },
         children,
-        themeUi.jsx(themeUi.Heading, { as: "h1", sx: titleStyles$1 },
+        themeUi.jsx(atoms.Heading, { as: "h1", sx: titleStyles$1 },
             themeUi.jsx("span", { sx: numberStyles }, index),
-            formatTitle(title)),
+            title),
         themeUi.jsx(atoms.Text, { html: description })));
 };
 //# sourceMappingURL=index.js.map
@@ -289,12 +288,9 @@ var Footer = function (_a) {
                 themeUi.jsx(PublicBadgesDrawer, { modalTheme: "light" })),
             themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
 };
+//# sourceMappingURL=index.js.map
 
-var avatarStyles = {
-    "&:hover": {
-        opacity: 0.75
-    }
-};
+var avatarStyles = {};
 var outerWrapperStyles$1 = {
     position: "fixed",
     top: 0,
@@ -303,7 +299,7 @@ var outerWrapperStyles$1 = {
     bg: "transparant",
     zIndex: 100,
     alignContent: "center",
-    p: [4],
+    p: [3, 4],
     height: ["4rem", "5rem"],
     display: "flex",
     flexDirection: "row",
@@ -317,31 +313,33 @@ var menuItemsStyles = {
 };
 //# sourceMappingURL=styles.js.map
 
+var duration = 0.2;
 var avatarVariants = {
     hidden: { x: "-200%", opacity: 0.2 },
-    visible: { x: 0, opacity: 1 }
+    default: { x: 0, opacity: 1, rotate: 0 },
+    hover: { opacity: 0.8 },
+    menuOpen: { rotate: 90 }
 };
 var AvatarAnimation = function (_a) {
-    var children = _a.children;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "hidden", animate: "visible", variants: avatarVariants }, children));
+    var children = _a.children, mode = _a.mode;
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "hidden", whileHover: "hover", transition: { duration: duration }, animate: mode, variants: avatarVariants }, children));
 };
 var menuVariants = {
-    hidden: { y: "-400%", opacity: 0.2 },
-    visible: { y: 0, opacity: 1 }
+    default: { y: "-400%", opacity: 0.2 },
+    menuOpen: { y: 0, opacity: 1 }
 };
 var MenuAnimation = function (_a) {
     var children = _a.children, mode = _a.mode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "hidden", animate: mode === "OPEN" ? "visible" : "hidden", variants: menuVariants }, children));
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "default", animate: mode, transition: { duration: duration }, variants: menuVariants }, children));
 };
 var callToActionVariants = {
-    hidden: { x: "200%", opacity: 0.2 },
-    visible: { x: 0, opacity: 1 }
+    menuOpen: { x: "200%", opacity: 0.2 },
+    default: { x: 0, opacity: 1 }
 };
 var CallToActionAnimation = function (_a) {
     var children = _a.children, mode = _a.mode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "hidden", animate: mode === "CLOSED" ? "visible" : "hidden", variants: callToActionVariants }, children));
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "hidden", transition: { duration: duration }, animate: mode, variants: callToActionVariants }, children));
 };
-//# sourceMappingURL=animations.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -353,7 +351,7 @@ var wrapperStyles$3 = {
 };
 //# sourceMappingURL=styles.js.map
 
-var MenuSection = function (_a) {
+var Menu = function (_a) {
     var className = _a.className, links = _a.links;
     return (themeUi.jsx(themeUi.Box, { className: className, sx: wrapperStyles$3 }, links.map(function (_a) {
         var href = _a.href, title = _a.title;
@@ -362,37 +360,17 @@ var MenuSection = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
-/** @jsx jsx */
-var useModeToggle = function () {
-    var _a = react.useState("CLOSED"), mode = _a[0], setMode = _a[1];
-    var toggleMode = react.useCallback(function () {
-        setMode(mode === "OPEN" ? "CLOSED" : "OPEN");
-    }, [mode, setMode]);
-    return [mode, toggleMode];
-};
 var HeaderSection = function (_a) {
-    var className = _a.className;
-    var _b = useModeToggle(), mode = _b[0], toggleMode = _b[1];
-    var links = [
-        {
-            title: "blog",
-            href: "/blog"
-        },
-        {
-            title: "decks",
-            href: "/presentations"
-        }
-    ];
+    var className = _a.className, links = _a.links, callToAction = _a.callToAction, mode = _a.mode, toggleMenu = _a.toggleMenu;
     return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles$1, className: className },
-        themeUi.jsx(AvatarAnimation, null,
-            themeUi.jsx(atoms.Avatar, { sx: avatarStyles, onClick: toggleMode })),
+        themeUi.jsx(AvatarAnimation, { mode: mode },
+            themeUi.jsx(atoms.Avatar, { sx: avatarStyles, onClick: toggleMenu })),
         themeUi.jsx(themeUi.Box, { sx: menuItemsStyles },
             themeUi.jsx(MenuAnimation, { mode: mode },
-                themeUi.jsx(MenuSection, { links: links })),
+                themeUi.jsx(Menu, { links: links })),
             themeUi.jsx(CallToActionAnimation, { mode: mode },
-                themeUi.jsx(atoms.Tab, { href: "#ContactSection" }, "Contact Us")))));
+                themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)))));
 };
-//# sourceMappingURL=index.js.map
 
 exports.Footer = Footer;
 exports.Header = HeaderSection;

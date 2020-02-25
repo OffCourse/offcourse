@@ -12,6 +12,24 @@ module.exports = {
       country: "The Netherlands",
       email: "contact@offcourse.io"
     },
+    callToAction: {
+      title: "contact us",
+      href: "#ContactSection"
+    },
+    links: [
+      {
+        title: "home",
+        href: "/"
+      },
+      {
+        title: "blog",
+        href: "/blog"
+      },
+      {
+        title: "decks",
+        href: "/presentations"
+      }
+    ],
     social: [
       {
         name: `Twitter`,

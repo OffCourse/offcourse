@@ -1,10 +1,12 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-declare const AvatarAnimation: FunctionComponent;
+declare const AvatarAnimation: FunctionComponent<{
+    mode: "menuOpen" | "default";
+}>;
 declare const MenuAnimation: FunctionComponent<{
-    mode: "OPEN" | "CLOSED";
+    mode: "menuOpen" | "default";
 }>;
 declare const CallToActionAnimation: FunctionComponent<{
-    mode: "OPEN" | "CLOSED";
+    mode: "menuOpen" | "default";
 }>;
 export { AvatarAnimation, MenuAnimation, CallToActionAnimation };

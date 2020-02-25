@@ -3,29 +3,43 @@ import { FunctionComponent } from "react";
 import { motion } from "framer-motion";
 import { jsx } from "theme-ui";
 
+const duration = 0.2;
+
 const avatarVariants = {
   hidden: { x: "-200%", opacity: 0.2 },
-  visible: { x: 0, opacity: 1 }
+  default: { x: 0, opacity: 1, rotate: 0 },
+  hover: { opacity: 0.8 },
+  menuOpen: { rotate: 90 }
 };
 
-const AvatarAnimation: FunctionComponent = ({ children }) => (
-  <motion.div initial="hidden" animate={"visible"} variants={avatarVariants}>
-    {children}
-  </motion.div>
-);
-
-const menuVariants = {
-  hidden: { y: "-400%", opacity: 0.2 },
-  visible: { y: 0, opacity: 1 }
-};
-
-const MenuAnimation: FunctionComponent<{ mode: "OPEN" | "CLOSED" }> = ({
+const AvatarAnimation: FunctionComponent<{ mode: "menuOpen" | "default" }> = ({
   children,
   mode
 }) => (
   <motion.div
     initial="hidden"
-    animate={mode === "OPEN" ? "visible" : "hidden"}
+    whileHover={"hover"}
+    transition={{ duration }}
+    animate={mode}
+    variants={avatarVariants}
+  >
+    {children}
+  </motion.div>
+);
+
+const menuVariants = {
+  default: { y: "-400%", opacity: 0.2 },
+  menuOpen: { y: 0, opacity: 1 }
+};
+
+const MenuAnimation: FunctionComponent<{ mode: "menuOpen" | "default" }> = ({
+  children,
+  mode
+}) => (
+  <motion.div
+    initial="default"
+    animate={mode}
+    transition={{ duration }}
     variants={menuVariants}
   >
     {children}
@@ -33,17 +47,17 @@ const MenuAnimation: FunctionComponent<{ mode: "OPEN" | "CLOSED" }> = ({
 );
 
 const callToActionVariants = {
-  hidden: { x: "200%", opacity: 0.2 },
-  visible: { x: 0, opacity: 1 }
+  menuOpen: { x: "200%", opacity: 0.2 },
+  default: { x: 0, opacity: 1 }
 };
 
-const CallToActionAnimation: FunctionComponent<{ mode: "OPEN" | "CLOSED" }> = ({
-  children,
-  mode
-}) => (
+const CallToActionAnimation: FunctionComponent<{
+  mode: "menuOpen" | "default";
+}> = ({ children, mode }) => (
   <motion.div
     initial="hidden"
-    animate={mode === "CLOSED" ? "visible" : "hidden"}
+    transition={{ duration }}
+    animate={mode}
     variants={callToActionVariants}
   >
     {children}

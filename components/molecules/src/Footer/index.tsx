@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx, Box, Heading } from "theme-ui";
-import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
 import { Logo } from "@offcourse/atoms";
 import { IThemeable } from "@offcourse/interfaces/src";
+import { FooterData } from "@offcourse/interfaces/src/pages";
 import {
   drawerStyles,
   outerWrapperStyles,
@@ -13,7 +13,7 @@ import {
 } from "./styles";
 import PublicBadgesDrawer from "../PublicBadgesDrawer";
 
-type FooterProps = IFooterSection & IThemeable;
+type FooterProps = FooterData & IThemeable;
 
 const Footer: FunctionComponent<FooterProps> = ({
   className,

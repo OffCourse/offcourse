@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
-import { IThemeable, IButton } from "@offcourse/interfaces/src";
+import { IThemeable, Button } from "@offcourse/interfaces/src";
 import { formatTitle } from "../helpers";
 import styles from "./styles";
 
-type ButtonProps = IButton & IThemeable;
+type ButtonProps = Button & IThemeable;
 
 const Button: FunctionComponent<ButtonProps> = ({
   type,

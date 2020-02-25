@@ -17,8 +17,9 @@ var avatarStyles = {
     lineHeight: ["2.5rem", "3rem"],
     fontSize: ["2.1rem", "2.5rem"]
 };
+//# sourceMappingURL=styles.js.map
 
-var Logo = function (_a) {
+var Avatar = function (_a) {
     var className = _a.className, onClick = _a.onClick;
     return (jsx(Heading$1, { onClick: onClick, sx: avatarStyles, className: className }, "_"));
 };
@@ -76,7 +77,6 @@ var Button = function (_a) {
     var type = _a.type, children = _a.children, className = _a.className, disabled = _a.disabled;
     return (jsx("button", { sx: styles, disabled: disabled, className: className, type: type }, formatTitle(children)));
 };
-//# sourceMappingURL=index.js.map
 
 var checkboxStyles = {
     WebkitAppearance: "none",
@@ -116,7 +116,6 @@ var Label = function (_a) {
     var className = _a.className, children = _a.children, htmlFor = _a.htmlFor;
     return (jsx("label", { className: className, htmlFor: htmlFor, sx: labelStyles$1 }, formatTitle(children)));
 };
-//# sourceMappingURL=index.js.map
 
 var Checkbox = function (_a) {
     var label = _a.label, className = _a.className, id = _a.id, name = _a.name, value = _a.value;
@@ -124,7 +123,6 @@ var Checkbox = function (_a) {
         jsx(Field, { sx: checkboxStyles, className: className, id: id, type: "radio", name: name, value: value }),
         jsx(Label, { sx: labelStyles, htmlFor: id }, label)));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -175,13 +173,16 @@ var DisplayText = function (_a) {
     return (jsx(Box, { sx: wrapperStyles$1, className: className }, children.split(" ").map(function (word, index) { return (jsx("span", { sx: spanStyles, key: index },
         jsx("h1", { sx: textStyles }, word))); })));
 };
-//# sourceMappingURL=index.js.map
 
 var Heading = function (_a) {
-    var children = _a.children, className = _a.className;
-    return jsx(Heading$1, { className: className }, formatTitle(children));
+    var children = _a.children, className = _a.className, as = _a.as;
+    if (children instanceof Array) {
+        return (jsx(Heading$1, { as: as, className: className },
+            children[0],
+            formatTitle(children[1])));
+    }
+    return (jsx(Heading$1, { as: as, className: className }, formatTitle(children)));
 };
-//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -277,7 +278,6 @@ var Input = function (_a) {
     return (jsx(Box, { className: className, sx: wrapperStyles$2 },
         jsx("input", __assign({ sx: inputStyles }, baseProps))));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -318,13 +318,12 @@ var textStyles$1 = {
 };
 //# sourceMappingURL=styles.js.map
 
-var Logo$1 = function (_a) {
+var Logo = function (_a) {
     var children = _a.children, className = _a.className;
     var words = children.split(" ");
     return (jsx(Box, { sx: wrapperStyles$3, className: className }, words.map(function (word, index) { return (jsx("span", { sx: spanStyles$1, key: index },
         jsx("h1", { sx: textStyles$1 }, word))); })));
 };
-//# sourceMappingURL=index.js.map
 
 var messageStyles = {
     fontFamily: "heading",
@@ -343,7 +342,6 @@ var Message = function (_a) {
     var children = _a.children, isBasic = _a.isBasic, className = _a.className;
     return (jsx(Box, { className: className, sx: isBasic ? basicMessageStyles : messageStyles }, formatTitle(children)));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$4 = {
     display: "flex",
@@ -384,7 +382,6 @@ var Tab = function (_a) {
     return (jsx(Box, { sx: wrapperStyles$4, className: className },
         jsx("a", { sx: linkStyles, href: href }, formatTitle(children))));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$5 = {
     fontFamily: "body",
@@ -416,7 +413,6 @@ var Text = function (_a) {
     return (jsx(Box, __assign({}, styleProps),
         jsx("p", null, children)));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$6 = __assign({}, wrapperStyles$2);
 var textAreaStyles = __assign(__assign({}, inputStyles), { fontFamily: "body", fontSize: 1, lineHeight: 1 });
@@ -427,7 +423,6 @@ var TextArea = function (_a) {
     return (jsx("div", { sx: wrapperStyles$6 },
         jsx("textarea", { className: className, sx: textAreaStyles, autoFocus: autoFocus, rows: rows, name: name, disabled: disabled, value: value, placeholder: formatTitle(placeholder), onChange: onChange, onBlur: onBlur })));
 };
-//# sourceMappingURL=index.js.map
 
-export { Logo as Avatar, Button, Checkbox, DisplayText, Heading, Input, Label, Logo$1 as Logo, Message, Tab, Text, TextArea };
+export { Avatar, Button, Checkbox, DisplayText, Heading, Input, Label, Logo, Message, Tab, Text, TextArea };
 //# sourceMappingURL=index.es.js.map

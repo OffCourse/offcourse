@@ -186,6 +186,14 @@ exports.createPages = async ({ graphql, actions }, options) => {
       site {
         siteMetadata {
           siteName
+          links {
+            href
+            title
+          }
+          callToAction {
+            href
+            title
+          }
           contactInfo {
             street
             zipCode
@@ -253,8 +261,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
       }
     }
   `);
-  console.log(data);
-  const { siteName, contactInfo } = data.site.siteMetadata;
+  const siteMetaData = data.site.siteMetadata;
   const rawSections = data.allPageSection.edges.map(({ node }) => node);
   const sections = rawSections
     .filter(({ publishable }) => publishable)
@@ -263,6 +270,6 @@ exports.createPages = async ({ graphql, actions }, options) => {
   actions.createPage({
     path: basePath,
     component: require.resolve("./src/templates/HomePage/index.tsx"),
-    context: { siteName, contactInfo, sections }
+    context: { sections, siteMetaData }
   });
 };

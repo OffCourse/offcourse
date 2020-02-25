@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { IFooterSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
-declare type FooterProps = IFooterSection & IThemeable;
+import { FooterData } from "@offcourse/interfaces/src/pages";
+declare type FooterProps = FooterData & IThemeable;
 declare const Footer: FunctionComponent<FooterProps>;
 export default Footer;

@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { FunctionComponent, useState, useCallback } from "react";
+import { FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces/src";
+import { IThemeable, HeaderData } from "@offcourse/interfaces/src";
 import { Avatar, Tab } from "@offcourse/atoms";
 import { outerWrapperStyles, avatarStyles, menuItemsStyles } from "./styles";
 import {
@@ -11,39 +11,27 @@ import {
 } from "./animations";
 import Menu from "../Menu";
 
-type HeaderProps = IThemeable;
+type HeaderProps = HeaderData &
+  IThemeable & { mode: "menuOpen" | "default"; toggleMenu: () => void };
 
-const useModeToggle: () => ["OPEN" | "CLOSED", () => void] = () => {
-  const [mode, setMode] = useState<"OPEN" | "CLOSED">("CLOSED");
-  const toggleMode = useCallback(() => {
-    setMode(mode === "OPEN" ? "CLOSED" : "OPEN");
-  }, [mode, setMode]);
-  return [mode, toggleMode];
-};
-
-const HeaderSection: FunctionComponent<HeaderProps> = ({ className }) => {
-  const [mode, toggleMode] = useModeToggle();
-  const links = [
-    {
-      title: "blog",
-      href: "/blog"
-    },
-    {
-      title: "decks",
-      href: "/presentations"
-    }
-  ];
+const HeaderSection: FunctionComponent<HeaderProps> = ({
+  className,
+  links,
+  callToAction,
+  mode,
+  toggleMenu
+}) => {
   return (
     <Box sx={outerWrapperStyles} className={className}>
-      <AvatarAnimation>
-        <Avatar sx={avatarStyles} onClick={toggleMode} />
+      <AvatarAnimation mode={mode}>
+        <Avatar sx={avatarStyles} onClick={toggleMenu} />
       </AvatarAnimation>
       <Box sx={menuItemsStyles}>
         <MenuAnimation mode={mode}>
           <Menu links={links} />
         </MenuAnimation>
         <CallToActionAnimation mode={mode}>
-          <Tab href="#ContactSection">Contact Us</Tab>
+          <Tab href={callToAction.href}>{callToAction.title}</Tab>
         </CallToActionAnimation>
       </Box>
     </Box>

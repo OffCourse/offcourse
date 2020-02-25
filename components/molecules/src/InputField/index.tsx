@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { ReactNode, FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
-import { IInputField } from "@offcourse/interfaces/src/form";
-import { IThemeable } from "@offcourse/interfaces/src";
+import { IThemeable, IInputField } from "@offcourse/interfaces/src";
 import { Field, ErrorMessage } from "formik";
 import { Input, TextArea, Message, Label } from "@offcourse/atoms";
 import RadioButtonGroup from "../RadioButtonGroup";

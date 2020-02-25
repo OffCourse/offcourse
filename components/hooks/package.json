@@ -22,6 +22,7 @@
     "@types/jest": "^25.1.2",
     "@types/react": "^16.9.19",
     "@types/react-dom": "^16.9.5",
+    "@xstate/react": "^0.8.1",
     "jest": "^25.1.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -31,7 +32,8 @@
     "standard": "^14.3.1",
     "standard-prettier": "^1.0.1",
     "ts-jest": "^25.2.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "xstate": "^4.7.8"
   },
   "jest": {
     "preset": "ts-jest",
@@ -47,7 +49,9 @@
     "react": "^16",
     "gatsby": "^2.19.17",
     "react-dom": "^16",
-    "theme-ui": "^0.3.1"
+    "theme-ui": "^0.3.1",
+    "xstate": "^4.7.8",
+    "@xstate/react": "^0.8.1"
   },
   "dependencies": {}
 }

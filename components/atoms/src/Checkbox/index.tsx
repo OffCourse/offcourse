@@ -2,8 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
 import { Field } from "formik";
-import { IThemeable } from "@offcourse/interfaces/src";
-import { IInput } from "@offcourse/interfaces/src/form";
+import { IThemeable, IInput } from "@offcourse/interfaces/src";
 import { checkboxStyles, wrapperStyles, labelStyles } from "./styles";
 import Label from "../Label";
 

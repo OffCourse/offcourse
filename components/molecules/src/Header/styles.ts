@@ -1,10 +1,6 @@
 import { SxStyleProp } from "theme-ui";
 
-const avatarStyles: SxStyleProp = {
-  "&:hover": {
-    opacity: 0.75
-  }
-};
+const avatarStyles: SxStyleProp = {};
 
 const outerWrapperStyles: SxStyleProp = {
   position: "fixed",
@@ -14,7 +10,7 @@ const outerWrapperStyles: SxStyleProp = {
   bg: "transparant",
   zIndex: 100,
   alignContent: "center",
-  p: [4],
+  p: [3, 4],
   height: ["4rem", "5rem"],
   display: "flex",
   flexDirection: "row",

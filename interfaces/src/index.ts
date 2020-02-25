@@ -1,4 +1,10 @@
-import { ComponentType } from "react";
+import { IThemeable } from "./theme";
+import { IInput, IInputField } from "./form";
+import { ILink, IText, IButton } from "./primitives";
+import { Label, Link, Tab, Text, Message, Button, Heading } from "./components";
+import { IProject, IStep } from "./pageSection";
+import { IPageData, HeaderData } from "./pages";
+
 export interface IPublishable {
   publishable: boolean;
 }
@@ -16,43 +22,6 @@ export interface IMeasurable {
   height?: number;
 }
 
-interface IColor {
-  primary: string;
-  background: string;
-  text: string;
-  negative: string;
-  secondary: string;
-  error: string;
-  grayScale: string[];
-}
-
-interface IFonts {
-  heading: string;
-  monospace: string;
-  body: string;
-}
-
-export interface ITheme {
-  grayScale: string[];
-  colors: IColor;
-  space: string[];
-  breakpoints: string[];
-  fonts: IFonts;
-  fontSizes: string[];
-  lineHeights: string[];
-  styles: any;
-  globals: any;
-  Provider?: any;
-}
-
-export interface IThemeable {
-  className?: string;
-  theme?: ITheme;
-  id?: string;
-  as?: keyof JSX.IntrinsicElements | ComponentType<any>;
-  style?: any;
-}
-
 export interface IStylable {
   backdropPath?: string;
   primaryColor?: string;
@@ -61,22 +30,22 @@ export interface IStylable {
   isBasic?: boolean;
 }
 
-export interface ILink {
-  href: string;
-  title: string;
-}
-
-export interface ITab {
-  children: string;
-  href?: string;
-}
-
-export interface IMessage {
-  children: string;
-}
-
-export interface IButton {
-  type?: "submit" | "button";
-  children: string;
-  disabled?: boolean;
-}
+export {
+  IInput,
+  IInputField,
+  IPageData,
+  IProject,
+  IStep,
+  Text,
+  Link,
+  HeaderData,
+  ILink,
+  IText,
+  IButton,
+  IThemeable,
+  Label,
+  Tab,
+  Message,
+  Button,
+  Heading
+};

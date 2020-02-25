@@ -3,12 +3,9 @@ import { FunctionComponent } from "react";
 import { formatTitle } from "../helpers";
 import { jsx } from "theme-ui";
 import { labelStyles } from "./styles";
-import { IThemeable } from "@offcourse/interfaces/src";
+import { IThemeable, Label } from "@offcourse/interfaces/src";
 
-type LabelProps = {
-  children: string;
-  htmlFor?: string;
-} & IThemeable;
+type LabelProps = Label & IThemeable;
 
 const Label: FunctionComponent<LabelProps> = ({
   className,

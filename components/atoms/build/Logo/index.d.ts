@@ -1,8 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { IThemeable } from "@offcourse/interfaces/src";
-declare type LogoProps = {
-    children?: string;
-} & IThemeable;
+import { IThemeable, Heading } from "@offcourse/interfaces/src";
+declare type LogoProps = Heading & IThemeable;
 declare const Logo: FunctionComponent<LogoProps>;
 export default Logo;

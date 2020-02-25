@@ -1,13 +1,11 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx, Box, Heading } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces/src";
+import { jsx, Box } from "theme-ui";
+import { IThemeable, IStep } from "@offcourse/interfaces/src";
 import { wrapperStyles, titleStyles, numberStyles } from "./styles";
-import { Text } from "@offcourse/atoms";
-import { IStep } from "@offcourse/interfaces/src/pageSection";
+import { Text, Heading } from "@offcourse/atoms";
 
-type StepProps = IStep & { as?: any } & IThemeable;
-const formatTitle = (str: string) => str;
+type StepProps = IStep & IThemeable;
 
 const Step: FunctionComponent<StepProps> = ({
   as,
@@ -23,7 +21,7 @@ const Step: FunctionComponent<StepProps> = ({
       {children}
       <Heading as={"h1"} sx={titleStyles}>
         <span sx={numberStyles}>{index}</span>
-        {formatTitle(title)}
+        {title}
       </Heading>
       <Text html={description} />
     </Box>

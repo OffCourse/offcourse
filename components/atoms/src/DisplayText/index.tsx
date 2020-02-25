@@ -2,11 +2,9 @@
 import { FunctionComponent } from "react";
 import { jsx, Box } from "theme-ui";
 import { wrapperStyles, spanStyles, textStyles } from "./styles";
-import { IThemeable } from "@offcourse/interfaces/src";
+import { IThemeable, Heading } from "@offcourse/interfaces/src";
 
-type DisplayTextProps = {
-  children: string;
-} & IThemeable;
+type DisplayTextProps = Heading & IThemeable;
 
 const DisplayText: FunctionComponent<DisplayTextProps> = ({
   children,

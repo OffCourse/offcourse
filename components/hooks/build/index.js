@@ -3,6 +3,8 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var react = require('react');
+var react$1 = require('@xstate/react');
+var xstate = require('xstate');
 
 const useAnimationFrame = ({ callback, delay = 0 }) => {
     const requestRef = react.useRef(null);
@@ -25,6 +27,29 @@ const useAnimationFrame = ({ callback, delay = 0 }) => {
         return () => cancelAnimationFrame(requestRef.current || 0);
     }, [callback, animate]);
 };
+//# sourceMappingURL=useAnimationFrame.js.map
+
+const toggleMachine = xstate.Machine({
+    id: "toggle",
+    initial: "default",
+    states: {
+        default: {
+            on: { TOGGLE: "menuOpen" }
+        },
+        menuOpen: {
+            on: { TOGGLE: "default" }
+        }
+    }
+});
+//# sourceMappingURL=machine.js.map
+
+const useAppState = ({ siteMetaData, path }) => {
+    const { links: allLinks } = siteMetaData;
+    const links = allLinks.filter(({ href }) => href !== path);
+    const [current, send] = react$1.useMachine(toggleMachine);
+    const toggleMode = react.useCallback(() => send("TOGGLE"), [send]);
+    return [current, Object.assign(Object.assign({}, siteMetaData), { links }), toggleMode];
+};
 
 const useInterval = (callback, delay) => {
     const savedCallback = react.useRef();
@@ -44,6 +69,7 @@ const useInterval = (callback, delay) => {
         return;
     }, [delay]);
 };
+//# sourceMappingURL=useInterval.js.map
 
 const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     const [index, setIndex] = react.useState(0);
@@ -71,6 +97,7 @@ const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     }, delay);
     return [index, orderedProjects];
 };
+//# sourceMappingURL=useCycleItems.js.map
 
 const useCanvas = ({ width, height }) => {
     const canvasRef = react.useRef();
@@ -84,6 +111,7 @@ const useCanvas = ({ width, height }) => {
     }
     return [canvasRef, ctx];
 };
+//# sourceMappingURL=useCanvas.js.map
 
 const useShowTab = () => {
     const [isVisible, setVisibility] = react.useState(true);
@@ -92,8 +120,10 @@ const useShowTab = () => {
     };
     return [isVisible, handlePositionChange];
 };
+//# sourceMappingURL=useShowTab.js.map
 
 exports.useAnimationFrame = useAnimationFrame;
+exports.useAppState = useAppState;
 exports.useCanvas = useCanvas;
 exports.useCycleItems = useCycleItems;
 exports.useInterval = useInterval;

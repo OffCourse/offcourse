@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { IThemeable } from "@offcourse/interfaces/src";
+import { IThemeable, IPageData } from "@offcourse/interfaces/src";
 declare type PageLayoutProps = {
-    siteName: string;
-    contactInfo: any;
-} & IThemeable;
+    mode: "menuOpen" | "default";
+    toggleMenu: () => void;
+} & IPageData & IThemeable;
 declare const PageLayout: FunctionComponent<PageLayoutProps>;
 export default PageLayout;

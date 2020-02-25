@@ -1,9 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { IThemeable } from "@offcourse/interfaces/src";
-import { IStep } from "@offcourse/interfaces/src/pageSection";
-declare type StepProps = IStep & {
-    as?: any;
-} & IThemeable;
+import { IThemeable, IStep } from "@offcourse/interfaces/src";
+declare type StepProps = IStep & IThemeable;
 declare const Step: FunctionComponent<StepProps>;
 export default Step;

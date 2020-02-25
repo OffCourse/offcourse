@@ -32,6 +32,7 @@ export default {
     commonjs({
       include: ["node_modules/**"],
       namedExports: {
+        "node_modules/@xstate/react/lib/index.js": ["useMachine"],
         "node_modules/react/react.js": [
           "Children",
           "Component",

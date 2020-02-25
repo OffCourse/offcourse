@@ -1,10 +1,9 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
-import { IInput } from "@offcourse/interfaces/src/form";
 import { Checkbox } from "@offcourse/atoms";
 import styles from "./styles";
-import { IThemeable } from "@offcourse/interfaces/src";
+import { IThemeable, IInput } from "@offcourse/interfaces/src";
 
 type RadioButtonGroupProps = IInput & IThemeable;
 

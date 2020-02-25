@@ -3,24 +3,30 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import PageLayout from "../Page";
 import PageSection from "../../components/PageSection";
-import { IPageSection } from "@offcourse/interfaces/src/pageSection";
 import { wrapperStyles } from "./styles";
+import { useAppState } from "@offcourse/hooks";
+import { IHomePageData } from "@offcourse/interfaces/src/pages";
 
-type HomepageData = {
-  siteName: string;
-  contactInfo: any;
-  sections: IPageSection[];
+type HomePageTemplateProps = {
+  pageContext: IHomePageData;
+  path: string;
 };
 
-const HomePageTemplate: FunctionComponent<{ pageContext: HomepageData }> = ({
-  pageContext
+const HomePageTemplate: FunctionComponent<HomePageTemplateProps> = ({
+  pageContext,
+  path
 }) => {
-  const { siteName, contactInfo, sections } = pageContext;
+  const { sections } = pageContext;
+  const [current, siteMetaData, toggleMenu] = useAppState({
+    ...pageContext,
+    path
+  });
   return (
     <PageLayout
+      mode={current.value}
+      toggleMenu={toggleMenu}
       sx={wrapperStyles}
-      siteName={siteName}
-      contactInfo={contactInfo}
+      siteMetaData={siteMetaData}
     >
       {sections.map(section => (
         <PageSection key={section.order} {...section} />

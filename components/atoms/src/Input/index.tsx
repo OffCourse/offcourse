@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent, ChangeEvent } from "react";
 import { jsx, Box } from "theme-ui";
-import { IThemeable } from "@offcourse/interfaces/src";
-import { IInput } from "@offcourse/interfaces/src/form";
+import { IThemeable, IInput } from "@offcourse/interfaces/src";
 import { formatTitle, lowerCase, formatValue } from "../helpers";
 import { wrapperStyles, inputStyles } from "./styles";
 
