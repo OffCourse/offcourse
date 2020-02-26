@@ -3,6 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var themeUi = require('theme-ui');
+var react = require('react');
 var voca = require('voca');
 var ramda = require('ramda');
 var formik = require('formik');
@@ -27,6 +28,13 @@ var Avatar = function (_a) {
     var className = _a.className, onClick = _a.onClick;
     return (themeUi.jsx(themeUi.Heading, { onClick: onClick, sx: avatarStyles, className: className }, "_"));
 };
+
+/** @jsx jsx */
+var Backdrop = function (_a, ref) {
+    var className = _a.className, _b = _a.width, width = _b === void 0 ? 100 : _b, _c = _a.height, height = _c === void 0 ? 100 : _c;
+    return (themeUi.jsx("canvas", { ref: ref, className: className, width: width, height: height }));
+};
+var index = react.forwardRef(Backdrop);
 
 var titleize = function (str) {
     return voca.titleCase(str, ["'", "-", "’"]);
@@ -429,6 +437,7 @@ var TextArea = function (_a) {
 };
 
 exports.Avatar = Avatar;
+exports.Backdrop = index;
 exports.Button = Button;
 exports.Checkbox = Checkbox;
 exports.DisplayText = DisplayText;

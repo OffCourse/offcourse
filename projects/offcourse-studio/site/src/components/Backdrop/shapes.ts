@@ -1,8 +1,7 @@
-// @ts-nocheck
-import { IShapeProps } from "@offcourse/interfaces/src/canvas";
+import { IShapeProps } from "@offcourse/interfaces/src";
 import { min } from "d3-array";
 
-const circ: (args: IShapeProps) => void = ({
+const circle: (args: IShapeProps) => void = ({
   ctx,
   x,
   y,
@@ -21,4 +20,18 @@ const circ: (args: IShapeProps) => void = ({
   ctx.fill();
 };
 
-export default circ;
+const rect: (args: IShapeProps) => void = ({
+  ctx,
+  x,
+  y,
+  value,
+  colors,
+  width,
+  height
+}) => {
+  ctx.lineWidth = 0;
+  ctx.fillStyle = colors[value < 0 ? 1 : 0];
+  ctx.fillRect(x, y, width, height);
+};
+
+export { circle, rect };

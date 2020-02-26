@@ -1,5 +1,5 @@
 declare const useAnimationFrame: (args: {
     callback: (time: number) => void;
-    delay: 0;
+    delay: number;
 }) => void;
 export default useAnimationFrame;

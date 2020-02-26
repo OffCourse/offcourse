@@ -1,4 +1,5 @@
 import Avatar from "./Avatar";
+import Backdrop from "./Backdrop";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
 import DisplayText from "./DisplayText";
@@ -13,6 +14,7 @@ import TextArea from "./TextArea";
 
 export {
   Avatar,
+  Backdrop,
   Button,
   Checkbox,
   DisplayText,

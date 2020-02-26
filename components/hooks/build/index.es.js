@@ -46,6 +46,7 @@ const useAppState = ({ siteMetaData, path }) => {
     const toggleMode = useCallback(() => send("TOGGLE"), [send]);
     return [current, Object.assign(Object.assign({}, siteMetaData), { links }), toggleMode];
 };
+//# sourceMappingURL=index.js.map
 
 const useInterval = (callback, delay) => {
     const savedCallback = useRef();
@@ -107,7 +108,6 @@ const useCanvas = ({ width, height }) => {
     }
     return [canvasRef, ctx];
 };
-//# sourceMappingURL=useCanvas.js.map
 
 const useShowTab = () => {
     const [isVisible, setVisibility] = useState(true);

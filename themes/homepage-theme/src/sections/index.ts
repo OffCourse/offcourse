@@ -3,7 +3,6 @@ import HeroSection from "./HeroSection";
 import AboutSection from "./AboutSection";
 import ProfileSection from "./ProfileSection";
 import ContactSection from "./ContactSection";
-import FooterSection from "./FooterSection";
 import ProjectsSection from "./ProjectsSection";
 import ProcessSection from "./ProcessSection";
 
@@ -12,7 +11,6 @@ export {
   BaseSection,
   HeroSection,
   ContactSection,
-  FooterSection,
   ProjectsSection,
   ProfileSection,
   ProcessSection

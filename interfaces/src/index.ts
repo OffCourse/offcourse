@@ -4,6 +4,7 @@ import { ILink, IText, IButton } from "./primitives";
 import { Label, Link, Tab, Text, Message, Button, Heading } from "./components";
 import { IProject, IStep } from "./pageSection";
 import { IPageData, HeaderData } from "./pages";
+import { ICanvasProps, IShapeProps } from "./canvas";
 
 export interface IPublishable {
   publishable: boolean;
@@ -31,6 +32,7 @@ export interface IStylable {
 }
 
 export {
+  ICanvasProps,
   IInput,
   IInputField,
   IPageData,
@@ -42,6 +44,7 @@ export {
   ILink,
   IText,
   IButton,
+  IShapeProps,
   IThemeable,
   Label,
   Tab,

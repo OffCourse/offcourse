@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
-import { ICanvasProps, CanvasContext } from "@offcourse/interfaces/src/canvas";
+import { CanvasContext } from "@offcourse/interfaces/src/canvas";
 
-const useCanvas: (options: ICanvasProps) => [any, CanvasContext] = ({ width, height }) => {
+const useCanvas: (options: {
+  width: number;
+  height: number;
+}) => [any, CanvasContext] = ({ width, height }) => {
   const canvasRef: any = useRef();
   const canvas = canvasRef.current;
   const [ctx, setCtx]: [CanvasContext, any] = useState(false);

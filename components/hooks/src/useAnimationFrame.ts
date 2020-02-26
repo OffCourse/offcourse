@@ -2,7 +2,7 @@ import { useEffect, useRef, useCallback } from "react";
 
 const useAnimationFrame: (args: {
   callback: (time: number) => void;
-  delay: 0;
+  delay: number;
 }) => void = ({ callback, delay = 0 }) => {
   const requestRef = useRef<null | number>(null);
   const previousTimeRef = useRef<null | number>(null);
