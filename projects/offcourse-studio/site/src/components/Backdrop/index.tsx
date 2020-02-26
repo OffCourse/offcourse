@@ -4,9 +4,9 @@ import { jsx, useThemeUI } from "theme-ui";
 import { IThemeable, ICanvasProps } from "@offcourse/interfaces/src";
 import { Backdrop as BD } from "@offcourse/atoms";
 import { wrapperStyles } from "./styles";
-import { useAnimationFrame } from "@offcourse/hooks";
-import useAnimatedGrid from "./useAnimatedGrid";
+import { useAnimationFrame, useCanvas } from "@offcourse/hooks";
 import { circle } from "./shapes";
+import { calcGrid, drawGrid } from "./helpers";
 import elementsWorker from "./elementsWorker";
 // @ts-ignore
 
@@ -21,8 +21,18 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
   const { primary, grayScale } = theme.colors;
   const colors = [primary, grayScale[0]];
 
+  const [ref, ctx] = useCanvas({ width, height });
+  if (!ctx) {
+    return ref;
+  }
+
   const [elements, setElements] = useState([]);
   const frameRef = useRef(0);
+
+  const unitSize = 20;
+  const numberOfColumns = Math.ceil(width / unitSize);
+  const numberOfRows = Math.ceil(height / unitSize);
+  const grid = calcGrid({ numberOfColumns, numberOfRows, elements });
 
   const callback = useCallback(async () => {
     const frame = (frameRef.current = frameRef.current + 1);
@@ -32,13 +42,7 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
 
   useAnimationFrame({ callback, delay: 100 });
 
-  const ref = useAnimatedGrid({
-    width,
-    elements,
-    height,
-    shape: circle,
-    colors
-  });
+  drawGrid({ ctx, width, height, grid, colors, shape: circle });
 
   return (
     <BD
