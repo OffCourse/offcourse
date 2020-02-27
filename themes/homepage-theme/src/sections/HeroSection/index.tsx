@@ -4,8 +4,8 @@ import { jsx, Box } from "theme-ui";
 import { IHeroSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { useMeasure } from "../../hooks";
+import { Backdrop } from "../../components";
 import { DisplayText } from "@offcourse/atoms";
-import Backdrop from "../../components/Backdrop";
 import BaseSection from "../BaseSection";
 import { wrapperStyles, textStyles } from "./styles";
 

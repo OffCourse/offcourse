@@ -27,7 +27,6 @@ const useAnimationFrame = ({ callback, delay = 0 }) => {
         return () => cancelAnimationFrame(requestRef.current || 0);
     }, [callback, animate]);
 };
-//# sourceMappingURL=useAnimationFrame.js.map
 
 const toggleMachine = xstate.Machine({
     id: "toggle",
@@ -41,7 +40,6 @@ const toggleMachine = xstate.Machine({
         }
     }
 });
-//# sourceMappingURL=machine.js.map
 
 const useAppState = ({ siteMetaData, path }) => {
     const { links: allLinks } = siteMetaData;
@@ -50,7 +48,6 @@ const useAppState = ({ siteMetaData, path }) => {
     const toggleMode = react.useCallback(() => send("TOGGLE"), [send]);
     return [current, Object.assign(Object.assign({}, siteMetaData), { links }), toggleMode];
 };
-//# sourceMappingURL=index.js.map
 
 const useInterval = (callback, delay) => {
     const savedCallback = react.useRef();
@@ -70,7 +67,6 @@ const useInterval = (callback, delay) => {
         return;
     }, [delay]);
 };
-//# sourceMappingURL=useInterval.js.map
 
 const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     const [index, setIndex] = react.useState(0);
@@ -98,19 +94,31 @@ const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     }, delay);
     return [index, orderedProjects];
 };
-//# sourceMappingURL=useCycleItems.js.map
 
-const useCanvas = ({ width, height }) => {
-    const canvasRef = react.useRef();
-    const canvas = canvasRef.current;
-    const [ctx, setCtx] = react.useState(false);
-    if (canvas && !ctx) {
-        const context = canvas.getContext("2d");
-        context.canvas.width = width;
-        context.canvas.height = height;
-        setCtx(context);
-    }
-    return [canvasRef, ctx];
+const useCanvas = ({ width, height, draw }) => {
+    const canvasRef = react.useRef(null);
+    react.useEffect(() => {
+        const canvas = canvasRef.current;
+        if (canvas) {
+            const ctx = canvas.getContext("2d");
+            if (ctx) {
+                ctx.canvas.width = width;
+                ctx.canvas.height = height;
+                draw(ctx);
+            }
+        }
+    }, [canvasRef, width, height, draw]);
+    return canvasRef;
+};
+
+const useAnimatedCanvas = ({ width, height, draw, callback }) => {
+    const frameRef = react.useRef(0);
+    const cb = react.useCallback(() => {
+        const frame = (frameRef.current = frameRef.current + 1);
+        callback(frame);
+    }, [frameRef, callback]);
+    useAnimationFrame({ callback: cb, delay: 100 });
+    return useCanvas({ width, height, draw });
 };
 
 const useShowTab = () => {
@@ -120,8 +128,8 @@ const useShowTab = () => {
     };
     return [isVisible, handlePositionChange];
 };
-//# sourceMappingURL=useShowTab.js.map
 
+exports.useAnimatedCanvas = useAnimatedCanvas;
 exports.useAnimationFrame = useAnimationFrame;
 exports.useAppState = useAppState;
 exports.useCanvas = useCanvas;

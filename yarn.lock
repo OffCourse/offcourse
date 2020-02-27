@@ -8363,6 +8363,13 @@ gatsby-plugin-typescript@^2.1.27:
     "@babel/runtime" "^7.7.6"
     babel-plugin-remove-graphql-queries "^2.7.23"
 
+gatsby-plugin-workerize-loader@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/gatsby-plugin-workerize-loader/-/gatsby-plugin-workerize-loader-1.1.0.tgz#56fae3d2afecd3e672ac6c08e18c3f661fd71ec1"
+  integrity sha512-65wbQlLzI8W0xIIjgkbGBss39z1gP3O57RnR6O+pboXn7x6UfM8k4qVYd+dV/yQCScz+rfVk+QaAffOmpDH55w==
+  dependencies:
+    workerize-loader "^1.1.0"
+
 gatsby-react-router-scroll@^2.1.21:
   version "2.1.21"
   resolved "https://registry.npmjs.org/gatsby-react-router-scroll/-/gatsby-react-router-scroll-2.1.21.tgz#bc4aeee424da034287b6fe64d6b08f47d6cb6881"

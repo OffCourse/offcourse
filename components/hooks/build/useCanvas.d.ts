@@ -1,6 +1,7 @@
-import { CanvasContext } from "@offcourse/interfaces/src/canvas";
-declare const useCanvas: (options: {
+declare type useCanvas = (args: {
     width: number;
     height: number;
-}) => [any, CanvasContext];
+    draw: (args: CanvasRenderingContext2D) => void;
+}) => void;
+declare const useCanvas: useCanvas;
 export default useCanvas;

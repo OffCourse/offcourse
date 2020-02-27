@@ -1,4 +1,6 @@
-export const wrapperStyles = {
+import { SxStyleProp } from "theme-ui";
+
+export const wrapperStyles: SxStyleProp = {
   display: "grid",
   gridTemplateColumns: ["repeat(12, 1fr)"],
   px: [4, 5],
@@ -7,7 +9,7 @@ export const wrapperStyles = {
   bg: "grayScale.1"
 };
 
-export const innerWrapperStyles = {
+export const innerWrapperStyles: SxStyleProp = {
   gridColumn: ["1/13", "1/13", "1/13", "2/12"],
   display: "grid",
   gridColumnGap: [2, 4, 6, 7],

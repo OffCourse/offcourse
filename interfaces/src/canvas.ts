@@ -18,11 +18,14 @@ export type Shape = (args: IShapeProps) => void;
 export interface ICanvasProps {
   width: number;
   height: number;
-  delay?: number;
-  colors: string[];
+  draw: (ctx: CanvasRenderingContext2D) => void;
 }
 
-type GridCell = {
+export type AnimatedCanvasProps = ICanvasProps & {
+  callback: (frame: number) => void;
+};
+
+export type GridCell = {
   u: number;
   v: number;
   width: number;
@@ -39,5 +42,7 @@ export type DrawGrid = (
 
 export type GridProps = (
   args: ICanvasProps & { shape: Shape; elements: any[] }
+) => RefObject<HTMLCanvasElement>;
+
 ) => RefObject<HTMLCanvasElement>;
 

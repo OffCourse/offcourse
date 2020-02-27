@@ -26,11 +26,10 @@ var Avatar = function (_a) {
 };
 
 /** @jsx jsx */
-var Backdrop = function (_a, ref) {
+var Backdrop = forwardRef(function (_a, ref) {
     var className = _a.className, _b = _a.width, width = _b === void 0 ? 100 : _b, _c = _a.height, height = _c === void 0 ? 100 : _c;
     return (jsx("canvas", { ref: ref, className: className, width: width, height: height }));
-};
-var index = forwardRef(Backdrop);
+});
 
 var titleize = function (str) {
     return titleCase(str, ["'", "-", "’"]);
@@ -432,5 +431,5 @@ var TextArea = function (_a) {
         jsx("textarea", { className: className, sx: textAreaStyles, autoFocus: autoFocus, rows: rows, name: name, disabled: disabled, value: value, placeholder: formatTitle(placeholder), onChange: onChange, onBlur: onBlur })));
 };
 
-export { Avatar, index as Backdrop, Button, Checkbox, DisplayText, Heading, Input, Label, Logo, Message, Tab, Text, TextArea };
+export { Avatar, Backdrop, Button, Checkbox, DisplayText, Heading, Input, Label, Logo, Message, Tab, Text, TextArea };
 //# sourceMappingURL=index.es.js.map

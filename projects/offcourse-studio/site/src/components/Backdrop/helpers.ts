@@ -1,21 +1,25 @@
-import { DrawGrid } from "@offcourse/interfaces/src/canvas";
 // @ts-ignore
-import { bin, sum } from "d3-array";
-const drawGrid: DrawGrid = ({ ctx, width, height, grid, colors, shape }) => {
-  ctx.clearRect(0, 0, width, height);
-  for (const { u, v, width: w, height: h, value } of grid) {
-    const x = u * width;
-    const y = v * height;
-    shape({
-      ctx,
-      x,
-      y,
-      value,
-      colors,
-      width: Math.ceil(w * width),
-      height: Math.ceil(h * height)
-    });
-  }
+import { bin, range, sum } from "d3-array";
+import SimplexNoise from "simplex-noise";
+
+const simplex = new SimplexNoise();
+
+// @ts-ignore
+const generateGrid = async ({ frame, unitSize, width, height }) => {
+  const elements = await generateElements(frame);
+  const numberOfColumns = Math.ceil(width / unitSize);
+  const numberOfRows = Math.ceil(height / unitSize);
+  return calcGrid({ numberOfColumns, numberOfRows, elements });
+};
+
+const generateElements = async (frame: number) => {
+  const elems = range(1000).map(elem => {
+    const u = (simplex.noise2D(elem, frame / 10000) + 1) / 2;
+    const v = (simplex.noise2D(u, elem) + 1) / 2;
+    const value = (simplex.noise2D(u, v) + 1) / 2;
+    return { u, v, value };
+  });
+  return elems;
 };
 
 // @ts-ignore
@@ -51,4 +55,4 @@ const calcGrid = ({ numberOfColumns, numberOfRows, elements }) => {
   return binnedElements.flat();
 };
 
-export { drawGrid, calcGridCol, calcGridCell, calcGrid };
+export default generateGrid;

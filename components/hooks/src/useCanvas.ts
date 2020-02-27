@@ -1,22 +1,26 @@
-import { useState, useRef } from "react";
-import { CanvasContext } from "@offcourse/interfaces/src/canvas";
+import { useEffect, useRef } from "react";
 
-const useCanvas: (options: {
+type useCanvas = (args: {
   width: number;
   height: number;
-}) => [any, CanvasContext] = ({ width, height }) => {
-  const canvasRef: any = useRef();
-  const canvas = canvasRef.current;
-  const [ctx, setCtx]: [CanvasContext, any] = useState(false);
+  draw: (args: CanvasRenderingContext2D) => void;
+}) => void;
 
-  if (canvas && !ctx) {
-    const context = canvas.getContext("2d");
-    context.canvas.width = width;
-    context.canvas.height = height;
-    setCtx(context);
-  }
-
-  return [canvasRef, ctx];
+const useCanvas: useCanvas = ({ width, height, draw }) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.canvas.width = width;
+        ctx.canvas.height = height;
+        draw(ctx);
+      }
+    }
+  }, [canvasRef, width, height, draw]);
+  return canvasRef;
 };
 
 export default useCanvas;
+

@@ -43,9 +43,9 @@ module.exports = {
     title: "Offcourse"
   },
   plugins: [
-    "@offcourse/blog-theme",
+    "gatsby-plugin-typescript",
+    "gatsby-plugin-workerize-loader",
     "@offcourse/homepage-theme",
-    "@offcourse/presentation-theme",
     {
       resolve: `gatsby-plugin-s3`,
       options: {

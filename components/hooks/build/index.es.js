@@ -23,7 +23,6 @@ const useAnimationFrame = ({ callback, delay = 0 }) => {
         return () => cancelAnimationFrame(requestRef.current || 0);
     }, [callback, animate]);
 };
-//# sourceMappingURL=useAnimationFrame.js.map
 
 const toggleMachine = Machine({
     id: "toggle",
@@ -37,7 +36,6 @@ const toggleMachine = Machine({
         }
     }
 });
-//# sourceMappingURL=machine.js.map
 
 const useAppState = ({ siteMetaData, path }) => {
     const { links: allLinks } = siteMetaData;
@@ -46,7 +44,6 @@ const useAppState = ({ siteMetaData, path }) => {
     const toggleMode = useCallback(() => send("TOGGLE"), [send]);
     return [current, Object.assign(Object.assign({}, siteMetaData), { links }), toggleMode];
 };
-//# sourceMappingURL=index.js.map
 
 const useInterval = (callback, delay) => {
     const savedCallback = useRef();
@@ -66,7 +63,6 @@ const useInterval = (callback, delay) => {
         return;
     }, [delay]);
 };
-//# sourceMappingURL=useInterval.js.map
 
 const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     const [index, setIndex] = useState(0);
@@ -94,19 +90,31 @@ const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     }, delay);
     return [index, orderedProjects];
 };
-//# sourceMappingURL=useCycleItems.js.map
 
-const useCanvas = ({ width, height }) => {
-    const canvasRef = useRef();
-    const canvas = canvasRef.current;
-    const [ctx, setCtx] = useState(false);
-    if (canvas && !ctx) {
-        const context = canvas.getContext("2d");
-        context.canvas.width = width;
-        context.canvas.height = height;
-        setCtx(context);
-    }
-    return [canvasRef, ctx];
+const useCanvas = ({ width, height, draw }) => {
+    const canvasRef = useRef(null);
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (canvas) {
+            const ctx = canvas.getContext("2d");
+            if (ctx) {
+                ctx.canvas.width = width;
+                ctx.canvas.height = height;
+                draw(ctx);
+            }
+        }
+    }, [canvasRef, width, height, draw]);
+    return canvasRef;
+};
+
+const useAnimatedCanvas = ({ width, height, draw, callback }) => {
+    const frameRef = useRef(0);
+    const cb = useCallback(() => {
+        const frame = (frameRef.current = frameRef.current + 1);
+        callback(frame);
+    }, [frameRef, callback]);
+    useAnimationFrame({ callback: cb, delay: 100 });
+    return useCanvas({ width, height, draw });
 };
 
 const useShowTab = () => {
@@ -116,7 +124,6 @@ const useShowTab = () => {
     };
     return [isVisible, handlePositionChange];
 };
-//# sourceMappingURL=useShowTab.js.map
 
-export { useAnimationFrame, useAppState, useCanvas, useCycleItems, useInterval, useShowTab };
+export { useAnimatedCanvas, useAnimationFrame, useAppState, useCanvas, useCycleItems, useInterval, useShowTab };
 //# sourceMappingURL=index.es.js.map

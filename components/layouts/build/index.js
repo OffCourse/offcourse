@@ -64,7 +64,6 @@ var logoStyles = {
     }
 };
 
-
 /** @jsx jsx */
 var PublicBadgesDrawer = function (_a) {
     var _b = _a.badgeColor, badgeColor = _b === void 0 ? "white" : _b, _c = _a.modalTheme, modalTheme = _c === void 0 ? "light" : _c;
@@ -76,7 +75,6 @@ var PublicBadgesDrawer = function (_a) {
     }, [inBrowser]);
     return (themeUi.jsx("publicbadges-drawer", { "domain-name": "https://offcourse-studio.com/", "badge-color": badgeColor, "modal-theme": modalTheme }));
 };
-
 
 var Footer = function (_a) {
     var className = _a.className, siteName = _a.siteName, contactInfo = _a.contactInfo;
@@ -94,7 +92,6 @@ var Footer = function (_a) {
                 themeUi.jsx(PublicBadgesDrawer, { modalTheme: "light" })),
             themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
 };
-
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -117,7 +114,6 @@ var menuItemsStyles = {
     flexDirection: "row",
     justifyContent: "space-between"
 };
-
 
 var duration = 0.2;
 var avatarVariants = {
@@ -156,7 +152,6 @@ var wrapperStyles$3 = {
     }
 };
 
-
 var Menu = function (_a) {
     var className = _a.className, links = _a.links;
     return (themeUi.jsx(themeUi.Box, { className: className, sx: wrapperStyles$3 }, links.map(function (_a) {
@@ -164,7 +159,6 @@ var Menu = function (_a) {
         return (themeUi.jsx(atoms.Tab, { key: title, href: href }, title));
     })));
 };
-
 
 var HeaderSection = function (_a) {
     var className = _a.className, links = _a.links, callToAction = _a.callToAction, mode = _a.mode, toggleMenu = _a.toggleMenu;
@@ -183,7 +177,6 @@ var wrapperStyles = {
     overflowX: "hidden",
     minHeight: "100vh"
 };
-//# sourceMappingURL=styles.js.map
 
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, mode = _a.mode, toggleMenu = _a.toggleMenu, siteMetaData = _a.siteMetaData;
