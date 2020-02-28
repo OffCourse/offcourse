@@ -17,13 +17,13 @@ const HomePageTemplate: FunctionComponent<HomePageTemplateProps> = ({
   path
 }) => {
   const { sections } = pageContext;
-  const [current, siteMetaData, toggleMenu] = useAppState({
+  const { appMode, siteMetaData, toggleMenu } = useAppState({
     ...pageContext,
     path
   });
   return (
     <PageLayout
-      mode={current.value}
+      mode={appMode}
       toggleMenu={toggleMenu}
       sx={wrapperStyles}
       siteMetaData={siteMetaData}

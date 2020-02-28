@@ -23,6 +23,7 @@ const useAnimationFrame = ({ callback, delay = 0 }) => {
         return () => cancelAnimationFrame(requestRef.current || 0);
     }, [callback, animate]);
 };
+//# sourceMappingURL=useAnimationFrame.js.map
 
 const toggleMachine = Machine({
     id: "toggle",
@@ -36,14 +37,20 @@ const toggleMachine = Machine({
         }
     }
 });
+//# sourceMappingURL=machine.js.map
 
 const useAppState = ({ siteMetaData, path }) => {
     const { links: allLinks } = siteMetaData;
     const links = allLinks.filter(({ href }) => href !== path);
     const [current, send] = useMachine(toggleMachine);
     const toggleMode = useCallback(() => send("TOGGLE"), [send]);
-    return [current, Object.assign(Object.assign({}, siteMetaData), { links }), toggleMode];
+    return {
+        appMode: current.value,
+        siteMetaData: Object.assign(Object.assign({}, siteMetaData), { links }),
+        toggleMenu: toggleMode
+    };
 };
+//# sourceMappingURL=index.js.map
 
 const useInterval = (callback, delay) => {
     const savedCallback = useRef();
@@ -63,6 +70,7 @@ const useInterval = (callback, delay) => {
         return;
     }, [delay]);
 };
+//# sourceMappingURL=useInterval.js.map
 
 const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     const [index, setIndex] = useState(0);
@@ -90,6 +98,7 @@ const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     }, delay);
     return [index, orderedProjects];
 };
+//# sourceMappingURL=useCycleItems.js.map
 
 const useCanvas = ({ width, height, draw }) => {
     const canvasRef = useRef(null);
@@ -106,6 +115,7 @@ const useCanvas = ({ width, height, draw }) => {
     }, [canvasRef, width, height, draw]);
     return canvasRef;
 };
+//# sourceMappingURL=useCanvas.js.map
 
 const useAnimatedCanvas = ({ width, height, draw, callback }) => {
     const frameRef = useRef(0);
@@ -114,8 +124,61 @@ const useAnimatedCanvas = ({ width, height, draw, callback }) => {
         callback(frame);
     }, [frameRef, callback]);
     useAnimationFrame({ callback: cb, delay: 100 });
-    return useCanvas({ width, height, draw });
+    const ref = useCanvas({ width, height, draw });
+    return ref;
 };
+//# sourceMappingURL=useAnimatedCanvas.js.map
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+
+const useAnimatedGridCanvas = ({ width, height, colors, shape, generateGrid }) => {
+    const [grid, setGrid] = useState([]);
+    const draw = useCallback((ctx) => {
+        ctx.clearRect(0, 0, width, height);
+        for (const { u, v, width: w, height: h, value } of grid) {
+            const x = u * width;
+            const y = v * height;
+            shape({
+                ctx,
+                x,
+                y,
+                value,
+                colors,
+                width: Math.ceil(w * width),
+                height: Math.ceil(h * height)
+            });
+        }
+    }, [width, height, grid, colors, shape]);
+    const callback = useCallback((frame) => __awaiter(void 0, void 0, void 0, function* () {
+        const nextGrid = yield generateGrid(frame);
+        setGrid(nextGrid);
+    }), [generateGrid]);
+    const ref = useAnimatedCanvas({ width, height, draw, callback });
+    return ref;
+};
+//# sourceMappingURL=index.js.map
 
 const useShowTab = () => {
     const [isVisible, setVisibility] = useState(true);
@@ -124,6 +187,7 @@ const useShowTab = () => {
     };
     return [isVisible, handlePositionChange];
 };
+//# sourceMappingURL=useShowTab.js.map
 
-export { useAnimatedCanvas, useAnimationFrame, useAppState, useCanvas, useCycleItems, useInterval, useShowTab };
+export { useAnimatedCanvas, useAnimatedGridCanvas, useAnimationFrame, useAppState, useCanvas, useCycleItems, useInterval, useShowTab };
 //# sourceMappingURL=index.es.js.map

@@ -1,10 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, RefObject } from "react";
 
 type useCanvas = (args: {
   width: number;
   height: number;
   draw: (args: CanvasRenderingContext2D) => void;
-}) => void;
+}) => RefObject<HTMLCanvasElement>;
 
 const useCanvas: useCanvas = ({ width, height, draw }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

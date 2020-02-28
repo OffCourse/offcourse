@@ -5,14 +5,13 @@ import SimplexNoise from "simplex-noise";
 const simplex = new SimplexNoise();
 
 // @ts-ignore
-const generateGrid = async ({ frame, unitSize, width, height }) => {
-  const elements = await generateElements(frame);
+const generateGrid = ({ elements, unitSize, width, height }) => {
   const numberOfColumns = Math.ceil(width / unitSize);
   const numberOfRows = Math.ceil(height / unitSize);
   return calcGrid({ numberOfColumns, numberOfRows, elements });
 };
-
-const generateElements = async (frame: number) => {
+// @ts-ignore
+const generateElements = (frame: number) => {
   const elems = range(1000).map(elem => {
     const u = (simplex.noise2D(elem, frame / 10000) + 1) / 2;
     const v = (simplex.noise2D(u, elem) + 1) / 2;
@@ -55,4 +54,4 @@ const calcGrid = ({ numberOfColumns, numberOfRows, elements }) => {
   return binnedElements.flat();
 };
 
-export default generateGrid;
+export { generateGrid, generateElements };

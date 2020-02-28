@@ -8,6 +8,7 @@ import {
   AnimatedCanvasProps,
   ICanvasProps,
   IShapeProps,
+  Shape,
   GridCell
 } from "./canvas";
 
@@ -54,13 +55,9 @@ export {
   IShapeProps,
   IThemeable,
   Label,
+  Shape,
   Tab,
   Message,
   Button,
   Heading
 };
-  Message,
-  Button,
-  Heading
-};
-

@@ -6,12 +6,20 @@ import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
 const useAppState: (args: {
   siteMetaData: ISiteMetaData;
   path: string;
-}) => [any, ISiteMetaData, () => void] = ({ siteMetaData, path }) => {
+}) => {
+  appMode: any;
+  siteMetaData: ISiteMetaData;
+  toggleMenu: () => void;
+} = ({ siteMetaData, path }) => {
   const { links: allLinks } = siteMetaData;
   const links = allLinks.filter(({ href }) => href !== path);
   const [current, send] = useMachine(machine);
   const toggleMode = useCallback(() => send("TOGGLE"), [send]);
-  return [current, { ...siteMetaData, links }, toggleMode];
+  return {
+    appMode: current.value,
+    siteMetaData: { ...siteMetaData, links },
+    toggleMenu: toggleMode
+  };
 };
 
 export default useAppState;
