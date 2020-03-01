@@ -20,6 +20,11 @@ export interface IIndexable {
   index: number;
 }
 
+export interface IDimensions {
+  width?: number;
+  height?: number;
+}
+
 export interface IMeasurable {
   width?: number;
   left?: number;

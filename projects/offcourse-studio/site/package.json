@@ -16,6 +16,7 @@
   "author": "Yeehaa",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-multi-entry": "^3.0.0",
     "@types/lodash.merge": "^4.6.6",
     "@types/voca": "^1.4.0",
     "gatsby-plugin-s3": "^0.3.2",
@@ -26,6 +27,7 @@
     "@offcourse/blog-theme": "*",
     "@offcourse/homepage-theme": "*",
     "@offcourse/interfaces": "*",
+    "@offcourse/hooks": "*",
     "@offcourse/presentation-theme": "*",
     "@offcourse/public-badges-drawer": "^0.1.0-0",
     "@types/d3-array": "^2.0.0",
@@ -38,6 +40,6 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "simplex-noise": "^2.4.0",
-    "workerize-loader": "^1.1.0"
+    "workerize": "^0.1.8"
   }
 }

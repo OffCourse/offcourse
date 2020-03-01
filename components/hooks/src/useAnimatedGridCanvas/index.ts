@@ -1,8 +1,20 @@
 import { useState, useCallback, RefObject } from "react";
-import useAnimatedCanvas from "../useAnimatedCanvas";
-import { GridCell } from "@offcourse/interfaces/src";
+import useGridCanvas from "../useGridCanvas";
+import useAnimationFrame from "../useAnimationFrame";
+import useComputationWorker from "../useComputationWorker";
+import { GridCell, IDimensions, Shape } from "@offcourse/interfaces/src";
+// @ts-ignore
+import workerFn from "../../workers/elements.worker";
 
-const useAnimatedGridCanvas: (args: any) => RefObject<HTMLCanvasElement> = ({
+type CanvasProps = IDimensions & {
+  shape: Shape;
+  colors: string[];
+  generateGrid: any;
+};
+
+const useAnimatedGridCanvas: (
+  args: CanvasProps
+) => RefObject<HTMLCanvasElement> = ({
   width,
   height,
   colors,
@@ -10,37 +22,21 @@ const useAnimatedGridCanvas: (args: any) => RefObject<HTMLCanvasElement> = ({
   generateGrid
 }) => {
   const [grid, setGrid] = useState<GridCell[]>([]);
-
-  const draw = useCallback(
-    (ctx: CanvasRenderingContext2D) => {
-      ctx.clearRect(0, 0, width, height);
-      for (const { u, v, width: w, height: h, value } of grid) {
-        const x = u * width;
-        const y = v * height;
-        shape({
-          ctx,
-          x,
-          y,
-          value,
-          colors,
-          width: Math.ceil(w * width),
-          height: Math.ceil(h * height)
-        });
-      }
-    },
-    [width, height, grid, colors, shape]
-  );
-
+  const [elements, elementsWorker] = useComputationWorker(workerFn);
   const callback = useCallback(
     async (frame: number) => {
-      const nextGrid = await generateGrid(frame);
-      setGrid(nextGrid);
+      if (elementsWorker) {
+        elementsWorker.postMessage(frame);
+        const nextGrid = await generateGrid(elements);
+        setGrid(nextGrid);
+      }
     },
-    [generateGrid]
+    [elements, generateGrid, elementsWorker]
   );
 
-  const ref = useAnimatedCanvas({ width, height, draw, callback });
-  return ref;
+  useAnimationFrame({ callback, delay: 1000 });
+
+  return useGridCanvas({ width, shape, colors, height, grid });
 };
 
 export default useAnimatedGridCanvas;

@@ -44,5 +44,3 @@ export type GridProps = (
   args: ICanvasProps & { shape: Shape; elements: any[] }
 ) => RefObject<HTMLCanvasElement>;
 
-) => RefObject<HTMLCanvasElement>;
-

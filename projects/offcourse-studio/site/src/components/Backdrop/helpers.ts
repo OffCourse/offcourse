@@ -5,7 +5,7 @@ import SimplexNoise from "simplex-noise";
 const simplex = new SimplexNoise();
 
 // @ts-ignore
-const generateGrid = ({ elements, unitSize, width, height }) => {
+const elementsToGrid = ({ elements, unitSize, width, height }) => {
   const numberOfColumns = Math.ceil(width / unitSize);
   const numberOfRows = Math.ceil(height / unitSize);
   return calcGrid({ numberOfColumns, numberOfRows, elements });
@@ -19,6 +19,13 @@ const generateElements = (frame: number) => {
     return { u, v, value };
   });
   return elems;
+};
+
+// @ts-ignore
+const generateGrid = ({ frame, unitSize, width, height }) => {
+  const elements = generateElements(frame);
+  const grid = elementsToGrid({ unitSize, width, height, elements });
+  return grid;
 };
 
 // @ts-ignore
@@ -54,4 +61,4 @@ const calcGrid = ({ numberOfColumns, numberOfRows, elements }) => {
   return binnedElements.flat();
 };
 
-export { generateGrid, generateElements };
+export { elementsToGrid, generateGrid, generateElements };
