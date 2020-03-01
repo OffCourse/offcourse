@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { IShapeProps } from "@offcourse/interfaces/src";
 import { min } from "d3-array";
 

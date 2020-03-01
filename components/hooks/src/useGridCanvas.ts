@@ -1,19 +1,7 @@
 import { useCallback, RefObject } from "react";
 import useCanvas from "./useCanvas";
 // @ts-ignore
-/**
-import workerize from "workerize";
-
-const worker =
-  typeof window === "object" &&
-  workerize(`export function add(a, b) {
-  // block for half a second to demonstrate asynchronicity
-  const start = Date.now();
-  while (Date.now() - start < 500);
-  return a + b;
-}
-`);
-**/
+import workerFn from "../../workers/grid.worker";
 
 const useGridCanvas: (args: any) => RefObject<HTMLCanvasElement> = ({
   width,
@@ -42,8 +30,7 @@ const useGridCanvas: (args: any) => RefObject<HTMLCanvasElement> = ({
     [width, height, grid, colors, shape]
   );
 
-  const ref = useCanvas({ width, height, draw });
-  return ref;
+  return useCanvas({ width, height, draw });
 };
 
 export default useGridCanvas;

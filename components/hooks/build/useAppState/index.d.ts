@@ -1,10 +1,5 @@
-import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
-declare const useAppState: (args: {
-    siteMetaData: ISiteMetaData;
-    path: string;
-}) => {
+declare const useAppState: () => {
     appMode: any;
-    siteMetaData: ISiteMetaData;
     toggleMenu: () => void;
 };
 export default useAppState;

@@ -11,7 +11,7 @@ export default [
     input: "src/useAnimatedGridCanvas/worker.ts",
     output: [
       {
-        file: "workers/elements.worker",
+        file: "workers/grid.worker",
         format: "es",
         sourcemap: false
       }
@@ -59,10 +59,7 @@ export default [
       resolve(),
       typescript({
         rollupCommonJSResolveHack: true,
-        exclude: [
-          "**/__tests__/**",
-          "src/useAnimatedGridCanvas/elements.worker.ts"
-        ],
+        exclude: ["**/__tests__/**", "src/useAnimatedGridCanvas/worker.ts"],
         clean: true
       }),
       string({

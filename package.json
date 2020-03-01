@@ -7,6 +7,7 @@
     "packages": [
       "interfaces",
       "components/atoms",
+      "components/backdrops",
       "components/molecules",
       "components/layouts",
       "components/hooks",

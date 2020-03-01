@@ -27,6 +27,7 @@
     "@offcourse/blog-theme": "*",
     "@offcourse/homepage-theme": "*",
     "@offcourse/interfaces": "*",
+    "@offcourse/backdrops": "*",
     "@offcourse/hooks": "*",
     "@offcourse/presentation-theme": "*",
     "@offcourse/public-badges-drawer": "^0.1.0-0",
@@ -39,7 +40,6 @@
     "lodash.merge": "^4.6.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "simplex-noise": "^2.4.0",
     "workerize": "^0.1.8"
   }
 }

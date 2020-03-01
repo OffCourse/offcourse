@@ -13,14 +13,10 @@ type HomePageTemplateProps = {
 };
 
 const HomePageTemplate: FunctionComponent<HomePageTemplateProps> = ({
-  pageContext,
-  path
+  pageContext
 }) => {
-  const { sections } = pageContext;
-  const { appMode, siteMetaData, toggleMenu } = useAppState({
-    ...pageContext,
-    path
-  });
+  const { sections, siteMetaData } = pageContext;
+  const { appMode, toggleMenu } = useAppState();
   return (
     <PageLayout
       mode={appMode}

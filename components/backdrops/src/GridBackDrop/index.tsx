@@ -5,8 +5,6 @@ import { IThemeable, ICanvasProps, Shape } from "@offcourse/interfaces/src";
 import { wrapperStyles } from "./styles";
 import { Backdrop as BD } from "@offcourse/atoms";
 import { circle } from "./shapes";
-// @ts-ignore
-import { elementsToGrid } from "./helpers";
 import { useAnimatedGridCanvas } from "@offcourse/hooks";
 
 type BackdropProps = IThemeable &
@@ -21,19 +19,11 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
 }) => {
   const { theme }: any = useThemeUI();
   const { primary, grayScale } = theme.colors;
-  const generateGrid = async (elements: any[]) => {
-    return await elementsToGrid({
-      elements,
-      unitSize,
-      width,
-      height
-    });
-  };
 
   const canvasRef = useAnimatedGridCanvas({
     width,
     height,
-    generateGrid,
+    unitSize,
     colors: [primary, grayScale[0]],
     shape
   });

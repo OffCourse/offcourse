@@ -1,3 +1,105 @@
+function ascending(a, b) {
+  return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+}
+
+function bisector(compare) {
+  if (compare.length === 1) compare = ascendingComparator(compare);
+  return {
+    left: function(a, x, lo, hi) {
+      if (lo == null) lo = 0;
+      if (hi == null) hi = a.length;
+      while (lo < hi) {
+        var mid = lo + hi >>> 1;
+        if (compare(a[mid], x) < 0) lo = mid + 1;
+        else hi = mid;
+      }
+      return lo;
+    },
+    right: function(a, x, lo, hi) {
+      if (lo == null) lo = 0;
+      if (hi == null) hi = a.length;
+      while (lo < hi) {
+        var mid = lo + hi >>> 1;
+        if (compare(a[mid], x) > 0) hi = mid;
+        else lo = mid + 1;
+      }
+      return lo;
+    }
+  };
+}
+
+function ascendingComparator(f) {
+  return function(d, x) {
+    return ascending(f(d), x);
+  };
+}
+
+var ascendingBisect = bisector(ascending);
+var bisectRight = ascendingBisect.right;
+
+function count(values, valueof) {
+  let count = 0;
+  if (valueof === undefined) {
+    for (let value of values) {
+      if (value != null && (value = +value) >= value) {
+        ++count;
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if ((value = valueof(value, ++index, values)) != null && (value = +value) >= value) {
+        ++count;
+      }
+    }
+  }
+  return count;
+}
+
+function extent(values, valueof) {
+  let min;
+  let max;
+  if (valueof === undefined) {
+    for (const value of values) {
+      if (value != null) {
+        if (min === undefined) {
+          if (value >= value) min = max = value;
+        } else {
+          if (min > value) min = value;
+          if (max < value) max = value;
+        }
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if ((value = valueof(value, ++index, values)) != null) {
+        if (min === undefined) {
+          if (value >= value) min = max = value;
+        } else {
+          if (min > value) min = value;
+          if (max < value) max = value;
+        }
+      }
+    }
+  }
+  return [min, max];
+}
+
+function identity(x) {
+  return x;
+}
+
+var array = Array.prototype;
+
+var slice = array.slice;
+
+function constant(x) {
+  return function() {
+    return x;
+  };
+}
+
 function range(start, stop, step) {
   start = +start, stop = +stop, step = (n = arguments.length) < 2 ? (stop = start, start = 0, 1) : n < 3 ? 1 : +step;
 
@@ -10,6 +112,112 @@ function range(start, stop, step) {
   }
 
   return range;
+}
+
+var e10 = Math.sqrt(50),
+    e5 = Math.sqrt(10),
+    e2 = Math.sqrt(2);
+
+function tickStep(start, stop, count) {
+  var step0 = Math.abs(stop - start) / Math.max(0, count),
+      step1 = Math.pow(10, Math.floor(Math.log(step0) / Math.LN10)),
+      error = step0 / step1;
+  if (error >= e10) step1 *= 10;
+  else if (error >= e5) step1 *= 5;
+  else if (error >= e2) step1 *= 2;
+  return stop < start ? -step1 : step1;
+}
+
+function sturges(values) {
+  return Math.ceil(Math.log(count(values)) / Math.LN2) + 1;
+}
+
+function bin() {
+  var value = identity,
+      domain = extent,
+      threshold = sturges;
+
+  function histogram(data) {
+    if (!Array.isArray(data)) data = Array.from(data);
+
+    var i,
+        n = data.length,
+        x,
+        values = new Array(n);
+
+    for (i = 0; i < n; ++i) {
+      values[i] = value(data[i], i, data);
+    }
+
+    var xz = domain(values),
+        x0 = xz[0],
+        x1 = xz[1],
+        tz = threshold(values, x0, x1);
+
+    // Convert number of thresholds into uniform thresholds.
+    if (!Array.isArray(tz)) {
+      tz = tickStep(x0, x1, tz);
+      tz = range(Math.ceil(x0 / tz) * tz, x1, tz); // exclusive
+    }
+
+    // Remove any thresholds outside the domain.
+    var m = tz.length;
+    while (tz[0] <= x0) tz.shift(), --m;
+    while (tz[m - 1] > x1) tz.pop(), --m;
+
+    var bins = new Array(m + 1),
+        bin;
+
+    // Initialize bins.
+    for (i = 0; i <= m; ++i) {
+      bin = bins[i] = [];
+      bin.x0 = i > 0 ? tz[i - 1] : x0;
+      bin.x1 = i < m ? tz[i] : x1;
+    }
+
+    // Assign data to bins by value, ignoring any outside the domain.
+    for (i = 0; i < n; ++i) {
+      x = values[i];
+      if (x0 <= x && x <= x1) {
+        bins[bisectRight(tz, x, 0, m)].push(data[i]);
+      }
+    }
+
+    return bins;
+  }
+
+  histogram.value = function(_) {
+    return arguments.length ? (value = typeof _ === "function" ? _ : constant(_), histogram) : value;
+  };
+
+  histogram.domain = function(_) {
+    return arguments.length ? (domain = typeof _ === "function" ? _ : constant([_[0], _[1]]), histogram) : domain;
+  };
+
+  histogram.thresholds = function(_) {
+    return arguments.length ? (threshold = typeof _ === "function" ? _ : Array.isArray(_) ? constant(slice.call(_)) : constant(_), histogram) : threshold;
+  };
+
+  return histogram;
+}
+
+function sum(values, valueof) {
+  let sum = 0;
+  if (valueof === undefined) {
+    for (let value of values) {
+      if (value = +value) {
+        sum += value;
+      }
+    }
+  } else {
+    let index = -1;
+    for (let value of values) {
+      if (value = +valueof(value, ++index, values)) {
+        sum += value;
+      }
+    }
+  }
+  return sum;
 }
 
 function createCommonjsModule(fn, module) {
@@ -489,9 +697,12 @@ var simplexNoise_1 = simplexNoise.SimplexNoise;
 
 // @ts-ignore
 const simplex = new simplexNoise();
-// @ts-ignore
-const generateElements = (frame) => {
-    const elems = range(1000).map(elem => {
+const generateGrid = ({ frame, numberOfElements, unitSize, width, height }) => {
+    const elements = generateElements({ frame, numberOfElements });
+    return elementsToGrid({ elements, unitSize, width, height });
+};
+const generateElements = ({ frame, numberOfElements = 1000 }) => {
+    const elems = range(numberOfElements).map(elem => {
         const u = (simplex.noise2D(elem, frame / 10000) + 1) / 2;
         const v = (simplex.noise2D(u, elem) + 1) / 2;
         const value = (simplex.noise2D(u, v) + 1) / 2;
@@ -499,8 +710,46 @@ const generateElements = (frame) => {
     });
     return elems;
 };
+const elementsToGrid = ({ elements, unitSize, width, height }) => {
+    const numberOfColumns = Math.ceil(width / unitSize);
+    const numberOfRows = Math.ceil(height / unitSize);
+    return calcGrid({ numberOfColumns, numberOfRows, elements });
+};
+const calcGrid = ({ numberOfColumns, numberOfRows, elements }) => {
+    const xbin = bin()
+        .domain([0, 1])
+        .thresholds(numberOfColumns)
+        .value(({ u }) => u);
+    const cols = xbin(elements);
+    const binnedElements = cols.map(col => {
+        const ybin = bin()
+            .domain([0, 1])
+            .thresholds(numberOfRows)
+            .value(({ v }) => v);
+        const cells = ybin(col);
+        return cells.map(cell => {
+            const u = col.x0;
+            const v = cell.x0;
+            const w = col.x1 - col.x0;
+            const h = cell.x1 - cell.x0;
+            // @ts-ignore
+            const value = sum(cell, c => c.value) / cell.length;
+            return { u, v, width: w, height: h, value: value || 0 };
+        });
+    });
+    // @ts-ignore
+    return binnedElements.flat();
+};
 onmessage = (message) => {
-    const grid = generateElements(message.data);
+    const { frame, numberOfElements, unitSize, width, height } = JSON.parse(message.data);
+    const grid = generateGrid({
+        frame,
+        numberOfElements,
+        unitSize,
+        width,
+        height
+    });
     // @ts-ignore
     postMessage(JSON.stringify(grid));
 };
+//# sourceMappingURL=worker.js.map

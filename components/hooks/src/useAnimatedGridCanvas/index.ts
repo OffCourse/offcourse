@@ -1,15 +1,15 @@
-import { useState, useCallback, RefObject } from "react";
+import { useCallback, RefObject } from "react";
 import useGridCanvas from "../useGridCanvas";
 import useAnimationFrame from "../useAnimationFrame";
 import useComputationWorker from "../useComputationWorker";
-import { GridCell, IDimensions, Shape } from "@offcourse/interfaces/src";
+import { IDimensions, Shape } from "@offcourse/interfaces/src"; // @ts-ignore
 // @ts-ignore
-import workerFn from "../../workers/elements.worker";
+import workerFn from "../../workers/grid.worker";
 
 type CanvasProps = IDimensions & {
   shape: Shape;
   colors: string[];
-  generateGrid: any;
+  unitSize: number;
 };
 
 const useAnimatedGridCanvas: (
@@ -17,26 +17,31 @@ const useAnimatedGridCanvas: (
 ) => RefObject<HTMLCanvasElement> = ({
   width,
   height,
+  unitSize,
   colors,
-  shape,
-  generateGrid
+  shape
 }) => {
-  const [grid, setGrid] = useState<GridCell[]>([]);
-  const [elements, elementsWorker] = useComputationWorker(workerFn);
+  const [grid, elementsWorker] = useComputationWorker(workerFn);
+
   const callback = useCallback(
-    async (frame: number) => {
+    (frame: number) => {
       if (elementsWorker) {
-        elementsWorker.postMessage(frame);
-        const nextGrid = await generateGrid(elements);
-        setGrid(nextGrid);
+        const payload = JSON.stringify({
+          frame,
+          numberOfElements: 1000,
+          unitSize,
+          width,
+          height
+        });
+        elementsWorker.postMessage(payload);
       }
     },
-    [elements, generateGrid, elementsWorker]
+    [unitSize, width, height, elementsWorker]
   );
 
   useAnimationFrame({ callback, delay: 1000 });
 
-  return useGridCanvas({ width, shape, colors, height, grid });
+  return useGridCanvas({ width, shape, unitSize, grid, colors, height });
 };
 
 export default useAnimatedGridCanvas;
