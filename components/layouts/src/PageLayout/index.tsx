@@ -1,38 +1,28 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx, Box } from "theme-ui";
+import { jsx } from "theme-ui";
 import { Global } from "@emotion/core";
 import { IThemeable, IPageData } from "@offcourse/interfaces/src";
-import { Header, Footer } from "@offcourse/molecules";
-import { wrapperStyles } from "./styles";
+import { StateProvider, useStateValue } from ".//state";
+import InnerLayout from "./InnerLayout";
 
-type PageLayoutProps = {
-  mode: "menuOpen" | "default";
-  toggleMenu: () => void;
-} & IPageData &
-  IThemeable;
+type PageLayoutProps = IPageData & IThemeable;
 
 const PageLayout: FunctionComponent<PageLayoutProps> = ({
   className,
   children,
-  mode,
-  toggleMenu,
   siteMetaData
 }) => {
-  const { links, callToAction, siteName, contactInfo } = siteMetaData;
   return (
-    <Box className={className} sx={wrapperStyles}>
+    <StateProvider siteMetaData={siteMetaData}>
       <Global styles={theme => theme.globals} />
-      <Header
-        mode={mode}
-        toggleMenu={toggleMenu}
-        links={links}
-        callToAction={callToAction}
-      />
-      {children}
-      <Footer siteName={siteName} contactInfo={contactInfo} />
-    </Box>
+      <InnerLayout className={className} siteMetaData={siteMetaData}>
+        {children}
+      </InnerLayout>
+    </StateProvider>
   );
 };
+
+export { useStateValue };
 
 export default PageLayout;

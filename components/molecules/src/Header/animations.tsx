@@ -47,6 +47,7 @@ const MenuAnimation: FunctionComponent<{ mode: "menuOpen" | "default" }> = ({
 );
 
 const callToActionVariants = {
+  hidden: { x: "200%", opacity: 0.2 },
   menuOpen: { x: "200%", opacity: 0.2 },
   default: { x: 0, opacity: 1 }
 };

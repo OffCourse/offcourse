@@ -1,5 +1,4 @@
 import useAnimationFrame from "./useAnimationFrame";
-import useAppState from "./useAppState";
 import useCycleItems from "./useCycleItems";
 import useAnimatedGridCanvas from "./useAnimatedGridCanvas";
 import useGridCanvas from "./useGridCanvas";
@@ -10,7 +9,6 @@ import useShowTab from "./useShowTab";
 export {
   useInterval,
   useShowTab,
-  useAppState,
   useAnimationFrame,
   useGridCanvas,
   useAnimatedGridCanvas,

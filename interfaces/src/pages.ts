@@ -5,7 +5,7 @@ export interface ISiteMetaData {
   siteName: string;
   contactInfo: any;
   links: Link[];
-  callToAction: Link;
+  callToAction: Link | null;
 }
 
 export type HeaderData = Pick<ISiteMetaData, "links" | "callToAction">;

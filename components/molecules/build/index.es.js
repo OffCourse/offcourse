@@ -46,6 +46,7 @@ var RadioButtonGroup = function (_a) {
         return jsx(Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -74,6 +75,7 @@ var InputField = function (_a) {
         jsx(ErrorMessage, { render: function (msg) { return jsx(Message, { isBasic: true }, msg); }, name: name }),
         jsx(Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
+//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -94,6 +96,7 @@ var TextSection = function (_a) {
         jsx(Heading, { sx: titleStyles }, title),
         jsx(Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -155,6 +158,7 @@ var Project = function (_a) {
         jsx(Text, { sx: captionStyles, html: description }),
         jsx(Heading$1, { sx: headerStyles }, title)));
 };
+//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -194,6 +198,7 @@ var Step = function (_a) {
             title),
         jsx(Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var outerWrapperStyles = {
     display: "grid",
@@ -323,6 +328,7 @@ var MenuAnimation = function (_a) {
     return (jsx(motion.div, { initial: "default", animate: mode, transition: { duration: duration }, variants: menuVariants }, children));
 };
 var callToActionVariants = {
+    hidden: { x: "200%", opacity: 0.2 },
     menuOpen: { x: "200%", opacity: 0.2 },
     default: { x: 0, opacity: 1 }
 };
@@ -349,18 +355,19 @@ var Menu = function (_a) {
         return (jsx(Tab, { key: title, href: href }, title));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
-    var className = _a.className, links = _a.links, callToAction = _a.callToAction, mode = _a.mode, toggleMenu = _a.toggleMenu;
+    var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, mode = _a.mode, toggleMenu = _a.toggleMenu;
     return (jsx(Box, { sx: outerWrapperStyles$1, className: className },
         jsx(AvatarAnimation, { mode: mode },
             jsx(Avatar, { sx: avatarStyles, onClick: toggleMenu })),
         jsx(Box, { sx: menuItemsStyles },
             jsx(MenuAnimation, { mode: mode },
                 jsx(Menu, { links: links })),
-            jsx(CallToActionAnimation, { mode: mode },
-                jsx(Tab, { href: callToAction.href }, callToAction.title)))));
+            jsx(CallToActionAnimation, { mode: mode }, callToAction ? (jsx(Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
+//# sourceMappingURL=index.js.map
 
 export { Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };
 //# sourceMappingURL=index.es.js.map

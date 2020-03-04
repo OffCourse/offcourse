@@ -16,8 +16,8 @@ type HeaderProps = HeaderData &
 
 const HeaderSection: FunctionComponent<HeaderProps> = ({
   className,
-  links,
-  callToAction,
+  links = [],
+  callToAction = null,
   mode,
   toggleMenu
 }) => {
@@ -31,7 +31,9 @@ const HeaderSection: FunctionComponent<HeaderProps> = ({
           <Menu links={links} />
         </MenuAnimation>
         <CallToActionAnimation mode={mode}>
-          <Tab href={callToAction.href}>{callToAction.title}</Tab>
+          {callToAction ? (
+            <Tab href={callToAction.href}>{callToAction.title}</Tab>
+          ) : null}
         </CallToActionAnimation>
       </Box>
     </Box>

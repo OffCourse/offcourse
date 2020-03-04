@@ -50,6 +50,7 @@ var RadioButtonGroup = function (_a) {
         return themeUi.jsx(atoms.Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -78,6 +79,7 @@ var InputField = function (_a) {
         themeUi.jsx(formik.ErrorMessage, { render: function (msg) { return themeUi.jsx(atoms.Message, { isBasic: true }, msg); }, name: name }),
         themeUi.jsx(formik.Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
+//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -98,6 +100,7 @@ var TextSection = function (_a) {
         themeUi.jsx(themeUi.Heading, { sx: titleStyles }, title),
         themeUi.jsx(atoms.Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -159,6 +162,7 @@ var Project = function (_a) {
         themeUi.jsx(atoms.Text, { sx: captionStyles, html: description }),
         themeUi.jsx(atoms.Heading, { sx: headerStyles }, title)));
 };
+//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -198,6 +202,7 @@ var Step = function (_a) {
             title),
         themeUi.jsx(atoms.Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var outerWrapperStyles = {
     display: "grid",
@@ -327,6 +332,7 @@ var MenuAnimation = function (_a) {
     return (themeUi.jsx(framerMotion.motion.div, { initial: "default", animate: mode, transition: { duration: duration }, variants: menuVariants }, children));
 };
 var callToActionVariants = {
+    hidden: { x: "200%", opacity: 0.2 },
     menuOpen: { x: "200%", opacity: 0.2 },
     default: { x: 0, opacity: 1 }
 };
@@ -353,18 +359,19 @@ var Menu = function (_a) {
         return (themeUi.jsx(atoms.Tab, { key: title, href: href }, title));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
-    var className = _a.className, links = _a.links, callToAction = _a.callToAction, mode = _a.mode, toggleMenu = _a.toggleMenu;
+    var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, mode = _a.mode, toggleMenu = _a.toggleMenu;
     return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles$1, className: className },
         themeUi.jsx(AvatarAnimation, { mode: mode },
             themeUi.jsx(atoms.Avatar, { sx: avatarStyles, onClick: toggleMenu })),
         themeUi.jsx(themeUi.Box, { sx: menuItemsStyles },
             themeUi.jsx(MenuAnimation, { mode: mode },
                 themeUi.jsx(Menu, { links: links })),
-            themeUi.jsx(CallToActionAnimation, { mode: mode },
-                themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)))));
+            themeUi.jsx(CallToActionAnimation, { mode: mode }, callToAction ? (themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
+//# sourceMappingURL=index.js.map
 
 exports.Footer = Footer;
 exports.Header = HeaderSection;
