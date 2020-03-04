@@ -22,6 +22,7 @@ var circle = function (_a) {
     ctx.fillStyle = colors[1];
     ctx.fill();
 };
+//# sourceMappingURL=shapes.js.map
 
 var Backdrop = function (_a) {
     var className = _a.className, _b = _a.width, width = _b === void 0 ? 100 : _b, _c = _a.height, height = _c === void 0 ? 100 : _c, _d = _a.shape, shape = _d === void 0 ? circle : _d, _e = _a.unitSize, unitSize = _e === void 0 ? 20 : _e;

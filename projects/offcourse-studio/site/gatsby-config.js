@@ -44,7 +44,6 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-typescript",
-    "gatsby-plugin-workerize-loader",
     "@offcourse/homepage-theme",
     "@offcourse/blog-theme",
     {

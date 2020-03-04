@@ -8,8 +8,7 @@ import { useSiteMetaData } from "../../hooks";
 
 const wrapperStyles = {
   display: "grid",
-  minHeight: "100vh",
-  bg: "black"
+  minHeight: "100vh"
 };
 
 const PageTemplate = forwardRef(

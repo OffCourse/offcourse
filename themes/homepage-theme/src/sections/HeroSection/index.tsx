@@ -19,7 +19,7 @@ const HeroSection: FunctionComponent<HeroSectionProps> = ({
   const [{ clientWidth: width, clientHeight: height }, bind] = useMeasure();
   return (
     <BaseSection {...props} {...bind} className={className} sx={wrapperStyles}>
-      <Backdrop width={width} height={height} />
+      <Backdrop sx={{ position: "absolute" }} width={width} height={height} />
       <Box sx={textStyles}>
         <DisplayText>{title}</DisplayText>
       </Box>

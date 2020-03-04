@@ -1,13 +1,11 @@
 const displayStyles = {
   display: "grid",
-  bg: "background",
   height: "32rem",
   alignContent: "end"
 };
 
 const innerWrapper = {
   p: 6,
-  bg: "white",
   display: "grid",
   gridTemplateColumns: "minmax(auto, 60rem)",
   justifyContent: "center"

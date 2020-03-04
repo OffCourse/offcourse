@@ -19,7 +19,6 @@ const ListItem: FunctionComponent<any> = post => (
   <li
     sx={{
       listStyle: "none",
-      bg: "white",
       mb: 6
     }}
   >

@@ -19,7 +19,6 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
 }) => {
   const { theme }: any = useThemeUI();
   const { primary, grayScale } = theme.colors;
-
   const canvasRef = useAnimatedGridCanvas({
     width,
     height,
