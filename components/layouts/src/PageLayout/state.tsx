@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import {
   createContext,
+  useEffect,
   useContext,
   useCallback,
   Context,
@@ -14,13 +15,9 @@ import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
 type AppState = {
   appMode: any;
   toggleMenu: () => void;
-  siteMetaData: ISiteMetaData;
-};
-const initialSiteMetaData: ISiteMetaData = {
-  links: [],
-  callToAction: null,
-  siteName: "",
-  contactInfo: {}
+  showCTA: () => void;
+  hideCTA: () => void;
+  siteMetaData?: ISiteMetaData;
 };
 
 export const StateContext: Context<AppState> = createContext({
@@ -28,22 +25,33 @@ export const StateContext: Context<AppState> = createContext({
   toggleMenu: () => {
     return;
   },
-  siteMetaData: initialSiteMetaData
+  showCTA: () => {
+    return;
+  },
+  hideCTA: () => {
+    return;
+  }
 });
 
 export const StateProvider: FunctionComponent<{
   siteMetaData: ISiteMetaData;
 }> = ({ children, siteMetaData }) => {
   const [current, send] = useMachine(machine);
+  useEffect(() => {
+    send({ type: "INITIALIZE", siteMetaData });
+  }, [send, siteMetaData]);
   const toggleMenu = useCallback(() => send("TOGGLE"), [send]);
-  const links = siteMetaData.links.filter(({ title }) => title !== "home");
+  const showCTA = useCallback(() => send("SHOW_CALL_TO_ACTION"), [send]);
+  const hideCTA = useCallback(() => send("HIDE_CALL_TO_ACTION"), [send]);
 
   return (
     <StateContext.Provider
       value={{
         appMode: current.value,
         toggleMenu,
-        siteMetaData: { ...siteMetaData, links }
+        showCTA,
+        hideCTA,
+        ...current.context
       }}
     >
       {children}

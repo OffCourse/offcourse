@@ -1,7 +1,8 @@
 /** @jsx jsx */
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { jsx, Box } from "theme-ui";
 import { IContactSection } from "@offcourse/interfaces/src/pageSection";
+import { useStateValue } from "@offcourse/layouts";
 import { IForm } from "@offcourse/interfaces/src/form";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { useVisibility, useMeasure } from "../../hooks";
@@ -9,7 +10,6 @@ import BaseSection from "../BaseSection";
 import Backdrop from "../../components/Backdrop";
 import { DisplayText } from "@offcourse/atoms";
 import FormContainer from "../../containers/FormContainer";
-import CallToAction from "../../components/CallToAction";
 import Form from "../../components/Form";
 import { wrapperStyles, formStyles, sloganSpaceStyles } from "./styles";
 import { FormikValues, FormikBag } from "formik";
@@ -44,12 +44,15 @@ const ContactSection: FunctionComponent<ContactSectionProps> = ({
   ...props
 }) => {
   const [isVisible, Marker] = useVisibility({ canLeave: true });
+  const { showCTA, hideCTA } = useStateValue();
+  useEffect(() => {
+    isVisible ? hideCTA() : showCTA();
+  }, [isVisible, showCTA, hideCTA]);
   const [{ clientWidth: width, clientHeight: height }, bind] = useMeasure();
   return (
     <BaseSection {...bind} {...props} className={className} sx={wrapperStyles}>
       <Backdrop width={width} height={height} />
       <Marker />
-      <CallToAction isVisible={!isVisible}>{callToAction}</CallToAction>
       <Box sx={sloganSpaceStyles}>
         <DisplayText>{title}</DisplayText>
       </Box>

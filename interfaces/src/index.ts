@@ -2,7 +2,7 @@ import { IThemeable } from "./theme";
 import { IInput, IInputField } from "./form";
 import { ILink, IText, IButton } from "./primitives";
 import { Label, Link, Tab, Text, Message, Button, Heading } from "./components";
-import { IProject, IStep } from "./pageSection";
+import { IProject, IStep, IContactInfo } from "./pageSection";
 import { IPageData, HeaderData } from "./pages";
 import {
   AnimatedCanvasProps,
@@ -45,6 +45,7 @@ export interface IStylable {
 export {
   AnimatedCanvasProps,
   ICanvasProps,
+  IContactInfo,
   IInput,
   IInputField,
   IPageData,

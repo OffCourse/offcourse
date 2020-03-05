@@ -13,17 +13,11 @@ const InnerLayout: FunctionComponent<PageLayoutProps> = ({
   children
 }) => {
   const { toggleMenu, appMode, siteMetaData } = useStateValue();
-  const { links, siteName, contactInfo, callToAction } = siteMetaData;
   return (
     <Box className={className} sx={wrapperStyles}>
-      <Header
-        mode={appMode}
-        toggleMenu={toggleMenu}
-        links={links}
-        callToAction={callToAction}
-      />
+      <Header appMode={appMode} toggleMenu={toggleMenu} {...siteMetaData} />
       {children}
-      <Footer siteName={siteName} contactInfo={contactInfo} />
+      <Footer {...siteMetaData} />
     </Box>
   );
 };

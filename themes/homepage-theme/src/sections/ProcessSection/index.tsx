@@ -4,7 +4,7 @@ import { jsx } from "theme-ui";
 import { IThemeable } from "@offcourse/interfaces/src";
 import BaseSection from "../BaseSection";
 import { wrapperStyles } from "./styles";
-import Step from "../../components/Step";
+import { Step } from "@offcourse/molecules";
 import { IProcessSection, IStep } from "@offcourse/interfaces/src/pageSection";
 
 type ProcessSectionProps = IProcessSection & IThemeable;

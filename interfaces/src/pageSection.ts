@@ -1,4 +1,4 @@
-interface IContactInfo {
+export interface IContactInfo {
   street: string;
   zipCode: string;
   city: string;

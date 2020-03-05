@@ -1,11 +1,13 @@
-import {SxStyleProp} from "theme-ui";
+import { SxStyleProp } from "theme-ui";
 
 export const wrapperStyles: SxStyleProp = {
   userSelect: "none",
+  gridColumn: ["span 12", "span 6", "span 6", "span 4", "span 3"],
   display: "grid",
   gridTemplateRows: "auto 1fr auto",
   gridGap: [6, 6],
   pb: 7,
+  mb: [6, 8],
   alignItems: "start",
   bg: "grayScale.0"
 };
@@ -28,7 +30,7 @@ export const imageStyles: SxStyleProp = {
 export const captionStyles: SxStyleProp = {
   display: "flex",
   flexDirection: "column",
-  justifyContent: "flex-end",
+  justifyC6ontent: "flex-end",
   px: [6, 6],
   "p:last-of-type": {
     mb: 0

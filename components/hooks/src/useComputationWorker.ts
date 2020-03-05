@@ -14,6 +14,12 @@ const useComputationWorker = (functionAsString: string) => {
     workerRef.current.onmessage = (e: any) => {
       setElements(JSON.parse(e.data));
     };
+    const cleanup = () => {
+      if (workerRef.current) {
+        workerRef.current.terminate();
+      }
+    };
+    return cleanup;
   }, [functionAsString]);
   return [elements, workerRef.current];
 };

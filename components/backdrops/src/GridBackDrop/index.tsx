@@ -27,7 +27,15 @@ const Backdrop: FunctionComponent<BackdropProps> = ({
     shape
   });
 
-  return <BD sx={wrapperStyles} ref={canvasRef} className={className} />;
+  return (
+    <BD
+      sx={wrapperStyles}
+      ref={canvasRef}
+      className={className}
+      width={width}
+      height={height}
+    />
+  );
 };
 
 export default Backdrop;

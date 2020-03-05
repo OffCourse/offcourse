@@ -6,39 +6,41 @@ import { jsx } from "theme-ui";
 const duration = 0.2;
 
 const avatarVariants = {
-  hidden: { x: "-200%", opacity: 0.2 },
+  idle: { x: "-200%", opacity: 0.2 },
   default: { x: 0, opacity: 1, rotate: 0 },
   hover: { opacity: 0.8 },
   menuOpen: { rotate: 90 }
 };
 
-const AvatarAnimation: FunctionComponent<{ mode: "menuOpen" | "default" }> = ({
-  children,
-  mode
-}) => (
-  <motion.div
-    initial="hidden"
-    whileHover={"hover"}
-    transition={{ duration }}
-    animate={mode}
-    variants={avatarVariants}
-  >
-    {children}
-  </motion.div>
-);
+const AvatarAnimation: FunctionComponent<{
+  appMode: "menuOpen" | "default";
+}> = ({ children, appMode }) => {
+  return (
+    <motion.div
+      initial="idle"
+      whileHover={"hover"}
+      transition={{ duration }}
+      animate={appMode}
+      variants={avatarVariants}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const menuVariants = {
+  idle: { y: "-400%", opacity: 0.2 },
   default: { y: "-400%", opacity: 0.2 },
   menuOpen: { y: 0, opacity: 1 }
 };
 
-const MenuAnimation: FunctionComponent<{ mode: "menuOpen" | "default" }> = ({
+const MenuAnimation: FunctionComponent<{ appMode: "menuOpen" | "default" }> = ({
   children,
-  mode
+  appMode
 }) => (
   <motion.div
-    initial="default"
-    animate={mode}
+    initial="idle"
+    animate={appMode}
     transition={{ duration }}
     variants={menuVariants}
   >
@@ -47,22 +49,25 @@ const MenuAnimation: FunctionComponent<{ mode: "menuOpen" | "default" }> = ({
 );
 
 const callToActionVariants = {
-  hidden: { x: "200%", opacity: 0.2 },
+  idle: { x: "200%", opacity: 0.2 },
   menuOpen: { x: "200%", opacity: 0.2 },
   default: { x: 0, opacity: 1 }
 };
 
 const CallToActionAnimation: FunctionComponent<{
-  mode: "menuOpen" | "default";
-}> = ({ children, mode }) => (
-  <motion.div
-    initial="hidden"
-    transition={{ duration }}
-    animate={mode}
-    variants={callToActionVariants}
-  >
-    {children}
-  </motion.div>
-);
+  appMode: "menuOpen" | "default";
+  callToActionVisible: boolean;
+}> = ({ children, appMode, callToActionVisible }) => {
+  return (
+    <motion.div
+      initial="idle"
+      transition={{ duration }}
+      animate={callToActionVisible ? appMode : "idle"}
+      variants={callToActionVariants}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export { AvatarAnimation, MenuAnimation, CallToActionAnimation };

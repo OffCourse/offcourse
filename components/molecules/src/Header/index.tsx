@@ -12,25 +12,33 @@ import {
 import Menu from "../Menu";
 
 type HeaderProps = HeaderData &
-  IThemeable & { mode: "menuOpen" | "default"; toggleMenu: () => void };
+  IThemeable & {
+    appMode: "menuOpen" | "default";
+    toggleMenu: () => void;
+    callToActionVisible?: boolean;
+  };
 
 const HeaderSection: FunctionComponent<HeaderProps> = ({
   className,
   links = [],
   callToAction = null,
-  mode,
+  callToActionVisible = true,
+  appMode,
   toggleMenu
 }) => {
   return (
     <Box sx={outerWrapperStyles} className={className}>
-      <AvatarAnimation mode={mode}>
+      <AvatarAnimation appMode={appMode}>
         <Avatar sx={avatarStyles} onClick={toggleMenu} />
       </AvatarAnimation>
       <Box sx={menuItemsStyles}>
-        <MenuAnimation mode={mode}>
+        <MenuAnimation appMode={appMode}>
           <Menu links={links} />
         </MenuAnimation>
-        <CallToActionAnimation mode={mode}>
+        <CallToActionAnimation
+          callToActionVisible={callToActionVisible}
+          appMode={appMode}
+        >
           {callToAction ? (
             <Tab href={callToAction.href}>{callToAction.title}</Tab>
           ) : null}

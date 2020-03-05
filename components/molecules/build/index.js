@@ -104,10 +104,12 @@ var TextSection = function (_a) {
 
 var wrapperStyles$1 = {
     userSelect: "none",
+    gridColumn: ["span 12", "span 6", "span 6", "span 4", "span 3"],
     display: "grid",
     gridTemplateRows: "auto 1fr auto",
     gridGap: [6, 6],
     pb: 7,
+    mb: [6, 8],
     alignItems: "start",
     bg: "grayScale.0"
 };
@@ -127,7 +129,7 @@ var imageStyles = {
 var captionStyles = {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-end",
+    justifyC6ontent: "flex-end",
     px: [6, 6],
     "p:last-of-type": {
         mb: 0
@@ -272,22 +274,26 @@ var PublicBadgesDrawer = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
+var ContactInfo = function (_a) {
+    var street = _a.street, zipCode = _a.zipCode, country = _a.country, city = _a.city, email = _a.email;
+    return (themeUi.jsx(themeUi.Box, { sx: contactStyles },
+        themeUi.jsx(themeUi.Heading, null, "Contact"),
+        themeUi.jsx(themeUi.Box, { as: "section" },
+            themeUi.jsx("p", null, street),
+            themeUi.jsx("p", null, zipCode + " " + city),
+            themeUi.jsx("p", null, country),
+            themeUi.jsx("p", null, email))));
+};
 var Footer = function (_a) {
     var className = _a.className, siteName = _a.siteName, contactInfo = _a.contactInfo;
-    var street = contactInfo.street, zipCode = contactInfo.zipCode, country = contactInfo.country, city = contactInfo.city, email = contactInfo.email;
     return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles, className: className },
         themeUi.jsx("div", { sx: scalingContainerStyles },
-            themeUi.jsx(themeUi.Box, { sx: contactStyles },
-                themeUi.jsx(themeUi.Heading, null, "Contact"),
-                themeUi.jsx(themeUi.Box, { as: "section" },
-                    themeUi.jsx("p", null, street),
-                    themeUi.jsx("p", null, zipCode + " " + city),
-                    themeUi.jsx("p", null, country),
-                    themeUi.jsx("p", null, email))),
+            themeUi.jsx(ContactInfo, __assign({}, contactInfo)),
             themeUi.jsx("div", { sx: drawerStyles },
                 themeUi.jsx(PublicBadgesDrawer, { modalTheme: "light" })),
-            themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
+            siteName && themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
 };
+//# sourceMappingURL=index.js.map
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -314,31 +320,32 @@ var menuItemsStyles = {
 
 var duration = 0.2;
 var avatarVariants = {
-    hidden: { x: "-200%", opacity: 0.2 },
+    idle: { x: "-200%", opacity: 0.2 },
     default: { x: 0, opacity: 1, rotate: 0 },
     hover: { opacity: 0.8 },
     menuOpen: { rotate: 90 }
 };
 var AvatarAnimation = function (_a) {
-    var children = _a.children, mode = _a.mode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "hidden", whileHover: "hover", transition: { duration: duration }, animate: mode, variants: avatarVariants }, children));
+    var children = _a.children, appMode = _a.appMode;
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", whileHover: "hover", transition: { duration: duration }, animate: appMode, variants: avatarVariants }, children));
 };
 var menuVariants = {
+    idle: { y: "-400%", opacity: 0.2 },
     default: { y: "-400%", opacity: 0.2 },
     menuOpen: { y: 0, opacity: 1 }
 };
 var MenuAnimation = function (_a) {
-    var children = _a.children, mode = _a.mode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "default", animate: mode, transition: { duration: duration }, variants: menuVariants }, children));
+    var children = _a.children, appMode = _a.appMode;
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", animate: appMode, transition: { duration: duration }, variants: menuVariants }, children));
 };
 var callToActionVariants = {
-    hidden: { x: "200%", opacity: 0.2 },
+    idle: { x: "200%", opacity: 0.2 },
     menuOpen: { x: "200%", opacity: 0.2 },
     default: { x: 0, opacity: 1 }
 };
 var CallToActionAnimation = function (_a) {
-    var children = _a.children, mode = _a.mode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "hidden", transition: { duration: duration }, animate: mode, variants: callToActionVariants }, children));
+    var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", transition: { duration: duration }, animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
 //# sourceMappingURL=animations.js.map
 
@@ -362,14 +369,14 @@ var Menu = function (_a) {
 //# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
-    var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, mode = _a.mode, toggleMenu = _a.toggleMenu;
+    var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
     return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles$1, className: className },
-        themeUi.jsx(AvatarAnimation, { mode: mode },
+        themeUi.jsx(AvatarAnimation, { appMode: appMode },
             themeUi.jsx(atoms.Avatar, { sx: avatarStyles, onClick: toggleMenu })),
         themeUi.jsx(themeUi.Box, { sx: menuItemsStyles },
-            themeUi.jsx(MenuAnimation, { mode: mode },
+            themeUi.jsx(MenuAnimation, { appMode: appMode },
                 themeUi.jsx(Menu, { links: links })),
-            themeUi.jsx(CallToActionAnimation, { mode: mode }, callToAction ? (themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)) : null))));
+            themeUi.jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
 //# sourceMappingURL=index.js.map
 

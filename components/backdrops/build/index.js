@@ -14,6 +14,7 @@ var wrapperStyles = {
     top: 0,
     left: 0
 };
+//# sourceMappingURL=styles.js.map
 
 var circle = function (_a) {
     var ctx = _a.ctx, x = _a.x, y = _a.y, value = _a.value, colors = _a.colors, width = _a.width, height = _a.height;
@@ -39,7 +40,7 @@ var Backdrop = function (_a) {
         colors: [primary, grayScale[0]],
         shape: shape
     });
-    return themeUi.jsx(atoms.Backdrop, { sx: wrapperStyles, ref: canvasRef, className: className });
+    return (themeUi.jsx(atoms.Backdrop, { sx: wrapperStyles, ref: canvasRef, className: className, width: width, height: height }));
 };
 
 exports.GridBackDrop = Backdrop;

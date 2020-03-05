@@ -100,10 +100,12 @@ var TextSection = function (_a) {
 
 var wrapperStyles$1 = {
     userSelect: "none",
+    gridColumn: ["span 12", "span 6", "span 6", "span 4", "span 3"],
     display: "grid",
     gridTemplateRows: "auto 1fr auto",
     gridGap: [6, 6],
     pb: 7,
+    mb: [6, 8],
     alignItems: "start",
     bg: "grayScale.0"
 };
@@ -123,7 +125,7 @@ var imageStyles = {
 var captionStyles = {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-end",
+    justifyC6ontent: "flex-end",
     px: [6, 6],
     "p:last-of-type": {
         mb: 0
@@ -268,22 +270,26 @@ var PublicBadgesDrawer = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
+var ContactInfo = function (_a) {
+    var street = _a.street, zipCode = _a.zipCode, country = _a.country, city = _a.city, email = _a.email;
+    return (jsx(Box, { sx: contactStyles },
+        jsx(Heading, null, "Contact"),
+        jsx(Box, { as: "section" },
+            jsx("p", null, street),
+            jsx("p", null, zipCode + " " + city),
+            jsx("p", null, country),
+            jsx("p", null, email))));
+};
 var Footer = function (_a) {
     var className = _a.className, siteName = _a.siteName, contactInfo = _a.contactInfo;
-    var street = contactInfo.street, zipCode = contactInfo.zipCode, country = contactInfo.country, city = contactInfo.city, email = contactInfo.email;
     return (jsx(Box, { sx: outerWrapperStyles, className: className },
         jsx("div", { sx: scalingContainerStyles },
-            jsx(Box, { sx: contactStyles },
-                jsx(Heading, null, "Contact"),
-                jsx(Box, { as: "section" },
-                    jsx("p", null, street),
-                    jsx("p", null, zipCode + " " + city),
-                    jsx("p", null, country),
-                    jsx("p", null, email))),
+            jsx(ContactInfo, __assign({}, contactInfo)),
             jsx("div", { sx: drawerStyles },
                 jsx(PublicBadgesDrawer, { modalTheme: "light" })),
-            jsx(Logo, { sx: logoStyles }, siteName))));
+            siteName && jsx(Logo, { sx: logoStyles }, siteName))));
 };
+//# sourceMappingURL=index.js.map
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -310,31 +316,32 @@ var menuItemsStyles = {
 
 var duration = 0.2;
 var avatarVariants = {
-    hidden: { x: "-200%", opacity: 0.2 },
+    idle: { x: "-200%", opacity: 0.2 },
     default: { x: 0, opacity: 1, rotate: 0 },
     hover: { opacity: 0.8 },
     menuOpen: { rotate: 90 }
 };
 var AvatarAnimation = function (_a) {
-    var children = _a.children, mode = _a.mode;
-    return (jsx(motion.div, { initial: "hidden", whileHover: "hover", transition: { duration: duration }, animate: mode, variants: avatarVariants }, children));
+    var children = _a.children, appMode = _a.appMode;
+    return (jsx(motion.div, { initial: "idle", whileHover: "hover", transition: { duration: duration }, animate: appMode, variants: avatarVariants }, children));
 };
 var menuVariants = {
+    idle: { y: "-400%", opacity: 0.2 },
     default: { y: "-400%", opacity: 0.2 },
     menuOpen: { y: 0, opacity: 1 }
 };
 var MenuAnimation = function (_a) {
-    var children = _a.children, mode = _a.mode;
-    return (jsx(motion.div, { initial: "default", animate: mode, transition: { duration: duration }, variants: menuVariants }, children));
+    var children = _a.children, appMode = _a.appMode;
+    return (jsx(motion.div, { initial: "idle", animate: appMode, transition: { duration: duration }, variants: menuVariants }, children));
 };
 var callToActionVariants = {
-    hidden: { x: "200%", opacity: 0.2 },
+    idle: { x: "200%", opacity: 0.2 },
     menuOpen: { x: "200%", opacity: 0.2 },
     default: { x: 0, opacity: 1 }
 };
 var CallToActionAnimation = function (_a) {
-    var children = _a.children, mode = _a.mode;
-    return (jsx(motion.div, { initial: "hidden", transition: { duration: duration }, animate: mode, variants: callToActionVariants }, children));
+    var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
+    return (jsx(motion.div, { initial: "idle", transition: { duration: duration }, animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
 //# sourceMappingURL=animations.js.map
 
@@ -358,14 +365,14 @@ var Menu = function (_a) {
 //# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
-    var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, mode = _a.mode, toggleMenu = _a.toggleMenu;
+    var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
     return (jsx(Box, { sx: outerWrapperStyles$1, className: className },
-        jsx(AvatarAnimation, { mode: mode },
+        jsx(AvatarAnimation, { appMode: appMode },
             jsx(Avatar, { sx: avatarStyles, onClick: toggleMenu })),
         jsx(Box, { sx: menuItemsStyles },
-            jsx(MenuAnimation, { mode: mode },
+            jsx(MenuAnimation, { appMode: appMode },
                 jsx(Menu, { links: links })),
-            jsx(CallToActionAnimation, { mode: mode }, callToAction ? (jsx(Tab, { href: callToAction.href }, callToAction.title)) : null))));
+            jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (jsx(Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
 //# sourceMappingURL=index.js.map
 

@@ -8375,13 +8375,6 @@ gatsby-plugin-typescript@^2.1.27:
     "@babel/runtime" "^7.7.6"
     babel-plugin-remove-graphql-queries "^2.7.23"
 
-gatsby-plugin-workerize-loader@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/gatsby-plugin-workerize-loader/-/gatsby-plugin-workerize-loader-1.1.0.tgz#56fae3d2afecd3e672ac6c08e18c3f661fd71ec1"
-  integrity sha512-65wbQlLzI8W0xIIjgkbGBss39z1gP3O57RnR6O+pboXn7x6UfM8k4qVYd+dV/yQCScz+rfVk+QaAffOmpDH55w==
-  dependencies:
-    workerize-loader "^1.1.0"
-
 gatsby-react-router-scroll@^2.1.21:
   version "2.1.21"
   resolved "https://registry.npmjs.org/gatsby-react-router-scroll/-/gatsby-react-router-scroll-2.1.21.tgz#bc4aeee424da034287b6fe64d6b08f47d6cb6881"
@@ -15001,7 +14994,7 @@ prompts@^2.0.1, prompts@^2.3.0:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.0.0, prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.0.0, prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -15381,14 +15374,6 @@ react-side-effect@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
   integrity sha512-IgmcegOSi5SNX+2Snh1vqmF0Vg/CbkycU9XZbOHJlZ6kMzTmi3yc254oB1WCkgA7OQtIAoLmcSFuHTc/tlcqXg==
-
-react-spring@^8.0.27:
-  version "8.0.27"
-  resolved "https://registry.npmjs.org/react-spring/-/react-spring-8.0.27.tgz#97d4dee677f41e0b2adcb696f3839680a3aa356a"
-  integrity sha512-nDpWBe3ZVezukNRandTeLSPcwwTMjNVu1IDq9qA/AMiUqHuRN4BeSWvKr3eIxxg1vtiYiOLy4FqdfCP5IoP77g==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    prop-types "^15.5.8"
 
 react-swipeable@^5.3.0:
   version "5.5.1"

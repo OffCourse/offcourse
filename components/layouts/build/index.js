@@ -38,50 +38,117 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-var toggleMachine = xstate.Machine({
-    id: "toggle",
-    initial: "default",
+var addSiteMetaData = xstate.assign({
+    siteMetaData: function (_, _a) {
+        var siteMetaData = _a.siteMetaData;
+        var links = siteMetaData.links.filter(function (_a) {
+            var title = _a.title;
+            return title !== "home";
+        });
+        return __assign(__assign({}, siteMetaData), { links: links });
+    }
+});
+var appStateMachine = xstate.createMachine({
+    id: "appState",
+    initial: "idle",
     states: {
+        idle: {
+            on: {
+                INITIALIZE: {
+                    target: "default",
+                    actions: ["addSiteMetaData"]
+                }
+            }
+        },
         default: {
-            on: { TOGGLE: "menuOpen" }
+            on: {
+                TOGGLE: "menuOpen",
+                SHOW_CALL_TO_ACTION: {
+                    actions: [
+                        xstate.assign({
+                            siteMetaData: function (_a, _) {
+                                var siteMetaData = _a.siteMetaData;
+                                return __assign(__assign({}, siteMetaData), { callToActionVisible: true });
+                            }
+                        })
+                    ]
+                },
+                HIDE_CALL_TO_ACTION: {
+                    actions: [
+                        xstate.assign({
+                            siteMetaData: function (_a, _) {
+                                var siteMetaData = _a.siteMetaData;
+                                return __assign(__assign({}, siteMetaData), { callToActionVisible: false });
+                            }
+                        })
+                    ]
+                }
+            }
         },
         menuOpen: {
             on: { TOGGLE: "default" }
         }
     }
+}, {
+    actions: {
+        addSiteMetaData: addSiteMetaData
+    }
 });
 //# sourceMappingURL=machine.js.map
 
-var initialSiteMetaData = {
-    links: [],
-    callToAction: null,
-    siteName: "",
-    contactInfo: {}
-};
 var StateContext = react.createContext({
     appMode: "default",
     toggleMenu: function () {
         return;
     },
-    siteMetaData: initialSiteMetaData
+    showCTA: function () {
+        return;
+    },
+    hideCTA: function () {
+        return;
+    }
 });
 var StateProvider = function (_a) {
     var children = _a.children, siteMetaData = _a.siteMetaData;
-    var _b = react$1.useMachine(toggleMachine), current = _b[0], send = _b[1];
+    var _b = react$1.useMachine(appStateMachine), current = _b[0], send = _b[1];
+    react.useEffect(function () {
+        send({ type: "INITIALIZE", siteMetaData: siteMetaData });
+    }, [send, siteMetaData]);
     var toggleMenu = react.useCallback(function () { return send("TOGGLE"); }, [send]);
-    var links = siteMetaData.links.filter(function (_a) {
-        var title = _a.title;
-        return title !== "home";
-    });
-    return (themeUi.jsx(StateContext.Provider, { value: {
-            appMode: current.value,
-            toggleMenu: toggleMenu,
-            siteMetaData: __assign(__assign({}, siteMetaData), { links: links })
-        } }, children));
+    var showCTA = react.useCallback(function () { return send("SHOW_CALL_TO_ACTION"); }, [send]);
+    var hideCTA = react.useCallback(function () { return send("HIDE_CALL_TO_ACTION"); }, [send]);
+    return (themeUi.jsx(StateContext.Provider, { value: __assign({ appMode: current.value, toggleMenu: toggleMenu,
+            showCTA: showCTA,
+            hideCTA: hideCTA }, current.context) }, children));
 };
 var useStateValue = function () { return react.useContext(StateContext); };
 //# sourceMappingURL=state.js.map
 
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at http://www.apache.org/licenses/LICENSE-2.0
+
+THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+MERCHANTABLITY OR NON-INFRINGEMENT.
+
+See the Apache Version 2.0 License for specific language governing permissions
+and limitations under the License.
+***************************************************************************** */
+
+var __assign$1 = function() {
+    __assign$1 = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign$1.apply(this, arguments);
+};
 //# sourceMappingURL=index.js.map
 
 var outerWrapperStyles = {
@@ -152,22 +219,26 @@ var PublicBadgesDrawer = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
+var ContactInfo = function (_a) {
+    var street = _a.street, zipCode = _a.zipCode, country = _a.country, city = _a.city, email = _a.email;
+    return (themeUi.jsx(themeUi.Box, { sx: contactStyles },
+        themeUi.jsx(themeUi.Heading, null, "Contact"),
+        themeUi.jsx(themeUi.Box, { as: "section" },
+            themeUi.jsx("p", null, street),
+            themeUi.jsx("p", null, zipCode + " " + city),
+            themeUi.jsx("p", null, country),
+            themeUi.jsx("p", null, email))));
+};
 var Footer = function (_a) {
     var className = _a.className, siteName = _a.siteName, contactInfo = _a.contactInfo;
-    var street = contactInfo.street, zipCode = contactInfo.zipCode, country = contactInfo.country, city = contactInfo.city, email = contactInfo.email;
     return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles, className: className },
         themeUi.jsx("div", { sx: scalingContainerStyles },
-            themeUi.jsx(themeUi.Box, { sx: contactStyles },
-                themeUi.jsx(themeUi.Heading, null, "Contact"),
-                themeUi.jsx(themeUi.Box, { as: "section" },
-                    themeUi.jsx("p", null, street),
-                    themeUi.jsx("p", null, zipCode + " " + city),
-                    themeUi.jsx("p", null, country),
-                    themeUi.jsx("p", null, email))),
+            themeUi.jsx(ContactInfo, __assign$1({}, contactInfo)),
             themeUi.jsx("div", { sx: drawerStyles },
                 themeUi.jsx(PublicBadgesDrawer, { modalTheme: "light" })),
-            themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
+            siteName && themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
 };
+//# sourceMappingURL=index.js.map
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -194,31 +265,32 @@ var menuItemsStyles = {
 
 var duration = 0.2;
 var avatarVariants = {
-    hidden: { x: "-200%", opacity: 0.2 },
+    idle: { x: "-200%", opacity: 0.2 },
     default: { x: 0, opacity: 1, rotate: 0 },
     hover: { opacity: 0.8 },
     menuOpen: { rotate: 90 }
 };
 var AvatarAnimation = function (_a) {
-    var children = _a.children, mode = _a.mode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "hidden", whileHover: "hover", transition: { duration: duration }, animate: mode, variants: avatarVariants }, children));
+    var children = _a.children, appMode = _a.appMode;
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", whileHover: "hover", transition: { duration: duration }, animate: appMode, variants: avatarVariants }, children));
 };
 var menuVariants = {
+    idle: { y: "-400%", opacity: 0.2 },
     default: { y: "-400%", opacity: 0.2 },
     menuOpen: { y: 0, opacity: 1 }
 };
 var MenuAnimation = function (_a) {
-    var children = _a.children, mode = _a.mode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "default", animate: mode, transition: { duration: duration }, variants: menuVariants }, children));
+    var children = _a.children, appMode = _a.appMode;
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", animate: appMode, transition: { duration: duration }, variants: menuVariants }, children));
 };
 var callToActionVariants = {
-    hidden: { x: "200%", opacity: 0.2 },
+    idle: { x: "200%", opacity: 0.2 },
     menuOpen: { x: "200%", opacity: 0.2 },
     default: { x: 0, opacity: 1 }
 };
 var CallToActionAnimation = function (_a) {
-    var children = _a.children, mode = _a.mode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "hidden", transition: { duration: duration }, animate: mode, variants: callToActionVariants }, children));
+    var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", transition: { duration: duration }, animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
 //# sourceMappingURL=animations.js.map
 
@@ -242,14 +314,14 @@ var Menu = function (_a) {
 //# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
-    var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, mode = _a.mode, toggleMenu = _a.toggleMenu;
+    var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
     return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles$1, className: className },
-        themeUi.jsx(AvatarAnimation, { mode: mode },
+        themeUi.jsx(AvatarAnimation, { appMode: appMode },
             themeUi.jsx(atoms.Avatar, { sx: avatarStyles, onClick: toggleMenu })),
         themeUi.jsx(themeUi.Box, { sx: menuItemsStyles },
-            themeUi.jsx(MenuAnimation, { mode: mode },
+            themeUi.jsx(MenuAnimation, { appMode: appMode },
                 themeUi.jsx(Menu, { links: links })),
-            themeUi.jsx(CallToActionAnimation, { mode: mode }, callToAction ? (themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)) : null))));
+            themeUi.jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
 //# sourceMappingURL=index.es.js.map
 
@@ -263,11 +335,10 @@ var wrapperStyles = {
 var InnerLayout = function (_a) {
     var className = _a.className, children = _a.children;
     var _b = useStateValue(), toggleMenu = _b.toggleMenu, appMode = _b.appMode, siteMetaData = _b.siteMetaData;
-    var links = siteMetaData.links, siteName = siteMetaData.siteName, contactInfo = siteMetaData.contactInfo, callToAction = siteMetaData.callToAction;
     return (themeUi.jsx(themeUi.Box, { className: className, sx: wrapperStyles },
-        themeUi.jsx(HeaderSection, { mode: appMode, toggleMenu: toggleMenu, links: links, callToAction: callToAction }),
+        themeUi.jsx(HeaderSection, __assign({ appMode: appMode, toggleMenu: toggleMenu }, siteMetaData)),
         children,
-        themeUi.jsx(Footer, { siteName: siteName, contactInfo: contactInfo })));
+        themeUi.jsx(Footer, __assign({}, siteMetaData))));
 };
 //# sourceMappingURL=InnerLayout.js.map
 
@@ -280,4 +351,5 @@ var PageLayout = function (_a) {
 //# sourceMappingURL=index.js.map
 
 exports.PageLayout = PageLayout;
+exports.useStateValue = useStateValue;
 //# sourceMappingURL=index.js.map

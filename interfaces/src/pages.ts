@@ -6,13 +6,17 @@ export interface ISiteMetaData {
   contactInfo: any;
   links: Link[];
   callToAction: Link | null;
+  callToActionVisible: boolean;
 }
 
-export type HeaderData = Pick<ISiteMetaData, "links" | "callToAction">;
-export type FooterData = Pick<ISiteMetaData, "siteName" | "contactInfo">;
+export type HeaderData = Partial<
+  Pick<ISiteMetaData, "links" | "callToAction" | "callToActionVisible">
+>;
+export type FooterData = Partial<
+  Pick<ISiteMetaData, "siteName" | "contactInfo">
+>;
 
 export type Menu = {
-  mode: "OPEN" | "CLOSED";
   toggle: () => void;
 };
 
@@ -24,3 +28,5 @@ export interface IHomePageData {
   siteMetaData: ISiteMetaData;
   sections: IPageSection[];
 }
+}
+
