@@ -1,30 +1,26 @@
-import { createMachine, assign } from "xstate";
-import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
+import { createMachine } from "xstate";
+import * as actions from "./actions";
+import { AppEvent, AppContext, AppState } from "@offcourse/interfaces/src";
 
-type AppContext = {};
-
-type AppEvent =
-  | { type: "TOGGLE" }
-  | { type: "INITIALIZE"; siteMetaData: ISiteMetaData }
-  | { type: "HIDE_CALL_TO_ACTION" }
-  | { type: "SHOW_CALL_TO_ACTION" };
-
-type AppState =
-  | { value: "idle"; context: {} }
-  | {
-      value: "default";
-      context: {
-        siteMetaData: ISiteMetaData & { callToActionVisible: boolean };
-      };
+const callToAction = {
+  initial: "call_to_action_visible",
+  states: {
+    call_to_action_visible: {
+      on: {
+        HIDE_CALL_TO_ACTION: {
+          target: "call_to_action_hidden"
+        }
+      }
+    },
+    call_to_action_hidden: {
+      on: {
+        SHOW_CALL_TO_ACTION: {
+          target: "call_to_action_visible"
+        }
+      }
     }
-  | { value: "menuOpen"; context: ISiteMetaData };
-
-const addSiteMetaData = assign<any, any>({
-  siteMetaData: (_: any, { siteMetaData }: { siteMetaData: ISiteMetaData }) => {
-    const links = siteMetaData.links.filter(({ title }) => title !== "home");
-    return { ...siteMetaData, links };
   }
-});
+};
 
 const appStateMachine = createMachine<AppContext, AppEvent, AppState>(
   {
@@ -41,42 +37,22 @@ const appStateMachine = createMachine<AppContext, AppEvent, AppState>(
       },
       default: {
         on: {
-          TOGGLE: "menuOpen",
-          SHOW_CALL_TO_ACTION: {
-            actions: [
-              assign({
-                siteMetaData: ({ siteMetaData }: any, _) => {
-                  return {
-                    ...siteMetaData,
-                    callToActionVisible: true
-                  };
-                }
-              })
-            ]
-          },
-          HIDE_CALL_TO_ACTION: {
-            actions: [
-              assign({
-                siteMetaData: ({ siteMetaData }: any, _) => {
-                  return {
-                    ...siteMetaData,
-                    callToActionVisible: false
-                  };
-                }
-              })
-            ]
-          }
-        }
+          TOGGLE: "menuOpen"
+        },
+        ...callToAction
       },
       menuOpen: {
         on: { TOGGLE: "default" }
       }
+    },
+    on: {
+      UPDATE_SECTIONS: {
+        actions: ["updateSections"]
+      }
     }
   },
   {
-    actions: {
-      addSiteMetaData
-    }
+    actions
   }
 );
 

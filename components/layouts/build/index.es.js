@@ -36,7 +36,7 @@ var __assign = function() {
 
 var addSiteMetaData = assign({
     siteMetaData: function (_, _a) {
-        var siteMetaData = _a.siteMetaData;
+        var siteMetaData = _a.payload.siteMetaData;
         var links = siteMetaData.links.filter(function (_a) {
             var title = _a.title;
             return title !== "home";
@@ -44,6 +44,42 @@ var addSiteMetaData = assign({
         return __assign(__assign({}, siteMetaData), { links: links });
     }
 });
+var updateSections = assign({
+    sections: function (context, _a) {
+        var _b;
+        var payload = _a.payload;
+        var sections = context.sections || {};
+        var role = payload.role, isVisible = payload.isVisible;
+        return __assign(__assign({}, sections), (_b = {}, _b[role] = isVisible, _b));
+    }
+});
+//# sourceMappingURL=actions.js.map
+
+var actions = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    addSiteMetaData: addSiteMetaData,
+    updateSections: updateSections
+});
+
+var callToAction = {
+    initial: "call_to_action_visible",
+    states: {
+        call_to_action_visible: {
+            on: {
+                HIDE_CALL_TO_ACTION: {
+                    target: "call_to_action_hidden"
+                }
+            }
+        },
+        call_to_action_hidden: {
+            on: {
+                SHOW_CALL_TO_ACTION: {
+                    target: "call_to_action_visible"
+                }
+            }
+        }
+    }
+};
 var appStateMachine = createMachine({
     id: "appState",
     initial: "idle",
@@ -56,66 +92,52 @@ var appStateMachine = createMachine({
                 }
             }
         },
-        default: {
-            on: {
-                TOGGLE: "menuOpen",
-                SHOW_CALL_TO_ACTION: {
-                    actions: [
-                        assign({
-                            siteMetaData: function (_a, _) {
-                                var siteMetaData = _a.siteMetaData;
-                                return __assign(__assign({}, siteMetaData), { callToActionVisible: true });
-                            }
-                        })
-                    ]
-                },
-                HIDE_CALL_TO_ACTION: {
-                    actions: [
-                        assign({
-                            siteMetaData: function (_a, _) {
-                                var siteMetaData = _a.siteMetaData;
-                                return __assign(__assign({}, siteMetaData), { callToActionVisible: false });
-                            }
-                        })
-                    ]
-                }
-            }
-        },
+        default: __assign({ on: {
+                TOGGLE: "menuOpen"
+            } }, callToAction),
         menuOpen: {
             on: { TOGGLE: "default" }
         }
+    },
+    on: {
+        UPDATE_SECTIONS: {
+            actions: ["updateSections"]
+        }
     }
 }, {
-    actions: {
-        addSiteMetaData: addSiteMetaData
-    }
+    actions: actions
 });
 //# sourceMappingURL=machine.js.map
 
 var StateContext = createContext({
+    current: "default",
     appMode: "default",
-    toggleMenu: function () {
+    registerSection: function (_event) {
         return;
     },
-    showCTA: function () {
-        return;
-    },
-    hideCTA: function () {
+    send: function (_event) {
         return;
     }
 });
 var StateProvider = function (_a) {
     var children = _a.children, siteMetaData = _a.siteMetaData;
     var _b = useMachine(appStateMachine), current = _b[0], send = _b[1];
+    var appMode = current.toStrings()[0];
+    var callToActionVisible = current.context.sections
+        ? !current.context.sections["ContactSection"]
+        : true;
     useEffect(function () {
-        send({ type: "INITIALIZE", siteMetaData: siteMetaData });
+        send({ type: "INITIALIZE", payload: { siteMetaData: siteMetaData } });
     }, [send, siteMetaData]);
-    var toggleMenu = useCallback(function () { return send("TOGGLE"); }, [send]);
-    var showCTA = useCallback(function () { return send("SHOW_CALL_TO_ACTION"); }, [send]);
-    var hideCTA = useCallback(function () { return send("HIDE_CALL_TO_ACTION"); }, [send]);
-    return (jsx(StateContext.Provider, { value: __assign({ appMode: current.value, toggleMenu: toggleMenu,
-            showCTA: showCTA,
-            hideCTA: hideCTA }, current.context) }, children));
+    var registerSection = function (_a) {
+        var role = _a.role, isVisible = _a.isVisible;
+        send({ type: "UPDATE_SECTIONS", payload: { role: role, isVisible: isVisible } });
+    };
+    return (jsx(StateContext.Provider, { value: __assign({ appMode: appMode,
+            current: current,
+            send: send,
+            registerSection: registerSection,
+            callToActionVisible: callToActionVisible }, current.context) }, children));
 };
 var useStateValue = function () { return useContext(StateContext); };
 //# sourceMappingURL=state.js.map
@@ -288,7 +310,6 @@ var CallToActionAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
     return (jsx(motion.div, { initial: "idle", transition: { duration: duration }, animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
-//# sourceMappingURL=animations.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -311,7 +332,7 @@ var Menu = function (_a) {
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
-    return (jsx(Box, { sx: outerWrapperStyles$1, className: className },
+    return (jsx(Box, { as: "nav", sx: outerWrapperStyles$1, className: className },
         jsx(AvatarAnimation, { appMode: appMode },
             jsx(Avatar, { sx: avatarStyles, onClick: toggleMenu })),
         jsx(Box, { sx: menuItemsStyles },
@@ -330,13 +351,14 @@ var wrapperStyles = {
 
 var InnerLayout = function (_a) {
     var className = _a.className, children = _a.children;
-    var _b = useStateValue(), toggleMenu = _b.toggleMenu, appMode = _b.appMode, siteMetaData = _b.siteMetaData;
+    var _b = useStateValue(), send = _b.send, current = _b.current, callToActionVisible = _b.callToActionVisible, siteMetaData = _b.siteMetaData;
+    var toggleMenu = useCallback(function () { return send({ type: "TOGGLE" }); }, [send]);
+    var appMode = current.toStrings()[0];
     return (jsx(Box, { className: className, sx: wrapperStyles },
-        jsx(HeaderSection, __assign({ appMode: appMode, toggleMenu: toggleMenu }, siteMetaData)),
+        jsx(HeaderSection, __assign({ appMode: appMode, toggleMenu: toggleMenu, callToActionVisible: callToActionVisible }, siteMetaData)),
         children,
         jsx(Footer, __assign({}, siteMetaData))));
 };
-//# sourceMappingURL=InnerLayout.js.map
 
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData;
@@ -344,7 +366,6 @@ var PageLayout = function (_a) {
         jsx(Global, { styles: function (theme) { return theme.globals; } }),
         jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };
-//# sourceMappingURL=index.js.map
 
 export { PageLayout, useStateValue };
 //# sourceMappingURL=index.es.js.map

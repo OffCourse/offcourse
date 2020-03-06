@@ -347,7 +347,6 @@ var CallToActionAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
     return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", transition: { duration: duration }, animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
-//# sourceMappingURL=animations.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -370,7 +369,7 @@ var Menu = function (_a) {
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
-    return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles$1, className: className },
+    return (themeUi.jsx(themeUi.Box, { as: "nav", sx: outerWrapperStyles$1, className: className },
         themeUi.jsx(AvatarAnimation, { appMode: appMode },
             themeUi.jsx(atoms.Avatar, { sx: avatarStyles, onClick: toggleMenu })),
         themeUi.jsx(themeUi.Box, { sx: menuItemsStyles },
@@ -378,7 +377,6 @@ var HeaderSection = function (_a) {
                 themeUi.jsx(Menu, { links: links })),
             themeUi.jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
-//# sourceMappingURL=index.js.map
 
 exports.Footer = Footer;
 exports.Header = HeaderSection;

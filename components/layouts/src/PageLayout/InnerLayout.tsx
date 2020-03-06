@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { FunctionComponent } from "react";
+import { FunctionComponent, useCallback } from "react";
 import { jsx, Box } from "theme-ui";
 import { IThemeable, IPageData } from "@offcourse/interfaces/src";
 import { Header, Footer } from "@offcourse/molecules";
@@ -12,10 +12,17 @@ const InnerLayout: FunctionComponent<PageLayoutProps> = ({
   className,
   children
 }) => {
-  const { toggleMenu, appMode, siteMetaData } = useStateValue();
+  const { send, current, callToActionVisible, siteMetaData } = useStateValue();
+  const toggleMenu = useCallback(() => send({ type: "TOGGLE" }), [send]);
+  const appMode = current.toStrings()[0];
   return (
     <Box className={className} sx={wrapperStyles}>
-      <Header appMode={appMode} toggleMenu={toggleMenu} {...siteMetaData} />
+      <Header
+        appMode={appMode}
+        toggleMenu={toggleMenu}
+        callToActionVisible={callToActionVisible}
+        {...siteMetaData}
+      />
       {children}
       <Footer {...siteMetaData} />
     </Box>

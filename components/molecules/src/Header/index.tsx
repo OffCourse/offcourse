@@ -27,7 +27,7 @@ const HeaderSection: FunctionComponent<HeaderProps> = ({
   toggleMenu
 }) => {
   return (
-    <Box sx={outerWrapperStyles} className={className}>
+    <Box as="nav" sx={outerWrapperStyles} className={className}>
       <AvatarAnimation appMode={appMode}>
         <Avatar sx={avatarStyles} onClick={toggleMenu} />
       </AvatarAnimation>

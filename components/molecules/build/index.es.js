@@ -343,7 +343,6 @@ var CallToActionAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
     return (jsx(motion.div, { initial: "idle", transition: { duration: duration }, animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
-//# sourceMappingURL=animations.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -366,7 +365,7 @@ var Menu = function (_a) {
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
-    return (jsx(Box, { sx: outerWrapperStyles$1, className: className },
+    return (jsx(Box, { as: "nav", sx: outerWrapperStyles$1, className: className },
         jsx(AvatarAnimation, { appMode: appMode },
             jsx(Avatar, { sx: avatarStyles, onClick: toggleMenu })),
         jsx(Box, { sx: menuItemsStyles },
@@ -374,7 +373,6 @@ var HeaderSection = function (_a) {
                 jsx(Menu, { links: links })),
             jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (jsx(Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
-//# sourceMappingURL=index.js.map
 
 export { Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };
 //# sourceMappingURL=index.es.js.map

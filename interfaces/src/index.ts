@@ -4,6 +4,7 @@ import { ILink, IText, IButton } from "./primitives";
 import { Label, Link, Tab, Text, Message, Button, Heading } from "./components";
 import { IProject, IStep, IContactInfo } from "./pageSection";
 import { IPageData, HeaderData } from "./pages";
+import { AppContext, AppEvent, AppState } from "./machine";
 import {
   AnimatedCanvasProps,
   ICanvasProps,
@@ -43,6 +44,9 @@ export interface IStylable {
 }
 
 export {
+  AppEvent,
+  AppContext,
+  AppState,
   AnimatedCanvasProps,
   ICanvasProps,
   IContactInfo,

@@ -2,10 +2,11 @@
 import { Context, FunctionComponent } from "react";
 import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
 declare type AppState = {
-    appMode: any;
-    toggleMenu: () => void;
-    showCTA: () => void;
-    hideCTA: () => void;
+    appMode: string;
+    current: any;
+    callToActionVisible?: boolean;
+    send: (event: any) => void;
+    registerSection: (event: any) => void;
     siteMetaData?: ISiteMetaData;
 };
 export declare const StateContext: Context<AppState>;

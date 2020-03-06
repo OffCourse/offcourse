@@ -31,7 +31,7 @@ const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
           ...project,
           imageUrl
         };
-        return <Project {...item} />;
+        return <Project key={project.title} {...item} />;
       })}
     </BaseSection>
   );

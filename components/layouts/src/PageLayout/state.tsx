@@ -3,32 +3,32 @@ import {
   createContext,
   useEffect,
   useContext,
-  useCallback,
   Context,
   FunctionComponent
 } from "react";
 import { useMachine } from "@xstate/react";
 import machine from "./machine";
 import { jsx } from "theme-ui";
+import { AppContext, AppEvent } from "@offcourse/interfaces/src";
 import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
 
 type AppState = {
-  appMode: any;
-  toggleMenu: () => void;
-  showCTA: () => void;
-  hideCTA: () => void;
+  appMode: string;
+  current: any;
+  callToActionVisible?: boolean;
+  send: (event: any) => void;
+  registerSection: (event: any) => void;
   siteMetaData?: ISiteMetaData;
 };
 
 export const StateContext: Context<AppState> = createContext({
+  current: "default",
   appMode: "default",
-  toggleMenu: () => {
+  registerSection: _event => {
     return;
   },
-  showCTA: () => {
-    return;
-  },
-  hideCTA: () => {
+
+  send: _event => {
     return;
   }
 });
@@ -36,21 +36,29 @@ export const StateContext: Context<AppState> = createContext({
 export const StateProvider: FunctionComponent<{
   siteMetaData: ISiteMetaData;
 }> = ({ children, siteMetaData }) => {
-  const [current, send] = useMachine(machine);
+  const [current, send] = useMachine<AppContext, AppEvent>(machine);
+  const appMode = current.toStrings()[0];
+
+  const callToActionVisible = current.context.sections
+    ? !current.context.sections["ContactSection"]
+    : true;
+
   useEffect(() => {
-    send({ type: "INITIALIZE", siteMetaData });
+    send({ type: "INITIALIZE", payload: { siteMetaData } });
   }, [send, siteMetaData]);
-  const toggleMenu = useCallback(() => send("TOGGLE"), [send]);
-  const showCTA = useCallback(() => send("SHOW_CALL_TO_ACTION"), [send]);
-  const hideCTA = useCallback(() => send("HIDE_CALL_TO_ACTION"), [send]);
+
+  const registerSection = ({ role, isVisible }: any) => {
+    send({ type: "UPDATE_SECTIONS", payload: { role, isVisible } });
+  };
 
   return (
     <StateContext.Provider
       value={{
-        appMode: current.value,
-        toggleMenu,
-        showCTA,
-        hideCTA,
+        appMode,
+        current,
+        send,
+        registerSection,
+        callToActionVisible,
         ...current.context
       }}
     >
