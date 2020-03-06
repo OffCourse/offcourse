@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import {
   createContext,
-  useEffect,
   useContext,
   Context,
   FunctionComponent
@@ -11,6 +10,7 @@ import machine from "./machine";
 import { jsx } from "theme-ui";
 import { AppContext, AppEvent } from "@offcourse/interfaces/src";
 import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
+import * as actions from "./actions";
 
 type AppState = {
   appMode: string;
@@ -36,16 +36,16 @@ export const StateContext: Context<AppState> = createContext({
 export const StateProvider: FunctionComponent<{
   siteMetaData: ISiteMetaData;
 }> = ({ children, siteMetaData }) => {
-  const [current, send] = useMachine<AppContext, AppEvent>(machine);
+  const [current, send] = useMachine<AppContext, AppEvent>(machine, {
+    devTools: true,
+    actions,
+    context: { siteMetaData }
+  });
   const appMode = current.toStrings()[0];
 
   const callToActionVisible = current.context.sections
     ? !current.context.sections["ContactSection"]
     : true;
-
-  useEffect(() => {
-    send({ type: "INITIALIZE", payload: { siteMetaData } });
-  }, [send, siteMetaData]);
 
   const registerSection = ({ role, isVisible }: any) => {
     send({ type: "UPDATE_SECTIONS", payload: { role, isVisible } });

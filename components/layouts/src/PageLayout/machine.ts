@@ -1,5 +1,4 @@
 import { createMachine } from "xstate";
-import * as actions from "./actions";
 import { AppEvent, AppContext, AppState } from "@offcourse/interfaces/src";
 
 const callToAction = {
@@ -22,38 +21,27 @@ const callToAction = {
   }
 };
 
-const appStateMachine = createMachine<AppContext, AppEvent, AppState>(
-  {
-    id: "appState",
-    initial: "idle",
-    states: {
-      idle: {
-        on: {
-          INITIALIZE: {
-            target: "default",
-            actions: ["addSiteMetaData"]
-          }
-        }
+const appStateMachine = createMachine<AppContext, AppEvent, AppState>({
+  id: "appState",
+  initial: "default",
+  states: {
+    default: {
+      entry: "updateLinks",
+      on: {
+        TOGGLE: "menuOpen"
       },
-      default: {
-        on: {
-          TOGGLE: "menuOpen"
-        },
-        ...callToAction
-      },
-      menuOpen: {
-        on: { TOGGLE: "default" }
-      }
+      ...callToAction
     },
-    on: {
-      UPDATE_SECTIONS: {
-        actions: ["updateSections"]
-      }
+    menuOpen: {
+      on: { TOGGLE: "default" }
     }
   },
-  {
-    actions
+  on: {
+    UPDATE_SECTIONS: {
+      actions: ["updateSections"]
+    }
   }
-);
+});
 
 export default appStateMachine;
+

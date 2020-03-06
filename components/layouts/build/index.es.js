@@ -2,7 +2,7 @@ import { jsx, Box, Heading } from 'theme-ui';
 import { Global } from '@emotion/core';
 import { createContext, useContext, useEffect, useCallback } from 'react';
 import { useMachine } from '@xstate/react';
-import { assign, createMachine } from 'xstate';
+import { createMachine, assign } from 'xstate';
 import 'formik';
 import { Logo, Avatar, Tab } from '@offcourse/atoms';
 import { defineCustomElements } from '@offcourse/public-badges-drawer/loader';
@@ -34,33 +34,6 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-var addSiteMetaData = assign({
-    siteMetaData: function (_, _a) {
-        var siteMetaData = _a.payload.siteMetaData;
-        var links = siteMetaData.links.filter(function (_a) {
-            var title = _a.title;
-            return title !== "home";
-        });
-        return __assign(__assign({}, siteMetaData), { links: links });
-    }
-});
-var updateSections = assign({
-    sections: function (context, _a) {
-        var _b;
-        var payload = _a.payload;
-        var sections = context.sections || {};
-        var role = payload.role, isVisible = payload.isVisible;
-        return __assign(__assign({}, sections), (_b = {}, _b[role] = isVisible, _b));
-    }
-});
-//# sourceMappingURL=actions.js.map
-
-var actions = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    addSiteMetaData: addSiteMetaData,
-    updateSections: updateSections
-});
-
 var callToAction = {
     initial: "call_to_action_visible",
     states: {
@@ -82,17 +55,9 @@ var callToAction = {
 };
 var appStateMachine = createMachine({
     id: "appState",
-    initial: "idle",
+    initial: "default",
     states: {
-        idle: {
-            on: {
-                INITIALIZE: {
-                    target: "default",
-                    actions: ["addSiteMetaData"]
-                }
-            }
-        },
-        default: __assign({ on: {
+        default: __assign({ entry: "updateLinks", on: {
                 TOGGLE: "menuOpen"
             } }, callToAction),
         menuOpen: {
@@ -104,10 +69,35 @@ var appStateMachine = createMachine({
             actions: ["updateSections"]
         }
     }
-}, {
-    actions: actions
 });
 //# sourceMappingURL=machine.js.map
+
+var updateLinks = assign({
+    siteMetaData: function (_a, _event) {
+        var siteMetaData = _a.siteMetaData;
+        var links = siteMetaData.links.filter(function (_a) {
+            var title = _a.title;
+            return title !== "home";
+        });
+        return __assign(__assign({}, siteMetaData), { links: links });
+    }
+});
+var updateSections = assign({
+    sections: function (context, _a) {
+        var _b;
+        var payload = _a.payload;
+        var sections = context.sections || {};
+        var role = payload.role, isVisible = payload.isVisible;
+        return __assign(__assign({}, sections), (_b = {}, _b[role] = isVisible, _b));
+    }
+});
+//# sourceMappingURL=actions.js.map
+
+var actions = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    updateLinks: updateLinks,
+    updateSections: updateSections
+});
 
 var StateContext = createContext({
     current: "default",
@@ -121,14 +111,15 @@ var StateContext = createContext({
 });
 var StateProvider = function (_a) {
     var children = _a.children, siteMetaData = _a.siteMetaData;
-    var _b = useMachine(appStateMachine), current = _b[0], send = _b[1];
+    var _b = useMachine(appStateMachine, {
+        devTools: true,
+        actions: actions,
+        context: { siteMetaData: siteMetaData }
+    }), current = _b[0], send = _b[1];
     var appMode = current.toStrings()[0];
     var callToActionVisible = current.context.sections
         ? !current.context.sections["ContactSection"]
         : true;
-    useEffect(function () {
-        send({ type: "INITIALIZE", payload: { siteMetaData: siteMetaData } });
-    }, [send, siteMetaData]);
     var registerSection = function (_a) {
         var role = _a.role, isVisible = _a.isVisible;
         send({ type: "UPDATE_SECTIONS", payload: { role: role, isVisible: isVisible } });
@@ -140,7 +131,6 @@ var StateProvider = function (_a) {
             callToActionVisible: callToActionVisible }, current.context) }, children));
 };
 var useStateValue = function () { return useContext(StateContext); };
-//# sourceMappingURL=state.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -359,6 +349,7 @@ var InnerLayout = function (_a) {
         children,
         jsx(Footer, __assign({}, siteMetaData))));
 };
+//# sourceMappingURL=InnerLayout.js.map
 
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData;
@@ -366,6 +357,7 @@ var PageLayout = function (_a) {
         jsx(Global, { styles: function (theme) { return theme.globals; } }),
         jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };
+//# sourceMappingURL=index.js.map
 
 export { PageLayout, useStateValue };
 //# sourceMappingURL=index.es.js.map
