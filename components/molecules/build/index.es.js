@@ -100,11 +100,12 @@ var TextSection = function (_a) {
 
 var wrapperStyles$1 = {
     userSelect: "none",
-    gridColumn: ["span 12", "span 6", "span 6", "span 4", "span 3"],
+    width: ["calc(100vw - 2rem)", "30rem"],
     display: "grid",
     gridTemplateRows: "auto 1fr auto",
     gridGap: [6, 6],
     pb: 7,
+    mx: [4, 2, 4, 6],
     mb: [6, 8],
     alignItems: "start",
     bg: "grayScale.0"
@@ -160,7 +161,6 @@ var Project = function (_a) {
         jsx(Text, { sx: captionStyles, html: description }),
         jsx(Heading$1, { sx: headerStyles }, title)));
 };
-//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -343,6 +343,7 @@ var CallToActionAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
     return (jsx(motion.div, { initial: "idle", transition: { duration: duration }, animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
+//# sourceMappingURL=animations.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -373,6 +374,7 @@ var HeaderSection = function (_a) {
                 jsx(Menu, { links: links })),
             jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (jsx(Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
+//# sourceMappingURL=index.js.map
 
 export { Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };
 //# sourceMappingURL=index.es.js.map

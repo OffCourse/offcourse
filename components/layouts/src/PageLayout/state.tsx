@@ -1,10 +1,5 @@
 /** @jsx jsx */
-import {
-  createContext,
-  useContext,
-  Context,
-  FunctionComponent
-} from "react";
+import { createContext, useContext, Context, FunctionComponent } from "react";
 import { useMachine } from "@xstate/react";
 import machine from "./machine";
 import { jsx } from "theme-ui";
@@ -27,7 +22,6 @@ export const StateContext: Context<AppState> = createContext({
   registerSection: _event => {
     return;
   },
-
   send: _event => {
     return;
   }
@@ -41,6 +35,7 @@ export const StateProvider: FunctionComponent<{
     actions,
     context: { siteMetaData }
   });
+
   const appMode = current.toStrings()[0];
 
   const callToActionVisible = current.context.sections

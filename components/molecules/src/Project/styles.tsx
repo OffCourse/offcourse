@@ -2,11 +2,12 @@ import { SxStyleProp } from "theme-ui";
 
 export const wrapperStyles: SxStyleProp = {
   userSelect: "none",
-  gridColumn: ["span 12", "span 6", "span 6", "span 4", "span 3"],
+  width: ["calc(100vw - 2rem)", "30rem"],
   display: "grid",
   gridTemplateRows: "auto 1fr auto",
   gridGap: [6, 6],
   pb: 7,
+  mx: [4, 2, 4, 6],
   mb: [6, 8],
   alignItems: "start",
   bg: "grayScale.0"

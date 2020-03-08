@@ -353,7 +353,6 @@ var InnerLayout = function (_a) {
         children,
         themeUi.jsx(Footer, __assign({}, siteMetaData))));
 };
-//# sourceMappingURL=InnerLayout.js.map
 
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData;
@@ -361,7 +360,6 @@ var PageLayout = function (_a) {
         themeUi.jsx(core.Global, { styles: function (theme) { return theme.globals; } }),
         themeUi.jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };
-//# sourceMappingURL=index.js.map
 
 exports.PageLayout = PageLayout;
 exports.useStateValue = useStateValue;
