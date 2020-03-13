@@ -1,3 +1,4 @@
+import Carousel from "./Carousel";
 import InputField from "./InputField";
 import TextSection from "./TextSection";
 import Project from "./Project";
@@ -5,4 +6,4 @@ import RadioButtonGroup from "./RadioButtonGroup";
 import Step from "./Step";
 import Footer from "./Footer";
 import Header from "./Header";
-export { InputField, TextSection, Project, RadioButtonGroup, Step, Footer, Header };
+export { Carousel, InputField, TextSection, Project, RadioButtonGroup, Step, Footer, Header };

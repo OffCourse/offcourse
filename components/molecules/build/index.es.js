@@ -1,9 +1,46 @@
+import { useState, useCallback, useEffect } from 'react';
 import { jsx, Box, Heading } from 'theme-ui';
+import { wrap } from '@popmotion/popcorn';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useInterval } from '@offcourse/hooks';
 import { ErrorMessage, Field } from 'formik';
 import { Checkbox, Label, Message, Input, TextArea, Text, Heading as Heading$1, Logo, Tab, Avatar } from '@offcourse/atoms';
 import { defineCustomElements } from '@offcourse/public-badges-drawer/loader';
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
+
+/** @jsx jsx */
+var Carousel = function (_a) {
+    var children = _a.children;
+    var _b = useState(0), currentIndex = _b[0], setIndex = _b[1];
+    var _c = useState(500), intervalDelay = _c[0], setIntervalDelay = _c[1];
+    var numberOfItems = children.length;
+    var moveToNext = useCallback(function () {
+        setIndex(function (c) { return wrap(0, numberOfItems, c + 1); });
+    }, [numberOfItems, setIndex]);
+    useInterval(moveToNext, intervalDelay);
+    var prevItem = children[wrap(0, numberOfItems, currentIndex - 1)];
+    var currentItem = children[currentIndex];
+    var nextItem = children[wrap(0, numberOfItems, currentIndex + 1)];
+    var visibleChildren = [prevItem, currentItem, nextItem];
+    return (jsx(Box, { sx: {
+            width: "100rem",
+            overflowX: "hidden"
+        } },
+        jsx(Box, { sx: {
+                flexDirection: "row",
+                display: "flex"
+            } },
+            jsx(AnimatePresence, null, visibleChildren.map(function (child) {
+                var id = child.props.id;
+                return (jsx(motion.div, { key: id, positionTransition: { damping: 500 }, exit: { opacity: 1 } }, child));
+            }))),
+        jsx(Box, { sx: {
+                flexDirection: "row",
+                display: "flex"
+            } }, children.map(function (_, index) { return (jsx("h1", { onClick: function () {
+                setIntervalDelay(null);
+                setIndex(index);
+            } }, index === currentIndex ? "X" : "O")); }))));
+};
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -161,6 +198,7 @@ var Project = function (_a) {
         jsx(Text, { sx: captionStyles, html: description }),
         jsx(Heading$1, { sx: headerStyles }, title)));
 };
+//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -376,5 +414,5 @@ var HeaderSection = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
-export { Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };
+export { Carousel, Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };
 //# sourceMappingURL=index.es.js.map

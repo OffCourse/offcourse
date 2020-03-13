@@ -9,6 +9,7 @@
       "components/atoms",
       "components/backdrops",
       "components/molecules",
+      "components/organisms",
       "components/layouts",
       "components/hooks",
       "themes/homepage-theme",

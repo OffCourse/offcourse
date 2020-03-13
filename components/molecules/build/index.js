@@ -2,12 +2,49 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var react = require('react');
 var themeUi = require('theme-ui');
+var popcorn = require('@popmotion/popcorn');
+var framerMotion = require('framer-motion');
+var hooks = require('@offcourse/hooks');
 var formik = require('formik');
 var atoms = require('@offcourse/atoms');
 var loader = require('@offcourse/public-badges-drawer/loader');
-var react = require('react');
-var framerMotion = require('framer-motion');
+
+/** @jsx jsx */
+var Carousel = function (_a) {
+    var children = _a.children;
+    var _b = react.useState(0), currentIndex = _b[0], setIndex = _b[1];
+    var _c = react.useState(500), intervalDelay = _c[0], setIntervalDelay = _c[1];
+    var numberOfItems = children.length;
+    var moveToNext = react.useCallback(function () {
+        setIndex(function (c) { return popcorn.wrap(0, numberOfItems, c + 1); });
+    }, [numberOfItems, setIndex]);
+    hooks.useInterval(moveToNext, intervalDelay);
+    var prevItem = children[popcorn.wrap(0, numberOfItems, currentIndex - 1)];
+    var currentItem = children[currentIndex];
+    var nextItem = children[popcorn.wrap(0, numberOfItems, currentIndex + 1)];
+    var visibleChildren = [prevItem, currentItem, nextItem];
+    return (themeUi.jsx(themeUi.Box, { sx: {
+            width: "100rem",
+            overflowX: "hidden"
+        } },
+        themeUi.jsx(themeUi.Box, { sx: {
+                flexDirection: "row",
+                display: "flex"
+            } },
+            themeUi.jsx(framerMotion.AnimatePresence, null, visibleChildren.map(function (child) {
+                var id = child.props.id;
+                return (themeUi.jsx(framerMotion.motion.div, { key: id, positionTransition: { damping: 500 }, exit: { opacity: 1 } }, child));
+            }))),
+        themeUi.jsx(themeUi.Box, { sx: {
+                flexDirection: "row",
+                display: "flex"
+            } }, children.map(function (_, index) { return (themeUi.jsx("h1", { onClick: function () {
+                setIntervalDelay(null);
+                setIndex(index);
+            } }, index === currentIndex ? "X" : "O")); }))));
+};
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -165,6 +202,7 @@ var Project = function (_a) {
         themeUi.jsx(atoms.Text, { sx: captionStyles, html: description }),
         themeUi.jsx(atoms.Heading, { sx: headerStyles }, title)));
 };
+//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -380,6 +418,7 @@ var HeaderSection = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
+exports.Carousel = Carousel;
 exports.Footer = Footer;
 exports.Header = HeaderSection;
 exports.InputField = InputField;

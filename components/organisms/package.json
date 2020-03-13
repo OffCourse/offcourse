@@ -1,5 +1,5 @@
 {
-  "name": "@offcourse/molecules",
+  "name": "@offcourse/organisms",
   "version": "0.2.0",
   "description": "",
   "main": "build/index.js",
@@ -17,11 +17,11 @@
   "license": "ISC",
   "devDependencies": {
     "@offcourse/atoms": "*",
+    "@offcourse/molecules": "*",
     "@offcourse/hooks": "*",
     "@offcourse/public-badges-drawer": "^0.1.0-0",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "@popmotion/popcorn": "^0.4.4",
     "@types/jest": "^25.1.2",
     "@types/ramda": "^0.26.41",
     "@types/react": "^16.9.19",
@@ -53,11 +53,10 @@
   },
   "peerDependencies": {
     "@offcourse/atoms": "*",
+    "@offcourse/molecules": "*",
     "@offcourse/hooks": "*",
     "@offcourse/public-badges-drawer": "^0.1.0-0",
     "formik": "^2.1.4",
-    "@popmotion/popcorn": "^0.4.4",
-    "@types/jest": "^25.1.2",
     "framer-motion": "^1.8.4",
     "ramda": "^0.27.0",
     "react": "^16",

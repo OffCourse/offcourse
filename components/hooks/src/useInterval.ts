@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 
 type Callback = (args?: any) => void;
 
-const useInterval: (callback: Callback, delay: number) => void = (
+const useInterval: (callback: Callback, delay: number | null) => void = (
   callback,
   delay
 ) => {

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../src/Carousel/index.tsx"],"sourcesContent":["const Carousel = () => null;\n\nexport default Carousel;\n"],"names":[],"mappings":";;;;AAAA,IAAM,QAAQ,GAAG,cAAM,OAAA,IAAI,GAAA;;;;"}

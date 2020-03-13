@@ -23,6 +23,7 @@
     "@babel/core": "^7.8.4",
     "@offcourse/atoms": "*",
     "@offcourse/molecules": "*",
+    "@offcourse/organisms": "*",
     "@offcourse/layouts": "*",
     "@offcourse/hooks": "*",
     "@offcourse/interfaces": "*",
