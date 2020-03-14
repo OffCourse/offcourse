@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { FunctionComponent, ReactElement } from "react";
-declare const Carousel: FunctionComponent<{
+declare type CarouselProps = {
     children: ReactElement[];
-}>;
+};
+declare const Carousel: FunctionComponent<CarouselProps>;
 export default Carousel;

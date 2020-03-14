@@ -1,46 +1,11 @@
+import { jsx, Box, useThemeUI, Heading } from 'theme-ui';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useCallback, useEffect } from 'react';
-import { jsx, Box, Heading } from 'theme-ui';
 import { wrap } from '@popmotion/popcorn';
-import { AnimatePresence, motion } from 'framer-motion';
 import { useInterval } from '@offcourse/hooks';
 import { ErrorMessage, Field } from 'formik';
 import { Checkbox, Label, Message, Input, TextArea, Text, Heading as Heading$1, Logo, Tab, Avatar } from '@offcourse/atoms';
 import { defineCustomElements } from '@offcourse/public-badges-drawer/loader';
-
-/** @jsx jsx */
-var Carousel = function (_a) {
-    var children = _a.children;
-    var _b = useState(0), currentIndex = _b[0], setIndex = _b[1];
-    var _c = useState(500), intervalDelay = _c[0], setIntervalDelay = _c[1];
-    var numberOfItems = children.length;
-    var moveToNext = useCallback(function () {
-        setIndex(function (c) { return wrap(0, numberOfItems, c + 1); });
-    }, [numberOfItems, setIndex]);
-    useInterval(moveToNext, intervalDelay);
-    var prevItem = children[wrap(0, numberOfItems, currentIndex - 1)];
-    var currentItem = children[currentIndex];
-    var nextItem = children[wrap(0, numberOfItems, currentIndex + 1)];
-    var visibleChildren = [prevItem, currentItem, nextItem];
-    return (jsx(Box, { sx: {
-            width: "100rem",
-            overflowX: "hidden"
-        } },
-        jsx(Box, { sx: {
-                flexDirection: "row",
-                display: "flex"
-            } },
-            jsx(AnimatePresence, null, visibleChildren.map(function (child) {
-                var id = child.props.id;
-                return (jsx(motion.div, { key: id, positionTransition: { damping: 500 }, exit: { opacity: 1 } }, child));
-            }))),
-        jsx(Box, { sx: {
-                flexDirection: "row",
-                display: "flex"
-            } }, children.map(function (_, index) { return (jsx("h1", { onClick: function () {
-                setIntervalDelay(null);
-                setIndex(index);
-            } }, index === currentIndex ? "X" : "O")); }))));
-};
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -66,6 +31,111 @@ var __assign = function() {
         return t;
     };
     return __assign.apply(this, arguments);
+};
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+var outerWrapper = {
+    width: "100rem",
+    height: "100%",
+    overflowX: "hidden"
+};
+var itemsWrapper = {
+    flexDirection: "row",
+    display: "flex"
+};
+var controlsWrapper = {
+    flexDirection: "row",
+    justifyContent: "center",
+    display: "flex"
+};
+var controlStyles = {
+    bg: "black",
+    borderRadius: "0.5rem",
+    width: "2rem",
+    height: "2rem",
+    m: 4
+};
+//# sourceMappingURL=styles.js.map
+
+var ItemAnimation = function (_a) {
+    var children = _a.children;
+    return (jsx(motion.div, { positionTransition: { damping: 500 }, exit: { opacity: 1 } }, children));
+};
+var controlVariants = function (_a) {
+    var active = _a.active, passive = _a.passive;
+    return {
+        passive: { scale: 1, backgroundColor: passive },
+        active: { scale: [1, 1.5, 1.1], backgroundColor: active }
+    };
+};
+var ControlAnimation = function (_a) {
+    var children = _a.children, className = _a.className, isActive = _a.isActive, colors = _a.colors;
+    return (jsx(motion.div, { className: className, positionTransition: { damping: 500 }, initial: "passive", variants: controlVariants(colors), animate: isActive ? "active" : "passive" }, children));
+};
+//# sourceMappingURL=animations.js.map
+
+var Controls = function (_a) {
+    var children = _a.children, colors = _a.colors, currentIndex = _a.currentIndex, setIndex = _a.setIndex;
+    return (jsx(Box, { sx: controlsWrapper }, children.map(function (_, index) {
+        var isActive = index === currentIndex;
+        return (jsx(ControlAnimation, { colors: colors, sx: controlStyles, isActive: isActive },
+            jsx(Box, { sx: { width: "100%", height: "100%" }, onClick: function () { return setIndex(index); } })));
+    })));
+};
+//# sourceMappingURL=Controls.js.map
+
+var useIndex = function () {
+    var _a = useState(0), currentIndex = _a[0], setCurrentIndex = _a[1];
+    var _b = useState(100000), intervalDelay = _b[0], setIntervalDelay = _b[1];
+    var nextIndex = useCallback(function (index, incrementBy) {
+        if (incrementBy === void 0) { incrementBy = 1; }
+        return setCurrentIndex(index + incrementBy);
+    }, [setCurrentIndex]);
+    var setIndex = useCallback(function (index) {
+        setIntervalDelay(null);
+        setCurrentIndex(index);
+    }, [setIntervalDelay, setCurrentIndex]);
+    useInterval(nextIndex, intervalDelay);
+    return { currentIndex: currentIndex, nextIndex: nextIndex, setIndex: setIndex };
+};
+var useCycleElements = function (_a) {
+    var elements = _a.elements, currentIndex = _a.currentIndex;
+    var numberOfItems = elements.length;
+    var prevItem = elements[wrap(0, numberOfItems, currentIndex - 1)];
+    var currentItem = elements[wrap(0, numberOfItems, currentIndex)];
+    var nextItem = elements[wrap(0, numberOfItems, currentIndex + 1)];
+    var visibleChildren = [prevItem, currentItem, nextItem];
+    return { visibleChildren: visibleChildren };
+};
+//# sourceMappingURL=hooks.js.map
+
+var Carousel = function (_a) {
+    var children = _a.children;
+    var _b, _c;
+    var _d = useIndex(), currentIndex = _d.currentIndex, setIndex = _d.setIndex;
+    var _e = useThemeUI(), theme = _e.theme, x = __rest(_e, ["theme"]);
+    console.log(x);
+    var active = ((_b = theme.colors) === null || _b === void 0 ? void 0 : _b.primary) || "black";
+    var passive = ((_c = theme.colors) === null || _c === void 0 ? void 0 : _c.grayScale[2]) || "lightGray";
+    var visibleChildren = useCycleElements({
+        currentIndex: currentIndex,
+        elements: children
+    }).visibleChildren;
+    return (jsx(Box, { sx: outerWrapper },
+        jsx(Box, { sx: itemsWrapper },
+            jsx(AnimatePresence, null, visibleChildren.map(function (child) { return (jsx(ItemAnimation, { key: child.props.id }, child)); }))),
+        jsx(Controls, { colors: { active: active, passive: passive }, setIndex: setIndex, children: children, currentIndex: currentIndex })));
 };
 
 var styles = {
@@ -138,6 +208,8 @@ var TextSection = function (_a) {
 var wrapperStyles$1 = {
     userSelect: "none",
     width: ["calc(100vw - 2rem)", "30rem"],
+    height: "100%",
+    minHeight: "1130px",
     display: "grid",
     gridTemplateRows: "auto 1fr auto",
     gridGap: [6, 6],

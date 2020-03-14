@@ -3,6 +3,8 @@ import { SxStyleProp } from "theme-ui";
 export const wrapperStyles: SxStyleProp = {
   userSelect: "none",
   width: ["calc(100vw - 2rem)", "30rem"],
+  height: "100%",
+  minHeight: "1130px",
   display: "grid",
   gridTemplateRows: "auto 1fr auto",
   gridGap: [6, 6],

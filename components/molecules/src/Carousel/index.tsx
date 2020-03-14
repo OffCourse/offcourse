@@ -1,74 +1,40 @@
 /** @jsx jsx */
-import { FunctionComponent, ReactElement, useCallback, useState } from "react";
-import { jsx, Box } from "theme-ui";
-import { wrap } from "@popmotion/popcorn";
-import { motion, AnimatePresence } from "framer-motion";
-import { useInterval } from "@offcourse/hooks";
+import { FunctionComponent, ReactElement } from "react";
+import { jsx, Box, useThemeUI } from "theme-ui";
+import { AnimatePresence } from "framer-motion";
+import { outerWrapper, itemsWrapper } from "./styles";
+import Controls from "./Controls";
+import { ItemAnimation } from "./animations";
+import { useIndex, useCycleElements } from "./hooks";
 
-const Carousel: FunctionComponent<{ children: ReactElement[] }> = ({
-  children
-}) => {
-  const [currentIndex, setIndex] = useState(0);
-  const [intervalDelay, setIntervalDelay] = useState<number | null>(500);
-  const numberOfItems = children.length;
+type CarouselProps = { children: ReactElement[] };
 
-  const moveToNext = useCallback(() => {
-    setIndex(c => wrap(0, numberOfItems, c + 1));
-  }, [numberOfItems, setIndex]);
-
-  useInterval(moveToNext, intervalDelay);
-
-  const prevItem = children[wrap(0, numberOfItems, currentIndex - 1)];
-  const currentItem = children[currentIndex];
-  const nextItem = children[wrap(0, numberOfItems, currentIndex + 1)];
-
-  const visibleChildren = [prevItem, currentItem, nextItem];
+const Carousel: FunctionComponent<CarouselProps> = ({ children }) => {
+  const { currentIndex, setIndex } = useIndex();
+  const { theme, ...x } = useThemeUI();
+  console.log(x);
+  const active = theme.colors?.primary || "black";
+  const passive = theme.colors?.grayScale[2] || "lightGray";
+  const { visibleChildren } = useCycleElements({
+    currentIndex,
+    elements: children
+  });
 
   return (
-    <Box
-      sx={{
-        width: "100rem",
-        overflowX: "hidden"
-      }}
-    >
-      <Box
-        sx={{
-          flexDirection: "row",
-          display: "flex"
-        }}
-      >
+    <Box sx={outerWrapper}>
+      <Box sx={itemsWrapper}>
         <AnimatePresence>
-          {visibleChildren.map((child: ReactElement) => {
-            const { id } = child.props;
-            return (
-              <motion.div
-                key={id}
-                positionTransition={{ damping: 500 }}
-                exit={{ opacity: 1 }}
-              >
-                {child}
-              </motion.div>
-            );
-          })}
+          {visibleChildren.map(child => (
+            <ItemAnimation key={child.props.id}>{child}</ItemAnimation>
+          ))}
         </AnimatePresence>
       </Box>
-      <Box
-        sx={{
-          flexDirection: "row",
-          display: "flex"
-        }}
-      >
-        {children.map((_, index) => (
-          <h1
-            onClick={() => {
-              setIntervalDelay(null);
-              setIndex(index);
-            }}
-          >
-            {index === currentIndex ? "X" : "O"}
-          </h1>
-        ))}
-      </Box>
+      <Controls
+        colors={{ active, passive }}
+        setIndex={setIndex}
+        children={children}
+        currentIndex={currentIndex}
+      />
     </Box>
   );
 };
