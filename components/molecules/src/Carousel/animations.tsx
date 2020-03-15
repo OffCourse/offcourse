@@ -12,8 +12,9 @@ const ItemAnimation: FunctionComponent = ({ children }) => (
 
 const controlVariants = ({ active, passive }: any) => {
   return {
-    passive: { scale: 1, backgroundColor: passive },
-    active: { scale: [1, 1.5, 1.1], backgroundColor: active }
+    passive: { opacity: 1, scale: 1, backgroundColor: passive },
+    active: { opacity: 1, scale: [1, 1.5, 1.1], backgroundColor: "black" },
+    hover: { opacity: 1, backgroundColor: active }
   };
 };
 
@@ -24,6 +25,7 @@ const ControlAnimation: FunctionComponent<{
   return (
     <motion.div
       className={className}
+      whileHover="hover"
       positionTransition={{ damping: 500 }}
       initial="passive"
       variants={controlVariants(colors)}

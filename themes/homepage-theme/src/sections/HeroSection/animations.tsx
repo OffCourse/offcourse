@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const variants = {
   idle: { x: -200, opacity: 0 },
   default: { x: 0, opacity: 1 },
-  menuOpen: { x: 0, opacity: 0.6 }
+  menuOpen: { x: 0, opacity: 1 }
 };
 
 const TitleAnimation: FunctionComponent<{ appMode: string }> = ({

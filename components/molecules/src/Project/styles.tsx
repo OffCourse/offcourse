@@ -2,15 +2,13 @@ import { SxStyleProp } from "theme-ui";
 
 export const wrapperStyles: SxStyleProp = {
   userSelect: "none",
-  width: ["calc(100vw - 2rem)", "30rem"],
+  width: ["28rem"],
   height: "100%",
   minHeight: "1130px",
   display: "grid",
   gridTemplateRows: "auto 1fr auto",
   gridGap: [6, 6],
   pb: 7,
-  mx: [4, 2, 4, 6],
-  mb: [6, 8],
   alignItems: "start",
   bg: "grayScale.0"
 };

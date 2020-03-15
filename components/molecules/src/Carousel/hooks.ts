@@ -27,13 +27,23 @@ const useIndex: () => any = () => {
 const useCycleElements: (x: {
   elements: ReactElement[];
   currentIndex: number;
-}) => { visibleChildren: ReactElement[] } = ({ elements, currentIndex }) => {
+  numberOfElements: number;
+}) => { visibleChildren: ReactElement[] } = ({
+  elements,
+  currentIndex,
+  numberOfElements = 1
+}) => {
   const numberOfItems = elements.length;
   const prevItem = elements[wrap(0, numberOfItems, currentIndex - 1)];
   const currentItem = elements[wrap(0, numberOfItems, currentIndex)];
   const nextItem = elements[wrap(0, numberOfItems, currentIndex + 1)];
-  const visibleChildren = [prevItem, currentItem, nextItem];
-  return { visibleChildren };
+  const visibleChildren = {
+    1: [currentItem],
+    2: [currentItem, nextItem],
+    3: [prevItem, currentItem, nextItem]
+  };
+
+  return { visibleChildren: visibleChildren[numberOfElements] };
 };
 
 export { useIndex, useCycleElements };

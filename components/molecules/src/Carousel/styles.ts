@@ -8,7 +8,11 @@ const outerWrapper: SxStyleProp = {
 
 const itemsWrapper: SxStyleProp = {
   flexDirection: "row",
-  display: "flex"
+  justifyContent: "center",
+  display: "flex",
+  "> *": {
+    mx: 4
+  }
 };
 
 const controlsWrapper: SxStyleProp = {
@@ -19,10 +23,11 @@ const controlsWrapper: SxStyleProp = {
 
 const controlStyles: SxStyleProp = {
   bg: "black",
-  borderRadius: "0.5rem",
-  width: "2rem",
-  height: "2rem",
-  m: 4
+  borderRadius: "1rem",
+  width: "1rem",
+  height: "1rem",
+  my: 6,
+  mx: 2
 };
 
 export { outerWrapper, controlsWrapper, controlStyles, itemsWrapper };
