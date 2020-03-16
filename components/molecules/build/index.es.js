@@ -1,9 +1,9 @@
 import { jsx, Box, useThemeUI, Heading } from 'theme-ui';
 import { useResponsiveValue } from '@theme-ui/match-media';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, forwardRef, useEffect } from 'react';
 import { wrap } from '@popmotion/popcorn';
-import { useInterval } from '@offcourse/hooks';
+import { useInterval, useVisibility } from '@offcourse/hooks';
 import { ErrorMessage, Field } from 'formik';
 import { Checkbox, Label, Message, Input, TextArea, Text, Heading as Heading$1, Logo, Tab, Avatar } from '@offcourse/atoms';
 import { defineCustomElements } from '@offcourse/public-badges-drawer/loader';
@@ -52,6 +52,7 @@ var ControlAnimation = function (_a) {
     var children = _a.children, className = _a.className, isActive = _a.isActive, colors = _a.colors;
     return (jsx(motion.div, { className: className, whileHover: "hover", positionTransition: { damping: 500 }, initial: "passive", variants: controlVariants(colors), animate: isActive ? "active" : "passive" }, children));
 };
+//# sourceMappingURL=animations.js.map
 
 var Controls = function (_a) {
     var children = _a.children, colors = _a.colors, currentIndex = _a.currentIndex, setIndex = _a.setIndex;
@@ -61,6 +62,7 @@ var Controls = function (_a) {
             jsx(Box, { sx: { width: "100%", height: "100%" }, onClick: function () { return setIndex(index); } })));
     })));
 };
+//# sourceMappingURL=Controls.js.map
 
 var useIndex = function () {
     var _a = useState(0), currentIndex = _a[0], setCurrentIndex = _a[1];
@@ -87,7 +89,7 @@ var useCycleElements = function (_a) {
         2: [currentItem, nextItem],
         3: [prevItem, currentItem, nextItem]
     };
-    return { visibleChildren: visibleChildren[numberOfElements] };
+    return { visibleChildren: visibleChildren[numberOfElements] || [] };
 };
 //# sourceMappingURL=hooks.js.map
 
@@ -109,6 +111,7 @@ var Carousel = function (_a) {
             jsx(AnimatePresence, null, visibleChildren.map(function (child) { return (jsx(ItemAnimation, { key: child.props.id }, child)); }))),
         jsx(Controls, { colors: { active: active, passive: passive }, setIndex: setIndex, children: children, currentIndex: currentIndex })));
 };
+//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -151,7 +154,6 @@ var RadioButtonGroup = function (_a) {
         return jsx(Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -180,7 +182,6 @@ var InputField = function (_a) {
         jsx(ErrorMessage, { render: function (msg) { return jsx(Message, { isBasic: true }, msg); }, name: name }),
         jsx(Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
-//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -201,11 +202,10 @@ var TextSection = function (_a) {
         jsx(Heading, { sx: titleStyles }, title),
         jsx(Text, { html: description })));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
-    width: ["28rem"],
+    width: ["calc(100vw - 2rem)", "28rem"],
     height: "100%",
     minHeight: "1130px",
     display: "grid",
@@ -266,7 +266,6 @@ var Project = function (_a) {
         jsx(Text, { sx: captionStyles, html: description }),
         jsx(Heading$1, { sx: headerStyles }, title)));
 };
-//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -286,25 +285,59 @@ var titleStyles$1 = {
     mb: 4
 };
 var wrapperStyles$2 = {
-    gridColumn: ["2/9", "2/12", "2/11", "3/10"],
     fontFamily: "heading",
     py: 6,
-    width: "100%",
-    "&:nth-of-type(even)": {
-        gridColumn: ["2/9", "2/12", "3/12", "4/11"],
-        textAlign: "end"
-    }
+    width: "100%"
 };
 //# sourceMappingURL=styles.js.map
 
-var Step = function (_a) {
+/** @jsx jsx */
+var Step = function (_a, ref) {
     var as = _a.as, style = _a.style, children = _a.children, title = _a.title, description = _a.description, className = _a.className, index = _a.index;
-    return (jsx(Box, { as: as, sx: wrapperStyles$2, style: style, className: className },
+    return (jsx(Box, { ref: ref, as: as, sx: wrapperStyles$2, style: style, className: className },
         children,
         jsx(Heading$1, { as: "h1", sx: titleStyles$1 },
             jsx("span", { sx: numberStyles }, index),
             title),
         jsx(Text, { html: description })));
+};
+var Step$1 = forwardRef(Step);
+
+var stepVariants = {
+    hidden: function (isEven) { return ({
+        x: isEven ? -200 : 200,
+        opacity: 0
+    }); },
+    visible: { x: 0, opacity: 1 }
+};
+var StepAnimation = function (_a) {
+    var children = _a.children, index = _a.index, className = _a.className;
+    var _b = useVisibility({ canLeave: true }), isVisible = _b[0], ref = _b[1];
+    var isEven = index % 2 === 0;
+    return (React.createElement(motion.div, { ref: ref, key: index, variants: stepVariants, initial: "hidden", animate: isVisible ? "visible" : "hidden", custom: isEven, className: className }, children));
+};
+//# sourceMappingURL=animations.js.map
+
+var stepStyles = {
+    gridColumn: ["2/9", "2/12", "2/11", "3/10"],
+    "&:nth-of-type(even)": {
+        gridColumn: ["2/9", "2/12", "3/12", "4/11"],
+        textAlign: "end"
+    }
+};
+var innerWrapperStyles = {
+    gridColumn: "1/13",
+    display: "grid",
+    gridTemplateColumns: ["repeat(9,1fr)", "repeat(12, 1fr)"]
+};
+//# sourceMappingURL=styles.js.map
+
+var Process = function (_a) {
+    var steps = _a.steps;
+    return (jsx(Box, { sx: innerWrapperStyles }, steps.map(function (step, index) {
+        return (jsx(StepAnimation, { sx: stepStyles, index: index },
+            jsx(Step$1, __assign({ index: index + 1 }, step))));
+    })));
 };
 //# sourceMappingURL=index.js.map
 
@@ -395,7 +428,6 @@ var Footer = function (_a) {
                 jsx(PublicBadgesDrawer, { modalTheme: "light" })),
             siteName && jsx(Logo, { sx: logoStyles }, siteName))));
 };
-//# sourceMappingURL=index.js.map
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -468,7 +500,6 @@ var Menu = function (_a) {
         return (jsx(Tab, { key: title, href: href }, title));
     })));
 };
-//# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
@@ -480,7 +511,6 @@ var HeaderSection = function (_a) {
                 jsx(Menu, { links: links })),
             jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (jsx(Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
-//# sourceMappingURL=index.js.map
 
-export { Carousel, Footer, HeaderSection as Header, InputField, Project, RadioButtonGroup, Step, TextSection };
+export { Carousel, Footer, HeaderSection as Header, InputField, Process, Project, RadioButtonGroup, Step$1 as Step, TextSection };
 //# sourceMappingURL=index.es.js.map

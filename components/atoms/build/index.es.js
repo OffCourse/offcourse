@@ -345,7 +345,7 @@ var wrapperStyles$4 = {
     display: "flex",
     userSelect: "none",
     boxShadow: "0px 3px 15px rgba(0, 0, 0, 0.2)",
-    px: [4],
+    px: [2, 4],
     height: ["2.5rem", "3rem"],
     alignItems: "center",
     bg: "white",

@@ -37,6 +37,7 @@
     "standard-prettier": "^1.0.1",
     "ts-jest": "^25.2.0",
     "typescript": "^3.7.5",
+    "use-is-in-viewport": "^1.0.7",
     "workerize": "^0.1.8",
     "xstate": "^4.7.8"
   },
@@ -57,6 +58,7 @@
     "react-dom": "^16",
     "theme-ui": "^0.3.1",
     "workerize": "^0.1.8",
+    "use-is-in-viewport": "^1.0.7",
     "xstate": "^4.7.8"
   },
   "dependencies": {

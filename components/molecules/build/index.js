@@ -2,10 +2,13 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
 var themeUi = require('theme-ui');
 var matchMedia = require('@theme-ui/match-media');
 var framerMotion = require('framer-motion');
-var react = require('react');
+var React = require('react');
+var React__default = _interopDefault(React);
 var popcorn = require('@popmotion/popcorn');
 var hooks = require('@offcourse/hooks');
 var formik = require('formik');
@@ -56,6 +59,7 @@ var ControlAnimation = function (_a) {
     var children = _a.children, className = _a.className, isActive = _a.isActive, colors = _a.colors;
     return (themeUi.jsx(framerMotion.motion.div, { className: className, whileHover: "hover", positionTransition: { damping: 500 }, initial: "passive", variants: controlVariants(colors), animate: isActive ? "active" : "passive" }, children));
 };
+//# sourceMappingURL=animations.js.map
 
 var Controls = function (_a) {
     var children = _a.children, colors = _a.colors, currentIndex = _a.currentIndex, setIndex = _a.setIndex;
@@ -65,15 +69,16 @@ var Controls = function (_a) {
             themeUi.jsx(themeUi.Box, { sx: { width: "100%", height: "100%" }, onClick: function () { return setIndex(index); } })));
     })));
 };
+//# sourceMappingURL=Controls.js.map
 
 var useIndex = function () {
-    var _a = react.useState(0), currentIndex = _a[0], setCurrentIndex = _a[1];
-    var _b = react.useState(100000), intervalDelay = _b[0], setIntervalDelay = _b[1];
-    var nextIndex = react.useCallback(function (index, incrementBy) {
+    var _a = React.useState(0), currentIndex = _a[0], setCurrentIndex = _a[1];
+    var _b = React.useState(100000), intervalDelay = _b[0], setIntervalDelay = _b[1];
+    var nextIndex = React.useCallback(function (index, incrementBy) {
         if (incrementBy === void 0) { incrementBy = 1; }
         return setCurrentIndex(index + incrementBy);
     }, [setCurrentIndex]);
-    var setIndex = react.useCallback(function (index) {
+    var setIndex = React.useCallback(function (index) {
         setIntervalDelay(null);
         setCurrentIndex(index);
     }, [setIntervalDelay, setCurrentIndex]);
@@ -91,7 +96,7 @@ var useCycleElements = function (_a) {
         2: [currentItem, nextItem],
         3: [prevItem, currentItem, nextItem]
     };
-    return { visibleChildren: visibleChildren[numberOfElements] };
+    return { visibleChildren: visibleChildren[numberOfElements] || [] };
 };
 //# sourceMappingURL=hooks.js.map
 
@@ -113,6 +118,7 @@ var Carousel = function (_a) {
             themeUi.jsx(framerMotion.AnimatePresence, null, visibleChildren.map(function (child) { return (themeUi.jsx(ItemAnimation, { key: child.props.id }, child)); }))),
         themeUi.jsx(Controls, { colors: { active: active, passive: passive }, setIndex: setIndex, children: children, currentIndex: currentIndex })));
 };
+//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -155,7 +161,6 @@ var RadioButtonGroup = function (_a) {
         return themeUi.jsx(atoms.Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -184,7 +189,6 @@ var InputField = function (_a) {
         themeUi.jsx(formik.ErrorMessage, { render: function (msg) { return themeUi.jsx(atoms.Message, { isBasic: true }, msg); }, name: name }),
         themeUi.jsx(formik.Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
-//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -205,11 +209,10 @@ var TextSection = function (_a) {
         themeUi.jsx(themeUi.Heading, { sx: titleStyles }, title),
         themeUi.jsx(atoms.Text, { html: description })));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
-    width: ["28rem"],
+    width: ["calc(100vw - 2rem)", "28rem"],
     height: "100%",
     minHeight: "1130px",
     display: "grid",
@@ -270,7 +273,6 @@ var Project = function (_a) {
         themeUi.jsx(atoms.Text, { sx: captionStyles, html: description }),
         themeUi.jsx(atoms.Heading, { sx: headerStyles }, title)));
 };
-//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -290,25 +292,59 @@ var titleStyles$1 = {
     mb: 4
 };
 var wrapperStyles$2 = {
-    gridColumn: ["2/9", "2/12", "2/11", "3/10"],
     fontFamily: "heading",
     py: 6,
-    width: "100%",
-    "&:nth-of-type(even)": {
-        gridColumn: ["2/9", "2/12", "3/12", "4/11"],
-        textAlign: "end"
-    }
+    width: "100%"
 };
 //# sourceMappingURL=styles.js.map
 
-var Step = function (_a) {
+/** @jsx jsx */
+var Step = function (_a, ref) {
     var as = _a.as, style = _a.style, children = _a.children, title = _a.title, description = _a.description, className = _a.className, index = _a.index;
-    return (themeUi.jsx(themeUi.Box, { as: as, sx: wrapperStyles$2, style: style, className: className },
+    return (themeUi.jsx(themeUi.Box, { ref: ref, as: as, sx: wrapperStyles$2, style: style, className: className },
         children,
         themeUi.jsx(atoms.Heading, { as: "h1", sx: titleStyles$1 },
             themeUi.jsx("span", { sx: numberStyles }, index),
             title),
         themeUi.jsx(atoms.Text, { html: description })));
+};
+var Step$1 = React.forwardRef(Step);
+
+var stepVariants = {
+    hidden: function (isEven) { return ({
+        x: isEven ? -200 : 200,
+        opacity: 0
+    }); },
+    visible: { x: 0, opacity: 1 }
+};
+var StepAnimation = function (_a) {
+    var children = _a.children, index = _a.index, className = _a.className;
+    var _b = hooks.useVisibility({ canLeave: true }), isVisible = _b[0], ref = _b[1];
+    var isEven = index % 2 === 0;
+    return (React__default.createElement(framerMotion.motion.div, { ref: ref, key: index, variants: stepVariants, initial: "hidden", animate: isVisible ? "visible" : "hidden", custom: isEven, className: className }, children));
+};
+//# sourceMappingURL=animations.js.map
+
+var stepStyles = {
+    gridColumn: ["2/9", "2/12", "2/11", "3/10"],
+    "&:nth-of-type(even)": {
+        gridColumn: ["2/9", "2/12", "3/12", "4/11"],
+        textAlign: "end"
+    }
+};
+var innerWrapperStyles = {
+    gridColumn: "1/13",
+    display: "grid",
+    gridTemplateColumns: ["repeat(9,1fr)", "repeat(12, 1fr)"]
+};
+//# sourceMappingURL=styles.js.map
+
+var Process = function (_a) {
+    var steps = _a.steps;
+    return (themeUi.jsx(themeUi.Box, { sx: innerWrapperStyles }, steps.map(function (step, index) {
+        return (themeUi.jsx(StepAnimation, { sx: stepStyles, index: index },
+            themeUi.jsx(Step$1, __assign({ index: index + 1 }, step))));
+    })));
 };
 //# sourceMappingURL=index.js.map
 
@@ -372,7 +408,7 @@ var PublicBadgesDrawer = function (_a) {
     var _b = _a.badgeColor, badgeColor = _b === void 0 ? "white" : _b, _c = _a.modalTheme, modalTheme = _c === void 0 ? "light" : _c;
     // tslint:disable-next-line
     var inBrowser = typeof window !== "undefined" ? true : null;
-    react.useEffect(function () {
+    React.useEffect(function () {
         // tslint:disable-next-line
         inBrowser && loader.defineCustomElements(window);
     }, [inBrowser]);
@@ -399,7 +435,6 @@ var Footer = function (_a) {
                 themeUi.jsx(PublicBadgesDrawer, { modalTheme: "light" })),
             siteName && themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
 };
-//# sourceMappingURL=index.js.map
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -472,7 +507,6 @@ var Menu = function (_a) {
         return (themeUi.jsx(atoms.Tab, { key: title, href: href }, title));
     })));
 };
-//# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
@@ -484,14 +518,14 @@ var HeaderSection = function (_a) {
                 themeUi.jsx(Menu, { links: links })),
             themeUi.jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
-//# sourceMappingURL=index.js.map
 
 exports.Carousel = Carousel;
 exports.Footer = Footer;
 exports.Header = HeaderSection;
 exports.InputField = InputField;
+exports.Process = Process;
 exports.Project = Project;
 exports.RadioButtonGroup = RadioButtonGroup;
-exports.Step = Step;
+exports.Step = Step$1;
 exports.TextSection = TextSection;
 //# sourceMappingURL=index.js.map

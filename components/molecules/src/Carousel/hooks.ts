@@ -43,7 +43,7 @@ const useCycleElements: (x: {
     3: [prevItem, currentItem, nextItem]
   };
 
-  return { visibleChildren: visibleChildren[numberOfElements] };
+  return { visibleChildren: visibleChildren[numberOfElements] || [] };
 };
 
 export { useIndex, useCycleElements };

@@ -4,6 +4,7 @@ import useAnimatedGridCanvas from "./useAnimatedGridCanvas";
 import useGridCanvas from "./useGridCanvas";
 import useCanvas from "./useCanvas";
 import useInterval from "./useInterval";
+import useVisibility from "./useVisibility";
 import useShowTab from "./useShowTab";
 
 export {
@@ -13,5 +14,6 @@ export {
   useGridCanvas,
   useAnimatedGridCanvas,
   useCanvas,
-  useCycleItems
+  useCycleItems,
+  useVisibility
 };

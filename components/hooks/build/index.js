@@ -2,7 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
 var react = require('react');
+var useIsInViewport = _interopDefault(require('use-is-in-viewport'));
 
 const useAnimationFrame = ({ callback, delay = 0 }) => {
     const requestRef = react.useRef(null);
@@ -73,6 +76,7 @@ const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
     }, delay);
     return [index, orderedProjects];
 };
+//# sourceMappingURL=useCycleItems.js.map
 
 const useCanvas = ({ width, height, draw }) => {
     const canvasRef = react.useRef(null);
@@ -156,6 +160,17 @@ const useAnimatedGridCanvas = ({ width, height, unitSize, colors, shape }) => {
 };
 //# sourceMappingURL=index.js.map
 
+const useVisibility = ({ canLeave = false }) => {
+    const [trigger, setTrigger] = react.useState(false);
+    const [isInViewport, targetRef] = useIsInViewport({ modBottom: "-400px" });
+    react.useEffect(() => {
+        if (isInViewport) {
+            setTrigger(true);
+        }
+    }, [isInViewport, setTrigger]);
+    return [canLeave ? !!isInViewport : trigger, targetRef];
+};
+
 const useShowTab = () => {
     const [isVisible, setVisibility] = react.useState(true);
     const handlePositionChange = ({ currentPosition }) => {
@@ -172,4 +187,5 @@ exports.useCycleItems = useCycleItems;
 exports.useGridCanvas = useGridCanvas;
 exports.useInterval = useInterval;
 exports.useShowTab = useShowTab;
+exports.useVisibility = useVisibility;
 //# sourceMappingURL=index.js.map

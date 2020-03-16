@@ -16,12 +16,7 @@ export declare const titleStyles: {
     mb: number;
 };
 export declare const wrapperStyles: {
-    gridColumn: string[];
     fontFamily: string;
     py: number;
     width: string;
-    "&:nth-of-type(even)": {
-        gridColumn: string[];
-        textAlign: string;
-    };
 };

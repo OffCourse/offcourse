@@ -2,7 +2,7 @@ import { SxStyleProp } from "theme-ui";
 
 export const wrapperStyles: SxStyleProp = {
   userSelect: "none",
-  width: ["28rem"],
+  width: ["calc(100vw - 2rem)", "28rem"],
   height: "100%",
   minHeight: "1130px",
   display: "grid",

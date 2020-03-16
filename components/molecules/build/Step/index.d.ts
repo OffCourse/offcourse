@@ -1,6 +1,6 @@
-/** @jsx jsx */
-import { FunctionComponent } from "react";
+/// <reference types="react" />
+/// <reference types="@emotion/core" />
+/// <reference types="theme-ui" />
 import { IThemeable, IStep } from "@offcourse/interfaces/src";
-declare type StepProps = IStep & IThemeable;
-declare const Step: FunctionComponent<StepProps>;
-export default Step;
+declare const _default: import("react").ForwardRefExoticComponent<IStep & IThemeable & import("react").RefAttributes<unknown>>;
+export default _default;
