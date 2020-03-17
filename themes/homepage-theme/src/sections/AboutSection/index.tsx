@@ -5,12 +5,7 @@ import { IBaseSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { Text } from "@offcourse/atoms";
 import BaseSection from "../BaseSection";
-import {
-  wrapperStyles,
-  textStyles,
-  displayStyles,
-  titleStyles
-} from "./styles";
+import { wrapperStyles, textStyles, titleStyles } from "./styles";
 
 export type AboutSectionProps = IBaseSection & {
   title: string;

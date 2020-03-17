@@ -14,7 +14,10 @@ const stepVariants = {
 const StepAnimation: FunctionComponent<{
   index: number;
 } & IThemeable> = ({ children, index, className }) => {
-  const [isVisible, ref] = useVisibility({ canLeave: true });
+  const [isVisible, ref] = useVisibility({
+    canLeave: false,
+    modBottom: "-400px"
+  });
   const isEven = index % 2 === 0;
   return (
     <motion.div

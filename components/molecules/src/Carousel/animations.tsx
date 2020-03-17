@@ -13,7 +13,7 @@ const ItemAnimation: FunctionComponent = ({ children }) => (
 const controlVariants = ({ active, passive }: any) => {
   return {
     passive: { opacity: 1, scale: 1, backgroundColor: passive },
-    active: { opacity: 1, scale: [1, 1.5, 1.1], backgroundColor: "black" },
+    active: { opacity: 1, scale: [1, 1.5, 1.1], backgroundColor: "#000000" },
     hover: { opacity: 1, backgroundColor: active }
   };
 };

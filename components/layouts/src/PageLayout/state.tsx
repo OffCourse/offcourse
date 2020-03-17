@@ -1,5 +1,11 @@
 /** @jsx jsx */
-import { createContext, useContext, Context, FunctionComponent } from "react";
+import {
+  createContext,
+  useContext,
+  Context,
+  FunctionComponent,
+  useCallback
+} from "react";
 import { useMachine } from "@xstate/react";
 import machine from "./machine";
 import { jsx } from "theme-ui";
@@ -42,9 +48,12 @@ export const StateProvider: FunctionComponent<{
     ? !current.context.sections["ContactSection"]
     : true;
 
-  const registerSection = ({ role, isVisible }: any) => {
-    send({ type: "UPDATE_SECTIONS", payload: { role, isVisible } });
-  };
+  const registerSection = useCallback(
+    ({ role, isVisible }: any) => {
+      send({ type: "UPDATE_SECTIONS", payload: { role, isVisible } });
+    },
+    [send]
+  );
 
   return (
     <StateContext.Provider

@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
 import useIsInViewport from "use-is-in-viewport";
 
-const useVisibility: (args: { canLeave?: boolean }) => [boolean, any] = ({
-  canLeave = false
+const useVisibility: (args: {
+  canLeave?: boolean;
+  modBottom?: string;
+  modTop?: string;
+}) => [boolean, any] = ({
+  canLeave = false,
+  modBottom = "0px",
+  modTop = "0px"
 }) => {
   const [trigger, setTrigger] = useState(false);
-  const [isInViewport, targetRef] = useIsInViewport({ modBottom: "-400px" });
+  const [isInViewport, targetRef] = useIsInViewport({ modBottom, modTop });
   useEffect(() => {
     if (isInViewport) {
       setTrigger(true);

@@ -37,7 +37,7 @@ const ProjectsSection: FunctionComponent<ProjectsSectionProps> = ({
     >
       <Carousel>
         {items.map(item => {
-          return <Project {...item} />;
+          return <Project key={item.id} {...item} />;
         })}
       </Carousel>
     </BaseSection>

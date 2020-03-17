@@ -11,8 +11,8 @@ const Process: FunctionComponent<{ steps: any[] }> = ({ steps }) => {
     <Box sx={innerWrapperStyles}>
       {steps.map((step: IStep, index: number) => {
         return (
-          <StepAnimation sx={stepStyles} index={index}>
-            <Step index={index +1} {...step} />
+          <StepAnimation key={index} sx={stepStyles} index={index}>
+            <Step index={index + 1} {...step} />
           </StepAnimation>
         );
       })}

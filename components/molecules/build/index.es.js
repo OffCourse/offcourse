@@ -44,7 +44,7 @@ var controlVariants = function (_a) {
     var active = _a.active, passive = _a.passive;
     return {
         passive: { opacity: 1, scale: 1, backgroundColor: passive },
-        active: { opacity: 1, scale: [1, 1.5, 1.1], backgroundColor: "black" },
+        active: { opacity: 1, scale: [1, 1.5, 1.1], backgroundColor: "#000000" },
         hover: { opacity: 1, backgroundColor: active }
     };
 };
@@ -58,7 +58,7 @@ var Controls = function (_a) {
     var children = _a.children, colors = _a.colors, currentIndex = _a.currentIndex, setIndex = _a.setIndex;
     return (jsx(Box, { sx: controlsWrapper }, children.map(function (_, index) {
         var isActive = index === currentIndex;
-        return (jsx(ControlAnimation, { colors: colors, sx: controlStyles, isActive: isActive },
+        return (jsx(ControlAnimation, { key: index, colors: colors, sx: controlStyles, isActive: isActive },
             jsx(Box, { sx: { width: "100%", height: "100%" }, onClick: function () { return setIndex(index); } })));
     })));
 };
@@ -84,12 +84,12 @@ var useCycleElements = function (_a) {
     var prevItem = elements[wrap(0, numberOfItems, currentIndex - 1)];
     var currentItem = elements[wrap(0, numberOfItems, currentIndex)];
     var nextItem = elements[wrap(0, numberOfItems, currentIndex + 1)];
-    var visibleChildren = {
-        1: [currentItem],
-        2: [currentItem, nextItem],
-        3: [prevItem, currentItem, nextItem]
-    };
-    return { visibleChildren: visibleChildren[numberOfElements] || [] };
+    var visibleChildren = [
+        [currentItem],
+        [currentItem, nextItem],
+        [prevItem, currentItem, nextItem]
+    ];
+    return { visibleChildren: visibleChildren[numberOfElements - 1] || [] };
 };
 //# sourceMappingURL=hooks.js.map
 
@@ -111,7 +111,6 @@ var Carousel = function (_a) {
             jsx(AnimatePresence, null, visibleChildren.map(function (child) { return (jsx(ItemAnimation, { key: child.props.id }, child)); }))),
         jsx(Controls, { colors: { active: active, passive: passive }, setIndex: setIndex, children: children, currentIndex: currentIndex })));
 };
-//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -154,6 +153,7 @@ var RadioButtonGroup = function (_a) {
         return jsx(Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -182,6 +182,7 @@ var InputField = function (_a) {
         jsx(ErrorMessage, { render: function (msg) { return jsx(Message, { isBasic: true }, msg); }, name: name }),
         jsx(Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
+//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -202,6 +203,7 @@ var TextSection = function (_a) {
         jsx(Heading, { sx: titleStyles }, title),
         jsx(Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -266,6 +268,7 @@ var Project = function (_a) {
         jsx(Text, { sx: captionStyles, html: description }),
         jsx(Heading$1, { sx: headerStyles }, title)));
 };
+//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -302,6 +305,7 @@ var Step = function (_a, ref) {
         jsx(Text, { html: description })));
 };
 var Step$1 = forwardRef(Step);
+//# sourceMappingURL=index.js.map
 
 var stepVariants = {
     hidden: function (isEven) { return ({
@@ -312,7 +316,10 @@ var stepVariants = {
 };
 var StepAnimation = function (_a) {
     var children = _a.children, index = _a.index, className = _a.className;
-    var _b = useVisibility({ canLeave: true }), isVisible = _b[0], ref = _b[1];
+    var _b = useVisibility({
+        canLeave: false,
+        modBottom: "-400px"
+    }), isVisible = _b[0], ref = _b[1];
     var isEven = index % 2 === 0;
     return (React.createElement(motion.div, { ref: ref, key: index, variants: stepVariants, initial: "hidden", animate: isVisible ? "visible" : "hidden", custom: isEven, className: className }, children));
 };
@@ -335,7 +342,7 @@ var innerWrapperStyles = {
 var Process = function (_a) {
     var steps = _a.steps;
     return (jsx(Box, { sx: innerWrapperStyles }, steps.map(function (step, index) {
-        return (jsx(StepAnimation, { sx: stepStyles, index: index },
+        return (jsx(StepAnimation, { key: index, sx: stepStyles, index: index },
             jsx(Step$1, __assign({ index: index + 1 }, step))));
     })));
 };
@@ -428,6 +435,7 @@ var Footer = function (_a) {
                 jsx(PublicBadgesDrawer, { modalTheme: "light" })),
             siteName && jsx(Logo, { sx: logoStyles }, siteName))));
 };
+//# sourceMappingURL=index.js.map
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -453,15 +461,21 @@ var menuItemsStyles = {
 //# sourceMappingURL=styles.js.map
 
 var duration = 0.2;
+var transition = { delay: 0.5, damping: 50 };
 var avatarVariants = {
-    idle: { x: "-200%", opacity: 0.2 },
-    default: { x: 0, opacity: 1, rotate: 0 },
+    idle: { x: "-200%", opacity: 0 },
+    default: {
+        x: 0,
+        opacity: 1,
+        rotate: 0,
+        transition: transition
+    },
     hover: { opacity: 0.8 },
     menuOpen: { rotate: 90 }
 };
 var AvatarAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode;
-    return (jsx(motion.div, { initial: "idle", whileHover: "hover", transition: { duration: duration }, animate: appMode, variants: avatarVariants }, children));
+    return (jsx(motion.div, { initial: "idle", whileHover: "hover", animate: appMode, variants: avatarVariants }, children));
 };
 var menuVariants = {
     idle: { y: "-400%", opacity: 0.2 },
@@ -475,11 +489,11 @@ var MenuAnimation = function (_a) {
 var callToActionVariants = {
     idle: { x: "200%", opacity: 0.2 },
     menuOpen: { x: "200%", opacity: 0.2 },
-    default: { x: 0, opacity: 1 }
+    default: { x: 0, opacity: 1, transition: transition }
 };
 var CallToActionAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
-    return (jsx(motion.div, { initial: "idle", transition: { duration: duration }, animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
+    return (jsx(motion.div, { initial: "idle", animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
 //# sourceMappingURL=animations.js.map
 
@@ -500,6 +514,7 @@ var Menu = function (_a) {
         return (jsx(Tab, { key: title, href: href }, title));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
@@ -511,6 +526,7 @@ var HeaderSection = function (_a) {
                 jsx(Menu, { links: links })),
             jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (jsx(Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
+//# sourceMappingURL=index.js.map
 
 export { Carousel, Footer, HeaderSection as Header, InputField, Process, Project, RadioButtonGroup, Step$1 as Step, TextSection };
 //# sourceMappingURL=index.es.js.map

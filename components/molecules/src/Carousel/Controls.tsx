@@ -16,6 +16,7 @@ const Controls: FunctionComponent<{
         const isActive = index === currentIndex;
         return (
           <ControlAnimation
+            key={index}
             colors={colors}
             sx={controlStyles}
             isActive={isActive}

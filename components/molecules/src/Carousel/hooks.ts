@@ -37,13 +37,13 @@ const useCycleElements: (x: {
   const prevItem = elements[wrap(0, numberOfItems, currentIndex - 1)];
   const currentItem = elements[wrap(0, numberOfItems, currentIndex)];
   const nextItem = elements[wrap(0, numberOfItems, currentIndex + 1)];
-  const visibleChildren = {
-    1: [currentItem],
-    2: [currentItem, nextItem],
-    3: [prevItem, currentItem, nextItem]
-  };
+  const visibleChildren = [
+    [currentItem],
+    [currentItem, nextItem],
+    [prevItem, currentItem, nextItem]
+  ];
 
-  return { visibleChildren: visibleChildren[numberOfElements] || [] };
+  return { visibleChildren: visibleChildren[numberOfElements - 1] || [] };
 };
 
 export { useIndex, useCycleElements };

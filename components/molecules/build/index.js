@@ -51,7 +51,7 @@ var controlVariants = function (_a) {
     var active = _a.active, passive = _a.passive;
     return {
         passive: { opacity: 1, scale: 1, backgroundColor: passive },
-        active: { opacity: 1, scale: [1, 1.5, 1.1], backgroundColor: "black" },
+        active: { opacity: 1, scale: [1, 1.5, 1.1], backgroundColor: "#000000" },
         hover: { opacity: 1, backgroundColor: active }
     };
 };
@@ -65,7 +65,7 @@ var Controls = function (_a) {
     var children = _a.children, colors = _a.colors, currentIndex = _a.currentIndex, setIndex = _a.setIndex;
     return (themeUi.jsx(themeUi.Box, { sx: controlsWrapper }, children.map(function (_, index) {
         var isActive = index === currentIndex;
-        return (themeUi.jsx(ControlAnimation, { colors: colors, sx: controlStyles, isActive: isActive },
+        return (themeUi.jsx(ControlAnimation, { key: index, colors: colors, sx: controlStyles, isActive: isActive },
             themeUi.jsx(themeUi.Box, { sx: { width: "100%", height: "100%" }, onClick: function () { return setIndex(index); } })));
     })));
 };
@@ -91,12 +91,12 @@ var useCycleElements = function (_a) {
     var prevItem = elements[popcorn.wrap(0, numberOfItems, currentIndex - 1)];
     var currentItem = elements[popcorn.wrap(0, numberOfItems, currentIndex)];
     var nextItem = elements[popcorn.wrap(0, numberOfItems, currentIndex + 1)];
-    var visibleChildren = {
-        1: [currentItem],
-        2: [currentItem, nextItem],
-        3: [prevItem, currentItem, nextItem]
-    };
-    return { visibleChildren: visibleChildren[numberOfElements] || [] };
+    var visibleChildren = [
+        [currentItem],
+        [currentItem, nextItem],
+        [prevItem, currentItem, nextItem]
+    ];
+    return { visibleChildren: visibleChildren[numberOfElements - 1] || [] };
 };
 //# sourceMappingURL=hooks.js.map
 
@@ -118,7 +118,6 @@ var Carousel = function (_a) {
             themeUi.jsx(framerMotion.AnimatePresence, null, visibleChildren.map(function (child) { return (themeUi.jsx(ItemAnimation, { key: child.props.id }, child)); }))),
         themeUi.jsx(Controls, { colors: { active: active, passive: passive }, setIndex: setIndex, children: children, currentIndex: currentIndex })));
 };
-//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -161,6 +160,7 @@ var RadioButtonGroup = function (_a) {
         return themeUi.jsx(atoms.Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -189,6 +189,7 @@ var InputField = function (_a) {
         themeUi.jsx(formik.ErrorMessage, { render: function (msg) { return themeUi.jsx(atoms.Message, { isBasic: true }, msg); }, name: name }),
         themeUi.jsx(formik.Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
+//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -209,6 +210,7 @@ var TextSection = function (_a) {
         themeUi.jsx(themeUi.Heading, { sx: titleStyles }, title),
         themeUi.jsx(atoms.Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -273,6 +275,7 @@ var Project = function (_a) {
         themeUi.jsx(atoms.Text, { sx: captionStyles, html: description }),
         themeUi.jsx(atoms.Heading, { sx: headerStyles }, title)));
 };
+//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -309,6 +312,7 @@ var Step = function (_a, ref) {
         themeUi.jsx(atoms.Text, { html: description })));
 };
 var Step$1 = React.forwardRef(Step);
+//# sourceMappingURL=index.js.map
 
 var stepVariants = {
     hidden: function (isEven) { return ({
@@ -319,7 +323,10 @@ var stepVariants = {
 };
 var StepAnimation = function (_a) {
     var children = _a.children, index = _a.index, className = _a.className;
-    var _b = hooks.useVisibility({ canLeave: true }), isVisible = _b[0], ref = _b[1];
+    var _b = hooks.useVisibility({
+        canLeave: false,
+        modBottom: "-400px"
+    }), isVisible = _b[0], ref = _b[1];
     var isEven = index % 2 === 0;
     return (React__default.createElement(framerMotion.motion.div, { ref: ref, key: index, variants: stepVariants, initial: "hidden", animate: isVisible ? "visible" : "hidden", custom: isEven, className: className }, children));
 };
@@ -342,7 +349,7 @@ var innerWrapperStyles = {
 var Process = function (_a) {
     var steps = _a.steps;
     return (themeUi.jsx(themeUi.Box, { sx: innerWrapperStyles }, steps.map(function (step, index) {
-        return (themeUi.jsx(StepAnimation, { sx: stepStyles, index: index },
+        return (themeUi.jsx(StepAnimation, { key: index, sx: stepStyles, index: index },
             themeUi.jsx(Step$1, __assign({ index: index + 1 }, step))));
     })));
 };
@@ -435,6 +442,7 @@ var Footer = function (_a) {
                 themeUi.jsx(PublicBadgesDrawer, { modalTheme: "light" })),
             siteName && themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
 };
+//# sourceMappingURL=index.js.map
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -460,15 +468,21 @@ var menuItemsStyles = {
 //# sourceMappingURL=styles.js.map
 
 var duration = 0.2;
+var transition = { delay: 0.5, damping: 50 };
 var avatarVariants = {
-    idle: { x: "-200%", opacity: 0.2 },
-    default: { x: 0, opacity: 1, rotate: 0 },
+    idle: { x: "-200%", opacity: 0 },
+    default: {
+        x: 0,
+        opacity: 1,
+        rotate: 0,
+        transition: transition
+    },
     hover: { opacity: 0.8 },
     menuOpen: { rotate: 90 }
 };
 var AvatarAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", whileHover: "hover", transition: { duration: duration }, animate: appMode, variants: avatarVariants }, children));
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", whileHover: "hover", animate: appMode, variants: avatarVariants }, children));
 };
 var menuVariants = {
     idle: { y: "-400%", opacity: 0.2 },
@@ -482,11 +496,11 @@ var MenuAnimation = function (_a) {
 var callToActionVariants = {
     idle: { x: "200%", opacity: 0.2 },
     menuOpen: { x: "200%", opacity: 0.2 },
-    default: { x: 0, opacity: 1 }
+    default: { x: 0, opacity: 1, transition: transition }
 };
 var CallToActionAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", transition: { duration: duration }, animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
 //# sourceMappingURL=animations.js.map
 
@@ -507,6 +521,7 @@ var Menu = function (_a) {
         return (themeUi.jsx(atoms.Tab, { key: title, href: href }, title));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
@@ -518,6 +533,7 @@ var HeaderSection = function (_a) {
                 themeUi.jsx(Menu, { links: links })),
             themeUi.jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
+//# sourceMappingURL=index.js.map
 
 exports.Carousel = Carousel;
 exports.Footer = Footer;
