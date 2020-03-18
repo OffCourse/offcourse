@@ -1,4 +1,5 @@
 import { useRef, useCallback, useEffect, useState } from 'react';
+import { wrap } from '@popmotion/popcorn';
 import useIsInViewport from 'use-is-in-viewport';
 
 const useAnimationFrame = ({ callback, delay = 0 }) => {
@@ -67,6 +68,19 @@ const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
         next(index);
     }, delay);
     return [index, orderedProjects];
+};
+
+const useCycleElements = ({ elements, currentIndex = 0, numberOfElements = 1 }) => {
+    const numberOfItems = elements.length;
+    const prevItem = elements[wrap(0, numberOfItems, currentIndex - 1)];
+    const currentItem = elements[wrap(0, numberOfItems, currentIndex)];
+    const nextItem = elements[wrap(0, numberOfItems, currentIndex + 1)];
+    const visibleChildren = [
+        [currentItem],
+        [currentItem, nextItem],
+        [prevItem, currentItem, nextItem]
+    ];
+    return { visibleChildren: visibleChildren[numberOfElements - 1] || [] };
 };
 
 const useCanvas = ({ width, height, draw }) => {
@@ -158,6 +172,22 @@ const useVisibility = ({ canLeave = false, modBottom = "0px", modTop = "0px" }) 
     return [canLeave ? !!isInViewport : trigger, targetRef];
 };
 
+const useIndex = args => {
+    var _a;
+    const [currentIndex, setCurrentIndex] = useState(((_a = args) === null || _a === void 0 ? void 0 : _a.initialIndex) || 0);
+    const [intervalDelay, setIntervalDelay] = useState(100000);
+    const nextIndex = useCallback(() => setCurrentIndex(currentIndex + 1), [
+        setCurrentIndex,
+        currentIndex
+    ]);
+    const setIndex = useCallback((index) => {
+        setIntervalDelay(null);
+        setCurrentIndex(index);
+    }, [setIntervalDelay, setCurrentIndex]);
+    useInterval(nextIndex, intervalDelay);
+    return { currentIndex, nextIndex, setIndex };
+};
+
 const useShowTab = () => {
     const [isVisible, setVisibility] = useState(true);
     const handlePositionChange = ({ currentPosition }) => {
@@ -166,5 +196,5 @@ const useShowTab = () => {
     return [isVisible, handlePositionChange];
 };
 
-export { useAnimatedGridCanvas, useAnimationFrame, useCanvas, useCycleItems, useGridCanvas, useInterval, useShowTab, useVisibility };
+export { useAnimatedGridCanvas, useAnimationFrame, useCanvas, useCycleElements, useCycleItems, useGridCanvas, useIndex, useInterval, useShowTab, useVisibility };
 //# sourceMappingURL=index.es.js.map

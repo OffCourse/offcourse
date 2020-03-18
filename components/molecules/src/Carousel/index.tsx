@@ -7,7 +7,7 @@ import { AnimatePresence } from "framer-motion";
 import { outerWrapper, itemsWrapper } from "./styles";
 import Controls from "./Controls";
 import { ItemAnimation } from "./animations";
-import { useIndex, useCycleElements } from "./hooks";
+import { useIndex, useCycleElements } from "@offcourse/hooks";
 
 type CarouselProps = { children: ReactElement[] };
 

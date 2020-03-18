@@ -179,97 +179,10 @@ exports.sourceNodes = ({ actions }) => {
 `);
 };
 
-exports.createPages = async ({ graphql, actions }, options) => {
+exports.createPages = async ({ actions }, options) => {
   const basePath = options.basePath || "/";
-  const { data } = await graphql(`
-    query AllHomepageData {
-      site {
-        siteMetadata {
-          siteName
-          links {
-            href
-            title
-          }
-          callToAction {
-            href
-            title
-          }
-          contactInfo {
-            street
-            zipCode
-            city
-            country
-            email
-          }
-        }
-      }
-      allPageSection {
-        edges {
-          node {
-            id
-            backdropPath
-            order
-            publishable
-            role
-            title
-            description
-            ... on ProjectsSection {
-              projects {
-                title
-                description
-              }
-            }
-            ... on ProfileSection {
-              skills {
-                title
-                description
-              }
-            }
-            ... on ProcessSection {
-              steps {
-                title
-                description
-              }
-            }
-            ... on ContactSection {
-              callToAction
-              form {
-                title
-                fields {
-                  name
-                  label
-                  placeholder
-                  type
-                  options {
-                    value
-                    label
-                  }
-                }
-              }
-            }
-            ... on FooterSection {
-              contactInfo {
-                street
-                zipCode
-                city
-                country
-                email
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
-  const siteMetaData = data.site.siteMetadata;
-  const rawSections = data.allPageSection.edges.map(({ node }) => node);
-  const sections = rawSections
-    .filter(({ publishable }) => publishable)
-    .sort((a, b) => a.order - b.order);
-
   actions.createPage({
     path: basePath,
-    component: require.resolve("./src/templates/HomePage/index.tsx"),
-    context: { sections, siteMetaData }
+    component: require.resolve("./src/templates/HomePage/index.tsx")
   });
 };

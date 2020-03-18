@@ -67,7 +67,6 @@ var appStateMachine = createMachine({
         }
     }
 });
-//# sourceMappingURL=machine.js.map
 
 var updateLinks = assign({
     siteMetaData: function (_a, _event) {
@@ -88,7 +87,6 @@ var updateSections = assign({
         return __assign(__assign({}, sections), (_b = {}, _b[role] = isVisible, _b));
     }
 });
-//# sourceMappingURL=actions.js.map
 
 var actions = /*#__PURE__*/Object.freeze({
     __proto__: null,
@@ -134,7 +132,6 @@ var wrapperStyles = {
     overflowX: "hidden",
     minHeight: "100vh"
 };
-//# sourceMappingURL=styles.js.map
 
 var InnerLayout = function (_a) {
     var className = _a.className, children = _a.children;

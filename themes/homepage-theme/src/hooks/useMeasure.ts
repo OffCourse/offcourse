@@ -30,4 +30,3 @@ const useMeasure: () => [IMeasurable, { ref: any }] = () => {
 };
 
 export default useMeasure;
-

@@ -1,5 +1,4 @@
 import { ReactElement } from "react";
-import { useIndex } from "@offcourse/hooks";
 declare type useCycleElements = (args: {
     elements: ReactElement[];
     currentIndex: number;
@@ -8,4 +7,4 @@ declare type useCycleElements = (args: {
     visibleChildren: ReactElement[];
 };
 declare const useCycleElements: useCycleElements;
-export { useIndex, useCycleElements };
+export default useCycleElements;

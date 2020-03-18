@@ -1,11 +1,10 @@
 import { jsx, Box, useThemeUI, Heading } from 'theme-ui';
 import { useResponsiveValue } from '@theme-ui/match-media';
 import { motion, AnimatePresence } from 'framer-motion';
-import React, { useState, useCallback, forwardRef, useEffect } from 'react';
-import { wrap } from '@popmotion/popcorn';
-import { useInterval, useVisibility } from '@offcourse/hooks';
+import { useIndex, useCycleElements, useVisibility } from '@offcourse/hooks';
 import { ErrorMessage, Field } from 'formik';
 import { Checkbox, Label, Message, Input, TextArea, Text, Heading as Heading$1, Logo, Tab, Avatar } from '@offcourse/atoms';
+import React, { forwardRef, useEffect } from 'react';
 import { defineCustomElements } from '@offcourse/public-badges-drawer/loader';
 
 var outerWrapper = {
@@ -64,35 +63,6 @@ var Controls = function (_a) {
 };
 //# sourceMappingURL=Controls.js.map
 
-var useIndex = function () {
-    var _a = useState(0), currentIndex = _a[0], setCurrentIndex = _a[1];
-    var _b = useState(100000), intervalDelay = _b[0], setIntervalDelay = _b[1];
-    var nextIndex = useCallback(function (index, incrementBy) {
-        if (incrementBy === void 0) { incrementBy = 1; }
-        return setCurrentIndex(index + incrementBy);
-    }, [setCurrentIndex]);
-    var setIndex = useCallback(function (index) {
-        setIntervalDelay(null);
-        setCurrentIndex(index);
-    }, [setIntervalDelay, setCurrentIndex]);
-    useInterval(nextIndex, intervalDelay);
-    return { currentIndex: currentIndex, nextIndex: nextIndex, setIndex: setIndex };
-};
-var useCycleElements = function (_a) {
-    var elements = _a.elements, currentIndex = _a.currentIndex, _b = _a.numberOfElements, numberOfElements = _b === void 0 ? 1 : _b;
-    var numberOfItems = elements.length;
-    var prevItem = elements[wrap(0, numberOfItems, currentIndex - 1)];
-    var currentItem = elements[wrap(0, numberOfItems, currentIndex)];
-    var nextItem = elements[wrap(0, numberOfItems, currentIndex + 1)];
-    var visibleChildren = [
-        [currentItem],
-        [currentItem, nextItem],
-        [prevItem, currentItem, nextItem]
-    ];
-    return { visibleChildren: visibleChildren[numberOfElements - 1] || [] };
-};
-//# sourceMappingURL=hooks.js.map
-
 var Carousel = function (_a) {
     var children = _a.children;
     var _b, _c;
@@ -111,6 +81,7 @@ var Carousel = function (_a) {
             jsx(AnimatePresence, null, visibleChildren.map(function (child) { return (jsx(ItemAnimation, { key: child.props.id }, child)); }))),
         jsx(Controls, { colors: { active: active, passive: passive }, setIndex: setIndex, children: children, currentIndex: currentIndex })));
 };
+//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -460,7 +431,6 @@ var menuItemsStyles = {
 };
 //# sourceMappingURL=styles.js.map
 
-var duration = 0.2;
 var transition = { delay: 0.5, damping: 50 };
 var avatarVariants = {
     idle: { x: "-200%", opacity: 0 },
@@ -484,7 +454,7 @@ var menuVariants = {
 };
 var MenuAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode;
-    return (jsx(motion.div, { initial: "idle", animate: appMode, transition: { duration: duration }, variants: menuVariants }, children));
+    return (jsx(motion.div, { initial: "idle", animate: appMode, transition: { damping: 50 }, variants: menuVariants }, children));
 };
 var callToActionVariants = {
     idle: { x: "200%", opacity: 0.2 },

@@ -7,12 +7,11 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var themeUi = require('theme-ui');
 var matchMedia = require('@theme-ui/match-media');
 var framerMotion = require('framer-motion');
-var React = require('react');
-var React__default = _interopDefault(React);
-var popcorn = require('@popmotion/popcorn');
 var hooks = require('@offcourse/hooks');
 var formik = require('formik');
 var atoms = require('@offcourse/atoms');
+var React = require('react');
+var React__default = _interopDefault(React);
 var loader = require('@offcourse/public-badges-drawer/loader');
 
 var outerWrapper = {
@@ -71,44 +70,15 @@ var Controls = function (_a) {
 };
 //# sourceMappingURL=Controls.js.map
 
-var useIndex = function () {
-    var _a = React.useState(0), currentIndex = _a[0], setCurrentIndex = _a[1];
-    var _b = React.useState(100000), intervalDelay = _b[0], setIntervalDelay = _b[1];
-    var nextIndex = React.useCallback(function (index, incrementBy) {
-        if (incrementBy === void 0) { incrementBy = 1; }
-        return setCurrentIndex(index + incrementBy);
-    }, [setCurrentIndex]);
-    var setIndex = React.useCallback(function (index) {
-        setIntervalDelay(null);
-        setCurrentIndex(index);
-    }, [setIntervalDelay, setCurrentIndex]);
-    hooks.useInterval(nextIndex, intervalDelay);
-    return { currentIndex: currentIndex, nextIndex: nextIndex, setIndex: setIndex };
-};
-var useCycleElements = function (_a) {
-    var elements = _a.elements, currentIndex = _a.currentIndex, _b = _a.numberOfElements, numberOfElements = _b === void 0 ? 1 : _b;
-    var numberOfItems = elements.length;
-    var prevItem = elements[popcorn.wrap(0, numberOfItems, currentIndex - 1)];
-    var currentItem = elements[popcorn.wrap(0, numberOfItems, currentIndex)];
-    var nextItem = elements[popcorn.wrap(0, numberOfItems, currentIndex + 1)];
-    var visibleChildren = [
-        [currentItem],
-        [currentItem, nextItem],
-        [prevItem, currentItem, nextItem]
-    ];
-    return { visibleChildren: visibleChildren[numberOfElements - 1] || [] };
-};
-//# sourceMappingURL=hooks.js.map
-
 var Carousel = function (_a) {
     var children = _a.children;
     var _b, _c;
-    var _d = useIndex(), currentIndex = _d.currentIndex, setIndex = _d.setIndex;
+    var _d = hooks.useIndex(), currentIndex = _d.currentIndex, setIndex = _d.setIndex;
     var theme = themeUi.useThemeUI().theme;
     var active = ((_b = theme.colors) === null || _b === void 0 ? void 0 : _b.primary) || "black";
     var passive = ((_c = theme.colors) === null || _c === void 0 ? void 0 : _c.grayScale[2]) || "lightGray";
     var numberOfElements = matchMedia.useResponsiveValue(function () { return [1, 1, 1, 2, 3]; });
-    var visibleChildren = useCycleElements({
+    var visibleChildren = hooks.useCycleElements({
         numberOfElements: numberOfElements,
         currentIndex: currentIndex,
         elements: children
@@ -118,6 +88,7 @@ var Carousel = function (_a) {
             themeUi.jsx(framerMotion.AnimatePresence, null, visibleChildren.map(function (child) { return (themeUi.jsx(ItemAnimation, { key: child.props.id }, child)); }))),
         themeUi.jsx(Controls, { colors: { active: active, passive: passive }, setIndex: setIndex, children: children, currentIndex: currentIndex })));
 };
+//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -467,7 +438,6 @@ var menuItemsStyles = {
 };
 //# sourceMappingURL=styles.js.map
 
-var duration = 0.2;
 var transition = { delay: 0.5, damping: 50 };
 var avatarVariants = {
     idle: { x: "-200%", opacity: 0 },
@@ -491,7 +461,7 @@ var menuVariants = {
 };
 var MenuAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode;
-    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", animate: appMode, transition: { duration: duration }, variants: menuVariants }, children));
+    return (themeUi.jsx(framerMotion.motion.div, { initial: "idle", animate: appMode, transition: { damping: 50 }, variants: menuVariants }, children));
 };
 var callToActionVariants = {
     idle: { x: "200%", opacity: 0.2 },

@@ -5,6 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var react = require('react');
+var popcorn = require('@popmotion/popcorn');
 var useIsInViewport = _interopDefault(require('use-is-in-viewport'));
 
 const useAnimationFrame = ({ callback, delay = 0 }) => {
@@ -73,6 +74,19 @@ const useCycleItems = ({ items, visibleItems, delay = 2000 }) => {
         next(index);
     }, delay);
     return [index, orderedProjects];
+};
+
+const useCycleElements = ({ elements, currentIndex = 0, numberOfElements = 1 }) => {
+    const numberOfItems = elements.length;
+    const prevItem = elements[popcorn.wrap(0, numberOfItems, currentIndex - 1)];
+    const currentItem = elements[popcorn.wrap(0, numberOfItems, currentIndex)];
+    const nextItem = elements[popcorn.wrap(0, numberOfItems, currentIndex + 1)];
+    const visibleChildren = [
+        [currentItem],
+        [currentItem, nextItem],
+        [prevItem, currentItem, nextItem]
+    ];
+    return { visibleChildren: visibleChildren[numberOfElements - 1] || [] };
 };
 
 const useCanvas = ({ width, height, draw }) => {
@@ -164,6 +178,22 @@ const useVisibility = ({ canLeave = false, modBottom = "0px", modTop = "0px" }) 
     return [canLeave ? !!isInViewport : trigger, targetRef];
 };
 
+const useIndex = args => {
+    var _a;
+    const [currentIndex, setCurrentIndex] = react.useState(((_a = args) === null || _a === void 0 ? void 0 : _a.initialIndex) || 0);
+    const [intervalDelay, setIntervalDelay] = react.useState(100000);
+    const nextIndex = react.useCallback(() => setCurrentIndex(currentIndex + 1), [
+        setCurrentIndex,
+        currentIndex
+    ]);
+    const setIndex = react.useCallback((index) => {
+        setIntervalDelay(null);
+        setCurrentIndex(index);
+    }, [setIntervalDelay, setCurrentIndex]);
+    useInterval(nextIndex, intervalDelay);
+    return { currentIndex, nextIndex, setIndex };
+};
+
 const useShowTab = () => {
     const [isVisible, setVisibility] = react.useState(true);
     const handlePositionChange = ({ currentPosition }) => {
@@ -175,8 +205,10 @@ const useShowTab = () => {
 exports.useAnimatedGridCanvas = useAnimatedGridCanvas;
 exports.useAnimationFrame = useAnimationFrame;
 exports.useCanvas = useCanvas;
+exports.useCycleElements = useCycleElements;
 exports.useCycleItems = useCycleItems;
 exports.useGridCanvas = useGridCanvas;
+exports.useIndex = useIndex;
 exports.useInterval = useInterval;
 exports.useShowTab = useShowTab;
 exports.useVisibility = useVisibility;

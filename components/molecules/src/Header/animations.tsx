@@ -3,7 +3,6 @@ import { FunctionComponent } from "react";
 import { motion } from "framer-motion";
 import { jsx } from "theme-ui";
 
-const duration = 0.2;
 const transition = { delay: 0.5, damping: 50 };
 
 const avatarVariants = {
@@ -46,7 +45,7 @@ const MenuAnimation: FunctionComponent<{ appMode: "menuOpen" | "default" }> = ({
   <motion.div
     initial="idle"
     animate={appMode}
-    transition={{ duration }}
+    transition={{ damping: 50 }}
     variants={menuVariants}
   >
     {children}

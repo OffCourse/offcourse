@@ -1,6 +1,7 @@
 role: ContactSection
 order: 50
 title: Contact Us
+callToAction: Contact Us
 form: 
   title: Tell Us About You
   fields:
