@@ -1,45 +1,23 @@
 /** @jsx jsx */
-import { forwardRef } from "react";
+import { PageLayout as ParentLayout } from "@offcourse/layouts";
 import { jsx } from "theme-ui";
-import { Global } from "@emotion/core";
-import { Header, Footer } from "@offcourse/molecules";
-import { Box } from "theme-ui";
-import { useSiteMetaData } from "../../hooks";
+import { FunctionComponent } from "react";
 
-const wrapperStyles = {
-  display: "grid",
-  minHeight: "100vh"
+const PageLayout: FunctionComponent = ({ children }) => {
+  const siteMetaData = {
+    siteName: "TEST",
+    links: [],
+    callToAction: { href: "", title: "test" },
+    callToActionVisible: false,
+    contactInfo: {
+      street: "TEST",
+      zipCode: "TEST",
+      city: "TEST",
+      country: "TEST",
+      email: "TEST"
+    }
+  };
+  return <ParentLayout siteMetaData={siteMetaData}>{children}</ParentLayout>;
 };
 
-const PageTemplate = forwardRef(
-  (
-    {
-      children,
-      className
-    }: {
-      className?: string;
-      children: any;
-    },
-    ref: any
-  ) => {
-    const {
-      siteName,
-      contactInfo
-    }: {
-      siteName: string;
-      contactInfo: any;
-    } = useSiteMetaData();
-    return (
-      <Box sx={wrapperStyles}>
-        <Global styles={theme => theme.globals} />
-        <Header />
-        <Box className={className}>
-          <div ref={ref}>{children}</div>
-        </Box>
-        <Footer siteName={siteName} contactInfo={contactInfo} />
-      </Box>
-    );
-  }
-);
-
-export default PageTemplate;
+export default PageLayout;

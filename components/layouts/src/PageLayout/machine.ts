@@ -26,7 +26,7 @@ const appStateMachine = createMachine<AppContext, AppEvent, AppState>({
   initial: "default",
   states: {
     default: {
-      entry: "updateLinks",
+      entry: ["updateLinks", "callToActionVisible"],
       on: {
         TOGGLE: "menuOpen"
       },
@@ -38,7 +38,7 @@ const appStateMachine = createMachine<AppContext, AppEvent, AppState>({
   },
   on: {
     UPDATE_SECTIONS: {
-      actions: ["updateSections"]
+      actions: ["updateSections", "callToActionVisible"]
     }
   }
 });

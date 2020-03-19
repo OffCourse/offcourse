@@ -181,8 +181,9 @@ exports.sourceNodes = ({ actions }) => {
 
 exports.createPages = async ({ actions }, options) => {
   const basePath = options.basePath || "/";
+  const path = basePath;
   actions.createPage({
-    path: basePath,
+    path,
     component: require.resolve("./src/templates/HomePage/index.tsx")
   });
 };

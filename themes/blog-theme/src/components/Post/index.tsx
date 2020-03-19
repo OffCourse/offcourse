@@ -6,30 +6,55 @@ import { useMeasure } from "@offcourse/homepage-theme/src/hooks";
 import Backdrop from "../Backdrop";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import {
+  wrapperStyles,
   displayStyles,
-  innerWrapper,
+  HeaderTextStyles,
+  innerWrapperStyles,
   textContainerStyles,
   excerptStyles
 } from "./styles";
 
-const Post: FunctionComponent<any> = ({ slug, title, excerpt, body }) => {
+interface IPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  body: string;
+}
+
+type PostHeaderProps = Pick<IPost, "slug" | "title">;
+
+const PostHeader: FunctionComponent<PostHeaderProps> = ({ slug, title }) => {
   const [{ clientWidth: width, clientHeight: height }, bind] = useMeasure();
   return (
-    <Box sx={{ display: "block", position: "relative" }} as={"section"}>
-      <Box {...bind} sx={displayStyles}>
-        <Backdrop width={width} height={height} />
-        <Box sx={{ ...innerWrapper, alignContent: "end", bg: "transparent" }}>
-          <NavLink href={slug}>
-            <DisplayText>{title}</DisplayText>
-          </NavLink>
-        </Box>
+    <Box {...bind} sx={displayStyles}>
+      <Backdrop width={width} height={height} />
+      <Box sx={HeaderTextStyles}>
+        <NavLink href={slug}>
+          <DisplayText>{title}</DisplayText>
+        </NavLink>
       </Box>
-      <Box sx={innerWrapper}>
-        <Box sx={textContainerStyles}>
-          {!body && <p sx={excerptStyles}>{excerpt}</p>}
-          {body && <MDXRenderer>{body}</MDXRenderer>}
-        </Box>
+    </Box>
+  );
+};
+
+type PostBodyProps = Pick<IPost, "body" | "excerpt">;
+
+const PostBody: FunctionComponent<PostBodyProps> = ({ body, excerpt }) => {
+  return (
+    <Box sx={innerWrapperStyles}>
+      <Box sx={textContainerStyles}>
+        {!body && <p sx={excerptStyles}>{excerpt}</p>}
+        {body && <MDXRenderer>{body}</MDXRenderer>}
       </Box>
+    </Box>
+  );
+};
+
+const Post: FunctionComponent<IPost> = ({ slug, title, excerpt, body }) => {
+  return (
+    <Box sx={wrapperStyles} as={"article"}>
+      <PostHeader slug={slug} title={title} />
+      <PostBody excerpt={excerpt} body={body} />
     </Box>
   );
 };

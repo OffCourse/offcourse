@@ -1,10 +1,17 @@
-const displayStyles = {
+import { SxStyleProp } from "theme-ui";
+
+const wrapperStyles: SxStyleProp = {
+  display: "block",
+  position: "relative"
+};
+
+const displayStyles: SxStyleProp = {
   display: "grid",
   height: "32rem",
   alignContent: "end"
 };
 
-const innerWrapper = {
+const innerWrapperStyles: SxStyleProp = {
   p: 6,
   bg: "white",
   display: "grid",
@@ -12,14 +19,26 @@ const innerWrapper = {
   justifyContent: "center"
 };
 
-const textContainerStyles = {
+const HeaderTextStyles: SxStyleProp = {
+  ...innerWrapperStyles,
+  bg: "transparent"
+};
+
+const textContainerStyles: SxStyleProp = {
   width: "100%",
   maxWidth: "60rem"
 };
 
-const excerptStyles = {
+const excerptStyles: SxStyleProp = {
   fontSize: 2,
   lineHeight: 3
 };
 
-export { innerWrapper, displayStyles, excerptStyles, textContainerStyles };
+export {
+  wrapperStyles,
+  HeaderTextStyles,
+  innerWrapperStyles,
+  displayStyles,
+  excerptStyles,
+  textContainerStyles
+};

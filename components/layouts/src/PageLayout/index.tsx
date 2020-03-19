@@ -3,18 +3,19 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { Global } from "@emotion/core";
 import { IThemeable, IPageData } from "@offcourse/interfaces/src";
-import { StateProvider, useStateValue } from ".//state";
+import { StateProvider, useStateValue } from "./state";
 import InnerLayout from "./InnerLayout";
 
-type PageLayoutProps = IPageData & IThemeable;
+type PageLayoutProps = IPageData & { path: string } & IThemeable;
 
 const PageLayout: FunctionComponent<PageLayoutProps> = ({
   className,
   children,
-  siteMetaData
+  siteMetaData,
+  path
 }) => {
   return (
-    <StateProvider siteMetaData={siteMetaData}>
+    <StateProvider path={path} siteMetaData={siteMetaData}>
       <Global styles={theme => theme.globals} />
       <InnerLayout className={className} siteMetaData={siteMetaData}>
         {children}

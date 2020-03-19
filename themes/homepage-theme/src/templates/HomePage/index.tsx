@@ -12,10 +12,10 @@ type HomePageTemplateProps = {
   path: string;
 };
 
-const HomePageTemplate: FunctionComponent<HomePageTemplateProps> = ({}) => {
+const HomePageTemplate: FunctionComponent<HomePageTemplateProps> = props => {
   const sections = usePageSections();
   return (
-    <PageLayout sx={wrapperStyles}>
+    <PageLayout sx={wrapperStyles} {...props}>
       {sections.map((section: any) => (
         <PageSection key={section.order} {...section} />
       ))}

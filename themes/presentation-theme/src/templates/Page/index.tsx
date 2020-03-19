@@ -1,41 +1,23 @@
 /** @jsx jsx */
-import { forwardRef } from "react";
+import { PageLayout as ParentLayout } from "@offcourse/layouts";
 import { jsx } from "theme-ui";
-import { Global } from "@emotion/core";
-import { Logo } from "@offcourse/atoms";
-import { Box, Container } from "theme-ui";
+import { FunctionComponent } from "react";
 
-const wrapperStyles = {
-  display: "grid",
-  minHeight: "100vh",
-  bg: "primary"
+const PageLayout: FunctionComponent = ({ children }) => {
+  const siteMetaData = {
+    siteName: "TEST",
+    links: [],
+    callToAction: { href: "", title: "test" },
+    callToActionVisible: false,
+    contactInfo: {
+      street: "TEST",
+      zipCode: "TEST",
+      city: "TEST",
+      country: "TEST",
+      email: "TEST"
+    }
+  };
+  return <ParentLayout siteMetaData={siteMetaData}>{children}</ParentLayout>;
 };
 
-const PageTemplate = forwardRef(
-  (
-    {
-      children,
-      className
-    }: {
-      className?: string;
-      children: any;
-    },
-    ref: any
-  ) => {
-    return (
-      <Box sx={wrapperStyles}>
-        <a sx={{ p: 4 }} href="/">
-          <Logo>Offcourse Studio_</Logo>
-        </a>
-        <Global styles={theme => theme.globals} />
-        <Box className={className}>
-          <Container>
-            <div ref={ref}>{children}</div>
-          </Container>
-        </Box>
-      </Box>
-    );
-  }
-);
-
-export default PageTemplate;
+export default PageLayout;

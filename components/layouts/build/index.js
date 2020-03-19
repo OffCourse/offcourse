@@ -58,7 +58,7 @@ var appStateMachine = xstate.createMachine({
     id: "appState",
     initial: "default",
     states: {
-        default: __assign({ entry: "updateLinks", on: {
+        default: __assign({ entry: ["updateLinks", "callToActionVisible"], on: {
                 TOGGLE: "menuOpen"
             } }, callToAction),
         menuOpen: {
@@ -67,19 +67,30 @@ var appStateMachine = xstate.createMachine({
     },
     on: {
         UPDATE_SECTIONS: {
-            actions: ["updateSections"]
+            actions: ["updateSections", "callToActionVisible"]
         }
     }
 });
+//# sourceMappingURL=machine.js.map
 
 var updateLinks = xstate.assign({
     siteMetaData: function (_a, _event) {
-        var siteMetaData = _a.siteMetaData;
+        var siteMetaData = _a.siteMetaData, path = _a.path;
+        var pathTitle = path.replace(/\//, "") || "home";
         var links = siteMetaData.links.filter(function (_a) {
             var title = _a.title;
-            return title !== "home";
+            return title !== pathTitle;
         });
         return __assign(__assign({}, siteMetaData), { links: links });
+    }
+});
+var callToActionVisible = xstate.assign({
+    callToActionVisible: function (_a) {
+        var sections = _a.sections, path = _a.path;
+        if (path !== "/") {
+            return false;
+        }
+        return sections ? !sections["ContactSection"] : true;
     }
 });
 var updateSections = xstate.assign({
@@ -91,10 +102,12 @@ var updateSections = xstate.assign({
         return __assign(__assign({}, sections), (_b = {}, _b[role] = isVisible, _b));
     }
 });
+//# sourceMappingURL=actions.js.map
 
 var actions = /*#__PURE__*/Object.freeze({
     __proto__: null,
     updateLinks: updateLinks,
+    callToActionVisible: callToActionVisible,
     updateSections: updateSections
 });
 
@@ -109,16 +122,13 @@ var StateContext = react.createContext({
     }
 });
 var StateProvider = function (_a) {
-    var children = _a.children, siteMetaData = _a.siteMetaData;
+    var children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path;
     var _b = react$1.useMachine(appStateMachine, {
         devTools: true,
         actions: actions,
-        context: { siteMetaData: siteMetaData }
+        context: { path: path, callToActionVisible: true, siteMetaData: siteMetaData }
     }), current = _b[0], send = _b[1];
     var appMode = current.toStrings()[0];
-    var callToActionVisible = current.context.sections
-        ? !current.context.sections["ContactSection"]
-        : true;
     var registerSection = react.useCallback(function (_a) {
         var role = _a.role, isVisible = _a.isVisible;
         send({ type: "UPDATE_SECTIONS", payload: { role: role, isVisible: isVisible } });
@@ -126,8 +136,7 @@ var StateProvider = function (_a) {
     return (themeUi.jsx(StateContext.Provider, { value: __assign({ appMode: appMode,
             current: current,
             send: send,
-            registerSection: registerSection,
-            callToActionVisible: callToActionVisible }, current.context) }, children));
+            registerSection: registerSection }, current.context) }, children));
 };
 var useStateValue = function () { return react.useContext(StateContext); };
 
@@ -136,6 +145,7 @@ var wrapperStyles = {
     overflowX: "hidden",
     minHeight: "100vh"
 };
+//# sourceMappingURL=styles.js.map
 
 var InnerLayout = function (_a) {
     var className = _a.className, children = _a.children;
@@ -149,8 +159,8 @@ var InnerLayout = function (_a) {
 };
 
 var PageLayout = function (_a) {
-    var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData;
-    return (themeUi.jsx(StateProvider, { siteMetaData: siteMetaData },
+    var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path;
+    return (themeUi.jsx(StateProvider, { path: path, siteMetaData: siteMetaData },
         themeUi.jsx(core.Global, { styles: function (theme) { return theme.globals; } }),
         themeUi.jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };

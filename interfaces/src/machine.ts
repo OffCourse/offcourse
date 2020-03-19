@@ -3,7 +3,9 @@ import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
 type Sections = Record<string, boolean>;
 
 export type AppContext = {
+  path?: string;
   sections?: Sections;
+  callToActionVisible?: boolean;
   siteMetaData?: ISiteMetaData;
 };
 
@@ -19,9 +21,8 @@ export type AppState =
   | {
       value: "default";
       context: {
-        siteMetaData: ISiteMetaData & {
-          callToActionVisible: boolean;
-        };
+        callToActionVisible: boolean;
+        siteMetaData: ISiteMetaData;
       };
     }
   | { value: "menuOpen"; context: { siteMetaData: ISiteMetaData } };

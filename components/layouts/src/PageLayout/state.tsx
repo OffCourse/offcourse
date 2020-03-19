@@ -35,18 +35,15 @@ export const StateContext: Context<AppState> = createContext({
 
 export const StateProvider: FunctionComponent<{
   siteMetaData: ISiteMetaData;
-}> = ({ children, siteMetaData }) => {
+  path: string;
+}> = ({ children, siteMetaData, path }) => {
   const [current, send] = useMachine<AppContext, AppEvent>(machine, {
     devTools: true,
     actions,
-    context: { siteMetaData }
+    context: { path, callToActionVisible: true, siteMetaData }
   });
 
   const appMode = current.toStrings()[0];
-
-  const callToActionVisible = current.context.sections
-    ? !current.context.sections["ContactSection"]
-    : true;
 
   const registerSection = useCallback(
     ({ role, isVisible }: any) => {
@@ -62,7 +59,6 @@ export const StateProvider: FunctionComponent<{
         current,
         send,
         registerSection,
-        callToActionVisible,
         ...current.context
       }}
     >

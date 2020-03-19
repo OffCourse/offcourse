@@ -1,41 +1,22 @@
 /** @jsx jsx */
 import { PageLayout as ParentLayout } from "@offcourse/layouts";
 import { jsx } from "theme-ui";
-import { useStaticQuery, graphql } from "gatsby";
 import { FunctionComponent } from "react";
 
-export const useSiteMetadata = () => {
-  const { site } = useStaticQuery(
-    graphql`
-      query SiteMetaData {
-        site {
-          siteMetadata {
-            siteName
-            links {
-              href
-              title
-            }
-            callToAction {
-              href
-              title
-            }
-            contactInfo {
-              street
-              zipCode
-              city
-              country
-              email
-            }
-          }
-        }
-      }
-    `
-  );
-  return site.siteMetadata;
-};
-
 const PageLayout: FunctionComponent = ({ children }) => {
-  const siteMetaData = useSiteMetadata();
+  const siteMetaData = {
+    siteName: "TEST",
+    links: [],
+    callToAction: { href: "", title: "test" },
+    callToActionVisible: false,
+    contactInfo: {
+      street: "TEST",
+      zipCode: "TEST",
+      city: "TEST",
+      country: "TEST",
+      email: "TEST"
+    }
+  };
   return <ParentLayout siteMetaData={siteMetaData}>{children}</ParentLayout>;
 };
 

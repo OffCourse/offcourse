@@ -3,11 +3,21 @@ import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
 
 const updateLinks = assign<any, any>({
   siteMetaData: (
-    { siteMetaData }: { siteMetaData: ISiteMetaData },
+    { siteMetaData, path }: { siteMetaData: ISiteMetaData; path: string },
     _event: any
   ) => {
-    const links = siteMetaData.links.filter(({ title }) => title !== "home");
+    const pathTitle = path.replace(/\//, "") || "home";
+    const links = siteMetaData.links.filter(({ title }) => title !== pathTitle);
     return { ...siteMetaData, links };
+  }
+});
+
+const callToActionVisible = assign<any, any>({
+  callToActionVisible: ({ sections, path }: any) => {
+    if (path !== "/") {
+      return false;
+    }
+    return sections ? !sections["ContactSection"] : true;
   }
 });
 
@@ -19,5 +29,4 @@ const updateSections = assign<any, any>({
   }
 });
 
-export { updateLinks, updateSections };
-
+export { updateLinks, callToActionVisible, updateSections };

@@ -12,6 +12,7 @@ declare type AppState = {
 export declare const StateContext: Context<AppState>;
 export declare const StateProvider: FunctionComponent<{
     siteMetaData: ISiteMetaData;
+    path: string;
 }>;
 export declare const useStateValue: () => AppState;
 export {};
