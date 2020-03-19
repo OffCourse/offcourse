@@ -15,7 +15,7 @@ module.exports = ({
     {
       resolve: "gatsby-theme-mdx-deck",
       options: {
-        basePath: `/presentations`,
+        basePath: `/decks`,
         contentPath: "./data/decks"
       }
     },

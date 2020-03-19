@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         title: "decks",
-        href: "/presentations"
+        href: "/decks"
       }
     ],
     social: [
