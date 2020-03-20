@@ -13,6 +13,12 @@ import {
   GridCell
 } from "./canvas";
 
+export interface IPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  body: string;
+}
 export interface IPublishable {
   publishable: boolean;
 }

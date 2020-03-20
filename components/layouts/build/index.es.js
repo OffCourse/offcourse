@@ -135,6 +135,7 @@ var StateProvider = function (_a) {
             registerSection: registerSection }, current.context) }, children));
 };
 var useStateValue = function () { return useContext(StateContext); };
+//# sourceMappingURL=state.js.map
 
 var wrapperStyles = {
     display: "grid",
@@ -153,6 +154,7 @@ var InnerLayout = function (_a) {
         children,
         jsx(Footer, __assign({}, siteMetaData))));
 };
+//# sourceMappingURL=InnerLayout.js.map
 
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path;
@@ -160,6 +162,7 @@ var PageLayout = function (_a) {
         jsx(Global, { styles: function (theme) { return theme.globals; } }),
         jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };
+//# sourceMappingURL=index.js.map
 
 export { PageLayout, useStateValue };
 //# sourceMappingURL=index.es.js.map

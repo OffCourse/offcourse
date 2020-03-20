@@ -1,32 +1,51 @@
-module.exports = ({
-  basePath = "data",
-  contentPath = "homepage",
-  projectImagesPath = "project-images"
-}) => {
+const withDefaults = require(`./utils/default-options`);
+
+module.exports = themeOptions => {
+  const { contentPath, assetPath } = withDefaults(themeOptions);
   const plugins = [
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-theme-ui`,
     {
-      resolve: `gatsby-plugin-compile-es6-packages`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        modules: ["gatsby-theme-blog-core"]
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              // should this be configurable by the end-user?
+              maxWidth: 1380,
+              linkImagesToOriginal: false
+            }
+          },
+          { resolve: `gatsby-remark-copy-linked-files` },
+          { resolve: `gatsby-remark-smartypants` }
+        ],
+        remarkPlugins: [require(`remark-slug`)]
       }
     },
-
     {
-      resolve: `gatsby-theme-blog-core`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        basePath: `/blog`,
-        contentPath: "./data/posts",
-        assetPath: "./data/assets"
+        path: contentPath,
+        name: contentPath
       }
     },
-    `gatsby-plugin-theme-ui`
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: assetPath,
+        name: assetPath
+      }
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`
   ];
 
   return {
     siteMetadata: {
       siteName: `Generic Site`
     },
-    plugins: true ? [...plugins] : plugins
+    plugins
   };
 };
