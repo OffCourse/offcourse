@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import Layout from "../../templates/Page";
 import Post from "../../components/Post";
+import Img from "gatsby-image"; // to take image data and render it
 
 type PostPageProps = {
   data: any;
@@ -31,6 +32,7 @@ const posts: FunctionComponent<PostPageProps> = ({ data, ...props }) => {
   const entries = allBlogPost.edges.map(({ node }: any) => node);
   return (
     <Layout {...props}>
+      <Img fluid={data.file.childImageSharp.fluid} />
       <ul sx={{ m: 0, p: 0 }}>
         {entries.map(({ id, ...entry }: any) => (
           <ListItem key={id} {...entry} />

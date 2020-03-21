@@ -49,7 +49,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   createTypes(`interface BlogPost @nodeInterface {
       id: ID!
       title: String!
-      coverImage: String
+      coverImage: File
       body: String!
       slug: String!
       date: Date! @dateformat
@@ -70,7 +70,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           type: `String!`
         },
         coverImage: {
-          type: `String`
+          type: `File`
         },
         date: { type: `Date!`, extensions: { dateformat: {} } },
         tags: { type: `[String]!` },
@@ -133,6 +133,7 @@ exports.onCreateNode = async (
 
       slug = urlResolve(basePath, filePath);
     }
+
     const fieldData = {
       title: node.frontmatter.title,
       tags: node.frontmatter.tags || [],

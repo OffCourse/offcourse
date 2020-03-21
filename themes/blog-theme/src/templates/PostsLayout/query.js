@@ -3,12 +3,11 @@ import PostsLayout from ".";
 export default PostsLayout;
 export const query = graphql`
   query PostsQuery {
-    site {
-      siteMetadata {
-        title
-        social {
-          name
-          url
+    file(relativePath: { eq: "cover.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 500, quality: 100) {
+          ...GatsbyImageSharpFluid
+          presentationWidth
         }
       }
     }

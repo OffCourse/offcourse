@@ -5,17 +5,15 @@ export default PostLayout;
 
 export const query = graphql`
   query PostPageQuery($id: String!, $previousId: String, $nextId: String) {
-    site {
-      siteMetadata {
-        title
-        social {
-          name
-          url
-        }
-      }
-    }
     blogPost(id: { eq: $id }) {
       id
+      coverImage {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       excerpt
       body
       slug
