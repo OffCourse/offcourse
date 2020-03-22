@@ -5,6 +5,7 @@ module.exports = ({
 }) => {
   const plugins = [
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-catch-links`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
