@@ -18,6 +18,7 @@ export interface IPost {
   title: string;
   excerpt: string;
   body: string;
+  coverImage: any;
 }
 export interface IPublishable {
   publishable: boolean;

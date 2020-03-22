@@ -165,8 +165,8 @@ exports.onCreateNode = async (
 };
 
 // These templates are simply data-fetching wrappers that import components
-const PostTemplate = require.resolve(`./src/templates/PostLayout/query.js`);
-const PostsTemplate = require.resolve(`./src/templates/PostsLayout/query.js`);
+const PostTemplate = require.resolve(`./src/templates/PostLayout/index.tsx`);
+const PostsTemplate = require.resolve(`./src/templates/PostsLayout/index.tsx`);
 
 exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   const { createPage } = actions;

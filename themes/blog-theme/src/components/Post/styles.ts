@@ -6,13 +6,12 @@ const wrapperStyles: SxStyleProp = {
 };
 
 const displayStyles: SxStyleProp = {
-  display: "grid",
-  height: "32rem",
-  alignContent: "end"
+  position: "relative"
 };
 
 const innerWrapperStyles: SxStyleProp = {
   p: 6,
+  py: 8,
   bg: "white",
   display: "grid",
   gridTemplateColumns: "minmax(auto, 60rem)",
@@ -20,7 +19,10 @@ const innerWrapperStyles: SxStyleProp = {
 };
 
 const HeaderTextStyles: SxStyleProp = {
-  ...innerWrapperStyles,
+  p: 6,
+  position: "absolute",
+  bottom: 0,
+  left: 0,
   bg: "transparent"
 };
 

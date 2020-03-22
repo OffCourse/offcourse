@@ -6,10 +6,16 @@ import PostBody from "./PostBody";
 import PostHeader from "./Postheader";
 import { IPost } from "@offcourse/interfaces/src";
 
-const Post: FunctionComponent<IPost> = ({ slug, title, excerpt, body }) => {
+const Post: FunctionComponent<IPost> = ({
+  slug,
+  title,
+  excerpt,
+  body,
+  coverImage
+}) => {
   return (
     <Box sx={wrapperStyles} as={"article"}>
-      <PostHeader slug={slug} title={title} />
+      <PostHeader slug={slug} title={title} coverImage={coverImage} />
       <PostBody excerpt={excerpt} body={body} />
     </Box>
   );

@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
+import { graphql } from "gatsby";
 import Layout from "../../templates/Page";
 import Post from "../../components/Post";
-import Img from "gatsby-image"; // to take image data and render it
+import { postListStyles, postListItemStyles } from "./styles";
 
 type PostPageProps = {
   data: any;
@@ -16,26 +17,43 @@ type PostPageProps = {
   navigate: any;
 };
 
-const ListItem: FunctionComponent<any> = post => (
-  <li
-    sx={{
-      listStyle: "none",
-      mb: 6
-    }}
-  >
-    <Post {...post} />
-  </li>
-);
+export const query = graphql`
+  query PostsQuery {
+    allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
+      edges {
+        node {
+          id
+          coverImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+          excerpt
+          slug
+          title
+          date(formatString: "MMMM DD, YYYY")
+          tags
+        }
+      }
+    }
+  }
+`;
 
 const posts: FunctionComponent<PostPageProps> = ({ data, ...props }) => {
   const { allBlogPost } = data;
-  const entries = allBlogPost.edges.map(({ node }: any) => node);
+  const entries = allBlogPost.edges.map(({ node }: any) => ({
+    ...node,
+    coverImage: node.coverImage.childImageSharp.fluid
+  }));
   return (
     <Layout {...props}>
-      <Img fluid={data.file.childImageSharp.fluid} />
-      <ul sx={{ m: 0, p: 0 }}>
+      <ul sx={postListStyles}>
         {entries.map(({ id, ...entry }: any) => (
-          <ListItem key={id} {...entry} />
+          <li key={id} sx={postListItemStyles}>
+            <Post {...entry} />
+          </li>
         ))}
       </ul>
     </Layout>
