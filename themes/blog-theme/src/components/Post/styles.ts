@@ -6,7 +6,12 @@ const wrapperStyles: SxStyleProp = {
 };
 
 const displayStyles: SxStyleProp = {
-  position: "relative"
+  position: "relative",
+  maxHeight: "32rem"
+};
+
+const imageStyles = {
+  position: "static"
 };
 
 const innerWrapperStyles: SxStyleProp = {
@@ -40,6 +45,7 @@ export {
   wrapperStyles,
   HeaderTextStyles,
   innerWrapperStyles,
+  imageStyles,
   displayStyles,
   excerptStyles,
   textContainerStyles

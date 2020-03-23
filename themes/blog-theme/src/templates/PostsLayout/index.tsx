@@ -25,7 +25,13 @@ export const query = graphql`
           id
           coverImage {
             childImageSharp {
-              fluid {
+              fluid(
+                duotone: {
+                  highlight: "#192550"
+                  shadow: "#f00e2e"
+                  opacity: 50
+                }
+              ) {
                 ...GatsbyImageSharpFluid
               }
             }

@@ -1,4 +1,4 @@
-import { SxStyleProp } from "theme-ui";
+import { SxStyleProp,  } from "theme-ui";
 
 export const wrapperStyles: SxStyleProp = {
   userSelect: "none",
@@ -31,7 +31,7 @@ export const imageStyles: SxStyleProp = {
 export const captionStyles: SxStyleProp = {
   display: "flex",
   flexDirection: "column",
-  justifyC6ontent: "flex-end",
+  justifyContent: "flex-end",
   px: [6, 6],
   "p:last-of-type": {
     mb: 0

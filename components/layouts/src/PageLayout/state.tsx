@@ -37,6 +37,7 @@ export const StateProvider: FunctionComponent<{
   siteMetaData: ISiteMetaData;
   path: string;
 }> = ({ children, siteMetaData, path }) => {
+  // @ts-ignore
   const [current, send] = useMachine<AppContext, AppEvent>(machine, {
     devTools: true,
     actions,

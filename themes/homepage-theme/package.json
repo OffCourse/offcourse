@@ -47,6 +47,8 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
+    "gatsby-plugin-react-helmet": "^3.2.1",
+    "react-helmet": "^5.2.1",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "@types/ramda": "^0.26.41",

@@ -5,6 +5,7 @@ module.exports = themeOptions => {
   const plugins = [
     `gatsby-plugin-typescript`,
     `gatsby-plugin-theme-ui`,
+    `gatsby-plugin-catch-links`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {

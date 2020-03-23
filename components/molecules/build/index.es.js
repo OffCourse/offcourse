@@ -5,6 +5,7 @@ import { useIndex, useCycleElements, useVisibility } from '@offcourse/hooks';
 import { ErrorMessage, Field } from 'formik';
 import { Checkbox, Label, Message, Input, TextArea, Text, Heading as Heading$1, Logo, Tab, Avatar } from '@offcourse/atoms';
 import React, { forwardRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { defineCustomElements } from '@offcourse/public-badges-drawer/loader';
 
 var outerWrapper = {
@@ -204,7 +205,7 @@ var imageStyles = {
 var captionStyles = {
     display: "flex",
     flexDirection: "column",
-    justifyC6ontent: "flex-end",
+    justifyContent: "flex-end",
     px: [6, 6],
     "p:last-of-type": {
         mb: 0
@@ -275,6 +276,7 @@ var Step = function (_a, ref) {
             title),
         jsx(Text, { html: description })));
 };
+// @ts-ignore
 var Step$1 = forwardRef(Step);
 //# sourceMappingURL=index.js.map
 
@@ -316,6 +318,14 @@ var Process = function (_a) {
         return (jsx(StepAnimation, { key: index, sx: stepStyles, index: index },
             jsx(Step$1, __assign({ index: index + 1 }, step))));
     })));
+};
+//# sourceMappingURL=index.js.map
+
+var SEO = function (_a) {
+    var siteName = _a.siteName;
+    return (jsx(Helmet, null,
+        jsx("meta", { name: "twitter:title", content: siteName }),
+        jsx("meta", { name: "twitter:description", content: siteName })));
 };
 //# sourceMappingURL=index.js.map
 
@@ -498,5 +508,5 @@ var HeaderSection = function (_a) {
 };
 //# sourceMappingURL=index.js.map
 
-export { Carousel, Footer, HeaderSection as Header, InputField, Process, Project, RadioButtonGroup, Step$1 as Step, TextSection };
+export { Carousel, Footer, HeaderSection as Header, InputField, Process, Project, RadioButtonGroup, SEO, Step$1 as Step, TextSection };
 //# sourceMappingURL=index.es.js.map

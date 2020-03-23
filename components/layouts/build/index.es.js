@@ -3,7 +3,7 @@ import { Global } from '@emotion/core';
 import { createContext, useContext, useCallback } from 'react';
 import { useMachine } from '@xstate/react';
 import { createMachine, assign } from 'xstate';
-import { Header, Footer } from '@offcourse/molecules';
+import { Header, Footer, SEO } from '@offcourse/molecules';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -119,6 +119,7 @@ var StateContext = createContext({
 });
 var StateProvider = function (_a) {
     var children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path;
+    // @ts-ignore
     var _b = useMachine(appStateMachine, {
         devTools: true,
         actions: actions,
@@ -154,15 +155,14 @@ var InnerLayout = function (_a) {
         children,
         jsx(Footer, __assign({}, siteMetaData))));
 };
-//# sourceMappingURL=InnerLayout.js.map
 
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path;
     return (jsx(StateProvider, { path: path, siteMetaData: siteMetaData },
+        jsx(SEO, __assign({}, siteMetaData)),
         jsx(Global, { styles: function (theme) { return theme.globals; } }),
         jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };
-//# sourceMappingURL=index.js.map
 
 export { PageLayout, useStateValue };
 //# sourceMappingURL=index.es.js.map

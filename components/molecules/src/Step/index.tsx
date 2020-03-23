@@ -29,4 +29,5 @@ const Step: FunctionComponent<StepProps> = (
   );
 };
 
+// @ts-ignore
 export default forwardRef(Step);

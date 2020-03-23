@@ -123,6 +123,7 @@ var StateContext = react.createContext({
 });
 var StateProvider = function (_a) {
     var children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path;
+    // @ts-ignore
     var _b = react$1.useMachine(appStateMachine, {
         devTools: true,
         actions: actions,
@@ -158,15 +159,14 @@ var InnerLayout = function (_a) {
         children,
         themeUi.jsx(molecules.Footer, __assign({}, siteMetaData))));
 };
-//# sourceMappingURL=InnerLayout.js.map
 
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path;
     return (themeUi.jsx(StateProvider, { path: path, siteMetaData: siteMetaData },
+        themeUi.jsx(molecules.SEO, __assign({}, siteMetaData)),
         themeUi.jsx(core.Global, { styles: function (theme) { return theme.globals; } }),
         themeUi.jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };
-//# sourceMappingURL=index.js.map
 
 exports.PageLayout = PageLayout;
 exports.useStateValue = useStateValue;

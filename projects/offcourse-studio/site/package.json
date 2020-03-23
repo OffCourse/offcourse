@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "@offcourse/backdrops": "*",
+    "gatsby-plugin-react-helmet": "^3.2.1",
+    "react-helmet": "^5.2.1",
     "@offcourse/blog-theme": "*",
     "@offcourse/homepage-theme": "*",
     "@offcourse/hooks": "*",

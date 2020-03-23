@@ -5,6 +5,7 @@ import Project from "./Project";
 import Process from "./Process";
 import RadioButtonGroup from "./RadioButtonGroup";
 import Step from "./Step";
+import SEO from "./SEO";
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -15,6 +16,7 @@ export {
   Project,
   Process,
   RadioButtonGroup,
+  SEO,
   Step,
   Footer,
   Header

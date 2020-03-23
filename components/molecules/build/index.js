@@ -12,6 +12,7 @@ var formik = require('formik');
 var atoms = require('@offcourse/atoms');
 var React = require('react');
 var React__default = _interopDefault(React);
+var reactHelmet = require('react-helmet');
 var loader = require('@offcourse/public-badges-drawer/loader');
 
 var outerWrapper = {
@@ -211,7 +212,7 @@ var imageStyles = {
 var captionStyles = {
     display: "flex",
     flexDirection: "column",
-    justifyC6ontent: "flex-end",
+    justifyContent: "flex-end",
     px: [6, 6],
     "p:last-of-type": {
         mb: 0
@@ -282,6 +283,7 @@ var Step = function (_a, ref) {
             title),
         themeUi.jsx(atoms.Text, { html: description })));
 };
+// @ts-ignore
 var Step$1 = React.forwardRef(Step);
 //# sourceMappingURL=index.js.map
 
@@ -323,6 +325,14 @@ var Process = function (_a) {
         return (themeUi.jsx(StepAnimation, { key: index, sx: stepStyles, index: index },
             themeUi.jsx(Step$1, __assign({ index: index + 1 }, step))));
     })));
+};
+//# sourceMappingURL=index.js.map
+
+var SEO = function (_a) {
+    var siteName = _a.siteName;
+    return (themeUi.jsx(reactHelmet.Helmet, null,
+        themeUi.jsx("meta", { name: "twitter:title", content: siteName }),
+        themeUi.jsx("meta", { name: "twitter:description", content: siteName })));
 };
 //# sourceMappingURL=index.js.map
 
@@ -512,6 +522,7 @@ exports.InputField = InputField;
 exports.Process = Process;
 exports.Project = Project;
 exports.RadioButtonGroup = RadioButtonGroup;
+exports.SEO = SEO;
 exports.Step = Step$1;
 exports.TextSection = TextSection;
 //# sourceMappingURL=index.js.map
