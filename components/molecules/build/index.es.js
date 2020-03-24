@@ -230,7 +230,6 @@ var innerStyles = {
     fontSize: "2rem",
     wordSpacing: "-0.2em"
 };
-//# sourceMappingURL=styles.js.map
 
 var Project = function (_a) {
     var className = _a.className, children = _a.children, title = _a.title, imageUrl = _a.imageUrl, description = _a.description;
@@ -240,7 +239,6 @@ var Project = function (_a) {
         jsx(Text, { sx: captionStyles, html: description }),
         jsx(Heading$1, { sx: headerStyles }, title)));
 };
-//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",

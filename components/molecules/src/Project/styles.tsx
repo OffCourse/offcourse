@@ -1,4 +1,4 @@
-import { SxStyleProp,  } from "theme-ui";
+import { SxStyleProp } from "theme-ui";
 
 export const wrapperStyles: SxStyleProp = {
   userSelect: "none",
