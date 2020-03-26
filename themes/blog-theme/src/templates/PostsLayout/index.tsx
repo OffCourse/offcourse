@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 import { graphql } from "gatsby";
 import Layout from "../../templates/Page";
 import Post from "../../components/Post";
@@ -25,13 +25,7 @@ export const query = graphql`
           id
           coverImage {
             childImageSharp {
-              fluid(
-                duotone: {
-                  highlight: "#192550"
-                  shadow: "#f00e2e"
-                  opacity: 50
-                }
-              ) {
+              fluid {
                 ...GatsbyImageSharpFluid
               }
             }
@@ -55,13 +49,13 @@ const posts: FunctionComponent<PostPageProps> = ({ data, ...props }) => {
   }));
   return (
     <Layout {...props}>
-      <ul sx={postListStyles}>
+      <Box as="ul" sx={postListStyles}>
         {entries.map(({ id, ...entry }: any) => (
-          <li key={id} sx={postListItemStyles}>
+          <Box as="li" key={id} sx={postListItemStyles}>
             <Post {...entry} />
-          </li>
+          </Box>
         ))}
-      </ul>
+      </Box>
     </Layout>
   );
 };

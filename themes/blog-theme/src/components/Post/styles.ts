@@ -1,44 +1,38 @@
 import { SxStyleProp } from "theme-ui";
 
 const wrapperStyles: SxStyleProp = {
-  display: "block",
-  position: "relative"
-};
-
-const displayStyles: SxStyleProp = {
-  position: "relative",
-  maxHeight: "32rem"
+  bg: "white",
+  minHeight: "32rem"
 };
 
 const imageStyles = {
-  position: "static"
+  height: "32rem"
 };
 
 const innerWrapperStyles: SxStyleProp = {
-  p: 6,
-  py: 8,
-  bg: "white",
   display: "grid",
   gridTemplateColumns: "minmax(auto, 60rem)",
-  justifyContent: "center"
+  justifyContent: "center",
+  justifyItems: "bottom"
 };
 
 const HeaderTextStyles: SxStyleProp = {
-  p: 6,
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  bg: "transparent"
+  display: "grid",
+  gridTemplateColumns: "minmax(auto, 60rem)",
+  height: "100%",
+  justifyContent: "center",
+  alignContent: "end",
+  px: [6, 8],
+  py: [6, 6],
+  zIndex: 1
 };
 
 const textContainerStyles: SxStyleProp = {
-  width: "100%",
-  maxWidth: "60rem"
-};
-
-const excerptStyles: SxStyleProp = {
-  fontSize: 2,
-  lineHeight: 3
+  px: [6, 8],
+  py: [6, 6],
+  ".footnotes": {
+    mt: 8
+  }
 };
 
 export {
@@ -46,7 +40,5 @@ export {
   HeaderTextStyles,
   innerWrapperStyles,
   imageStyles,
-  displayStyles,
-  excerptStyles,
   textContainerStyles
 };

@@ -8,6 +8,9 @@ import {
 } from "./styles";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { IPost } from "@offcourse/interfaces/src";
+// @ts-ignore
+import { MDXProvider } from "@mdx-js/react";
+import * as components from "./components";
 
 type PostBodyProps = Pick<IPost, "body" | "excerpt">;
 
@@ -16,7 +19,9 @@ const PostBody: FunctionComponent<PostBodyProps> = ({ body, excerpt }) => {
     <Box sx={innerWrapperStyles}>
       <Box sx={textContainerStyles}>
         {!body && <p sx={excerptStyles}>{excerpt}</p>}
-        {body && <MDXRenderer>{body}</MDXRenderer>}
+        <MDXProvider components={components}>
+          {body && <MDXRenderer>{body}</MDXRenderer>}
+        </MDXProvider>
       </Box>
     </Box>
   );

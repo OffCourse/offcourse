@@ -18,20 +18,17 @@ var avatarStyles = {
     lineHeight: ["2.5rem", "3rem"],
     fontSize: ["2.1rem", "2.5rem"]
 };
-//# sourceMappingURL=styles.js.map
 
 var Avatar = function (_a) {
     var className = _a.className, onClick = _a.onClick;
     return (jsx(Heading$1, { onClick: onClick, sx: avatarStyles, className: className }, "_"));
 };
-//# sourceMappingURL=index.js.map
 
 /** @jsx jsx */
 var Backdrop = forwardRef(function (_a, ref) {
     var className = _a.className, _b = _a.width, width = _b === void 0 ? 100 : _b, _c = _a.height, height = _c === void 0 ? 100 : _c;
     return (jsx("canvas", { ref: ref, className: className, width: width, height: height }));
 });
-//# sourceMappingURL=index.js.map
 
 var titleize = function (str) {
     return titleCase(str, ["'", "-", "’"]);
@@ -43,7 +40,6 @@ var formatValue = function (value, isNormalized) {
     }
     return isNormalized ? formatTitle(value) : value;
 };
-//# sourceMappingURL=helpers.js.map
 
 var styles = {
     display: "flex",
@@ -80,13 +76,11 @@ var styles = {
         borderColor: "grayScale.1"
     }
 };
-//# sourceMappingURL=styles.js.map
 
 var Button = function (_a) {
     var type = _a.type, children = _a.children, className = _a.className, disabled = _a.disabled;
     return (jsx("button", { sx: styles, disabled: disabled, className: className, type: type }, formatTitle(children)));
 };
-//# sourceMappingURL=index.js.map
 
 var checkboxStyles = {
     WebkitAppearance: "none",
@@ -111,7 +105,6 @@ var wrapperStyles = {
 var labelStyles = {
     fontFamily: "body"
 };
-//# sourceMappingURL=styles.js.map
 
 var labelStyles$1 = {
     fontFamily: "heading",
@@ -120,13 +113,11 @@ var labelStyles$1 = {
     pt: 0,
     userSelect: "none"
 };
-//# sourceMappingURL=styles.js.map
 
 var Label = function (_a) {
     var className = _a.className, children = _a.children, htmlFor = _a.htmlFor;
     return (jsx("label", { className: className, htmlFor: htmlFor, sx: labelStyles$1 }, formatTitle(children)));
 };
-//# sourceMappingURL=index.js.map
 
 var Checkbox = function (_a) {
     var label = _a.label, className = _a.className, id = _a.id, name = _a.name, value = _a.value;
@@ -134,7 +125,6 @@ var Checkbox = function (_a) {
         jsx(Field, { sx: checkboxStyles, className: className, id: id, type: "radio", name: name, value: value }),
         jsx(Label, { sx: labelStyles, htmlFor: id }, label)));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -178,14 +168,12 @@ var textStyles = {
         transform: ["scale(0.95)", "none"]
     }
 };
-//# sourceMappingURL=styles.js.map
 
 var DisplayText = function (_a) {
     var children = _a.children, className = _a.className;
     return (jsx(Box, { sx: wrapperStyles$1, className: className }, children.split(" ").map(function (word, index) { return (jsx("span", { sx: spanStyles, key: index },
         jsx("h1", { sx: textStyles }, word))); })));
 };
-//# sourceMappingURL=index.js.map
 
 var Heading = function (_a) {
     var children = _a.children, className = _a.className, as = _a.as;
@@ -196,7 +184,6 @@ var Heading = function (_a) {
     }
     return (jsx(Heading$1, { as: as, className: className }, formatTitle(children)));
 };
-//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -260,7 +247,6 @@ var inputStyles = {
         outline: "none"
     }
 };
-//# sourceMappingURL=styles.js.map
 
 var Input = function (_a) {
     var className = _a.className, placeholder = _a.placeholder, name = _a.name, _b = _a.value, value = _b === void 0 ? "" : _b, onChange = _a.onChange, onBlur = _a.onBlur, _c = _a.type, type = _c === void 0 ? "text" : _c, _d = _a.autoComplete, autoComplete = _d === void 0 ? false : _d, _e = _a.autoFocus, autoFocus = _e === void 0 ? false : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, _g = _a.required, required = _g === void 0 ? false : _g, _h = _a.isNormalized, isNormalized = _h === void 0 ? true : _h;
@@ -292,7 +278,6 @@ var Input = function (_a) {
     return (jsx(Box, { className: className, sx: wrapperStyles$2 },
         jsx("input", __assign({ sx: inputStyles }, baseProps))));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -331,7 +316,6 @@ var textStyles$1 = {
         mr: 0
     }
 };
-//# sourceMappingURL=styles.js.map
 
 var Logo = function (_a) {
     var children = _a.children, className = _a.className;
@@ -339,7 +323,6 @@ var Logo = function (_a) {
     return (jsx(Box, { sx: wrapperStyles$3, className: className }, words.map(function (word, index) { return (jsx("span", { sx: spanStyles$1, key: index },
         jsx("h1", { sx: textStyles$1 }, word))); })));
 };
-//# sourceMappingURL=index.js.map
 
 var messageStyles = {
     fontFamily: "heading",
@@ -352,13 +335,11 @@ var messageStyles = {
     pb: 2
 };
 var basicMessageStyles = __assign(__assign({}, messageStyles), { pt: 0 });
-//# sourceMappingURL=styles.js.map
 
 var Message = function (_a) {
     var children = _a.children, isBasic = _a.isBasic, className = _a.className;
     return (jsx(Box, { className: className, sx: isBasic ? basicMessageStyles : messageStyles }, formatTitle(children)));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$4 = {
     display: "flex",
@@ -378,8 +359,8 @@ var wrapperStyles$4 = {
 };
 var linkStyles = {
     color: "negative",
-    lineHeight: [2, 3],
-    fontSize: [2, 3],
+    lineHeight: [3, 4],
+    fontSize: [3, 4],
     bg: "transparent",
     textAlign: "inherit",
     p: 0,
@@ -392,7 +373,6 @@ var linkStyles = {
         outline: "none"
     }
 };
-//# sourceMappingURL=styles.js.map
 
 var Tab = function (_a) {
     var className = _a.className, children = _a.children, href = _a.href;
@@ -412,7 +392,6 @@ var wrapperStyles$5 = {
         }
     }
 };
-//# sourceMappingURL=styles.js.map
 
 /** @jsx jsx */
 var Text = function (_a) {
@@ -430,18 +409,15 @@ var Text = function (_a) {
     return (jsx(Box, __assign({}, styleProps),
         jsx("p", null, children)));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$6 = __assign({}, wrapperStyles$2);
 var textAreaStyles = __assign(__assign({}, inputStyles), { fontFamily: "body", fontSize: 1, lineHeight: 1 });
-//# sourceMappingURL=styles.js.map
 
 var TextArea = function (_a) {
     var className = _a.className, _b = _a.placeholder, placeholder = _b === void 0 ? "Enter Something" : _b, name = _a.name, _c = _a.value, value = _c === void 0 ? "" : _c, onChange = _a.onChange, onBlur = _a.onBlur, _d = _a.rows, rows = _d === void 0 ? 4 : _d, _e = _a.autoFocus, autoFocus = _e === void 0 ? false : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f;
     return (jsx("div", { sx: wrapperStyles$6 },
         jsx("textarea", { className: className, sx: textAreaStyles, autoFocus: autoFocus, rows: rows, name: name, disabled: disabled, value: value, placeholder: formatTitle(placeholder), onChange: onChange, onBlur: onBlur })));
 };
-//# sourceMappingURL=index.js.map
 
 export { Avatar, Backdrop, Button, Checkbox, DisplayText, Heading, Input, Label, Logo, Message, Tab, Text, TextArea };
 //# sourceMappingURL=index.es.js.map

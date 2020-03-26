@@ -43,7 +43,15 @@ const theme: ITheme = {
   },
 
   grayScale,
-  fontSizes: ["0.75rem", "1rem", "1.375rem", "1.75rem", "2.5rem", "4rem"],
+  fontSizes: [
+    "0.75rem",
+    "1rem",
+    "1.25rem",
+    "1.375rem",
+    "1.75rem",
+    "2.5rem",
+    "4rem"
+  ],
   breakpoints: ["30rem", "48rem", "64rem", "100rem"],
   lineHeights: [
     "1rem",
@@ -91,8 +99,8 @@ const theme: ITheme = {
       maxWidth: "100%"
     },
     p: {
-      fontSize: 1,
-      lineHeight: 1,
+      fontSize: [1, 1, 2, 2],
+      lineHeight: [1, 1, 3, 3],
       margin: 0,
       mb: 4,
       fontFamily: "body"

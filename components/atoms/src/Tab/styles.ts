@@ -19,8 +19,8 @@ export const wrapperStyles: SxStyleProp = {
 
 export const linkStyles = {
   color: "negative",
-  lineHeight: [2, 3],
-  fontSize: [2, 3],
+  lineHeight: [3, 4],
+  fontSize: [3, 4],
   bg: "transparent",
   textAlign: "inherit",
   p: 0,

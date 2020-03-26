@@ -5,6 +5,7 @@ module.exports = {
     author: "Yeehaa",
     description: `My site description...`,
     siteName: `Offcourse Studio_`,
+    siteUrl: "https://offcourse-studio.com",
     contactInfo: {
       street: "Schiemond 20-22",
       zipCode: "3024EE",
@@ -24,10 +25,6 @@ module.exports = {
       {
         title: "blog",
         href: "/blog"
-      },
-      {
-        title: "decks",
-        href: "/decks"
       }
     ],
     social: [
