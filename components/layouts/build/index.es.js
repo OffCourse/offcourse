@@ -151,7 +151,7 @@ var InnerLayout = function (_a) {
     var toggleMenu = useCallback(function () { return send({ type: "TOGGLE" }); }, [send]);
     var appMode = current.toStrings()[0];
     return (jsx(Box, { className: className, sx: wrapperStyles },
-        jsx(Header, __assign({ appMode: appMode, toggleMenu: toggleMenu, callToActionVisible: callToActionVisible }, siteMetaData)),
+        jsx(Header, __assign({ key: "header", appMode: appMode, toggleMenu: toggleMenu, callToActionVisible: callToActionVisible }, siteMetaData)),
         children,
         jsx(Footer, __assign({}, siteMetaData))));
 };

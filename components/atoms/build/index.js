@@ -7,6 +7,7 @@ var react = require('react');
 var voca = require('voca');
 var ramda = require('ramda');
 var formik = require('formik');
+var gatsby = require('gatsby');
 
 var avatarStyles = {
     userSelect: "none",
@@ -22,6 +23,7 @@ var avatarStyles = {
     lineHeight: ["2.5rem", "3rem"],
     fontSize: ["2.1rem", "2.5rem"]
 };
+//# sourceMappingURL=styles.js.map
 
 var Avatar = function (_a) {
     var className = _a.className, onClick = _a.onClick;
@@ -44,6 +46,7 @@ var formatValue = function (value, isNormalized) {
     }
     return isNormalized ? formatTitle(value) : value;
 };
+//# sourceMappingURL=helpers.js.map
 
 var styles = {
     display: "flex",
@@ -80,6 +83,7 @@ var styles = {
         borderColor: "grayScale.1"
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var Button = function (_a) {
     var type = _a.type, children = _a.children, className = _a.className, disabled = _a.disabled;
@@ -109,6 +113,7 @@ var wrapperStyles = {
 var labelStyles = {
     fontFamily: "body"
 };
+//# sourceMappingURL=styles.js.map
 
 var labelStyles$1 = {
     fontFamily: "heading",
@@ -117,6 +122,7 @@ var labelStyles$1 = {
     pt: 0,
     userSelect: "none"
 };
+//# sourceMappingURL=styles.js.map
 
 var Label = function (_a) {
     var className = _a.className, children = _a.children, htmlFor = _a.htmlFor;
@@ -172,6 +178,7 @@ var textStyles = {
         transform: ["scale(0.95)", "none"]
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var DisplayText = function (_a) {
     var children = _a.children, className = _a.className;
@@ -251,6 +258,7 @@ var inputStyles = {
         outline: "none"
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var Input = function (_a) {
     var className = _a.className, placeholder = _a.placeholder, name = _a.name, _b = _a.value, value = _b === void 0 ? "" : _b, onChange = _a.onChange, onBlur = _a.onBlur, _c = _a.type, type = _c === void 0 ? "text" : _c, _d = _a.autoComplete, autoComplete = _d === void 0 ? false : _d, _e = _a.autoFocus, autoFocus = _e === void 0 ? false : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f, _g = _a.required, required = _g === void 0 ? false : _g, _h = _a.isNormalized, isNormalized = _h === void 0 ? true : _h;
@@ -320,6 +328,7 @@ var textStyles$1 = {
         mr: 0
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var Logo = function (_a) {
     var children = _a.children, className = _a.className;
@@ -339,6 +348,7 @@ var messageStyles = {
     pb: 2
 };
 var basicMessageStyles = __assign(__assign({}, messageStyles), { pt: 0 });
+//# sourceMappingURL=styles.js.map
 
 var Message = function (_a) {
     var children = _a.children, isBasic = _a.isBasic, className = _a.className;
@@ -377,11 +387,12 @@ var linkStyles = {
         outline: "none"
     }
 };
+//# sourceMappingURL=styles.js.map
 
 var Tab = function (_a) {
     var className = _a.className, children = _a.children, href = _a.href;
     return (themeUi.jsx(themeUi.Box, { sx: wrapperStyles$4, className: className },
-        themeUi.jsx("a", { sx: linkStyles, href: href }, formatTitle(children))));
+        themeUi.jsx(gatsby.Link, { sx: linkStyles, to: href }, formatTitle(children))));
 };
 
 var wrapperStyles$5 = {
@@ -396,6 +407,7 @@ var wrapperStyles$5 = {
         }
     }
 };
+//# sourceMappingURL=styles.js.map
 
 /** @jsx jsx */
 var Text = function (_a) {
@@ -416,6 +428,7 @@ var Text = function (_a) {
 
 var wrapperStyles$6 = __assign({}, wrapperStyles$2);
 var textAreaStyles = __assign(__assign({}, inputStyles), { fontFamily: "body", fontSize: 1, lineHeight: 1 });
+//# sourceMappingURL=styles.js.map
 
 var TextArea = function (_a) {
     var className = _a.className, _b = _a.placeholder, placeholder = _b === void 0 ? "Enter Something" : _b, name = _a.name, _c = _a.value, value = _c === void 0 ? "" : _c, onChange = _a.onChange, onBlur = _a.onBlur, _d = _a.rows, rows = _d === void 0 ? 4 : _d, _e = _a.autoFocus, autoFocus = _e === void 0 ? false : _e, _f = _a.disabled, disabled = _f === void 0 ? false : _f;

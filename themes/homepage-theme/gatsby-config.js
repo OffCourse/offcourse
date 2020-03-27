@@ -1,38 +1,37 @@
 module.exports = ({
   basePath = "data",
   contentPath = "homepage",
-  projectImagesPath = "project-images"
+  projectImagesPath = "project-images",
 }) => {
   const plugins = [
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-catch-links`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "data",
-        path: `${basePath}/${contentPath}`
-      }
+        path: `${basePath}/${contentPath}`,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "projectImages",
-        path: `${basePath}/${projectImagesPath}`
-      }
+        path: `${basePath}/${projectImagesPath}`,
+      },
     },
     {
       resolve: "gatsby-transformer-yaml",
       options: {
-        typeName: ({ object }) => object.role
-      }
+        typeName: ({ object }) => object.role,
+      },
     },
-    `gatsby-plugin-theme-ui`
+    `gatsby-plugin-theme-ui`,
   ];
 
   return {
     siteMetadata: {
-      siteName: `Generic Site`
+      siteName: `Generic Site`,
     },
-    plugins
+    plugins,
   };
 };

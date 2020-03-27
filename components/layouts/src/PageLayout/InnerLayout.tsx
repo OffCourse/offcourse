@@ -10,7 +10,7 @@ type PageLayoutProps = IPageData & IThemeable;
 
 const InnerLayout: FunctionComponent<PageLayoutProps> = ({
   className,
-  children
+  children,
 }) => {
   const { send, current, callToActionVisible, siteMetaData } = useStateValue();
   const toggleMenu = useCallback(() => send({ type: "TOGGLE" }), [send]);
@@ -18,6 +18,7 @@ const InnerLayout: FunctionComponent<PageLayoutProps> = ({
   return (
     <Box className={className} sx={wrapperStyles}>
       <Header
+        key="header"
         appMode={appMode}
         toggleMenu={toggleMenu}
         callToActionVisible={callToActionVisible}

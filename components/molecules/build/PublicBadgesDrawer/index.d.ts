@@ -15,6 +15,7 @@ declare global {
 }
 interface IPublicBadgesDrawerProp {
     badgeColor?: string;
+    testMode: boolean;
     modalTheme?: "light" | "dark";
 }
 declare const PublicBadgesDrawer: FunctionComponent<IPublicBadgesDrawerProp>;

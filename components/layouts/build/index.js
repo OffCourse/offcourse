@@ -155,7 +155,7 @@ var InnerLayout = function (_a) {
     var toggleMenu = react.useCallback(function () { return send({ type: "TOGGLE" }); }, [send]);
     var appMode = current.toStrings()[0];
     return (themeUi.jsx(themeUi.Box, { className: className, sx: wrapperStyles },
-        themeUi.jsx(molecules.Header, __assign({ appMode: appMode, toggleMenu: toggleMenu, callToActionVisible: callToActionVisible }, siteMetaData)),
+        themeUi.jsx(molecules.Header, __assign({ key: "header", appMode: appMode, toggleMenu: toggleMenu, callToActionVisible: callToActionVisible }, siteMetaData)),
         children,
         themeUi.jsx(molecules.Footer, __assign({}, siteMetaData))));
 };

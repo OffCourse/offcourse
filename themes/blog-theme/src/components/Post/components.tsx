@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Box } from "theme-ui";
-import { Link } from "gatsby";
-const comp = (as = "div", sx) => (props: any) => (
+
+const comp = (as = "div", sx: any) => (props: any) => (
   <Box as={as} sx={sx} {...props} />
 );
 
@@ -14,15 +14,15 @@ const blockquoteStyles = {
     fontSize: [1, 1, 2, 2],
     lineHeight: [1, 1, 2, 2],
     "&:last-child": {
-      mt: [2, 4]
-    }
-  }
+      mt: [2, 4],
+    },
+  },
 };
 
 const pStyles = {
   fontSize: [2, 2, 3, 3],
   lineHeight: [3, 3, 4, 4],
-  mb: 4
+  mb: 4,
 };
 
 const aStyles = {
@@ -31,22 +31,27 @@ const aStyles = {
   fontFamily: "heading",
   textDecoration: "none",
   "&:hover": {
-    color: "grayScale.4"
+    color: "grayScale.4",
   },
   "&:active": {},
-  "&:visited": {}
+  "&:visited": {},
 };
 
 const h2Styles = {
   fontSize: [3, 3, 4, 4],
   fontFamily: "heading",
   mt: 8,
-  mb: 4
+  mb: 4,
 };
 
-const a = comp(Link, aStyles);
+const hrStyles = {
+  mt: 8,
+};
+
+const a = (props) => <a sx={aStyles} {...props} />;
 const p = comp("p", pStyles);
 const h2 = comp("h2", h2Styles);
+const hr = comp("hr", hrStyles);
 const blockquote = comp("blockquote", blockquoteStyles);
 
-export { blockquote, p, h2, a };
+export { blockquote, p, h2, a, hr };

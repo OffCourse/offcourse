@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx, Box } from "theme-ui";
-import { graphql } from "gatsby";
+import { jsx } from "theme-ui";
 import Layout from "../../templates/Page";
 import Post from "../../components/Post";
-import { postListStyles, postListItemStyles } from "./styles";
+import { graphql } from "gatsby";
+import { ListAnimation, ListItemAnimation } from "./animations";
 
 type PostPageProps = {
   data: any;
@@ -16,8 +16,7 @@ type PostPageProps = {
   pageResources: any;
   navigate: any;
 };
-
-export const query = graphql`
+export const postQuery = graphql`
   query PostsQuery {
     allBlogPost(sort: { fields: [date, title], order: DESC }, limit: 1000) {
       edges {
@@ -45,17 +44,17 @@ const posts: FunctionComponent<PostPageProps> = ({ data, ...props }) => {
   const { allBlogPost } = data;
   const entries = allBlogPost.edges.map(({ node }: any) => ({
     ...node,
-    coverImage: node.coverImage.childImageSharp.fluid
+    coverImage: node.coverImage.childImageSharp.fluid,
   }));
   return (
     <Layout {...props}>
-      <Box as="ul" sx={postListStyles}>
-        {entries.map(({ id, ...entry }: any) => (
-          <Box as="li" key={id} sx={postListItemStyles}>
+      <ListAnimation>
+        {entries.map(({ id, ...entry }: any, index: number) => (
+          <ListItemAnimation index={index} id={id}>
             <Post {...entry} />
-          </Box>
+          </ListItemAnimation>
         ))}
-      </Box>
+      </ListAnimation>
     </Layout>
   );
 };

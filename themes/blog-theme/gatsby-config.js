@@ -17,13 +17,13 @@ const rss = {
     feeds: [
       {
         serialize: ({ query: { site, allBlogPost } }) => {
-          return allBlogPost.edges.map(edge => {
+          return allBlogPost.edges.map((edge) => {
             return Object.assign({}, edge.node.frontmatter, {
               description: edge.node.excerpt,
               date: edge.node.date,
               url: site.siteMetadata.siteUrl + "/blog" + edge.node.slug,
               guid: site.siteMetadata.siteUrl + "/blog" + edge.node.slug,
-              custom_elements: [{ "content:encoded": edge.node.html }]
+              custom_elements: [{ "content:encoded": edge.node.html }],
             });
           });
         },
@@ -49,18 +49,17 @@ const rss = {
         // if `string` is used, it will be used to create RegExp and then test if pathname of
         // current page satisfied this regular expression;
         // if not provided or `undefined`, all pages will have feed reference inserted
-        match: "^/blog/"
-      }
-    ]
-  }
+        match: "^/blog/",
+      },
+    ],
+  },
 };
 
-module.exports = themeOptions => {
+module.exports = (themeOptions) => {
   const { contentPath, assetPath } = withDefaults(themeOptions);
   const plugins = [
     `gatsby-plugin-typescript`,
     `gatsby-plugin-theme-ui`,
-    `gatsby-plugin-catch-links`,
     rss,
     {
       resolve: `gatsby-plugin-mdx`,
@@ -72,38 +71,45 @@ module.exports = themeOptions => {
             options: {
               // should this be configurable by the end-user?
               maxWidth: 1380,
-              linkImagesToOriginal: false
-            }
+              linkImagesToOriginal: false,
+            },
+          },
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_self",
+              rel: "nofollow",
+            },
           },
           { resolve: `gatsby-remark-footnotes` },
           { resolve: `gatsby-remark-copy-linked-files` },
-          { resolve: `gatsby-remark-smartypants` }
+          { resolve: `gatsby-remark-smartypants` },
         ],
-        remarkPlugins: [require(`remark-slug`)]
-      }
+        remarkPlugins: [require(`remark-slug`)],
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: contentPath,
-        name: contentPath
-      }
+        name: contentPath,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: assetPath,
-        name: assetPath
-      }
+        name: assetPath,
+      },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`
+    `gatsby-plugin-sharp`,
   ];
 
   return {
     siteMetadata: {
-      siteName: `Generic Site`
+      siteName: `Generic Site`,
     },
-    plugins
+    plugins,
   };
 };

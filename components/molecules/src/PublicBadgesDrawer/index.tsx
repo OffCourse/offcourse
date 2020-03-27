@@ -31,11 +31,13 @@ declare global {
 }
 interface IPublicBadgesDrawerProp {
   badgeColor?: string;
+  testMode: boolean;
   modalTheme?: "light" | "dark";
 }
 
 const PublicBadgesDrawer: FunctionComponent<IPublicBadgesDrawerProp> = ({
   badgeColor = "white",
+  testMode = false,
   modalTheme = "light"
 }) => {
   // tslint:disable-next-line
@@ -47,6 +49,7 @@ const PublicBadgesDrawer: FunctionComponent<IPublicBadgesDrawerProp> = ({
   return (
     <publicbadges-drawer
       domain-name={"https://offcourse-studio.com/"}
+      test-mode={testMode}
       badge-color={badgeColor}
       modal-theme={modalTheme}
     />

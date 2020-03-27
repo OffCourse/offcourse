@@ -1,23 +1,17 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx, Box, Heading } from "theme-ui";
-import { Logo } from "@offcourse/atoms";
 import { IThemeable } from "@offcourse/interfaces/src";
 import { IContactInfo } from "@offcourse/interfaces/src";
 import { FooterData } from "@offcourse/interfaces/src/pages";
-import {
-  drawerStyles,
-  outerWrapperStyles,
-  logoStyles,
-  contactStyles,
-  scalingContainerStyles
-} from "./styles";
+import { drawerStyles, outerWrapperStyles, contactStyles } from "./styles";
 import PublicBadgesDrawer from "../PublicBadgesDrawer";
 
 type FooterProps = FooterData & IThemeable;
 
-const ContactInfo: FunctionComponent<IContactInfo> = ({
+const ContactInfo: FunctionComponent<IContactInfo & { siteName: string }> = ({
   street,
+  siteName,
   zipCode,
   country,
   city,
@@ -25,7 +19,7 @@ const ContactInfo: FunctionComponent<IContactInfo> = ({
 }) => {
   return (
     <Box sx={contactStyles}>
-      <Heading>Contact</Heading>
+      <Heading>{siteName}</Heading>
       <Box as={"section"}>
         <p>{street}</p>
         <p>{`${zipCode} ${city}`}</p>
@@ -43,12 +37,9 @@ const Footer: FunctionComponent<FooterProps> = ({
 }) => {
   return (
     <Box sx={outerWrapperStyles} className={className}>
-      <div sx={scalingContainerStyles}>
-        <ContactInfo {...contactInfo} />
-        <div sx={drawerStyles}>
-          <PublicBadgesDrawer modalTheme="light" />
-        </div>
-        {siteName && <Logo sx={logoStyles}>{siteName}</Logo>}
+      <ContactInfo siteName={siteName} {...contactInfo} />
+      <div sx={drawerStyles}>
+        <PublicBadgesDrawer testMode={false} modalTheme="light" />
       </div>
     </Box>
   );

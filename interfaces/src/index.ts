@@ -10,15 +10,19 @@ import {
   ICanvasProps,
   IShapeProps,
   Shape,
-  GridCell
+  GridCell,
 } from "./canvas";
 
 export interface IPost {
+  id: string;
   slug: string;
   title: string;
+  tags: string[];
+  date: string;
   excerpt: string;
   body: string;
   coverImage: any;
+  coverImageSrc: string;
 }
 export interface IPublishable {
   publishable: boolean;
@@ -76,5 +80,5 @@ export {
   Tab,
   Message,
   Button,
-  Heading
+  Heading,
 };

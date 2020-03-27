@@ -49,7 +49,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   createTypes(`interface BlogPost @nodeInterface {
       id: ID!
       title: String!
-      coverImage: File
+      coverImage: File!
       body: String!
       slug: String!
       date: Date! @dateformat
@@ -70,7 +70,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           type: `String!`
         },
         coverImage: {
-          type: `File`
+          type: `File!`
         },
         date: { type: `Date!`, extensions: { dateformat: {} } },
         tags: { type: `[String]!` },

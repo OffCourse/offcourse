@@ -333,76 +333,54 @@ var SEO = function (_a) {
 
 var outerWrapperStyles = {
     display: "grid",
-    pt: [7, 7, 7, 8, "5rem"],
-    pb: [6, 6, 6, 6],
+    gridTemplateRows: ["1fr 1fr", "1fr"],
+    gridTemplateColumns: ["1fr", "1fr 1fr"],
+    gridRowGap: [6],
     px: [6, 6, 8, 8],
+    py: [6, 6, 8, 8],
     bg: "grayScale.4",
-    maxHeight: "60vh"
+    height: "100%",
+    alignItems: "center"
 };
 var contactStyles = {
-    order: [0, 1],
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    alignSelf: "center",
     lineHeight: "0.4rem",
     fontFamily: "body",
     color: "grayScale.0",
-    gridRow: [2, 1],
     h2: {
         fontFamily: "monospace",
         wordSpacing: "-0.3em",
+        lineHeight: "1.rem",
         mb: 1
     },
     p: {
         mb: 0
     }
 };
-var scalingContainerStyles = {
-    display: "grid",
-    gridTemplateColumns: ["1fr 1fr", "1fr 1fr 1fr"],
-    gridTemplateRows: ["1fr 1fr", "1fr"],
-    gridRowGap: [6, 7],
-    "@media(max-width: 20rem)": {
-        transformOrigin: "top left",
-        transform: ["scale(0.8)", "none"]
-    }
-};
 var drawerStyles = {
-    alignItems: "center",
-    justifySelf: ["center"],
-    gridColumn: ["span 2", "span 1"],
-    order: [0, 1],
-    gridRow: [1, 1]
-};
-var logoStyles = {
-    gridRow: [2, 1],
-    order: [2, 2],
-    alignSelf: "center",
-    h1: {
-        color: "grayScale.4",
-        bg: "grayScale.0"
-    }
+    justifySelf: ["end"]
 };
 //# sourceMappingURL=styles.js.map
 
 /** @jsx jsx */
 var PublicBadgesDrawer = function (_a) {
-    var _b = _a.badgeColor, badgeColor = _b === void 0 ? "white" : _b, _c = _a.modalTheme, modalTheme = _c === void 0 ? "light" : _c;
+    var _b = _a.badgeColor, badgeColor = _b === void 0 ? "white" : _b, _c = _a.testMode, testMode = _c === void 0 ? false : _c, _d = _a.modalTheme, modalTheme = _d === void 0 ? "light" : _d;
     // tslint:disable-next-line
     var inBrowser = typeof window !== "undefined" ? true : null;
     React.useEffect(function () {
         // tslint:disable-next-line
         inBrowser && loader.defineCustomElements(window);
     }, [inBrowser]);
-    return (themeUi.jsx("publicbadges-drawer", { "domain-name": "https://offcourse-studio.com/", "badge-color": badgeColor, "modal-theme": modalTheme }));
+    return (themeUi.jsx("publicbadges-drawer", { "domain-name": "https://offcourse-studio.com/", "test-mode": testMode, "badge-color": badgeColor, "modal-theme": modalTheme }));
 };
 //# sourceMappingURL=index.js.map
 
 var ContactInfo = function (_a) {
-    var street = _a.street, zipCode = _a.zipCode, country = _a.country, city = _a.city, email = _a.email;
+    var street = _a.street, siteName = _a.siteName, zipCode = _a.zipCode, country = _a.country, city = _a.city, email = _a.email;
     return (themeUi.jsx(themeUi.Box, { sx: contactStyles },
-        themeUi.jsx(themeUi.Heading, null, "Contact"),
+        themeUi.jsx(themeUi.Heading, null, siteName),
         themeUi.jsx(themeUi.Box, { as: "section" },
             themeUi.jsx("p", null, street),
             themeUi.jsx("p", null, zipCode + " " + city),
@@ -412,12 +390,11 @@ var ContactInfo = function (_a) {
 var Footer = function (_a) {
     var className = _a.className, siteName = _a.siteName, contactInfo = _a.contactInfo;
     return (themeUi.jsx(themeUi.Box, { sx: outerWrapperStyles, className: className },
-        themeUi.jsx("div", { sx: scalingContainerStyles },
-            themeUi.jsx(ContactInfo, __assign({}, contactInfo)),
-            themeUi.jsx("div", { sx: drawerStyles },
-                themeUi.jsx(PublicBadgesDrawer, { modalTheme: "light" })),
-            siteName && themeUi.jsx(atoms.Logo, { sx: logoStyles }, siteName))));
+        themeUi.jsx(ContactInfo, __assign({ siteName: siteName }, contactInfo)),
+        themeUi.jsx("div", { sx: drawerStyles },
+            themeUi.jsx(PublicBadgesDrawer, { testMode: false, modalTheme: "light" }))));
 };
+//# sourceMappingURL=index.js.map
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -480,11 +457,11 @@ var CallToActionAnimation = function (_a) {
 
 var wrapperStyles$3 = {
     display: "flex",
-    flexDirection: ["column", "row"],
+    flexDirection: ["row", "row"],
     "> div": {
         ml: [4],
-        mb: [4]
-    }
+        mb: [4],
+    },
 };
 //# sourceMappingURL=styles.js.map
 

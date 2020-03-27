@@ -11,33 +11,33 @@ module.exports = {
       zipCode: "3024EE",
       city: "Rotterdam",
       country: "The Netherlands",
-      email: "contact@offcourse.io"
+      email: "contact@offcourse.io",
     },
     callToAction: {
       title: "contact us",
-      href: "#ContactSection"
+      href: "#ContactSection",
     },
     links: [
       {
         title: "home",
-        href: "/"
+        href: "/",
       },
       {
         title: "blog",
-        href: "/blog"
-      }
+        href: "/blog",
+      },
     ],
     social: [
       {
         name: `Twitter`,
-        url: "https://twitter.com/yeehaa"
+        url: "https://twitter.com/yeehaa",
       },
       {
         name: "GitHub",
-        url: "https://github.com/offcourse/"
-      }
+        url: "https://github.com/offcourse/",
+      },
     ],
-    title: "Offcourse"
+    title: "Offcourse",
   },
   plugins: [
     "gatsby-plugin-typescript",
@@ -45,18 +45,26 @@ module.exports = {
     "@offcourse/blog-theme",
     "@offcourse/presentation-theme",
     {
+      resolve: "gatsby-plugin-matomo",
+      options: {
+        siteId: "1",
+        matomoUrl: "https://offcoursestudio.matomo.cloud",
+        siteUrl: "https://offcourse-studio.com",
+      },
+    },
+    {
       resolve: `gatsby-plugin-s3`,
       options: {
         bucketName: "offcourse-studio-website",
         protocol: siteAddress.protocol.slice(0, -1),
-        hostname: siteAddress.hostname
-      }
+        hostname: siteAddress.hostname,
+      },
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: siteAddress.href.slice(0, -1)
-      }
-    }
-  ]
+        siteUrl: siteAddress.href.slice(0, -1),
+      },
+    },
+  ],
 };

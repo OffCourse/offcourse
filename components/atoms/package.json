@@ -17,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
+    "gatsby": "^2.19.17",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@types/jest": "^25.1.2",
     "@types/ramda": "^0.26.41",
@@ -49,6 +50,7 @@
   "peerDependencies": {
     "react": "^16",
     "react-dom": "^16",
+    "gatsby": "^2.19.17",
     "voca": "^1.4.0",
     "ramda": "^0.27.0",
     "theme-ui": "^0.3.1",

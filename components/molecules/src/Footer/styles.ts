@@ -2,26 +2,27 @@ import { SxStyleProp } from "theme-ui";
 
 export const outerWrapperStyles = {
   display: "grid",
-  pt: [7, 7, 7, 8, "5rem"],
-  pb: [6, 6, 6, 6],
+  gridTemplateRows: ["1fr 1fr", "1fr"],
+  gridTemplateColumns: ["1fr", "1fr 1fr"],
+  gridRowGap: [6],
   px: [6, 6, 8, 8],
+  py: [6, 6, 8, 8],
   bg: "grayScale.4",
-  maxHeight: "60vh"
+  height: "100%",
+  alignItems: "center"
 };
 
 export const contactStyles: SxStyleProp = {
-  order: [0, 1],
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
-  alignSelf: "center",
   lineHeight: "0.4rem",
   fontFamily: "body",
   color: "grayScale.0",
-  gridRow: [2, 1],
   h2: {
     fontFamily: "monospace",
     wordSpacing: "-0.3em",
+    lineHeight: "1.rem",
     mb: 1
   },
   p: {
@@ -29,31 +30,6 @@ export const contactStyles: SxStyleProp = {
   }
 };
 
-export const scalingContainerStyles = {
-  display: "grid",
-  gridTemplateColumns: ["1fr 1fr", "1fr 1fr 1fr"],
-  gridTemplateRows: ["1fr 1fr", "1fr"],
-  gridRowGap: [6, 7],
-  "@media(max-width: 20rem)": {
-    transformOrigin: "top left",
-    transform: ["scale(0.8)", "none"]
-  }
-};
-
 export const drawerStyles: SxStyleProp = {
-  alignItems: "center",
-  justifySelf: ["center"],
-  gridColumn: ["span 2", "span 1"],
-  order: [0, 1],
-  gridRow: [1, 1]
-};
-
-export const logoStyles = {
-  gridRow: [2, 1],
-  order: [2, 2],
-  alignSelf: "center",
-  h1: {
-    color: "grayScale.4",
-    bg: "grayScale.0"
-  }
+  justifySelf: ["end"]
 };
