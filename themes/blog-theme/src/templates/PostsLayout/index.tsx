@@ -2,7 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import Layout from "../../templates/Page";
-import Post from "../../components/Post";
+import PostHeader from "../../components/PostHeader";
 import { graphql } from "gatsby";
 import { ListAnimation, ListItemAnimation } from "./animations";
 
@@ -50,8 +50,8 @@ const posts: FunctionComponent<PostPageProps> = ({ data, ...props }) => {
     <Layout {...props}>
       <ListAnimation>
         {entries.map(({ id, ...entry }: any, index: number) => (
-          <ListItemAnimation index={index} id={id}>
-            <Post {...entry} />
+          <ListItemAnimation isOdd={index % 2 === 0} id={id}>
+            <PostHeader {...entry} isOdd={index % 2 === 0} />
           </ListItemAnimation>
         ))}
       </ListAnimation>

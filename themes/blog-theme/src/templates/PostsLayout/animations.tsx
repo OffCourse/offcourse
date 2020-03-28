@@ -5,7 +5,9 @@ import { motion } from "framer-motion";
 import { postListStyles, postListItemStyles } from "./styles";
 
 const itemVariants = {
-  initial: { x: "100%" },
+  initial: (isOdd: boolean) => {
+    return isOdd ? { x: "100%" } : { x: "-100%" };
+  },
   visible: { x: 0, transition: { damping: 500 } },
 };
 
@@ -31,14 +33,14 @@ const ListAnimation: FunctionComponent = ({ children }) => {
   );
 };
 
-const ListItemAnimation: FunctionComponent<{ id: string; index: number }> = ({
+const ListItemAnimation: FunctionComponent<{ id: string; isOdd: boolean }> = ({
   children,
   id,
-  index,
+  isOdd,
 }) => {
   return (
     <motion.li
-      custom={index}
+      custom={isOdd}
       variants={itemVariants}
       key={id}
       sx={postListItemStyles}

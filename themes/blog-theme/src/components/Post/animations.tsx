@@ -24,14 +24,6 @@ const HeaderAnimation: FunctionComponent<{ isFullPost: boolean }> = ({
   return (
     <motion.div
       sx={{ maxHeight: "32rem" }}
-      whileHover={{
-        x: "-15rem",
-        transition,
-      }}
-      whileTap={{
-        x: "-15rem",
-        transition,
-      }}
       variants={headerVariants}
       custom={{ isFullPost }}
       initial={"initial"}
