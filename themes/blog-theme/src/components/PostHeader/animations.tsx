@@ -18,7 +18,6 @@ const HeaderAnimation: FunctionComponent<{ isOdd: boolean }> = ({
 }) => {
   return (
     <motion.div
-      style={{ height: "100%" }}
       custom={isOdd}
       variants={headerVariants}
       whileHover={"hover"}

@@ -16,7 +16,7 @@ const sidepanelStyles: SxStyleProp = {
 };
 
 const imageStyles: SxStyleProp = {
-  height: "100%",
+  height: "32rem",
 };
 
 const headerTextStyles: SxStyleProp = {
