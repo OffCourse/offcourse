@@ -16,10 +16,10 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
 
   const dirs = [
     path.join(program.directory, contentPath),
-    path.join(program.directory, assetPath)
+    path.join(program.directory, assetPath),
   ];
 
-  dirs.forEach(dir => {
+  dirs.forEach((dir) => {
     debug(`Initializing ${dir} directory`);
     if (!fs.existsSync(dir)) {
       mkdirp.sync(dir);
@@ -27,7 +27,7 @@ exports.onPreBootstrap = ({ store }, themeOptions) => {
   });
 };
 
-const mdxResolverPassthrough = fieldName => async (
+const mdxResolverPassthrough = (fieldName) => async (
   source,
   args,
   context,
@@ -35,11 +35,11 @@ const mdxResolverPassthrough = fieldName => async (
 ) => {
   const type = info.schema.getType(`Mdx`);
   const mdxNode = context.nodeModel.getNodeById({
-    id: source.parent
+    id: source.parent,
   });
   const resolver = type.getFields()[fieldName].resolve;
   const result = await resolver(mdxNode, args, context, {
-    fieldName
+    fieldName,
   });
   return result;
 };
@@ -64,13 +64,13 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       fields: {
         id: { type: `ID!` },
         title: {
-          type: `String!`
+          type: `String!`,
         },
         slug: {
-          type: `String!`
+          type: `String!`,
         },
         coverImage: {
-          type: `File!`
+          type: `File!`,
         },
         date: { type: `Date!`, extensions: { dateformat: {} } },
         tags: { type: `[String]!` },
@@ -80,17 +80,17 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           args: {
             pruneLength: {
               type: `Int`,
-              defaultValue: 140
-            }
+              defaultValue: 140,
+            },
           },
-          resolve: mdxResolverPassthrough(`excerpt`)
+          resolve: mdxResolverPassthrough(`excerpt`),
         },
         body: {
           type: `String!`,
-          resolve: mdxResolverPassthrough(`body`)
-        }
+          resolve: mdxResolverPassthrough(`body`),
+        },
       },
-      interfaces: [`Node`, `BlogPost`]
+      interfaces: [`Node`, `BlogPost`],
     })
   );
 };
@@ -101,7 +101,7 @@ exports.onCreateNode = async (
   { node, actions, getNode, createNodeId },
   themeOptions
 ) => {
-  const { createNode, createParentChildLink } = actions;
+  const { createNode, createParentChildLink, createNodeField } = actions;
   const { contentPath, basePath } = withDefaults(themeOptions);
 
   // Make sure it's an MDX node
@@ -128,7 +128,7 @@ exports.onCreateNode = async (
       const filePath = createFilePath({
         node: fileNode,
         getNode,
-        basePath: contentPath
+        basePath: contentPath,
       });
 
       slug = urlResolve(basePath, filePath);
@@ -140,7 +140,7 @@ exports.onCreateNode = async (
       coverImage: node.frontmatter.coverImage,
       slug,
       date: node.frontmatter.date,
-      keywords: node.frontmatter.keywords || []
+      keywords: node.frontmatter.keywords || [],
     };
 
     const mdxBlogPostId = createNodeId(`${node.id} >>> MdxBlogPost`);
@@ -157,8 +157,8 @@ exports.onCreateNode = async (
           .update(JSON.stringify(fieldData))
           .digest(`hex`),
         content: JSON.stringify(fieldData),
-        description: `Mdx implementation of the BlogPost interface`
-      }
+        description: `Mdx implementation of the BlogPost interface`,
+      },
     });
     createParentChildLink({ parent: node, child: getNode(mdxBlogPostId) });
   }
@@ -204,8 +204,8 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
       context: {
         id: post.id,
         previousId: previous ? previous.node.id : undefined,
-        nextId: next ? next.node.id : undefined
-      }
+        nextId: next ? next.node.id : undefined,
+      },
     });
   });
 
@@ -213,6 +213,6 @@ exports.createPages = async ({ graphql, actions, reporter }, themeOptions) => {
   createPage({
     path: basePath,
     component: PostsTemplate,
-    context: {}
+    context: {},
   });
 };

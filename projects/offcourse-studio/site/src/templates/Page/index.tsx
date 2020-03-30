@@ -5,12 +5,21 @@ import { useStaticQuery, graphql } from "gatsby";
 import { FunctionComponent } from "react";
 
 export const useSiteMetadata = () => {
-  const { site } = useStaticQuery(
+  const { site, ogImageDefault } = useStaticQuery(
     graphql`
       query SiteMetaData {
+        ogImageDefault: file(absolutePath: { regex: "/assets/cover-image/" }) {
+          childImageSharp {
+            fixed(height: 630, width: 1200) {
+              src
+            }
+          }
+        }
         site {
           siteMetadata {
             siteName
+            siteUrl
+            description
             links {
               href
               title
@@ -31,7 +40,7 @@ export const useSiteMetadata = () => {
       }
     `
   );
-  return site.siteMetadata;
+  return { ...site.siteMetadata, image: ogImageDefault.childImageSharp.fixed.src };
 };
 
 const PageLayout: FunctionComponent<{ path: string }> = ({

@@ -125,6 +125,7 @@ var RadioButtonGroup = function (_a) {
         return jsx(Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -153,6 +154,7 @@ var InputField = function (_a) {
         jsx(ErrorMessage, { render: function (msg) { return jsx(Message, { isBasic: true }, msg); }, name: name }),
         jsx(Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
+//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -173,6 +175,7 @@ var TextSection = function (_a) {
         jsx(Heading, { sx: titleStyles }, title),
         jsx(Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -237,6 +240,7 @@ var Project = function (_a) {
         jsx(Text, { sx: captionStyles, html: description }),
         jsx(Heading$1, { sx: headerStyles }, title)));
 };
+//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -274,6 +278,7 @@ var Step = function (_a, ref) {
 };
 // @ts-ignore
 var Step$1 = forwardRef(Step);
+//# sourceMappingURL=index.js.map
 
 var stepVariants = {
     hidden: function (isEven) { return ({
@@ -317,12 +322,27 @@ var Process = function (_a) {
 //# sourceMappingURL=index.js.map
 
 var SEO = function (_a) {
-    var siteName = _a.siteName;
-    return (jsx(Helmet, null,
-        jsx("meta", { name: "twitter:title", content: siteName }),
-        jsx("meta", { name: "twitter:description", content: siteName })));
+    var siteMetaData = _a.siteMetaData;
+    var siteName = siteMetaData.siteName, siteUrl = siteMetaData.siteUrl, description = siteMetaData.description, image = siteMetaData.image;
+    var seo = {
+        title: siteName,
+        description: description,
+        image: "" + siteUrl + image,
+        url: "" + siteUrl,
+    };
+    return (jsx(Helmet, { title: seo.title },
+        jsx("meta", { name: "description", content: seo.description }),
+        jsx("meta", { name: "image", content: seo.image }),
+        jsx("meta", { property: "og:url", content: seo.url }),
+        jsx("meta", { property: "og:title", content: seo.title }),
+        jsx("meta", { property: "og:description", content: seo.description }),
+        jsx("meta", { property: "og:image", content: seo.image }),
+        jsx("meta", { name: "twitter:card", content: "summary_large_image" }),
+        jsx("meta", { name: "twitter:title", content: seo.title }),
+        jsx("meta", { name: "twitter:creator", content: "yeehaa" }),
+        jsx("meta", { name: "twitter:description", content: seo.description }),
+        jsx("meta", { name: "twitter:image", content: seo.image })));
 };
-//# sourceMappingURL=index.js.map
 
 var outerWrapperStyles = {
     display: "grid",
@@ -465,6 +485,7 @@ var Menu = function (_a) {
         return (jsx(Tab, { key: title, href: href }, title));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
@@ -476,6 +497,7 @@ var HeaderSection = function (_a) {
                 jsx(Menu, { links: links })),
             jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (jsx(Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
+//# sourceMappingURL=index.js.map
 
 export { Carousel, Footer, HeaderSection as Header, InputField, Process, Project, RadioButtonGroup, SEO, Step$1 as Step, TextSection };
 //# sourceMappingURL=index.es.js.map

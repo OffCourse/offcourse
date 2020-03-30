@@ -3,6 +3,9 @@ import { Link } from "./components";
 
 export interface ISiteMetaData {
   siteName: string;
+  siteUrl: string;
+  image: any,
+  description: string,
   contactInfo: any;
   links: Link[];
   callToAction: Link | null;

@@ -132,6 +132,7 @@ var RadioButtonGroup = function (_a) {
         return themeUi.jsx(atoms.Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -160,6 +161,7 @@ var InputField = function (_a) {
         themeUi.jsx(formik.ErrorMessage, { render: function (msg) { return themeUi.jsx(atoms.Message, { isBasic: true }, msg); }, name: name }),
         themeUi.jsx(formik.Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
+//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -180,6 +182,7 @@ var TextSection = function (_a) {
         themeUi.jsx(themeUi.Heading, { sx: titleStyles }, title),
         themeUi.jsx(atoms.Text, { html: description })));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -244,6 +247,7 @@ var Project = function (_a) {
         themeUi.jsx(atoms.Text, { sx: captionStyles, html: description }),
         themeUi.jsx(atoms.Heading, { sx: headerStyles }, title)));
 };
+//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -281,6 +285,7 @@ var Step = function (_a, ref) {
 };
 // @ts-ignore
 var Step$1 = React.forwardRef(Step);
+//# sourceMappingURL=index.js.map
 
 var stepVariants = {
     hidden: function (isEven) { return ({
@@ -324,12 +329,27 @@ var Process = function (_a) {
 //# sourceMappingURL=index.js.map
 
 var SEO = function (_a) {
-    var siteName = _a.siteName;
-    return (themeUi.jsx(reactHelmet.Helmet, null,
-        themeUi.jsx("meta", { name: "twitter:title", content: siteName }),
-        themeUi.jsx("meta", { name: "twitter:description", content: siteName })));
+    var siteMetaData = _a.siteMetaData;
+    var siteName = siteMetaData.siteName, siteUrl = siteMetaData.siteUrl, description = siteMetaData.description, image = siteMetaData.image;
+    var seo = {
+        title: siteName,
+        description: description,
+        image: "" + siteUrl + image,
+        url: "" + siteUrl,
+    };
+    return (themeUi.jsx(reactHelmet.Helmet, { title: seo.title },
+        themeUi.jsx("meta", { name: "description", content: seo.description }),
+        themeUi.jsx("meta", { name: "image", content: seo.image }),
+        themeUi.jsx("meta", { property: "og:url", content: seo.url }),
+        themeUi.jsx("meta", { property: "og:title", content: seo.title }),
+        themeUi.jsx("meta", { property: "og:description", content: seo.description }),
+        themeUi.jsx("meta", { property: "og:image", content: seo.image }),
+        themeUi.jsx("meta", { name: "twitter:card", content: "summary_large_image" }),
+        themeUi.jsx("meta", { name: "twitter:title", content: seo.title }),
+        themeUi.jsx("meta", { name: "twitter:creator", content: "yeehaa" }),
+        themeUi.jsx("meta", { name: "twitter:description", content: seo.description }),
+        themeUi.jsx("meta", { name: "twitter:image", content: seo.image })));
 };
-//# sourceMappingURL=index.js.map
 
 var outerWrapperStyles = {
     display: "grid",
@@ -472,6 +492,7 @@ var Menu = function (_a) {
         return (themeUi.jsx(atoms.Tab, { key: title, href: href }, title));
     })));
 };
+//# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
@@ -483,6 +504,7 @@ var HeaderSection = function (_a) {
                 themeUi.jsx(Menu, { links: links })),
             themeUi.jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (themeUi.jsx(atoms.Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
+//# sourceMappingURL=index.js.map
 
 exports.Carousel = Carousel;
 exports.Footer = Footer;

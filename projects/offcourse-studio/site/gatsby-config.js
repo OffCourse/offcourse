@@ -5,6 +5,8 @@ module.exports = {
     author: "Yeehaa",
     description: `My site description...`,
     siteName: `Offcourse Studio_`,
+    description:
+      "From a personalized learning coach to a network of virtual assistants, technology can help you focus on critical challenges rather than waste energy on uninspiring tasks. Think about it. What could you achieve if you have creative AI to support you? Offcourse Studio works with you to develop technology that works for you.",
     siteUrl: "https://offcourse-studio.com",
     contactInfo: {
       street: "Schiemond 20-22",
@@ -17,16 +19,6 @@ module.exports = {
       title: "contact us",
       href: "#ContactSection",
     },
-    links: [
-      {
-        title: "home",
-        href: "/",
-      },
-      {
-        title: "blog",
-        href: "/blog",
-      },
-    ],
     social: [
       {
         name: `Twitter`,
@@ -38,6 +30,16 @@ module.exports = {
       },
     ],
     title: "Offcourse",
+    links: [
+      {
+        title: "home",
+        href: "/",
+      },
+      {
+        title: "blog",
+        href: "/blog",
+      },
+    ],
   },
   plugins: [
     "gatsby-plugin-typescript",
