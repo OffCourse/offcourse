@@ -3,19 +3,25 @@ import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { ISiteMetaData } from "@offcourse/interfaces/src/pages";
 import { Helmet } from "react-helmet";
+import { IPost } from "@offcourse/interfaces/src";
 
-const SEO: FunctionComponent<{ siteMetaData: ISiteMetaData }> = ({
-  siteMetaData,
-}) => {
+const SEO: FunctionComponent<{
+  siteMetaData: ISiteMetaData;
+  pageData?: IPost;
+  path: string;
+}> = ({ siteMetaData, pageData, path }) => {
+  console.log(path);
   const { siteName, siteUrl, description, image } = siteMetaData;
   const seo = {
-    title: siteName,
-    description,
+    title: pageData ? `${pageData.title} | ${siteName}` : siteName,
+    description: pageData ? pageData.excerpt : description,
     image: `${siteUrl}${image}`,
-    url: `${siteUrl}`,
+    url: `${siteUrl}${path}`,
   };
+
   return (
-    <Helmet title={seo.title}>
+    <Helmet>
+      <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 

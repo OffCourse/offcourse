@@ -40,13 +40,17 @@ export const useSiteMetadata = () => {
       }
     `
   );
-  return { ...site.siteMetadata, image: ogImageDefault.childImageSharp.fixed.src };
+  return {
+    ...site.siteMetadata,
+    image: ogImageDefault.childImageSharp.fixed.src,
+  };
 };
 
 const PageLayout: FunctionComponent<{ path: string }> = ({
   children,
   ...rest
 }) => {
+  console.log(rest);
   const siteMetaData = useSiteMetadata();
   return (
     <ParentLayout siteMetaData={siteMetaData} {...rest}>

@@ -322,15 +322,17 @@ var Process = function (_a) {
 //# sourceMappingURL=index.js.map
 
 var SEO = function (_a) {
-    var siteMetaData = _a.siteMetaData;
+    var siteMetaData = _a.siteMetaData, pageData = _a.pageData, path = _a.path;
+    console.log(path);
     var siteName = siteMetaData.siteName, siteUrl = siteMetaData.siteUrl, description = siteMetaData.description, image = siteMetaData.image;
     var seo = {
-        title: siteName,
-        description: description,
+        title: pageData ? pageData.title + " | " + siteName : siteName,
+        description: pageData ? pageData.excerpt : description,
         image: "" + siteUrl + image,
-        url: "" + siteUrl,
+        url: "" + siteUrl + path,
     };
-    return (jsx(Helmet, { title: seo.title },
+    return (jsx(Helmet, null,
+        jsx("title", null, seo.title),
         jsx("meta", { name: "description", content: seo.description }),
         jsx("meta", { name: "image", content: seo.image }),
         jsx("meta", { property: "og:url", content: seo.url }),

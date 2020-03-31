@@ -2,8 +2,9 @@
 import { PageLayout as ParentLayout } from "@offcourse/layouts";
 import { jsx } from "theme-ui";
 import { FunctionComponent } from "react";
+import { IPost } from "@offcourse/interfaces/src";
 
-const PageLayout: FunctionComponent = ({ children }) => {
+const PageLayout: FunctionComponent<{ post: IPost }> = ({ children, post }) => {
   const siteMetaData = {
     siteName: "TEST",
     links: [],
@@ -11,7 +12,7 @@ const PageLayout: FunctionComponent = ({ children }) => {
     description: "TEST",
     callToAction: { href: "", title: "test" },
     callToActionVisible: false,
-    ogImage: "TEST",
+    image: "TEST",
     contactInfo: {
       street: "TEST",
       zipCode: "TEST",
@@ -21,7 +22,7 @@ const PageLayout: FunctionComponent = ({ children }) => {
     },
   };
   return (
-    <ParentLayout path="/" siteMetaData={siteMetaData}>
+    <ParentLayout path="/" siteMetaData={siteMetaData} post={post}>
       {children}
     </ParentLayout>
   );

@@ -45,7 +45,7 @@ const PostLayout: FunctionComponent = ({ data, ...props }: any) => {
   const { coverImage, ...blogPost } = data.blogPost;
   const post = { ...blogPost, coverImage: coverImage.childImageSharp.fluid };
   return (
-    <Layout {...props}>
+    <Layout pageData={post} {...props}>
       <Post {...post} />
     </Layout>
   );
