@@ -163,7 +163,7 @@ var InnerLayout = function (_a) {
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path, pageData = _a.pageData;
     return (themeUi.jsx(StateProvider, { path: path, siteMetaData: siteMetaData },
-        themeUi.jsx(molecules.SEO, { path: path, pageData: pageData, siteMetaData: siteMetaData }),
+        themeUi.jsx(molecules.SEO, { pageData: pageData, siteMetaData: siteMetaData }),
         themeUi.jsx(core.Global, { styles: function (theme) { return theme.globals; } }),
         themeUi.jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };

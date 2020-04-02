@@ -21,7 +21,7 @@ const PageLayout: FunctionComponent<PageLayoutProps> = ({
 }) => {
   return (
     <StateProvider path={path} siteMetaData={siteMetaData}>
-      <SEO path={path} pageData={pageData} siteMetaData={siteMetaData} />
+      <SEO pageData={pageData} siteMetaData={siteMetaData} />
       <Global styles={(theme) => theme.globals} />
       <InnerLayout className={className} siteMetaData={siteMetaData}>
         {children}

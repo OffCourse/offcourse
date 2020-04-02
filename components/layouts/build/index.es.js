@@ -159,7 +159,7 @@ var InnerLayout = function (_a) {
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path, pageData = _a.pageData;
     return (jsx(StateProvider, { path: path, siteMetaData: siteMetaData },
-        jsx(SEO, { path: path, pageData: pageData, siteMetaData: siteMetaData }),
+        jsx(SEO, { pageData: pageData, siteMetaData: siteMetaData }),
         jsx(Global, { styles: function (theme) { return theme.globals; } }),
         jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };

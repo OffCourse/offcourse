@@ -17,6 +17,7 @@ export const query = graphql`
         }
       }
       excerpt
+      author
       body
       slug
       title

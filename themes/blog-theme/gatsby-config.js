@@ -60,7 +60,6 @@ module.exports = (themeOptions) => {
   const plugins = [
     `gatsby-plugin-typescript`,
     `gatsby-plugin-theme-ui`,
-    `gatsby-plugin-printer`,
     rss,
     {
       resolve: `gatsby-plugin-mdx`,

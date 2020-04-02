@@ -1,12 +1,14 @@
 const siteAddress = new URL("https://offcourse-studio.com");
 
+const siteName = "Offcourse Studio_";
+const description =
+  "From a personalized learning coach to a network of virtual assistants, technology can help you focus on critical challenges rather than waste energy on uninspiring tasks. Think about it. What could you achieve if you have creative AI to support you? Offcourse Studio works with you to develop technology that works for you.";
+
 module.exports = {
   siteMetadata: {
     author: "Yeehaa",
-    description: `My site description...`,
-    siteName: `Offcourse Studio_`,
-    description:
-      "From a personalized learning coach to a network of virtual assistants, technology can help you focus on critical challenges rather than waste energy on uninspiring tasks. Think about it. What could you achieve if you have creative AI to support you? Offcourse Studio works with you to develop technology that works for you.",
+    description,
+    siteName,
     siteUrl: "https://offcourse-studio.com",
     contactInfo: {
       street: "Schiemond 20-22",
@@ -46,6 +48,21 @@ module.exports = {
     "@offcourse/homepage-theme",
     "@offcourse/blog-theme",
     "@offcourse/presentation-theme",
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: siteName,
+        short_name: `Offcourse_`,
+        description,
+        lang: `en`,
+        display: `standalone`,
+        icon: `src/icon.png`,
+        start_url: `/`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-offline",
+    },
     {
       resolve: "gatsby-plugin-matomo",
       options: {

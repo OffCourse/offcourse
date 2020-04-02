@@ -50,7 +50,6 @@ const PageLayout: FunctionComponent<{ path: string }> = ({
   children,
   ...rest
 }) => {
-  console.log(rest);
   const siteMetaData = useSiteMetadata();
   return (
     <ParentLayout siteMetaData={siteMetaData} {...rest}>

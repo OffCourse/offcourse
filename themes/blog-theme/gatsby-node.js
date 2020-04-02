@@ -48,6 +48,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
   createTypes(`interface BlogPost @nodeInterface {
       id: ID!
+      author: String!
       title: String!
       coverImage: File!
       body: String!
@@ -64,6 +65,9 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       fields: {
         id: { type: `ID!` },
         title: {
+          type: `String!`,
+        },
+        author: {
           type: `String!`,
         },
         slug: {
@@ -138,6 +142,7 @@ exports.onCreateNode = async (
       title: node.frontmatter.title,
       tags: node.frontmatter.tags || [],
       coverImage: node.frontmatter.coverImage,
+      author: node.frontmatter.author,
       slug,
       date: node.frontmatter.date,
       keywords: node.frontmatter.keywords || [],

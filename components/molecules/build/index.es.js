@@ -34,7 +34,6 @@ var controlStyles = {
     my: 6,
     mx: 2
 };
-//# sourceMappingURL=styles.js.map
 
 var ItemAnimation = function (_a) {
     var children = _a.children;
@@ -52,7 +51,6 @@ var ControlAnimation = function (_a) {
     var children = _a.children, className = _a.className, isActive = _a.isActive, colors = _a.colors;
     return (jsx(motion.div, { className: className, whileHover: "hover", positionTransition: { damping: 500 }, initial: "passive", variants: controlVariants(colors), animate: isActive ? "active" : "passive" }, children));
 };
-//# sourceMappingURL=animations.js.map
 
 var Controls = function (_a) {
     var children = _a.children, colors = _a.colors, currentIndex = _a.currentIndex, setIndex = _a.setIndex;
@@ -62,7 +60,6 @@ var Controls = function (_a) {
             jsx(Box, { sx: { width: "100%", height: "100%" }, onClick: function () { return setIndex(index); } })));
     })));
 };
-//# sourceMappingURL=Controls.js.map
 
 var Carousel = function (_a) {
     var children = _a.children;
@@ -82,7 +79,6 @@ var Carousel = function (_a) {
             jsx(AnimatePresence, null, visibleChildren.map(function (child) { return (jsx(ItemAnimation, { key: child.props.id }, child)); }))),
         jsx(Controls, { colors: { active: active, passive: passive }, setIndex: setIndex, children: children, currentIndex: currentIndex })));
 };
-//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -116,7 +112,6 @@ var styles = {
     py: 2,
     px: 0
 };
-//# sourceMappingURL=styles.js.map
 
 var RadioButtonGroup = function (_a) {
     var className = _a.className, name = _a.name, _b = _a.options, options = _b === void 0 ? [] : _b;
@@ -125,7 +120,6 @@ var RadioButtonGroup = function (_a) {
         return jsx(Checkbox, __assign({ key: id, name: name, id: id }, props));
     })));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles = {
     display: "flex",
@@ -137,7 +131,6 @@ var labelStyles = {
     px: 4,
     pb: 2
 };
-//# sourceMappingURL=styles.js.map
 
 var components = {
     text: Input,
@@ -154,7 +147,6 @@ var InputField = function (_a) {
         jsx(ErrorMessage, { render: function (msg) { return jsx(Message, { isBasic: true }, msg); }, name: name }),
         jsx(Field, { as: Component, options: options, placeholder: placeholder, name: name })));
 };
-//# sourceMappingURL=index.js.map
 
 var scale = [0.4, 0.4, 0.5, 0.5];
 var fontSize = scale.map(function (size) { return size * 5 + "rem"; });
@@ -167,7 +159,6 @@ var titleStyles = {
     lineHeight: lineHeight,
     m: 0
 };
-//# sourceMappingURL=styles.js.map
 
 var TextSection = function (_a) {
     var title = _a.title, className = _a.className, description = _a.description;
@@ -175,7 +166,6 @@ var TextSection = function (_a) {
         jsx(Heading, { sx: titleStyles }, title),
         jsx(Text, { html: description })));
 };
-//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -230,7 +220,6 @@ var innerStyles = {
     fontSize: "2rem",
     wordSpacing: "-0.2em"
 };
-//# sourceMappingURL=styles.js.map
 
 var Project = function (_a) {
     var className = _a.className, children = _a.children, title = _a.title, imageUrl = _a.imageUrl, description = _a.description;
@@ -240,7 +229,6 @@ var Project = function (_a) {
         jsx(Text, { sx: captionStyles, html: description }),
         jsx(Heading$1, { sx: headerStyles }, title)));
 };
-//# sourceMappingURL=index.js.map
 
 var numberStyles = {
     borderBottom: "0.25rem solid",
@@ -264,7 +252,6 @@ var wrapperStyles$2 = {
     py: 6,
     width: "100%"
 };
-//# sourceMappingURL=styles.js.map
 
 /** @jsx jsx */
 var Step = function (_a, ref) {
@@ -278,7 +265,6 @@ var Step = function (_a, ref) {
 };
 // @ts-ignore
 var Step$1 = forwardRef(Step);
-//# sourceMappingURL=index.js.map
 
 var stepVariants = {
     hidden: function (isEven) { return ({
@@ -296,7 +282,6 @@ var StepAnimation = function (_a) {
     var isEven = index % 2 === 0;
     return (React.createElement(motion.div, { ref: ref, key: index, variants: stepVariants, initial: "hidden", animate: isVisible ? "visible" : "hidden", custom: isEven, className: className }, children));
 };
-//# sourceMappingURL=animations.js.map
 
 var stepStyles = {
     gridColumn: ["2/9", "2/12", "2/11", "3/10"],
@@ -310,7 +295,6 @@ var innerWrapperStyles = {
     display: "grid",
     gridTemplateColumns: ["repeat(9,1fr)", "repeat(12, 1fr)"]
 };
-//# sourceMappingURL=styles.js.map
 
 var Process = function (_a) {
     var steps = _a.steps;
@@ -319,22 +303,22 @@ var Process = function (_a) {
             jsx(Step$1, __assign({ index: index + 1 }, step))));
     })));
 };
-//# sourceMappingURL=index.js.map
 
 var SEO = function (_a) {
-    var siteMetaData = _a.siteMetaData, pageData = _a.pageData, path = _a.path;
-    console.log(path);
+    var siteMetaData = _a.siteMetaData, pageData = _a.pageData;
     var siteName = siteMetaData.siteName, siteUrl = siteMetaData.siteUrl, description = siteMetaData.description, image = siteMetaData.image;
     var seo = {
         title: pageData ? pageData.title + " | " + siteName : siteName,
         description: pageData ? pageData.excerpt : description,
         image: "" + siteUrl + image,
-        url: "" + siteUrl + path,
+        url: pageData ? "" + siteUrl + pageData.slug : siteUrl,
     };
     return (jsx(Helmet, null,
         jsx("title", null, seo.title),
         jsx("meta", { name: "description", content: seo.description }),
         jsx("meta", { name: "image", content: seo.image }),
+        pageData && jsx("meta", { name: "author", content: pageData.author }),
+        jsx("meta", { property: "og:type", content: pageData ? "article" : "website" }),
         jsx("meta", { property: "og:url", content: seo.url }),
         jsx("meta", { property: "og:title", content: seo.title }),
         jsx("meta", { property: "og:description", content: seo.description }),
@@ -377,7 +361,6 @@ var contactStyles = {
 var drawerStyles = {
     justifySelf: ["end"]
 };
-//# sourceMappingURL=styles.js.map
 
 /** @jsx jsx */
 var PublicBadgesDrawer = function (_a) {
@@ -390,7 +373,6 @@ var PublicBadgesDrawer = function (_a) {
     }, [inBrowser]);
     return (jsx("publicbadges-drawer", { "domain-name": "https://offcourse-studio.com/", "test-mode": testMode, "badge-color": badgeColor, "modal-theme": modalTheme }));
 };
-//# sourceMappingURL=index.js.map
 
 var ContactInfo = function (_a) {
     var street = _a.street, siteName = _a.siteName, zipCode = _a.zipCode, country = _a.country, city = _a.city, email = _a.email;
@@ -409,7 +391,6 @@ var Footer = function (_a) {
         jsx("div", { sx: drawerStyles },
             jsx(PublicBadgesDrawer, { testMode: false, modalTheme: "light" }))));
 };
-//# sourceMappingURL=index.js.map
 
 var avatarStyles = {};
 var outerWrapperStyles$1 = {
@@ -432,7 +413,6 @@ var menuItemsStyles = {
     flexDirection: "row",
     justifyContent: "space-between"
 };
-//# sourceMappingURL=styles.js.map
 
 var transition = { delay: 0.5, damping: 50 };
 var avatarVariants = {
@@ -468,7 +448,6 @@ var CallToActionAnimation = function (_a) {
     var children = _a.children, appMode = _a.appMode, callToActionVisible = _a.callToActionVisible;
     return (jsx(motion.div, { initial: "idle", animate: callToActionVisible ? appMode : "idle", variants: callToActionVariants }, children));
 };
-//# sourceMappingURL=animations.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -478,7 +457,6 @@ var wrapperStyles$3 = {
         mb: [4],
     },
 };
-//# sourceMappingURL=styles.js.map
 
 var Menu = function (_a) {
     var className = _a.className, links = _a.links;
@@ -487,7 +465,6 @@ var Menu = function (_a) {
         return (jsx(Tab, { key: title, href: href }, title));
     })));
 };
-//# sourceMappingURL=index.js.map
 
 var HeaderSection = function (_a) {
     var className = _a.className, _b = _a.links, links = _b === void 0 ? [] : _b, _c = _a.callToAction, callToAction = _c === void 0 ? null : _c, _d = _a.callToActionVisible, callToActionVisible = _d === void 0 ? true : _d, appMode = _a.appMode, toggleMenu = _a.toggleMenu;
@@ -499,7 +476,6 @@ var HeaderSection = function (_a) {
                 jsx(Menu, { links: links })),
             jsx(CallToActionAnimation, { callToActionVisible: callToActionVisible, appMode: appMode }, callToAction ? (jsx(Tab, { href: callToAction.href }, callToAction.title)) : null))));
 };
-//# sourceMappingURL=index.js.map
 
 export { Carousel, Footer, HeaderSection as Header, InputField, Process, Project, RadioButtonGroup, SEO, Step$1 as Step, TextSection };
 //# sourceMappingURL=index.es.js.map

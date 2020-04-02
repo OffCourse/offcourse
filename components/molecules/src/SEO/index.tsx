@@ -8,15 +8,13 @@ import { IPost } from "@offcourse/interfaces/src";
 const SEO: FunctionComponent<{
   siteMetaData: ISiteMetaData;
   pageData?: IPost;
-  path: string;
-}> = ({ siteMetaData, pageData, path }) => {
-  console.log(path);
+}> = ({ siteMetaData, pageData }) => {
   const { siteName, siteUrl, description, image } = siteMetaData;
   const seo = {
     title: pageData ? `${pageData.title} | ${siteName}` : siteName,
     description: pageData ? pageData.excerpt : description,
     image: `${siteUrl}${image}`,
-    url: `${siteUrl}${path}`,
+    url: pageData ? `${siteUrl}${pageData.slug}` : siteUrl,
   };
 
   return (
@@ -24,7 +22,9 @@ const SEO: FunctionComponent<{
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+      {pageData && <meta name="author" content={pageData.author} />}
 
+      <meta property="og:type" content={pageData ? "article" : "website"} />
       <meta property="og:url" content={seo.url} />
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />

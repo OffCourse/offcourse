@@ -5,6 +5,5 @@ import { IPost } from "@offcourse/interfaces/src";
 declare const SEO: FunctionComponent<{
     siteMetaData: ISiteMetaData;
     pageData?: IPost;
-    path: string;
 }>;
 export default SEO;

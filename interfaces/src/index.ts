@@ -18,6 +18,7 @@ export interface IPost {
   slug: string;
   title: string;
   tags: string[];
+  author: string;
   date: string;
   excerpt: string;
   body: string;
