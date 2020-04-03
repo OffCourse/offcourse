@@ -30,6 +30,11 @@ const definitionStyles: SxStyleProp = {
   },
 };
 
+const tagsStyles: SxStyleProp = {
+  display: "block",
+  textAlign: "right",
+};
+
 const tagStyles: SxStyleProp = {
   display: "inline-grid",
   alignContent: "right",
@@ -86,5 +91,7 @@ export {
   definitionStyles,
   imageStyles,
   tagStyles,
+  tagsStyles,
   headerTextStyles,
 };
+
