@@ -9,7 +9,7 @@ const headerVariants = {
 
 const sidePanelVariants = {
   initial: { opacity: 0 },
-  hover: { opacity: 1, transition: { delay: 0.2 } },
+  hover: { opacity: 1}
 };
 
 const HeaderAnimation: FunctionComponent<{ isOdd: boolean }> = ({

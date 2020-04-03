@@ -29,11 +29,11 @@ export const postQuery = graphql`
               }
             }
           }
+          author
+          date(formatString: "MMMM DD, YYYY")
           excerpt
           slug
           title
-          date(formatString: "MMMM DD, YYYY")
-          tags
         }
       }
     }

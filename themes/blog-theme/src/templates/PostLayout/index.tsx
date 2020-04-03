@@ -47,7 +47,7 @@ const PostLayout: FunctionComponent = ({ data, ...props }: any) => {
   const post = { ...blogPost, coverImage: coverImage.childImageSharp.fluid };
   return (
     <Layout pageData={post} {...props}>
-      <Post {...post} />
+      <Post isFullPost {...post} />
     </Layout>
   );
 };
