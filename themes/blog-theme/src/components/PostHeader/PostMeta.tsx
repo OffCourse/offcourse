@@ -23,7 +23,6 @@ const PostMeta: FunctionComponent<PostMetaProps> = ({
   excerpt,
   mode = "tags",
 }) => {
-  console.log(tags);
   return (
     <Box className={className} sx={metaStyles}>
       {mode === "tags" ? (

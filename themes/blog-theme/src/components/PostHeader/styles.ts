@@ -1,8 +1,8 @@
 import { SxStyleProp } from "theme-ui";
 
 const wrapperStyles: SxStyleProp = {
-  height: "32rem",
   position: "relative",
+  height: "24rem",
 };
 
 const metaStyles: SxStyleProp = {
@@ -70,7 +70,7 @@ const excerptStyles: SxStyleProp = {
 };
 
 const imageStyles: SxStyleProp = {
-  height: "32rem",
+  height: "100%",
 };
 
 const headerTextStyles: SxStyleProp = {
@@ -94,4 +94,3 @@ export {
   tagsStyles,
   headerTextStyles,
 };
-

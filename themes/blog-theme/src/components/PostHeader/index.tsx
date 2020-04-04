@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { jsx, Box, NavLink } from "theme-ui";
+import { jsx, Box, NavLink, AspectRatio } from "theme-ui";
 import BackgroundImage from "gatsby-background-image";
 import { DisplayText } from "@offcourse/atoms";
 import { IPost, IThemeable } from "@offcourse/interfaces/src";
@@ -26,18 +26,18 @@ const PostHeader: FunctionComponent<PostHeaderProps & IThemeable> = ({
     <HeaderAnimation isOdd={isOdd}>
       <Box sx={wrapperStyles}>
         <SidePanel side="left"></SidePanel>
-        <BackgroundImage sx={imageStyles} fluid={coverImage}>
-          <Box sx={headerTextStyles}>
-            <NavLink href={slug}>
+        <NavLink sx={{ height: "100%", width: "100%" }} href={slug}>
+          <BackgroundImage sx={imageStyles} fluid={coverImage}>
+            <Box sx={headerTextStyles}>
               <DisplayText>{title}</DisplayText>
-            </NavLink>
-          </Box>
-          <SidePanel side="right">
-            <SidePanelAnimation>
-              <PostMeta mode={isFullPost ? "tags" : "excerpt"} {...rest} />
-            </SidePanelAnimation>
-          </SidePanel>
-        </BackgroundImage>
+            </Box>
+          </BackgroundImage>
+        </NavLink>
+        <SidePanel side="right">
+          <SidePanelAnimation>
+            <PostMeta mode={isFullPost ? "tags" : "excerpt"} {...rest} />
+          </SidePanelAnimation>
+        </SidePanel>
       </Box>
     </HeaderAnimation>
   );

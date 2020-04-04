@@ -3,7 +3,6 @@ import { SxStyleProp } from "theme-ui";
 const postListStyles: SxStyleProp = { m: 0, p: 0 };
 
 const postListItemStyles = {
-  height: "32rem",
   listStyle: "none",
   margin: 0,
 };
