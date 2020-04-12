@@ -1,5 +1,7 @@
 role: HeroSection
 order: 10
-title: Creative Ethical Intelligence
+title: Value Driven Development
+description: |
+  Creating solutions that map, organize, and add values to your organization
 backdropPath: "./CellularAutomata"
 publishable: true

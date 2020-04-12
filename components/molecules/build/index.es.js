@@ -171,26 +171,25 @@ var wrapperStyles$1 = {
     userSelect: "none",
     width: ["calc(100vw - 2rem)", "28rem"],
     height: "100%",
-    minHeight: "1130px",
     display: "grid",
     gridTemplateRows: "auto 1fr auto",
     gridGap: [6, 6],
     pb: 7,
     alignItems: "start",
-    bg: "grayScale.0"
+    bg: "grayScale.0",
 };
 var headerStyles = {
     fontFamily: "monospace",
     fontSize: "2rem",
     lineHeight: "2rem",
     wordSpacing: "-0.2em",
-    px: [6, 6]
+    px: [6, 6],
 };
 var imageStyles = {
     paddingTop: "100%",
     position: "relative",
     bg: "grayScale.4",
-    mb: 4
+    mb: 4,
 };
 var captionStyles = {
     display: "flex",
@@ -198,8 +197,8 @@ var captionStyles = {
     justifyContent: "flex-end",
     px: [6, 6],
     "p:last-of-type": {
-        mb: 0
-    }
+        mb: 0,
+    },
 };
 var dist = ["6rem", "6rem", "6rem", "6rem", "6rem"];
 var innerStyles = {
@@ -209,7 +208,7 @@ var innerStyles = {
     left: dist,
     right: dist,
     img: {
-        width: "100%"
+        width: "100%",
     },
     display: "flex",
     backgroundRepeat: "no-repeat",
@@ -218,7 +217,7 @@ var innerStyles = {
     alignItems: "center",
     fontFamily: "monospace",
     fontSize: "2rem",
-    wordSpacing: "-0.2em"
+    wordSpacing: "-0.2em",
 };
 
 var Project = function (_a) {

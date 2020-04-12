@@ -1,7 +1,7 @@
 export const wrapperStyles = {
   height: ["85vh", "85vh", "85vh", "80vh", "70vh", "70vh"],
   py: [4, 6],
-  bg: "transparent"
+  bg: "transparent",
 };
 
 export const textStyles = {
@@ -10,7 +10,7 @@ export const textStyles = {
   alignContent: "end",
   mb: 4,
   gridRow: "1/2",
-  maxWidth: "40rem"
+  maxWidth: "40rem",
 };
 
 export const logoContainerStyles = {
@@ -18,7 +18,7 @@ export const logoContainerStyles = {
   gridColumn: ["1/10", "1/13", "6/13"],
   gridRow: ["2/3"],
   alignContent: "end",
-  justifyContent: "end"
+  justifyContent: "end",
 };
 
 export const logoStyles = {};

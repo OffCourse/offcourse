@@ -1,0 +1,11 @@
+role: AboutSection
+order: 30
+title: Partial Automation
+publishable: true
+description: |
+  You heard the promise many times: our software will solve all your problems. 
+  At Offcourse, we do not believe in generic, all encompassing solutions. Heck, 
+  we don't even believe that all of your task should be automated. Many of them 
+  require the knowledge and dedication that only you can give. Still, it's a 
+  waste to continue to do the task that can by done by a machine manually. 
+  Finding the right ways to automate your organization is a process of optimization. Offcourse is your guide through this process.

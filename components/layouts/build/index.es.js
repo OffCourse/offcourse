@@ -139,9 +139,8 @@ var useStateValue = function () { return useContext(StateContext); };
 //# sourceMappingURL=state.js.map
 
 var wrapperStyles = {
-    display: "grid",
     overflowX: "hidden",
-    minHeight: "100vh"
+    minHeight: "100vh",
 };
 //# sourceMappingURL=styles.js.map
 

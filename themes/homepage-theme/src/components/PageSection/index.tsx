@@ -15,7 +15,7 @@ const PageSection: FunctionComponent<PageSectionProps> = ({
   const { role } = sectionData;
   const [isVisible, ref] = useVisibility({
     canLeave: true,
-    modTop: "-200px"
+    modTop: "-200px",
   });
   const { registerSection } = useStateValue();
   const Component = components[role] || BaseSection;
