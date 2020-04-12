@@ -61,9 +61,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-offline",
-    },
-    {
       resolve: "gatsby-plugin-matomo",
       options: {
         siteId: "1",
