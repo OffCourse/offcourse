@@ -1,4 +1,4 @@
-role: AboutSection
+role: PropositionSection
 order: 40
 title: Organic Governance
 publishable: true
@@ -9,3 +9,14 @@ description: |
   are mean to newcomers. Moderation is laborious and thus expensive. But what 
   if you would approach governance differently? Rather than policing individual 
   transgressions, Offcourse suggests an holistic approach to govern your community.
+project: 
+  title: Bots with an Attitude
+  description: |
+      Bots with an attitude is a project for Planet B from Waag. Planet B is a
+      mission to recolonise planet Earth based on a narrative of DIY expeditions
+      to a fictional planet. The project ‘Bots with an attitude’ is a support
+      system for artistic researchers, who work or wish to work with machine
+      learning and AI. The bots are personal assistants. They help by gathering
+      information or helping publish the artist's work. However, they are unusual
+      bots, because they have a character and mind of their own, leading to
+      unexpected encounters and, hopefully, productive surprises.

@@ -5,12 +5,12 @@ const mkdir = require("mkdirp");
 
 exports.onCreateWebpackConfig = ({
   actions: { replaceWebpackConfig },
-  getConfig
+  getConfig,
 }) => {
   const config = getConfig();
   config.module.rules.push({
     test: /\.worker\.ts$/,
-    use: { loader: "workerize-loader" }
+    use: { loader: "workerize-loader" },
   });
   config.output.globalObject = "this";
   replaceWebpackConfig(config);
@@ -22,13 +22,13 @@ exports.createSchemaCustomization = ({ actions }) => {
     args: {
       sanitize: {
         type: "Boolean!",
-        defaultValue: true
-      }
+        defaultValue: true,
+      },
     },
     extend(options) {
       return {
         args: {
-          sanitize: "Boolean"
+          sanitize: "Boolean",
         },
         resolve(source, args, context, info) {
           const fieldValue = context.defaultFieldResolver(
@@ -41,9 +41,9 @@ exports.createSchemaCustomization = ({ actions }) => {
             args.sanitize != null ? args.sanitize : options.sanitize;
           const processor = remark().use(html, { sanitize: shouldSanitize });
           return processor.processSync(fieldValue).contents;
-        }
+        },
       };
-    }
+    },
   });
 };
 
@@ -52,10 +52,10 @@ exports.onPreBootstrap = (
   {
     basePath = "data",
     contentPath = "content",
-    projectImagesPath = "project-images"
+    projectImagesPath = "project-images",
   }
 ) => {
-  [contentPath, projectImagesPath].forEach(subPath => {
+  [contentPath, projectImagesPath].forEach((subPath) => {
     const path = `${basePath}/${subPath}`;
 
     if (!fs.existsSync(path)) {
@@ -127,6 +127,16 @@ exports.sourceNodes = ({ actions }) => {
     publishable: Boolean
    }
 
+  type PropositionSection implements Node & PageSection {
+    role: String!
+    order: Int!
+    title: String
+    description: String @md
+    backdropPath: String
+    publishable: Boolean
+    project: ProjectInfo
+   }
+
   type FooterSection implements Node & PageSection {
     role: String!
     title: String
@@ -184,6 +194,6 @@ exports.createPages = async ({ actions }, options) => {
   const path = basePath;
   actions.createPage({
     path,
-    component: require.resolve("./src/templates/HomePage/index.tsx")
+    component: require.resolve("./src/templates/HomePage/index.tsx"),
   });
 };

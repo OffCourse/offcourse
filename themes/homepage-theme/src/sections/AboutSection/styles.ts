@@ -2,13 +2,7 @@ import { SxStyleProp } from "theme-ui";
 
 export const wrapperStyles: SxStyleProp = {
   alignContent: ["center"],
-  gridColumnGap: [0, 0, 0, 8],
   px: [4, 4, 8, 8],
-};
-
-export const projectStyles: SxStyleProp = {
-  display: "grid",
-  gridColumn: ["1/10", "1/13", "1/13", "span 6"],
 };
 
 export const textStyles: SxStyleProp = {

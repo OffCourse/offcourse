@@ -20,6 +20,12 @@ const usePageSections = () => {
                   description
                 }
               }
+              ... on PropositionSection {
+                project {
+                  title
+                  description
+                }
+              }
               ... on ProfileSection {
                 skills {
                   title

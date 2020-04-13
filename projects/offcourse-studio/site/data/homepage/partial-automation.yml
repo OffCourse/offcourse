@@ -1,4 +1,4 @@
-role: AboutSection
+role: PropositionSection
 order: 30
 title: Partial Automation
 publishable: true
@@ -9,3 +9,13 @@ description: |
   require the knowledge and dedication that only you can give. Still, it's a 
   waste to continue to do the task that can by done by a machine manually. 
   Finding the right ways to automate your organization is a process of optimization. Offcourse is your guide through this process.
+project: 
+  title: Offcourse_
+  description: |
+      Offcourse is a platform by Offcourse Studio. Offcourse is an open source
+      platform for online learning. The Internet is an endless source of
+      knowledge; blogs, video tutorials or even that one interesting podcast.
+      We developed a platform that allows people to gather the best sources
+      online and structure them into easy-shareable courses. This helps people
+      to get started with crowdlearning; sharing what they have learned and
+      learning that others have shared.

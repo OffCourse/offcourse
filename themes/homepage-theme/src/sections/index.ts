@@ -4,6 +4,7 @@ import AboutSection from "./AboutSection";
 import ProfileSection from "./ProfileSection";
 import ContactSection from "./ContactSection";
 import ProjectsSection from "./ProjectsSection";
+import PropositionSection from "./PropositionSection";
 import ProcessSection from "./ProcessSection";
 
 export {
@@ -13,5 +14,6 @@ export {
   ContactSection,
   ProjectsSection,
   ProfileSection,
-  ProcessSection
+  PropositionSection,
+  ProcessSection,
 };

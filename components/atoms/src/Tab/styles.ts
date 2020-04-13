@@ -12,9 +12,9 @@ export const wrapperStyles: SxStyleProp = {
     bg: "grayScale.4",
     a: {
       color: "grayScale.1",
-      borderColor: "grayScale.1"
-    }
-  }
+      borderColor: "grayScale.1",
+    },
+  },
 };
 
 export const linkStyles = {
@@ -30,6 +30,6 @@ export const linkStyles = {
   fontFamily: "monospace",
   fontWeight: "bold",
   ":focus": {
-    outline: "none"
-  }
+    outline: "none",
+  },
 };

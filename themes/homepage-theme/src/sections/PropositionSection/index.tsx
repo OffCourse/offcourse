@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
-import { Styled, jsx, Box } from "theme-ui";
+import { jsx, Box } from "theme-ui";
 import { IBaseSection } from "@offcourse/interfaces/src/pageSection";
 import { IThemeable } from "@offcourse/interfaces/src";
-import { Text } from "@offcourse/atoms";
+import { Text, DisplayText } from "@offcourse/atoms";
 import BaseSection from "../BaseSection";
 import { wrapperStyles, textStyles, titleStyles } from "./styles";
 
@@ -17,18 +17,22 @@ const AboutSection: FunctionComponent<AboutSectionProps> = ({
   title,
   description,
   order,
+  project,
   ...props
 }) => {
   const isEven = order % 20 === 0;
+  const isInversed = isEven;
   return (
     <BaseSection
       {...props}
       className={className}
-      sx={{ ...wrapperStyles, bg: isEven ? "grayScale.0" : "grayScale.1" }}
+      sx={wrapperStyles(isInversed)}
     >
-      <Box sx={textStyles}>
-        <Styled.h1 sx={titleStyles}>{title}</Styled.h1>
+      <Box sx={textStyles(isInversed)}>
         <Text html={description} />
+      </Box>
+      <Box sx={titleStyles(isInversed)}>
+        <DisplayText>{title}</DisplayText>
       </Box>
     </BaseSection>
   );

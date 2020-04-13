@@ -1,4 +1,4 @@
-role: AboutSection
+role: PropositionSection
 order: 20
 title: Ethical Intelligence
 publishable: true
@@ -8,3 +8,14 @@ description: |
   communicate the things that are valuable to you: to customers, partners, 
   but also to your own team. Offcourse transforms your values into measurable, 
   common goals. We put your ethics into practice. 
+project: 
+  title: Public Badges
+  description: |
+      PublicSpaces is an alternative platform for social interaction. Nineteen
+      prominent parties from the Dutch media, culture, education and health
+      sectors – such as media production company VPRO, research collective Waag
+      and cultural center Pakhuis de Zwijger, research the possibility to
+      reclaim the internet as a common good and minimize our dependence upon
+      commercial platforms, such as Facebook and Google. Offcourse Studio
+      developed a badges system that certifies the ethical values of internet
+      products and services.
