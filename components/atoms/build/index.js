@@ -29,12 +29,14 @@ var Avatar = function (_a) {
     var className = _a.className, onClick = _a.onClick;
     return (themeUi.jsx(themeUi.Heading, { onClick: onClick, sx: avatarStyles, className: className }, "_"));
 };
+//# sourceMappingURL=index.js.map
 
 /** @jsx jsx */
 var Backdrop = react.forwardRef(function (_a, ref) {
     var className = _a.className, _b = _a.width, width = _b === void 0 ? 100 : _b, _c = _a.height, height = _c === void 0 ? 100 : _c;
     return (themeUi.jsx("canvas", { ref: ref, className: className, width: width, height: height }));
 });
+//# sourceMappingURL=index.js.map
 
 var titleize = function (str) {
     return voca.titleCase(str, ["'", "-", "’"]);
@@ -89,6 +91,7 @@ var Button = function (_a) {
     var type = _a.type, children = _a.children, className = _a.className, disabled = _a.disabled;
     return (themeUi.jsx("button", { sx: styles, disabled: disabled, className: className, type: type }, formatTitle(children)));
 };
+//# sourceMappingURL=index.js.map
 
 var checkboxStyles = {
     WebkitAppearance: "none",
@@ -128,6 +131,7 @@ var Label = function (_a) {
     var className = _a.className, children = _a.children, htmlFor = _a.htmlFor;
     return (themeUi.jsx("label", { className: className, htmlFor: htmlFor, sx: labelStyles$1 }, formatTitle(children)));
 };
+//# sourceMappingURL=index.js.map
 
 var Checkbox = function (_a) {
     var label = _a.label, className = _a.className, id = _a.id, name = _a.name, value = _a.value;
@@ -135,6 +139,7 @@ var Checkbox = function (_a) {
         themeUi.jsx(formik.Field, { sx: checkboxStyles, className: className, id: id, type: "radio", name: name, value: value }),
         themeUi.jsx(Label, { sx: labelStyles, htmlFor: id }, label)));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$1 = {
     userSelect: "none",
@@ -185,6 +190,7 @@ var DisplayText = function (_a) {
     return (themeUi.jsx(themeUi.Box, { sx: wrapperStyles$1, className: className }, children.split(" ").map(function (word, index) { return (themeUi.jsx("span", { sx: spanStyles, key: index },
         themeUi.jsx("h1", { sx: textStyles }, word))); })));
 };
+//# sourceMappingURL=index.js.map
 
 var Heading = function (_a) {
     var children = _a.children, className = _a.className, as = _a.as;
@@ -195,6 +201,7 @@ var Heading = function (_a) {
     }
     return (themeUi.jsx(themeUi.Heading, { as: as, className: className }, formatTitle(children)));
 };
+//# sourceMappingURL=index.js.map
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -290,6 +297,7 @@ var Input = function (_a) {
     return (themeUi.jsx(themeUi.Box, { className: className, sx: wrapperStyles$2 },
         themeUi.jsx("input", __assign({ sx: inputStyles }, baseProps))));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$3 = {
     display: "flex",
@@ -336,6 +344,7 @@ var Logo = function (_a) {
     return (themeUi.jsx(themeUi.Box, { sx: wrapperStyles$3, className: className }, words.map(function (word, index) { return (themeUi.jsx("span", { sx: spanStyles$1, key: index },
         themeUi.jsx("h1", { sx: textStyles$1 }, word))); })));
 };
+//# sourceMappingURL=index.js.map
 
 var messageStyles = {
     fontFamily: "heading",
@@ -354,6 +363,7 @@ var Message = function (_a) {
     var children = _a.children, isBasic = _a.isBasic, className = _a.className;
     return (themeUi.jsx(themeUi.Box, { className: className, sx: isBasic ? basicMessageStyles : messageStyles }, formatTitle(children)));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$4 = {
     display: "flex",
@@ -387,7 +397,6 @@ var linkStyles = {
         outline: "none"
     }
 };
-//# sourceMappingURL=styles.js.map
 
 var Tab = function (_a) {
     var className = _a.className, children = _a.children, href = _a.href;
@@ -425,6 +434,7 @@ var Text = function (_a) {
     return (themeUi.jsx(themeUi.Box, __assign({}, styleProps),
         themeUi.jsx("p", null, children)));
 };
+//# sourceMappingURL=index.js.map
 
 var wrapperStyles$6 = __assign({}, wrapperStyles$2);
 var textAreaStyles = __assign(__assign({}, inputStyles), { fontFamily: "body", fontSize: 1, lineHeight: 1 });
@@ -435,6 +445,7 @@ var TextArea = function (_a) {
     return (themeUi.jsx("div", { sx: wrapperStyles$6 },
         themeUi.jsx("textarea", { className: className, sx: textAreaStyles, autoFocus: autoFocus, rows: rows, name: name, disabled: disabled, value: value, placeholder: formatTitle(placeholder), onChange: onChange, onBlur: onBlur })));
 };
+//# sourceMappingURL=index.js.map
 
 exports.Avatar = Avatar;
 exports.Backdrop = Backdrop;
