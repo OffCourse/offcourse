@@ -25,6 +25,12 @@ const pStyles = {
   mb: 4,
 };
 
+const h3Styles = {
+  ...pStyles,
+  fontFamily: "heading",
+  mt: 6,
+};
+
 const aStyles = {
   fontsize: [1, 1, 2, 2],
   color: "grayScale.3",
@@ -51,7 +57,8 @@ const hrStyles = {
 const a = (props) => <a sx={aStyles} {...props} />;
 const p = comp("p", pStyles);
 const h2 = comp("h2", h2Styles);
+const h3 = comp("h3", h3Styles);
 const hr = comp("hr", hrStyles);
 const blockquote = comp("blockquote", blockquoteStyles);
 
-export { blockquote, p, h2, a, hr };
+export { blockquote, p, h2, h3, a, hr };
