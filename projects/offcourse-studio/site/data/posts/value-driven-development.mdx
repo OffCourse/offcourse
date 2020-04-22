@@ -63,11 +63,18 @@ This so-called *test first* approach radically changes the practice of software 
 
 Behavior Driven Development takes these ideas one step further. In BDD, the focus of the test is no longer the developer but the user. 
 
-```cucumber
-Feature: Cash register can correctly add up two amounts     In order to keep track of stock      As a store owner      I want to add items back to stock when they are returned     
+```gherkin
+Feature: Cash register can correctly add up two amounts     
+In order to keep track of stock      
+As a store owner      
+I want to add items back to stock when they are returned     
 
-Example: refunded items should be returned to stock    Given a customer buys a sweater and a pair of socks    And the sweater is 50 euro
-And the socks are 20 euro   When I add up 50 euro and 20 euro  Then the cash register should say 70 euro
+Example: refunded items should be returned to stock    
+Given a customer buys a sweater and a pair of socks    
+And the sweater costs 50 euro
+And the socks cost 20 euro   
+When I add up 50 euro and 20 euro  
+Then the cash register should say 70 euro
 ```
 
 In BDD 
@@ -80,11 +87,18 @@ In BDD
 
 Bla Bla
 
-```cucumber
-Feature: Cash register can correctly add up two amounts     In order to keep track of stock      As a store owner      I want to add items back to stock when they are returned     
+```gherkin
+Feature: Cash register can correctly add up two amounts     
+In order to keep track of stock      
+As a store owner      
+I want to add items back to stock when they are returned     
 
-Example: refunded items should be returned to stock    Given a customer buys a sweater and a pair of socks    And the sweater is 50 euro
-And the socks are 20 euro   When I add up 50 euro and 20 euro  Then the cash register should say 70 euro
+Example: refunded items should be returned to stock    
+Given a customer buys a sweater and a pair of socks    
+And the sweater costs 50 euro
+And the socks cost 20 euro   
+When I add up 50 euro and 20 euro  
+Then the cash register should say 70 euro
 ```
 
 ---

@@ -53,12 +53,18 @@ const h2Styles = {
 const hrStyles = {
   mt: 8,
 };
+const preStyles = {
+  p: 6,
+  bg: "black",
+  mb: 4,
+};
 
 const a = (props) => <a sx={aStyles} {...props} />;
+const pre = comp("pre", preStyles);
 const p = comp("p", pStyles);
 const h2 = comp("h2", h2Styles);
 const h3 = comp("h3", h3Styles);
 const hr = comp("hr", hrStyles);
 const blockquote = comp("blockquote", blockquoteStyles);
 
-export { blockquote, p, h2, h3, a, hr };
+export { blockquote, p, pre, h2, h3, a, hr };

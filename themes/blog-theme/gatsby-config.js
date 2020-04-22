@@ -67,6 +67,9 @@ module.exports = (themeOptions) => {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
+            resolve: `gatsby-remark-prismjs`,
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               // should this be configurable by the end-user?
