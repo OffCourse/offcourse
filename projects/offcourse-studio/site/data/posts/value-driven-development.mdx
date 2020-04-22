@@ -18,36 +18,15 @@ excerpt: |
 >
 > &mdash; Drake
 
-There has been no shortage lately of stories about the tech industry's
-questionable ethics. We all read the stories. A smart security camera company
-is working with law enforcement to create an unofficial surveillance network.
-Tech executives photoshopfemale executives into their snapshots of a field
-trip before sharing them on instagram. The algorithm of a new credit card
-determines credit limits on the basis of gender. And the list goes on and on.
+There has been no shortage lately of stories about the tech industry's questionable ethics. We all read the stories. A smart security camera company is working with law enforcement to create an unofficial surveillance network. Tech executives photoshop female executives into their snapshots of a field trip before sharing them on instagram. The algorithm of a new credit card determines credit limits on the basis of gender. And the list goes on and on.
 
-Still, while the critique of immorality may apply to the upper echelons of the
-big coorporations, I believe it to be an unfair assessment of the field as a
-whole. While ethics is not always at the forefront of every developer's mind, it
-is a mistake to conclude that her work is thus immoral. In fact, I would not
-even call it amoral. 
+Still, while the critique of immorality may apply to the upper echelons of the big coorporations, I believe it to be an unfair assessment of the field as a whole. While ethics is not always at the forefront of every developer's mind, it is a mistake to conclude that her work is thus immoral. Heck, I would not even call it amoral. 
 
-A lot of software development &mdash; especially Open Source Software (OSS)
-&mdash; is driven by values. From the Google Developer that aims to make the web
-more accesible, the Facebook Developer that open sources her internal tools, to
-the commited idealist developing a fair OS. 
+A lot of software development &mdash; especially Open Source Software (OSS) development &mdash; is driven by values. From the Google Developer that aims to make the web more accesible, the Facebook Developer that open sources her internal tools, to the committed idealist developing a fair OS. 
 
-Most software developers actually want to make the world a better place, even if
-&mdash; or especially when &mdash; their ethics don't alway align with their
-company's. The problem, however, is that these values are not always clear and
-visible from the outside.
+Most software developers actually want to make the world a better place, even if &mdash; or especially when &mdash; their ethics don't alway align with their company's. The problem, however, is that these values are not always clear and visible from the outside.
 
-In this article, I explain how Public Badges build on existing paradigms of Test
-Driven Development (TDD) and Behavior Driven Development (BDD) to help engineers
-render the implicit values that drive their work explicit. By making values,
-measurable, testable, and communicable, Public Badges enable customers,
-partners, and end users to chose software solutions that aligns with their own
-values. Public Badges don't prescribe a certain set of morals, but facilitate
-the discussion about values.
+In this article, I explain how Public Badges build on the existing paradigms of Test Driven Development (TDD) and Behavior Driven Development (BDD) to help engineers render the implicit values that drive their work explicit. By making values, measurable, testable, and communicable, Public Badges enable customers, partners, and end users to chose software solutions that aligns with their own values. Public Badges don't prescribe a certain set of morals, but facilitate the discussion about values.
 
 
 ## Test Driven Development
@@ -58,35 +37,55 @@ the discussion about values.
 >
 > &mdash; Lizzo
 
-Ruby was the first programming language that I truly loved. Its emphasis on
-readability and conceptual clarity is unrivaled. But a large part of Ruby's
-appeal came from its ecosystem, and its community's dedication to testing.
+Ruby was the first programming language that I truly loved. Its emphasis on readability and conceptual clarity is unrivaled. But a large part of Ruby's appeal came from its ecosystem, and its community's dedication to testing.
 
-It was almost impossible to learn Ruby without learning how to write unit tests.
+It is almost impossible to learn how to program in Ruby without learning how to write unit tests. The idea behind testing is very simple. For every piece of code that does something, you also write another piece of code that checks that the former works correctly.
 
+Concretely, a simple unit test would look something like this:
 
-Test Driven Development (TDD), however, is more than just the developers
-discipline to write unit test. The real innovation of the methodology consists
-in the fact that the tests are not written after that you have written the code,
-but before. This so-called *test first* approach radically changes the practice
-of software development. Before the developer actually writes code, he makes a
-promise of what the code should do after it is finished. This gesture as such
-could already be considered ethical.
+```ruby
+def add a, b
+  return a + b
+end
 
-## Behaviour Driven Development
+assert_equal( 3, add( 20, 50 ) , "Something does not add up" )
+```
+Test Driven Development (TDD), however, goes one step further than just unit writing tests. The real innovation of the methodology consists in the fact that the tests are not written after that you have written the code,
+
+This so-called *test first* approach radically changes the practice of software development. Before the developer actually writes code, he makes a promise of what the code should do after it is finished. In TDD, tests become contracts. The practice of *test first* as such could already be considered ethical.
+
+## Behavior Driven Development
 
 > Question, what exactly is a panty raider?
 > Ill behavior, savior or major flavor
 >
 > &mdash; Method Man
 
+Behavior Driven Development takes these ideas one step further. In BDD, the focus of the test is no longer the developer but the user. 
 
+```cucumber
+Feature: Cash register can correctly add up two amounts     In order to keep track of stock      As a store owner      I want to add items back to stock when they are returned     
+
+Example: refunded items should be returned to stock    Given a customer buys a sweater and a pair of socks    And the sweater is 50 euro
+And the socks are 20 euro   When I add up 50 euro and 20 euro  Then the cash register should say 70 euro
+```
+
+In BDD 
 
 ## Value Driven Development
 
 > I'm just valuin' the value   
 > 
 > &mdash; Lil' Wayne
+
+Bla Bla
+
+```cucumber
+Feature: Cash register can correctly add up two amounts     In order to keep track of stock      As a store owner      I want to add items back to stock when they are returned     
+
+Example: refunded items should be returned to stock    Given a customer buys a sweater and a pair of socks    And the sweater is 50 euro
+And the socks are 20 euro   When I add up 50 euro and 20 euro  Then the cash register should say 70 euro
+```
 
 ---
 This is the second in a series of articles. The first can be found here:
