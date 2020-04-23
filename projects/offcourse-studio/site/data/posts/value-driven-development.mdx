@@ -37,22 +37,19 @@ In this article, I explain how Public Badges build on the existing paradigms of 
 >
 > &mdash; Lizzo
 
-Ruby was the first programming language that I truly loved. Its emphasis on readability and conceptual clarity is unrivaled. But a large part of Ruby's appeal came from its ecosystem, and its community's dedication to testing.
+Ruby was the first programming language that I truly loved. Its emphasis on readability and conceptual clarity is unrivaled even today.A large part of Ruby's appeal, though, came from its community's dedication to Test Driven Development (TDD).
 
 It is almost impossible to learn how to program in Ruby without learning how to write unit tests. The idea behind testing is very simple. For every piece of code that does something, you also write another piece of code that checks that the former works correctly.
 
 Concretely, a simple unit test would look something like this:
 
 ```ruby
-def add a, b
-  return a + b
-end
-
-assert_equal( 3, add( 20, 50 ) , "Something does not add up" )
+assert_equal( 70, add( 50, 20 ) )
 ```
-Test Driven Development (TDD), however, goes one step further than just unit writing tests. The real innovation of the methodology consists in the fact that the tests are not written after that you have written the code,
 
-This so-called *test first* approach radically changes the practice of software development. Before the developer actually writes code, he makes a promise of what the code should do after it is finished. In TDD, tests become contracts. The practice of *test first* as such could already be considered ethical.
+Test Driven Development, however, goes one step further than just unit writing tests. The real innovation of the methodology consists in the fact that the tests are not written after that you have written the code, but before.
+
+This so-called [test first]() approach radically changes the practice of software development. Before the developer actually writes code, she makes a promise of what the code should do after it is finished. In TDD, tests become contracts. They formalize the expectations that the developer may have of herself or of others. The practice of TDD as such could thus already be considered ethical.
 
 ## Behavior Driven Development
 
@@ -61,13 +58,15 @@ This so-called *test first* approach radically changes the practice of software 
 >
 > &mdash; Method Man
 
-Behavior Driven Development takes these ideas one step further. In BDD, the focus of the test is no longer the developer but the user. 
+Behavior Driven Development takes these ideas one step further. In BDD, the focus of the test is no longer the code but the user. This is a very, subtle difference, that is often, but in my opinion falsely, dismissed as meaningless.
+
+This difference is probably best illustrated with an example, which is deliberately kept very simple:
 
 ```gherkin
 Feature: Cash register can correctly add up two amounts     
-In order to keep track of stock      
+In order to make money 
 As a store owner      
-I want to add items back to stock when they are returned     
+I want the cash register to function properly      
 
 Example: refunded items should be returned to stock    
 Given a customer buys a sweater and a pair of socks    
@@ -77,7 +76,19 @@ When I add up 50 euro and 20 euro  
 Then the cash register should say 70 euro
 ```
 
-In BDD 
+For those, who never encountered Gherkin &mdash; the so-called domain specific language in which this test is written &mdash; before. The above example is actually valid Ruby code and not just a story. It can be parsed and executed by a computer. 
+
+As is immediate apparent, BDD is much more verbose than TDD. While both tests are functionally equivalent, the former needs 11 more lines of code. 
+
+Many developers would dismiss these extra lines as superfluous but they thereby miss the essential point of BDD. Test are no exclusively longer intended for developers. They are meant to facilitate the dialogue with the software’s intended user, and manage the latter’s expectations.
+
+One could argue that from a BDD perspective, the most important line in the test above is thus the following:
+
+```gherkin
+As a store owner
+```
+As opposed to TDD, BDD tests don’t formalize the expectations between developers (either other people or future selfs). They create a contract between developers and the software’s future users. And thus increases the responsibility.
+
 
 ## Value Driven Development
 
@@ -85,21 +96,32 @@ In BDD
 > 
 > &mdash; Lil' Wayne
 
-Bla Bla
+BDD constantly reminds the developer of the fact that there is an actual user of her software, which &mdash; as anyone who has ever used a computer knows &mdash; is already a feat as such.
+
+But while the user centricity of BDD has been often praised, there is another line in the example above that unfortunately never gets the attention that it deserves.
+  
+```gherkin
+In order to make money   
+```
+
+This is the place where the value of the software is determined. And while making money can be an important value. It is far from the only one. Just imagine what else we could have stated as the project’s goal:
 
 ```gherkin
-Feature: Cash register can correctly add up two amounts     
-In order to keep track of stock      
-As a store owner      
-I want to add items back to stock when they are returned     
+In order to increase accessibility  ```
 
-Example: refunded items should be returned to stock    
-Given a customer buys a sweater and a pair of socks    
-And the sweater costs 50 euro
-And the socks cost 20 euro   
-When I add up 50 euro and 20 euro  
-Then the cash register should say 70 euro
-```
+```gherkin
+In order to fairly distribute means ```
+
+```gherkin
+In order to make people healthier    ```
+
+```gherkin
+In order to protect people’s privacy     ```
+
+```gherkin
+In order to keep the internet open    ```
+
+In short, that’s what we try to do with Public Badges. Motivate them to formalize the contract with their users from the perspective of values. Rather than simply testing the behavior of the code, it’s important to realize and formalize that intended behavior by definition . By rendering this implicit ethical position explicit,  
 
 ---
 This is the second in a series of articles. The first can be found here:
@@ -110,5 +132,3 @@ This is the second in a series of articles. The first can be found here:
 [Waag](https://waag.org) and [Offcourse Studio_](https://offcourse-studio.com).
 
 Photo by [Lisheng Chang](https://unsplash.com/@changlisheng?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on Unsplash
-
-
