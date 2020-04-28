@@ -7,7 +7,7 @@
   "scripts": {
     "prebuild": "gatsby clean",
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby clean && gatsby develop",
     "predeploy": "yarn build",
     "deploy": "gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id E2T22H7MFTWB1Y --paths \"/*\"",
     "clean": "gatsby clean",
