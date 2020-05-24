@@ -1,0 +1,310 @@
+{
+  "config": {
+    "title": "Docz Example Typescript",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "version": "2.0.0-rc.41",
+    "repository": null,
+    "native": false,
+    "themeConfig": {},
+    "separator": "-",
+    "typescript": true
+  },
+  "entries": [
+    {
+      "key": "src/brand-story.mdx",
+      "value": {
+        "name": "Brand Story",
+        "id": "809f6a129202216fb0fbf9dc2ea427ac",
+        "filepath": "src/brand-story.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/brand-story.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-brand-story",
+        "route": "/src-brand-story",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "past-present-and-future",
+            "depth": 1,
+            "value": "Past, Present, and Future"
+          },
+          {
+            "slug": "survival-of-the-clumsiest",
+            "depth": 2,
+            "value": "Survival of the Clumsiest"
+          },
+          {
+            "slug": "offcourse",
+            "depth": 2,
+            "value": "Offcourse"
+          },
+          {
+            "slug": "learnings",
+            "depth": 2,
+            "value": "Learnings"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/founder-story.mdx",
+      "value": {
+        "name": "Founder Stories",
+        "id": "59646c41aad6fed6fc9b8e737f79d531",
+        "filepath": "src/founder-story.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/founder-story.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-founder-story",
+        "route": "/src-founder-story",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "founder-stories",
+            "depth": 1,
+            "value": "Founder Stories"
+          },
+          {
+            "slug": "survival-of-the-clumsiest",
+            "depth": 2,
+            "value": "Survival of the Clumsiest"
+          },
+          {
+            "slug": "the-template-of-doom",
+            "depth": 2,
+            "value": "The Template of Doom"
+          },
+          {
+            "slug": "just-passing-by",
+            "depth": 2,
+            "value": "Just Passing By"
+          },
+          {
+            "slug": "motivation-slips",
+            "depth": 2,
+            "value": "Motivation Slips"
+          },
+          {
+            "slug": "digital-literacy",
+            "depth": 2,
+            "value": "Digital Literacy"
+          },
+          {
+            "slug": "lazy-santa",
+            "depth": 2,
+            "value": "Lazy Santa"
+          },
+          {
+            "slug": "the-eternal-recurrence-of-the-same",
+            "depth": 2,
+            "value": "The Eternal Recurrence of the Same"
+          },
+          {
+            "slug": "social-justice-warrior",
+            "depth": 2,
+            "value": "Social Justice Warrior"
+          },
+          {
+            "slug": "please-underwhelm-me",
+            "depth": 2,
+            "value": "Please Underwhelm Me"
+          },
+          {
+            "slug": "subhuman-resources",
+            "depth": 2,
+            "value": "Subhuman Resources"
+          },
+          {
+            "slug": "out-of-place-out-of-time",
+            "depth": 2,
+            "value": "Out of Place, Out of Time"
+          },
+          {
+            "slug": "offcourse",
+            "depth": 2,
+            "value": "Offcourse"
+          },
+          {
+            "slug": "learnings",
+            "depth": 2,
+            "value": "Learnings"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/components/Alert.mdx",
+      "value": {
+        "name": "Alert",
+        "menu": "Components",
+        "id": "411d2842c3d65e6ee7d3ec119ed4c5a0",
+        "filepath": "src/components/Alert.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/components/Alert.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-components-alert",
+        "route": "/src-components-alert",
+        "headings": [
+          {
+            "slug": "alert",
+            "depth": 1,
+            "value": "Alert"
+          },
+          {
+            "slug": "properties",
+            "depth": 2,
+            "value": "Properties"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          },
+          {
+            "slug": "using-different-kinds",
+            "depth": 2,
+            "value": "Using different kinds"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/components/Button.mdx",
+      "value": {
+        "name": "Button",
+        "menu": "Components",
+        "id": "94c04b4e4bd29ffbdeec8755c1a4c04f",
+        "filepath": "src/components/Button.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/components/Button.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-components-button",
+        "route": "/src-components-button",
+        "headings": [
+          {
+            "slug": "button",
+            "depth": 1,
+            "value": "Button"
+          },
+          {
+            "slug": "best-practices",
+            "depth": 3,
+            "value": "Best practices"
+          },
+          {
+            "slug": "properties",
+            "depth": 2,
+            "value": "Properties"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          },
+          {
+            "slug": "with-different-sizes",
+            "depth": 2,
+            "value": "With different sizes"
+          },
+          {
+            "slug": "with-different-colors",
+            "depth": 2,
+            "value": "With different colors"
+          },
+          {
+            "slug": "outlined",
+            "depth": 2,
+            "value": "Outlined"
+          }
+        ]
+      }
+    }
+  ],
+  "props": [
+    {
+      "key": "src/components/Alert.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Alert",
+          "methods": [],
+          "props": {
+            "kind": {
+              "defaultValue": {
+                "value": "info"
+              },
+              "description": "Set this to change alert kind",
+              "name": "kind",
+              "parent": {
+                "fileName": "src/components/Alert.tsx",
+                "name": "AlertProps"
+              },
+              "required": true,
+              "type": {
+                "name": "\"info\" | \"positive\" | \"negative\" | \"warning\""
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/Button.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Button",
+          "methods": [],
+          "props": {
+            "scale": {
+              "defaultValue": {
+                "value": "normal"
+              },
+              "description": "",
+              "name": "scale",
+              "parent": {
+                "fileName": "src/components/Button.tsx",
+                "name": "ButtonProps"
+              },
+              "required": false,
+              "type": {
+                "name": "\"small\" | \"normal\" | \"big\""
+              }
+            },
+            "kind": {
+              "defaultValue": {
+                "value": "primary"
+              },
+              "description": "",
+              "name": "kind",
+              "parent": {
+                "fileName": "src/components/Button.tsx",
+                "name": "ButtonProps"
+              },
+              "required": false,
+              "type": {
+                "name": "\"primary\" | \"secondary\" | \"cancel\" | \"dark\" | \"gray\""
+              }
+            },
+            "outline": {
+              "defaultValue": {
+                "value": false
+              },
+              "description": "",
+              "name": "outline",
+              "parent": {
+                "fileName": "src/components/Button.tsx",
+                "name": "ButtonProps"
+              },
+              "required": false,
+              "type": {
+                "name": "boolean"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
