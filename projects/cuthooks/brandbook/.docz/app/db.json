@@ -1,6 +1,6 @@
 {
   "config": {
-    "title": "Docz Example Typescript",
+    "title": "Cuthooks Brandbook",
     "description": "My awesome app using docz",
     "menu": [],
     "version": "2.0.0-rc.41",
@@ -11,6 +11,21 @@
     "typescript": true
   },
   "entries": [
+    {
+      "key": "src/brand-statement.mdx",
+      "value": {
+        "name": "Brand Statement",
+        "id": "67c8f8b6c47919374dfd5fe68c1dd028",
+        "filepath": "src/brand-statement.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/brand-statement.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-brand-statement",
+        "route": "/src-brand-statement",
+        "menu": "",
+        "headings": []
+      }
+    },
     {
       "key": "src/brand-story.mdx",
       "value": {
@@ -23,34 +38,13 @@
         "slug": "src-brand-story",
         "route": "/src-brand-story",
         "menu": "",
-        "headings": [
-          {
-            "slug": "past-present-and-future",
-            "depth": 1,
-            "value": "Past, Present, and Future"
-          },
-          {
-            "slug": "survival-of-the-clumsiest",
-            "depth": 2,
-            "value": "Survival of the Clumsiest"
-          },
-          {
-            "slug": "offcourse",
-            "depth": 2,
-            "value": "Offcourse"
-          },
-          {
-            "slug": "learnings",
-            "depth": 2,
-            "value": "Learnings"
-          }
-        ]
+        "headings": []
       }
     },
     {
       "key": "src/founder-story.mdx",
       "value": {
-        "name": "Founder Stories",
+        "name": "Founder Story",
         "id": "59646c41aad6fed6fc9b8e737f79d531",
         "filepath": "src/founder-story.mdx",
         "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/founder-story.mdx",
@@ -61,9 +55,9 @@
         "menu": "",
         "headings": [
           {
-            "slug": "founder-stories",
+            "slug": "founder-story",
             "depth": 1,
-            "value": "Founder Stories"
+            "value": "Founder Story"
           },
           {
             "slug": "survival-of-the-clumsiest",
@@ -121,14 +115,29 @@
             "value": "Subhuman Resources"
           },
           {
-            "slug": "out-of-place-out-of-time",
+            "slug": "do-repeat-myself",
             "depth": 2,
-            "value": "Out of Place, Out of Time"
+            "value": "Do Repeat Myself"
           },
           {
-            "slug": "offcourse",
+            "slug": "crossing-over",
             "depth": 2,
-            "value": "Offcourse"
+            "value": "Crossing Over"
+          },
+          {
+            "slug": "cutting-the-humanities",
+            "depth": 2,
+            "value": "Cutting the Humanities"
+          },
+          {
+            "slug": "foundational-education",
+            "depth": 2,
+            "value": "Foundational Education"
+          },
+          {
+            "slug": "ethics",
+            "depth": 2,
+            "value": "Ethics"
           },
           {
             "slug": "learnings",
@@ -221,6 +230,349 @@
             "slug": "outlined",
             "depth": 2,
             "value": "Outlined"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/user-stories/brand-image-control.mdx",
+      "value": {
+        "name": "Brand Image Control",
+        "menu": "User Stories",
+        "id": "ddc7940624417de3a8940a21ed839b69",
+        "filepath": "src/user-stories/brand-image-control.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/user-stories/brand-image-control.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-user-stories-brand-image-control",
+        "route": "/src-user-stories-brand-image-control",
+        "headings": [
+          {
+            "slug": "imagobeheersing",
+            "depth": 1,
+            "value": "Imagobeheersing"
+          },
+          {
+            "slug": "link",
+            "depth": 2,
+            "value": "Link"
+          },
+          {
+            "slug": "persona",
+            "depth": 2,
+            "value": "Persona"
+          },
+          {
+            "slug": "professionele-doelen",
+            "depth": 3,
+            "value": "Professionele doelen"
+          },
+          {
+            "slug": "waarden",
+            "depth": 3,
+            "value": "Waarden"
+          },
+          {
+            "slug": "bedrijfsinformatie",
+            "depth": 3,
+            "value": "Bedrijfsinformatie"
+          },
+          {
+            "slug": "verantwoordelijkheden",
+            "depth": 3,
+            "value": "Verantwoordelijkheden"
+          },
+          {
+            "slug": "informatiebehoefte",
+            "depth": 3,
+            "value": "Informatiebehoefte"
+          },
+          {
+            "slug": "informatiekanalen",
+            "depth": 3,
+            "value": "Informatiekanalen"
+          },
+          {
+            "slug": "ambities-en-doelen",
+            "depth": 3,
+            "value": "Ambities en doelen"
+          },
+          {
+            "slug": "frustraties-en-angsten",
+            "depth": 3,
+            "value": "Frustraties en angsten"
+          },
+          {
+            "slug": "persona-2",
+            "depth": 2,
+            "value": "Persona 2"
+          },
+          {
+            "slug": "professionele-doelen-1",
+            "depth": 3,
+            "value": "Professionele doelen"
+          },
+          {
+            "slug": "waarden-1",
+            "depth": 3,
+            "value": "Waarden"
+          },
+          {
+            "slug": "bedrijfsinformatie-1",
+            "depth": 3,
+            "value": "Bedrijfsinformatie"
+          },
+          {
+            "slug": "verantwoordelijkheden-1",
+            "depth": 3,
+            "value": "Verantwoordelijkheden"
+          },
+          {
+            "slug": "informatiebehoefte-1",
+            "depth": 3,
+            "value": "Informatiebehoefte"
+          },
+          {
+            "slug": "informatiekanalen-1",
+            "depth": 3,
+            "value": "Informatiekanalen"
+          },
+          {
+            "slug": "ambities-en-doelen-1",
+            "depth": 3,
+            "value": "Ambities en doelen"
+          },
+          {
+            "slug": "frustraties-en-angsten-1",
+            "depth": 3,
+            "value": "Frustraties en angsten"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/user-stories/diachronous-collaboration.mdx",
+      "value": {
+        "name": "Diachronous Collaboration",
+        "menu": "User Stories",
+        "id": "dbc2851cadc51508f47e310499934c21",
+        "filepath": "src/user-stories/diachronous-collaboration.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/user-stories/diachronous-collaboration.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-user-stories-diachronous-collaboration",
+        "route": "/src-user-stories-diachronous-collaboration",
+        "headings": [
+          {
+            "slug": "diachroon-samenwerken",
+            "depth": 1,
+            "value": "Diachroon Samenwerken"
+          },
+          {
+            "slug": "link",
+            "depth": 2,
+            "value": "Link"
+          },
+          {
+            "slug": "persona-1",
+            "depth": 2,
+            "value": "Persona 1"
+          },
+          {
+            "slug": "professionele-doelen",
+            "depth": 3,
+            "value": "Professionele doelen"
+          },
+          {
+            "slug": "waarden",
+            "depth": 3,
+            "value": "Waarden"
+          },
+          {
+            "slug": "bedrijfsinformatie",
+            "depth": 3,
+            "value": "Bedrijfsinformatie"
+          },
+          {
+            "slug": "verantwoordelijkheden",
+            "depth": 3,
+            "value": "Verantwoordelijkheden"
+          },
+          {
+            "slug": "informatiekanalen",
+            "depth": 3,
+            "value": "Informatiekanalen"
+          },
+          {
+            "slug": "ambities-en-doelen",
+            "depth": 3,
+            "value": "Ambities en doelen"
+          },
+          {
+            "slug": "frustraties-en-angsten",
+            "depth": 3,
+            "value": "Frustraties en angsten"
+          },
+          {
+            "slug": "persona-2",
+            "depth": 2,
+            "value": "Persona 2"
+          },
+          {
+            "slug": "professionele-doelen-1",
+            "depth": 3,
+            "value": "Professionele doelen"
+          },
+          {
+            "slug": "waarden-1",
+            "depth": 3,
+            "value": "Waarden"
+          },
+          {
+            "slug": "bedrijfsinformatie-1",
+            "depth": 3,
+            "value": "Bedrijfsinformatie"
+          },
+          {
+            "slug": "verantwoordelijkheden-1",
+            "depth": 3,
+            "value": "Verantwoordelijkheden"
+          },
+          {
+            "slug": "informatiebehoefte",
+            "depth": 3,
+            "value": "Informatiebehoefte"
+          },
+          {
+            "slug": "informatiekanalen-1",
+            "depth": 3,
+            "value": "Informatiekanalen"
+          },
+          {
+            "slug": "ambities-en-doelen-1",
+            "depth": 3,
+            "value": "Ambities en doelen"
+          },
+          {
+            "slug": "frustraties-en-angsten-1",
+            "depth": 3,
+            "value": "Frustraties en angsten"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/user-stories/testable-value-profile.mdx",
+      "value": {
+        "name": "Testable Value Profile",
+        "menu": "User Stories",
+        "id": "da146c3f284850805047bef78e1e4ca7",
+        "filepath": "src/user-stories/testable-value-profile.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/user-stories/testable-value-profile.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-user-stories-testable-value-profile",
+        "route": "/src-user-stories-testable-value-profile",
+        "headings": [
+          {
+            "slug": "waardenprofiel",
+            "depth": 1,
+            "value": "Waardenprofiel"
+          },
+          {
+            "slug": "link",
+            "depth": 2,
+            "value": "Link"
+          },
+          {
+            "slug": "persona-1",
+            "depth": 2,
+            "value": "Persona 1"
+          },
+          {
+            "slug": "professionele-doelen",
+            "depth": 3,
+            "value": "Professionele doelen"
+          },
+          {
+            "slug": "waarden",
+            "depth": 3,
+            "value": "Waarden"
+          },
+          {
+            "slug": "bedrijfsinformatie",
+            "depth": 3,
+            "value": "Bedrijfsinformatie"
+          },
+          {
+            "slug": "verantwoordelijkheden",
+            "depth": 3,
+            "value": "Verantwoordelijkheden"
+          },
+          {
+            "slug": "informatiebehoefte",
+            "depth": 3,
+            "value": "Informatiebehoefte"
+          },
+          {
+            "slug": "informatiekanalen",
+            "depth": 3,
+            "value": "Informatiekanalen"
+          },
+          {
+            "slug": "ambities-en-doelen",
+            "depth": 3,
+            "value": "Ambities en doelen"
+          },
+          {
+            "slug": "frustraties-en-angsten",
+            "depth": 3,
+            "value": "Frustraties en angsten"
+          },
+          {
+            "slug": "persona-2",
+            "depth": 2,
+            "value": "Persona 2"
+          },
+          {
+            "slug": "professionele-doelen-1",
+            "depth": 3,
+            "value": "Professionele doelen"
+          },
+          {
+            "slug": "waarden-1",
+            "depth": 3,
+            "value": "Waarden"
+          },
+          {
+            "slug": "bedrijfsinformatie-1",
+            "depth": 3,
+            "value": "Bedrijfsinformatie"
+          },
+          {
+            "slug": "verantwoordelijkheden-1",
+            "depth": 3,
+            "value": "Verantwoordelijkheden"
+          },
+          {
+            "slug": "informatiebehoefte-1",
+            "depth": 3,
+            "value": "Informatiebehoefte"
+          },
+          {
+            "slug": "informatiekanalen-1",
+            "depth": 3,
+            "value": "Informatiekanalen"
+          },
+          {
+            "slug": "ambities-en-doelen-1",
+            "depth": 3,
+            "value": "Ambities en doelen"
+          },
+          {
+            "slug": "frustraties-en-angsten-1",
+            "depth": 3,
+            "value": "Frustraties en angsten"
           }
         ]
       }
