@@ -101,14 +101,19 @@
             "value": "The Eternal Recurrence of the Same"
           },
           {
+            "slug": "master-teacher",
+            "depth": 2,
+            "value": "Master Teacher"
+          },
+          {
             "slug": "social-justice-warrior",
             "depth": 2,
             "value": "Social Justice Warrior"
           },
           {
-            "slug": "please-underwhelm-me",
+            "slug": "uplifting-eduction",
             "depth": 2,
-            "value": "Please Underwhelm Me"
+            "value": "Uplifting Eduction"
           },
           {
             "slug": "subhuman-resources",
