@@ -130,14 +130,19 @@
             "value": "Cutting the Humanities"
           },
           {
-            "slug": "foundational-education",
+            "slug": "roadside-picknick",
             "depth": 2,
-            "value": "Foundational Education"
+            "value": "Roadside Picknick"
+          },
+          {
+            "slug": "cut-to-the-chase",
+            "depth": 2,
+            "value": "Cut to the Chase"
           },
           {
             "slug": "ethics",
             "depth": 2,
-            "value": "Ethics"
+            "value": "ETHICS"
           },
           {
             "slug": "learnings",
