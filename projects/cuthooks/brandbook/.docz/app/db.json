@@ -153,6 +153,21 @@
       }
     },
     {
+      "key": "src/keywords.mdx",
+      "value": {
+        "name": "Keywords",
+        "id": "bdef6eb4d7d2575138e085ee52e258a3",
+        "filepath": "src/keywords.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/keywords.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-keywords",
+        "route": "/src-keywords",
+        "menu": "",
+        "headings": []
+      }
+    },
+    {
       "key": "src/components/Alert.mdx",
       "value": {
         "name": "Alert",
