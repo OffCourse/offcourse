@@ -130,9 +130,9 @@
             "value": "Cutting the Humanities"
           },
           {
-            "slug": "roadside-picknick",
+            "slug": "roadside-picnic",
             "depth": 2,
-            "value": "Roadside Picknick"
+            "value": "Roadside Picnic"
           },
           {
             "slug": "cut-to-the-chase",
@@ -140,14 +140,14 @@
             "value": "Cut to the Chase"
           },
           {
-            "slug": "ethics",
+            "slug": "value-driven-development",
             "depth": 2,
-            "value": "ETHICS"
+            "value": "Value Driven Development"
           },
           {
-            "slug": "learnings",
+            "slug": "the-future-is-artificial",
             "depth": 2,
-            "value": "Learnings"
+            "value": "The Future is Artificial"
           }
         ]
       }
