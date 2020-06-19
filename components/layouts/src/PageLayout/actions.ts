@@ -7,9 +7,11 @@ const updateLinks = assign<any, any>({
     _event: any
   ) => {
     const pathTitle = path.replace(/\//, "") || "home";
-    const links = siteMetaData.links.filter(({ title }) => title !== pathTitle);
+    const links = siteMetaData.links
+      ? siteMetaData.links.filter(({ title }) => title !== pathTitle)
+      : null;
     return { ...siteMetaData, links };
-  }
+  },
 });
 
 const callToActionVisible = assign<any, any>({
@@ -18,7 +20,7 @@ const callToActionVisible = assign<any, any>({
       return false;
     }
     return sections ? !sections["ContactSection"] : true;
-  }
+  },
 });
 
 const updateSections = assign<any, any>({
@@ -26,7 +28,7 @@ const updateSections = assign<any, any>({
     const sections = context.sections || {};
     const { role, isVisible } = payload;
     return { ...sections, [role]: isVisible };
-  }
+  },
 });
 
 export { updateLinks, callToActionVisible, updateSections };

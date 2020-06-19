@@ -1,0 +1,26 @@
+role: ProcessSection
+order: 40
+publishable: true
+steps:
+  - title: Map
+    description: |
+      We inventory the data and knowledge that you use. What processes are
+      already in place? What challenges do you encounter? For example,
+      knowledge may only be transferred informally, or not at all. We
+      visualize the knowledge ecosystem of your practice to provide insight
+      in the processes that are critical to you.
+  - title: Strategize
+    description: |
+      We create a plan to clean up, connect and aggregate your data and
+      design data models specific to your practice. What data do you need when
+      and where? How do you want your data delivered? And which tools and
+      services do you need? We develop a roadmap to identify the steps to take
+      to strengthen your knowledge infrastructure.
+  - title: Intervene
+    description: |
+      We develop an infrastructure of  tools and services that transform your
+      work. This may be a bot that organizes a personalized festival program,
+      a  system that validates the ethical values of online products, or a
+      beacon that transforms your exhibition into an educational game.
+      We embed these tools and services into your practice. We take the time
+      to test and document the resulting ecosystem until it works for you.

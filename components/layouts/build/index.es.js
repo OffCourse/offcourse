@@ -73,12 +73,14 @@ var updateLinks = assign({
     siteMetaData: function (_a, _event) {
         var siteMetaData = _a.siteMetaData, path = _a.path;
         var pathTitle = path.replace(/\//, "") || "home";
-        var links = siteMetaData.links.filter(function (_a) {
-            var title = _a.title;
-            return title !== pathTitle;
-        });
+        var links = siteMetaData.links
+            ? siteMetaData.links.filter(function (_a) {
+                var title = _a.title;
+                return title !== pathTitle;
+            })
+            : null;
         return __assign(__assign({}, siteMetaData), { links: links });
-    }
+    },
 });
 var callToActionVisible = assign({
     callToActionVisible: function (_a) {
@@ -87,7 +89,7 @@ var callToActionVisible = assign({
             return false;
         }
         return sections ? !sections["ContactSection"] : true;
-    }
+    },
 });
 var updateSections = assign({
     sections: function (context, _a) {
@@ -96,9 +98,8 @@ var updateSections = assign({
         var sections = context.sections || {};
         var role = payload.role, isVisible = payload.isVisible;
         return __assign(__assign({}, sections), (_b = {}, _b[role] = isVisible, _b));
-    }
+    },
 });
-//# sourceMappingURL=actions.js.map
 
 var actions = /*#__PURE__*/Object.freeze({
     __proto__: null,
@@ -136,7 +137,6 @@ var StateProvider = function (_a) {
             registerSection: registerSection }, current.context) }, children));
 };
 var useStateValue = function () { return useContext(StateContext); };
-//# sourceMappingURL=state.js.map
 
 var wrapperStyles = {
     display: "grid",
@@ -151,10 +151,11 @@ var InnerLayout = function (_a) {
     var toggleMenu = useCallback(function () { return send({ type: "TOGGLE" }); }, [send]);
     var appMode = current.toStrings()[0];
     return (jsx(Box, { className: className, sx: wrapperStyles },
-        jsx(Header, __assign({ key: "header", appMode: appMode, toggleMenu: toggleMenu, callToActionVisible: callToActionVisible }, siteMetaData)),
+        (siteMetaData === null || siteMetaData === void 0 ? void 0 : siteMetaData.links) && (jsx(Header, __assign({ key: "header", appMode: appMode, toggleMenu: toggleMenu, callToActionVisible: callToActionVisible }, siteMetaData))),
         children,
-        jsx(Footer, __assign({}, siteMetaData))));
+        (siteMetaData === null || siteMetaData === void 0 ? void 0 : siteMetaData.contactInfo) && jsx(Footer, __assign({}, siteMetaData))));
 };
+//# sourceMappingURL=InnerLayout.js.map
 
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path, pageData = _a.pageData;
@@ -163,6 +164,7 @@ var PageLayout = function (_a) {
         jsx(Global, { styles: function (theme) { return theme.globals; } }),
         jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };
+//# sourceMappingURL=index.js.map
 
 export { PageLayout, useStateValue };
 //# sourceMappingURL=index.es.js.map

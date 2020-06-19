@@ -48,6 +48,7 @@ module.exports = {
     "@offcourse/homepage-theme",
     "@offcourse/blog-theme",
     "@offcourse/presentation-theme",
+    "gatsby-plugin-sitemap",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

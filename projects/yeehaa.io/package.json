@@ -1,0 +1,49 @@
+{
+  "name": "yeehaa.io",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "prebuild": "gatsby clean",
+    "build": "gatsby build",
+    "develop": "gatsby clean && gatsby develop",
+    "predeploy": "yarn build",
+    "deploy": "gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id E2T22H7MFTWB1Y --paths \"/*\"",
+    "clean": "gatsby clean",
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project ."
+  },
+  "author": "Yeehaa",
+  "license": "MIT",
+  "devDependencies": {
+    "@popmotion/popcorn": "^0.4.4",
+    "@rollup/plugin-multi-entry": "^3.0.0",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/voca": "^1.4.0",
+    "gatsby-plugin-s3": "^0.3.2",
+    "serverless": "^1.63.0"
+  },
+  "dependencies": {
+    "@offcourse/blog-theme": "*",
+    "@offcourse/hooks": "*",
+    "@offcourse/interfaces": "*",
+    "@offcourse/public-badges-drawer": "^0.1.0-0",
+    "@types/d3-array": "^2.0.0",
+    "d3-array": "^2.4.0",
+    "framer-motion": "^1.8.4",
+    "gatsby": "^2.19.17",
+    "gatsby-plugin-canonical-urls": "^2.1.20",
+    "gatsby-plugin-manifest": "^2.3.3",
+    "gatsby-plugin-matomo": "^0.8.2",
+    "gatsby-plugin-offline": "^3.1.2",
+    "gatsby-plugin-react-helmet": "^3.2.1",
+    "gatsby-plugin-sitemap": "^2.4.5",
+    "gatsby-plugin-typescript": "^2.1.27",
+    "lodash.merge": "^4.6.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "workerize": "^0.1.8"
+  }
+}

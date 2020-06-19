@@ -77,12 +77,14 @@ var updateLinks = xstate.assign({
     siteMetaData: function (_a, _event) {
         var siteMetaData = _a.siteMetaData, path = _a.path;
         var pathTitle = path.replace(/\//, "") || "home";
-        var links = siteMetaData.links.filter(function (_a) {
-            var title = _a.title;
-            return title !== pathTitle;
-        });
+        var links = siteMetaData.links
+            ? siteMetaData.links.filter(function (_a) {
+                var title = _a.title;
+                return title !== pathTitle;
+            })
+            : null;
         return __assign(__assign({}, siteMetaData), { links: links });
-    }
+    },
 });
 var callToActionVisible = xstate.assign({
     callToActionVisible: function (_a) {
@@ -91,7 +93,7 @@ var callToActionVisible = xstate.assign({
             return false;
         }
         return sections ? !sections["ContactSection"] : true;
-    }
+    },
 });
 var updateSections = xstate.assign({
     sections: function (context, _a) {
@@ -100,9 +102,8 @@ var updateSections = xstate.assign({
         var sections = context.sections || {};
         var role = payload.role, isVisible = payload.isVisible;
         return __assign(__assign({}, sections), (_b = {}, _b[role] = isVisible, _b));
-    }
+    },
 });
-//# sourceMappingURL=actions.js.map
 
 var actions = /*#__PURE__*/Object.freeze({
     __proto__: null,
@@ -140,7 +141,6 @@ var StateProvider = function (_a) {
             registerSection: registerSection }, current.context) }, children));
 };
 var useStateValue = function () { return react.useContext(StateContext); };
-//# sourceMappingURL=state.js.map
 
 var wrapperStyles = {
     display: "grid",
@@ -155,10 +155,11 @@ var InnerLayout = function (_a) {
     var toggleMenu = react.useCallback(function () { return send({ type: "TOGGLE" }); }, [send]);
     var appMode = current.toStrings()[0];
     return (themeUi.jsx(themeUi.Box, { className: className, sx: wrapperStyles },
-        themeUi.jsx(molecules.Header, __assign({ key: "header", appMode: appMode, toggleMenu: toggleMenu, callToActionVisible: callToActionVisible }, siteMetaData)),
+        (siteMetaData === null || siteMetaData === void 0 ? void 0 : siteMetaData.links) && (themeUi.jsx(molecules.Header, __assign({ key: "header", appMode: appMode, toggleMenu: toggleMenu, callToActionVisible: callToActionVisible }, siteMetaData))),
         children,
-        themeUi.jsx(molecules.Footer, __assign({}, siteMetaData))));
+        (siteMetaData === null || siteMetaData === void 0 ? void 0 : siteMetaData.contactInfo) && themeUi.jsx(molecules.Footer, __assign({}, siteMetaData))));
 };
+//# sourceMappingURL=InnerLayout.js.map
 
 var PageLayout = function (_a) {
     var className = _a.className, children = _a.children, siteMetaData = _a.siteMetaData, path = _a.path, pageData = _a.pageData;
@@ -167,6 +168,7 @@ var PageLayout = function (_a) {
         themeUi.jsx(core.Global, { styles: function (theme) { return theme.globals; } }),
         themeUi.jsx(InnerLayout, { className: className, siteMetaData: siteMetaData }, children)));
 };
+//# sourceMappingURL=index.js.map
 
 exports.PageLayout = PageLayout;
 exports.useStateValue = useStateValue;

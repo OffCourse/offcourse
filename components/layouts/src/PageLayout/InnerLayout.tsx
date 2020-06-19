@@ -17,15 +17,17 @@ const InnerLayout: FunctionComponent<PageLayoutProps> = ({
   const appMode = current.toStrings()[0];
   return (
     <Box className={className} sx={wrapperStyles}>
-      <Header
-        key="header"
-        appMode={appMode}
-        toggleMenu={toggleMenu}
-        callToActionVisible={callToActionVisible}
-        {...siteMetaData}
-      />
+      {siteMetaData?.links && (
+        <Header
+          key="header"
+          appMode={appMode}
+          toggleMenu={toggleMenu}
+          callToActionVisible={callToActionVisible}
+          {...siteMetaData}
+        />
+      )}
       {children}
-      <Footer {...siteMetaData} />
+      {siteMetaData?.contactInfo && <Footer {...siteMetaData} />}
     </Box>
   );
 };

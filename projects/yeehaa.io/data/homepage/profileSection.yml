@@ -1,0 +1,31 @@
+role: ProfileSection
+order: 60
+title: About Jan Hein Hoogstad
+skills:
+  - title: The multidimensional universe of the digital
+    description: |
+      Jan Hein Hoogstad is the founder of Offcourse Studio. He’s fascinated by
+      the unlimited possibilities we create in the digital world. He sees the
+      digital as an extra dimension that we add to the ‘real world’, as a way
+      to add multiple tracks to our reality. He embraces its creative potential,
+      and the possibility to visualise multiple outcomes based on different sets
+      of slightly altered parameters.
+  - title: Creative approach to projects and solutions
+    description: |
+      'Think'.gsub(/[.ink]/, tinkerer[2..-1]) => thinkerer. Or for non-coders:
+      Jan Hein is an educator and self-taught software architect with a
+      demonstrated track record of working with various private and public
+      partners – University of Amsterdam, Rijksmuseum, Waag, Public Spaces,
+      Bocoup, UncInc – to create online and offline spaces using digital
+      technologies, ranging from software solutions, such as artifical
+      intelligence, and hardware solutions, such as beacons.
+  - title: Diverse domains and international background
+    description: |
+      Jan Hein holds a PhD in Philosophy and Media Studies. He was an assistant
+      professor of Cultural Analysis, and a coach and teacher at DevBootcamp in
+      San Francisco. He’s embedded in an international network of researchers,
+      developers, designers, and artists. Previously he was based in Berlin,
+      San Francisco, Taipei, Minneapolis, New York, Wenen, Graz, Istanbul,
+      Ghent, Utrecht, and Amsterdam. Currently, he works from Rotterdam The
+      Netherlands.
+publishable: true

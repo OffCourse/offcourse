@@ -1,5 +1,10 @@
 const withDefaults = require(`./utils/default-options`);
-const rss = {
+module.exports = (themeOptions) => {
+  const { contentPath, basePath, assetPath } = withDefaults(themeOptions);
+  const plugins = [
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-theme-ui`,
+{
   resolve: `gatsby-plugin-feed`,
   options: {
     query: `
@@ -21,8 +26,8 @@ const rss = {
             return Object.assign({}, edge.node.frontmatter, {
               description: edge.node.excerpt,
               date: edge.node.date,
-              url: site.siteMetadata.siteUrl + "/blog" + edge.node.slug,
-              guid: site.siteMetadata.siteUrl + "/blog" + edge.node.slug,
+              url: site.siteMetadata.siteUrl + basePath + edge.node.slug,
+              guid: site.siteMetadata.siteUrl + basePath + edge.node.slug,
               custom_elements: [{ "content:encoded": edge.node.html }],
             });
           });
@@ -49,18 +54,11 @@ const rss = {
         // if `string` is used, it will be used to create RegExp and then test if pathname of
         // current page satisfied this regular expression;
         // if not provided or `undefined`, all pages will have feed reference inserted
-        match: "^/blog/",
+        match: `^${basePath}/`,
       },
     ],
   },
-};
-
-module.exports = (themeOptions) => {
-  const { contentPath, assetPath } = withDefaults(themeOptions);
-  const plugins = [
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-theme-ui`,
-    rss,
+},
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
