@@ -54,7 +54,7 @@ const config = {
         open: null,
         'open-browser': null,
         root:
-          '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/.docz',
+          '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/.docz',
         base: '/',
         source: './',
         'gatsby-root': null,
@@ -73,37 +73,37 @@ const config = {
         p: 3000,
         separator: '-',
         paths: {
-          root: '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook',
+          root: '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook',
           templates:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/node_modules/docz-core/dist/templates',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/node_modules/docz-core/dist/templates',
           docz:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/.docz',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/.docz',
           cache:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/.docz/.cache',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/.docz/.cache',
           app:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/.docz/app',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/.docz/app',
           appPackageJson:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/package.json',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/package.json',
           appTsConfig:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/tsconfig.json',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/tsconfig.json',
           gatsbyConfig:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/gatsby-config.js',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/gatsby-config.js',
           gatsbyBrowser:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/gatsby-browser.js',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/gatsby-browser.js',
           gatsbyNode:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/gatsby-node.js',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/gatsby-node.js',
           gatsbySSR:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/gatsby-ssr.js',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/gatsby-ssr.js',
           importsJs:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/.docz/app/imports.js',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/.docz/app/imports.js',
           rootJs:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/.docz/app/root.jsx',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/.docz/app/root.jsx',
           indexJs:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/.docz/app/index.jsx',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/.docz/app/index.jsx',
           indexHtml:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/.docz/app/index.html',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/.docz/app/index.html',
           db:
-            '/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/.docz/app/db.json',
+            '/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/.docz/app/db.json',
         },
       },
     },

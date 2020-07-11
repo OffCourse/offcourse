@@ -1,0 +1,37 @@
+personalia:
+  name: Erin
+  gender: female
+  age: 31
+  education: journalism
+company:
+  industry: publishing/media
+  numberOfEmployees: 300
+  yearlyRevenue: € 20 mln
+  location: New York City
+motivation:
+  - prestige
+  - maintaining a dynamic lifestyle
+values:
+  - working hard
+  - professional success
+  - mobility
+responsibilities: |
+  Erin is responsible for her company's brand image as technology leader. Her 
+  job requires some specialistic, technological knowledge, but not too much. 
+  She needs to know just enough to expand her netwerk at conferences and other 
+  events. Which is necessary to onboard new talent.
+informationNeeds: |
+  Erin wants to be informed about as many things possible. She is a true 
+  generalist. She focusses more on information than on people.
+channels:
+  - twitter
+  - conferences
+ambitions:
+  - build her own media empire
+  - being constantly challenged
+  - finding a man who is willing to live in the shadows
+frustrations:
+  - doesn't manage to organize her personal life
+  - encounters real-life limitations
+  - would like to have control over her life and career
+  - income cannot support her expensive lifestyle

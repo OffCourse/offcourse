@@ -17,7 +17,7 @@
         "name": "Brand Statement",
         "id": "67c8f8b6c47919374dfd5fe68c1dd028",
         "filepath": "src/brand-statement.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/brand-statement.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/brand-statement.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-brand-statement",
@@ -32,7 +32,7 @@
         "name": "Brand Story",
         "id": "809f6a129202216fb0fbf9dc2ea427ac",
         "filepath": "src/brand-story.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/brand-story.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/brand-story.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-brand-story",
@@ -47,7 +47,7 @@
         "name": "Do You Recognize Questions",
         "id": "eb5b488a462b0320a9661b294fab532e",
         "filepath": "src/do-you-recognize-questions.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/do-you-recognize-questions.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/do-you-recognize-questions.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-do-you-recognize-questions",
@@ -62,7 +62,7 @@
         "name": "Founder Story",
         "id": "59646c41aad6fed6fc9b8e737f79d531",
         "filepath": "src/founder-story.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/founder-story.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/founder-story.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-founder-story",
@@ -173,7 +173,7 @@
         "name": "Keywords",
         "id": "bdef6eb4d7d2575138e085ee52e258a3",
         "filepath": "src/keywords.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/keywords.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/keywords.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-keywords",
@@ -189,7 +189,7 @@
         "menu": "Components",
         "id": "411d2842c3d65e6ee7d3ec119ed4c5a0",
         "filepath": "src/components/Alert.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/components/Alert.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/Alert.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-components-alert",
@@ -225,7 +225,7 @@
         "menu": "Components",
         "id": "94c04b4e4bd29ffbdeec8755c1a4c04f",
         "filepath": "src/components/Button.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/components/Button.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/Button.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-components-button",
@@ -276,7 +276,7 @@
         "menu": "User Stories",
         "id": "ddc7940624417de3a8940a21ed839b69",
         "filepath": "src/user-stories/brand-image-control.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/user-stories/brand-image-control.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/user-stories/brand-image-control.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-user-stories-brand-image-control",
@@ -296,6 +296,11 @@
             "slug": "persona",
             "depth": 2,
             "value": "Persona"
+          },
+          {
+            "slug": "persona-2",
+            "depth": 2,
+            "value": "Persona 2"
           },
           {
             "slug": "professionele-doelen",
@@ -336,51 +341,6 @@
             "slug": "frustraties-en-angsten",
             "depth": 3,
             "value": "Frustraties en angsten"
-          },
-          {
-            "slug": "persona-2",
-            "depth": 2,
-            "value": "Persona 2"
-          },
-          {
-            "slug": "professionele-doelen-1",
-            "depth": 3,
-            "value": "Professionele doelen"
-          },
-          {
-            "slug": "waarden-1",
-            "depth": 3,
-            "value": "Waarden"
-          },
-          {
-            "slug": "bedrijfsinformatie-1",
-            "depth": 3,
-            "value": "Bedrijfsinformatie"
-          },
-          {
-            "slug": "verantwoordelijkheden-1",
-            "depth": 3,
-            "value": "Verantwoordelijkheden"
-          },
-          {
-            "slug": "informatiebehoefte-1",
-            "depth": 3,
-            "value": "Informatiebehoefte"
-          },
-          {
-            "slug": "informatiekanalen-1",
-            "depth": 3,
-            "value": "Informatiekanalen"
-          },
-          {
-            "slug": "ambities-en-doelen-1",
-            "depth": 3,
-            "value": "Ambities en doelen"
-          },
-          {
-            "slug": "frustraties-en-angsten-1",
-            "depth": 3,
-            "value": "Frustraties en angsten"
           }
         ]
       }
@@ -392,7 +352,7 @@
         "menu": "User Stories",
         "id": "dbc2851cadc51508f47e310499934c21",
         "filepath": "src/user-stories/diachronous-collaboration.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/user-stories/diachronous-collaboration.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/user-stories/diachronous-collaboration.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-user-stories-diachronous-collaboration",
@@ -503,7 +463,7 @@
         "menu": "User Stories",
         "id": "da146c3f284850805047bef78e1e4ca7",
         "filepath": "src/user-stories/testable-value-profile.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/cuthooks/brandbook/src/user-stories/testable-value-profile.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/user-stories/testable-value-profile.mdx",
         "link": "",
         "hidden": false,
         "slug": "src-user-stories-testable-value-profile",
@@ -692,6 +652,137 @@
               "required": false,
               "type": {
                 "name": "boolean"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/DataList.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "DataList",
+          "methods": [],
+          "props": {
+            "data": {
+              "defaultValue": null,
+              "description": "",
+              "name": "data",
+              "required": true,
+              "type": {
+                "name": "string[]"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/DataSection.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "DataSection",
+          "methods": [],
+          "props": {
+            "title": {
+              "defaultValue": null,
+              "description": "",
+              "name": "title",
+              "required": false,
+              "type": {
+                "name": "string | undefined"
+              }
+            },
+            "data": {
+              "defaultValue": null,
+              "description": "",
+              "name": "data",
+              "required": false,
+              "type": {
+                "name": "any"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/DataText.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "DataText",
+          "methods": [],
+          "props": {
+            "data": {
+              "defaultValue": null,
+              "description": "",
+              "name": "data",
+              "required": true,
+              "type": {
+                "name": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/UserPersona.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "UserPersona",
+          "methods": [],
+          "props": {
+            "data": {
+              "defaultValue": {
+                "value": "info"
+              },
+              "description": "Set this to change alert kind",
+              "name": "data",
+              "parent": {
+                "fileName": "src/components/UserPersona.tsx",
+                "name": "UserPersonaProps"
+              },
+              "required": true,
+              "type": {
+                "name": "Persona"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/utilities.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "entryTitleCase",
+          "methods": [],
+          "props": {}
+        }
+      ]
+    },
+    {
+      "key": "src/components/DataTable.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "DataTable",
+          "methods": [],
+          "props": {
+            "data": {
+              "defaultValue": null,
+              "description": "",
+              "name": "data",
+              "required": true,
+              "type": {
+                "name": "{ [k: string]: string | number; }"
               }
             }
           }

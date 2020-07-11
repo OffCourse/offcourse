@@ -1,4 +1,4 @@
-const siteAddress = new URL("https://offcourse-studio.com");
+const siteAddress = new URL("https://yeehaa.io");
 
 const siteName = "Yeehaa.io";
 const description = "my website";
@@ -44,17 +44,9 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-matomo",
-      options: {
-        siteId: "1",
-        matomoUrl: "https://offcoursestudio.matomo.cloud",
-        siteUrl: "https://offcourse-studio.com",
-      },
-    },
-    {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: "offcourse-studio-website",
+        bucketName: "yeehaa.io-website-bucket",
         protocol: siteAddress.protocol.slice(0, -1),
         hostname: siteAddress.hostname,
       },
