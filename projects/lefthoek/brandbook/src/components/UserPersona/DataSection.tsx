@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
-import { entryTitleCase } from "./utilities";
-import { DataList } from "./DataList";
-import { DataTable } from "./DataTable";
-import { DataText } from "./DataText";
+import { entryTitleCase } from "../utilities";
+import { List } from "../List";
+import { Table } from "../Table";
+import { TextBlock } from "../TextBlock";
 
 const selectComponent: (
   data: string | string[] | { [k: string]: string | number }
@@ -13,9 +13,9 @@ const selectComponent: (
   | FunctionComponent<{ data: string[] }>
   | FunctionComponent<{ data: { [k: string]: string | number } }> = (data) => {
   if (typeof data === "string") {
-    return DataText;
+    return TextBlock;
   } else {
-    return Array.isArray(data) ? DataList : DataTable;
+    return Array.isArray(data) ? List : Table;
   }
 };
 
