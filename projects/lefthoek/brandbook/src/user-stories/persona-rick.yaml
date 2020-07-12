@@ -1,0 +1,42 @@
+personalia:
+  name: Rick
+  gender: male
+  age: 55
+  education: self-made
+company:
+  industry: IT
+  size: 100000
+  revenue: € 10.000.000.000 per year
+  location: Boston
+motivation:
+  - innovate  
+  - disrupt
+values:
+  - independent
+  - self-made
+  - challenging
+responsibilities: |
+  Rick always comes up with new ideas. He does 
+  not accept the status quo, and will always 
+  challenge its assumptions. 
+  He is good with people, but looses interest quickly.
+  As a result, Rick sometimes comes across as unreliable.
+  Rick also always makes sure to take good care of himself in 
+  terms of salary and fringe benefits
+ information:
+  needs: |
+    Rick always want to be up to date with the latest and 
+    greatest developments. He frequently takes a deep dive in these
+    topics. But this never takes long, since he quickly gets bored
+    and then moves on to the next topic.   
+  channels:
+    - everything he can find on the topic of the day
+    - network events
+ambitions:
+  - quick success
+  - being stimulated, keeping excited 
+  - reduce his responsibilities
+frustrations:
+  - being held accountable for results and continuity
+  - insufficient recognition for his achievements
+  - not being his own boss, failed entrepeneurial endeavours

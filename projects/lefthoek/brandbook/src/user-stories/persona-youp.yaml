@@ -23,15 +23,16 @@ responsibilities: |
   It is Youp's responsibility to make sure that 
   leads are followed up, that quotations and invoices are 
   sent on time, and that targets are met.
-informationNeeds: |
-  Youp heavily relies on his partner to remain up to date.
-  She is always up to date with the latest developments in
-  their field and constantly travels to events to talk to people. 
-  His partner's word is gospel to Youp.
-channels:
-  - partner
-  - frank watching
-  - coffee machine
+information:
+  needs: |
+    Youp heavily relies on his partner to remain up to date.
+    She is always up to date with the latest developments in
+    their field and constantly travels to events to talk to people. 
+    His partner's word is gospel to Youp.
+  channels:
+    - partner
+    - frank watching
+    - coffee machine
 ambitions:
   - scale up the company
   - keep the agency healthy financially 
@@ -40,4 +41,3 @@ frustrations:
   - being (conceived as) boring
   - afraid to be abandoned
   - being used by his partner
-  

@@ -20,12 +20,13 @@ responsibilities: |
   job requires some specialistic, technological knowledge, but not too much. 
   She needs to know just enough to expand her netwerk at conferences and other 
   events. Which is necessary to onboard new talent.
-informationNeeds: |
-  Erin wants to be informed about as many things possible. She is a true 
-  generalist. She focusses more on information than on people.
-channels:
-  - twitter
-  - conferences
+information:
+  needs: |
+    Erin wants to be informed about as many things possible. She is a true 
+    generalist. She focusses more on information than on people.
+  channels:
+    - twitter
+    - conferences
 ambitions:
   - build her own media empire
   - being constantly challenged
