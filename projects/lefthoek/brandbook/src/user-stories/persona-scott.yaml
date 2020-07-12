@@ -1,0 +1,45 @@
+personalia:
+  name: Scott
+  gender: male
+  age: 34
+  education: hotel management and coding bootcamp
+company:
+  industry: IT
+  size: 150
+  revenue: € 400.000.000 per year
+  location: New York City
+motivation:
+  - making money  
+  - managing large projects
+  - working remotely
+values:
+  - quickly achieving excellent results
+  - challenging
+  - taking big risks
+responsibilities: |
+  Scott has build the organization from 0. In the 
+  beginning, he was responsible for everything and
+  everyone, but by now he has delegated most of his
+  responsibilities. De only mission critical task 
+  that he cannot delegate is process management and
+  strategy.
+information:
+  needs: |
+    Scott is autodidact and learns continuously. He wants to 
+    be able to challenge his developers, so he is on par with
+    them on technological topics. He uses his evenings and weekends
+    to educate himself.
+  channels:
+    - white papers
+    - hacker news
+    - reddit
+ambitions:
+  - start and grow many different kinds of organizations
+  - becoming filthily rich
+  - initialize ambitious projects 
+  - run his empire from an exotic location
+frustrations:
+  - feels that he may have accomplished less when he weren't born rich
+  - fears commitment
+  - no longer being cutting edge
+  - getting old
