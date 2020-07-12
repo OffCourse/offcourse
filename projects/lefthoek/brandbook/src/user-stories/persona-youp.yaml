@@ -1,0 +1,43 @@
+personalia:
+  name: Youp
+  gender: male
+  age: 28
+  education: Business Administration
+company:
+  industry: Social Media Consultancy
+  size: 6
+  revenue: € 500.000 per year
+  location: Rotterdam
+motivation:
+  - making money  
+  - building a team
+  - having exciting customers
+values:
+  - loyalty
+  - flexibility
+  - work pleasure
+responsibilities: |
+  Youp is the commercial director of the agency. His
+  girlfriend is also his business partner. She is the 
+  creative brain behind the operation. 
+  It is Youp's responsibility to make sure that 
+  leads are followed up, that quotations and invoices are 
+  sent on time, and that targets are met.
+informationNeeds: |
+  Youp heavily relies on his partner to remain up to date.
+  She is always up to date with the latest developments in
+  their field and constantly travels to events to talk to people. 
+  His partner's word is gospel to Youp.
+channels:
+  - partner
+  - frank watching
+  - coffee machine
+ambitions:
+  - scale up the company
+  - keep the agency healthy financially 
+  - be the man behind the woman
+frustrations:
+  - being (conceived as) boring
+  - afraid to be abandoned
+  - being used by his partner
+  

@@ -5,8 +5,8 @@ personalia:
   education: journalism
 company:
   industry: publishing/media
-  numberOfEmployees: 300
-  yearlyRevenue: € 20 mln
+  size: 300
+  revenue: € 20 mln per year
   location: New York City
 motivation:
   - prestige
