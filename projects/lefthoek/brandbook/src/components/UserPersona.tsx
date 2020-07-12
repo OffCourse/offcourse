@@ -35,7 +35,13 @@ export interface UserPersonaProps {
 
 export const UserPersona: FunctionComponent<UserPersonaProps> = ({ data }) => {
   return (
-    <div sx={{border: "1px solid black", p: "1rem"}}>
+    <div
+      sx={{
+        maxWidth: "22rem",
+          p: "1rem",
+        boxShadow: "13px 10px 23px 0px rgba(230,225,230,1)",
+      }}
+    >
       {Object.entries(data).map(([k, v]) => {
         return <DataSection title={k} data={v} />;
       })}

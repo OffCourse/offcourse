@@ -1,4 +1,6 @@
-import React, { FunctionComponent } from "react";
+/** @jsx jsx */
+import { FunctionComponent } from "react";
+import { jsx } from "theme-ui";
 import { entryTitleCase } from "./utilities";
 import { DataList } from "./DataList";
 import { DataTable } from "./DataTable";
@@ -28,7 +30,11 @@ export const DataSection: FunctionComponent<{
       style={{ borderBottom: "1px solid white", paddingBottom: "2rem" }}
       className={title}
     >
-      {title && <h1>{entryTitleCase(title)}</h1>}
+      {title && (
+        <div>
+          <h1 sx={{ m: 0 }}>{entryTitleCase(title)}</h1>
+        </div>
+      )}
       {data && DataComponent && <DataComponent data={data} />}
       {children && children}
     </section>

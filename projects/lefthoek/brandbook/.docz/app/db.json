@@ -680,41 +680,22 @@
       ]
     },
     {
-      "key": "src/components/DataSection.tsx",
+      "key": "src/components/utilities.tsx",
       "value": [
         {
           "description": "",
-          "displayName": "DataSection",
+          "displayName": "entryTitleCase",
           "methods": [],
-          "props": {
-            "title": {
-              "defaultValue": null,
-              "description": "",
-              "name": "title",
-              "required": false,
-              "type": {
-                "name": "string | undefined"
-              }
-            },
-            "data": {
-              "defaultValue": null,
-              "description": "",
-              "name": "data",
-              "required": false,
-              "type": {
-                "name": "any"
-              }
-            }
-          }
+          "props": {}
         }
       ]
     },
     {
-      "key": "src/components/DataText.tsx",
+      "key": "src/components/DataTable.tsx",
       "value": [
         {
           "description": "",
-          "displayName": "DataText",
+          "displayName": "DataTable",
           "methods": [],
           "props": {
             "data": {
@@ -723,7 +704,7 @@
               "name": "data",
               "required": true,
               "type": {
-                "name": "string"
+                "name": "{ [k: string]: string | number; }"
               }
             }
           }
@@ -758,22 +739,11 @@
       ]
     },
     {
-      "key": "src/components/utilities.tsx",
+      "key": "src/components/DataText.tsx",
       "value": [
         {
           "description": "",
-          "displayName": "entryTitleCase",
-          "methods": [],
-          "props": {}
-        }
-      ]
-    },
-    {
-      "key": "src/components/DataTable.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "DataTable",
+          "displayName": "DataText",
           "methods": [],
           "props": {
             "data": {
@@ -782,7 +752,37 @@
               "name": "data",
               "required": true,
               "type": {
-                "name": "{ [k: string]: string | number; }"
+                "name": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/DataSection.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "DataSection",
+          "methods": [],
+          "props": {
+            "title": {
+              "defaultValue": null,
+              "description": "",
+              "name": "title",
+              "required": false,
+              "type": {
+                "name": "string | undefined"
+              }
+            },
+            "data": {
+              "defaultValue": null,
+              "description": "",
+              "name": "data",
+              "required": false,
+              "type": {
+                "name": "any"
               }
             }
           }

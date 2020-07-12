@@ -2,12 +2,12 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { entryTitleCase } from "./utilities";
-const cellStyle = { py: "0.5rem", px: "1rem", minWidth: "13rem" };
+const cellStyle = { py: "0.5rem", px: "1rem" };
 
 export const DataTable: FunctionComponent<{
   data: { [k: string]: string | number };
 }> = ({ data }) => (
-  <table sx={{ borderSpacing: 0 }}>
+  <table sx={{ borderSpacing: 0, width: "100%" }}>
     {Object.entries(data).map(([k, v]) => (
       <tr
         sx={{
