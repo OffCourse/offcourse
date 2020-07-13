@@ -2,6 +2,7 @@
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
 import { DataSection } from "./DataSection";
+import { Card } from "../Card";
 import { userPersonaStyles } from "./styles";
 
 type Personalia = {
@@ -41,13 +42,31 @@ export const UserPersona: FunctionComponent<UserPersona> = ({
   responsibilities,
 }) => {
   return (
-    <div sx={userPersonaStyles}>
+    <Card sx={userPersonaStyles}>
       <DataSection title="personalia" data={personalia} />
       <DataSection title="company" data={company} />
-      <DataSection title="motivation" data={motivation} />
-      <DataSection title="information" data={information} />
-      <DataSection title="values" data={values} />
-      <DataSection title="responsibilities" data={responsibilities} />
-    </div>
+      <div
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gridColumn: "3/4",
+          gridRow: "1/4",
+          justifyContent: "space-around",
+        }}
+      >
+        <DataSection title="motivation" data={motivation} />
+        <DataSection title="values" data={values} />
+      </div>
+      <DataSection
+        sx={{ gridColumn: "1 / 3" }}
+        title="information"
+        data={information}
+      />
+      <DataSection
+        sx={{ gridColumn: "1 / 3" }}
+        title="responsibilities"
+        data={responsibilities}
+      />
+    </Card>
   );
 };

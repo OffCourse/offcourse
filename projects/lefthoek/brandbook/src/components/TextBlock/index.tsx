@@ -4,7 +4,7 @@ import { jsx } from "theme-ui";
 
 export const TextBlock: FunctionComponent<{ data: string }> = ({ data }) => {
   return (
-    <div>
+    <div sx={{ px: "1rem" }}>
       <p>{data}</p>
     </div>
   );

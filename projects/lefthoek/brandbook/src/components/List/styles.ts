@@ -1,10 +1,9 @@
 export const listStyles = {
   m: 0,
-  p: 0,
+  py: 0,
+  px: "1rem",
   textIndent: 0,
   listStyleType: "none",
 };
 
-export const listItemStyles = {
-  my: "0.5rem",
-};
+export const listItemStyles = {};

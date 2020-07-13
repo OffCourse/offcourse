@@ -3,21 +3,32 @@ name: Brand Image Control
 menu: User Stories
 ---
 import { UserPersona } from "../components/UserPersona"
+import { Card } from "../components/Card"
 import erin from "./persona-erin.yaml"
 import youp from "./persona-youp.yaml"
 
-
-Imagobeheersing
-===============
-
+# Imagobeheersing   
 
 Titel: Klant die een negatieve ervaring deelt op social media wordt snel en zorgvuldig geholpen.
 
-Als hoofd klantervaring bij een grote computerbouwer dat zijn de after sales van haar producten via een social media monitort en beheert, duurt het vaak te lang voordat er een adequate reactie op negatieve gebruikerervaringen gegeven wordt. Dit leidt tot verdere escalatie van het probleem en imagoschade.
+
+Als hoofd klantervaring bij een grote computerbouwer dat zijn de after sales van haar producten 
+via een social media monitort en beheert, duurt het vaak te lang voordat er een adequate reactie 
+op negatieve gebruikerervaringen gegeven wordt. Dit leidt tot verdere escalatie van het probleem en imagoschade.
+
 
 Wil ik een teamgenoot die vierentwintig uur per dag beschikbaar is en binnen 1 minuut een adequate reactie bij de negatieve klantervaring plaats.
 
+
 Zodat er op 90% van de oorspronkelijk negatieve ervaringen uiteindelijk alsnog een positieve reactie van dezelfde klant volgt en potentiele imagoschade ineen marketing mogelijkheid veranderd wordt.
+
+
+<Card>
+
+    # HELLO    
+
+</Card>
+
 
 
 ## Link
@@ -27,5 +38,8 @@ https://www.ingesijpkens.nl/imagoschade-door-social-media-vijf-tips-om-dat-te-vo
 
 ## Personae
 
-<UserPersona data={erin}/>
-<UserPersona data={youp}/>
+<UserPersona {...erin}/>
+
+<hr/>
+
+<UserPersona {...youp}/>

@@ -10,9 +10,9 @@ export const Table: FunctionComponent<{
   <table sx={tableStyles}>
     {Object.entries(data).map(([k, v]) => (
       <tr sx={tableRowStyles}>
-        <td sx={cellStyle}>{entryTitleCase(k)}</td>
+        <td sx={{ ...cellStyle, fontWeight: 700 }}>{entryTitleCase(k)}</td>
         <td sx={cellStyle}>
-          {Array.isArray(v) ? v.map((x) => <p sx={{m: 0}}>{x}</p>) : v}
+          {Array.isArray(v) ? v.map((x) => <p sx={{ m: 0 }}>{x}</p>) : v}
         </td>
       </tr>
     ))}

@@ -1,5 +1,15 @@
 export const userPersonaStyles = {
-  p: "1rem",
-  m: "1rem",
-  boxShadow: "13px 10px 23px 0px rgba(230,225,230,1)",
+  gridTemplateColumns: ["1fr", "1fr 1fr", "1fr 1fr 1fr"],
+  px: [0, "1rem"],
+  py: [0, "0.5rem"],
+  gridGap: "1rem",
 };
+
+export const sectionTitleStyles = {
+  px: "1rem",
+  py: "0.5rem",
+  m: 0,
+};
+
+export const sectionStyles = {};
+

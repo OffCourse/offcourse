@@ -10,202 +10,6 @@
     "separator": "-",
     "typescript": true
   },
-  "props": [
-    {
-      "key": "src/components/utilities.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "entryTitleCase",
-          "methods": [],
-          "props": {}
-        }
-      ]
-    },
-    {
-      "key": "src/components/List/index.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "List",
-          "methods": [],
-          "props": {
-            "data": {
-              "defaultValue": null,
-              "description": "",
-              "name": "data",
-              "required": true,
-              "type": {
-                "name": "string[]"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "key": "src/components/Table/index.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Table",
-          "methods": [],
-          "props": {
-            "data": {
-              "defaultValue": null,
-              "description": "",
-              "name": "data",
-              "required": true,
-              "type": {
-                "name": "Record<string, string | number | string[]>"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "key": "src/components/TextBlock/index.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "TextBlock",
-          "methods": [],
-          "props": {
-            "data": {
-              "defaultValue": null,
-              "description": "",
-              "name": "data",
-              "required": true,
-              "type": {
-                "name": "string"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "key": "src/components/UserPersona/DataSection.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "DataSection",
-          "methods": [],
-          "props": {
-            "title": {
-              "defaultValue": null,
-              "description": "",
-              "name": "title",
-              "required": false,
-              "type": {
-                "name": "string | undefined"
-              }
-            },
-            "data": {
-              "defaultValue": null,
-              "description": "",
-              "name": "data",
-              "required": false,
-              "type": {
-                "name": "any"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "key": "src/components/UserPersona/index.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "UserPersona",
-          "methods": [],
-          "props": {
-            "personalia": {
-              "defaultValue": null,
-              "description": "",
-              "name": "personalia",
-              "parent": {
-                "fileName": "src/components/UserPersona/index.tsx",
-                "name": "UserPersona"
-              },
-              "required": true,
-              "type": {
-                "name": "Personalia"
-              }
-            },
-            "company": {
-              "defaultValue": null,
-              "description": "",
-              "name": "company",
-              "parent": {
-                "fileName": "src/components/UserPersona/index.tsx",
-                "name": "UserPersona"
-              },
-              "required": true,
-              "type": {
-                "name": "Company"
-              }
-            },
-            "motivation": {
-              "defaultValue": null,
-              "description": "",
-              "name": "motivation",
-              "parent": {
-                "fileName": "src/components/UserPersona/index.tsx",
-                "name": "UserPersona"
-              },
-              "required": true,
-              "type": {
-                "name": "string[]"
-              }
-            },
-            "information": {
-              "defaultValue": null,
-              "description": "",
-              "name": "information",
-              "parent": {
-                "fileName": "src/components/UserPersona/index.tsx",
-                "name": "UserPersona"
-              },
-              "required": true,
-              "type": {
-                "name": "Information"
-              }
-            },
-            "values": {
-              "defaultValue": null,
-              "description": "",
-              "name": "values",
-              "parent": {
-                "fileName": "src/components/UserPersona/index.tsx",
-                "name": "UserPersona"
-              },
-              "required": true,
-              "type": {
-                "name": "string[]"
-              }
-            },
-            "responsibilities": {
-              "defaultValue": null,
-              "description": "",
-              "name": "responsibilities",
-              "parent": {
-                "fileName": "src/components/UserPersona/index.tsx",
-                "name": "UserPersona"
-              },
-              "required": true,
-              "type": {
-                "name": "string"
-              }
-            }
-          }
-        }
-      ]
-    }
-  ],
   "entries": [
     {
       "key": "src/brand-statement.mdx",
@@ -436,11 +240,6 @@
             "slug": "personae",
             "depth": 2,
             "value": "Personae"
-          },
-          {
-            "slug": "persona-2",
-            "depth": 2,
-            "value": "Persona 2"
           }
         ]
       }
@@ -559,6 +358,21 @@
             "value": "Frustraties en angsten"
           }
         ]
+      }
+    },
+    {
+      "key": "src/components/Card/index.mdx",
+      "value": {
+        "id": "6caac9bde46e1dac8528f9133604d3b8",
+        "filepath": "src/components/Card/index.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/Card/index.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-components-card-index",
+        "route": "/src-components-card-index",
+        "name": "Index",
+        "menu": "",
+        "headings": []
       }
     },
     {
@@ -689,6 +503,232 @@
           }
         ]
       }
+    }
+  ],
+  "props": [
+    {
+      "key": "src/components/utilities.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "entryTitleCase",
+          "methods": [],
+          "props": {}
+        }
+      ]
+    },
+    {
+      "key": "src/components/Card/index.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Card",
+          "methods": [],
+          "props": {
+            "className": {
+              "defaultValue": null,
+              "description": "",
+              "name": "className",
+              "required": false,
+              "type": {
+                "name": "string | undefined"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/List/index.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "List",
+          "methods": [],
+          "props": {
+            "data": {
+              "defaultValue": null,
+              "description": "",
+              "name": "data",
+              "required": true,
+              "type": {
+                "name": "string[]"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/Table/index.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Table",
+          "methods": [],
+          "props": {
+            "data": {
+              "defaultValue": null,
+              "description": "",
+              "name": "data",
+              "required": true,
+              "type": {
+                "name": "Record<string, string | number | string[]>"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/TextBlock/index.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "TextBlock",
+          "methods": [],
+          "props": {
+            "data": {
+              "defaultValue": null,
+              "description": "",
+              "name": "data",
+              "required": true,
+              "type": {
+                "name": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/UserPersona/DataSection.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "DataSection",
+          "methods": [],
+          "props": {
+            "title": {
+              "defaultValue": null,
+              "description": "",
+              "name": "title",
+              "required": false,
+              "type": {
+                "name": "string | undefined"
+              }
+            },
+            "data": {
+              "defaultValue": null,
+              "description": "",
+              "name": "data",
+              "required": false,
+              "type": {
+                "name": "any"
+              }
+            },
+            "className": {
+              "defaultValue": null,
+              "description": "",
+              "name": "className",
+              "required": false,
+              "type": {
+                "name": "string | undefined"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/UserPersona/index.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "UserPersona",
+          "methods": [],
+          "props": {
+            "personalia": {
+              "defaultValue": null,
+              "description": "",
+              "name": "personalia",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "Personalia"
+              }
+            },
+            "company": {
+              "defaultValue": null,
+              "description": "",
+              "name": "company",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "Company"
+              }
+            },
+            "motivation": {
+              "defaultValue": null,
+              "description": "",
+              "name": "motivation",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "string[]"
+              }
+            },
+            "information": {
+              "defaultValue": null,
+              "description": "",
+              "name": "information",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "Information"
+              }
+            },
+            "values": {
+              "defaultValue": null,
+              "description": "",
+              "name": "values",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "string[]"
+              }
+            },
+            "responsibilities": {
+              "defaultValue": null,
+              "description": "",
+              "name": "responsibilities",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "string"
+              }
+            }
+          }
+        }
+      ]
     }
   ]
 }
