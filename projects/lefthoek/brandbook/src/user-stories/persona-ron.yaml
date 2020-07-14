@@ -1,0 +1,42 @@
+personalia:
+  name: Ron
+  gender: male
+  age: 53
+  education: Public Administration
+company:
+  industry: Public Institution
+  size: 400
+  revenue: € 100.000.000 per year
+  location: The Hague
+motivation:
+  - professionalize organization
+  - scale up organization
+values:
+  - focus on content
+  - solid
+  - decent
+  - security
+responsibilities: |
+  On paper, Ron is responsible for innovation. 
+  In practice, however, he spends most of his time
+  on professionalising. Ron's biggest challenge is
+  to align the different teams and stakeholders in
+  his organization. 
+information:
+  needs: |
+    Ron thinks he knows it all already, and is mainly
+    sending at this stage in his career. He does find 
+    it important to stay up to date. To achieve that, he
+    mainly uses mainstream media.
+  channels:
+    - Jinek
+    - Op1
+    - Tegenlicht
+    - NRC
+ambitions:
+  - being a big boy in his organization
+  - start ambitious projects
+frustrations:
+  - lack of recognition and acknowledgement
+  - being a voyager on the titanic
+  - lose his steady paycheck

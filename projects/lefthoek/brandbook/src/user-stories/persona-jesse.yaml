@@ -1,0 +1,43 @@
+personalia:
+  name: Jesse
+  gender: female
+  age: 38
+  education: Computer Science and Mathematics
+company:
+  industry: EdTech
+  size: 15
+  revenue: € 2.000.000 per year
+  location: San Franciso
+motivation:
+  - reorganize community
+  - scale up organization
+values:
+  - never compromise quality
+  - commercial success is less important than impact
+responsibilities: |
+  Jesse determines the vision and roapmap for her
+  organization. She does not show her face in the
+  offices much, unless there is an urgent reason.
+  Work is the most important thing in her life. Her 
+  social circle almost exlusively consists of (former) 
+  colleagues. 
+information:
+  needs: |
+    Jesse feels that she has more than enough theoretical
+    knowledge by now. What's left is to bring it into 
+    practice. Nonetheless, she is constantly looking for 
+    new intelligent people to spar with. But Jesse is
+    ultimately disappointed about their input though.
+  channels:
+    - Wired Magazine
+    - New York Times      
+    - Hackernews   
+ambitions:
+  - make the world a better place
+  - grow together with the company 
+  - be a leader/autority in her field
+  - operate from a distance, only be involved on a strategical level
+frustrations:
+  - little to no trust in other people
+  - afraid that other take advantage of her intentions and enthusiasm
+  - feels misunderstood
