@@ -1,0 +1,13 @@
+title: testable value profile
+as a: |
+  CEO of a value-driven online company 
+I want: |
+  the online activities of all my teams to be automatically 
+  tested against a value profile that consist of both our 
+  commercial targets and ethical values, vice versa this value
+  profile periodically get evaluated and recalibrated based 
+  on the de facto activities of my team 
+so that: |
+  all teams work from an undisputed, aligned set of values, 
+  productivity is thereby by 150% without endangering the ethical 
+  values of my company
