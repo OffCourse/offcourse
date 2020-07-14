@@ -1,38 +1,39 @@
 /** @jsx jsx */
 import { FunctionComponent } from "react";
 import { jsx } from "theme-ui";
-import { entryTitleCase } from "./utilities";
-import { DataList } from "./DataList";
-import { DataTable } from "./DataTable";
-import { DataText } from "./DataText";
+import { entryTitleCase } from "../utilities";
+import { List } from "../List";
+import { Table } from "../Table";
+import { TextBlock } from "../TextBlock";
+import { sectionStyles, sectionTitleStyles } from "./styles";
 
 const selectComponent: (
   data: string | string[] | { [k: string]: string | number }
 ) =>
   | FunctionComponent<{ data: string }>
   | FunctionComponent<{ data: string[] }>
-  | FunctionComponent<{ data: { [k: string]: string | number } }> = (data) => {
+  | FunctionComponent<{ data: { [k: string]: string | string[] | number } }> = (
+  data
+) => {
   if (typeof data === "string") {
-    return DataText;
+    return TextBlock;
   } else {
-    return Array.isArray(data) ? DataList : DataTable;
+    return Array.isArray(data) ? List : Table;
   }
 };
 
 export const DataSection: FunctionComponent<{
   title?: string;
   data?: any;
+  className?: string;
   children?: any;
-}> = ({ title, data, children }) => {
+}> = ({ title, data, children, className }) => {
   const DataComponent = selectComponent(data);
   return (
-    <section
-      style={{ borderBottom: "1px solid white", paddingBottom: "2rem" }}
-      className={title}
-    >
+    <section style={sectionStyles} className={className}>
       {title && (
         <div>
-          <h1 sx={{ m: 0 }}>{entryTitleCase(title)}</h1>
+          <h1 sx={sectionTitleStyles}>{entryTitleCase(title)}</h1>
         </div>
       )}
       {data && DataComponent && <DataComponent data={data} />}

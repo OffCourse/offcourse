@@ -183,93 +183,6 @@
       }
     },
     {
-      "key": "src/components/Alert.mdx",
-      "value": {
-        "name": "Alert",
-        "menu": "Components",
-        "id": "411d2842c3d65e6ee7d3ec119ed4c5a0",
-        "filepath": "src/components/Alert.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/Alert.mdx",
-        "link": "",
-        "hidden": false,
-        "slug": "src-components-alert",
-        "route": "/src-components-alert",
-        "headings": [
-          {
-            "slug": "alert",
-            "depth": 1,
-            "value": "Alert"
-          },
-          {
-            "slug": "properties",
-            "depth": 2,
-            "value": "Properties"
-          },
-          {
-            "slug": "basic-usage",
-            "depth": 2,
-            "value": "Basic usage"
-          },
-          {
-            "slug": "using-different-kinds",
-            "depth": 2,
-            "value": "Using different kinds"
-          }
-        ]
-      }
-    },
-    {
-      "key": "src/components/Button.mdx",
-      "value": {
-        "name": "Button",
-        "menu": "Components",
-        "id": "94c04b4e4bd29ffbdeec8755c1a4c04f",
-        "filepath": "src/components/Button.mdx",
-        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/Button.mdx",
-        "link": "",
-        "hidden": false,
-        "slug": "src-components-button",
-        "route": "/src-components-button",
-        "headings": [
-          {
-            "slug": "button",
-            "depth": 1,
-            "value": "Button"
-          },
-          {
-            "slug": "best-practices",
-            "depth": 3,
-            "value": "Best practices"
-          },
-          {
-            "slug": "properties",
-            "depth": 2,
-            "value": "Properties"
-          },
-          {
-            "slug": "basic-usage",
-            "depth": 2,
-            "value": "Basic usage"
-          },
-          {
-            "slug": "with-different-sizes",
-            "depth": 2,
-            "value": "With different sizes"
-          },
-          {
-            "slug": "with-different-colors",
-            "depth": 2,
-            "value": "With different colors"
-          },
-          {
-            "slug": "outlined",
-            "depth": 2,
-            "value": "Outlined"
-          }
-        ]
-      }
-    },
-    {
       "key": "src/user-stories/brand-image-control.mdx",
       "value": {
         "name": "Brand Image Control",
@@ -293,54 +206,9 @@
             "value": "Link"
           },
           {
-            "slug": "persona",
+            "slug": "personae",
             "depth": 2,
-            "value": "Persona"
-          },
-          {
-            "slug": "persona-2",
-            "depth": 2,
-            "value": "Persona 2"
-          },
-          {
-            "slug": "professionele-doelen",
-            "depth": 3,
-            "value": "Professionele doelen"
-          },
-          {
-            "slug": "waarden",
-            "depth": 3,
-            "value": "Waarden"
-          },
-          {
-            "slug": "bedrijfsinformatie",
-            "depth": 3,
-            "value": "Bedrijfsinformatie"
-          },
-          {
-            "slug": "verantwoordelijkheden",
-            "depth": 3,
-            "value": "Verantwoordelijkheden"
-          },
-          {
-            "slug": "informatiebehoefte",
-            "depth": 3,
-            "value": "Informatiebehoefte"
-          },
-          {
-            "slug": "informatiekanalen",
-            "depth": 3,
-            "value": "Informatiekanalen"
-          },
-          {
-            "slug": "ambities-en-doelen",
-            "depth": 3,
-            "value": "Ambities en doelen"
-          },
-          {
-            "slug": "frustraties-en-angsten",
-            "depth": 3,
-            "value": "Frustraties en angsten"
+            "value": "Personae"
           }
         ]
       }
@@ -369,89 +237,9 @@
             "value": "Link"
           },
           {
-            "slug": "persona-1",
+            "slug": "personae",
             "depth": 2,
-            "value": "Persona 1"
-          },
-          {
-            "slug": "professionele-doelen",
-            "depth": 3,
-            "value": "Professionele doelen"
-          },
-          {
-            "slug": "waarden",
-            "depth": 3,
-            "value": "Waarden"
-          },
-          {
-            "slug": "bedrijfsinformatie",
-            "depth": 3,
-            "value": "Bedrijfsinformatie"
-          },
-          {
-            "slug": "verantwoordelijkheden",
-            "depth": 3,
-            "value": "Verantwoordelijkheden"
-          },
-          {
-            "slug": "informatiekanalen",
-            "depth": 3,
-            "value": "Informatiekanalen"
-          },
-          {
-            "slug": "ambities-en-doelen",
-            "depth": 3,
-            "value": "Ambities en doelen"
-          },
-          {
-            "slug": "frustraties-en-angsten",
-            "depth": 3,
-            "value": "Frustraties en angsten"
-          },
-          {
-            "slug": "persona-2",
-            "depth": 2,
-            "value": "Persona 2"
-          },
-          {
-            "slug": "professionele-doelen-1",
-            "depth": 3,
-            "value": "Professionele doelen"
-          },
-          {
-            "slug": "waarden-1",
-            "depth": 3,
-            "value": "Waarden"
-          },
-          {
-            "slug": "bedrijfsinformatie-1",
-            "depth": 3,
-            "value": "Bedrijfsinformatie"
-          },
-          {
-            "slug": "verantwoordelijkheden-1",
-            "depth": 3,
-            "value": "Verantwoordelijkheden"
-          },
-          {
-            "slug": "informatiebehoefte",
-            "depth": 3,
-            "value": "Informatiebehoefte"
-          },
-          {
-            "slug": "informatiekanalen-1",
-            "depth": 3,
-            "value": "Informatiekanalen"
-          },
-          {
-            "slug": "ambities-en-doelen-1",
-            "depth": 3,
-            "value": "Ambities en doelen"
-          },
-          {
-            "slug": "frustraties-en-angsten-1",
-            "depth": 3,
-            "value": "Frustraties en angsten"
+            "value": "Personae"
           }
         ]
       }
@@ -571,30 +359,179 @@
           }
         ]
       }
+    },
+    {
+      "key": "src/components/Card/index.mdx",
+      "value": {
+        "id": "6caac9bde46e1dac8528f9133604d3b8",
+        "filepath": "src/components/Card/index.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/Card/index.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-components-card-index",
+        "route": "/src-components-card-index",
+        "name": "Index",
+        "menu": "",
+        "headings": []
+      }
+    },
+    {
+      "key": "src/components/List/index.mdx",
+      "value": {
+        "name": "List",
+        "menu": "Components",
+        "id": "a8a19dadcddf12ef833dd64fc8f2118b",
+        "filepath": "src/components/List/index.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/List/index.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-components-list-index",
+        "route": "/src-components-list-index",
+        "headings": [
+          {
+            "slug": "list",
+            "depth": 1,
+            "value": "List"
+          },
+          {
+            "slug": "properties",
+            "depth": 2,
+            "value": "Properties"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/components/Table/index.mdx",
+      "value": {
+        "name": "Table",
+        "menu": "Components",
+        "id": "e4fed9eb9f71110660f2f80d020d48a1",
+        "filepath": "src/components/Table/index.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/Table/index.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-components-table-index",
+        "route": "/src-components-table-index",
+        "headings": [
+          {
+            "slug": "table",
+            "depth": 1,
+            "value": "Table"
+          },
+          {
+            "slug": "properties",
+            "depth": 2,
+            "value": "Properties"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/components/TextBlock/index.mdx",
+      "value": {
+        "name": "TextBlock",
+        "menu": "Components",
+        "id": "539d1093d574a3d5914980267347e0be",
+        "filepath": "src/components/TextBlock/index.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/TextBlock/index.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-components-text-block-index",
+        "route": "/src-components-text-block-index",
+        "headings": [
+          {
+            "slug": "textblock",
+            "depth": 1,
+            "value": "TextBlock"
+          },
+          {
+            "slug": "properties",
+            "depth": 2,
+            "value": "Properties"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          },
+          {
+            "slug": "using-different-kinds",
+            "depth": 2,
+            "value": "Using different kinds"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/components/UserPersona/index.mdx",
+      "value": {
+        "name": "UserPersona",
+        "menu": "Components",
+        "id": "dadb75f38ede56947f03f29aca7fa8c6",
+        "filepath": "src/components/UserPersona/index.mdx",
+        "fullpath": "/Users/yeehaa/Documents/offcourse/projects/lefthoek/brandbook/src/components/UserPersona/index.mdx",
+        "link": "",
+        "hidden": false,
+        "slug": "src-components-user-persona-index",
+        "route": "/src-components-user-persona-index",
+        "headings": [
+          {
+            "slug": "list",
+            "depth": 1,
+            "value": "List"
+          },
+          {
+            "slug": "properties",
+            "depth": 2,
+            "value": "Properties"
+          },
+          {
+            "slug": "basic-usage",
+            "depth": 2,
+            "value": "Basic usage"
+          }
+        ]
+      }
     }
   ],
   "props": [
     {
-      "key": "src/components/Alert.tsx",
+      "key": "src/components/utilities.tsx",
       "value": [
         {
           "description": "",
-          "displayName": "Alert",
+          "displayName": "entryTitleCase",
+          "methods": [],
+          "props": {}
+        }
+      ]
+    },
+    {
+      "key": "src/components/Card/index.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Card",
           "methods": [],
           "props": {
-            "kind": {
-              "defaultValue": {
-                "value": "info"
-              },
-              "description": "Set this to change alert kind",
-              "name": "kind",
-              "parent": {
-                "fileName": "src/components/Alert.tsx",
-                "name": "AlertProps"
-              },
-              "required": true,
+            "className": {
+              "defaultValue": null,
+              "description": "",
+              "name": "className",
+              "required": false,
               "type": {
-                "name": "\"info\" | \"positive\" | \"negative\" | \"warning\""
+                "name": "string | undefined"
               }
             }
           }
@@ -602,68 +539,11 @@
       ]
     },
     {
-      "key": "src/components/Button.tsx",
+      "key": "src/components/List/index.tsx",
       "value": [
         {
           "description": "",
-          "displayName": "Button",
-          "methods": [],
-          "props": {
-            "scale": {
-              "defaultValue": {
-                "value": "normal"
-              },
-              "description": "",
-              "name": "scale",
-              "parent": {
-                "fileName": "src/components/Button.tsx",
-                "name": "ButtonProps"
-              },
-              "required": false,
-              "type": {
-                "name": "\"small\" | \"normal\" | \"big\""
-              }
-            },
-            "kind": {
-              "defaultValue": {
-                "value": "primary"
-              },
-              "description": "",
-              "name": "kind",
-              "parent": {
-                "fileName": "src/components/Button.tsx",
-                "name": "ButtonProps"
-              },
-              "required": false,
-              "type": {
-                "name": "\"primary\" | \"secondary\" | \"cancel\" | \"dark\" | \"gray\""
-              }
-            },
-            "outline": {
-              "defaultValue": {
-                "value": false
-              },
-              "description": "",
-              "name": "outline",
-              "parent": {
-                "fileName": "src/components/Button.tsx",
-                "name": "ButtonProps"
-              },
-              "required": false,
-              "type": {
-                "name": "boolean"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "key": "src/components/DataList.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "DataList",
+          "displayName": "List",
           "methods": [],
           "props": {
             "data": {
@@ -680,22 +560,11 @@
       ]
     },
     {
-      "key": "src/components/utilities.tsx",
+      "key": "src/components/Table/index.tsx",
       "value": [
         {
           "description": "",
-          "displayName": "entryTitleCase",
-          "methods": [],
-          "props": {}
-        }
-      ]
-    },
-    {
-      "key": "src/components/DataTable.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "DataTable",
+          "displayName": "Table",
           "methods": [],
           "props": {
             "data": {
@@ -704,7 +573,7 @@
               "name": "data",
               "required": true,
               "type": {
-                "name": "{ [k: string]: string | number; }"
+                "name": "Record<string, string | number | string[]>"
               }
             }
           }
@@ -712,38 +581,11 @@
       ]
     },
     {
-      "key": "src/components/UserPersona.tsx",
+      "key": "src/components/TextBlock/index.tsx",
       "value": [
         {
           "description": "",
-          "displayName": "UserPersona",
-          "methods": [],
-          "props": {
-            "data": {
-              "defaultValue": {
-                "value": "info"
-              },
-              "description": "Set this to change alert kind",
-              "name": "data",
-              "parent": {
-                "fileName": "src/components/UserPersona.tsx",
-                "name": "UserPersonaProps"
-              },
-              "required": true,
-              "type": {
-                "name": "Persona"
-              }
-            }
-          }
-        }
-      ]
-    },
-    {
-      "key": "src/components/DataText.tsx",
-      "value": [
-        {
-          "description": "",
-          "displayName": "DataText",
+          "displayName": "TextBlock",
           "methods": [],
           "props": {
             "data": {
@@ -760,7 +602,7 @@
       ]
     },
     {
-      "key": "src/components/DataSection.tsx",
+      "key": "src/components/UserPersona/DataSection.tsx",
       "value": [
         {
           "description": "",
@@ -783,6 +625,105 @@
               "required": false,
               "type": {
                 "name": "any"
+              }
+            },
+            "className": {
+              "defaultValue": null,
+              "description": "",
+              "name": "className",
+              "required": false,
+              "type": {
+                "name": "string | undefined"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/UserPersona/index.tsx",
+      "value": [
+        {
+          "description": "",
+          "displayName": "UserPersona",
+          "methods": [],
+          "props": {
+            "personalia": {
+              "defaultValue": null,
+              "description": "",
+              "name": "personalia",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "Personalia"
+              }
+            },
+            "company": {
+              "defaultValue": null,
+              "description": "",
+              "name": "company",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "Company"
+              }
+            },
+            "motivation": {
+              "defaultValue": null,
+              "description": "",
+              "name": "motivation",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "string[]"
+              }
+            },
+            "information": {
+              "defaultValue": null,
+              "description": "",
+              "name": "information",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "Information"
+              }
+            },
+            "values": {
+              "defaultValue": null,
+              "description": "",
+              "name": "values",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "string[]"
+              }
+            },
+            "responsibilities": {
+              "defaultValue": null,
+              "description": "",
+              "name": "responsibilities",
+              "parent": {
+                "fileName": "src/components/UserPersona/index.tsx",
+                "name": "UserPersona"
+              },
+              "required": true,
+              "type": {
+                "name": "string"
               }
             }
           }

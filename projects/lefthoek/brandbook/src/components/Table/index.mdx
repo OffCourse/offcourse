@@ -1,0 +1,36 @@
+---
+name: Table
+menu: Components
+---
+
+import { Playground, Props } from 'docz'
+import { Table } from './index.tsx'
+
+export const tableData = {
+  "one": "hello",
+  "two": "hi",
+  "three": "hey"
+}
+
+export const tableDataAlt = {
+  "one": "hello",
+  "two": "hi",
+  "three": ["hey", "ho", "ha"]
+}
+
+
+# Table
+
+## Properties
+
+<Props of={Table} />
+
+## Basic usage
+
+<Playground>
+  <Table data={tableData}/>
+</Playground>
+
+<Playground>
+  <Table data={tableDataAlt}/>
+</Playground>

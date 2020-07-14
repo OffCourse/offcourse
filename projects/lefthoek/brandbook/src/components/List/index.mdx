@@ -1,0 +1,25 @@
+---
+name: List
+menu: Components
+---
+
+import { Playground, Props } from 'docz'
+import { List } from './index.tsx'
+
+export const listData = [
+  "This is Item 1",
+  "This is Item 2",
+  "This is Item 3"
+]
+
+# List
+
+## Properties
+
+<Props of={List} />
+
+## Basic usage
+
+<Playground>
+  <List data={listData}/>
+</Playground>
